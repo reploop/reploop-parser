@@ -3,7 +3,7 @@ package com.qiyi.walle.translator.json;
 
 import com.google.common.collect.ImmutableList;
 import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.json.AstVisitor;
+import org.reploop.parser.json.AstVisitor;
 import com.qiyi.walle.parser.json.Node;
 import com.qiyi.walle.parser.json.tree.DoubleVal;
 import com.qiyi.walle.parser.json.tree.LongVal;

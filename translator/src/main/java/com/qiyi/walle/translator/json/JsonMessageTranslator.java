@@ -4,7 +4,7 @@ import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.google.common.base.Splitter;
 import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.json.AstVisitor;
+import org.reploop.parser.json.AstVisitor;
 import com.qiyi.walle.parser.json.Node;
 import com.qiyi.walle.parser.json.tree.DoubleVal;
 import com.qiyi.walle.parser.json.tree.Entity;
