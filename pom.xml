@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>com.qiyi.vrs</groupId>
-        <artifactId>vis-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath/>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.qiyi.walle</groupId>
-    <artifactId>walle-parser</artifactId>
+    <groupId>org.reploop</groupId>
+    <artifactId>reploop-parser</artifactId>
     <version>0.15-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <antlr.version>4.8-1</antlr.version>
         <thrift.version>0.9.3</thrift.version>
-        <guava.version>24.1-jre</guava.version>
+        <guava.version>28.2-jre</guava.version>
         <jdk.version>1.8</jdk.version>
+        <testng.version>7.1.0</testng.version>
+        <commons.lang3.version>3.10</commons.lang3.version>
+        <jackson.version>2.10.3</jackson.version>
     </properties>
     <modules>
-        <module>walle-thrift-parser</module>
-        <module>walle-protobuf-parser</module>
-        <module>walle-parser-commons</module>
-        <module>walle-json-parser</module>
-        <module>walle-translator</module>
-        <module>walle-java-parser</module>
-        <module>walle-mysql-parser</module>
+        <module>thrift-parser</module>
+        <module>protobuf-parser</module>
+        <module>parser-commons</module>
+        <module>json-parser</module>
+        <module>translator</module>
+        <module>java-parser</module>
+        <module>mysql-parser</module>
     </modules>
 
     <profiles>
@@ -52,15 +49,17 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -68,8 +67,62 @@
             <artifactId>antlr4-runtime</artifactId>
             <version>${antlr.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-runtime</artifactId>
+                <version>${antlr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.thrift</groupId>
+                <artifactId>libthrift</artifactId>
+                <version>0.13.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>3.11.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.30</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
@@ -119,6 +172,15 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
