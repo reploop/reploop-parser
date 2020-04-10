@@ -1,11 +1,11 @@
 package org.reploop.parser.thrift;
 
-import com.qiyi.walle.parser.thrift.base.ThriftBaseBaseListener;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseLexer;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseParser;
 import org.antlr.v4.runtime.BufferedTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStreamRewriter;
+import org.reploop.parser.thrift.base.ThriftBaseBaseListener;
+import org.reploop.parser.thrift.base.ThriftBaseLexer;
+import org.reploop.parser.thrift.base.ThriftBaseParser;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class CommentListener extends ThriftBaseBaseListener {
     public void exitProgram(ThriftBaseParser.ProgramContext ctx) {
         Token startToken = ctx.getStart();
         int startIndex = startToken.getTokenIndex();
-        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex,ThriftBaseLexer.HIDDEN);
+        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
         if (null != channel) {
             Token commentToken = channel.get(0);
             if (null != commentToken) {

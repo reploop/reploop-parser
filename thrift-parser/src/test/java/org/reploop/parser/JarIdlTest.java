@@ -1,18 +1,11 @@
 package org.reploop.parser;
 
-import com.qiyi.walle.parser.commons.FileExtensionFilter;
 import com.qiyi.walle.parser.thrift.ThriftParser;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-
+import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -1,9 +1,10 @@
 package org.reploop.parser.protobuf.generator;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.protobuf.ProtobufParser;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
 
+import org.reploop.parser.Classpath;
+import org.reploop.parser.protobuf.ProtobufParser;
+import org.reploop.parser.protobuf.type.*;
+import org.reploop.parser.protobuf.tree.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

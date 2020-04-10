@@ -1,6 +1,7 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.thrift.Node;
+
+import org.reploop.parser.thrift.Node;
 
 /**
  * Header contains namespace(package),file include and class import.

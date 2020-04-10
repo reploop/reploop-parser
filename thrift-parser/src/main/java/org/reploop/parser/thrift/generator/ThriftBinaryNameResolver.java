@@ -2,42 +2,21 @@ package org.reploop.parser.thrift.generator;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
-
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.commons.LevenshteinDistance;
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
-import com.qiyi.walle.parser.thrift.tree.Entity;
-import com.qiyi.walle.parser.thrift.tree.Field;
-import com.qiyi.walle.parser.thrift.tree.Function;
-import com.qiyi.walle.parser.thrift.tree.FunctionType;
-import com.qiyi.walle.parser.thrift.tree.Header;
-import com.qiyi.walle.parser.thrift.tree.Lang;
-import com.qiyi.walle.parser.thrift.tree.Namespace;
-import com.qiyi.walle.parser.thrift.tree.NamespaceScope;
-import com.qiyi.walle.parser.thrift.tree.ReturnType;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-import com.qiyi.walle.parser.thrift.type.BinaryType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
-import com.qiyi.walle.parser.thrift.type.StructType;
-
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.commons.LevenshteinDistance;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.BinaryType;
+import org.reploop.parser.thrift.type.FieldType;
+import org.reploop.parser.thrift.type.StructType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import static com.google.common.collect.Iterables.getFirst;
 

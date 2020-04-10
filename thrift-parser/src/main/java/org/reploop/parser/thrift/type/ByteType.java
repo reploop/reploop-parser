@@ -1,6 +1,7 @@
 package org.reploop.parser.thrift.type;
 
-import com.qiyi.walle.parser.thrift.AstVisitor;
+
+import org.reploop.parser.thrift.AstVisitor;
 
 /**
  * What's this about?

@@ -1,19 +1,19 @@
 package org.reploop.parser.thrift;
 
 
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.commons.CommentHelper;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseBaseVisitor;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseLexer;
-import org.reploop.parser.thrift.tree.*;
-import com.qiyi.walle.parser.thrift.tree.Enum;
-import com.qiyi.walle.parser.thrift.tree.Exception;
-import com.qiyi.walle.parser.thrift.type.*;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.commons.CommentHelper;
+import org.reploop.parser.thrift.base.ThriftBaseBaseVisitor;
+import org.reploop.parser.thrift.base.ThriftBaseLexer;
+import org.reploop.parser.thrift.tree.Enum;
+import org.reploop.parser.thrift.tree.Exception;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.*;
 
 import java.util.Collections;
 import java.util.EnumSet;
@@ -204,15 +204,15 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
             exceptions = Optional.ofNullable(raise.getFields());
         }
         return new Function(comments, null != ctx.ONEWAY(),
-                QualifiedName.of(ctx.ID().getText()), visitFunctionType(ctx.functionType()),
-                visit(ctx.field(), Field.class), exceptions);
+            QualifiedName.of(ctx.ID().getText()), visitFunctionType(ctx.functionType()),
+            visit(ctx.field(), Field.class), exceptions);
     }
 
     private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
         return Optional.ofNullable(context)
-                .map(this::visit)
-                .filter(node -> null != node)
-                .map(clazz::cast);
+            .map(this::visit)
+            .filter(node -> null != node)
+            .map(clazz::cast);
     }
 
     private <R> R visit(ParserRuleContext context, Class<R> clazz) {
@@ -224,11 +224,11 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
         List<String> comments = comments(ctx.getStart());
         List<Function> functions = visit(ctx.function(), Function.class);
         String name = Optional.ofNullable(ctx.ID(0))
-                .map(ParseTree::getText).get();
+            .map(ParseTree::getText).get();
 
         Optional<QualifiedName> parent = Optional.ofNullable(ctx.ID(1))
-                .map(ParseTree::getText)
-                .map(QualifiedName::of);
+            .map(ParseTree::getText)
+            .map(QualifiedName::of);
         return new Service(parent, QualifiedName.of(name), comments, functions);
     }
 
@@ -282,10 +282,10 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
     private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
         if (null != contexts) {
             return contexts.stream()
-                    .map(this::visit)
-                    .filter(node -> null != node)
-                    .map(clazz::cast)
-                    .collect(Collectors.toList());
+                .map(this::visit)
+                .filter(node -> null != node)
+                .map(clazz::cast)
+                .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }
@@ -293,8 +293,8 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
     @Override
     public ThriftProgram visitProgram(ProgramContext ctx) {
         return new ThriftProgram(
-                comments(ctx.getStart()),
-                visit(ctx.header(), Header.class),
-                visit(ctx.definition(), Entity.class));
+            comments(ctx.getStart()),
+            visit(ctx.header(), Header.class),
+            visit(ctx.definition(), Entity.class));
     }
 }

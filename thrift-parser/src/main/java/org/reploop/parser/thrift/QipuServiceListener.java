@@ -1,10 +1,10 @@
 package org.reploop.parser.thrift;
 
 import com.google.common.base.CaseFormat;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseBaseListener;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseParser;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.reploop.parser.thrift.base.ThriftBaseBaseListener;
+import org.reploop.parser.thrift.base.ThriftBaseParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

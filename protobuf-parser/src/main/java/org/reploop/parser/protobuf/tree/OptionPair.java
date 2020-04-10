@@ -1,6 +1,6 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.AstVisitor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

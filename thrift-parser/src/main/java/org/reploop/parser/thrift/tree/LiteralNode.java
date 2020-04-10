@@ -1,7 +1,7 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
 
 /**
  * Created by caozhangzhi on 2015/6/6.

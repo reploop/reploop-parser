@@ -1,7 +1,7 @@
 package org.reploop.parser.thrift.type;
 
-import com.qiyi.walle.parser.QualifiedName;
 
+import org.reploop.parser.QualifiedName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

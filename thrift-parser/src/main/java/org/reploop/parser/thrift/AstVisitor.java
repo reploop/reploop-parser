@@ -1,10 +1,10 @@
 package org.reploop.parser.thrift;
 
 
-import com.qiyi.walle.parser.thrift.tree.*;
-import com.qiyi.walle.parser.thrift.tree.Enum;
-import com.qiyi.walle.parser.thrift.tree.Exception;
-import com.qiyi.walle.parser.thrift.type.*;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.tree.Enum;
+import org.reploop.parser.thrift.tree.Exception;
+import org.reploop.parser.thrift.type.*;
 
 /**
  * What's this about?

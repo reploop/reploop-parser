@@ -1,15 +1,15 @@
 package org.reploop.parser.protobuf;
 
-import com.qiyi.walle.parser.ParserDriver;
-import com.qiyi.walle.parser.protobuf.base.ProtobufBaseLexer;
-import com.qiyi.walle.parser.protobuf.base.ProtobufBaseParser;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.reploop.parser.ParserDriver;
+import org.reploop.parser.protobuf.base.ProtobufBaseLexer;
+import org.reploop.parser.protobuf.base.ProtobufBaseParser;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

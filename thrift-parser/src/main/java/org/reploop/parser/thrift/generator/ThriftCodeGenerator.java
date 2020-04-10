@@ -1,28 +1,16 @@
 package org.reploop.parser.thrift.generator;
 
 import com.google.common.base.CaseFormat;
-
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.tree.Entity;
-import com.qiyi.walle.parser.thrift.tree.Field;
-import com.qiyi.walle.parser.thrift.tree.Function;
-import com.qiyi.walle.parser.thrift.tree.FunctionType;
-import com.qiyi.walle.parser.thrift.tree.Header;
-import com.qiyi.walle.parser.thrift.tree.Lang;
-import com.qiyi.walle.parser.thrift.tree.Namespace;
-import com.qiyi.walle.parser.thrift.tree.NamespaceScope;
-import com.qiyi.walle.parser.thrift.tree.ReturnType;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-import com.qiyi.walle.parser.thrift.tree.VoidType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.FieldType;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.qiyi.walle.parser.thrift.generator.GeneratorContext.ONE_INDENT_CONTEXT;
-import static com.qiyi.walle.parser.thrift.generator.GeneratorContext.ZERO_INDENT_CONTEXT;
+import static org.reploop.parser.thrift.generator.GeneratorContext.ONE_INDENT_CONTEXT;
+import static org.reploop.parser.thrift.generator.GeneratorContext.ZERO_INDENT_CONTEXT;
 
 /**
  * Code Generator.

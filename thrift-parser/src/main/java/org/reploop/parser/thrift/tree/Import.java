@@ -1,6 +1,7 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.QualifiedName;
+
+import org.reploop.parser.QualifiedName;
 
 import java.util.Objects;
 

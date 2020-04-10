@@ -1,6 +1,6 @@
 package org.reploop.parser.protobuf.type;
 
-import com.qiyi.walle.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.AstVisitor;
 
 /**
  * Say something?

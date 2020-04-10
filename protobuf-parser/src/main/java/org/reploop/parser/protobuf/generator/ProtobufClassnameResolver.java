@@ -3,25 +3,14 @@ package org.reploop.parser.protobuf.generator;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.tree.Entity;
-import com.qiyi.walle.parser.protobuf.tree.Enumeration;
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Function;
-import com.qiyi.walle.parser.protobuf.tree.Header;
-import com.qiyi.walle.parser.protobuf.tree.Include;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.tree.Namespace;
-import com.qiyi.walle.parser.protobuf.tree.Option;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
-import com.qiyi.walle.parser.protobuf.tree.Service;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
-import com.qiyi.walle.parser.protobuf.type.StructType;
 
 import org.apache.commons.lang3.StringUtils;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.*;
 
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
@@ -52,8 +41,8 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
     private Optional<QualifiedName> search(Set<QualifiedName> dependencies, QualifiedName qn) {
         if (null != dependencies) {
             return dependencies.stream()
-                    .filter(d -> d.endsWith(qn))
-                    .findFirst();
+                .filter(d -> d.endsWith(qn))
+                .findFirst();
         }
         return Optional.empty();
     }
@@ -66,9 +55,9 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
         ProtoProgram program = context.entity(file);
         List<Header> headers = program.getHeaders();
         Optional<QualifiedName> oqn = headers.stream()
-                .filter(header -> header instanceof Namespace)
-                .map(header -> QualifiedName.of(Namespace.class.cast(header).getName()))
-                .findFirst();
+            .filter(header -> header instanceof Namespace)
+            .map(header -> QualifiedName.of(Namespace.class.cast(header).getName()))
+            .findFirst();
         if (oqn.isPresent()) {
             QualifiedName n = oqn.get();
             String classname = outerClassName(file, context);

@@ -2,7 +2,6 @@ package org.reploop.parser;
 
 import com.google.common.collect.ImmutableMap;
 
-import com.qiyi.walle.parser.commons.FileExtensionFilter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

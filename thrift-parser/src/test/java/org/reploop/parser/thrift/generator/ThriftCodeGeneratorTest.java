@@ -1,9 +1,8 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.Classpath;
 import com.qiyi.walle.parser.thrift.ThriftParser;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-
+import org.reploop.parser.Classpath;
+import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

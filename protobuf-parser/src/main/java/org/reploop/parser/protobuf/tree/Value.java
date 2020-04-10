@@ -1,6 +1,7 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.protobuf.Node;
+
+import org.reploop.parser.protobuf.Node;
 
 /**
  * What's this about?

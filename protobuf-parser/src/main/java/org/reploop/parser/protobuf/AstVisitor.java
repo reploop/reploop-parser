@@ -1,42 +1,9 @@
 package org.reploop.parser.protobuf;
 
-import com.qiyi.walle.parser.ast.AbstractAstVisitor;
-import com.qiyi.walle.parser.protobuf.tree.BoolValue;
-import com.qiyi.walle.parser.protobuf.tree.CommonPair;
-import com.qiyi.walle.parser.protobuf.tree.DefaultPair;
-import com.qiyi.walle.parser.protobuf.tree.EnumField;
-import com.qiyi.walle.parser.protobuf.tree.Enumeration;
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Function;
-import com.qiyi.walle.parser.protobuf.tree.Header;
-import com.qiyi.walle.parser.protobuf.tree.Include;
-import com.qiyi.walle.parser.protobuf.tree.IntValue;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.tree.Namespace;
-import com.qiyi.walle.parser.protobuf.tree.Option;
-import com.qiyi.walle.parser.protobuf.tree.OptionPair;
-import com.qiyi.walle.parser.protobuf.tree.Options;
-import com.qiyi.walle.parser.protobuf.tree.Pair;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
-import com.qiyi.walle.parser.protobuf.tree.Service;
-import com.qiyi.walle.parser.protobuf.tree.StringValue;
-import com.qiyi.walle.parser.protobuf.tree.StructValue;
-import com.qiyi.walle.parser.protobuf.tree.Value;
-import com.qiyi.walle.parser.protobuf.type.BoolType;
-import com.qiyi.walle.parser.protobuf.type.ByteStringType;
-import com.qiyi.walle.parser.protobuf.type.ByteType;
-import com.qiyi.walle.parser.protobuf.type.CollectionType;
-import com.qiyi.walle.parser.protobuf.type.DoubleType;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
-import com.qiyi.walle.parser.protobuf.type.FloatType;
-import com.qiyi.walle.parser.protobuf.type.IntType;
-import com.qiyi.walle.parser.protobuf.type.ListType;
-import com.qiyi.walle.parser.protobuf.type.LongType;
-import com.qiyi.walle.parser.protobuf.type.MapType;
-import com.qiyi.walle.parser.protobuf.type.SetType;
-import com.qiyi.walle.parser.protobuf.type.ShortType;
-import com.qiyi.walle.parser.protobuf.type.StringType;
-import com.qiyi.walle.parser.protobuf.type.StructType;
+
+import org.reploop.parser.ast.AbstractAstVisitor;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.*;
 
 /**
  * Protobuf AST visitor.

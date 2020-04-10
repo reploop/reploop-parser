@@ -1,6 +1,7 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.protobuf.Node;
+
+import org.reploop.parser.protobuf.Node;
 
 import java.util.List;
 import java.util.Objects;
@@ -38,7 +39,7 @@ public class Options extends Node {
     @Override
     public String toString() {
         return "Options{" +
-                "pairs=" + pairs +
-                '}';
+            "pairs=" + pairs +
+            '}';
     }
 }

@@ -1,15 +1,17 @@
 package com.qiyi.walle.parser.thrift;
 
-import com.qiyi.walle.parser.ParserDriver;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseLexer;
-import com.qiyi.walle.parser.thrift.base.ThriftBaseParser;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.reploop.parser.ParserDriver;
+import org.reploop.parser.thrift.Node;
+import org.reploop.parser.thrift.ThriftAstBuilder;
+import org.reploop.parser.thrift.base.ThriftBaseLexer;
+import org.reploop.parser.thrift.base.ThriftBaseParser;
+import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

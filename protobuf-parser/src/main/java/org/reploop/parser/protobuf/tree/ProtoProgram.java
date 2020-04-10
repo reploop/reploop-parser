@@ -1,7 +1,7 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
+import org.reploop.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.Node;
 
 import java.nio.file.Path;
 import java.util.List;

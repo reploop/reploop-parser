@@ -3,23 +3,17 @@ package org.reploop.parser.protobuf.generator;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.tree.Function;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.tree.Option;
-import com.qiyi.walle.parser.protobuf.tree.OptionPair;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
-import com.qiyi.walle.parser.protobuf.tree.Service;
-import com.qiyi.walle.parser.protobuf.tree.StringValue;
-import com.qiyi.walle.parser.protobuf.tree.StructValue;
-import com.qiyi.walle.parser.protobuf.tree.Value;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
-import com.qiyi.walle.parser.protobuf.type.StructType;
+
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.AstVisitor;
+
 
 import org.apache.commons.lang3.StringUtils;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -137,11 +131,11 @@ public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoPro
                 }
                 sb.addAll(services);
                 ProtoProgram pp = new ProtoProgram(node.getComments(),
-                        node.getOptions(),
-                        node.getHeaders(),
-                        node.getMessages(),
-                        node.getEnumerations(),
-                        sb.build());
+                    node.getOptions(),
+                    node.getHeaders(),
+                    node.getMessages(),
+                    node.getEnumerations(),
+                    sb.build());
                 pp.setFile(node.getFile());
                 pp.setOuterClassName(node.getOuterClassName());
                 return pp;

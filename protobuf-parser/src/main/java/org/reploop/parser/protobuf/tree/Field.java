@@ -1,7 +1,8 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
+
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.type.FieldType;
 
 import java.util.List;
 import java.util.Objects;
@@ -65,9 +66,9 @@ public class Field extends Node {
         if (o == null || getClass() != o.getClass()) return false;
         Field field = (Field) o;
         return Objects.equals(modifier, field.modifier) &&
-                Objects.equals(index, field.index) &&
-                Objects.equals(name, field.name) &&
-                Objects.equals(type, field.type);
+            Objects.equals(index, field.index) &&
+            Objects.equals(name, field.name) &&
+            Objects.equals(type, field.type);
     }
 
     @Override
@@ -78,12 +79,12 @@ public class Field extends Node {
     @Override
     public String toString() {
         return "Field{" +
-                "modifier=" + modifier +
-                ", index=" + index +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", value=" + value +
-                ", comments=" + comments +
-                '}';
+            "modifier=" + modifier +
+            ", index=" + index +
+            ", name='" + name + '\'' +
+            ", type=" + type +
+            ", value=" + value +
+            ", comments=" + comments +
+            '}';
     }
 }

@@ -1,8 +1,7 @@
 package org.reploop.parser.protobuf.generator;
 
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.Node;
 
 /**
  * Protobuf Schema AST visitor.

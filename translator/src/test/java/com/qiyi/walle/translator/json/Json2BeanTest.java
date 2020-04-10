@@ -3,7 +3,7 @@ package com.qiyi.walle.translator.json;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.qiyi.walle.parser.QualifiedName;
+import org.reploop.parser.QualifiedName;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

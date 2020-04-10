@@ -1,9 +1,8 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
 
 import java.nio.file.Path;
 import java.util.Collections;

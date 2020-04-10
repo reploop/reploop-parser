@@ -1,8 +1,8 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
 
 import java.util.Collections;
 import java.util.List;

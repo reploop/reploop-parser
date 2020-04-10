@@ -6,7 +6,7 @@ import com.qiyi.walle.parser.Classpath;
 import com.qiyi.walle.parser.QualifiedName;
 import com.qiyi.walle.parser.commons.LevenshteinDistance;
 import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
-import com.qiyi.walle.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.AstVisitor;
 import com.qiyi.walle.parser.thrift.Node;
 import com.qiyi.walle.parser.thrift.tree.*;
 import com.qiyi.walle.parser.thrift.type.BinaryType;

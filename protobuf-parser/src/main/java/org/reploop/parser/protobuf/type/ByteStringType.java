@@ -1,7 +1,7 @@
 package org.reploop.parser.protobuf.type;
 
 import com.google.protobuf.ByteString;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.AstVisitor;
 
 /**
  * What's this about?

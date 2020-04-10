@@ -3,7 +3,7 @@ package com.qiyi.walle.translator.json;
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.AstVisitor;
 import com.qiyi.walle.parser.protobuf.Node;
 import com.qiyi.walle.parser.protobuf.tree.*;
 import com.qiyi.walle.parser.protobuf.type.FieldType;

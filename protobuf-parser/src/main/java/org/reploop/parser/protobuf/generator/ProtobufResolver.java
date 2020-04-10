@@ -1,8 +1,9 @@
 package org.reploop.parser.protobuf.generator;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.Node;
+
 
 import java.nio.file.Path;
 import java.util.HashMap;

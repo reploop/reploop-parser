@@ -1,9 +1,9 @@
 package org.reploop.parser.protobuf.tree;
 
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.AstVisitor;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.type.FieldType;
 
 import java.util.List;
 import java.util.Objects;
@@ -54,8 +54,8 @@ public class Function extends Node {
         if (o == null || getClass() != o.getClass()) return false;
         Function function = (Function) o;
         return Objects.equals(name, function.name) &&
-                Objects.equals(requestType, function.requestType) &&
-                Objects.equals(responseType, function.responseType);
+            Objects.equals(requestType, function.requestType) &&
+            Objects.equals(responseType, function.responseType);
     }
 
     @Override

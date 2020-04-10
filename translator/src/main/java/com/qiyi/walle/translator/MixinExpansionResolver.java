@@ -9,7 +9,7 @@ import com.qiyi.walle.parser.protobuf.tree.*;
 import com.qiyi.walle.parser.protobuf.tree.Entity;
 import com.qiyi.walle.parser.protobuf.tree.Enumeration;
 import com.qiyi.walle.parser.protobuf.type.*;
-import com.qiyi.walle.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.AstVisitor;
 import com.qiyi.walle.parser.thrift.Node;
 import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
 import com.qiyi.walle.parser.thrift.tree.*;

@@ -1,6 +1,6 @@
 package org.reploop.parser.thrift.tree;
 
-import com.qiyi.walle.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.AstVisitor;
 
 /**
  * What's this about?

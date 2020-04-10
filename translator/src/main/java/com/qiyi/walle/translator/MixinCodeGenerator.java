@@ -5,7 +5,7 @@ import com.google.common.base.Strings;
 
 import com.qiyi.walle.parser.Classpath;
 import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
-import com.qiyi.walle.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.AstVisitor;
 import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
 import com.qiyi.walle.parser.thrift.tree.Entity;
 import com.qiyi.walle.parser.thrift.tree.Field;

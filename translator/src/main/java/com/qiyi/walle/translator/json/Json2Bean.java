@@ -1,13 +1,6 @@
 package com.qiyi.walle.translator.json;
 
 import com.google.common.base.CaseFormat;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.json.JsonParser;
-import com.qiyi.walle.parser.json.base.JsonBaseParser;
-import com.qiyi.walle.parser.json.tree.Json;
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.tree.Option;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -16,6 +9,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.json.JsonParser;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.Option;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -1,8 +1,8 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
 
 import java.nio.file.Path;
 import java.util.HashMap;

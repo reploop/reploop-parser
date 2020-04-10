@@ -1,7 +1,7 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.thrift.tree.Service;
 
+import org.reploop.parser.thrift.tree.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

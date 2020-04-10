@@ -1,5 +1,7 @@
 package org.reploop.parser.thrift;
 
+import com.qiyi.walle.parser.thrift.PostProcessor;
+import com.qiyi.walle.parser.thrift.ThriftErrorListener;
 import org.reploop.parser.thrift.base.ThriftBaseLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;

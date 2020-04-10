@@ -1,7 +1,7 @@
 package org.reploop.parser.thrift.type;
 
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.QualifiedName;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.thrift.AstVisitor;
 
 import java.util.Objects;
 

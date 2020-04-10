@@ -1,40 +1,18 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
 import com.qiyi.walle.parser.thrift.ThriftParser;
-import com.qiyi.walle.parser.thrift.tree.Entity;
-import com.qiyi.walle.parser.thrift.tree.Enum;
-import com.qiyi.walle.parser.thrift.tree.EnumField;
-import com.qiyi.walle.parser.thrift.tree.Exception;
-import com.qiyi.walle.parser.thrift.tree.Field;
-import com.qiyi.walle.parser.thrift.tree.Function;
-import com.qiyi.walle.parser.thrift.tree.FunctionType;
-import com.qiyi.walle.parser.thrift.tree.Header;
-import com.qiyi.walle.parser.thrift.tree.Include;
-import com.qiyi.walle.parser.thrift.tree.Lang;
-import com.qiyi.walle.parser.thrift.tree.Namespace;
-import com.qiyi.walle.parser.thrift.tree.ReturnType;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.Struct;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-import com.qiyi.walle.parser.thrift.type.CollectionType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
-import com.qiyi.walle.parser.thrift.type.ListType;
-import com.qiyi.walle.parser.thrift.type.MapType;
-import com.qiyi.walle.parser.thrift.type.SetType;
-import com.qiyi.walle.parser.thrift.type.StructType;
-
 import org.apache.commons.lang3.StringUtils;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.thrift.AstVisitor;
+import org.reploop.parser.thrift.Node;
+import org.reploop.parser.thrift.tree.Enum;
+import org.reploop.parser.thrift.tree.Exception;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.*;
 
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
