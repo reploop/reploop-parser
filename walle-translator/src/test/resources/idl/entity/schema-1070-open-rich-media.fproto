@@ -1,0 +1,107 @@
+/**
+ * 开放平台富媒体实体
+ */
+message OpenRichMedia {
+  // option
+  option (entity_option).table = OPEN_RICH_MEDIA_TABLE;
+  option (entity_option).entity_name = "open_rich_media";
+  option (table_option).hbase_table_name = "qipu_open_rich_media_table";
+  option (entity_option).entity_id_type = OPEN_RICH_MEDIA;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  // 是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // 最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  // 创建时间
+  optional int64 create_time = 4 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+
+  // 记录站点或编辑人
+  optional int64 uploader_id = 5 [(field_option).column_group = UPLOADER_ID, (column_option).column_name = "uploader_id"];
+
+  // 数据来源类型
+  optional OpenRichMediaUploadType upload_type = 6 [default = OPEN_RICH_MEDIA_UPLOAD_TYPE_AUTO_CRAWL,(field_option).column_group = UPLOAD_TYPE, (column_option).column_name = "up_type"];
+
+  // 是否分发泡泡
+  optional bool dispatch_paopao = 7 [default = false,(field_option).column_group = DISPATCH_PAOPAO, (column_option).column_name = "dspch_pao"];
+
+  // 是否分发头条
+  optional bool dispatch_head_line = 8 [default = false,(field_option).column_group = DISPATCH_HEAD_LINE, (column_option).column_name = "dspch_hline"];
+
+  // 分类标签
+  optional CategorySummaryList category_summaries = 9 [(field_option).column_group = CATEGORY_SUMMARIES, (column_option).column_name = "cate_sum"];
+
+  // 标签
+  optional StringList tags = 10 [(field_option).column_group = TAGS, (column_option).column_name = "tag"];
+
+  // 原始站点信息
+  optional OriginalSiteInfo original_site_info = 11 [(field_option).column_group = ORIGINAL_SITE_INFO, (column_option).column_name = "ori_site_info"];
+
+  // 类型
+  optional OpenRichMediaType type = 12 [default = OPEN_RICH_MEDIA_TYPE_NEWS,(field_option).column_group = TYPE, (column_option).column_name = "type"];
+
+  // 封面图
+  repeated ImageFormat image_format = 13 [(field_option).column_group = IMAGE_FORMAT, (column_option).column_name = "imgfmt_", (column_option).column_suffix = "${uuid}"];
+
+  // 运营信息
+  optional Base base = 14 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+
+  // 头条内容
+  repeated OpenRichMediaContent content = 15 [(field_option).column_group = CONTENT, (column_option).column_name = "content_", (column_option).column_suffix = "${order}"];
+
+  // 关联的素材实体id
+  optional int64 material_id = 16 [(field_option).column_group = MATERIAL_ID, (column_option).column_name = "material_id"];
+
+  // 头条id
+  optional int64 head_line_id = 17 [(field_option).column_group = HEAD_LINE_ID, (column_option).column_name = "hline_id"];
+
+  optional int64 feed_id = 18 [(field_option).column_group = FEED_ID, (column_option).column_name = "feed_id"];
+
+  // 头条审核状态
+  optional HeadLineCheckStatus head_line_check_status = 19 [default = HEAD_LINE_CHECK_STATUS_CHECKING,(field_option).column_group = HEAD_LINE_CHECK_STATUS, (column_option).column_name = "hline_chk_stus"];
+
+  // 泡泡审核状态
+  optional CheckStatus paopao_check_status = 20 [default = CHECK_DEFAULT,(field_option).column_group = PAOPAO_CHECK_STATUS, (column_option).column_name = "pao_chk_stus"];
+
+  // Feed实体ID关联
+  optional LongList feed_id_list = 21 [(field_option).column_group = FEED_ID_LIST, (column_option).column_name = "feed_id_list"];
+  //内容来源类型
+  optional OpenRichMediaSourceType open_rich_media_source_type = 22 [default = UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_SOURCE_TYPE, (column_option).column_name = "c_22_n"];
+  //上传者类型
+  optional OpenRichMediaUploaderType open_rich_media_uploader_type = 23 [default = UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_UPLOADER_TYPE, (column_option).column_name = "c_23_n"];
+  //全景视频类型
+  optional PanoFormat.VideoType pano_type = 24 [default = COMMON_VIDEO, (field_option).column_group = PANO_TYPE, (column_option).column_name = "c_24_n"];
+  //百度相关信息
+  optional BaiduSummary baidu_summary = 25 [(field_option).column_group = BAIDU_SUMMARY, (column_option).column_name = "c_25_n"];
+  //站点关系
+  //用来表示内容对应的站点
+  repeated Subsite subsite = 26 [(field_option).column_group = SUBSITE, (column_option).column_name = "c_26_n_", (column_option).column_suffix = "${subsite_id}"];
+  //品类关系
+  //表示内容对应的本地品类（如房产、汽车、旅游等本地服务，地方站独有）
+  repeated SubsiteCategory subsite_category = 27 [(field_option).column_group = SUBSITE_CATEGORY, (column_option).column_name = "c_27_n_"];
+  //各个业务方的封面图信息
+  repeated ImageFormatDemander image_format_demander = 28 [(field_option).column_group = IMAGE_FORMAT_DEMANDER, (column_option).column_name = "c_28_n_", (column_option).column_suffix = "${demander_type}"];
+  //关联标签
+  repeated TagSummary tag_summary = 29 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_29_n_", (column_option).column_suffix = "${source_type}"];
+  //各个业务方的关联标签
+  repeated TagSummaryDemander tag_summary_demander = 30 [(field_option).column_group = TAG_SUMMARY_DEMANDER, (column_option).column_name = "c_30_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的运营信息
+  repeated BaseDemander base_demander = 31 [(field_option).column_group = BASE_DEMANDER, (column_option).column_name = "c_31_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的内容信息
+  repeated ContentDemander content_demander = 32 [(field_option).column_group = CONTENT_DEMANDER, (column_option).column_name = "c_32_n_", (column_option).column_suffix = "${demander_type}"];
+  //可用状态（并非上下线状态）
+  optional AvailableStatus available_status = 33 [default = ONLINE, (field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "c_33_n"];
+  //修改数据来源信息
+  repeated OpenRichMediaUpdateInfo update_info = 34 [(field_option).column_group = UPDATE_INFO, (column_option).column_name = "c_34_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的feed信息
+  repeated FeedSummaryDemander feed_summary_demander = 35 [(field_option).column_group = FEED_SUMMARY_DEMANDER, (column_option).column_name = "c_35_n_", (column_option).column_suffix = "${demander_type}"];
+  //审核信息
+  repeated OpenRichMediaCheckStatusInfo check_status_info = 36 [(field_option).column_group = CHECK_STATUS_INFO, (column_option).column_name = "c_36_n_", (column_option).column_suffix = "${demander_type}"];
+  //分发信息
+  repeated DispatchInfo dispatch_info = 37 [(field_option).column_group = DISPATCH_INFO, (column_option).column_name = "c_37_n_", (column_option).column_suffix = "${demander_type}"];
+  //关联的00/09/1070素材信息
+  repeated RelatedOpenRichMediaInfo related_open_rich_media_info = 38 [(field_option).column_group = RELATED_OPEN_RICH_MEDIA_INFO, (column_option).column_name = "c_38_n_", (column_option).column_suffix = "${entity_id}"];
+}

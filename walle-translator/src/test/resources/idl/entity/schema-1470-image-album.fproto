@@ -1,0 +1,31 @@
+/**
+ * @brief 图集
+ * @details 图集
+ **/
+message ImageAlbum {
+  //option
+  option (entity_option).table = IMAGE_ALBUM_TABLE;
+  option (entity_option).entity_name = "image_album";
+  option (table_option).hbase_table_name = "qipu_image_album_table";
+  option (entity_option).entity_id_type = IMAGE_ALBUM;
+  //id
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //meta信息
+  optional ImageAlbumMetadata metadata = 3 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  //创建时间
+  optional int64 create_time = 4 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+  //最后更新时间
+  optional int64 last_update_time = 5 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //状态
+  optional ImageAlbumStatus status = 6 [default = UNKNOWN_IMAGE_ALBUM_STATUS, (field_option).column_group = STATUS, (column_option).column_name = "status"];
+  //关联圈子
+  repeated PaopaoSummary paopao_summary = 7 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "paopao_smy_", (column_option).column_suffix = "${circle_id}"];
+  //关联明星id
+  optional int64 people_id = 8 [(field_option).column_group = PEOPLE_ID, (column_option).column_name = "people_id"];
+  //图片总数
+  optional int64 image_count = 9 [(field_option).column_group = IMAGE_COUNT, (column_option).column_name = "image_count"];
+  //创建者id
+  optional int64 creator_id = 10 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_10_n"];
+}

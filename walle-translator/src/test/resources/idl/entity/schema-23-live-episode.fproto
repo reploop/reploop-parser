@@ -1,0 +1,127 @@
+// Define the live program information.
+message LiveEpisode {
+  //option
+  option (entity_option).table = LIVE_EPISODE_TABLE;
+  option (entity_option).entity_name = "live_episode";
+  option (table_option).hbase_table_name = "qipu_live_episode_table";
+  option (entity_option).entity_id_type = LIVE_EPISODE;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  // The basic information of live program.
+  optional LiveEpisodeMetadata metadata = 2 [(field_option).column_group = LIVE_EPISODE_METADATA, (column_option).column_name = "lvepsd_meta"];
+
+  // The information of live program's father channel.
+  repeated FatherInfo father_live_channel = 3 [(field_option).column_group = FATHER_LIVE_CHANNEL, (column_option).column_name = "dad_lvchnl_", (column_option).column_suffix = "${father_id}"];
+
+  // The operation information of live program.
+  optional LiveEpisodeBase base = 4 [(field_option).column_group = LIVE_EPISODE_BASE, (column_option).column_name = "lvepsd_base"];
+
+  // The screenshots of live program.
+  repeated MetaSummary image_summary = 5 [(field_option).column_group = CHILD_IMAGE, (column_option).column_name = "chd_img_", (column_option).column_suffix = "${entity_id}"];
+
+  // The paid status of live program.
+  // 该字段将停用，请使用 LiveEpisode.boss 字段
+  optional LiveEpisodeChargeInfo charge_info = 6 [(field_option).column_group = LIVE_EPISODE_CHARGE_INFO, (column_option).column_name = "lvepsd_charge_info"];
+
+  // The sports live broadcast.
+  optional LiveSports live_sports = 7 [(field_option).column_group = LIVE_SPORTS, (column_option).column_name = "lvsports"];
+
+  optional int64 last_update_time = 8 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  // Define plug-in subtitle
+  repeated Subtitle subtitle = 9 [(field_option).column_group = SUBTITLE, (column_option).column_name = "sbt_", (column_option).column_suffix = "${uuid}"];
+
+  // The highpoint of live episode.
+  repeated MetaSummary css_summary = 10 [(field_option).column_group = CHILD_CSS, (column_option).column_name = "chd_css_", (column_option).column_suffix = "${entity_id}"];
+
+  optional bool deleted = 11 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // 其中 Boss.paid_start_time、Boss.paid_end_time 暂不使用，
+  // 用 LiveEpisodeMetadata中的start_play_time 和 stop_play_time 替代
+  optional Boss boss = 12 [(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 13 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional Qitan qitan = 14 [(field_option).column_group = QITAN, (column_option).column_name = "qtn"];
+
+  // 与播控相关字段：is_download_allowed，is_share_allowed，从LiveChannel中的播控中读取
+  optional Puyu puyu = 15 [(field_option).column_group = PUYU, (column_option).column_name = "puyu"];
+
+  /**
+  * url格式： "qisu:// tvid=246005500;vid=5ec8bb5e840b2b1445c9d0a07be463af; ischarge=true;vtype=0"
+  * <ol>
+  *<li>tvid对应metadata. entity_id，为int型 ；</li>
+  *<li>ischarge对应boss.status的值，如果boss.status值为PAIED_AVAILABLE则输出ischarge=ture，boss.status=其他值或者不存在的时候则输出ischarge=false； </li>
+  *<li>vtype对于奇谱id以22结尾的直播节目都会强制写为vtype=1。</li>
+  * </ol>
+  **/
+  optional Qisu qisu = 16 [(field_option).column_group = QISU, (column_option).column_name = "qisu"];
+  optional PaopaoSummary paopao_summary = 17 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "paopao_sum"];
+
+  repeated AccessPlayControl access_play_control = 18 [(field_option).column_group = ACCESS_PLAY_CONTROL, (column_option).column_name = "accplayctrl_", (column_option).column_suffix = "${play_platform}"];
+
+  // 道具开关
+  optional Prop prop = 19 [(field_option).column_group = PROP, (column_option).column_name = "prop"];
+
+  //关联投票信息
+  repeated VoteSummary vote_summary  = 20 [(field_option).column_group = VOTE_SUMMARY, (column_option).column_name = "vote_sum_", (column_option).column_suffix = "${vote_id}"];
+
+  //秀场可用：推荐图
+  repeated LocaleImage locale_image = 21 [(field_option).column_group = LOCAL_IMAGE, (column_option).column_name = "loc_image_", (column_option).column_suffix = "${language}_${type}"];
+  // 视频播放角度类型（全景视频）
+  optional PanoFormat pano_format= 22 [(field_option).column_group = PANO_FORMAT, (column_option).column_name = "pano_fmt"];
+  // 默认直播流信息
+  optional LiveStream default_live_stream = 23 [(field_option).column_group = DEFAULT_LIVE_STREAM, (column_option).column_name = "dftlvstm"];
+  // 直播流信息
+  repeated LiveStream live_stream = 24 [(field_option).column_group = LIVE_STREAM, (column_option).column_name = "lvstm_", (column_option).column_suffix = "${uuid}"];
+  // 观众数
+  optional int32 audience_count = 25 [(field_option).column_group = AUDIENCE_COUNT, (column_option).column_name = "audience_count", (track_option).notracker=true];
+  // UGC直播、秀场、游戏直播；二级分类；三级分类
+  repeated CategorySummary category_summary = 26 [(field_option).column_group = CATEGORY_SUMMARY, (column_option).column_name = "cate_", (column_option).column_suffix = "${category_id}"];
+  // 聊天室
+  optional ChatRoomSummary chat_room_summary = 27 [(field_option).column_group = CHAT_ROOM_SUMMARY, (column_option).column_name = "chat_room"];
+
+  // 大V用户给粉丝的预告时间, 预告开始时间
+  optional int64 notice_start_time = 28 [(field_option).column_group = NOTICE_START_TIME, (column_option).column_name = "noti_sta_time"];
+  // 大V用户给粉丝的预告时间, 预告结束时间
+  optional int64 notice_end_time = 29 [(field_option).column_group = NOTICE_END_TIME, (column_option).column_name = "noti_end_time"];
+  // "热门直播"排序字段，字段无值时不进入热门直播列表
+  optional string order_hot = 30 [(field_option).column_group = ORDER_HOT, (column_option).column_name = "ord_hot"];
+  // "全部直播"排序字段，字段无值时不进入全部直播列表
+  optional string order_all = 31 [(field_option).column_group = ORDER_ALL, (column_option).column_name = "ord_all"];
+  // "未开始直播"排序字段，字段无值时不进入未开始直播列表
+  optional string order_pre = 34 [(field_option).column_group = ORDER_PRE, (column_option).column_name = "ord_pre"];
+
+  // 对应点播节目
+  optional MetaSummary episode_summary = 32 [(field_option).column_group = EPISODE_SUMMARY, (column_option).column_name = "rep_video"];
+
+  //付费相关信息
+  optional ChargeBase charge_base = 33 [(field_option).column_group = CHARGE_BASE, (column_option).column_name = "charge_base"];
+
+  //奇秀id
+  optional int64 qixiu_id =35 [(field_option).column_group = QIXIU_ID, (column_option).column_name = "qixiu_id"];
+
+  repeated string tag = 36 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // 广告Summary
+  repeated AdSummary ad_summary = 37 [(field_option).column_group = AD_SUMMARY, (column_option).column_name = "ad_sum_", (column_option).column_suffix = "${uuid}"];
+
+  // 泡泡Summary
+  repeated RelatedPaopaoSummary related_paopao_summary = 38 [(field_option).column_group = RELATED_PAOPAO_SUMMARY, (column_option).column_name = "pao_sum_", (column_option).column_suffix = "${order}"];
+
+  // Define the top recommend place of pps category for the album, episode, collection or ppsCategory.
+  repeated PpsCategoryRanking pps_category_ranking = 39 [(field_option).column_group = PPS_CATEGORY_RANKING, (column_option).column_name = "pps_cat_rk_", (column_option).column_suffix = "${pps_category_id}"];
+  //游戏直播间相关信息
+  optional GameLiveRoomSummary game_live_room_summary = 40 [(field_option).column_group = GAME_LIVE_ROOM_SUMMARY, (column_option).column_name = "game_live_room_summary", (track_option).notracker=true];
+
+  // 3d 直播信息
+  optional ThreeDFormat	three_d_format = 41 [(field_option).column_group = THREE_D_FORMAT, (column_option).column_name = "three_d_fmt"];
+  //关联赛事
+  optional MatchSummary match_summary = 42 [(field_option).column_group = MATCH_SUMMARY, (column_option).column_name = "match_smry"];
+  //注册制信息
+  optional RegistrationInfo registration_info = 43 [(field_option).column_group = REGISTRATION_INFO, (column_option).column_name = "c_43_n"];
+  //关联feed
+  repeated FeedSummary feed_summary = 44 [(field_option).column_group = FEED_SUMMARY, (column_option).column_name = "c_44_n_", (column_option).column_suffix = "${entity_id}"];
+}

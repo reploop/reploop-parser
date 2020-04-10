@@ -1,0 +1,30 @@
+/**
+* 提示语
+*
+**/
+message OperationTip {
+  //option
+  option (entity_option).table = OPERATION_TIP_TABLE;
+  option (entity_option).entity_name = "operation_tip";
+  option (table_option).hbase_table_name = "qipu_operation_tip_table";
+  option (entity_option).entity_id_type = OPERATION_TIP;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  // 提示语名称
+  optional string name = 2 [(field_option).column_group = NAME, (column_option).column_name = "name"];
+  // 提示语对应的字段
+  optional string field = 3 [(field_option).column_group = FIELD, (column_option).column_name = "field"];
+  // 提示语描述
+  optional string description = 4 [(field_option).column_group = DESCRIPTION, (column_option).column_name = "des"];
+  // 所在的应用
+  optional string application = 5 [(field_option).column_group = APPLICATION, (column_option).column_name = "app"];
+  // 所在的模块
+  optional string module = 6 [(field_option).column_group = MODULE, (column_option).column_name = "mod"];
+  // 各种语言的描述语
+  repeated LocaleTip local_tip = 7 [(field_option).column_group = LOCAL_TIP, (column_option).column_name = "loc_tip_", (column_option).column_suffix = "${language}"];
+
+  optional bool deleted = 8 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 9 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+}

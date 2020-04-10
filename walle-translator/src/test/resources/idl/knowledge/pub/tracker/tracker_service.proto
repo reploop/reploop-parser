@@ -1,0 +1,71 @@
+
+import "knowledge/pub/common.proto";
+
+package knowledge.pub.tracker;
+
+message TrackOptions {
+    optional bool notracker = 1 [default = true];   //标记某个字段是否跟踪
+    optional ExpiredTime expired_time = 2 [default = TEN_DAY]; //changeLog的过期时间
+}
+
+message ChangeLog{
+
+    required int64 entity_id = 1;
+    required int32 field = 2;
+    required int64 update_time = 3; //修改时间，等同于entity的last_update_time
+    required Action action = 4; //修改或者删除
+    required bool is_updated_in_batch_mode= 5;
+    required bool should_notify_audience= 6;
+    required string update_user = 7; //修改帐号
+    repeated string content = 8; //json格式的新值，如果所删除操作，则没有这个值
+    optional string write_method = 9 ; //写入接口
+    optional int64 session_id = 10 ; //sessionId
+    optional Date update_date = 11; //修改时间，等同于entity的last_update_time
+    optional bool delete_skip_c2f = 12; // skip write data-integrity
+    optional string session_uuid =13; //batch uuid
+    repeated SiteType site = 14;
+    optional Priority priority = 15;// 写入优先级
+    optional string ip = 16;    // 写入方IP地址
+    optional bool is_c2f = 17 [default = false];  // 是否是c2f写入
+}
+
+
+message GetChangeLogRequest{
+
+    optional User user = 1;  //用户帐号
+    repeated int64 entity_id = 2;  //实体id，可以有多个，但必须所同类型的
+    repeated int32 field_num = 3;  //字段号，可以有多个
+    optional Date startDate = 4; //起始查询日期
+    optional Date endDate = 5; //结束查询日期
+
+}
+
+
+message GetChangeLogByIdRequest{
+
+    optional User user = 1;  //用户帐号
+    repeated int64 entity_id = 2;  //实体id，可以有多个，但必须所同类型的
+    optional int32 log_num=3; //返回最新的numLogs条修改记录
+}
+
+
+message GetChangeLogResponse{
+
+    optional RpcStatus status = 1;
+    repeated  ChangeLog change_log = 2;
+
+}
+
+enum Action {
+
+    UPDATE = 0; //更新
+    DELETE=1;   //删除
+
+}
+
+enum ExpiredTime{
+
+    ONE_YEAR = 0; //一年
+    TEN_DAY = 1; //十天
+
+}

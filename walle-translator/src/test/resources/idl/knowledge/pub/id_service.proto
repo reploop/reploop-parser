@@ -1,0 +1,62 @@
+// Author: Jianbing Zhang (zhangjianbing@qiyi.com)
+//
+// Proto definitions for id request and response of Id PRC server.
+//
+
+import "knowledge/pub/common.proto";
+
+package knowledge.pub;
+
+//
+// Definition of Id Request
+//
+message IdServiceRequest {
+    required User user = 1;
+
+    // Different EntityIdType defined in Common.proto.
+    // EPISODE     = 0;
+    // ALBUM       = 1;
+    // COLLECTION  = 2;
+    // CSS         = 3;
+    // IMAGE       = 4;
+    // PEOPLE      = 5;
+    // VIDEO_GROUP = 6;
+    // MULTI_PUBLISH_EPISODE = 7
+    // MULTI_PUBLISH_ALBUM = 8
+    // UGC_EPISODE = 9
+    // LIVE_BROADCAST = 10
+    // YINGYIN_DB = 11
+    // RESOURCE_CONTAINER = 12
+    required EntityIdType entity_id_type = 2;
+
+    // How many ids he wants, if what he required exceed what we configured,
+    // then will ignore this value.
+    optional int32 num_of_ids = 3 [default = 1];
+}
+
+//
+// Definition of Id Response
+//
+message IdServiceResponse {
+    // RpcStatusInfo defined in Common.proto
+    required RpcStatusInfo rpc_status_info = 1;
+
+    // The arrange of ids returned
+    repeated int64 new_ids = 2;
+}
+
+//获取当前id
+message IdServiceCurrentIdRequest {
+    required User user = 1;
+
+    optional EntityIdType entity_id_type = 2;
+}
+
+//
+message IdServiceCurrentIdResponse {
+    // RpcStatusInfo defined in Common.proto
+    required RpcStatusInfo rpc_status_info = 1;
+
+    // The arrange of ids returned
+    optional int64 current_id = 2;
+}

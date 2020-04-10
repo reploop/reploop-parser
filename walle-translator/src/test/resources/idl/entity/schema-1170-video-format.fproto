@@ -1,0 +1,46 @@
+/**
+ * 视频码流相关信息实体
+ **/
+message VideoFormat {
+  option (entity_option).table = VIDEO_FORMAT_TABLE;
+  option (entity_option).entity_name = "video_format";
+  option (table_option).hbase_table_name = "qipu_video_format_table";
+  option (entity_option).entity_id_type = VIDEO_FORMAT;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // 最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true,(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+
+  //视频码流，由媒资写入。
+  repeated Format format = 4 [(field_option).column_group = FORMAT, (column_option).column_name = "fmt_", (column_option).column_suffix = "${uuid}"];
+
+  // 码流格式；由乐高媒资写入。
+  repeated AudioFormat audio_format = 5 [(field_option).column_group = AUDIO_FORMAT, (column_option).column_name = "aufmt_", (column_option).column_suffix = "${uuid}"];
+
+  // 全景视频参数
+  optional PanoFormat pano_format= 6 [(field_option).column_group = PANO_FORMAT, (column_option).column_name = "pano_fmt"];
+
+  // 音视频质量
+  optional Quality quality = 7 [(field_option).column_group = QUALITY_COLUMN_GROUP, (column_option).column_name = "quality"];
+
+  //视频码流概要信息
+  optional VideoInfo video_info = 8 [(field_option).column_group = VIDEO_INFO, (column_option).column_name = "videoinfo"];
+
+  // 音轨信息
+  optional AudioInfo audio_info = 9 [(field_option).column_group = AUDIO_INFO, (column_option).column_name = "auinfo"];
+
+  // 字幕插件信息
+  repeated Subtitle subtitle = 10 [(field_option).column_group = SUBTITLE, (column_option).column_name = "sbt_", (column_option).column_suffix = "${uuid}"];
+
+  // DRM key信息
+  optional DrmKey drm_key = 11 [(field_option).column_group = DRM_KEY, (column_option).column_name = "drm"];
+
+  // format version
+  optional string version = 12 [(field_option).column_group = VERSION, (column_option).column_name = "version"];
+
+  // 视频和码流的关系字段，乐高写入
+  repeated MetaSummary episode_summary = 13 [(field_option).column_group = EPISODE_SUMMARY, (column_option).column_name = "episode_sum_", (column_option).column_suffix = "${entity_id}"];
+}

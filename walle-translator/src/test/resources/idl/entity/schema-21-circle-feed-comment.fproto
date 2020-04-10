@@ -1,0 +1,33 @@
+// feed评论
+message CircleFeedComment {
+    //option
+  option (entity_option).table = CIRCLE_FEED_COMMENT_TABLE;
+  option (entity_option).entity_name = "circle_feed_comment";
+  option (table_option).hbase_table_name = "qipu_circle_feed_comment_table";
+  option (entity_option).entity_id_type = CIRCLE_FEED_COMMENT;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional CircleFeedCommentMetadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  // 创建时间
+  optional int64 create_time = 3 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+   //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。 
+  optional bool deleted = 4 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 5 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  
+  // 点赞数
+  optional int64 like_count = 6 [(field_option).column_group = LIKE_COUNT, (column_option).column_name = "like_count"];
+  
+  // 回复数
+  optional int64 reply_count = 7 [(field_option).column_group = REPLY_COUNT, (column_option).column_name = "reply_count"];
+  
+  // 状态
+  optional FeedStatus status = 8 [(field_option).column_group = STATUS, (column_option).column_name = "status"];
+  // 赞用户特征
+  repeated FeedUserCharacteristics like_user_characteristics = 9 [(field_option).column_group = LIKE_USER_CHARACTERISTICS, (column_option).column_name = "like_ustity_", (column_option).column_suffix = "${user_identity}"];
+  // 回复用户特征
+  repeated FeedUserCharacteristics reply_user_characteristics = 10 [(field_option).column_group = REPLY_USER_CHARACTERISTICS, (column_option).column_name = "reply_ustity_", (column_option).column_suffix = "${user_identity}"];
+  //feed评论类型
+  optional CommentType comment_type = 11 [default = COMMENT_TYPE_TABLE, (field_option).column_group = COMMENT_TYPE, (column_option).column_name = "c_11_n"];
+}

@@ -1,0 +1,403 @@
+2017/09/27 (2.0.170927)
+头条和开放平台新增每小时和每天更新的的统计数据
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 头条小时级统计数据
+ **/
+message ToutiaoHourlyStatistics {
+  //展现次数
+  optional int64 impression_count = 1;
+  //点击数
+  optional int64 click_count = 2;
+  //评论数
+  optional int64 comment_count = 3;
+  //分享数
+  optional int64 share_count = 4;
+  //顶数
+  optional int64 up_count = 5;
+  //收藏数
+  optional int64 collect_count = 6;
+  //负反馈数
+  optional int64 negative_feedback_count = 7;
+}
+/**
+ * @brief 奇搜统计数据
+ **/
+message QisoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+}
+/**
+ * @brief 头条天级统计数据
+ **/
+message ToutiaoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+  //点击人数
+  optional int64 click_uv_count = 4;
+  //浏览完成率
+  optional float view_completion_rate = 5;
+}
+/**
+ * @brief 主站统计数据
+ **/
+message IqiyiDailyStatistics {
+  //播放次数
+  optional int64 play_count = 1;
+  //评论数
+  optional int64 comment_count = 2;
+  //分享数
+  optional int64 share_count = 3;
+  //顶数
+  optional int64 up_count = 4;
+  //踩数
+  optional int64 down_count = 5;
+}
+/**
+ * @brief 奇搜统计数据
+ **/
+message QisoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+}
+/**
+ * @brief 头条天级统计数据
+ **/
+message ToutiaoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+  //点击人数
+  optional int64 click_uv_count = 4;
+  //浏览完成率
+  optional float view_completion_rate = 5;
+}
+/**
+ * @brief 头条小时级统计数据
+ **/
+message ToutiaoHourlyStatistics {
+  //展现次数
+  optional int64 impression_count = 1;
+  //点击数
+  optional int64 click_count = 2;
+  //评论数
+  optional int64 comment_count = 3;
+  //分享数
+  optional int64 share_count = 4;
+  //顶数
+  optional int64 up_count = 5;
+  //收藏数
+  optional int64 collect_count = 6;
+  //负反馈数
+  optional int64 negative_feedback_count = 7;
+}
+2. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //主站统计数据
+  optional IqiyiDailyStatistics iqiyi_daily_statistics = 39 [(field_option).column_group = IQIYI_DAILY_STATISTICS, (column_option).column_name = "c_39_n"];
+  //奇搜统计数据
+  optional QisoDailyStatistics qiso_daily_statistics = 40 [(field_option).column_group = QISO_DAILY_STATISTICS, (column_option).column_name = "c_40_n"];
+  //头条天级统计数据
+  optional ToutiaoDailyStatistics toutiao_daily_statistics = 41 [(field_option).column_group = TOUTIAO_DAILY_STATISTICS, (column_option).column_name = "c_41_n"];
+  //头条小时级统计数据
+  optional ToutiaoHourlyStatistics toutiao_hourly_statistics = 42 [(field_option).column_group = TOUTIAO_HOURLY_STATISTICS, (column_option).column_name = "c_42_n"];
+  //视频时长
+  optional int32 video_duration_seconds = 43 [(field_option).column_group = VIDEO_DURATION_SECONDS, (column_option).column_name = "c_43_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  IQIYI_DAILY_STATISTICS = 622;
+  QISO_DAILY_STATISTICS = 623;
+  TOUTIAO_DAILY_STATISTICS = 624;
+  TOUTIAO_HOURLY_STATISTICS = 625;
+  VIDEO_DURATION_SECONDS = 626;
+}
+2017/09/26 (2.0.170926)
+1. /entity/schema-09-ugc-episode.fproto
+UgcEpisode {
+  //弹幕群聊信息
+  optional MynaInfo myna_info = 114 [(field_option).column_group = MYNA_INFO, (column_option).column_name = "c_114_n"];
+}
+2017/09/26 (2.0.170926)
+00/09增加弹幕数字段
+1. /entity/schema-00-episode.fproto
+message Episode {
+  //弹幕数
+  optional int64 danmu_count = 229 [(field_option).column_group = DANMU_COUNT, (column_option).column_name = "c_229_n"];
+}
+2. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //弹幕数
+  optional int64 danmu_count = 113 [(field_option).column_group = DANMU_COUNT, (column_option).column_name = "c_113_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  DANMU_COUNT = 628;
+}
+2017/09/21 (2.0.170921)
+22频道增加台湾站轮播台枚举值
+1. /knowledge/pub/common.proto
+enum LiveChannelType {
+  //台湾站轮播台
+  IQIYI_LIVE_CHANNEL_TW = 11;
+}
+2017/09/21 (2.0.170921)
+feed实体类型增加枚举值
+1. /knowledge/pub/common.proto
+enum FeedCometExtendedType {
+  //素材小尾巴
+  FEED_COMET_EXTENDED_TYPE_MATERIAL = 5;
+}
+2017/09/20 (2.0.170920)
+00和09增加弹幕开关
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 弹幕群聊信息
+ **/
+message MynaInfo {
+  //是否有群聊
+  optional bool is_myna_chat = 1 [default = false];
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //弹幕群聊信息
+  optional MynaInfo myna_info = 231 [(field_option).column_group = MYNA_INFO, (column_option).column_name = "c_231_n"];
+}
+3. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //弹幕群聊信息
+  optional MynaInfo myna_Info = 114 [(field_option).column_group = MYNA_INFO, (column_option).column_name = "c_114_n"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  MYNA_INFO = 634;
+}
+2017/09/18 (2.0.170918)
+47圈子实体补充枚举值
+1. /knowledge/pub/common.proto
+enum CircleBusinessType {
+  //游戏业务
+  CIRCLE_BUSINESS_TYPE_GAME = 18;
+}
+2017/09/15 (2.0.170915)
+RecItem添加字段Type
+message RecItem {
+    optional int64 rec_id = 1;
+    optional string source_from = 2 [default = ""];
+    optional string type = 3 [default = ""];
+}
+
+2017/09/14 (2.0.170914)
+00实体增加奇秀主播ID
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 主播信息
+ **/
+message AnchorInfo {
+  //主播id
+  optional int64 anchor_id = 1;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //主播信息
+  optional AnchorInfo anchor_info = 228 [(field_option).column_group = ANCHOR_INFO, (column_option).column_name = "c_228_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  ANCHOR_INFO = 620;
+}
+2017/09/14 (2.0.170914)
+39文学增加结算控制字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 结算信息
+ **/
+message SettlementInfo {
+  //是否结算
+  optional bool should_settle = 1 [default = true];
+  //结算停止时间
+  optional int64 settle_stop_time = 2;
+}
+2. /entity/schema-39-book.fproto
+message Book {
+  //结算控制信息
+  optional SettlementInfo settlement_info = 91 [(field_option).column_group = SETTLEMENT_INFO, (column_option).column_name = "c_91_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  SETTLEMENT_INFO = 629;
+}
+2017/09/12 (2.0.170913)
+09 UGC视频user type 新增枚举值
+1. /knowledge/pub/common.proto
+enum UserType {
+  //头条接口合作方
+  TOUTIAO_AUTHENTICATED_CRAWLER = 6;
+  //头条认证用户
+  TOUTIAO_AUTHENTICATED_USER = 7;
+}
+2017/09/12 (2.0.170913)
+卫视版&DVD版整合字段补充需求
+1. /knowledge/pub/common.proto
+message FatherInfo {
+  //播单类型
+  optional CollectionCommon.CollectionType collection_type = 15;
+}
+2017/09/12 (2.0.170913)
+卫视版&DVD版整合字段需求
+1. /knowledge/pub/common.proto
+enum CollectionSubType {
+    //不同剪辑版本
+    DIFFERENT_CUT = 11;
+}
+message FatherInfo {
+  //播单子类型
+  optional CollectionCommon.CollectionSubType collection_sub_type = 14;
+}
+2. /knowledge/pub/metadatas.proto
+message MetaSummary {
+  //版本信息
+  optional string version_description = 38;
+}
+2017/09/12 (2.0.170912)
+0070漫画后台运营字段申请
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 漫画更新信息
+ **/
+message ComicBookUpdateInfo {
+  //更新频率
+  optional UpdateFrequency update_frequency = 1 [default = UNKNOWN_UPDATE_FREQUENCY];
+  //周更新时间
+  repeated UpdateDay weekly_update_time = 2;
+  //月更新时间
+  optional int32 monthly_update_time = 3;
+}
+2. /knowledge/pub/common.proto
+enum BookSuitableGroup {
+  //综合
+  BOOK_SUITABLE_GROUP_GENERAL = 5;
+}
+enum UpdateFrequency {
+  //每周双更
+  UPDATE_FREQUENCY_TWICE_PER_WEEK = 3;
+  //每月更新
+  UPDATE_FREQUENCY_PER_MONTH = 4;
+  //每日更新
+  UPDATE_FREQUENCY_DAILY = 5;
+}
+enum ColumnGroup {
+  UPDATE_INFO = 627;
+}
+3. /entity/schema-0070-comic-book.fproto
+message ComicBook {
+  //漫画更新信息
+  optional ComicBookUpdateInfo update_info = 46 [(field_option).column_group = UPDATE_INFO, (column_option).column_name = "c_46_n"];
+}
+2017/09/06 (2.0.170906)
+episode/album新增评分相关字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 评分人数
+ **/
+message SnsStarNumberInfo {
+  //评分总人数
+  optional int64 star_total_number = 1;
+  //评分5星(9-10分)人数
+  optional int64 five_star_number = 2;
+  //评分4星（7-8分）人数
+  optional int64 four_star_number = 3;
+  //评分3星（5-6分）人数
+  optional int64 three_star_number = 4;
+  //评分2星（3-4分）人数
+  optional int64 two_star_number = 5;
+  //评分1星（1-2分）人数
+  optional int64 one_star_number = 6;
+}
+2. /entity/schema-01-album.fproto
+message Album {
+  //评分信息
+  optional SnsStarNumberInfo sns_star_number_info = 224 [(field_option).column_group = SNS_STAR_NUMBER_INFO, (column_option).column_name = "c_224_n"];
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //评分信息
+  optional SnsStarNumberInfo sns_star_number_info = 227 [(field_option).column_group = SNS_STAR_NUMBER_INFO, (column_option).column_name = "c_227_n"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  SNS_STAR_NUMBER_INFO = 619;
+}
+2017/09/06 (2.0.170906)
+00视频实体关联商品结构里新增order字段
+1. /knowledge/pub/metadatas.proto
+message CommoditySummary {
+  //商品展示顺序
+  optional int32 order = 2;
+}
+
+2017/09/05 (2.0.170905)
+Feed换图我拍新增台词枚举字段
+1. /knowledge/pub/common.proto
+enum FeedSelfVideoExtendedType {
+  //经典台词
+  FEED_SELF_VIDEO_EXTENDED_TYPE_CLASSIC_LINES = 12;
+}
+2017/09/05 (2.0.170905)
+47圈子实体增加新业务类型字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 圈子业务类型
+ **/
+enum CircleBusinessType {
+  //业务类型未知
+  UNKNOWN_CIRCLE_BUSINESS_TYPE = -1;
+  //明星业务
+  CIRCLE_BUSINESS_TYPE_STAR = 0;
+  //图书业务
+  CIRCLE_BUSINESS_TYPE_BOOK = 4;
+  //总编室
+  CIRCLE_BUSINESS_TYPE_EDITOR_OFFICE = 6;
+  //运营业务
+  CIRCLE_BUSINESS_TYPE_OPERATION = 7;
+  //漫画业务
+  CIRCLE_BUSINESS_TYPE_COMIC = 8;
+  //PGC业务
+  CIRCLE_BUSINESS_TYPE_PGC = 9;
+  //电影业务
+  CIRCLE_BUSINESS_TYPE_FILM = 10;
+  //电影票业务
+  CIRCLE_BUSINESS_TYPE_FILM_TICKET = 11;
+  //电视剧业务
+  CIRCLE_BUSINESS_TYPE_TV_SERIES = 12;
+  //综艺业务
+  CIRCLE_BUSINESS_TYPE_VARIETY_SHOW = 13;
+  //动漫业务
+  CIRCLE_BUSINESS_TYPE_CARTOON = 14;
+  //其他业务
+  CIRCLE_BUSINESS_TYPE_OTHER = 15;
+  //时尚业务
+  CIRCLE_BUSINESS_TYPE_FASHION = 16;
+  //兴趣
+  CIRCLE_BUSINESS_TYPE_INTEREST = 17;
+}
+2. /knowledge/pub/metadatas.proto
+message CircleMetadata {
+  //圈子业务类型
+  optional CircleBusinessType circle_business_type = 23 [default = UNKNOWN_CIRCLE_BUSINESS_TYPE];
+}

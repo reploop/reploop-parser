@@ -1,0 +1,47 @@
+/**
+ *@brief 片段/场景/镜头
+ *@details  片段/场景/镜头
+ *
+**/
+message ClipSceneShot {
+  //option
+  option (entity_option).table = CSS_TABLE;
+  option (entity_option).entity_name = "css";
+  option (table_option).hbase_table_name = "qipu_css_table";
+  option (entity_option).entity_id_type = CSS;
+  
+  required int64 id = 1[(column_option).is_auto_set = true];
+  optional Metadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  repeated MetaSummary css_summary = 4 [(field_option).column_group = CHILD_CSS, (column_option).column_name = "chd_css_", (column_option).column_suffix = "${entity_id}"];
+  repeated MetaSummary image_summary = 5 [(field_option).column_group = CHILD_IMAGE, (column_option).column_name = "chd_img_", (column_option).column_suffix = "${entity_id}"];
+
+  // Mainly ContentType distinguishes clip, scene, shot and focus.
+  optional CommonBase common_base = 16 [(field_option).column_group = COMMON_BASE, (column_option).column_name = "cmbase"];
+  optional Base base = 6 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+  optional ContentType content_type = 15 [(field_option).column_group = CONTENT_TYPE, (column_option).column_name = "contype"];
+
+  // Define the view links of video
+  repeated ViewLink view_link = 7 [(field_option).column_group = VIEWLINK, (column_option).column_name = "vlk_", (column_option).column_suffix = "${view_link_name.begin_time}_${view_link_name.end_time}_${view_link_name.x_pos}_${view_link_name.y_pos}"];
+
+  // Start-point and end-point from the episode for CSS
+  optional StartEndPoint start_end_point = 8 [(field_option).column_group = START_END_POINT, (column_option).column_name = "sep"];
+
+  repeated string tag = 9 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 10 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional int64 last_update_time = 11 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional PagePublishStatus page_publish_status = 12 [default = PAGE_WAIT, (field_option).column_group = PAGE_PUBLISH_STATUS, (column_option).column_name = "ppsts"];
+
+  // Support platform and region control.
+  optional PlatformRegionControl iqiyi_platform_region_control = 13 [(field_option).column_group = IQIYI_PLATFORM_REGION_CONTROL, (column_option).column_name = "iqiyiprc"];
+  optional PlatformRegionControl pps_platform_region_control = 14 [(field_option).column_group = PPS_PLATFORM_REGION_CONTROL, (column_option).column_name = "ppsprc"];
+
+  //本地化相关的运营字段；
+  repeated LocaleBase local_base = 17 [(field_option).column_group = LOCAL_BASE, (column_option).column_name = "loc_base_", (column_option).column_suffix = "${language}"];
+
+}

@@ -1,0 +1,54 @@
+/**
+ * 直播间实体
+ */
+message LiveRoom {
+  // option
+  option (entity_option).table = LIVE_ROOM_TABLE;
+  option (entity_option).entity_name = "live_room";
+  option (table_option).hbase_table_name = "qipu_live_room_table";
+  option (entity_option).entity_id_type = LIVE_ROOM;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  // 是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // 最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  // 创建时间
+  optional int64 create_time = 4 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+
+  // 开始直播时间
+  optional int64 live_start_time = 5 [(field_option).column_group = LIVE_START_TIME, (column_option).column_name = "lst"];
+
+  // 上次直播结束时间
+  optional int64 last_live_end_time = 6 [(field_option).column_group = LAST_LIVE_END_TIME, (column_option).column_name = "llet"];
+
+  // 运营信息
+  optional LiveRoomBase base = 7 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+
+  // 观众数量
+  optional int64 audience_count = 8 [(field_option).column_group = AUDIENCE_COUNT, (column_option).column_name = "adc_cnt"];
+
+  // 自动截屏
+  optional string auto_screenshot = 9 [(field_option).column_group = AUTO_SCREENSHOT, (column_option).column_name = "auto_scnst"];
+
+  // 身价(没有单位)
+  optional int64 live_room_money = 10 [(field_option).column_group = LIVE_ROOM_MONEY, (column_option).column_name = "room_money"];
+
+  // 粉丝数
+  optional int64 fans_number = 11 [(field_option).column_group = FANS_NUMBER, (column_option).column_name = "fans_num"];
+
+  // 基本信息
+  optional LiveRoomMetadata metadata = 12 [(field_option).column_group = METADATA, (column_option).column_name = "metadata"];
+
+  // 主播等级
+  optional int64 presenter_level = 13 [(field_option).column_group = PRESENTER_LEVEL, (column_option).column_name = "presenter_lev"];
+  //PCW的url地址
+  optional string website_url = 14 [(field_option).column_group = WEBSITE_URL, (column_option).column_name = "website_url"];
+  //分平台上下线状态
+  repeated Publication publication = 15 [(field_option).column_group = PUBLICATION_COLUMN, (column_option).column_name = "publication_", (column_option).column_suffix = "${platform}"];
+  //注册制信息
+  optional RegistrationInfo registration_info = 16 [(field_option).column_group = REGISTRATION_INFO, (column_option).column_name = "c_16_n"];
+}

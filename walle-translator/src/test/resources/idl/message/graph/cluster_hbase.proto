@@ -1,0 +1,62 @@
+// Author: Haojun Huang(huanghaojun@qiyi.com)
+// Author: Qi Qiao(qiaoqi@qiyi.com)
+//
+// Proto definitions for micro-cluster and macro-cluster for supplying
+// service for hbase storage.
+
+import "knowledge/pub/common.proto";
+import "knowledge/graph/pub/properties.proto";
+import "message/graph/featurecontent_hbase_data.proto";
+
+package knowledge.graph.cluster;
+
+message MicroClusterHbaseData {
+  required string cluster_description = 1;
+
+  repeated int64 related_entity_id = 2;
+
+  repeated string related_doc_id = 9;
+
+  repeated int64 related_person_id = 3;
+
+  optional double popularity = 4;
+
+  optional int32 size = 5;
+
+  optional knowledge.pub.Date create_date = 6;
+
+  optional knowledge.pub.Date last_update_date = 7;
+
+  repeated string topic_word = 8;
+  
+  repeated string related_person = 10;
+}
+
+message StringToIntegerPair {
+  required string key = 1;
+  required int32 value = 2;
+}
+
+message MicroClusterBean {
+  required string id = 1;
+
+  optional knowledge.graph.extractor.FeatureContentHbaseData center = 2;
+
+  repeated knowledge.graph.extractor.FeatureContentHbaseData item = 3;
+
+  optional knowledge.pub.Date create_time = 4;
+
+  optional knowledge.pub.Date last_update_time = 5;
+
+  optional double popularity = 6;
+
+  repeated StringToIntegerPair person_count = 7;
+
+  repeated StringToIntegerPair term_count = 8;
+
+  optional string destination_table = 9;
+
+  optional int32 top_person_number = 10;
+
+  optional int32 top_word_number = 11;
+}

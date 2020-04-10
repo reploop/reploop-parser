@@ -1,0 +1,67 @@
+// Define Category info.
+// 目录
+message Category {
+  //option
+  option (entity_option).table = CATEGORY_TABLE;
+  option (entity_option).entity_name = "category";
+  option (table_option).hbase_table_name = "qipu_category_table";
+  option (entity_option).entity_id_type = CATEGORY;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional string content = 2 [(field_option).column_group = CATEGORY_CONTENT, (column_option).column_name = "content"]; // 目录全部内容
+   //分类元数据；
+  optional CategoryMetadata metadata = 3 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  //所在的父分类；原parent_id和category_order都放在这个数据结构中；
+  optional FatherInfo parent = 4 [(field_option).column_group = PARENT, (column_option).column_name = "par"];
+
+  //和语言相关的运营字段
+  repeated CategoryBase local_base = 5 [(field_option).column_group = CATEGORY_BASE, (column_option).column_name = "loc_base_", (column_option).column_suffix = "${language}"];
+
+  //状态
+  enum Status{
+    INVALID = 0;
+    VALID = 1;
+  }
+  optional Status status = 6 [(field_option).column_group = STATUS, (column_option).column_name = "status"];
+
+  //创建时间，原来是Date类型；
+  optional int64 create_time = 7 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cre_tim"];
+  //最后更新时间，原来是 Date update_time;由奇谱系统设置
+  optional int64 last_update_time = 8 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //版本，无用；
+  optional int64 version = 9 [(field_option).column_group = VERSION, (column_option).column_name = "ver"];
+  //是否已删除；
+  optional bool deleted = 10 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //关联的品牌
+  optional Brand brand = 11 [(field_option).column_group = CATEGORY_BRAND, (column_option).column_name = "brn"];
+
+  //关联的视频
+  repeated MetaSummary episode_summary = 12 [(field_option).column_group = CHILD_EPISODE, (column_option).column_name = "chd_epd_", (column_option).column_suffix = "${entity_id}"];
+
+  //区分视频、图书、app的三级分类，默认为EPISODE
+  enum Type {
+    EPISODE = 0;
+    BOOK = 1;
+    APP = 2;
+    BOOK_TAG = 3;
+    COMPETITION = 4;
+    COMIC = 5;
+    HEAD_LINE =6;
+    //圈子内容标签
+    CIRCLE_CONTENT_TAG = 7;
+    //轻小说
+    LIGHT_NOVEL = 8;
+  }
+  optional Type type = 13 [default = EPISODE, (field_option).column_group = CATEGORY_TYPE, (column_option).column_name = "type"];
+
+  optional CategorySubType sub_type = 14 [default = CATEGORY_SUB_TYPE_NULL, (field_option).column_group = SUB_TYPE, (column_option).column_name = "sub_type"];
+
+  optional string icon = 15 [(field_option).column_group = ICON_IMAGE, (column_option).column_name = "icon"];
+
+  //关联视频标签id；oldid是头条的标签，会对应一个原来的视频标签
+  optional int64 old_category_id = 16 [(field_option).column_group = OLD_CATEGORY_ID, (column_option).column_name = "old_cate_id"];
+
+  //category对应头条运营频道的关系
+  repeated int32 head_line_channel_id = 17 [(column_option).has_value = false,(field_option).column_group = HEAD_LINE_CHANNEL_ID, (column_option).column_name = "head_cid_"];
+}

@@ -1,0 +1,11 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+//
+// Define field of hbase configuration.
+
+package com.qiyi.hbase;
+
+message HbaseConfiguration {
+    optional string zookeeper_quorum = 1;
+    optional string zookeeper_client_port = 2 [default = "2181"];
+    optional string dns_nameserver = 3;
+}

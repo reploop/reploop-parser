@@ -1,0 +1,682 @@
+package common;
+
+option java_package = "com.qiyi.slide.resys.common";
+option java_outer_classname="EntityInfoProtos";
+
+import "knowledge/pub/properties.proto";
+
+enum PeopleType {
+  DEFAULT = 0;
+  STAR = 1;
+  ANCHOR = 2;
+}
+
+message People {
+  // id
+  optional int64 id = 1;
+
+  // name
+  optional string name = 2;
+
+  // character
+  repeated string character = 3;
+
+  optional PeopleType people_type =4;
+}
+
+enum CategoryType {
+    EPISODE = 0;
+    BOOK = 1;
+    APP = 2;
+}
+
+/**
+ * category info
+ */
+message Category {
+    optional int64 id = 1;  // category id
+    optional string value = 2;  // category name
+    repeated Category sub_category = 3; // child category of cateogry
+    optional int32 vrs_sub_type = 4; // qipu metadata.vrs_sub_type
+}
+
+message ParentInfo {
+  // id
+  optional int64 id = 1;
+
+  // name
+  optional string name = 2;
+
+  // picture url
+  optional string picture_url = 3;
+
+  // page url
+  optional string page_url = 4;
+
+  // sns score
+  optional double sns_score = 5;
+
+  // pps wiki score
+  optional double pps_wiki_score = 6;
+
+  // source_type
+  optional int32 source_type = 7;
+}
+
+message ChildInfo {
+  // id
+  optional int64 id = 1;
+
+  // is vip(member only)
+  optional int32 is_member_only = 2;
+
+  // purchase type
+  optional int32 purchase_type = 3;
+
+  // pay type
+  optional int32 pay_type = 4 [ default = 1 ];
+
+}
+
+message Topic {
+  // id
+  optional int64 id = 1;
+}
+
+message TagFeature {
+  // tag value
+  optional string tag_value = 1;
+
+  // weight of tag value
+  optional int32 weight = 2;
+
+  // level of tag value
+  optional int32 level = 3;
+}
+
+message DetailedTag {
+  // type
+  optional string tag_type = 1;
+
+  // tag values
+  // to be deprecated
+  repeated string tag_values = 2;
+
+  // features of tag values
+  repeated TagFeature tag_features = 3;
+}
+
+message Slide {
+  // url of a slide focus image
+  optional string slide_url = 1;
+
+  // the platform where the focus image is shown.
+  optional string platform = 2;
+
+  // position order for displaying
+  // deprecated, use rc_order instead
+  optional int32 order = 3;
+
+  // page url
+  optional string page_url = 4;
+
+  // upload time
+  // default: 2010-04-22(iQiYi first online)
+  optional int64 slide_final_time = 5 [ default = 1271865600 ];
+}
+
+message PlayLocation {
+  optional int32 play_platform = 1;
+  optional bool is_whitelist = 2 [ default = false ];
+  repeated int32 continent = 3;
+  repeated int32 country = 4;
+  repeated int32 province = 5;
+  repeated int32 city = 6;
+  repeated int32 county= 7;
+  repeated int32 area = 8;
+}
+
+enum FilmVarietyType {
+  INTERVIEW = 1;
+}
+
+// the next field index is [47]
+message DisplayFields {
+  // vrs album id
+  optional int64 album_id = 1;
+
+  // vrs tv id
+  optional int64 tv_id = 2;
+
+  // vrs tv unique id
+  optional string vid = 3;
+
+  // subordinate title;
+  optional string sub_title = 14;
+
+  // short title
+  optional string short_title = 4;
+
+  // source name
+  optional string source_name = 5;
+
+  // super album name
+  repeated string super_album_name = 44;
+
+  // type
+  repeated string type = 15;
+
+  // display type
+  repeated string display_type = 37;
+
+  // play/page url
+  optional string page_url = 6;
+
+  // default pps play url
+  optional string pps_p2p_url = 25;
+
+  // play url
+  optional string play_url = 33;
+
+  // picture url
+  // for album/episode/ugc_episode, cover image
+  // for ysdq, poster
+  optional string picture_url = 7;
+
+  // poster url
+  optional string poster_url = 26;
+
+  // total episode number
+  optional int32 total_episode_num = 8;
+
+  // 剧集专辑、影视大全剧集：最新一集集数
+  // 影视大全综艺：最新一期文字描述
+  optional string latest_episode = 24;
+
+  // 剧集专辑最新一集id
+  optional int64 latest_episode_id = 31;
+
+  // episode order in album
+  optional int32 episode_order = 16;
+
+  // global publish date
+  optional string global_publish_date = 9;
+
+  // prompt_description(focus)
+  optional string prompt_description = 10;
+
+  // is member only (purchase type)
+  optional int32 is_member_only = 11;
+
+  // is boss mixer: 剧集专辑下，是否免费episode和付费episode混合出现
+  optional int32 is_boss_mixer = 32;
+
+  // is download allowed
+  optional int32 is_download_allowed = 12;
+
+  // is exclusive (exclusive status)
+  optional int32 is_exclusive = 13;
+
+  // format property
+  // bit 0 : is_3d
+  //     1 : is_1080p
+  //     2 : is_sd
+  optional int32 format_property = 17;
+
+  // this is used by FilmTvLibrary only.
+  optional int64 qipu_id = 18;
+
+  // 电影频道视频、电视剧频道剧集专辑设置其对应的影视大全id
+  optional int64 ftl_id = 36;
+
+  // display play count
+  optional int64 display_play_count = 19;
+
+  // actual play count
+  optional int64 play_count = 20;
+
+  // comments count
+  optional int64 comments_count = 21;
+
+  // up count
+  optional int64 up_count = 22;
+
+  // down count
+  optional int64 down_count = 23;
+
+  // purchase type
+  optional int32 purchase_type = 27;
+
+  // pay type
+  //      ------------------------------
+  // bit  | 4     | 3  | 2    | 1 | 0  |
+  //      ------------------------------
+  // type |package|tvod|coupon|vip|free|
+  //      ------------------------------
+  optional int32 pay_type = 38 [ default = 1 ];
+
+  // id url hash code for bodan
+  // example
+  //   id url hashcode           - 19rrbdjnm
+  //   episode in bodan play url - www.qiyi.com/v_19rrnfsefc.html
+  //   bodan play url            - www.qiyi.com/v_19rrnfsefc.html?list=19rrbdjnm
+  optional string id_url_hashcode = 28;
+
+  // for ppc and ugc
+  optional int32 season = 29;
+
+  // for ppc and ugc
+  optional int32 phase = 30;
+
+  // for ugc
+  optional string source_provider = 34;
+
+  optional int32 paopao_tag = 35;
+
+  optional string short_update_strategy = 39;
+
+  // for live episode
+  optional bool is_live = 40;
+
+  optional int64 start_play_time = 41;
+
+  optional int64 stop_play_time = 42;
+
+  // 视频套壳feed_id
+  optional int64 feed_id = 43;
+
+  // 视频主演的圈子id
+  repeated int64 main_contributor_circle_id = 45;
+
+  // 视频关联圈子id
+  optional int64 circle_id = 46;
+}
+
+// the next field index is [73]
+// entity type: [album, episode, ugc_episode, film_tv_library]
+message EntityInfo {
+  // entity id
+  // for ppc and ugc
+  optional int64 id = 1;
+
+  // for multi_publish entity only
+  optional int64 original_id = 62;
+
+  // entity name
+  // for ppc and ugc
+  optional string name = 2;
+
+  // alias
+  // for ppc only
+  repeated string alias = 65;
+
+  // entity description
+  // for ppc and ugc
+  optional string description = 3;
+
+  // entity pps id
+  // for ugc only
+  optional int64 pps_id = 4;
+
+  // douban id
+  // for ppc only
+  optional int64 douban_id = 36;
+
+  // douban score
+  // for ppc only
+  optional double douban_score = 48;
+
+  // sns score
+  // for ppc only
+  optional double sns_score = 60;
+
+  // pps wiki score
+  // for ppc only
+  optional double pps_wiki_score = 61;
+
+  // qiyi channel id
+  // for ppc and ugc
+  optional int32 channel_id = 5;
+
+  // multiple publish
+  // for ppc only
+  repeated int64 multi_publish = 6;
+
+  // uploader(owner) id of ugc episode/collection
+  // for ugc only
+  optional int64 uploader_id = 7;
+
+  // final time : page_first_online_time (initIssueTime in vrs)
+  // default: 2010-04-22(iQiYi first online)
+  // for ppc and ugc
+  optional int64 final_time = 8 [ default = 1271865600 ];
+
+  // time video status changes from vip to free
+  optional int64 time_vip_2_free = 63;
+
+  // time duration
+  // for ppc and ugc
+  optional int32 time_duration = 9;
+
+  // allowed platform, bitmap
+  // (will be deprectated after play_platform takes effects)
+  // for ppc and ugc
+  optional int32 allowed_platform = 10;
+
+  // allowed platform, bitmap
+  // (will be deprectated after play_platform takes effects)
+  // for ppc and ugc
+  optional int32 allowed_platform_1 = 37;
+
+  // play platform, bitmap
+  // for ppc
+  optional int64 play_platform = 54;
+
+  // play location
+  // for ppc
+  repeated PlayLocation play_location = 55;
+
+  // top platform, bitmap
+  // for ppc
+  optional int64 top_platform = 70;
+
+  // top location
+  // for ppc
+  repeated PlayLocation top_location = 71;
+
+  // is domestic only
+  // for ppc only
+  optional bool is_domestic_only = 11;
+
+  // signature
+  // for ppc and ugc
+  optional string signature = 12;
+
+  // quality score
+  // for ppc and ugc
+  optional float quality_score = 13;
+
+  // ***********************************************************
+  // status related fields
+
+  // is valid for recommend
+  optional bool is_valid = 14;
+
+  // is online
+  optional bool is_online = 53;
+
+  // is available for qiyi homepage
+  // for ppc and ugc
+  optional bool is_available_for_qiyihomepage = 42 [ default = false ];
+
+  // is available for channel homepage
+  // for ppc
+  optional bool is_available_for_channel_homepage = 51 [ default = false ];
+
+  // 多地区运营信息 bitmap
+  // accroding to qipu enum : common.Region
+  enum Region {
+    CN = 1;
+    TW = 2;
+  }
+  optional int64 is_available_for_region_homepage = 69;
+
+  // 地方站标识,用bitmap表示
+  // for album, episode and ugc_episode
+  enum SubSite {
+    SICHUAN = 1;
+    ZHEJIANG = 2;
+    YUNNAN = 3;
+    SHAANXI = 4; // 陕西
+    LIAONING = 5;
+    JIANGSU = 6;
+    // 2016-09-02 添加以下13个地方站
+    FUJIAN = 7;
+    HEILONGJIANG = 8;
+    HAINAN = 9;
+    HUBEI = 10;
+    HUNAN = 11;
+    HENAN = 12;
+    TIANJIN = 13;
+    SHANXI = 14; // 山西
+    ANHUI = 15;
+    CHONGQING = 16;
+    JILIN = 17;
+    SHANGHAI = 18;
+    BEIJING = 19;
+    // 以下地方站还没有
+    GUANGDONG = 20;
+    SHANDONG = 21;
+    HEBEI = 22;
+    JIANGXI = 23;
+    NEIMENGGU = 24;
+    GUIZHOU = 25;
+    XINJIANG = 26;
+    NINGXIA = 27;
+    QINGHAI = 28;
+    GANSU = 29;
+    XIZANG = 30;
+    GUANGXI = 31;
+  }
+  optional int32 sub_site = 72;
+
+  // is available for rec homepage, used only in recommend system
+  // currently, set as true for episode, album, multipublish_episode and multipublish_album
+  optional bool is_available_for_rec_homepage = 67 [ default = false ];
+
+  enum RatingType {
+    // Anyone can see.
+    GENERAL = 0;
+    // Anyone who is school-aged after children can see.
+    CHILD_PROTECTED = 1;
+    // Anyone who is more than 13 years old can see.
+    PARENT_GUIDED = 2;
+    // Anyone who is more than 17 years old can see.
+    MATURE = 3;
+  }
+  // including content rating (and image rating if any)
+  // for ppc and ugc
+  optional RatingType rating = 15;
+
+  enum DangerLevel {
+    SAFE = 0;
+    DANGEROUS_HIGH = 1;
+    DANGEROUS_MIDDLE = 2;
+    DANGEROUS_LOW = 3;
+  }
+  // danger level
+  // for ugc only
+  optional DangerLevel danger_level = 16;
+
+  enum EditorRecommendLevel {
+    NONE = 0;
+    GENERAL_REC = 1;
+    KEY = 2;
+    STRONG = 3;
+  }
+  // editor recommend level
+  // for ppc only
+  optional EditorRecommendLevel editor_recommend_level = 17;
+
+  // ***********************************************************
+  // keywords related fields
+
+  // tags parsed from Qipu tag field
+  // for ppc only
+  repeated string tags = 18;
+
+  // for ugc only
+  repeated string user_tags = 39;
+
+  // for ppc and ugc
+  repeated string custom_tags = 41;
+
+  // for ppc movie only till now.
+  // form: type:value, type:value, ...
+  repeated DetailedTag detailed_tags = 46;
+
+  // tags for operating purpose only
+  repeated string operating_tags = 57;
+
+  // song name
+  // for ppc only
+  optional string song_name = 47;
+
+  // canonical keyword
+  // including album_keyword and event parsed from Qipu tag field
+  // for ppc only
+  repeated string canonical_keyword = 19;
+
+  // keyword
+  // including seo_keyword and keyword
+  // for ppc only
+  repeated string keyword = 20;
+
+  // political sensitive words
+  // for ppc only
+  repeated string political_sensitive_words = 40;
+
+  // content type
+  // only 4 types of content types from Qipu
+  // for channel 6(综艺) and 10(片花) only
+  // for ppc only
+  enum ContentType {
+    // 正片
+    FEATURE_FILM = 1;
+    // 预告片
+    PREVUE = 2;
+    // 其他片花
+    TRAILER = 3;
+    // 卡断
+    CLIP = 4;
+    // other type
+    OTHER = 5;
+  }
+  // for ppc only
+  optional ContentType content_type = 21;
+
+  // 片花对应正片类型（电影，电视剧）
+  enum FeatureFilmType {
+    MOVIE = 0;
+    TV = 1;
+  }
+  // for channel 10(片花) only
+  // for ppc only
+  optional FeatureFilmType feature_film_type = 22;
+
+  // country, area, province, city, etc.
+  // for ppc only
+  repeated string location = 23;
+
+  // ***********************************************************
+  // people related fields
+
+  // creator: 导演
+  // for ppc only
+  repeated People creator = 24;
+
+  // main contributor
+  // 演员，主持，嘉宾，球员，明星，艺术家...
+  // for ppc only
+  repeated People main_contributor = 25;
+
+  // guest contributor 嘉宾
+  // 仅综艺频道获取
+  repeated People guest_contributor = 66;
+
+  // contributors other than main contributor
+  // for ppc only
+  repeated People support_contributor = 26;
+
+  // screen/script writer
+  // for ppc only
+  repeated People screen_writer = 50;
+
+  // ***********************************************************
+
+  // parent related fileds
+  // video group thie video belongs to
+  // for ppc only
+  repeated ParentInfo parent_video_group = 27;
+
+  // album this video belongs to, not repeated
+  // one episode only has one parent album
+  // for ppc only
+  optional ParentInfo parent_album = 28;
+
+  // collection this video belongs to
+  // for ppc and ugc
+  repeated ParentInfo parent_collection = 29;
+
+  // official episode episode this video belongs to
+  // for ppc only
+  repeated ParentInfo parent_official_episode = 30;
+
+  // ***********************************************************
+
+  // children related fields
+  // child episode, by order
+  // for ppc and ugc
+  repeated ChildInfo children_episode = 31;
+
+  // child prevue
+  // for ppc only
+  repeated ChildInfo children_prevue = 32;
+
+  // child trailer
+  // for ppc only
+  repeated ChildInfo children_trailer = 33;
+
+  // child titbit
+  // for ppc only
+  repeated ChildInfo children_titbit = 34;
+
+  // child clip
+  repeated ChildInfo children_clip = 49;
+
+  // topic info of episode
+  repeated Topic topics = 52;
+
+  // display fields
+  // for ppc and ugc
+  optional DisplayFields display_fields = 35;
+
+  // focus images
+  repeated Slide slides = 38;
+
+  // source site name(s) of a film_tv_library entity
+  repeated string site_name = 43;
+
+  // true if the episode is the latest one in a source album
+  optional bool is_latest_episode = 44;
+
+  // is qiyi produced
+  optional bool is_qiyi_produced = 45;
+
+  // for resource container position order
+  optional int32 rc_order = 56;
+
+  // play source id is used to get play source from search.
+  // The play_source_id equals to SearchInfo.doc_id.
+  optional string play_source_id = 58;
+
+  // film variety type
+  optional FilmVarietyType film_variety_type = 59;
+
+  // category
+  repeated Category category = 64;
+
+  // 本地化相关运营信息字段 bitmap
+  // according to qipu enum : common.Language
+  enum Language{
+    UNKNOWN_LANGUAGE = -1;
+    // CHINESE
+    zh = 1;
+    // TRADITIONAL_CHINESE
+    zh_TW = 2;
+  }
+  optional int64 local_base = 68 [ default = 2 ];
+
+  //播控信息
+  repeated knowledge.pub.AccessPlayControl access_play_control = 73;
+}

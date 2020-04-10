@@ -1,0 +1,49 @@
+// Author: Qi Qiao (qiaoqi@qiyi.com)
+
+import "knowledge/graph/pub/properties.proto";
+
+package knowledge.graph.process;
+
+// The well-defined proto message which stores relations about an entity used to
+// be persistent in HBase cell.
+message RelationData {
+  // The host entity we conduct calculating relationship on.
+  required string host_name = 1;
+
+  // The corresponding host entity id.
+  optional int64 host_id = 2;
+
+  // The guest entity that has relation with host entity.
+  required string guest_name = 3;
+
+  // The corresponding guest entity id.
+  optional int64 guest_id = 4;
+
+  // Used to depict the total relation strength between host and guest entity.
+  required double total_weight = 5;
+
+  // Used to depict one specific relation with relation type and relation strength.
+  message Relation {
+    required string relation_type = 1;
+    required double weight = 2;
+    optional string url = 3;
+
+    // Depicts the roles played by the celebrity in the video.
+    repeated knowledge.graph.pub.RoleInfo role_info = 4;
+    optional int32 child_order = 5;
+    optional int64 occur_time = 6;
+  }
+
+  // Expresses different relations between host and guest entity.
+  repeated Relation relation = 6;
+
+  optional int32 channel_id = 7;
+  repeated knowledge.graph.pub.RoleInfo role_info = 8;
+  optional int64 occur_time = 9;
+}
+
+// A pre-defined proto message which stores relations about an specific entity used
+// to communicate with the third party.
+message RelationDataList {
+  repeated RelationData relation_data = 1;
+}

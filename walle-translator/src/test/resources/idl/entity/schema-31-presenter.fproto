@@ -1,0 +1,45 @@
+/**
+ *@brief 秀场主播
+ *@details 秀场主播，秀场主播和明星（People)分开存储，由秀场编辑维护。明星由明星库编辑维护。 每个主播有一个自己的show room,但在直播时，可能会跑到其他show room.
+**/
+message Presenter {
+  //option
+  option (entity_option).table = PRESENTER_TABLE;
+  option (entity_option).entity_name = "presenter";
+  option (table_option).hbase_table_name = "qipu_presenter_table";
+  option (entity_option).entity_id_type = PRESENTER;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  repeated string alias_name = 2 [(column_option).has_value = false, (field_option).column_group = ALIAS_NAME, (column_option).column_name = "alias_name_"]; // 主播在秀场内的昵称
+  optional int32 grade = 3 [(field_option).column_group = GRADE, (column_option).column_name = "grade"]; // 主播在秀场内的等级
+  optional int32 recommend_rate = 4 [(field_option).column_group = RECOMMEND_RATE, (column_option).column_name = "recommend_rate"]; // 推荐度
+  optional string recommend_remark = 5 [(field_option).column_group = RECOMMEND_REMARK, (column_option).column_name = "recommend_remark"]; // 推荐语
+  // 单向的
+  repeated MetaSummary recommend_image = 6 [(field_option).column_group = CHILD_RECOMMEND_IMAGE, (column_option).column_name = "recommend_image_", (column_option).column_suffix = "${entity_id}"]; // 推荐图
+  // 单向的
+  repeated MetaSummary show_image = 7 [(field_option).column_group = CHILD_SHOW_IMAGE, (column_option).column_name = "show_image_", (column_option).column_suffix = "${entity_id}"]; // 主播开播时候设置的图片
+
+  optional bool deleted = 8 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 9 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  //主播在秀场内的头像
+  repeated MetaSummary head_portrait = 10 [(field_option).column_group = CHILD_HEAD_PORTRAIT, (column_option).column_name = "head_pt_", (column_option).column_suffix = "${entity_id}"];
+  //主播被关注的粉丝数量
+  optional int64 fan_count = 11 [(field_option).column_group = FAN_COUNT, (column_option).column_name = "fan_count", (track_option).notracker=true];
+  //上次直播结束的时间
+  optional int64 last_live_end_time = 12 [(field_option).column_group = LAST_LIVE_END_TIME, (column_option).column_name = "last_end_time"];
+  //主播设置的预告下次直播开始的时间
+  optional int64 next_live_start_time = 13 [(field_option).column_group = NEXT_LIVE_START_TIME, (column_option).column_name = "next_start_time"];
+  //本次直播开始时间
+  optional int64 current_live_start_time = 14 [(field_option).column_group = CURRENT_LIVE_START_TIME, (column_option).column_name = "cur_start_time"];
+  //本次直播结束时间
+  optional int64 current_live_end_time = 15 [(field_option).column_group = CURRENT_LIVE_END_TIME, (column_option).column_name = "cur_end_time"];
+  //主播所持有的勋章
+  repeated string owned_metal = 16 [(column_option).has_value = false, (field_option).column_group = OWNED_METAL, (column_option).column_name = "owned_metal_"];
+
+  optional int64 passport_id = 17 [(field_option).column_group = PASSPORT_ID, (column_option).column_name = "pss_id"];
+  //主播自己的房间
+  optional int64 own_room_id = 18 [(field_option).column_group = OWN_ROOM_ID, (column_option).column_name = "ownrmid"];
+  //主播直播中的房间
+  optional int64 ongoing_room_id = 19 [(field_option).column_group = ONGOING_ROOM_ID, (column_option).column_name = "ongrmid"];
+}

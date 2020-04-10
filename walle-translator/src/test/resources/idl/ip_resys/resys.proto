@@ -1,0 +1,107 @@
+option java_package = "com.qiyi.ip.resys";
+option java_outer_classname="ResysProtos";
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/qipu_options.proto";
+import "knowledge/pub/service_common.proto";
+
+message Attribute {
+    optional string area = 1 [default = "unknown"];
+    optional string bucket = 2 [default = "unknown"];
+    optional string event_id = 3 [default = "-1"];
+}
+
+message RecResult {
+    repeated RecItem rec_item = 1;
+    optional int64 ip_id = 2;
+    optional knowledge.pub.ResysDebugInfo debug_info = 888;
+}
+
+message RecItem {
+    optional int64 rec_id = 1;
+    optional string source_from = 2 [default = ""];
+    optional string type = 3 [default = ""];
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message ResysRequest {
+    option (knowledge.pub.service_message_options).method_name = "iprecommend";
+    option (knowledge.pub.service_message_options).type = REQUEST;
+
+    optional string area = 1;
+    optional string event_id = 2;
+    optional string rltfmt = 3;
+    optional string uid = 4;
+    optional int32 cid = 5; //频道id
+    optional int64 rec_id = 6;
+    optional int32 rltnum = 7;
+    optional string ppuid = 8;
+    optional string ip = 9; //ip地址
+    optional int32 isp_id = 10; //运营商id
+    optional int32 p1 = 11; //所属平台ios android
+    optional string lang = 12; //语言模式
+    optional int32 wsc_ost = 13;//操作系统
+    optional string app_k = 14; //版本号
+    optional string app_v = 15; //渠道号
+    optional string app_lm = 16;//模式:cn-标准大陆模式,tw-台湾模式
+    optional string service_filter = 17;
+    optional string city = 18;
+    optional string province = 19;
+    optional bool debug = 888 [ default = false ];
+    optional knowledge.pub.User user = 999;
+}
+
+message ResysResponse {
+    option (knowledge.pub.service_message_options).method_name = "iprecommend";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional string code = 1 [ default = "A00000" ];
+    optional string version = 2 [default = "unknown"];
+    optional Attribute attributes = 3;
+    optional RecResult rec_result = 4;
+    optional string debug_info = 5;
+}
+
+message RecResponse {
+  optional string status_code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  optional RecResult rec_result = 3;
+}
+
+message PopularityPerIp {
+  optional int64 ip_id = 1;
+  repeated TypePopularity type_popularity = 2;
+  repeated ItemPopularity item_popularity = 3;
+  repeated TypePopularity init_type_popularity = 4;
+  repeated ItemPopularity init_item_popularity = 5;
+}
+
+message TypePopularity {
+    optional ItemType type = 1;
+    optional double popularity = 2;
+    optional string algorithm_version = 3; //算法
+}
+
+message ItemPopularity {
+    optional int64 item_id = 1;
+    optional double popularity = 2;
+    optional string algorithm_version = 3; //算法
+}
+
+enum ItemType {
+    BOOK = 0;
+    COMICBOOK = 1;
+    GAME = 2;
+    GAME_ACTIVITY = 3;
+    TICKET = 4;
+    COMMODITY = 5;
+    COMMODITY_SUBJECT =6;
+    COMMODITY_BOOK = 7;
+    TICKET_ONLINE = 8;
+    LIGHT_NOVEL = 9;
+}

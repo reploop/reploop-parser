@@ -1,0 +1,54 @@
+// Author: zheng cheng (zhengcheng@qiyi.com)
+//
+// validate rules.
+import "google/protobuf/descriptor.proto";
+
+import "knowledge/pub/common.proto";
+
+package knowledge.pub;
+
+message ValidatorOptions {
+  optional ValueRequired value_required = 1;
+  optional NumericalRange numerical_range = 2;
+  optional Regex regex = 3;
+  optional IdType id_type = 4;
+  optional ListSize list_size = 5;
+}
+
+extend google.protobuf.FieldOptions {
+  optional ValidatorOptions validator_options = 60001;
+}
+
+message ValueRequired {
+  optional bool is_required = 1 [default = false];
+  optional string inside_field = 2;
+}
+
+message NumericalRange {
+  optional int64 min = 1;
+  optional int64 max = 2;
+  optional string inside_field = 3; 
+}
+
+message Regex {
+  optional string regex = 1;
+  optional string inside_field = 2;
+}
+
+message IdType {
+  optional string type = 1;
+  optional string inside_field = 2;
+}
+
+message ListSize {
+  optional int32 min = 1;
+  optional int32 max = 2;
+}
+
+message MessageForValidatorTest {
+  optional string value_required = 1[(validator_options).value_required.is_required = true];
+  optional string value = 2[(validator_options).regex.regex = "[a-zA-Z]*"];
+  repeated string value_list_required = 3[(validator_options).value_required.is_required = true];
+  repeated string value_list = 4[(validator_options).regex.regex = "[a-zA-Z]*",
+                                 (validator_options).list_size.max = 5];
+}

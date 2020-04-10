@@ -1,0 +1,96 @@
+// Author: Li Cangliang(licangliang@qiyi.com)
+//
+// Define the data structure to aggregator.
+
+package knowledge.graph.aggregator;
+
+message NewsSummary {
+  // The rss news title.
+  required string title = 1;
+
+  // The rss news summary.
+  optional string description = 2;
+
+  // The category is defined by us and configured in the configuration file.
+  required string category = 3;
+
+  // Only define these data sources: NEWS, BLOG, BBS, MICROBLOG.
+  required string data_source = 4 [default = "NEWS"];
+
+  // The value is got from the web page,
+  // and it is the number of milliseconds since January 1, 1970, 0:00:00 GMT.
+  required int64 published_date = 5;
+
+  // The value is got from the web page,
+  // and it is the number of milliseconds since January 1, 1970, 0:00:00 GMT.
+  optional int64 last_updated_date = 6;
+
+  // The value is got from the web page, and we can open the news page through it.
+  required string link = 7;
+
+  // md5(site + "_" + link)
+  optional string uuid = 8;
+
+  // The release rss news site name.
+  optional string site = 9;
+}
+
+message Topic {
+  // The topic name.
+  required string keyword = 1;
+
+  // The topic ranking
+  optional int32 rank = 2;
+
+  // The topic-related index.
+  optional int64 index = 3;
+
+  // Only define these data sources: NEWS, BLOG, BBS, MICROBLOG.
+  required string data_source = 4 [default = "NEWS"];
+
+  // The category is defined by us and configured in the configuration file.
+  required string category = 5;
+
+  // The number of milliseconds since January 1, 1970, 0:00:00 GMT.
+  required int64 last_update_date = 6;
+
+  message Supplement {
+    // The news title.
+    optional string title = 1;
+
+    // The news summary.
+    optional string description = 2;
+
+    // The value is got from the web page
+    optional string provider = 3;
+
+    // The value is got from the web page,
+    // and it is the number of milliseconds since January 1, 1970, 0:00:00 GMT.
+    optional int64 publish_date = 4;
+
+    // It aims at the news of baidu topic, because the news as a result to display
+    // depends on your choose for the sort type.
+    enum SortType {
+        SORT_BY_TIME = 0;
+        SORT_BY_FOCUS = 1;
+    }
+    optional SortType sort_type = 5;
+
+    // The url of source web page which contains this supplement(provided by baiDu).
+    optional string page_url = 7;
+
+    // The url of web page which provided by original provider.
+    optional string original_page_url = 8;
+  }
+
+  repeated Supplement supplement_list = 7;
+
+  // md5(dataSource + "_" + category + "_" + site + "_" + keyword)
+  required string uuid = 8;
+
+  // The release topic site name.
+  optional string site = 9;
+
+  // The time which is recorded by crawling the topic.
+  optional int64 crawl_time = 10;
+}

@@ -1,0 +1,21 @@
+// Author: Qi Qiao (qiaoqi@qiyi.com)
+//
+// Define field of ActiveMQ configuration.
+
+package com.qiyi.activemq;
+
+message ActiveMQConfiguration {
+  required string url = 1;
+
+  required string user = 2;
+
+  required string password = 3;
+
+  // If true, it indicates the session supports transaction.If a transaction
+  // roll-back is done, the transaction's sent message are destroyed and the
+  // the session's input is automatically recovered.
+  optional bool transactional = 4 [default = false];
+
+  // If true, ActiveMQ maintains messages in sort of persistent storage.
+  optional bool persistent = 5 [default = false ];
+}

@@ -1,0 +1,31 @@
+// Define the live room.
+// Next field id is: 10.
+message LiveBroadcast {
+  //option
+  option (entity_option).table = LIVE_BROADCAST_TABLE;
+  option (entity_option).entity_name = "live_broadcast";
+  option (table_option).hbase_table_name = "qipu_live_broadcast_table";
+  option (entity_option).entity_id_type = LIVE_BROADCAST;
+  
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional LiveMetadata metadata = 2 [(field_option).column_group = LIVE_METADATA, (column_option).column_name = "live_meta"];
+
+  optional LiveStatus live_status = 3 [default = NOT_EXIST, (field_option).column_group = LIVE_STATUS, (column_option).column_name = "live_sta"];
+
+  optional GameInfo game_info = 4 [(field_option).column_group = GAME_INFO, (column_option).column_name = "gm_info"];
+
+  // Related to Qitan of this entity.
+  optional Qitan qitan = 5 [(field_option).column_group = QITAN, (column_option).column_name = "qtn"];
+
+  // The code streams list of Live.
+  optional StreamList stream_list = 6 [(field_option).column_group = STREAM_LIST, (column_option).column_name = "stm_lst"];
+
+  repeated string tag = 7 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // Store <name,value> pair specific terms.
+  repeated KeyValuePair key_value_pair = 8 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional int64 last_update_time = 9 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+}
+

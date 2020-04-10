@@ -1,0 +1,17 @@
+/**
+ * @brief 短视频项目
+ * @details 短视频项目
+ **/
+message PizzaVideo {
+  //option
+  option (entity_option).table = PIZZA_VIDEO_TABLE;
+  option (entity_option).entity_name = "pizza_video";
+  option (table_option).hbase_table_name = "qipu_pizza_video_table";
+  option (entity_option).entity_id_type = PIZZA_VIDEO;
+  //实体id
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+}

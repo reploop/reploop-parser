@@ -1,0 +1,24 @@
+// Define the brand information.
+message ItemBrand {
+  //option
+  option (entity_option).table = ITEM_BRAND_TABLE;
+  option (entity_option).entity_name = "item_brand";
+  option (table_option).hbase_table_name = "qipu_item_brand_table";
+  option (entity_option).entity_id_type = ITEM_BRAND;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional ItemBrandBase base = 2 [(field_option).column_group = ITEM_BRAND_BASE, (column_option).column_name = "itmbrand_base"];
+
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional bool deleted = 4 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  optional ItemBrandMetadata metadata= 5 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  //乐高、商城，可多选。提交品牌编辑页面，自动写入品牌用户字段
+  repeated Application owner_app = 6 [(field_option).column_group = APPLICATION, (column_option).column_name = "owner_app_", (column_option).column_suffix = "${owner_app}"];
+
+  //品牌库实体（26）增加跟老品牌库的对应关系
+  optional int64 old_brand_id = 7 [(field_option).column_group = OLD_BRAND_ID, (column_option).column_name = "old_brand_id"];
+}

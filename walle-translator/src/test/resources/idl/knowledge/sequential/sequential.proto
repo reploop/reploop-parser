@@ -1,0 +1,698 @@
+// Author: Zheng Cheng (zhengcheng@qiyi.com)
+import "google/protobuf/descriptor.proto";
+
+import "knowledge/hbase/options.proto";
+
+package knowledge.pub;
+
+message SequentialOptions {
+  // 类型后缀，使用-连接
+  optional string id_type = 1;
+  // 导出数据保存column family
+  optional string export_column_family = 2 [default = "e"];
+}
+
+extend google.protobuf.MessageOptions {
+  optional .com.qiyi.knowledge.hbase.option.TableOptions table_option = 51021;
+  optional SequentialOptions sequential_option = 51022;
+}
+
+message SequentialFieldOptions {
+  // 导出源entity名
+  optional string export_source = 1;
+}
+
+
+extend google.protobuf.FieldOptions {
+  optional .com.qiyi.knowledge.hbase.option.ColumnOptions column_option = 51031;
+  optional SequentialFieldOptions field_option = 51032;
+}
+//@@@@@@
+
+// 时间戳保存表 entityname + "-SEQT"
+// 注册version写入entityname + version + "-SEQT"
+message SequentialVersion {
+  //option
+  option (table_option).hbase_table_name = "qipu_sequential_version_table";
+  option (sequential_option).id_type = "SEQT";
+
+  //唯一识别ID
+  required string id = 1 [(column_option).is_auto_set = true];
+
+  repeated SequentialInfo sequential_info = 2 [(column_option).column_name = "info_", (column_option).column_suffix = "${field_num}"];
+
+  message SequentialInfo {
+    optional int32 field_num = 1;
+    optional int64 timestamp = 2;
+    optional string version = 3;
+  }
+
+  optional int64 qipu_export_time = 3  [(column_option).column_name = "qipu_time"];
+}
+
+
+// qipuId + "-INTF"
+message IntelligentFeature {
+  //option
+  option (table_option).hbase_table_name = "qipu_intelligent_feature_table";
+  option (sequential_option).id_type = "INTF";
+
+  //唯一识别ID
+  required string id = 1 [(column_option).is_auto_set = true];
+
+  /**
+   * 0-99 音频特征（a开头）
+   * 100-199 图片特征（p开头）
+   * 200-299 文本特征（t开头）
+   * 300-399 视频特征（v开头）
+   * 400-499 统计特征（s开头）
+   */
+  //--------------------------- from PictureIntelligentFeature start -------------------//
+  // 写入方:AI
+  // 图片的性感指数
+  optional BaseTypeFloat p0_sexy_score_from_thumbnail = 100 [(column_option).column_name = "c_100_n", (field_option).export_source="PictureIntelligentFeature"];
+  // 图片的美学特征
+  optional FloatList p0_aesthetic_embedding_from_thumbnail = 101 [(column_option).column_name = "c_101_n", (field_option).export_source="PictureIntelligentFeature"];
+  // 图片的美学特征打分
+  optional BaseTypeFloat p0_aesthetic_score_from_thumbnail = 102 [(column_option).column_name = "c_102_n", (field_option).export_source="PictureIntelligentFeature"];
+  //--------------------------- from PictureIntelligentFeature end -------------------//
+
+  // 写入方:AI
+  // AI文本标签
+  optional AITag t0_ai_tag_from_title = 204 [(column_option).column_name = "c_204_n"];
+  // 视频清晰度信息
+  optional VideoDefinitionInfo v0_video_definition_info = 307 [(column_option).column_name = "c_307_n"];
+  // 图片合成视频信息
+  optional PictureConvertedVideoInfo v0_picture_converted_video_info = 308 [(column_option).column_name = "c_308_n"];
+
+
+  // 写入方:推荐
+  // 推荐区域：热点 7日展示量
+  optional BaseTypeFloat s3_impression_cantor_7days = 410 [(column_option).column_name = "c_410_n"];
+  // 推荐区域：热点 7日点击量
+  optional BaseTypeFloat s3_click_cantor_7days = 411 [(column_option).column_name = "c_411_n"];
+  // 推荐区域：移动端联播 7日展示量
+  optional BaseTypeFloat s3_impression_mswan_7days = 412 [(column_option).column_name = "c_412_n"];
+  // 推荐区域：移动端联播 7日点击量
+  optional BaseTypeFloat s3_click_mswan_7days = 413 [(column_option).column_name = "c_413_n"];
+  // 推荐区域：移动端猜你喜欢 7日展示量
+  optional BaseTypeFloat s3_impression_mbee_7days = 414 [(column_option).column_name = "c_414_n"];
+  // 推荐区域：移动端猜你喜欢 7日点击量
+  optional BaseTypeFloat s3_click_mbee_7days = 415 [(column_option).column_name = "c_415_n"];
+
+  // 写入方：乐高
+  // 爱奇艺图片黑边识别
+  repeated IqiyiImageBlackBorder p5_iqiyi_image_black_border = 120 [(column_option).column_name = "c_120_n", (column_option).column_suffix = "${image_url}"];
+  // 爱奇艺图片清晰度识别
+  repeated IqiyiImageResolution p5_iqiyi_image_resolution = 121 [(column_option).column_name = "c_121_n", (column_option).column_suffix = "${image_url}"];
+  // 爱奇艺图片软色情识别
+  repeated IqiyiImageSoftcorePornography p5_iqiyi_image_softcore_pornography = 122 [(column_option).column_name = "c_122_n", (column_option).column_suffix = "${image_url}"];
+  // 标签系统 机审多维度结果
+  repeated RestrictedDimentionInfo p5_title_restricted_dimention_info = 123 [(column_option).column_name = "c_123_n_", (column_option).column_suffix = "${dimension_tag}"];
+  // 百度图片清晰度识别
+  repeated IqiyiImageResolution p5_baidu_image_resolution = 124 [(column_option).column_name = "c_124_n_", (column_option).column_suffix = "${image_url}"];
+
+  // 写入方：信息流
+  // 信息流去重信息(废弃)
+  optional BeehiveDuplicationRemoval v6_beehive_duplication_removal = 304 [(column_option).column_name = "c_304_n", deprecated = true];
+  // 信息流质量评估信息
+  optional BeehiveQualityAssessment v6_beehive_quality_assessment = 305 [(column_option).column_name = "c_305_n"];
+  // 信息流去重信息
+  optional BeehiveDuplication v6_beehive_duplication = 306 [(column_option).column_name = "c_306_n"];
+  // 信息流热点事件
+  optional BeehiveHotEventInfo s6_beehive_hot_event_info = 416 [(column_option).column_name = "c_416_n"];
+  // 信息流中短视频关联信息
+  optional BeehiveRelatedVideoSummary s6_beehive_related_video_summary = 417 [(column_option).column_name = "c_417_n"];
+
+  // 写入方:奇文
+  // 视频软色情信息识别高F值模型
+  repeated SoftPornInfo v7_soft_porn_info_from_algorithm_f1 = 309 [(column_option).column_name = "c_309_n_", (column_option).column_suffix = "${bucket}"];
+  // 视频软色情信息识别高准确模型
+  repeated SoftPornInfo v7_soft_porn_info_from_algorithm_precision = 310 [(column_option).column_name = "c_310_n_", (column_option).column_suffix = "${bucket}"];
+  // 视频软色情信息识别高召回模型
+  repeated SoftPornInfo v7_soft_porn_info_from_algorithm_recall = 311 [(column_option).column_name = "c_311_n_", (column_option).column_suffix = "${bucket}"];
+
+  // 视频类型标签普通(默认高f1)模型
+  repeated VideoCategory v7_video_category_from_algorithm_normal = 312 [(column_option).column_name = "c_312_n_", (column_option).column_suffix = "${bucket}"];
+  // 视频类型标签高precision模型
+  repeated VideoCategory v7_video_category_from_algorithm_precision = 313 [(column_option).column_name = "c_313_n_", (column_option).column_suffix = "${bucket}"];
+  // 视频类型标签高recall模型
+  repeated VideoCategory v7_video_category_from_algorithm_recall = 314 [(column_option).column_name = "c_314_n_", (column_option).column_suffix = "${bucket}"];
+
+}
+
+// qipuId + "-PINF"
+message PictureIntelligentFeature {
+  //option
+  option (table_option).hbase_table_name = "qipu_picture_intelligent_feature_table";
+  option (sequential_option).id_type = "PINF";
+
+  //唯一识别ID
+  required string id = 1 [(column_option).is_auto_set = true];
+
+  // 写入方:AI
+  // 图片的性感指数
+  optional BaseTypeFloat p0_sexy_score_from_thumbnail = 100 [(column_option).column_name = "c_100_n"];
+  // 图片的美学特征
+  optional FloatList p0_aesthetic_embedding_from_thumbnail = 101 [(column_option).column_name = "c_101_n"];
+  // 图片的美学特征打分
+  optional BaseTypeFloat p0_aesthetic_score_from_thumbnail = 102 [(column_option).column_name = "c_102_n"];
+}
+
+message VideoCategory {
+  // 版本
+  optional string version = 1;
+  // 算法版本
+  optional string bucket = 2;
+  // 类型标签
+  repeated CategoryInfo category_info = 3;
+
+  // 类型标签
+  message CategoryInfo {
+    // 类型标签ID
+    optional int64 id = 1;
+    // 类型标签名称
+    optional string name = 2;
+    // 类型标签等级
+    optional int32 level = 3;
+    // 权重
+    optional double weight = 4;
+    // 置信度
+    optional double confidence = 5;
+  }
+}
+
+// AI标签
+message AITag {
+  // 版本
+  optional string version = 1;
+  // 标签得分
+  repeated TagScoreInfo tag_score_info = 2;
+  message TagScoreInfo {
+    // 标签类型
+    optional TagType tag_type = 1 [default=UNKNOWN_TAG_TYPE];
+    enum TagType {
+      UNKNOWN_TAG_TYPE = -1;
+      // 内容标签
+      TAG_TYPE_CONTENT_TAG = 1;
+      // 类型标签
+      TAG_TYPE_CATEGORY_TAG = 2;
+    }
+    // 标签等级
+    optional int32 level = 2;
+    // 标签名(资讯)
+    optional string name = 3;
+    // 得分(0-1, 值越大概率越高)
+    optional double score = 4;
+  }
+}
+
+// 标签系统 机审多维度结果
+message RestrictedDimentionInfo {
+  // 版本
+  optional string version = 1;
+  // 多维度标签
+  optional string dimension_tag = 2;
+  // 更新时间，毫秒时间戳
+  optional int64 update_time = 3;
+  // 置信度，机审得分，可以为空
+  optional double score = 4;
+}
+
+// 软色情识别信息
+message SoftPornInfo {
+  // 奇谱管理版本
+  optional string version = 1;
+  // 算法版本
+  optional string bucket = 2;
+  // 得分信息
+  optional WeightedBool value = 3;
+}
+
+// 信息流去重信息
+message BeehiveDuplication {
+  // 版本
+  optional string version = 1;
+  // 重复算法
+  optional DuplicationAlgorithmType duplication_algorithm_type = 2 [default=UNKNOWN_ALGORITHM_TYPE];
+  // 重复算法
+  enum DuplicationAlgorithmType {
+      UNKNOWN_ALGORITHM_TYPE = -1;
+      // sha1
+      SHA1 = 1;
+      // ai
+      AI = 2;
+      // 用户片段
+      USER_VIDEO_CLIP = 3;
+  }
+  // 重复信息
+  repeated DuplicationInfo duplication_info = 3;
+  // 重复信息
+  message DuplicationInfo {
+    // 重复的奇谱id
+    optional int64 duplication_qipu_id = 1;
+    // 重复等级
+    optional DuplicationLevel duplication_level = 2 [default=UNKNOWN_DUPLICATE];
+    // 重复等级
+    enum DuplicationLevel {
+      UNKNOWN_DUPLICATE = -1;
+      // 重复
+      DUPLICATE = 1;
+      // 相似
+      SIMILAR = 2;
+    }
+    // 图片重复分数
+    optional double image_duplication_score = 3;
+    // 视频重复分数
+    optional double video_duplication_score = 4;
+    // 标题重复分数
+    optional double title_duplication_score = 5;
+  }
+}
+
+// 信息流热点事件
+message BeehiveHotEventInfo {
+  // 版本
+  optional string version = 1;
+  // 热点分数
+  optional double hot_score = 3;
+  // 关联热点
+  repeated HotSummary hot_summary = 4;
+
+  message HotSummary {
+    // 热点词
+    optional string hot_term = 1;
+    // 热点词描述
+    optional string hot_term_description = 2;
+    // 热点次抓取时间 时间戳 毫秒
+    optional int64 hot_term_crawl_time = 3;
+    // 可信度
+    optional double confidence = 4;
+  }
+}
+
+// 爱奇艺图片黑边识别
+message IqiyiImageBlackBorder {
+  // 版本
+  optional string version = 1;
+  // 是否带黑边
+  optional bool result = 2;
+  // 带黑边的概率
+  optional double probability = 3;
+  // 非黑边区域
+  repeated string non_black_border_location = 4;
+  // 图片地址
+  optional string image_url = 5;
+  // 图片类型
+  optional ImageType type = 6;
+  // 图片格式
+  optional ImageFileType image_type = 7;
+  // 图片压缩率
+  optional ImageCompressionStatus image_compression_status = 8;
+  // 图片尺寸
+  optional string image_size = 9;
+}
+
+// 爱奇艺图片清晰度识别
+message IqiyiImageResolution {
+  // 版本
+  optional string version = 1;
+  // 清晰程度
+  optional ImageResolution result = 2;
+  // 清晰概率
+  optional double probability = 3;
+  // 得分
+  optional double score = 4;
+  // 图片地址
+  optional string image_url = 5;
+  // 图片类型
+  optional ImageType type = 6;
+  // 图片格式
+  optional ImageFileType image_type = 7;
+  // 图片压缩率
+  optional ImageCompressionStatus image_compression_status = 8;
+  // 图片尺寸
+  optional string image_size = 9;
+}
+
+// 爱奇艺图片软色情识别
+message IqiyiImageSoftcorePornography {
+  // 版本
+  optional string version = 1;
+  // 得分,区间为0-1
+  optional double score = 2;
+  // 图片地址
+  optional string image_url = 3;
+  // 图片类型
+  optional ImageType type = 4;
+  // 图片格式
+  optional ImageFileType image_type = 5;
+  // 图片压缩率
+  optional ImageCompressionStatus image_compression_status = 6;
+  // 图片尺寸
+  optional string image_size = 7;
+}
+
+// 信息流中短视频关联信息
+message BeehiveRelatedVideoSummary {
+  // 版本
+  optional string version = 1;
+  // 关联的长视频信息
+  repeated RelatedVideoInfo related_video_info = 2;
+
+  message RelatedVideoInfo {
+    //关联算法类型
+    optional RelatedAlgorithmType related_algorithm_type = 1 [default=IQIYI_AI];
+
+    enum RelatedAlgorithmType {
+      UNKNOWN_RELATED_ALGORITHM_TYPE = -1;
+      IQIYI_AI = 1;
+    }
+
+    // 关联长视频id
+    optional int64 related_video_id = 2;
+    // 关联度 (0-1, 值越大关联性越强)
+    optional double related_score = 3;
+    // 长短视频关联区间，记录长视频的两个时间点
+    optional TimeStartEndPoint related_time_range = 4;
+  }
+}
+
+message TimeStartEndPoint {
+  // 时间起点，时间戳，单位秒
+  optional int64 start_point = 1;
+  // 时间终点，时间戳，单位秒
+  optional int64 end_point = 2;
+}
+
+/**
+  * 图片格式
+  **/
+enum ImageFileType {
+  UNKNOWN_IMAGE_FILE_TYPE = -1;
+  IMAGE_FILE_TYPE_JPG = 0;
+  IMAGE_FILE_TYPE_WEBP = 1;
+}
+
+/**
+  * 图片清晰程度
+  **/
+enum ImageResolution {
+  UNKNOWN_IMAGE_RESOLUTION = -1;
+  IMAGE_RESOLUTION_LOW = 0;
+  IMAGE_RESOLUTION_NORMAL = 1;
+  IMAGE_RESOLUTION_HIGH = 2;
+}
+
+/**
+  * 图片压缩率
+  **/
+enum ImageCompressionStatus {
+  UNKNOWN_IMAGE_COMPRESSION_STATUS = -1;
+  IMAGE_COMPRESSION_STATUS_HIGH = 0;
+  IMAGE_COMPRESSION_STATUS_LOW = 1;
+}
+
+/**
+ * 图片类型
+ *
+  **/
+enum ImageType {
+  COVER = 601; // 封面图
+  POSTER = 600; // 海报图
+}
+
+// 视频清晰度信息
+message VideoDefinitionInfo {
+  // 版本
+  optional string version = 1;
+  // 高清概率 (取值范围0-1 值越高为高清的概率越高)
+  optional double high_definition_probability = 2;
+  // 普清概率 (取值范围0-1 值越高为普清的概率越高)
+  optional double normal_definition_probability = 3;
+  // 模糊概率 (取值范围0-1 值越高为模糊的概率越高)
+  optional double low_definition_probability = 4;
+}
+
+// 图片合成视频信息
+message PictureConvertedVideoInfo {
+  // 版本
+  optional string version = 1;
+  // 图片合成视频概率 (取值范围0-1 值越高为图片合成视频的概率越高)
+  optional double picture_converted_video_probability = 2;
+}
+
+// 信息流去重信息(废弃)
+message BeehiveDuplicationRemoval {
+  // 版本
+  optional string version = 1;
+  // 重复等级(1 不重复，2 相似，3重复)
+  optional DuplicationLevel duplication_level = 2;
+  // 重复等级
+  enum DuplicationLevel {
+      UNKNOWN_DUPLICATE = -1;
+      // 不重复
+      NON_DUPLICATE = 1;
+      // 相似
+      SIMILAR = 2;
+      // 重复
+      DUPLICATE = 3;
+  }
+  // 图片相似分数
+  optional double image_similarity_score = 3;
+  // 视频相似分数
+  optional double video_similarity_score = 4;
+  // 标题相似分数
+  optional double title_similarity_score = 5;
+  // 相似的奇谱id
+  optional int64 similar_qipu_id = 6;
+  // 通过sha1计算是否重复
+  optional bool video_sha1_is_duplicate = 7[default=false];
+}
+
+// 信息流质量评估信息
+message BeehiveQualityAssessment {
+  // 版本
+  optional string version = 1;
+  // 总分数
+  optional double score = 3;
+  // 来源分数
+  optional double source_score = 4;
+}
+
+// 文本类
+message BaseTypeString {
+  // 版本
+  optional string version = 1;
+  // 字符串内容
+  optional string string_value = 2;
+}
+
+message StringList {
+  // 版本
+  optional string version = 1;
+  // 字符串列表
+  repeated string string_value = 2;
+}
+
+message WeightedString {
+  // 版本
+  optional string version = 1;
+  // 字符串内容
+  optional string string_value = 2;
+  // 权重
+  optional double weight = 3;
+  // 置信度
+  optional double confidence = 4;
+}
+
+message WeightedStringList {
+  // 版本
+  optional string version = 1;
+  // 带权重的字符串列表
+  repeated WeightedString weighted_string_value = 2;
+}
+
+// 字典类
+message BaseTypeDict {
+  // 版本
+  optional string version = 1;
+  // 字典类型整数值
+  optional int32 int_value = 2;
+  // 字典类型文本值
+  optional string string_value = 3;
+}
+
+message DictList {
+  // 版本
+  optional string version = 1;
+  // 字典列表
+  repeated BaseTypeDict dict_value = 2;
+}
+
+message WeightedDict {
+  // 版本
+  optional string version = 1;
+  // 字典
+  optional BaseTypeDict dict_value = 2;
+  // 权重
+  optional double weight = 3;
+  // 置信度
+  optional double confidence = 4;
+}
+
+message WeightedDictList {
+  // 版本
+  optional string version = 1;
+  // 带权重的字典列表
+  repeated WeightedDict weighted_dict_value = 2;
+}
+
+// 整数类
+message BaseTypeLong {
+  // 版本
+  optional string version = 1;
+  // 整数值
+  optional int64 long_value = 2;
+}
+
+message LongList {
+  // 版本
+  optional string version = 1;
+  // 整数列表，可用于vector,bitmap
+  repeated int64 long_value = 2;
+}
+
+message WeightedLong {
+  // 版本
+  optional string version = 1;
+  // 整数值
+  optional int64 long_value = 2;
+  // 权重
+  optional double weight = 3;
+  // 置信度
+  optional double confidence = 4;
+}
+
+message WeightedLongList {
+  // 版本
+  optional string version = 1;
+  // 带权重的整数列表
+  repeated WeightedLong weighted_long_value = 2;
+}
+
+//浮点类
+message BaseTypeFloat {
+  // 版本
+  optional string version = 1;
+  // 浮点值，单精度
+  optional float float_value = 2;
+  // 浮点值，双精度
+  optional double double_value = 3;
+}
+
+message FloatList {
+  // 版本
+  optional string version = 1;
+  // 浮点数列表，单精度
+  repeated float float_value = 2;
+  // 浮点数列表，双精度
+  repeated double double_value = 3;
+}
+
+message WeightedFloat {
+  // 版本
+  optional string version = 1;
+  // 浮点值，单精度
+  optional float float_value = 2;
+  // 浮点值，双精度
+  optional double double_value = 3;
+  // 权重
+  optional double weight = 4;
+  // 置信度
+  optional double confidence = 5;
+}
+
+message WeightedFloatList {
+  // 权重
+  optional string version = 1;
+  // 带权重的浮点数列表
+  repeated WeightedFloat weighted_float_value = 2;
+}
+
+//时序数据
+message BaseTypeTimeSeriesData {
+  // 版本
+  optional string version = 1;
+  // 时间戳，单位为秒
+  optional int64 time_second = 2;
+  // 对应的实体id列表
+  optional LongList entity_id_list = 3;
+  // 对应的文本列表
+  optional StringList text_list = 4;
+}
+
+message TimeSeriesDataList {
+  // 版本
+  optional string version = 1;
+  // 时序数据列表
+  repeated BaseTypeTimeSeriesData time_series_data = 2;
+}
+
+message WeightedTimeSeriesData {
+  // 版本
+  optional string version = 1;
+  // 时序数据
+  optional BaseTypeTimeSeriesData time_series_data = 2;
+  // 权重
+  optional double weight = 3;
+  // 置信度
+  optional double confidence = 4;
+}
+
+message WeightedTimeSeriesDataList {
+  // 版本
+  optional string version = 1;
+  // 带权重的时序数据列表
+  repeated WeightedTimeSeriesData weighted_time_series_data = 2;
+}
+
+//定制类型
+message NlpLabel {
+  // 版本
+  optional string version = 1;
+  // 标签内容
+  optional string label_value = 2;
+  // 标签对应的图谱id
+  optional int64 knowledge_id = 3;
+  // 标签词性（Part of Speech）
+  optional string pos = 4;
+  // 标签来源（标题，正文）
+  optional string source = 5;
+  // 权重
+  optional double weight = 6;
+  // 置信度
+  optional double confidence = 7;
+}
+
+message NlpLabelList {
+  // 版本
+  optional string version = 1;
+  // 标签列表
+  repeated NlpLabel label = 2;
+}
+
+message WeightedBool {
+  // 版本
+  optional string version = 1;
+  // 布尔值，默认false
+  optional bool bool_value = 2 [default = false];
+  // 权重
+  optional double weight = 3;
+  // 置信度
+  optional double confidence = 4;
+}
+
+
+
+

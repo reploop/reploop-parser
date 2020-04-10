@@ -1,0 +1,4790 @@
+// Author: Yin Zeng (zengyin@qiyi.com)
+import "google/protobuf/descriptor.proto";
+
+package knowledge.pub;
+
+message EnumOptions {
+  optional string field = 1;
+}
+
+message EnumValueOptions {
+  optional string label = 1;
+}
+
+extend google.protobuf.FieldOptions {
+  optional EnumOptions enum_option = 50003;
+}
+
+extend google.protobuf.EnumValueOptions {
+  optional EnumValueOptions enum_value_option = 50004;
+}
+
+// 需要获取的VideoBrief列表排序
+enum SortOrder {
+  DESC = 1;
+  ASC = 2;
+}
+
+enum SiteType{
+  UNKNOWN_SITE_TYPE = -1;
+
+  // CHINESE
+  SITE_ZH = 1;
+
+  // CHINESE_TAIWAN
+  SITE_ZH_TW = 2;
+}
+
+/**
+ * @brief 通用类型: 奇谱数据类型，同时也是奇谱ID的最后两位数据。 
+ * @details 奇谱数据类型，同时也是奇谱ID的最后两位数据。 
+ *
+**/
+enum EntityIdType {
+// 44,52提供给脸谱使用
+  EPISODE     = 0;
+  ALBUM       = 1;
+  COLLECTION  = 2;
+  CSS         = 3;
+  IMAGE       = 4;
+  PEOPLE      = 5;
+  VIDEO_GROUP = 6;
+  MULTI_PUBLISH_EPISODE = 7;
+  MULTI_PUBLISH_ALBUM = 8;
+  UGC_EPISODE = 9;
+  //LIVE_BROADCAST = 10;
+  COMPETITION = 10;
+  MATCH = 11;
+  //YINGYIN_DB = 11;
+  RESOURCE_CONTAINER = 12;
+  //PPS_UGC_CHANNEL = 13;
+  FILM_TV_LIBRARY = 14;
+  ORGANIZATION_SHARE_PARTNER = 15;
+  UGC_COLLECTION = 16;
+  ADS_MATERIAL = 17;
+  TV_LIVE_CENTER = 18;
+  PPS_CATEGORY = 19;
+  APP_GROUP = 20;
+  //MINI_AUTO_CLUSTER = 21;
+  CIRCLE_FEED_COMMENT = 21;
+  LIVE_CHANNEL = 22;
+  LIVE_EPISODE = 23;
+
+  // for E-Business.
+  COMMODITY = 24;
+  SPU = 25;
+  ITEM_BRAND = 26;
+
+  THEATER = 27;
+
+  QIQU_TAG = 28;
+
+  // 话题
+  TOPIC = 29;
+
+  // 店铺
+  SHOP = 30;
+
+  // 主播信息
+  PRESENTER = 31;
+
+  // 直播信息
+  SHOW_ROOM = 32;
+
+  CATEGORY = 33;
+
+  // 电影节
+  FESTIVAL = 34;
+
+  // 专题
+  SPECIAL_SUBJECT = 35;
+
+  // 角色
+  CHARACTER = 36;
+
+  // 图谱计算.分类体系
+  TAXONOMY = 37;
+
+  // 图谱计算.实体
+  GRAPH_ENTITY = 38;
+
+  // 图书
+  BOOK = 39;
+
+  // 书的卷
+  BOOK_VOLUME = 40;
+
+  // 书的章节
+  BOOK_CHAPTER = 41;
+
+  // 电影节分年奖项信息
+  FESTIVAL_SERIES = 42;
+
+  // 电影节奖项信息
+  FESTIVAL_AWARD = 43;
+
+  // 提示语
+  OPERATION_TIP = 45;
+
+  // 泡泡
+  PAOPAO = 46;
+  // 圈子
+  CIRCLE = 47;
+  // circle feed
+  CIRCLE_FEED = 48;
+  // 聊天室
+  CHAT_ROOM = 49;
+  // 作者
+  BOOK_AUTHOR = 50;
+  // 事件
+  EVENT = 51;
+
+  // 动漫书(0070)
+  COMIC_BOOK = 70;
+  // 动漫书 话（章节）(0170)
+  COMIC_BOOK_CHAPTER = 170;
+  // CP (0270)
+  CONTENT_PROVIDER = 270;
+  // 专题页面 (0370)
+  SUBJECT_PAGE = 370;
+  // 活动
+  PAOPAO_ACTIVITY = 470;
+  // 头条
+  HEAD_LINE = 570;
+  //视频专题
+  PAOPAO_COLLECTION = 670;
+  //ip关联表
+  INTELLECTUAL_PROPERTY = 770;
+  //热点事件
+  HOT_EVENT = 870;
+  // 开放平台富媒体实体
+  OPEN_RICH_MEDIA = 1070;
+  // 明星美图实体
+  PEOPLE_IMAGE = 1270;
+  // 视频码流
+  VIDEO_FORMAT = 1170;
+  // 直播间实体
+  LIVE_ROOM = 1370;
+  //图集
+  IMAGE_ALBUM = 1470;
+  //头条专辑
+  HEAD_LINE_ALBUM = 1670;
+  //游戏专场
+  GAME_ACTIVITY = 1770;
+  //爱奇艺用户
+  IQIYI_USER = 53;
+  //轻小说
+  LIGHT_NOVEL = 1870;
+  //轻小说卷
+  LIGHT_NOVEL_VOLUME = 1970;
+  //轻小说章
+  LIGHT_NOVEL_CHAPTER = 2070;
+  //小剧场直播
+  LIVE_ACT = 2270;
+  //短视频项目
+  PIZZA_VIDEO = 2170;
+}
+
+/**
+ * @brief 通用类型: 平台
+ * @details
+ *
+**/
+enum Platform {
+  UNKNOWN=-1;
+  COMMON = 0;
+  PC     = 1;
+  PAD    = 2;
+  PHONE  = 3;
+  TV     = 4;
+}
+
+/**
+ * @brief 通用类型:  RPC服务请求返回状态
+ * @details
+ *
+**/
+enum RpcStatus {
+  OK = 0;
+  TIME_OUT = 1;
+  EXCEED_QPS_LIMIT = 2;
+
+  FAILED_REQUEST_VALIDATION = 3;
+  FAILED_AUTHENTICATION = 4;
+  FAILED_ACCESS_CONTROL = 5;
+  FAILED_INTERNAL = 6;
+}
+
+enum RpcCode {
+  SUCCESS= 0; //成功完成请求
+  CACHE_FAILED = 1; //写couchbase失败
+  MESSAGE_FAILED = 2; //发送消息失败
+}
+
+/**
+ * @brief 通用类型: RPC服务请求返回状态信息
+ * @details
+ *
+**/
+message RpcStatusInfo {
+  required RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  optional RpcCode rpc_code = 3;
+}
+
+/**
+ * @brief 通用类型: RPC请求
+ * @details
+ *
+**/
+message RpcRequestBase {
+  required User user = 1;
+}
+
+/**
+ * @brief 通用类型: RPC请求返回值
+ * @details
+ *
+**/
+message RpcResponseBase {
+  required RpcStatusInfo rpc_status_info = 1;
+}
+
+/**
+ * @brief 通用类型: 奇谱数据表
+ * @details
+ *
+**/
+enum Table {
+  ALBUM_TABLE = 1;
+  COLLECTION_TABLE = 2;
+  CSS_TABLE = 3;
+  EPISODE_TABLE = 4;
+  IMAGE_TABLE = 5;
+  PEOPLE_TABLE = 6;
+  VIDEO_GROUP_TABLE = 7;
+  UGC_EPISODE_TABLE = 8;
+  //LIVE_BROADCAST_TABLE = 9;
+  COMPETITION_TABLE = 9;
+  //AGGREGATION_TABLE = 10;
+  MATCH_TABLE = 10;
+  RESOURCE_CONTAINER_TABLE = 11;
+  //PPS_UGC_CHANNEL_TABLE = 12;
+  FILM_TV_LIBRARY_TABLE = 13;
+  ORGANIZATION_SHARE_PARTNER_TABLE = 14;
+  UGC_COLLECTION_TABLE = 15;
+  ADS_MATERIAL_TABLE = 16;
+  TV_LIVE_CENTER_TABLE = 17;
+  PPS_CATEGORY_TABLE = 18;
+  APP_GROUP_TABLE = 19;
+  //MINI_AUTO_CLUSTER_TABLE = 20;
+  CIRCLE_FEED_COMMENT_TABLE = 20;
+  LIVE_CHANNEL_TABLE = 21;
+  LIVE_EPISODE_TABLE = 22;
+
+  // for E-Business.
+  COMMODITY_TABLE = 23;
+  SPU_TABLE = 24;
+  ITEM_BRAND_TABLE = 25;
+
+  THEATER_TABLE = 26;
+
+  QIQU_TAG_TABLE = 27;
+
+  TOPIC_TABLE = 28;
+
+  SHOP_TABLE = 29;
+
+  // 主播信息
+  PRESENTER_TABLE = 30;
+
+  // 直播信息
+  SHOW_ROOM_TABLE = 31;
+
+  CATEGORY_TABLE = 32;
+
+  // 电影节
+  FESTIVAL_TABLE = 33;
+
+  // 专题
+  SPECIAL_SUBJECT_TABLE = 34;
+
+  // 角色
+  CHARACTER_TABLE = 35;
+
+  // 图谱计算.分类体系
+  TAXONOMY_TABLE = 36;
+
+  // 图谱计算.实体
+  GRAPH_ENTITY_TABLE = 37;
+
+  // 图书
+  BOOK_TABLE = 38;
+
+  // 书的卷
+  BOOK_VOLUME_TABLE = 39;
+
+  // 书的章节
+  BOOK_CHAPTER_TABLE = 40;
+
+  // 电影节分年奖项信息
+  FESTIVAL_SERIES_TABLE = 41;
+
+  // 电影节奖项信息
+  FESTIVAL_AWARD_TABLE = 42;
+
+  // 提示语
+  OPERATION_TIP_TABLE = 43;
+
+  // 泡泡
+  PAOPAO_TABLE = 44;
+  // 圈子
+  CIRCLE_TABLE = 45;
+  // circle feed
+  CIRCLE_FEED_TABLE = 46;
+  // 聊天室
+  CHAT_ROOM_TABLE = 47;
+  // 作者
+  BOOK_AUTHOR_TABLE = 48;
+  // 事件
+  EVENT_TABLE = 49;
+  // 动漫书
+  COMIC_BOOK_TABLE = 50;
+  // 动漫书 话（章节）
+  COMIC_BOOK_CHAPTER_TABLE = 51;
+  // 图书CP
+  CONTENT_PROVIDER_TABLE = 52;
+  // 专题页面
+  SUBJECT_PAGE_TABLE = 53;
+  // 活动
+  PAOPAO_ACTIVITY_TABLE = 54;
+  //头条
+  HEAD_LINE_TABLE = 55;
+  //视频专题
+  PAOPAO_COLLECTION_TABLE = 56;
+  //IP关联表
+  INTELLECTUAL_PROPERTY_TABLE = 57;
+  //热点事件
+  HOT_EVENT_TABLE = 58;
+  // 开放平台富媒体实体
+  OPEN_RICH_MEDIA_TABLE = 59;
+  // 视频码流实体
+  VIDEO_FORMAT_TABLE = 60;
+  // 多发Episode实体
+  MULTI_PUBLISH_EPISODE_TABLE = 61;
+  // 多发Album实体
+  MULTI_PUBLISH_ALBUM_TABLE = 62;
+  // 明星美图实体
+  PEOPLE_IMAGE_TABLE = 63;
+  // 直播间实体
+  LIVE_ROOM_TABLE = 64;
+  //图集
+  IMAGE_ALBUM_TABLE = 65;
+  //头条专辑
+  HEAD_LINE_ALBUM_TABLE = 66;
+  //游戏专场
+  GAME_ACTIVITY_TABLE = 67;
+  //爱奇艺用户
+  IQIYI_USER_TABLE = 68;
+  //轻小说
+  LIGHT_NOVEL_TABLE = 69;
+  //轻小说卷
+  LIGHT_NOVEL_VOLUME_TABLE = 70;
+  //轻小说章
+  LIGHT_NOVEL_CHAPTER_TABLE = 71;
+  //小剧场直播
+  LIVE_ACT_TABLE = 72;
+  //短视频项目
+  PIZZA_VIDEO_TABLE = 73;
+}
+
+/**
+ * @brief 通用类型: 奇谱字段类型
+ * @details
+ *
+**/
+enum ColumnGroup {
+  UNKNOWN_GROUP = -1;
+  METADATA = 1;
+  PEOPLE_METADATA = 2;
+  IMAGE_METADATA = 3;
+  DELETED = 4;
+  CHILD_VIDEO_GROUP = 5;
+  CHILD_ALBUM = 6;
+  CHILD_EPISODE = 7;
+  CHILD_CSS = 8;
+  CHILD_IMAGE = 9;
+  CHILD_PEOPLE = 10;
+  CHILD_PREVUE = 11;
+  CHILD_TRAILER = 12;
+  CHILD_TITBIT = 13;
+  CHILD_CLIP = 79;
+  CHILD_OTHER = 80;
+  CHILD_LIVE_EPISODE = 150;
+  PPS_CATEGORY_CHILD = 102;
+  TAG = 14;
+  FORMAT = 15;
+  IMAGE_FORMAT = 16;
+  PUYU = 17;
+  PPS_PUYU = 82;
+  SEO = 18;
+  BOSS = 19;
+  BASE = 20;
+  PPS_BASE = 83;
+  STATS_PC = 21;
+  STATS_PAD = 40;
+  STATS_PHONE = 41;
+  STATS_TV = 42;
+  DISPLAY_PLAY_COUNT = 71;
+  PLAY_COUNT = 72;
+  UP_COUNT = 49;
+  DOWN_COUNT = 77;
+  COMMENT_COUNT = 64;
+  SUBSCRIBE_COUNT = 65;
+  SHARE_COUNT = 66;
+  DOUBAN_ID = 22;
+  LAST_UPDATE_TIME = 23;
+  FATHER_COLLECTION = 24;
+  FATHER_UGC_COLLECTION = 78;
+  FATHER_VIDEO_GROUP = 25;
+  FATHER_ALBUM = 26;
+  FATHER_OFFICIAL_EPISODE = 27;
+  FATHER_PPS_CATEGORY = 106;
+  FATHER_LIVE_CHANNEL = 146;
+  KEY_VALUE_PAIR = 28;
+  QITAN = 29;
+  BAIDU = 30;
+  VIEWLINK = 31;
+  START_END_POINT = 32;
+  COLLECTION_TYPE = 33;
+  MULTI_PUBLISH = 34;
+  AVAILABLE_STATUS = 35;
+  IQIYI_AVAILABLE_STATUS = 73;
+  PPS_AVAILABLE_STATUS = 74;
+  LIVE_SUMMARY = 36;
+  SHARE_PARTNER = 37;
+  SUBTITLE = 38;
+  COLLECTION_SUB_TYPE = 39;
+  DRM_KEY = 43;
+  UGC_METADATA = 44;
+  LIVE_METADATA = 45;
+  GAME_INFO = 46;
+  STREAM_LIST = 47;
+  LIVE_STATUS = 48;
+  RESOURCE_ELEMENTS_SUMMARY = 50;
+  SECONDARY_RESOURCE_ELEMENTS_SUMMARY = 112;
+  IS_RESOURCE_GROUP = 51;
+  RESOURCE_TYPE = 52;
+  PPS_UGC_CHANNEL_METADATA = 53;
+  PPS_UGC_CHANNEL_ID_LIST = 54;
+  PPS_UGC_CHANNEL_AUDIT_STATUS = 55;
+  PPS_UGC_CHANNEL_STATS = 56;
+  FILM_TV_METADATA = 57;
+  CHILD_FILM_TV = 58;
+  RELATED_PEOPLE_OF_FILM_TV = 59;
+  RELATED_FILM_TV_OF_FILM_TV = 60;
+  FILM_TV_STATS = 61;
+  ORGANIZATION_METADATA = 62;
+  DESCENDANT_UPDATE_NOTIFIER = 63;
+  UGC_BASE = 67;
+  UGC_CHECK = 68;
+  PAGE_PUBLISH_STATUS = 69;
+  IQIYI_PAGE_PUBLISH_STATUS = 75;
+  PPS_PAGE_PUBLISH_STATUS = 76;
+  RAW_VIDEO_FILE_INFO = 70;
+  FILM_VIDEO_FILE_INFO = 81;
+  IQIYI_PLATFORM_REGION_CONTROL = 84;
+  PPS_PLATFORM_REGION_CONTROL = 85;
+  ADS_MATERIAL_METADATA = 86;
+  RELATED_PEOPLE_LIST = 87;
+  RELATED_EPISODE_LIST = 88;
+  PASSPORT_ID = 89;
+  PLAY_SOURCE_ID = 90;
+  POSTER = 91;
+  OTHER_IMAGE = 92;
+  // for film tv library to connect its related qipu entity.
+  QIPU_ID = 93;
+  TV_LIVE_CENTER_METADATA = 94;
+  TV_CHANNEL = 95;
+  ELECTRONIC_PROGRAM_GUIDE = 96;
+  TV_LIVE_BASE = 97;
+  TV_LIVE_STREAM_LIST = 98;
+  REPRESENTATIVE_WORK_LIST = 99;
+  UGC_OPERATION = 100;
+  PPS_URLS = 101;
+  PPS_CATEGORY_PLATFORM_DATA = 103;
+  PPS_CATEGORY_BASE = 104;
+  CONTENT_TYPE = 105;
+  TOTAL_DURATION = 107;
+  UGC_PLAY_LIST_INFO = 108;
+  SEARCH_INFO = 109;
+  FILM_TV_CHECK_STATUS = 110;
+  WHICH_BRAND_CREATE = 111;
+  UPLOAD_TYPE = 113;
+  COMMON_BASE = 114;
+  FILM_TV_ID = 115;
+  APP_GROUP_METADATA = 116;
+  APP_GROUP_CHILD = 117;
+  IS_APP_GROUP = 118;
+  APP_INSTALL_COUNT = 119;
+  APP_CLICK_COUNT = 120;
+  APP_MEDIA_LIST = 121;
+  APP_VERSION_CHANGE_INFO = 122;
+  APP_GAME_INFO = 123;
+  APP_PERMISSION_LIST = 124;
+  APP_CHECK = 125;
+  FATHER_APP_GROUP = 126;
+  APP_RATING = 127;
+  APP_BASE = 128;
+  MINI_AUTO_CLUSTER_BASE = 129;
+  RELATED_ALBUM_VIDEO_CHILD = 130;
+  VOTE_INFO = 131;
+  COPYRIGHT_PROTECTION = 132;
+  VIRTUAL_UGC_INFO = 133;
+  RECOMMEND_DATA_SOURCE_LIST = 134;
+  ONLINE_COUNT_UPDATE_STRATEGY = 135;
+  MUSIC_INFO = 136;
+  SITE_INFO_LIST = 137;
+  DOUBAN_INFO = 138;
+  FINGERPRINT = 139;
+  ACCESS_PLAY_CONTROL = 140;
+
+  // for live channel and live episode to connect themselvies related qipu entity.
+  LIVE_CHANNEL_BASE = 141;
+  IS_ENABLE = 142;
+  DEFAULT_LIVE_STREAM = 143;
+  LIVE_STREAM = 144;
+  LIVE_EPISODE_METADATA = 145;
+  LIVE_EPISODE_BASE = 147;
+  LIVE_EPISODE_CHARGE_INFO = 148;
+  LIVE_SPORTS = 149;
+
+  FEED = 151;
+
+  // for E-Business to connect its related qipu entities.
+  COMMODITY_BASE = 152;
+  MAIN_EPISODE = 153;
+  ITEM_STAT = 154;
+  ITEM_DESCRIPTION = 155;
+  ITEM_SHELVING = 156;
+  ITEM_AFTER_SALE = 157;
+  ITEM_SHIPMENT = 158;
+  SKU = 159;
+  COMMODITY_EXTRA = 160;
+  APPROVAL_STATUS = 161;
+  SPU_BASE = 162;
+  ITEM_PROPERTY = 163;
+  ITEM_BRAND_BASE = 164;
+
+  // for film tickets to connect its related qipu entities.
+  ON_THEATER = 165;
+  THEATER_BASE = 166;
+  ROUTE = 167;
+  THEATER_SCORE = 168;
+  OPENNING = 169;
+  RANK = 170;
+
+  // for qiqu tag to connect its related qipu entities.
+  QIQU_TAG_METADATA = 171;
+  QIQU_TAG_QUALITY = 172;
+  QIQU_TAG_HOT = 173;
+  QIQU_TAG_RELATED_TAG = 174;
+  QIQU_TAG_RESULT_CHECK = 175;
+  CHILD_QIQU_TAG = 176;
+
+  PPS_CATEGORY_RANKING = 177;
+  EPISODE_TYPE = 178;
+  AUTO_PLAYLIST_INFO = 179;
+
+  // for appGroup.
+  DETAIL_PAGE_URL = 180;
+  MONTHLY_DOWNLOAD_COUNT = 181;
+
+  // for ppsCategory.
+  UPDATE_FREQUENCE = 182;
+  UPDATE_SOURCE = 183;
+
+  SEASON = 184;
+
+  // for topic to connect its related qipu entities.
+  TOPIC_METADATA = 185;
+
+  // for shop to connect its related qipu entities.
+  SHOP_BASE = 186;
+  SHOP_LINKAGE = 187;
+  SHOP_SCORE = 188;
+  BULLETIN = 189;
+  STATUS = 190;
+
+  // for the tag of episode.
+  OCR_TAG = 191;
+  ASR_TAG = 192;
+  SMART_TAG = 193;
+
+  // for the topic of episode.
+  TOPIC_SUMMARY = 194;
+
+  // for the qiqu tag of episode|album.
+  CATEGORY_SUMMARY = 195;
+
+  // for the ad_point tag of episode|ugcEpisode.
+  AD_POINT_TAG = 196;
+
+  // for the page_url of liveChannel|liveEpisode.
+  PAGE_URL = 197;
+
+  // for the notice of episode|album.
+  NOTICE = 198;
+
+  // for the related_videos of Album|Episode|FilmTvLibrary|People
+  RELATED_VIDEOS = 199;
+
+  // for the related_celebrities of Album|Episode|FilmTvLibrary|People
+  RELATED_CELEBRITIES = 200;
+
+  // for the alias_name of Presenter
+  ALIAS_NAME = 201;
+  // for the grade of Presenter
+  GRADE = 202;
+  // for the recommend_rate of Presenter|ShowRoom
+  RECOMMEND_RATE = 203;
+  // for the recommend_remark of Presenter|ShowRoom
+  RECOMMEND_REMARK = 204;
+  // for the recommend_image of Presenter|ShowRoom
+  CHILD_RECOMMEND_IMAGE = 205;
+  // for the show_image of Presenter|ShowRoom
+  CHILD_SHOW_IMAGE = 206;
+
+  // for the url of ShowRoom
+  URL = 207;
+  // for the current_presenter_id of ShowRoom
+  CURRENT_PRESENTER_ID = 208;
+  // for the show_status of ShowRoom
+  SHOW_STATUS = 209;
+  // for the start_time of ShowRoom
+  START_TIME = 210;
+  // for the audience_count of ShowRoom
+  AUDIENCE_COUNT = 211;
+  // for the room_type of ShowRoom
+  ROOM_TYPE = 212;
+
+  //for the graph_playlist_type of collection
+  GRAPH_PLAYLIST_TYPE = 213;
+
+  //for the up_down_score of Collection|Album|Episode|People|UgcEpisode|UgcCollection|FilmTvLibrary
+  UP_DOWN_SCORE = 214;
+
+  // for changed content of category in category table
+  CATEGORY_CONTENT = 215;
+
+  //for the sns_score of Album|Episode|FilmTvLibrary
+  SNS_SCORE = 216;
+
+  //for the audio_format of Episode
+  AUDIO_FORMAT = 217;
+
+  //for the promotion of Commodity
+  PROMOTION = 218;
+  
+  //for the head_portrait of Presenter
+  CHILD_HEAD_PORTRAIT = 219;
+
+  //for the fan_count of Presenter
+  FAN_COUNT = 220;
+
+  //for the last_live_end_time of Presenter
+  LAST_LIVE_END_TIME = 221;
+
+  //for the next_live_start_time of Presenter
+  NEXT_LIVE_START_TIME = 222;
+
+  //for the current_live_start_time of Presenter
+  CURRENT_LIVE_START_TIME = 223;
+
+  //for the current_live_end_time of Presenter
+  CURRENT_LIVE_END_TIME = 224;
+
+  //for the owned_metal of Presenter
+  OWNED_METAL = 225;
+
+  //for the current_presenter of ShowRoom
+  CHILD_CURRENT_PRESENTER = 226;
+
+  //for the show_room_name of ShowRoom
+  SHOW_ROOM_NAME = 227;
+
+  //for the commodity_category of Commodity
+  COMMODITY_CATEGORY = 228;
+
+  //for the music_ summary of Album|Episode
+  CHILD_MUSIC = 229;
+
+  //for the pano_format of Episode
+  PANO_FORMAT = 230;
+
+  //for the celebrity_figure_out of Episode
+  CELEBRITY_FIGURE_OUT = 231;
+
+  //for the ugc_summary of FilmTVLibrary
+  CHILD_UGC_EPISODE = 232;
+
+  //for the quality of Episode|UgcEpisode
+  QUALITY_SCORE = 233;
+
+  //for the metadata of Festival
+  FESTIVAL_METADATA = 234;
+
+  //for the region_type of Festival
+  REGION_TYPE = 235;
+
+  //for the type of Festival
+  FESTIVAL_TYPE = 236;
+
+  //for the festival_series of Festival
+  FESTIVAL_SERIES_SUMMARY = 237;
+
+  //for the event of Collection
+  COLLECTION_EVENT = 238;
+
+  //for the metadata of SpecialSubject
+  SUBJECT_METADATA = 239;
+
+  //for the create_time of SpecialSubject
+  CREATE_TIME = 240;
+
+  //for the first_online_time of SpecialSubject
+  FIRST_ONLINE_TIME = 241;
+
+  //for the last_online_time of SpecialSubject
+  LAST_ONLINE_TIME = 242;
+
+  //for the metadata of SpecialSubject
+  CHAR_METADATA = 243;
+
+  //for the related_character of SpecialSubject
+  RELATED_CHARACTER = 244;
+
+  //for the related_collection of SpecialSubject
+  RELATED_COLLECTION = 245;
+
+  //for the related_resources of SpecialSubject
+  RELATED_RESOURCES = 246;
+
+  //for the related_film_tv of SpecialSubject
+  RELATED_FILM_TV = 247;
+
+  //for the icon_image of SpecialSubject
+  ICON_IMAGE = 248;
+
+  //for the other_image of SpecialSubject
+  CHAR_OTHER_IMAGE = 249;
+
+  //for the own_room_id of Presenter
+  OWN_ROOM_ID = 250;
+
+  //for the ongoing_room_id of Presenter
+  ONGOING_ROOM_ID = 251;
+
+  //for the metadata of Taxonomy
+  TAXONOMY_METADATA = 252;
+  
+  //for the type of Taxonomy
+  TAXONOMY_TYPE = 253;
+
+  //for the sub_taxonomy of Taxonomy
+  SUB_TAXONOMY = 254;
+
+  //for the metadata of GraphEntity
+  ENTITY_METADATA = 255;
+  
+  //for the related_entity of GraphEntity
+  RELATED_ENTITY = 256;
+
+  //for the father_taxonomy of GraphEntity
+  FATHER_TAXONOMY = 257;
+
+  //for the video_info of Album|Episode
+  VIDEO_INFO = 258;
+
+  //for the ugc_episode_summary of Topic
+  UGC_EPISODE_SUMMARY = 259;
+
+  //for the cooperation of Album
+  COOPERATION = 260;
+
+  //for the LocaleBase of Episode|Album
+  LOCAL_BASE = 261;
+
+  //for the LocalImage of Episode|Album
+  LOCAL_IMAGE = 262;
+
+  //for the base of Category
+  CATEGORY_BASE = 263;
+
+  //for the version of Category
+  VERSION = 264;
+
+  //for the brand of Category
+  CATEGORY_BRAND = 265;
+
+  //for the parent of Category
+  PARENT = 266;
+
+  //for the qipu of Episode|LiveEpisode
+  QISU = 267;
+
+  //for the edge_properties of GraphEntity
+  EDGE_PROPERTIES = 268;
+
+  //for the vote_summary of Episode|Album
+  VOTE_SUMMARY = 269;
+
+  //for Book
+  VOLUME_COUNT = 270;
+  CHAPTER_COUNT = 271;
+  SALES_VOLUME = 272;
+  CLICK_COUNT = 273;
+  SUITABLE_GROUP = 274;
+  BOOK_PUBLICATION = 276;
+  CHILD_VOLUME = 277;
+  FATHER_BOOK = 278;
+  CHILD_CHAPTER = 279;
+  FATHER_VOLUME = 280;
+  CONTENT = 281;
+  AFTERWORD = 282;
+  BOOK_FIRST_ONLINE_TIME = 283;
+  BOOK_LAST_ONLINE_TIME = 284;
+
+  //for the ad_image of Album|Episode
+  AD_IMAGE = 285;
+
+  //for the award_summary of Album|Episode|People
+  AWARD_SUMMARY = 286;
+
+  //for the type of Category
+  CATEGORY_TYPE = 287;
+  
+  //for the FestivalSeries
+  FATHER_FESTIVAL = 288;
+  NOMINATE_SUMMARY = 289;
+
+  //for the FestivalAward
+  FATHER_SERIES = 290;
+  CREATOR = 291;
+  CONTRIBUTOR = 292;
+  AWARD_TYPE = 293;
+  REGION_BASE = 294;
+
+  //for the people_scene_shot of Episode
+  PEOPLE_SCENE_SHOT = 295;
+
+  //for the is_simulcast of ResourceContainer 
+  IS_SIMULCAST = 296;
+
+  //for the mark of AppGroup
+  MARK = 297;
+
+  //for the OperationTip
+  NAME = 298;
+  FIELD = 299;
+  DESCRIPTION = 300;
+  APPLICATION = 301;
+  MODULE = 302;
+  LOCAL_TIP = 303;
+
+  DISPLAY_PROPERTY = 304;
+  HIDDEN_PROPERTY = 305;
+  RELATION = 306;
+
+  BOOK_TAG = 307;
+  PAOPAO_SUMMARY = 308;
+
+  REJECT_SEARCH = 309;
+  RELATIVE_FATHER_EPISODE = 310;
+  RELATIVE_FATHER_ALBUM = 311;
+  RELATIVE_CHILD_EPISODE = 312;
+  SUB_URL = 313;
+  MODIFIER = 314;
+  EXPIRE_TIME = 315;
+  CIRCLE_SUMMARY = 316;
+  ALBUM_SUMMARY = 317;
+  EPISODE_SUMMARY = 318;
+  PEOPLE_SUMMARY = 319;
+  HEAT = 320;
+  PROP = 321;
+
+  SALES_YESTERDAY = 322;
+  SALES_WEEK = 323;
+  SALES_MONTH = 324;
+  SALES_DAY_ON_DAY = 325;
+  CLICK_COUNT_YESTERDAY = 326;
+  CLICK_COUNT_WEEK = 327;
+  CLICK_COUNT_MONTH = 328;
+
+  PAOPAO_ENTRANCE_IMAGE = 329;
+
+  CHARGE_BASE = 330;
+  PORTRAIT = 331;
+
+  FATHER_CIRCLE = 332;
+  FEED_SUMMARY = 333;
+
+  CHAT_ROOM_SUMMARY = 334;
+  SCORE = 335;
+  INCOME_YESTERDAY = 336;
+  SUBSITE = 337;
+  BOOK_SUMMARY = 338;
+  READ_FREE_CHAPTER_COUNT = 339;
+  READ_PAID_CHAPTER_COUNT = 340;
+  READ_WORD_COUNT = 341;
+  CHECK_STATUS = 342;
+  COMMODITY_TAG = 343;
+  SUB_TYPE = 344;
+  AUTHOR_SUMMARY = 345;
+  IQIYI_CHILD = 346;
+  READ_CHAPTER_COUNT = 347;
+  READ_CHAPTER_COUNT_YESTERDAY = 348;
+  ADDED_TO_BOOKSHELF_COUNT = 349;
+  ADDED_TO_BOOKSHELF_COUNT_YESTERDAY = 350;
+  SALED_CHAPTER_COUNT = 351;
+  SALED_CHAPTER_COUNT_YESTERDAY = 352;
+  USER_TYPE = 353;
+  NOTICE_START_TIME = 354;
+  NOTICE_END_TIME = 355;
+  ORDER_HOT = 356;
+  ORDER_ALL = 357;
+  LIVE_EPISODE_SUMMARY = 358;
+  PGC_BASE = 359;
+  EVENT_SUMMARY = 360;
+  PAOPAO_BASE = 361;
+  EVENT_TYPE = 362;
+  IS_BLOCKED = 363;
+  APP_GAME_PARAMETER = 364;
+  HOT_SORT = 375;
+
+  CRAWLER_INFO = 376;
+  RECOMMENDED_LEVEL = 377;
+  COMPETITOR_INFO = 378;
+  COLLECTION_SUMMARY = 379;
+  PLAYBACK_SUMMARY = 380;
+  FATHER_COMPETITION = 381;
+  RESOURCE_SUMMARY = 382;
+  RESOURCE_GROUP_SUMMARY = 383;
+  MATCH_SUMMARY = 384;
+  TROPHY_LIST_SUMMARY = 385;
+  IS_PRIVATE = 386;
+  READ_CHAPTER_AVERAGE_WEEK = 387;
+  ADDED_TO_BOOKSHELF_UV_WEEK = 388;
+  EPISODE_VIEWPOINT = 389;
+  
+  LIKE_COUNT = 390;
+  REPLY_COUNT = 391;
+  BOOK_PROPERTY = 392;
+  CP_SUMMARY = 393;
+  REWARD_YESTERDAY = 394;
+  REWARD_WEEK = 395;
+  REWARD_MONTH = 396;
+  REWARD_COUNT = 397;
+  ORDER_PRE = 398;
+  SALED_CHAPTER_AVERAGE = 399;
+  SALED_CHAPTER_MOST = 400;
+  SALED_COUNT_UV = 401;
+  PARTICIPATION_COUNT = 402;
+  IS_TOP = 403;
+  IS_DISTILLATE = 404;
+  USER_IDENTITY = 405;
+  COMMENT_USER_CHARACTERISTICS = 406;
+  LIKE_USER_CHARACTERISTICS = 407;
+  SHARE_USER_CHARACTERISTICS = 408;
+  REPLY_USER_CHARACTERISTICS = 409;
+  CIRCLE_USER_COUNT = 410;
+  VALID_FEED_COUNT = 411;
+  HOT_COMMENT_PEOPLE_COUNT = 412;
+  MULTI_PUYU = 413;
+  ONLINE_SCHEDULE_LIST = 414;
+  PAGE_THUMBNAIL_LARGE = 415;
+  PAGE_THUMBNAIL_SMALL = 416;
+  PAGE_COMPONENT = 417;
+  AUDIO_INFO = 418;
+  APPLE_ID = 419;
+  READ_COUNT = 420;
+  COLLECT_COUNT = 421;
+  COLLECT_COUNT_DAY = 422;
+  COLLECT_COUNT_WEEK = 423;
+  COLLECT_COUNT_MONTH = 424;
+  DOWNLOAD_COUNT = 425;
+  DOWNLOAD_COUNT_DAY = 426;
+  DOWNLOAD_COUNT_WEEK = 427;
+  DOWNLOAD_COUNT_MONTH = 428;
+  ATTENDANCE_COUNT = 429;
+  ACTIVITY_SUMMARY = 430;
+  ONLINE_PAGE_COUNT = 431;
+  UPLOAD_ACTION_TYPE = 432;
+  QIXIU_ID = 433;
+  SCREENSHOT = 434;
+  LIBRARY_SUMMARY = 435;
+  I_CHANNEL_UID = 436;
+  REJECT_RECOMMEND = 437;
+  CITY_ID = 438;
+  UPDATE_TIME = 439;
+  LOCALE_IMAGE = 440;
+  VERIFIED_USER_ID = 441;
+  RECOMMEND_COUNT = 442;
+  COMICBOOK_SUMMARY = 443;
+  GAME_SUMMARY = 444;
+  TICKET_SUMMARY = 445;
+  IP_ID = 446;
+  DRM_INFO = 447;
+  LABEL_TYPE = 448;
+  EDITOR_RECOMMEND_LEVEL = 449;
+  HEAD_LINE_CHANNEL_ID = 450;
+  DISPLAY_VIEW_COUNT = 451;
+  TYPE = 452;
+  ORIGINAL_SITE_INFO = 453;
+  COVER_IMAGE = 454;
+  MATERIAL_ID = 455;
+  CHANNEL_ID = 456;
+  OLD_CATEGORY_ID = 457;
+  HEAD_LINE_PUBLISH_TIME = 458;
+  CATEGORY_SUMMARIES = 459;
+  TAGS = 460;
+  CHANNEL_IDS = 461;
+  H5_PAGE_URL = 462;
+  UPLOADER_ID = 463;
+  COMIC_BOOK_SUMMARY = 464;
+  TEMPLATE_URL_LIST = 465;
+  PAGE_INFO = 466;
+  BUSINESS_TYPE = 467;
+  HOT_EVENT_SUMMARY = 468;
+  RELATED_HOT_EVENT = 469;
+  RELATED_PEOPLE = 470;
+  FATHER_ID = 471;
+  TOTAL_ORI_IMG_SIZE = 472;
+  BOOK_FILE = 473;
+  FILE_TRIAL = 474;
+  CATALOG = 475;
+  FEED_IMAGE_SUMMARY = 476;
+  RESOURCE_CONTAINER_ID = 477;
+  ANTI_CHEAT_TYPE = 478;
+  WEIGHTED_PLAY_COUNT = 482;
+  IP_SUMMARY = 483;
+  DISPATCH_PAOPAO = 484;
+  DISPATCH_HEAD_LINE = 485;
+  HEAD_LINE_ID = 486;
+  FEED_ID = 487;
+  HEAD_LINE_CHECK_STATUS = 488;
+  PAOPAO_CHECK_STATUS = 489;
+  //for the format_summary of Episode|Album
+  FORMAT_SUMMARY = 490;
+
+  //for the film_tv_available_status of Episode|Album
+  FILM_TV_AVAILABLE_STATUS = 491;
+
+  //for the meta_basic_info of Episode|Album
+  META_BASIC_INFO = 492;
+
+  //for the meta_multilingual_info of Episode|Album
+  META_MULTILINGUAL_INFO = 493;
+
+  //for the meta_advanced_info of Episode|Album
+  META_ADVANCED_INFO = 494;
+
+  //for the content_rating of Episode|Album
+  CONTENT_RATING = 495;
+
+  //for the video_common_base of Episode|Album
+  VIDEO_COMMON_BASE = 496;
+
+  //for the operation_base of Episode|Album
+  OPERATION_BASE = 497;
+
+  //for the operation_cooperation_base of Episode|Album
+  OPERATION_COOPERATION_BASE = 498;
+
+  //for the operation_control_base of Episode|Album
+  OPERATION_CONTROL_BASE = 499;
+
+  //for the operation_multi_control_base of Episode|Album
+  OPERATION_MULTI_CONTROL_BASE = 500;
+
+  //for the operation_language_base of Episode|Album
+  OPERATION_LANGUAGE_BASE = 501;
+
+  //for the operation_page of Episode|Album
+  OPERATION_PAGE = 502;
+
+  //for the album_source_type of Album
+  ALBUM_SOURCE_TYPE = 503;
+
+  //for the related_people_info of Episode|Album
+  RELATED_PEOPLE_INFO = 504;
+
+  //for the related_character_info of Episode|Album
+  RELATED_CHARACTER_INFO = 505;
+
+  //for the ugc_summary of Episode|Album
+  UGC_SUMMARY = 506;
+
+  //for the stage_photo of Episode|Album
+  STAGE_PHOTOS = 507;
+
+  //for the feeds of Episode|Album
+  FEEDS = 508;
+
+  //for the filmtvRelatedSummary of Episode|Album
+  FILMTV_RELATED_SUMMARY = 509;
+
+  //for the quality of VideoFormat
+  QUALITY_COLUMN_GROUP = 510;
+
+  // for MultiPublishAlbum|MultiPublishEpisode
+  //PRIMARY_LAST_UPDATE_TIME = 511;
+
+  // for MultiPublishAlbum|MultiPublishEpisode
+  PRIMARY_ENTITY_ID = 512;
+  AD_SUMMARY = 530;
+  BASELINE_ENTRANCE = 531;
+  RELATED_PAOPAO_SUMMARY = 532;
+  TOPIC_DESCRIPTION = 533;
+  FATHER_MATERIAL_ID = 534;
+  RECOGNIZE_INFO = 535;
+  E_BUSINESS_SMART_TAG = 536;
+  START_CHARGE_CHAPTER = 537;
+  LAST_UPDATE_REASON = 538;
+  PEOPLE_ID = 539;
+  HEIGHT = 540;
+  WIDTH = 541;
+  UPLOAD_TIME = 542;
+  REPORTED = 543;
+  CONTRACT_CODE = 544;
+  REWARD_PEOPLE_COUNT = 545;
+  REWARD_MONEY = 546;
+  OWNER_CHECK_STATUS = 548;
+  GAME_LIVE_ROOM_SUMMARY = 547;
+  FEED_ID_LIST = 549;
+  FORM = 550;
+  LIVE_START_TIME = 552;
+  AUTO_SCREENSHOT = 553;
+  FANS_NUMBER = 554;
+  LIVE_ROOM_MONEY = 555;
+  COMMODITY_SUMMARY = 557;
+  COMMODITY_SUBJECT_SUMMARY = 558;
+  PRESENTER_LEVEL = 559;
+  THREE_D_FORMAT = 560;
+  NLP_IP_SUMMARY = 561;
+  KOL_USER_IDENTITY = 563;
+  OLD_BRAND_ID = 567;
+  CREATE_SOURCE = 565;
+  IS_RELATED_ALL_STAR_CIRCLES = 564;
+  IMAGE_COUNT = 571;
+  IMAGE_ALBUM_SUMMARY = 570;
+  ORIGINAL_IMAGE = 569;
+  WEBSITE_URL = 568;
+  PUBLICATION_COLUMN = 573;
+  CHARACTER_IMAGE_LIST = 574;
+  IS_IQIYI_EXCLUSIVE = 575;
+  CIRCLE_TAG = 572;
+  DISPLAY_CRAWL_FEED = 582;
+  DISPLAY_SHELL_FEED = 583;
+  TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE = 590;
+  TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE = 591;
+  TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE = 592;
+  CARD_SUMMARY = 577;
+  ALBUM_TYPE = 581;
+  IQIYI_ORIGINAL_INFO = 580;
+  UPLOADER_INFO = 578;
+  DETAIL_PAGE_INFO = 579;
+  MAIN_TAG = 584;
+  RECOMMENDED_TAG = 585;
+  IS_WEB = 586;
+  HOME_PAGE_URL = 587;
+  INWARD_GAME_ID = 588;
+  GAME_ACTIVITY_SUMMARY = 589;
+  CREATOR_ID = 593;
+  BAIDU_SUMMARY = 595;
+  PROPERTY = 597;
+  GRAPH_RELATION = 598;
+  EPISODE_STAR_POINT = 594;
+  VOTE_ID = 596;
+  HOT_COLLECTION_TYPE = 601;
+  FATHER_PROGRAM_INFO = 599;
+  PRIZE_INFO = 602;
+  COMMODITY_BOOK_SUMMARY = 605;
+  TOTAL_ORIGINAL_IMAGE_SIZE_BYTE_50 = 606;
+  TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE_50 = 607;
+  TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE_50 = 608;
+  TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE_50 = 609;
+  CUT_INFO = 600;
+  RELATED_VIDEO = 617;
+  UNIFIED_CLASSIFICATION = 603;
+  REGISTRATION_INFO = 614;
+  UGC_CUT_LIMIT = 618;
+  SNS_STAR_NUMBER_INFO = 619;
+  UPDATE_INFO = 627;
+  SETTLEMENT_INFO = 629;
+  ANCHOR_INFO = 620;
+  MYNA_INFO = 634;
+  DANMU_COUNT = 628;
+  IQIYI_DAILY_STATISTICS = 622;
+  QISO_DAILY_STATISTICS = 623;
+  TOUTIAO_DAILY_STATISTICS = 624;
+  TOUTIAO_HOURLY_STATISTICS = 625;
+  VIDEO_DURATION_SECONDS = 626;
+  OPEN_RICH_MEDIA_SOURCE_TYPE = 631;
+  OPEN_RICH_MEDIA_UPLOADER_TYPE = 632;
+  PANO_TYPE = 633;
+  CREATOR_TYPE = 635;
+  OPERATION_GROUP = 610;
+  GAME_PRICE_INFO = 611;
+  SCREENSHOT_RATIO = 612;
+  AUTHENTICATION_TYPE = 621;
+  IQIYIHAO = 615;
+  IQIYIHAO_INFO = 616;
+  MANUAL_TAG = 637;
+  TAG_SUMMARY = 638;
+  IS_HOT = 576;
+  VIDEO_HEAD_TAIL_INFO = 636;
+  CUT_SUMMARY = 639;
+  CUT_RELATED_VIDEO_INFO = 640;
+  SENSITIVE_VIDEO = 641;
+  EDITOR_RECOMMEND_LEVEL_REASON = 642;
+  RESTRICTED_DIMENSION = 643;
+  MATERIAL_INFO = 655;
+  GENERAL_PLATFORM = 656;
+  HOT_STATUS_CHANGE_TIME = 657;
+  RECOMMEND_LEVEL_CHANGE_TIME = 658;
+  ADDED_TO_BOOKSHELF_UV_COUNT = 659;
+  READ_BOOK_UV_COUNT = 660;
+  SALED_BOOK_UV_COUNT = 661;
+  MOVIE_TICKET_STATISTICS = 662;
+  MOVIE_TICKET_BASE = 663;
+  IS_DISPLAY_AD = 664;
+  FANS_NAME = 665;
+  LEVEL_TITLE_SUMMARY = 666;
+  CUT_SET_RELATED_VIDEO_INFO = 670;
+  IMAGE_QUALITY_INFO = 671;
+  CREATOR_SUMMARY = 651;
+  CP_INFO = 652;
+  CHAPTER_LAST_ONLINE_TIME = 644;
+  BOOK_POLULARITY = 645;
+  CHAPTER_SUMMARY = 646;
+  CHAPTER_TYPE = 647;
+  WORD_COUNT = 648;
+  OPERATION_CONTROL = 673;
+  CHARGE_CONTROL = 672;
+  OFFLINE_REASON = 669;
+  VIDEO_COVER_FATHER_EPISODE = 682;
+  VIDEO_COVER_SUMMARY = 649;
+  PGC_CHECK = 679;
+  NLP_BOOK_SUMMARY = 674;
+  NLP_COMICBOOK_SUMMARY = 675;
+  NLP_GAME_SUMMARY = 676;
+  NLP_TICKET_SUMMARY = 677;
+  NLP_COMMODITY_SUMMARY = 678;
+  TOUTIAO_SUMMARY = 681;
+  SEARCH_BASE = 686;
+  IQIYIHAO_AUTH_INFO = 691;
+  IQIYIHAO_BASE = 692;
+  QUALITY_RATING_INFO = 693;
+  IQIYIHAO_LEVEL_INFO = 689;
+  IQIYIHAO_SCORE_INFO = 690;
+  CONVERTED_VIDEO_INFO = 683;
+  LIGHT_NOVEL_SUMMARY = 695;
+  NLP_LIGHT_NOVEL_SUMMARY = 696;
+  CONTENT_RATING_INFO = 694;
+  DANMU_CONTROL = 688;
+  SUBSITE_CATEGORY = 687;
+  CUT_RELATED_VIDEO_SUMMARY = 699;
+  IQIYIHAO_DOMAIN_INFO = 698;
+  REPRESENTATIVE_WORK_INFO = 697;
+  PLAY_STATUS = 700;
+  START_END_TIME_INFO = 701;
+  SOURCE_VIDEO_INFO = 702;
+  LIVE_ROOM_SUMMARY = 703;
+  DOWNLOAD_DEVICE_COUNT_90_DAYS = 714;
+  LOGIN_COUNT_30_DAYS = 715;
+  PLAY_PLATFORM = 716;
+  RELATED_OPEN_RICH_MEDIA_INFO = 705;
+  BEEHIVE_SOURCE_ID = 706;
+  IMAGE_FORMAT_DEMANDER = 707;
+  TAG_SUMMARY_DEMANDER = 708;
+  BASE_DEMANDER = 709;
+  CONTENT_DEMANDER = 710;
+  FEED_SUMMARY_DEMANDER = 711;
+  CHECK_STATUS_INFO = 712;
+  DISPATCH_INFO = 713;
+  AI_PRODUCTION_INFO = 717;
+  CHECK = 704;
+  NICKNAME = 719;
+  PROFILE_PICTURE_URL = 720;
+  FANS_FOLLOWING_COUNT = 721;
+  VIDEO_COUNT = 722;
+  BEEHIVE_BUSINESS_TYPE = 723;
+  UPLOAD_VIDEO_INFO = 727;
+  COPYRIGHT_CHECK_INFO = 728;
+  PLAYLIST_TYPE = 724;
+  RELATED_ALBUM = 725;
+  RELATED_RECOMMEND_VIDEO = 726;
+  COMMENT_TYPE = 734;
+  COURSE_ALBUM_INFO = 730;
+  COURSE_INFO = 731;
+  COLLECT_COUNT_YESTERDAY = 729;
+  ORIGINAL_CHECK_INFO = 732;
+  IQIYIHAO_TASK_INFO = 735;
+  COLLECTION_BASE = 738;
+  MCN_INFO = 737;
+  YUNTENG_LIBRARY_INFO = 736;
+  FEED_INFO = 739;
+}
+
+/**
+ * @brief 通用类型: 品牌
+ * @details
+ *
+**/
+enum Brand {
+  IQIYI = 1;
+  PPS = 2;
+  IQIYI_PPS = 3;
+}
+
+/**
+ * @brief 通用类型: 视频的可用状态
+ * @details
+ *
+**/
+enum AvailableStatus {
+  ONLINE = 1;
+  OFFLINE_COPYRIGHT = 2;
+  // Not list, Not search, Not play. and cover pps play_limit field.
+  OFFLINE_OTHER = 3;
+  // Neither could be founded via listing page nor searh engine.
+  OFFLINE_BUT_CAN_PLAY = 4;
+  // No online, and no offline.
+  NONE = 5;
+  OFFLINE_APP = 6;
+  //码流未生产完成，吃鲸判断该字段可通过云盘播放，其他端不可播放。
+  OFFLINE_BUT_YUNPAN_PLAY = 7;
+}
+
+/**
+ * @brief 通用类型: 用户，用于访问奇谱Service时提供账号信息
+ * @details 用于访问奇谱Service时提供账号信息。需要奇谱分配用户名和密码。
+ *
+**/
+message User {
+  required string name = 1;
+  required string password = 2;
+  optional string session_id = 3;
+  // 写入来源
+  optional string on_behalf_of = 4;
+  // 写入来源IP
+  optional string from_ip = 5;
+}
+
+/**
+ * @brief 通用类型: 身份
+ * @details
+ *
+**/
+message PeopleIdentity {
+  optional int64 id = 1;
+  optional string name = 2;
+}
+
+/**
+ * @brief 通用类型: 奖项
+ * @details
+ *
+**/
+message Award {
+  //奖名
+  optional string name_of_award = 1;
+  //奖项
+  optional string item_of_award = 2;
+  //获奖者
+  repeated string winner_of_award = 3;
+  //获奖年度和届次
+  optional string year_or_time_of_award = 4;
+  //获奖日期
+  optional string date_of_award = 5;
+  repeated PeopleIdentity people_identity = 6;
+  optional int64 film_tv_id_of_award = 7;
+}
+
+/**
+ * @brief 通用类型: 时间
+ * @details 时间。奇谱时间一般用int64来表示。除非有特殊需求才能使用这个字段类型。
+ *
+**/
+message Date {
+  optional int32 year = 1;
+  optional int32 month = 2;
+  optional int32 day = 3;
+  optional int32 hour = 4;
+  optional int32 minute = 5;
+  optional int32 second = 6;
+}
+
+/**
+ * @brief 通用类型: 详细地址
+ * @details 详细地址
+ *
+**/
+message Location {
+  // Not be used in currently.
+  //大洲
+  optional string continent = 1;
+  optional int32 continent_id = 5;
+  //国家
+  optional string country = 2;
+  optional int32 country_id = 6;
+
+  // Not be used in currently.
+  //地区
+  optional string region = 3;
+  optional int32 region_id = 7;
+
+  // Not be used in currently.
+  //省份
+  optional string province = 9;
+  optional int32 province_id = 10;
+  //城市
+  optional string city = 4;
+  optional int32 city_id = 8;
+
+  // Not be used in currently.
+  optional string county = 11;
+  optional int32 county_id = 12;
+
+  // Not be used in currently.
+  optional string other = 13;
+  optional int32 other_id = 14;
+
+  // The chinese phonetic alphabet for countinent, ..., other.
+  optional string continent_spell = 15;
+  optional string country_spell = 16;
+  optional string region_spell = 17;
+  optional string province_spell = 18;
+  optional string city_spell = 19;
+  optional string county_spell = 20;
+  optional string other_spell = 21;
+
+  // 地域字段.
+  // 目前仅有一个值, 即: {area_id=301, area=”oversea”, area_spell=”海外”}, 表示中国大陆以外地区;
+  // 如果无值,表示中国大陆地区；
+  optional string area = 22;
+  optional int32 area_id = 23;
+  optional string area_spell = 24;
+}
+
+/**
+ * @brief 通用类型: 星座
+ * @details 星座，这里居然用的是拼音！
+ *
+**/
+enum Constellation {
+  BAI_YANG = 0;
+  JIN_NIU = 1;
+  SHUANG_ZI = 2;
+  JU_XIE = 3;
+  SHI_ZI = 4;
+  CHU_NV = 5;
+  TIAN_PING = 6;
+  TIAN_XIE = 7;
+  SHE_SHOU = 8;
+  MO_JIE = 9;
+  SHUI_PING = 10;
+  SHUANG_YU = 11;
+}
+
+/**
+ * @brief 通用类型: 键值对。
+ * @details 键值对，临时使用的、需要在不同业务系统之间交互数据时，使用键值对，无需修改奇谱的schema，即可立即在线上使用。 
+ * 奇谱不鼓励使用键值对。如有需要，请和奇谱联系。 
+ *
+**/
+message KeyValuePair {
+  required string name = 1;
+  required string value = 2;
+}
+
+/**
+ * @brief 通用类型: 引用的父实体信息
+ * @details  引用的父实体信息
+ *
+**/
+message FatherInfo {
+  // The corresponding father id.
+  required int64 father_id = 1;
+
+  // Child's play order.
+  optional int32 child_order = 2;
+
+  // Used to associate with MultiPublish to set attaching Collection.
+  //多发关联的品牌（iqiyi或pps）
+  optional Brand brand = 3;
+  //多发关联的频道
+  optional int32 channel_id = 4;
+
+  // Used to indicate whether this message is deleted.
+  optional bool is_valid = 5 [default = true];
+
+  // Whether to send message to activeMQ to notify audience.
+  //
+  // When you write this FatherInfo to the child, QIPU will automatically add a
+  // child-metadata-summary of this child into the father.
+  // If you leave this field as default, QIPU will send a message to activeMQ to
+  // notify this change of father. If you set this field to false, QIPU will not
+  // send message to activeMQ.
+  optional bool should_notify_change_of_father = 6 [default = true];
+
+  // The time when the child attached to the father.
+  optional int64 create_time = 7;
+
+  optional string desc = 8;
+
+  // 描述child和father之间关系,即:描述item(filmTV, episode等)和collection(剧集，超剧集)之间的关系.
+  // 该数据由影视大全编辑来维护.
+  optional string relationship = 9;
+
+  //父子关系类型；这个数据将被同步到MetaSummary的对应child_father_relation字段上
+  optional InterEpisodeRelation child_father_relation = 10;
+
+  // 圈子类型
+  optional CircleType circle_type = 11;
+
+  //圈子名称
+  optional string circle_name = 12;
+
+  // 非正片的排序
+  optional int32 clip_order = 13;
+  //播单子类型
+  optional CollectionCommon.CollectionSubType collection_sub_type = 14;
+  //播单类型
+  optional CollectionCommon.CollectionType collection_type = 15;
+  //短视频时长（s） 例如15s 10s、30s等
+  optional int32 cut_duration = 16;
+  //动态视频封面类型
+  optional VideoCoverContentType video_cover_content_type = 17 [default = UNKNOWN_VIDEO_COVER_CONTENT_TYPE];
+}
+
+/**
+ * @brief 通用类型: 直播状态
+ * @details 直播状态
+ *
+**/
+enum LiveStatus {
+  // Use live stream.
+  EXIST = 1;
+
+  // Lack of live stream.
+  NOT_EXIST = 2;
+
+  // For the future extension.
+  LIVE_OTHER = 3;
+}
+
+/**
+ * @brief 通用类型: 直播类型
+ * @details  直播类型
+ *
+**/
+enum LiveType {
+  //常规直播
+  NORMAL = 1;
+  //临时直播
+  TEMPORARY = 2;
+  //轮播台（原伪直播）
+  PSEUDO = 3;
+}
+/**
+ * @brief 通用类型: 公开状态
+ * @details 公开状态
+ *
+**/
+enum PublicLevel {
+  PUBLIC = 0;
+  ONLY_PAPAQI_PUBLIC = 1;
+  PRIVATE = 2;
+
+  // 输入密码后可见.
+  REQUIRE_PASSWORD = 3 ;
+  // 订阅后可见.
+  REQUIRE_SUBSCRIPTION = 4;
+  //内部直播
+  INTERNAL = 5;
+}
+/**
+ * @brief 通用类型: 审核结果
+ * @details 审核结果
+ *
+**/
+enum ResultCheck {
+  PASS = 1;
+  FAIL = 2;
+  // First publish, later check.
+  LATER_CHECK = 3;
+  UNCHECKED_NOW = 4;
+}
+/**
+ * @brief 通用类型: 影视大全检查状态
+ * @details  影视大全检查状态
+ *
+**/
+enum FilmTvCheckStatus {
+  UNCHECKED = 1;
+  CHECKING = 2;
+  CHECKED = 3;
+  NEED_RECHECK = 4;
+  // First publish, later check.
+  WILL_CHECK_LATER = 5;
+}
+/**
+ * @brief 通用类型:上传类型
+ * @details 上传类型
+ *
+**/
+enum UploadType {
+  ORIGINAL_UPLOAD_BY_USER = 0;
+  REPEATED_UPLOAD_BY_USER = 1;
+  REPEATED_UPLOAD_BY_EDITOR = 2;
+}
+
+/**
+ * @brief 通用类型:直播栏目类型
+ * @details 直播栏目类型
+ *
+**/
+enum LiveChannelType {
+  //卫视
+  SATELLITE_CHNNEL = 1;
+  //地方台
+  LOCAL_CHANNEL = 2;
+  //中央台
+  CCTV_CHANNEL = 3;
+  //境外台
+  FOREIGN_CHANNEL = 4;
+  //爱奇艺直播台
+  IQIYI_LIVE_CHANNEL = 5;
+  //临时体育赛事
+  TEMPORARY_SPORT_EVENTS= 6;
+  //临时综艺晚会
+  TEMPORARY_VARIETY_SHOW = 7;
+  //临时发布会
+  TEMPORARY_CONFERENCE = 8;
+  //临时演唱会
+  TEMPORARY_CONCERT = 9;
+  //临时电子竞技
+  TEMPORARY_ELECTRONIC_SPORTS = 10;
+  //台湾站轮播台
+  IQIYI_LIVE_CHANNEL_TW = 11;
+}
+
+/**
+ * @brief 通用类型:直播节目类型
+ * @details 直播节目类型
+ *
+**/
+enum LiveProgramType {
+  //体育
+  SPORTS_PROGRAM = 1;
+  //明星娱乐（原演唱会）
+  CONCERT_PROGRAM = 2;
+  //发布会
+  CONFERENCE_PROGRAM = 3;
+  //新闻资讯（原常规节目）
+  REGULAR_PROGRAM = 4;
+  //综艺晚会
+  VARIETY_PROGRAM = 5;
+  //电台节目
+  TRANSCEIVER_PROGRAM = 6;
+  //轮播台节目
+  CAROUSEL_PROGRAM = 7;
+}
+
+/**
+ * @brief 通用类型: 码流类型
+ * @details 码流类型
+ *
+**/
+enum StreamType {
+  TOP_SPEED = 1;
+  SMOOTH = 2;
+  HIGH_DEFINITION = 3;
+  SUPER_CLEAR = 4;
+  RESOLUTION_720P = 5;
+  RESOLUTION_1080P = 6;
+  SPECIAL_H5 = 7;
+  //2k清晰度
+  RESOLUTION_2K = 8;
+  //4k清晰度
+  RESOLUTION_4K = 9;
+}
+
+/**
+ * @brief 通用类型: 付费状态
+ * @details 付费状态
+ *
+**/
+enum PricingStatus {
+  PRICING_AVAILABLE = 1;
+  PRICING_NOT_AVAILABLE = 2;
+  PRICING_FREE = 3;
+}
+
+/**
+ * @brief 通用类型: 支付状态
+ * @details 支付状态
+ *
+**/
+enum PaidStatus {
+  PAID_AVAILABLE = 1;
+  PAID_NOT_AVAILABLE = 2;
+  PAID_FREE = 3;
+}
+
+/**
+ * @brief 通用类型: 奇趣标签类型
+ * @details  奇趣标签类型
+ *
+**/
+enum QiquTagCategory {
+  QTC_GENERAL = 0;
+  QTC_ACTOR = 1;
+  QTC_DIRECTOR = 2;
+  QTC_PRODUCER = 3;
+  QTC_LOCATION = 4;
+  QTC_PUBLISH_YEAR = 5;
+  QTC_STORY_DECADE = 6;
+  QTC_CONTENT_TYPE = 7;
+  QTC_AUDIENCE_EMOTION = 8;
+
+  MUSIC = 1000;            // 音乐类相关
+  SPORTS = 1001;          // 体育类相关
+  GAMES= 1002;            // 游戏类相关
+  CARTOON = 1003;         // 动漫类相关
+  NETWORK_FAMOUS = 1004;  // 网络红人
+  EVENTS = 1005;          // 热门事件
+}
+
+/**
+ * @brief 通用类型: 奇趣Tag数据来源
+ * @details 奇趣Tag数据来源
+ *
+**/
+enum QiquTagSource {
+  QTS_UPLOADER = 0;
+  QTS_EDITOR = 1;
+  QTS_VIDEO_META = 2;
+  QTS_DOUBAN = 3;
+  QTS_USER_FEEDBACK = 4;
+  QTS_HUMAN_ANNOTATION = 5;
+  QTS_CROWD_SOURCING = 6;
+  QTS_BAIDU_NLP = 7;
+  QTS_BAIDU_VIDEO = 8;
+  QTS_YOUKU = 9;
+}
+
+
+/**
+ * @brief 通用类型: 隐私设置的详细设置
+ * @details
+ *
+**/
+message PublicConfiguration {
+  // 对应 PublicLevel = REQUIRE_PASSWORD;
+  optional string password = 1;
+}
+
+
+/**
+ * @brief 通用类型:位置
+ * @details 位置
+ *
+**/
+message Position{
+  optional float x = 1;
+  optional float y = 2;
+  optional float z = 3;
+}
+ 
+/**
+ * @brief 通用类型: FigureOut识别信息
+ * @details FigureOut识别信息
+ *
+**/
+message FigureOut{
+  // figure_id
+  optional int64 figure_id = 1;
+  // 视频中出现的信息
+  message AppearInfo{
+    // 在视频中开始时间（ms）
+    optional int64 start_time = 1;
+    // 在视频中结束时间（ms）
+    optional int64 end_time = 2;
+    // 选出的视频点
+    optional int64 selected_frame_time = 3;
+    // 选出视频点的ID，统计用
+    optional int64 selected_frame_id = 4;
+    // 选出视频点的评分，用于后续视频点控制
+    optional int64 selected_frame_score = 5;
+    // 在视频中的位置
+    repeated Position position = 6;
+    // 实体在视频中的展示的角度（如人脸的正面、侧面）
+    enum ViewAngle{
+      // 考虑到扩展性和向下兼容
+      UNKNOWN_VIEW_ANGLE= -1;
+      // 正面
+      POSITIVE_FACE = 1;
+      // 侧面
+      SIDE_FACE = 2;
+    }
+    optional ViewAngle view_angle = 7;
+  }
+  // 在视频中出现的信息
+  repeated AppearInfo appear_info = 2;
+}
+
+/**
+ * @brief 通用类型:视频质量
+ * @details 视频质量
+ *
+**/
+message Quality {
+  //视频质量,取值范围为0-10的浮点数
+  optional float video = 1;
+  //音频质量,取值范围为0-10的浮点数
+  optional float audio = 2;
+  //音视频总质量,取值范围为0-10的浮点数
+  optional float total = 3;
+}
+
+/**
+ * @brief 通用类型: 地区类型
+ * @details 地区类型
+ *
+**/
+enum RegionType {
+  //方便扩展
+  UNKNOWN_REGION = -1 [(enum_value_option).label = ""] ;
+  //欧美
+  EUROPE_AMERICAN = 1 [(enum_value_option).label = "欧美"] ; 
+  //华语
+  CHINESE = 2 [(enum_value_option).label = "华语"] ;
+  //日韩
+  JAPAN_KOREA = 3 [(enum_value_option).label = "日韩"] ;
+  //中国_大陆
+  CHINA_MAINLAND = 4;
+  //中国台湾
+  CHINA_TAIWAN = 5;
+  //日本
+  JAPAN = 6;
+  //韩国
+  KOREA = 7;
+}
+
+
+/**
+ * @brief 通用类型:形状信息（长度、宽度）
+ * @details
+ *
+**/
+message Rect{
+  //位置信息（x坐标）
+  optional float x = 1;
+  //位置信息（y坐标）
+  optional float y = 2;
+  //形状信息（宽）
+  optional float width = 3;
+  //形状信息（高）
+  optional float height = 4;
+}
+
+/**
+ * 乐高3D生产格式
+**/
+enum ThreeDType {
+  UNKNOWN_THREE_D_TYPE = -1;
+  //普通
+  TYPE_THREE_DIMEN_COMMON = 1;
+  //偏振（左右）格式
+  TYPE_THREE_DIMEN_POLARIZATION = 2;
+  //红蓝格式
+  TYPE_THREE_DIMEN_RB = 3;
+  //上下格式
+  TYPE_THREE_DIMEN_UPDOWN = 4;
+}
+/**
+ * 全景类型
+**/
+enum PanoType {
+  UNKNOWN_PANO_TYPE = -1;
+  //普通
+  PANO_ALBUM_COMMON = 1;
+  //专辑包含节目全部为全景
+  PANO_EPISODE_ALL = 2;
+  //专辑包含节目部分为全景
+  PANO_EPISODE_PART = 3;
+} /**
+* @brief 字段类型：视频码流的概要信息。
+* @details 为了各端能够方便地获取码流的概要信息，这个字段将format中一些信息计算后提取出来，供各端使用。 
+ * 数据由乐高媒资写入，使用方包括TV、PC 等各端。 
+ * <ol>
+* <li>节目根据最高码流确认。</li>
+* <li>专辑根据专辑下第一个码流来显示是否有1080P、3D、杜比。</li>
+* <li>如果有1080P码流，包含1080P   1080P杜比等，则认为是1080P内容</li>
+* <li>如果有杜比码流，包含1080P杜比   720P杜比等，则认为是杜比内容</li>
+* <li>如果3D标示字段是1，则认为是3D</li>
+* </ol>
+*
+**/
+message VideoInfo {
+  optional bool is_3d = 1 [default = false]; //是否是3D
+  optional bool is_dolby = 2 [default = false]; //是否是杜比
+  optional string max_resolution = 3; //码流最高清晰度
+  repeated DrmType drm_type = 4;
+  optional bool is_pano = 5 [default = false]; //是否是全景
+  optional ThreeDType three_d_type = 6; //乐高3D生产格式
+  optional PanoType pano_type = 7; //全景类型
+  optional string dynamic_ranges = 8; // 动态范围
+  //是否是VR一体机
+  optional bool is_vr_standalone = 9 [default = false];
+  //视频类型
+  optional VideoType video_type = 13 [default = UNKNOWN_VIDEO_TYPE];
+  //付费视频持续时长（单位：毫秒）
+  optional int64 paid_video_duration = 11;
+  //付费视频试看最大时长（单位：毫秒）
+  optional int64 paid_video_probation_max_duration = 12;
+  //sha1值（视频数字指纹）
+  optional string sha1_signature = 10;
+  //奇传id
+  optional string qichuan_id = 14;
+}
+
+message Qisu{
+  optional string url = 1; 
+}
+//群体；
+enum HumanGroup {
+  UNKNOWN_HUMAN_GROUP = -1;
+  // 男性
+  MALE = 1;
+  // 女性
+  FEMALE = 2;
+  // 儿童
+  CHILDREN = 3;
+}
+
+//图书类型
+enum BookType{
+  UNKNOWN_BOOK_TYPE = -1;
+  // 出版物
+  PUBLICATION = 1;
+  // 网络文学(小说)
+  NET_LITERATURE = 2;
+  // 高端文学
+  ELEGANT_LITERATURE = 3;
+}
+
+enum BookMediaType{
+  UNKNOWN_BOOKE_MEDIA_TYPE = -1;
+  // 纯文字
+  TEXT = 1;
+  // 图文
+  PICTURE_TEXT = 2;
+  // 纯图片
+  PICTURE = 3;
+}
+
+enum VolumeType{
+  UNKNOWN_VOLUME_TYPE = -1;
+  // 前言卷（作品相关）
+  PREFACE_VOLUME = 0;
+  // 普通卷（付费卷）
+  BODY_VOLUME = 1;
+  // 后记卷
+  POSTSCRIPT_VOLUME = 2;
+  // 虚拟卷
+  VIRTUAL_VOLUME = 3;
+}
+
+ //发布状态
+enum BookAvailableStatus{
+  UNKNOWN_BOOK_STATUS = -1;
+  // 已完结
+  IS_FINISHED = 1;
+  // 连载中
+  IS_SERIALIZED = 2;
+}
+
+/**
+ *
+ * 获奖状态；
+**/ 
+enum AwardStatus {
+  UNKNOWN_AWARD_STATUS = -1;
+  AWARD = 1;
+  NOMINATE = 2;
+}
+
+enum Priority{
+  // 一般用户不需要知道这个数据改动，但缓存用户使用这个数据来更新缓存
+  TRIVIAL = 1;
+  // 希望用户知道这个数据改动，但用户可以延迟处理这个更新
+  LOW = 2;
+  // 用户必须知道这个更新，并且立即处理这个更新
+  MEDIUM = 3;
+  // 用户必须知道这个更新，并且优先处理这个更新；[需要特别优先处理的场景，如需定时上线的剧目]
+  HIGH = 4;
+}
+
+enum Language{
+  UNKNOWN_LANGUAGE = -1;
+  // CHINESE
+  zh = 1;
+  // TRADITIONAL_CHINESE
+  zh_TW = 2;
+}
+
+// 地区
+// 参考ISO-3166， http://wiki.qiyi.domain/pages/viewpage.action?pageId=28592639
+enum Region {
+  UNKNOWN_REGION_LOCATION = -1;
+  CN = 1;
+  TW = 2;
+}
+
+// 游戏/应用的标签字段
+enum Mark {
+  UNKNOWN_MARK = -1; //兼容没有数据的情况
+  BEST = 1; //精品
+  HOT = 2; //热门
+  RECOMMENDED = 3; //推荐
+  GIFT = 4; //礼包
+  FIRST_PUBLISH = 5; //首发
+  EXCLUSIVE = 6;// 独家
+  NEW_GAME = 7;// 新游
+  CLOSED_BETA_TEST = 8;// 封测
+  ALPHA_TEST = 9;// 内测
+  MUST_PLAY = 10;// 必玩
+  LATEST = 11;// 最新
+}
+
+/**
+ *@brief 分发平台
+ *@detail 分发平台
+ **/
+enum DistributionPlatform {
+  PC_IQIYI  = 1;
+  PC_PPS    = 9;
+  PC_BAIDU = 13;
+  PC_BAIDU_SUB = 19;
+  PC_APP_IQIYI = 5;
+  PC_APP_PPS = 6;
+  PC_CARRIER_IQIYI = 7;
+  PC_CARRIER_PPS = 8;
+  PAD_APP_IQIYI = 2;
+  PAD_APP_PPS = 10;
+  PAD_WEB_IQIYI = 11;
+  PAD_WEB_PPS = 12;
+  PHONE_APP_IQIYI = 3;
+  PHONE_APP_PPS = 14;
+  PHONE_WEB_IQIYI = 15;
+  PHONE_WEB_PPS = 16;
+  PHONE_CAS_IQIYI = 17;
+  PHONE_CAS_PPS = 18;
+  INTERNET_TV_IQIYI = 4;
+  INTERNET_TV_PPS = 20;
+  IPTV_IQIYI = 21;
+  IPTV_PPS = 22;
+  DTV_IQIYI = 23;
+  DTV_PPS =24;
+  P2P_IQIYI = 25;
+  P2P_PPS = 26;
+  MINI_SITE = 27;
+  H5_IQIYI = 28;
+  H5_PPS = 29;
+  DISTRIBUTION_VR_IQIYI = 30;
+}
+
+enum PlayPlatform {
+  // 保证兼容性，sdk版本低于线上版本时，未知值解析为unknown
+  UNKNOWN_PLAYPLATFORM = -1;
+  PC_CLIENT_PPS = 1;
+  //对应PPS的IPHONE APP
+  IPHONE_PPS = 2;
+  //对应PPS的IPAD APP
+  IPAD_PPS = 3;
+  IOS_JAILBREAK_PPS = 4;
+  //对应PPS的GPHONE APP
+  ANDRIOD_PPS = 5;
+  WINDOWS_PHONE_PPS = 6;
+  MAC_PPS = 7;
+  WIN8_PPS = 8;
+  TV_IQIYI = 9;
+  ANDROID_PHONE_IQIYI = 10;
+  ANDROID_PAD_IQIYI = 11;
+  IOS_PHONE_IQIYI = 12;
+  IOS_PAD_IQIYI = 13;
+
+  // Below 3 fields are existed in enum DistributionPlatform,
+  // to aviod the error of duplicated names, so chang iqiyi to qiyi.
+  PC_QIYI = 14;
+  H5_QIYI = 15;
+  PAD_WEB_QIYI = 16;
+
+  PC_CLIENT_IQIYI = 17;
+
+  //对应PPS的GPAD APP
+  ANDROID_PAD_PPS = 18;
+
+  WINDOWS_PHONE_IQIYI= 19;
+  WINDOWS_PAD_IQIYI= 20;
+  WINDOWS_PAD_PPS= 21;
+  VR_IQIYI = 22;
+
+  //安卓手机（漫画、文学APP）
+  ANDROID_PHONE_BOOK_APP = 23;
+  //IOS手机（漫画APP）
+  IOS_PHONE_BOOK_APP = 24;
+  //H5 泡泡
+  H5_PAOPAO_APP = 33;
+  //安卓手机泡泡
+  ANDROID_PHONE_PAOPAO_APP = 27;
+  //IOS手机泡泡
+  IOS_PHONE_PAOPAO_APP = 28;
+  //安卓手机纳豆
+  ANDROID_PHONE_NADOU_APP = 25;
+  //IOS手机纳豆
+  IOS_PHONE_NADOU_APP = 26;
+  //安卓手机动漫
+  ANDROID_PHONE_ANIMATION_APP = 29;
+  //IOS手机动漫
+  IOS_PHONE_ANIMATION_APP = 30;
+  //安卓手机吃鲸
+  ANDROID_PHONE_CHIJING_APP = 31;
+  //IOS手机吃鲸
+  IOS_PHONE_CHIJING_APP = 32;
+  //TV院线APP（只能播放院线电影）
+  TV_CINEMA_APP = 34;
+}
+
+enum PagePublishStatus {
+  // The data of the page is not selected to use
+  PAGE_WAIT = 0;
+  // The page is online
+  PAGE_ONLINE = 1;
+  // The page is offline
+  PAGE_OFFLINE = 2;
+  // The page is use to preview and backup
+  PAGE_BACKUP = 3;
+  // The page for the prevue(The movie channel poster)
+  PAGE_PREVUE = 5;
+  // The page for baidu,360 and so on pre-push
+  PAGE_THIRD_PARTY = 6;
+}
+
+// The type of each channel's all episodes. Channels include: film, variety, trailer,
+// cartoon, fashion, documentary, entertainment, sports, music.
+enum ContentType {
+  // 正片
+  FEATURE_FILM = 1;
+  // 特辑
+  SPECIAL = 2;
+  // 预告片
+  PREVUE = 3;
+  // 片花
+  TRAILER = 4;
+  // 花絮
+  TITBIT = 5;
+  // 宣传片
+  PROPAGANDA = 6;
+  // 片段
+  CLIP = 7;
+  // 历史上用过，现在不再使用 START
+  SCENE = 8;
+  SHOT = 9;
+  FOCUS = 10;
+  MV = 11;
+  SUBJECT = 12;
+  FULL_SHOW = 13;
+  SINGLE_MV = 14;
+  SINGLE_SCENE = 15;
+  MUSIC_CONCERT = 16;
+  NEWS = 17;
+  INTERVIEW = 18;
+  MUSIC_RECORD = 19;
+  MUSIC_CIRCUM = 20;
+  MUSIC_PROGRAM = 21;
+  FEATURE_CLIP = 22;
+  SHORT_VIDEO = 23;
+  SELECTED_VIDEO = 24;
+  // 历史上用过，现在不再使用 END
+  // 其他
+  OTHER = 25;
+  //视频封面
+  VIDEO_COVER = 26;
+}
+
+// 排序方式.
+enum SortType {
+  ONLINE_PEOPLE_COUNT = 1; // 即:最热
+  FILE_NAME_INITIAL = 2;   // 即:名称
+  CREATION_TIME = 3;       // 即:最新
+  ENTITY_ORDER = 4;
+  QUALITY = 5;             // 即:最好
+  DEFAULT_ORDER = 6;       // 即:默认
+  SERIES_ORDER = 7;       // 即:期（集）数排列
+  PUBLISH_TIME = 8;        // 即:发行时间
+}
+
+enum SortWard {
+  UPWARD = 1;
+  DOWNWARD = 2;
+}
+
+enum OSType {
+  UNKNOWN_OSTYPE =-1;
+  WINDOWS = 1;
+  LINUX = 2;
+  ANDROID = 3;
+  IOS = 4;
+}
+
+enum GraphEntityType{
+  //1.影视剧
+  GRAPH_FILM_TV = 1;
+  //2.人物
+  GRAPH_PEOPLE = 2;
+  //3.角色
+  GRAPH_ROLE = 3;
+  //4.歌曲
+  GRAPH_SONG = 4;
+  //5.游戏
+  GRAPH_GAME = 5;
+  //6.小说
+  GRAPH_FICTION = 6;
+  //7.电影节
+  GRAPH_FILM_FESTIVAL = 7;
+  //8.媒体电视台
+  GRAPH_MEDIA = 8;
+  //9.事件
+  GRAPH_NEWS = 9;
+}
+
+enum Industry{
+  //服装
+  CLOTHING = 1;
+  //香氛
+  FRAGRANCE = 2;
+  //鞋履
+  SHOES = 3;
+  //手袋
+  HANDBAGS = 4;
+  //腕表
+  WATCHES = 5;
+  //配饰
+  ACCESSORIES = 6;
+  //彩妆
+  MAKEUP = 7;
+  //手机
+  CELL_PHONES = 8;
+  //笔记本
+  LAPTOPS = 9;
+  //智能硬件
+  SMART_DEVICES = 10;
+  //平板电脑
+  TABLETS = 11;
+  //数码相机
+  CAMERAS = 12;
+  //PC
+  PERSONAL_COMPUTER = 13;
+  //家电
+  APPLIANCES = 14;
+  //游戏机
+  VIDEO_GAMES = 15;
+}
+
+enum Application{
+  //乐高
+  LEGO = 1;
+  //电商
+  MALL = 2;
+}
+
+enum InterEpisodeRelation{
+  //相关报道
+  RELATIVE_REPORT = 1;
+  // 预告片
+  INTER_PREVUE = 2;
+  // 片花
+  INTER_TRAILER = 3;
+  // 花絮
+  TINTER_ITBIT = 4;
+  // 片段
+  INTER_CLIP = 5;
+  //UGC
+  INTER_UGC = 6;
+}
+
+/**
+* 泡泡类型
+*/
+enum PaopaoStatus {
+  // 有效
+  PAOPAO_INVALID = 0;
+  // 无效
+  PAOPAO_VALID = 1;
+}
+
+/**
+* 泡泡类型：主、副本
+*/
+enum PaopaoSubjectType {
+  // 普通泡泡
+  NORMAL_PAOPAO = 0;
+  // 主
+  MASTER_PAOPAO = 1;
+  // 副本
+  SLAVE_PAOPAO = 2;
+}
+
+/**
+* 泡泡类型
+*/
+enum PaopaoType {
+  // 明星泡泡
+  STAR_PAOPAO = 1;
+  // 视频泡泡
+  EPISODE_PAOPAO = 2;
+  // 没关系任何属性泡泡
+  DEFAULT_PAOPAO = 3;
+  // 投票关联泡泡
+  VOTE_PAOPAO = 4;
+  // 主播泡泡
+  ANCHOR_PAOPAO = 5;
+  // 圈子
+  DEFAULT_CIRCLE = 6;
+}
+
+/**
+* 圈子类型
+*/
+enum CircleType {
+  // 粉丝圈
+  FAN_CIRCLE = 0;
+  // 明星圈,已废弃
+  STAR_CIRCLE = 1;
+  // 视频圈
+  TOPIC_CIRCLE = 2;
+  // 活动圈，已废弃
+  ACTIVITY_CIRCLE = 3;
+  // 图书
+  ACTIVITY_BOOK = 4;
+  // 漫画(应泡泡要求，废弃)
+  //ACTIVITY_COMIC = 5;
+  // 话题圈子
+  NEW_TOPIC_CIRCLE = 5;
+  // PGC圈子
+  PGC_CIRCLE = 6;
+}
+ 
+/**
+* 明星墙状态
+*/
+enum StarWallStatus {
+  // 初始值
+  STAR_DEFAULT = 0;
+  // 下线
+  STAR_OFFLINE = 1;
+  // 有效
+  STAR_VALID = 2;
+}
+
+/**
+* 决定对端是否屏蔽intertrust码流和非intertrust码流
+*/
+enum RejectDrmPlay {
+  // 老版本按普通码流播，新版本按drm-intertrust码流播放
+  REJECT_NONE = 1;
+  // 屏蔽drm-intertrust码流，强制按普通码流播放
+  REJECT_INTERTRUST = 2;
+  // 屏蔽普通码流，强制按drm-intertrust码流播放
+  REJECT_NONE_INTERTRUST = 3;
+}
+
+/**
+* 付费角标
+*/
+enum PayMark {
+  // 没有角标
+  NONE_MARK = 0;
+  // VIP角标
+  VIP_MARK = 1;
+  // 付费点播角标
+  PAY_ON_DEMAND_MARK = 2;
+  // 点播券角标
+  COUPONS_ON_DEMAND_MARK = 3;
+  //网球VIP角标
+  PAY_MARK_TENNIS_VIP_MARK = 4;
+  //网球付费点播角标
+  PAY_MARK_TENNIS_PAY_ON_DEMAND_MARK = 5;
+  //网球点播券角标
+  PAY_MARK_TENNIS_COUPONS_ON_DEMAND_MARK = 6;
+  //FUN会员角标
+  PAY_MARK_FUN_VIP_MARK = 7;
+  //体育会员角标
+  PAY_MARK_SPORTS_VIP_MARK = 8;
+  //体育球票角标
+  PAY_MARK_SPORTS_TICKETS_MARK = 9;
+}
+
+/**
+ * @brief 通用类型: 直播状态
+ * @details
+**/
+enum PlayStatus {
+  PLAY_STATUS_NULL = 0;
+  // 未开始
+  WAITING = 1;
+  // 直播
+  LIVE_TYPE = 2;
+  // 回看中
+  REPLAY_TYPE = 3;
+  // 回看结束
+  REQUEST_TYPE = 4;
+}
+
+/**
+ * @brief 通用类型: 节目流挂接类型
+ * @details
+**/
+enum StreamMountType {
+  MOUNT_CHANEL = 1;
+  MOUNT_EPISODE = 2;
+}
+
+/**
+ * @brief 通用类型: 拍客
+ * @details
+**/
+enum SpecialContentType {
+  PAIKE = 1;
+}
+
+/**
+ * feed类型
+ */
+enum FeedContentType {
+  // 图片
+  FEED_IMAGE = 1;
+  // 视频 (旧数据，新数据使用FEED_VIDEO)
+  FEED_OLD_VIDEO = 2;
+  // 音频
+  FEED_AUDIO = 3;
+  // 心情
+  FEED_MOOD = 4;
+  // 活动
+  FEED_ACTIVITY = 5;
+  // 视频
+  FEED_VIDEO = 6;
+  // 投票
+  FEED_VOTE = 7;
+  // 小视频
+  FEED_SHORT_VIDEO = 8;
+  // 长图文
+  FEED_MULTIMEDIA = 9;
+  // 分享类型
+  FEED_SHARE = 10;
+  // 图片投票
+  FEED_PIC_VOTE = 29;
+  // 明星语音
+  FEED_AUDIO_V77 = 101;
+  // 小尾巴类型
+  FEED_COMET = 102;
+  // 直播类型
+  FEED_LIVE_VIDEO = 103;
+  // 我拍类型
+  FEED_SELF_VIDEO = 104;
+  //啪啪奇类型
+  FEED_PAPAQI_MATERIAL = 105;
+  //片段集合
+  FEED_CUT_COLLECTION = 106;
+  //表白feed
+  FEED_CONFESSION = 107;
+  //动图
+  FEED_DYNAMIC_IMAGE = 108;
+  //文学笔记类型
+  FEED_NOTES = 109;
+}
+
+/**
+* 心情类型
+*/
+enum FeedMoodExtendedType {
+  //未知心情类型
+  UNKNOWN_FEED_MOOD_EXTENDED_TYPE = -1;
+  // 开心
+  FEED_MOOD_HAPPY = 1;
+  // 求抱抱
+  FEED_MOOD_HUG = 2;
+  // 天哪
+  FEED_MOOD_BEGAD = 3;
+  // 祝贺
+  FEED_MOOD_CONGRATULATE = 4;
+  // yeah
+  FEED_MOOD_YEAH = 5;
+  // 爱你
+  FEED_MOOD_LOVE = 6;
+}
+
+/**
+* 活动类型
+*/
+enum FeedActivityExtendedType {
+  //未知活动类型
+  UNKNOWN_FEED_ACTIVITY_EXTENDED_TYPE = -1;
+  // 图片
+  FEED_ACTIVITY_IMAGE = 1;
+  // 视频（此类型废弃,因安卓1.0版本无法兼容通过tvId来播放）
+  FEED_ACTIVITY_OLD_VIDEO = 2;
+  // 音频
+  FEED_ACTIVITY_AUDIO = 3;
+  // 视频
+  FEED_ACTIVITY_VIDEO = 6;
+  // 小视频
+  FEED_ACTIVITY_SMALL_VIDEO = 8;
+}
+
+/**
+* 小视频来源
+*/
+enum FeedShortVideoExtendedType {
+  //未知小视频来源类型
+  UNKNOWN_FEED_SHORT_VIDEO_EXTENDED_TYPE = -1;
+  // 默认
+  FEED_SHORT_VIDEO_DEFAULT = 1;
+  // 分享视频
+  FEED_SHORT_VIDEO_SHARE_VIDEO = 6;
+  // 啪啪奇客户端上传
+  FEED_SHORT_VIDEO_PAPAQI = 8;
+  //片段视频
+  FEED_SHORT_VIDEO_CUT = 7;
+  //加锁内容
+  FEED_SHORT_VIDEO_LOCKED_CONTENT = 9;
+}
+
+/**
+ * feed来源
+ */
+enum FeedSourceType  {
+  FEED_USER = 1; // 普通用户
+  FEED_STAR = 2; // 明星
+  FEED_OPERATOR = 3; // 运营人员
+  FEED_CRAWL = 4; // 站外抓取
+  FEED_COMMENT = 5; // 评论融合
+  FEED_LEGO = 6; // 乐高人工发布
+  FEED_LEGO_STRATEGY = 7; // 乐高策略发布
+  FEED_LEGO_AUTO = 8; // 乐高自动发布
+  FEED_CMT_CONVERT = 9;// 评论导入
+  FEED_CIRCLE_OWNER_PLATFORM = 10; // 圈主平台发布
+  FEED_ADVERTISEMENT = 11; // 广告发布
+  // 开放平台发布
+  FEED_OPEN_PLATFORM = 12;
+  //游戏后端发布
+  FEED_GAME = 13;
+  //电影票发布
+  FEED_MOVIE_TICKET = 14;
+  //在线播放器分享
+  FEED_ONLINE_PLAYER_SHARE = 15;
+  //开放平台定向抓取（搜索团队定向抓取的数据）
+  FEED_OPEN_PLATFORM_DIRECTED_CRAWL = 16;
+  //啪啪奇
+  FEED_PAPAQI = 17;
+  //文学发布
+  FEED_BOOK = 19;
+  //直播中心发布
+  FEED_LIVE_CENTER = 20;
+  //基线半屏播放器录制视频
+  FEED_BASELINE_HALF_SCREEN = 18;
+  //pgc开圈时自动创建的一条feed
+  FEED_PGC_CIRCLE_AUTO = 21;
+  //地方站发布
+  FEED_SUBSITE = 22;
+  //动漫APP
+  FEED_COMICS_APP = 23;
+}
+
+enum FeedStatus {
+  FEED_NORMAL = 0; // 正常
+  FEED_DELETE = 1; // 删除
+  FEED_AUDIT = 3; // 审核中
+  //下线
+  FEED_OFFLINE = 2;
+}
+
+enum ProviderType {
+   // 初始值
+   NULL_TYPE = 0;
+   UGC_TYPE = 1;
+   PPC_TYPE = 2;
+}
+
+enum SubsiteLevel {
+  // 一般
+  SUBSITE_NORMAL = 1;
+  // 中
+  SUBSITE_MEDIUM = 2;
+  // 高
+  SUBSITE_HIGH = 3;
+}
+
+// feed审核状态
+enum CheckStatus {
+   CHECK_DEFAULT = 0;
+   // 没有审批通过的推荐feed
+   RECOMMEND_BADCASE = 1;
+   // 审批通过的推荐feed
+   RECOMMEND_GOODCASE = 2;
+}
+
+// categeory sub type
+enum CategorySubType {
+  CATEGORY_SUB_TYPE_NULL = 1;
+  // 阅读前端标签
+  CATEGORY_SUB_TYPE_BOOK_TAG = 2;
+  //标签（三级分类用枚举NULL，标签用TAG，轻小说漫画等业务共用）
+  CATEGORY_SUB_TYPE_TAG = 3;
+}
+
+enum BookSourceType {
+  BOOK_CP = 1;
+  // 原创
+  BOOK_ORIGINAL = 2;
+}
+
+enum BookAuthType {
+  // 普通授权
+  BOOK_NORMAL_AUTH = 1;
+  // 独家首发
+  BOOK_SOLE_AUTH = 2;
+  //首发
+  BOOK_FIRST_PUBLISH = 3;
+}
+
+enum BookSigningStatus {
+  // 未签约
+  BOOK_UNSIGNED = 1;
+  // 已签约
+  BOOK_SIGNED = 2;
+}
+
+enum BookSigningType {
+  // 未签约时默认
+  BOOK_SIGN_UNKNOWN = 1;
+  // 分成
+  BOOK_SHARE = 2;
+  // 普通买断
+  BOOK_BUYOUT = 3;
+  // 保底买断
+  BOOK_GUARANTEED_BUYOUT = 4;
+  //整本买断
+  BOOK_BUYOUT_ALL = 5;
+  //整本保底
+  BOOK_GUARANTEED_BUYOUT_ALL = 6;
+}
+
+enum BookAuthorType {
+  AUTHOR_DEFAULT = 0;
+  // 原创作者
+  AUTHOR_ORIGINAL = 1;
+}
+
+// 年龄段
+enum ChildAge {
+  // 0-3岁
+  CHILD_AGE_0_3 = 1;
+  // 4-6岁
+  CHILD_AGE_4_6 = 2;
+  // 7-10岁
+  CHILD_AGE_7_10 = 3;
+  // 11-13岁
+  CHILD_AGE_11_13 = 4;
+  //0岁以下
+  CHILD_AGE_BELOW_0 = 0;
+}
+
+enum FanCircleTabType {
+   // 全部
+   FAN_CIRCLE_TAB_ALL_TYPE = 0;
+   // 美图
+   FAN_CIRCLE_TAB_IMAGE_TYPE = 1;
+   // 声音
+   FAN_CIRCLE_TAB_AUDIO_TYPE = 3;
+   // 我对偶像说
+   FAN_CIRCLE_TAB_MOOD_TYPE = 4;
+   //  花边
+   FAN_CIRCLE_TAB_TIDBITS_TYPE = 5;
+   // 视频
+   FAN_CIRCLE_TAB_VIDEO_TYPE = 6;
+}
+
+enum FanCircleCardType {
+  // 全部
+  FAN_CIRCLE_CARD_ALL_TYPE = 0;
+  // 动态
+  FAN_CIRCLE_CARD_DYNAMIC_TYPE = 1;
+  // 百科
+  FAN_CIRCLE_CARD_BAIKE_TYPE = 2;
+  // 明星视频
+  FAN_CIRCLE_CARD_STAR_VIDEO_TYPE = 3;
+  // 我对偶像说
+  FAN_CIRCLE_CARD_MOOD_TYPE = 4;
+  // 美图
+  FAN_CIRCLE_CARD_IMAGE_TYPE = 5;
+}
+
+/**
+ * Episode类型，用于区分ugc和PPC的类型。默认为PPC。
+**/
+enum EpisodeType{
+  PPC = 0;
+  UGC = 1;
+  PGC = 2;
+  UNKNOWN_EPISODE_TYPE = 3;
+}
+
+enum UserType {
+  UNKNOWN_USER_TYPE = 0;
+  // 认证用户
+  AUTHENTICATED_USER = 1;
+  // 机器人
+  ROBOT = 2;
+  // 搬运工
+  HAULER = 3;
+  // 视频托管合作方
+  VIDEO_HOSTING_PARTNER = 4;
+  // 普通用户
+  NORMAL_USER = 5;
+  //头条接口合作方
+  TOUTIAO_AUTHENTICATED_CRAWLER = 6;
+  //头条认证用户
+  TOUTIAO_AUTHENTICATED_USER = 7;
+}
+
+enum CrawledSource {
+  // unkown
+  CRAWLED_SOURCE_UNKOWN = 0;
+  // 泡泡
+  CRAWLED_SOURCE_PAOPAO = 1;
+  // 新浪微博
+  CRAWLED_SOURCE_SINA_WEIBO = 2;
+  // 搜狐娱乐
+  CRAWLED_SOURCE_SOHU_ENT = 3;
+  // 兴趣部落
+  CRAWLED_SOURCE_INTEREST_TRIBE = 4;
+  // 新浪
+  CRAWLED_SOURCE_SINA = 5;
+  // 今日头条
+  CRAWLED_SOURCE_TOUTIAO = 6;
+  // 微信
+  CRAWLED_SOURCE_WECHAT = 7;
+  // 橘子娱乐
+  CRAWLED_SOURCE_ORANGE_ENT = 8;
+  // 腾讯新闻
+  CRAWLED_SOURCE_TENCENT_NEWS = 9;
+  //媒资来源
+  CRAWLED_SOURCE_MEDIA_INFORMATION = 10;
+}
+
+// 圈主对feed的标记
+enum FeedMasterTagStatus {
+  TAG_DEFAULT = 0;
+  // 不推荐标记
+  UNRECOMMEND = 1;
+}
+
+// 推荐级别
+enum RecommendLevel {
+  GENERAL = 1;
+  STRONG = 2;
+}
+
+enum EventType{
+  // 泡泡
+  PAOPAO_EVENT = 1;
+  // 视频
+  EPISODE_EVENT = 2;
+}
+
+// 抓取发布类型
+enum CrawledUserType{
+  CRAWLED_USER_DEFAULT = 0;
+  // 抓取人工发布
+  CRAWLED_USER_ADMIN = 3;
+  // 抓取自动发布
+  CRAWLED_USER_AUTO_SEARCH = 4;
+}
+
+// 排序类型
+enum Order {
+  // 最新排序
+  NEWEST = 0;
+  // 最热排序
+  HOTTEST = 1;
+  // 便于扩展
+  UNKNOWN_ORDER = -1;
+}
+
+enum CompetitionType {
+  UNKNOWN_COMPETITION_TYPE = 0;
+  //综合性比赛
+  COMPETITION_TYPE_COMPREHENSIVE = 1;
+  //分轮次联赛
+  COMPETITION_TYPE_LEAGUE_ROUND = 2;
+  //分组淘汰赛
+  COMPETITION_TYPE_GROUP_KNOCKOUT = 3;
+  //单项锦标赛
+  COMPETITION_TYPE_TOURNAMENT = 4;
+}
+
+enum TrophyListType {
+  UNKNOWN_TROPHY_LIST = 0;
+  //积分榜
+  TROPHY_LIST_SCOREBOARD = 1;
+  //射手榜
+  TROPHY_LIST_TOP_SCORER_LIST = 2;
+  //金牌榜
+  TROPHY_LIST_GOLD_MEDALIST = 3;
+  //奖牌榜
+  TROPHY_LIST_MEDAL_TALLY = 4;
+}
+
+enum CompetitionResultType {
+  UNKNOWN_COMPETITION_RESULT = 0;
+  //冠军
+  COMPETITION_CHAMPION = 1;
+  //亚军
+  COMPETITION_SECOND_PLACE = 2;
+  //季军
+  COMPETITION_THIRD_PLACE = 3;
+}
+
+enum HostGuestType {
+  //不区分
+  DEFAULT_HOST_GUEST_TYPE = 1;
+  //主场
+  HOST_TYPE = 2;
+  //客场
+  GUEST_TYPE = 3;
+}
+
+enum MatchStage {
+  UNKNOWN_MATCH_STAGE = 0;
+  //决赛
+  MATCH_STAGE_FINAL = 1;
+  //半决赛
+  MATCH_STAGE_SEMIFINAL = 2;
+  //三四名决赛
+  MATCH_STAGE_THIRD_AND_FOURTH_FINAL = 3;
+  //1/4决赛
+  MATCH_STAGE_QUARTERFINAL = 4;
+  //1/8决赛
+  MATCH_STAGE_EIGHTHFINAL = 5;
+  //小组赛
+  MATCH_STAGE_GROUP_MATCH = 6;
+  //复活赛
+  MATCH_STAGE_REPECHAGE = 7;
+  //排名赛
+  MATCH_STAGE_RANKED = 8;
+  //资格赛
+  MATCH_STAGE_QUALIFYING = 9;
+  //开幕式
+  MATCH_STAGE_OPENING_CEREMONY = 10;
+  //开幕式
+  MATCH_STAGE_CLOSING_CEREMONY = 11;
+  //颁奖仪式
+  MATCH_STAGE_AWARD_CEREMONY = 12;
+  //淘汰赛
+  MATCH_STAGE_KNOCKOUT = 13;
+}
+
+enum MatchType {
+  UNKNOWN_MATCH_TYPE = 0;
+  //双方对抗
+  DUAL_MATCH_TYPE = 1;
+  //多方排位
+  RANKED_MATCH_TYPE = 2;
+}
+
+enum MatchStatus {
+  UNKNOWN_MATCH_STATUS = 0;
+  //未开始
+  MATCH_STATUS_NOT_STARTED = 1;
+  //比赛中
+  MATCH_STATUS_ONGOING = 2;
+  //已结束
+  MATCH_STATUS_FINISHED = 3;
+  //加时赛上半场
+  MATCH_STATUS_FIRST_HALF_OVERTIME = 4;
+  //加时赛下半场
+  MATCH_STATUS_SECOND_HALF_OVERTIME = 5;
+  //加时结束
+  MATCH_STATUS_OVERTIME_FINISHED = 6;
+}
+
+// 渲染类型
+enum RenderingType {
+  // 球面渲染
+  SPHERE_RENDERING = 0;
+  // 棱锥渲染
+  PYRAMID_RENDERING = 1;
+}
+
+// 视点类型
+enum EpisodeViewpointType {
+  // 人脸识别
+  VIEWPOINT_TYPE_FACE_RECOGNITION = 1;
+  // 国旗识别
+  VIEWPOINT_TYPE_FLAG_RECOGNITION = 2;
+}
+
+// 赛事展示筛选项
+enum CompetitionFilterType {
+  // 中国赛程
+  COMPETITION_FILTER_CHINA_MATCH = 1;
+  // 决赛赛程
+  COMPETITION_FILTER_FINAL_MATCH = 2;
+}
+
+// 业务方类型
+enum CircleFeedCommentBusinessType {
+  // 泡泡
+  FEED_COMMENT_BUSINESS_TYPE_PAOPAO = 1;
+  //明星行程
+  FEED_COMMENT_BUSINESS_TYPE_PAOPAO_STAR_SCHEDULE = 4;
+  //泡泡榜单页
+  FEED_COMMENT_BUSINESS_TYPE_PAOPAO_TOP_LIST = 5;
+  //视频片段
+  FEED_COMMENT_BUSINESS_TYPE_PAOPAO_VIDEO_CUT = 6;
+  //文学章节
+  FEED_COMMENT_BUSINESS_TYPE_BOOK_CHAPTER = 7;
+  //啪啪奇
+  FEED_COMMENT_BUSINESS_TYPE_PAPAQI = 10;
+  //竖版小视频
+  FEED_COMMENT_BUSINESS_TYPE_VERTICAL_VIDEO = 15;
+  //半屏页视频
+  CIRCLE_FEED_COMMENT_BUSINESS_TYPE_HALF_SCREEN_VIDEO = 17;
+}
+
+// 用户身份
+enum CircleFeedCommentUserIdentity {
+  // 普通用户
+  FEED_COMMENT_NORMAL_USER = 0;
+  // 明星
+  FEED_COMMENT_USER_STAR = 1;
+  // 作家
+  FEED_COMMENT_USER_AUTHOR = 2;
+  // 本书作者
+  FEED_COMMENT_USER_OWNER_AUTHOR = 3;
+  // 官方
+  FEED_COMMENT_USER_OFFICIAL = 4;
+  // 认证
+  FEED_COMMENT_USER_AUTHENTICATED = 5;
+  // 圈主
+  FEED_COMMENT_USER_CIRCLE_MASTER = 6;
+  // 管理员
+  FEED_COMMENT_USER_ADMIN = 7;
+}
+// 漫画类型
+enum ComicBookType {
+  UNKNOWN_COMIC_BOOK_TYPE = -1;
+  // 故事漫画
+  COMIC_BOOK_STORY = 1;
+  // 条漫
+  COMIC_BOOK_LONG_CASE = 2;
+  // 四格漫画
+  COMIC_BOOK_FOUR_CASE = 3;
+  // 单幅插画
+  COMIC_BOOK_ILLUSTRATION = 4;
+}
+
+// 阅读顺序
+enum BookReadOrder {
+  UNKNOWN_BOOK_READ_ORDER = -1;
+  // 从左至右
+  BOOK_READ_ORDER_LEFT_TO_RIGHT = 1;
+  // 从右至左
+  BOOK_READ_ORDER_RIGHT_TO_LEFT = 2;
+}
+
+// 受众
+enum BookSuitableGroup {
+  UNKNOWN_BOOK_SUITABLE_GROUP = -1;
+  // 男性
+  BOOK_SUITABLE_GROUP_MALE = 1;
+  // 女性
+  BOOK_SUITABLE_GROUP_FEMALE = 2;
+  // 耽美
+  BOOK_SUITABLE_GROUP_TANBI = 3;
+  // 同人
+  BOOK_SUITABLE_GROUP_FAN = 4;
+  //综合
+  BOOK_SUITABLE_GROUP_GENERAL = 5;
+}
+
+// 适用年龄
+enum BookAgeRating {
+  UNKNOWN_BOOK_AGE_RATING = -1;
+  // 全年龄
+  BOOK_AGE_RATING_ALL_AGE = 1;
+  // 12岁以上
+  BOOK_AGE_RATING_TEENAGER = 2;
+  // 18岁以上
+  BOOK_AGE_RATING_ADULT = 3;
+}
+enum BookBusinessType{
+  UNKNOWN_BOOK_BUSINESS_TYPE = -1;
+  // 文学
+  BOOK_BUSINESS_LITERATURE = 1;
+  // 漫画
+  BOOK_BUSINESS_COMIC = 2;
+}
+
+// 更新频率
+enum UpdateFrequency {
+  UNKNOWN_UPDATE_FREQUENCY = -1;
+  // 单周
+  UPDATE_FREQUENCY_PER_WEEK = 1;
+  // 双周
+  UPDATE_FREQUENCY_PER_FORTNIGHT = 2;
+  //每周双更
+  UPDATE_FREQUENCY_TWICE_PER_WEEK = 3;
+  //每月更新
+  UPDATE_FREQUENCY_PER_MONTH = 4;
+  //每日更新
+  UPDATE_FREQUENCY_DAILY = 5;
+}
+
+// 更新时间
+enum UpdateDay {
+  UNKNOWN_UPDATE_DAY = -1;
+  // 周一
+  UPDATE_DAY_MONDAY = 1;
+  // 周二
+  UPDATE_DAY_TUESDAY = 2;
+  // 周三
+  UPDATE_DAY_WEDNESDAY = 3;
+  // 周四
+  UPDATE_DAY_THURSDAY = 4;
+  // 周五
+  UPDATE_DAY_FRIDAY = 5;
+  // 周六
+  UPDATE_DAY_SATURDAY = 6;
+  // 周日
+  UPDATE_DAY_SUNDAY = 7;
+}
+
+// 赛程播单类型
+enum MatchCollectionSummaryType {
+  UNKNOWN_MATCH_COLLECTION_SUMMARY_TYPE = -1;
+  // 比赛页汇总播单
+  MATCH_COLLECTION_SUMMARY_ALL = 1;
+  // 进球播单
+  MATCH_COLLECTION_SUMMARY_GOAL = 2;
+  // 片段播单
+  MATCH_COLLECTION_SUMMARY_PART = 3;
+  // 运动员集锦播单
+  MATCH_COLLECTION_SUMMARY_PLAYER = 4;
+  // 现场花絮播单
+  MATCH_COLLECTION_SUMMARY_TITBIT = 5;
+  // 最新资讯播单
+  MATCH_COLLECTION_SUMMARY_NEWS = 6;
+}
+// 声道类型
+enum AudioChannelType {
+  UNKNOWN_AUDIO_CHANNEL = -1;
+  AUDIO_CHANNEL_STEREO = 1;
+  AUDIO_CHANNEL_5_1 = 2;
+  AUDIO_CHANNEL_7_1 = 3;
+  //全景声
+  AUDIO_CHANNEL_ATMOS = 4;
+}
+
+//排片表类型
+enum OnlineScheduleType {
+  //未知类型
+  UNKNOWN_ONLINE_SCHEDULE_TYPE = -1;
+  //付费
+  ONLINE_SCHEDULE_TYPE_PAY = 1;
+  //免费
+  ONLINE_SCHEDULE_TYPE_FREE = 2;
+}
+
+// 页面类型
+enum SubjectPageType {
+  UNKNOWN_SUBJECT_PAGE_TYPE = -1;
+  // 专题
+  SUBJECT_PAGE_TYPE_TOPIC = 1;
+}
+
+enum SubjectPageAvailableStatus {
+  UNKNOWN_SUBJECT_PAGE_AVAILABLE_STATUS = -1;
+  // 是
+  SUBJECT_PAGE_IS_AVAILABLE = 1;
+  // 否
+  SUBJECT_PAGE_NOT_AVAILABLE = 2;
+}
+
+enum SubjectPageOnlineStatus {
+  UNKNOWN_SUBJECT_PAGE_ONLINE_STATUS = -1;
+  // 上线
+  SUBJECT_PAGE_STATUS_ONLINE = 1;
+  // 下线
+  SUBJECT_PAGE_STATUS_OFFLINE = 2;
+}
+
+enum SubjectPageBusinessType {
+  UNKNOWN_SUBJECT_PAGE_BUSINESS_TYPE = -1;
+  // 内容专题
+  SUBJECT_PAGE_BUSINESS_CONTENT_TOPIC = 1;
+  // 二级频道
+  SUBJECT_PAGE_BUSINESS_SECOND_CLASS_CHANNEL = 2;
+  // 电商专题
+  SUBJECT_PAGE_BUSINESS_ELECTRIC_BUSINESS_TOPIC = 3;
+  // 阅读专题
+  SUBJECT_PAGE_BUSINESS_READING_TOPIC = 4; 
+  //知识付费专题
+  SUBJECT_PAGE_BUSINESS_KNOWLEDGE_PAYMENT_TOPIC = 5;
+}
+
+enum SubjectPageRedirectType {
+  UNKNOWN_SUBJECT_PAGE_REDIRECT_TYPE = -1;
+  // 无
+  SUBJECT_PAGE_REDIRECT_NONE = 1;
+  // 播放器
+  SUBJECT_PAGE_REDIRECT_PLAYER = 2;
+  // 专题页
+  SUBJECT_PAGE_REDIRECT_TOPIC = 3;
+  // 频道推荐页
+  SUBJECT_PAGE_REDIRECT_CHANNEL_RECOMMEND = 4;
+  // 频道片库页
+  SUBJECT_PAGE_REDIRECT_CHANNEL_STORAGE = 5;
+  // H5页面
+  SUBJECT_PAGE_REDIRECT_H5 = 6;
+}
+
+enum SubjectPageComponentOperationType {
+  UNKNOWN_SUBJECT_PAGE_COMPONENT_OPERATION_TYPE = -1;
+  // 右侧导语
+  SUBJECT_PAGE_COMPONENT_OPERATION_RIGHT = 1;
+  // 普通运营位
+  SUBJECT_PAGE_COMPONENT_OPERATION_NORMAL = 2;
+  // 下方运营位
+  SUBJECT_PAGE_COMPONENT_OPERATION_BELOW = 3;
+}
+
+enum SubjectPageComponentPositionType {
+  UNKNOWN_SUBJECT_PAGE_COMPONENT_POSITION_TYPE = -1;
+  // 小编推荐上方
+  SUBJECT_PAGE_COMPONENT_POSITION_RECOMMEND_ABOVE = 1;
+  // 小编推荐下方
+  SUBJECT_PAGE_COMPONENT_POSITION_RECOMMEND_BELOW = 2;
+}
+
+enum SubjectPageComponentExtendedCardPropertyType {
+  // 无
+  SUBJECT_PAGE_COMPONENT_EXTENDED_CARD_PROPERTY_NONE = 1;
+  // 时间轴
+  SUBJECT_PAGE_COMPONENT_EXTENDED_CARD_PROPERTY_TIME_AXIS = 2;
+  // 排名
+  SUBJECT_PAGE_COMPONENT_EXTENDED_CARD_PROPERTY_RANKING = 3;
+}
+
+enum RejectDrmType {
+  //不屏蔽，所有的都漏出
+  REJECT_TYPE_NONE = 1;
+  // 屏蔽DRM码流，只漏出普通的码流
+  REJECT_TYPE_DRM = 2;
+  // 屏蔽非DRM码流，也就是只漏出DRM码流
+  REJECT_TYPE_NONE_DRM = 3;
+}
+
+//直播类型
+enum LiveEpisodeType {
+  UNKNOWN_LIVE_EPISODE_TYPE = -1;
+  //购物直播
+  LIVE_EPISODE_TYPE_SHOP = 1;
+  // 爱频道(对应旧pgc直播)，关联subtype里4，对应业务逻辑逐渐停用，为兼容线上旧版本,枚举值暂保留
+  LIVE_EPISODE_TYPE_AIPINDAO = 2;
+  //奇秀
+  LIVE_EPISODE_TYPE_QIXIU = 3;
+  // 游戏直播(对应旧游戏直播流程)，关联subtype里4，对应业务逻辑逐渐停用，为兼容线上旧版本,枚举值暂保留
+  LIVE_EPISODE_TYPE_GAME = 4;
+  // PGC普通直播(对应新PGC直播),关联subtype里0-9
+  LIVE_EPISODE_TYPE_PGC_GENERAL = 5;
+  //泡泡直播
+  LIVE_EPISODE_TYPE_PAOPAO = 6;
+  //新英体育直播（关联subtype 10-15）
+  //业务方：大直播，开播使用方：体育
+  LIVE_EPISODE_TYPE_SPORTS = 7;
+}
+
+enum DrmType {
+   UNKNOWN_DRM_TYPE = -1;
+   NONE_DRM = 1;
+   FMS_DRM = 2;
+   INTER_TRUST_DRM = 3;
+   VCINEMA_DRM = 4;
+   IQIYI_CHINA_DRM = 5;
+   IRDETO_DRM = 6;
+}
+
+//头条类型
+enum HeadLineType {
+  UNKNOWN_HEAD_LINE_TYPE = -1;
+  //新闻
+  HEAD_LINE_TYPE_NEWS = 1;
+  //视频
+  HEAD_LINE_TYPE_VIDEO = 2;
+  //图集
+  HEAD_LINE_TYPE_IMAGE = 3;
+  //音频
+  HEAD_LINE_TYPE_AUDIO = 4;
+  //图集实体类型
+  HEAD_LINE_TYPE_ATLAS = 5;
+}
+
+enum HeadLineItemType {
+  UNKNOWN_HEAD_LINE_ITEM_TYPE = -1;
+  //文字
+  HEAD_LINE_ITEM_TYPE_WORD = 1;
+  //图片
+  HEAD_LINE_ITEM_TYPE_IMAGE = 2;
+  //视频
+  HEAD_LINE_ITEM_TYPE_VIDEO = 3;
+  //音频
+  HEAD_LINE_ITEM_TYPE_AUDIO = 4;
+  //图集
+  HEAD_LINE_ITEM_TYPE_ATLAS = 5;
+}
+
+enum HeadLineUploadType {
+  UNKNOWN_HEAD_LINE_UPLOAD_TYPE = -1;
+  //自动抓取，默认值
+  HEAD_LINE_UPLOAD_TYPE_AUTO_CRAWL = 1;
+  //编辑写入
+  HEAD_LINE_UPLOAD_TYPE_EDITOR = 2;
+  //手工写入
+  HEAD_LINE_UPLOAD_TYPE_USER = 3;
+  //视频套壳
+  HEAD_LINE_UPLOAD_TYPE_AUTO_VIDEO = 4;
+
+  //百家号
+  HEAD_LINE_UPLOAD_TYPE_BAIJIAHAO = 5;
+  //头条前端用户写入
+  HEAD_LINE_UPLOAD_TYPE_HEAD_LINE_UGC = 6;
+  //百度投递的数据
+  HEAD_LINE_UPLOAD_TYPE_BAIDU_DELIVER = 7;
+}
+
+//标签生产方式
+enum HeadLineLabelType {
+  UNKNOWN_HEAD_LINE_LABEL_TYPE = -1;
+  //自动
+  HEAD_LINE_LABEL_TYPE_AUTO = 1;
+  //手动
+  HEAD_LINE_LABEL_TYPE_MANUAL = 2;
+}
+
+//头条审核状态
+enum HeadLineCheckStatus {
+  UNKNOWN_HEAD_LINE_CHECK_STATUS = -1;
+  //审核中，针对先发后审的情况，默认值
+  HEAD_LINE_CHECK_STATUS_CHECKING = 1;
+  //审核通过
+  HEAD_LINE_CHECK_STATUS_PASSED = 2;
+  //审核不通过-机审
+  HEAD_LINE_CHECK_STATUS_FAILED_MACHINE = 3;
+  //审核不通过-人工
+  HEAD_LINE_CHECK_STATUS_FAILED_HUMAN = 4;
+}
+
+// 业务方类型
+enum BusinessType {
+  UNKNOWN_BUSINESS_TYPE = -1;
+  //动画屋
+  BUSINESS_TYPE_ANIMATIONROOM = 1;
+  //动漫app
+  BUSINESS_TYPE_ANIMATION_COMIC = 2;
+  //知识付费
+  BUSINESS_TYPE_KNOWLEDGE_PAYMENT = 3;
+}
+//上线状态
+enum HotEventStatus {
+  UNKNOWN_HOT_EVENT_STATUS = -1;
+  //在线
+  HOT_EVENT_STATUS_ONLINE = 1;
+  //下线
+  HOT_EVENT_STATUS_OFFLINE = 2;
+}
+
+//image summary name
+enum FeedImageNameType {
+  UNKNOWN_FEED_IMAGE_NAME_TYPE = -1;
+  FEED_IMAGE_NAME_TYPE_SOURCE = 1;
+  FEED_IMAGE_NAME_TYPE_PHOTO_PAOPAO_SINGLE = 2;
+  FEED_IMAGE_NAME_TYPE_PHOTO_300_300_FRAME_1 = 3;
+  FEED_IMAGE_NAME_TYPE_PHOTO_700_AUTO_FACE_0 = 4;
+  FEED_IMAGE_NAME_TYPE_PHOTO_400_AUTO_FACE_0_FRAME_1 = 5;
+  FEED_IMAGE_NAME_TYPE_PHOTO_675_FACE_0 = 6;
+  FEED_IMAGE_NAME_TYPE_PHOTO_675_AUTO_FACE_0 = 7;
+  FEED_IMAGE_NAME_TYPE_PHOTO_400_400 = 8;
+  FEED_IMAGE_NAME_TYPE_PHOTO_300_300= 9;
+  FEED_IMAGE_NAME_TYPE_PHOTO_40_40_FRAME_1 = 10;
+  FEED_IMAGE_NAME_TYPE_PHOTO_140_140_FRAME_1 = 11;
+  FEED_IMAGE_NAME_TYPE_PHOTO_480_640_FRAME_1 = 12;
+  FEED_IMAGE_NAME_TYPE_PHOTO_150_150_FRAME_1 = 13;
+  FEED_IMAGE_NAME_TYPE_PHOTO_240_320_FRAME_1 = 14;
+}
+
+enum EditorRecommendLevel {
+  UNKNOWN_EDITOR_RECOMMEND_LEVEL = -1;
+  // It is only suitable for publishing as play page or album page.
+  EDITOR_RECOMMEND_LEVEL_NONE = 0;
+  // It is suitable for publishing as channel home page's content, but not key.
+  EDITOR_RECOMMEND_LEVEL_GENERAL = 1;
+  // It is suitable for publishing as channel home page's key content,
+  // or site home page's general content.
+  EDITOR_RECOMMEND_LEVEL_KEY = 2;
+  // It is suitable for publishing as site home page's headline, top, or key content.
+  EDITOR_RECOMMEND_LEVEL_STRONG = 3;
+}
+
+//广告投放类型
+enum SaleType {
+  UNKNOWN_SALE_TYPE = -1;
+  SALE_TYPE_ON_SALE= 1;
+  SALE_TYPE_NOT_SALE= 2;
+}
+
+//反作弊类型
+enum AntiCheatType {
+  UNKNOWN_ANTI_CHEAT_TYPE = -1;
+  //骗赞
+  ANTI_CHEAT_TYPE_CHEAT_FOR_LIKE = 1;
+  //垃圾信息，包括推广，机器灌水广告等
+  ANTI_CHEAT_TYPE_SPAM = 2;
+  //无用信息，包括乱码，符号，无意义字符串等
+  ANTI_CHEAT_TYPE_GARBAGE = 3;
+}
+
+enum FeedCometExtendedType {
+  UNKNOWN_FEED_COMET_EXTENDED_TYPE = -1;
+  // 投票小尾巴
+  FEED_COMET_EXTENDED_TYPE_VOTE = 1;
+  // 盘点小尾巴
+  FEED_COMET_EXTENDED_TYPE_CHECK = 2;
+  // 热门事件小尾巴
+  FEED_COMET_EXTENDED_TYPE_HOTEVENT =3;
+  // 应援小尾巴
+  FEED_COMET_EXTENDED_TYPE_FUND = 4;
+  //素材小尾巴
+  FEED_COMET_EXTENDED_TYPE_MATERIAL = 5;
+}
+
+enum FeedLiveVideoExtendedType {
+  UNKNOWN_FEED_LIVE_VIDEO_EXTENDED_TYPE = -1;
+  // 奇秀直播
+  FEED_LIVE_VIDEO_EXTENDED_TYPE_QIXIU = 1;
+  // PGC直播
+  FEED_LIVE_VIDEO_EXTENDED_TYPE_PGC = 2;
+  // 游戏直播
+  FEED_LIVE_VIDEO_EXTENDED_TYPE_GAME = 3;
+  // 电商直播
+  FEED_LIVE_VIDEO_EXTENDED_TYPE_MALL = 4;
+  //PPC直播
+  FEED_LIVE_VIDEO_EXTENDED_TYPE_PPC = 5;
+}
+
+// 开放平台富媒体实体类型
+enum OpenRichMediaType {
+  UNKNOWN_OPEN_RICH_MEDIA_TYPE = -1;
+  // 新闻
+  OPEN_RICH_MEDIA_TYPE_NEWS = 1;
+  // 视频
+  OPEN_RICH_MEDIA_TYPE_VIDEO = 2;
+  // 图集
+  OPEN_RICH_MEDIA_TYPE_IMAGE = 3;
+  // 音频
+  OPEN_RICH_MEDIA_TYPE_AUDIO = 4;
+  // 套壳图集
+  OPEN_RICH_MEDIA_TYPE_ATLAS = 5;
+}
+
+// 开放平台富媒体实体来源类型
+enum OpenRichMediaUploadType {
+  UNKNOWN_OPEN_RICH_MEDIA_UPLOAD_TYPE = -1;
+  // 自动抓取，默认值
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_AUTO_CRAWL = 1;
+  // 编辑写入
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_EDITOR = 2;
+  // 写手写入
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_USER = 3;
+  // 套壳类型
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_AUTO_VIDEO = 4;
+  //百家号
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_BAIJIAHAO = 5;
+  //头条前端用户写入
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_HEAD_LINE_UGC = 6;
+  //百度投递的数据
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_BAIDU_DELIVER = 7;
+}
+
+enum OpenRichMediaItemType {
+  UNKNOWN_OPEN_RICH_MEDIA_ITEM_TYPE = -1;
+  //文字
+  OPEN_RICH_MEDIA_ITEM_TYPE_WORD = 1;
+  //图片
+  OPEN_RICH_MEDIA_ITEM_TYPE_IMAGE = 2;
+  //视频
+  OPEN_RICH_MEDIA_ITEM_TYPE_VIDEO = 3;
+  //音频
+  OPEN_RICH_MEDIA_ITEM_TYPE_AUDIO = 4;
+  //图集
+  OPEN_RICH_MEDIA_ITEM_TYPE_ATLAS = 5;
+}
+
+// 头条更新原因
+enum HeadLineUpdateReason {
+  UNKNOWN_HEAD_LINE_UPDATE_REASON = -1;
+  // 默认
+  HEAD_LINE_UPDATE_REASON_DEFAULT = 1;
+  // 清洗
+  HEAD_LINE_UPDATE_REASON_CLEAN = 2;
+}
+
+/**
+ * @brief 圈主删除字段
+ **/
+enum OwnerCheckStatus {
+  //未知
+  UNKNOWN_OWNER_CHECK_STATUS = -1;
+  //正常状态
+  OWNER_CHECK_STATUS_OK = 1;
+  //圈主删除状态
+  OWNER_CHECK_STATUS_DELETE = 2;
+}
+
+/**
+ * @brief 人脸识别结果
+ **/
+enum FaceRecognitionResult {
+  //未知
+  UNKNOWN_FACE_RECOGNITION_RESULT = -1;
+  //未识别到人脸
+  FACE_RECOGNITION_RESULT_FALSE = 1;
+  //识别到人脸
+  FACE_RECOGNITION_RESULT_TRUE = 2;
+}
+
+enum EventForm {
+  UNKNOWN_EVENT_FORM = -1;
+  // 普通事件
+  EVENT_FORM_GENERAL_EVENT = 1;
+  // 我拍事件
+  EVENT_FORM_SELF_VIDEO_EVENT = 2;
+}
+
+enum AlbumSourceType {
+    UNKNOWN_ALBUM_SOURCE_TYPE = -1;
+    ALBUM_SOURCE_TYPE_EPISODE = 1; // 剧集类(按集数正序)
+    ALBUM_SOURCE_TYPE_SOURCE = 2;  // 综艺类(按发行时间逆序)
+}
+
+enum SecurityLevel{
+    UNKNOWN_SECURITY_LEVEL = -1;
+    SECURITY_LEVEL_COPYRIGHTED = 0;
+    SECURITY_LEVEL_FUZZY_COPYRIGHTED = 1;
+    SECURITY_LEVEL_NONE_COPYRIGHTED = 2;
+}
+
+// 直播间类型
+enum LiveRoomType {
+  UNKNOWN_LIVE_ROOM_TYPE = -1;
+  // 游戏
+  LIVE_ROOM_TYPE_GAME = 1;
+  //动漫直播
+  LIVE_ROOM_TYPE_ANIMATION = 2;
+  //拍客直播
+  LIVE_ROOM_TYPE_PAIKE = 3;
+  //二次元直播
+  LIVE_ROOM_TYPE_ACG = 4;
+  //小剧场
+  LIVE_ROOM_TYPE_LITTLE_THEATER = 5;
+  //娱乐
+  LIVE_ROOM_TYPE_ENTERTAINMENT = 6;
+  //资讯
+  LIVE_ROOM_TYPE_NEWS = 7;
+  //生活
+  LIVE_ROOM_TYPE_LIFE = 8;
+  //体育
+  LIVE_ROOM_TYPE_SPORT = 9;
+  //教育
+  LIVE_ROOM_TYPE_EDUCATION = 10;
+}
+
+// 我拍feed扩展类型
+enum FeedSelfVideoExtendedType {
+  UNKNOWN_FEED_SELF_VIDEO_EXTENDED_TYPE = -1;
+  // 明星来电
+  FEED_SELF_VIDEO_EXTENDED_TYPE_STAR_PHONE = 8;
+  // 综艺互动
+  FEED_SELF_VIDEO_EXTENDED_TYPE_SHOW_SNS = 9;
+  // 换脸视频
+  FEED_SELF_VIDEO_EXTENDED_TYPE_FACE_OFF = 10;
+  //换图视频
+  FEED_SELF_VIDEO_EXTENDED_TYPE_CHANGE_IMAGE = 11;
+  //经典台词
+  FEED_SELF_VIDEO_EXTENDED_TYPE_CLASSIC_LINES = 12;
+  //音乐
+  FEED_SELF_VIDEO_EXTENDED_TYPE_MUSIC = 13;
+}
+/**
+ * @brief kol认证状态
+ * @details kol认证状态
+ **/
+enum KolUserIdentityType {
+  //未知
+  UNKNOWN_KOL_USER_IDENTITY_OFFICIAL = -1;
+  //kol认证用户
+  KOL_USER_IDENTITY_OFFICIAL = 1;
+}
+/**
+ * @brief 泡泡专辑创建的来源
+ **/
+enum CreateSource {
+  //未知来源
+  UNKNOWN_CREATE_SOURCE = -1;
+  //运营后台
+  CREATE_SOURCE_OPERATION_SYSTEM = 0;
+  //圈主后台
+  CREATE_SOURCE_MASTER_SYSTEM = 1;
+  //自动爬取
+  CREATE_SOURCE_CRAWL = 2;
+}
+/**
+ * @brief 状态
+ **/
+enum ImageAlbumStatus {
+  //未知状态
+  UNKNOWN_IMAGE_ALBUM_STATUS = -1;
+  //上线
+  IMAGE_ALBUM_STATUS_ONLINE = 0;
+  //下线
+  IMAGE_ALBUM_STATUS_OFFLINE = 1;
+}
+
+// 子站推荐级别
+enum SubsiteRecommendLevel {
+  UNKNOWN_SUBSITE_RECOMMEND_LEVEL = -1;
+  // 不推荐
+  SUBSITE_RECOMMEND_LEVEL_NOT_RECOMMENDED = 0;
+  // 正常
+  SUBSITE_RECOMMEND_LEVEL_NORMAL = 1;
+  // 高
+  SUBSITE_RECOMMEND_LEVEL_HIGH = 2;
+}
+/**
+ * @brief 角色图片类型
+ **/
+enum CharacterImageType {
+  //位置类型
+  UNKNOWN_CHARACTER_IMAGE_TYPE = -1;
+  //全身
+  CHARACTER_IMAGE_TYPE_BODY = 1;
+  //常规角色图
+  CHARACTER_IMAGE_TYPE_COMMON = 2;
+  //道具图
+  CHARACTER_IMAGE_TYPE_PROP = 3;
+}
+
+/**
+ * @brief 头条专题上下线状态
+ * @details 头条专题上下线状态
+ **/
+enum HeadLineAlbumAvailableStatus {
+  //未知
+  UNKNOWN_HEAD_LINE_ALBUM_AVAILABLE_STATUS = -1;
+  //下线
+  HEAD_LINE_ALBUM_AVAILABLE_STATUS_OFFLINE = 0;
+  //上线
+  HEAD_LINE_ALBUM_AVAILABLE_STATUS_ONLINE = 1;
+}
+/**
+ * @brief 头条专辑类型
+ **/
+enum HeadLineAlbumType {
+  //未知
+  UNKNOWN_HEAD_LINE_ALBUM_TYPE = -1;
+  //自动
+  HEAD_LINE_ALBUM_TYPE_AUTO = 0;
+  //人工
+  HEAD_LINE_ALBUM_TYPE_MANUAL = 1;
+}
+/**
+ * @brief logo水印屏蔽位置
+ **/
+enum LogoHidden {
+  //位置位置屏蔽logo
+  UNKNOWN_LOGO_HIDDEN = 0;
+  //右上角屏蔽logo
+  LOGO_HIDDEN_RIGHT_UP = 1;
+  //右下角屏蔽logo
+  LOGO_HIDDEN_RIGHT_DOWN = 2;
+  //左上角屏蔽logo
+  LOGO_HIDDEN_LEFT_UP = 3;
+  //左下角屏蔽logo
+  LOGO_HIDDEN_LEFT_DOWN = 4;
+}
+/**
+ * @brief 赛事项目
+ **/
+enum CompetitionEvent {
+  //未知项目
+  UNKNOWN_COMPETITION_EVENT = -1;
+  //足球
+  COMPETITION_EVENT_FOOTBALL = 0;
+  //篮球
+  COMPETITION_EVENT_BASKETBALL = 1;
+  //网球
+  COMPETITION_EVENT_TENNIS = 2;
+  //高尔夫
+  COMPETITION_EVENT_GOLF = 3;
+}
+/**
+ * @brief 热点类型
+ **/
+enum HotCollectionType {
+  //默认
+  UNKNOWN_HOT_COLLECTION_TYPE = -1;
+  //明星类热点
+  HOT_COLLECTION_TYPE_PEOPLE = 0;
+  //视频类热点
+  HOT_COLLECTION_TYPE_VIDEO = 1;
+}
+/**
+ * @brief 图片清晰度
+ **/
+enum ImageResolution {
+  //未知状态
+  UNKNOWN_IMAGE_RESOLUTION = -1;
+  //高
+  IMAGE_RESOLUTION_HIGH = 0;
+  //低
+  IMAGE_RESOLUTION_LOW = 1;
+}
+/**
+ * @brief 短视频拆条来源
+ **/
+enum CutFrom {
+  //未知
+  UNKNOWN_CUT_FROM = -1;
+  //编辑人工拆条
+  CUT_FROM_MANUAL = 0;
+  //机器自动拆条
+  CUT_FROM_AUTO = 1;
+  //用户拆条
+  CUT_FROM_USER = 2;
+  //百度AI关联
+  CUT_FROM_BAIDU_AI = 3;
+  //重庆标签编辑关联
+  CUT_FROM_TAG_EDITOR = 4;
+  //爱奇艺号拆条
+  CUT_FROM_IQIYIHAO = 5;
+}
+/**
+ * @brief 订阅组件跳转类型
+ **/
+enum SubscriptionRedirectType {
+  //跳转类型未知
+  UNKNOWN_SUBSCRIPTION_REDIRECT_TYPE = -1;
+  //不跳转
+  SUBSCRIPTION_REDIRECT_TYPE_NO_REDIRECT = 0;
+  //跳转爱奇艺号
+  SUBSCRIPTION_REDIRECT_TYPE_REDIRECT_TO_IQIYIHAO_PAGE = 1;
+}
+/**
+ * @brief 直播子业务类型
+ **/
+enum LiveEpisodeSubType {
+  //直播子业务类型未知
+  UNKNOWN_LIVE_EPISODE_SUB_TYPE = -1;
+  //动漫直播
+  LIVE_EPISODE_SUB_TYPE_ANIMATION = 0;
+  //拍客直播
+  LIVE_EPISODE_SUB_TYPE_PAIKE = 1;
+  //游戏直播
+  LIVE_EPISODE_SUB_TYPE_GAME = 4;
+  //二次元直播
+  LIVE_EPISODE_SUB_TYPE_ACG = 2;
+  //小剧场
+  LIVE_EPISODE_SUB_TYPE_LITTLE_THEATER = 3;
+  //娱乐
+  LIVE_EPISODE_SUB_TYPE_ENTERTAINMENT = 5;
+  //资讯
+  LIVE_EPISODE_SUB_TYPE_NEWS = 6;
+  //生活
+  LIVE_EPISODE_SUB_TYPE_LIFE = 7;
+  //体育
+  LIVE_EPISODE_SUB_TYPE_SPORT = 8;
+  //教育
+  LIVE_EPISODE_SUB_TYPE_EDUCATION = 9;
+  //新英体育足球
+  //对应type里面SPORTS
+  LIVE_EPISODE_SUB_TYPE_FOOTBALL = 10;
+  //新英体育网球
+  LIVE_EPISODE_SUB_TYPE_TENNIS = 11;
+  //新英体育高尔夫
+  LIVE_EPISODE_SUB_TYPE_GOLF = 12;
+  //新英体育羽毛球
+  LIVE_EPISODE_SUB_TYPE_BADMINTON = 13;
+  //新英体育排球
+  LIVE_EPISODE_SUB_TYPE_VOLLEYBALL = 14;
+  //新英体育格斗
+  LIVE_EPISODE_SUB_TYPE_COMBAT = 15;
+  //新英体育其他
+  LIVE_EPISODE_SUB_TYPE_SUPER_SPORTS_OTHER = 16;
+}
+/**
+ * @brief 直播插件关联业务方ID
+ **/
+enum BizId {
+  //未知关联业务方
+  UNKNOWN_BIZ_ID = -1;
+  //直播插件
+  BIZ_ID_LIVE_PLUGIN = 9;
+}
+/**
+ * @brief 直播插件关联子业务方ID
+ **/
+enum BizSubId {
+  //关联子业务方ID未知
+  UNKNOWN_BIZ_SUB_ID = -1;
+  //游戏直播间
+  BIZ_SUB_ID_GAME_LIVE_ROOM = 2;
+  //PGC直播间
+  BIZ_SUB_ID_PGC_LIVE_ROOM = 5;
+  //PPC直播间
+  BIZ_SUB_ID_PPC_LIVE_ROOM = 6;
+}
+/**
+ * @brief cut截取限制状态
+ **/
+enum CutLimitStatus {
+  //截取限制未知
+  UNKNOWN_CUT_LIMIT_STATUS = -1;
+  //允许全部截取
+  CUT_LIMIT_STATUS_ALL_ALLOWED = 0;
+  //允许部分截取
+  CUT_LIMIT_STATUS_PARTIALLY_ALLOWED = 1;
+  //禁止截取
+  CUT_LIMIT_STATUS_FORBIDDEN = 2;
+}
+/**
+ * @brief 圈子业务类型
+ **/
+enum CircleBusinessType {
+  //业务类型未知
+  UNKNOWN_CIRCLE_BUSINESS_TYPE = -1;
+  //明星业务
+  CIRCLE_BUSINESS_TYPE_STAR = 0;
+  //图书业务
+  CIRCLE_BUSINESS_TYPE_BOOK = 4;
+  //总编室
+  CIRCLE_BUSINESS_TYPE_EDITOR_OFFICE = 6;
+  //运营业务
+  CIRCLE_BUSINESS_TYPE_OPERATION = 7;
+  //漫画业务
+  CIRCLE_BUSINESS_TYPE_COMIC = 8;
+  //PGC业务
+  CIRCLE_BUSINESS_TYPE_PGC = 9;
+  //电影业务
+  CIRCLE_BUSINESS_TYPE_FILM = 10;
+  //电影票业务
+  CIRCLE_BUSINESS_TYPE_FILM_TICKET = 11;
+  //电视剧业务
+  CIRCLE_BUSINESS_TYPE_TV_SERIES = 12;
+  //综艺业务
+  CIRCLE_BUSINESS_TYPE_VARIETY_SHOW = 13;
+  //动漫业务
+  CIRCLE_BUSINESS_TYPE_CARTOON = 14;
+  //其他业务
+  CIRCLE_BUSINESS_TYPE_OTHER = 15;
+  //时尚业务
+  CIRCLE_BUSINESS_TYPE_FASHION = 16;
+  //兴趣
+  CIRCLE_BUSINESS_TYPE_INTEREST = 17;
+  //游戏业务
+  CIRCLE_BUSINESS_TYPE_GAME = 18;
+  //用户业务（用户自建圈子）
+  CIRCLE_BUSINESS_TYPE_USER = 19;
+  //主播业务
+  CIRCLE_BUSINESS_TYPE_ANCHOR = 20;
+  //QIM聊天业务
+  CIRCLE_BUSINESS_TYPE_QIM = 21;
+  //奇秀业务
+  CIRCLE_BUSINESS_TYPE_QIXIU = 22;
+}
+
+//用于定义Collectionype，解决枚举名冲突问题
+//不定义任何字段
+message CollectionCommon {
+  // Define the type of collection
+  enum CollectionType {
+    UNKNOWN_COLLECTION_TYPE = -1;
+    SUPER_ALBUM = 1;
+    SUB_ALBUM = 2;
+    TOPIC = 3;
+    PLAYLIST = 4;
+    PPS_ALBUM = 5;
+    UGC_PLAYLIST = 6;
+    AUTO_PLAYLIST = 7;
+
+    // 超剧集.
+    FILM_TV_ALBUM = 8;
+
+    // 此类型参照GraphPlaylistType
+    GRAPH_PLAYLIST = 9;
+    //片段合集
+    CUT_SET = 10;
+  }
+
+  // Define the sub type of collection's above type definitions. the relation between
+  // the episodes in one collection.
+  enum CollectionSubType {
+    UNKNOWN_COLLECTION_SUB_TYPE = -1;
+    // E.g: Prison Break season 1 and break prison season 2. the subType of super_album.
+    DIFF_SEASON = 1;
+    // For the episode translation, different dub versions. the subType of super_album.
+    DIFF_DUB = 2;
+    // For variety and entertainment long official episode. the subType of super_album.
+    CIRCUMS_PROPAGANDA = 3;
+    // E.g: <<Dream of the Red Chamber>> 1987 version and 2010 version. the subType of super_album.
+    DIFF_TIMES_LEADINGROLE = 4;
+    // 2D and 3D different format episode. the subType of super_album.
+    CORRELATION_2D_3D = 5;
+    //当CollectionType= FILM_TV_ALBUM 时，标记为“影视大全专题聚合”类型的Collection。由影视大全的编辑维护。
+    DIFF_SUBJECT= 6;
+    //事件类，对应的CollectionType为Playlist
+    EVENT = 7;
+
+    CUSTOM_LIST = 10;
+    //不同剪辑版本
+    DIFFERENT_CUT = 11;
+  }
+}
+/**
+ * @brief 内容来源类型
+ **/
+enum OpenRichMediaSourceType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE = -1;
+  //PPC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_PPC = 1;
+  //PGC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_PGC = 2;
+  //UGC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_UGC = 3;
+}
+/**
+ * @brief 上传者类型
+ **/
+enum OpenRichMediaUploaderType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE = -1;
+  //普通用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COMMON_USER = 1;
+  //版权方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COPYRIGHT_OWNER = 2;
+  //认证用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_AUTHENTICATED_USER = 3;
+  //机器人
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_ROBOT = 4;
+  //其他合作方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_OTHER_PARTNER = 5;
+  //搬运工
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_HAULER = 6;
+}
+/**
+ * @brief 百度的人工时效性判断
+ **/
+enum BaiduAuditEffectiveTime {
+  //未知类型
+  UNKNOWN_BAIDU_AUDIT_EFFECTIVE_TIME = -1;
+  //24小时
+  BAIDU_AUDIT_EFFECTIVE_TIME_24_HOURS = 0;
+  //3天
+  BAIDU_AUDIT_EFFECTIVE_TIME_3_DAYS = 1;
+  //7天
+  BAIDU_AUDIT_EFFECTIVE_TIME_7_DAYS = 2;
+  //长期
+  BAIDU_AUDIT_EFFECTIVE_TIME_LONG_TERM = 3;
+}
+/**
+ * @brief 圈子创建类型
+ **/
+enum CircleCreatorType {
+  //未知类型
+  UNKNOWN_CIRCLE_CREATOR_TYPE = -1;
+  //泡泡官方创建
+  CIRCLE_CREATOR_TYPE_OFFICIAL = 0;
+  //用户自创建
+  CIRCLE_CREATOR_TYPE_USER = 1;
+  //开发平台创建
+  CIRCLE_CREATOR_TYPE_OPEN_PLATFORM = 2;
+}
+/**
+ * @brief 截图比例
+ **/
+enum ScreenshotRatio {
+  //宽高比未知
+  UNKNOWN_SCREENSHOT_RATIO = -1;
+  //宽高比为3:5
+  SCREENSHOT_RATIO_WIDTH_3_HEIGHT_5 = 0;
+  //宽高比为5:3
+  SCREENSHOT_RATIO_WIDTH_5_HEIGHT_3 = 1;
+}
+/**
+ * @brief 爱奇艺号作者等级
+ **/
+enum IqiyihaoAuthorLevel {
+  //爱奇艺号作者等级未知
+  UNKNOWN_IQIYIHAO_AUTHOR_LEVEL = -1;
+  //小白
+  IQIYIHAO_AUTHOR_LEVEL_FRESH = 1;
+  //初级
+  IQIYIHAO_AUTHOR_LEVEL_PRIMARY = 2;
+  //中级
+  IQIYIHAO_AUTHOR_LEVEL_INTERMEDIATE = 3;
+  //高级
+  IQIYIHAO_AUTHOR_LEVEL_ADVANCED = 4;
+  //专家
+  IQIYIHAO_AUTHOR_LEVEL_PRIMARY_PROFESSIONAL = 5;
+  //元老级
+  IQIYIHAO_AUTHOR_LEVEL_JUNIOR_PROFESSIONAL = 6;
+  //骨灰级
+  IQIYIHAO_AUTHOR_LEVEL_SENIOR_PROFESSIONAL = 7;
+}
+/**
+ * @brief VIP类型
+ **/
+enum VipType {
+  //未知类型
+  UNKNOWN_VIP_TYPE = -1;
+  //VIP会员(黄金会员，观看影视剧内容)
+  VIP_TYPE_COMMON_VIP = 0;
+  //网球会员
+  VIP_TYPE_TENNIS_VIP = 1;
+  //高尔夫会员
+  VIP_TYPE_GOLF_VIP = 2;
+  //儿童会员
+  VIP_TYPE_CHILD_VIP = 3;
+  //FUN会员（会员&ACGN联合会员，动漫由会员维护，轻小说&漫画由ACGN维护）
+  VIP_TYPE_FUN_VIP = 5;
+  //体育会员
+  VIP_TYPE_SPORTS_VIP = 6;
+}
+/**
+ * @brief 标签来源类型
+ **/
+enum TagSummarySourceType {
+  //未知类型
+  UNKNOWN_TAG_SUMMARY_SOURCE_TYPE = -1;
+  //重庆编辑
+  TAG_SUMMARY_SOURCE_TYPE_CHONGQING_EDITOR = 0;
+  //频道编辑
+  TAG_SUMMARY_SOURCE_TYPE_CHANNEL_EDITOR = 1;
+  //NLP自动标签
+  TAG_SUMMARY_SOURCE_TYPE_NLP_AUTO = 2;
+  //UGC用户
+  TAG_SUMMARY_SOURCE_TYPE_UGC_USER = 3;
+  //抓取
+  TAG_SUMMARY_SOURCE_TYPE_CRAWL = 4;
+  //爱奇艺号
+  TAG_SUMMARY_SOURCE_TYPE_IQIYIHAO = 5;
+  //CP商接口中提供的标签
+  TAG_SUMMARY_SOURCE_TYPE_CP = 6;
+}
+/**
+ * @brief 标签类型
+ **/
+enum TagSummaryTagType {
+  //未知类型
+  UNKNOWN_TAG_SUMMARY_TAG_TYPE = -1;
+  //内容标签
+  TAG_SUMMARY_TAG_TYPE_CONTENT_TAG = 0;
+  //类型标签
+  TAG_SUMMARY_TAG_TYPE_CATEGORY_TAG = 1;
+}
+/**
+ * @brief 角色职业
+ **/
+enum CharacterJob {
+  //未知类型
+  UNKNOWN_CHARACTER_JOB = -1;
+  //老师
+  CHARACTER_JOB_TEACHER = 0;
+  //医生
+  CHARACTER_JOB_DOCTOR = 1;
+  //警察
+  CHARACTER_JOB_POLICE = 2;
+  //科学家
+  CHARACTER_JOB_SCIENTIST = 3;
+  //魔术师
+  CHARACTER_JOB_MAGICIAN = 4;
+  //歌唱家
+  CHARACTER_JOB_SINGER = 5;
+  //舞蹈家
+  CHARACTER_JOB_DANCER = 6;
+  //画家
+  CHARACTER_JOB_PAINTER = 7;
+  //消防员
+  CHARACTER_JOB_FIREMAN = 8;
+  //宇航员
+  CHARACTER_JOB_ASTRONAUT = 9;
+  //工程师
+  CHARACTER_JOB_ENGINEER = 10;
+  //企业家
+  CHARACTER_JOB_ENTREPRENEUR = 11;
+  //运动员
+  CHARACTER_JOB_ATHLETE = 12;
+  //艺术家
+  CHARACTER_JOB_ARTIST = 13;
+  //主持人
+  CHARACTER_JOB_HOST = 14;
+  //军人
+  CHARACTER_JOB_SOLDIER = 15;
+  //其他
+  CHARACTER_JOB_OTHER = 16;
+}
+/**
+ * @brief 片头、片中、片尾类型
+ **/
+enum VideoHeadTailType {
+  //未知类型
+  UNKNOWN_VIDEO_HEAD_TAIL_TYPE = -1;
+  //正片片头
+  VIDEO_HEAD_TAIL_TYPE_FEATURE_FILM_HEAD = 0;
+  //正片片尾
+  VIDEO_HEAD_TAIL_TYPE_FEATURE_FILM_TAIL = 1;
+  //爱剪辑片头
+  VIDEO_HEAD_TAIL_TYPE_AIJIANJI_HEAD = 2;
+  //爱剪辑片尾
+  VIDEO_HEAD_TAIL_TYPE_AIJIANJI_TAIL = 3;
+}
+/**
+ * @brief 比赛子类型
+ **/
+enum SubMatchType {
+  //未知类型
+  UNKNOWN_SUB_MATCH_TYPE = -1;
+  //混合双打
+  SUB_MATCH_TYPE_MIXED_DOUBLES = 0;
+  //男子双打
+  SUB_MATCH_TYPE_MEN_DOUBLES = 1;
+  //女子双打
+  SUB_MATCH_TYPE_WOMEN_DOUBLES = 2;
+  //男子单打
+  SUB_MATCH_TYPE_MEN_SINGLES = 3;
+  //女子单打
+  SUB_MATCH_TYPE_WOMEN_SINGLES = 4;
+}
+/**
+ * @brief tab类型
+ **/
+enum LiveEpisodeTabType {
+  //未知类型
+  UNKNOWN_LIVE_EPISODE_TAB_TYPE = -1;
+  //聊天室
+  LIVE_EPISODE_TAB_TYPE_CHAT_ROOM = 0;
+  //看更多
+  LIVE_EPISODE_TAB_TYPE_OTHER_LIVE_EPISODE = 1;
+  //排行榜
+  LIVE_EPISODE_TAB_TYPE_TOP_LIST = 2;
+  //活动
+  LIVE_EPISODE_TAB_TYPE_ACTIVITY = 3;
+  //赛况
+  LIVE_EPISODE_TAB_TYPE_MATCH_EVENT = 4;
+  //阵容
+  LIVE_EPISODE_TAB_TYPE_MATCH_LINEUP = 5;
+}
+/**
+ * @brief 话题素材类型
+ **/
+enum EventMaterialType {
+  //未知类型
+  UNKNOWN_EVENT_MATERIAL_TYPE = -1;
+  //视频素材
+  EVENT_MATERIAL_TYPE_VIDEO = 0;
+  //音乐素材
+  EVENT_MATERIAL_TYPE_MUSIC = 1;
+}
+/**
+ * @brief 通用平台类型
+ **/
+enum GeneralPlatform {
+  //未知类型
+  UNKNOWN_GENERAL_PLATFORM = -1;
+  //所有平台
+  GENERAL_PLATFORM_ALL = 0;
+  //IOS端
+  GENERAL_PLATFORM_IOS = 1;
+  //安卓端
+  GENERAL_PLATFORM_ANDROID = 2;
+}
+/**
+ * @brief 标签适用频道
+ **/
+enum CategoryAvailableBookChannel {
+  //未知
+  UNKNOWN_CATEGORY_AVAILABLE_BOOK_CHANNEL = -1;
+  //男生频道
+  CATEGORY_AVAILABLE_BOOK_CHANNEL_MALE = 0;
+  //女生频道
+  CATEGORY_AVAILABLE_BOOK_CHANNEL_FEMALE = 1;
+  //已出版（有出版编号的书）
+  CATEGORY_AVAILABLE_BOOK_CHANNEL_PUBLISHED = 2;
+  //文学
+  CATEGORY_AVAILABLE_BOOK_CHANNEL_LITERATURE = 3;
+}
+/**
+ * @brief 选手类型
+ **/
+enum CompetitorType {
+  //未知类型
+  UNKNOWN_COMPETITOR_TYPE = -1;
+  //运动员
+  COMPETITOR_TYPE_PLAYER = 0;
+  //运动队
+  COMPETITOR_TYPE_TEAM = 1;
+}
+/**
+ * @brief 弹幕类型
+ **/
+enum DanmuType {
+  //未知类型
+  UNKNOWN_DANMU_TYPE = -1;
+  //普通弹幕
+  DANMU_TYPE_COMMON = 0;
+  //角色弹幕
+  DANMU_TYPE_CHARACTER = 1;
+}
+/**
+ * @brief 图片来源
+ **/
+enum ImageSource {
+  //未知类型
+  UNKNOWN_IMAGE_SOURCE = -1;
+  //AI识别的备选图
+  IMAGE_SOURCE_AI_IMAGE = 0;
+  //视频中截的图
+  IMAGE_SOURCE_VIDEO_SCREENSHOT = 1;
+  //编辑上传
+  IMAGE_SOURCE_EDITOR = 2;
+  //用户上传
+  IMAGE_SOURCE_UPLOADER = 3;
+}
+/**
+ * @brief 章节类型
+ **/
+enum ChapterType {
+  //未知类型
+  UNKNOWN_CHAPTER_TYPE = -1;
+  //普通章
+  CHAPTER_TYPE_COMMON = 0;
+  //感言章
+  CHAPTER_TYPE_REFLECTION = 1;
+}
+/**
+ * @brief 创作者类型
+ **/
+enum CreatorType {
+  //未知类型
+  UNKNOWN_CREATOR_TYPE = -1;
+  //作者
+  CREATOR_TYPE_AUTHOR = 0;
+  //画者
+  CREATOR_TYPE_PAINTER = 1;
+  //译者
+  CREATOR_TYPE_TRANSLATOR = 2;
+}
+/**
+ * @brief 啪啪奇feed子类型
+ **/
+enum PapaqiExtendedType {
+  //未知类型
+  UNKNOWN_PAPAQI_EXTENDED_TYPE = -1;
+  //普通视频
+  PAPAQI_EXTENDED_TYPE_COMMON_VIDEO = 0;
+  //素材类型
+  PAPAQI_EXTENDED_TYPE_MATERIAL = 1;
+}
+/**
+ * @brief 表白Feed拓展子类型
+ **/
+enum FeedConfessionExtendedType {
+  //未知类型
+  UNKNOWN_CONFESSION_EXTENDED_TYPE = -1;
+  //表白卡
+  CONFESSION_EXTENDED_TYPE_CARD = 0;
+  //表白信
+  CONFESSION_EXTENDED_TYPE_LETTER = 1;
+}
+/**
+ * @brief Cut类型
+ **/
+enum CutType {
+  //未知类型
+  UNKNOWN_CUT_TYPE = -1;
+  //片段
+  CUT_TYPE_CLIP = 0;
+  //视频封面
+  CUT_TYPE_VIDEO_COVER = 1;
+}
+/**
+ * @brief 转授权状态
+ **/
+enum DelegationAuthStatus {
+  //转授权未知
+  UNKNOWN_DELEGATION_AUTH_STATUS = -1;
+  //转授权无效
+  DELEGATION_AUTH_STATUS_INVALID = 0;
+  //转授权有效
+  DELEGATION_AUTH_STATUS_VALID = 1;
+}
+/**
+ * @brief 动态视频封面类型
+ **/
+enum VideoCoverType {
+  //未知类型
+  UNKNOWN_VIDEO_COVER_TYPE = -1;
+  //机器自动生成
+  VIDEO_COVER_TYPE_MACHINE = 0;
+  //人工生产
+  VIDEO_COVER_TYPE_MANUAL = 1;
+  //其他类型
+  VIDEO_COVER_TYPE_OTHER = 2;
+}
+/**
+ * @brief 安全检查
+ **/
+enum SafetyCheck {
+  //未知审核
+  UNKNOWN_SAFETY_CHECK = -1;
+  //机器审核
+  SAFETY_CHECK_MACHINE = 0;
+  //人工审核
+  SAFETY_CHECK_MANUAL = 1;
+}
+/**
+ * @brief 爱奇艺号类型
+ **/
+enum IqiyihaoType {
+  //未知类型
+  UNKNOWN_IQIYIHAO_TYPE = -1;
+  //自媒体
+  IQIYIHAO_TYPE_SELF_MEDIA = 0;
+  //网大作者
+  IQIYIHAO_TYPE_VIDEO_GENERATOR_ONLINE_FILM = 1;
+  //直播主播
+  IQIYIHAO_TYPE_ANCHOR = 2;
+  //泡泡写手
+  IQIYIHAO_TYPE_PAOPAO_WRITER = 3;
+  //文学作者
+  IQIYIHAO_TYPE_BOOK_WRITER = 4;
+  //漫画作者
+  IQIYIHAO_TYPE_COMICBOOK_WRITER = 5;
+  //圈主管理员
+  IQIYIHAO_TYPE_PAOPAO_ADMINISTRATOR = 6;
+  //儿童视频发布者
+  IQIYIHAO_TYPE_VIDEO_GENERATOR_CHILD = 7;
+  //动漫视频发布者
+  IQIYIHAO_TYPE_VIDEO_GENERATOR_ANIMATION = 8;
+  //教育视频发布者
+  IQIYIHAO_TYPE_VIDEO_GENERATOR_EDUCATION = 9;
+  //泡泡宣发
+  IQIYIHAO_TYPE_PAOPAO_PROMOTOR = 10;
+  //网剧作者
+  IQIYIHAO_TYPE_VIDEO_GENERATOR_ONLINE_DRAMA = 11;
+  //轻小说作者
+  IQIYIHAO_TYPE_LIGHT_NOVEL_WRITER = 12;
+}
+/**
+ * @brief 爱奇艺号认证状态
+ **/
+enum IqiyihaoAuthStatus {
+  //未知类型
+  UNKNOWN_IQIYIHAO_AUTH_STATUS = -1;
+  //已认证
+  IQIYIHAO_AUTH_STATUS_AUTHED = 1;
+  //取消
+  IQIYIHAO_AUTH_STATUS_CANCEL = 2;
+  //审核中
+  IQIYIHAO_AUTH_STATUS_CHECK = 3;
+}
+/**
+ * @brief 爱奇艺号版权信息
+ **/
+enum IqiyihaoCopyright {
+  //未知类型
+  UNKNOWN_IQIYIHAO_COPYRIGHT = -1;
+  //默认（老数据）
+  IQIYIHAO_COPYRIGHT_DEFAULT = 0;
+  //原创
+  IQIYIHAO_COPYRIGHT_ORIGINAL = 1;
+  //转载
+  IQIYIHAO_COPYRIGHT_SHARE = 2;
+  //拍客
+  IQIYIHAO_COPYRIGHT_PAIKE = 3;
+  //其他
+  IQIYIHAO_COPYRIGHT_OTHER = 4;
+}
+/**
+ * @brief 认证标识
+ **/
+enum AuthMark {
+  //未知类型
+  UNKNOWN_AUTH_MARK = -1;
+  //无标注
+  AUTH_MARK_NONE = 0;
+  //认证标识
+  AUTH_MARK_AUTH = 1;
+  //认证+媒体标识
+  AUTH_MARK_AUTH_MEDIA = 2;
+}
+/**
+ * @brief 爱奇艺号纳豆标识
+ **/
+enum IqiyihaoNadouMark {
+  //未知类型
+  UNKNOWN_IQIYIHAO_NADOU_MARK = -1;
+  //无标识
+  IQIYIHAO_NADOU_MARK_NONE = 1;
+  //官方标识
+  IQIYIHAO_NADOU_MARK_OFFICIAL = 2;
+  //爱奇艺小编标识
+  IQIYIHAO_NADOU_MARK_IQIYI_EDITOR = 3;
+  //通用标识
+  IQIYIHAO_NADOU_MARK_GENERAL = 4;
+}
+/**
+ * @brief 爱奇艺号空间展示模板
+ **/
+enum IqiyihaoSpaceTemplate {
+  //未知类型
+  UNKNOWN_IQIYIHAO_SPACE_TEMPLATE = -1;
+  //普通用户
+  IQIYIHAO_SPACE_TEMPLATE_GENERAL = 1;
+  //达人类
+  IQIYIHAO_SPACE_TEMPLATE_MASTER = 2;
+  //媒体类
+  IQIYIHAO_SPACE_TEMPLATE_MEDIA = 3;
+  //时尚品牌类
+  IQIYIHAO_SPACE_TEMPLATE_FASHION = 4;
+  //大头频道
+  IQIYIHAO_SPACE_TEMPLATE_MAJOR = 5;
+  //专题页
+  IQIYIHAO_SPACE_TEMPLATE_SUBJECT = 6;
+}
+/**
+ * @brief 爱奇艺用户类型
+ **/
+enum IqiyiUserType {
+  //未知类型
+  UNKNOWN_IQIYI_USER_TYPE = -1;
+  //爱奇艺号
+  IQIYI_USER_TYPE_IQIYIHAO = 0;
+}
+/**
+ * @brief 视频合成方式
+ **/
+enum ConvertedVideoType {
+  //未知类型
+  UNKNOWN_CONVERTED_VIDEO_TYPE = -1;
+  //人工合成
+  CONVERTED_VIDEO_TYPE_MANUAL = 0;
+  //机器合成
+  CONVERTED_VIDEO_TYPE_MACHINE = 1;
+}
+/**
+ * @brief 合成来源
+ **/
+enum ConvertedVideoSource {
+  //未知类型
+  UNKNOWN_CONVERTED_VIDEO_SOURCE = -1;
+  //头条新闻（有图文的新闻稿）
+  CONVERTED_VIDEO_SOURCE_TOUTIAO_NEWS = 0;
+  //头条图集（有注释说明的图文集）
+  CONVERTED_VIDEO_SOURCE_TOUTIAO_IMAGE = 1;
+  //编辑上传
+  CONVERTED_VIDEO_SOURCE_EDITOR = 2;
+}
+/**
+ * @brief 小视频上传方式
+ **/
+enum FeedShortVideoUploadType {
+  //未知类型
+  UNKNOWN_FEED_SHORT_VIDEO_UPLOAD_TYPE = -1;
+  //本地上传
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_LOCAL = 1;
+  //拍摄上传
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_SHOOTING = 2;
+  //用户上传合成视频
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_USER_CONVERTED = 3;
+}
+/**
+ * @brief 品类关系
+ **/
+enum SubsiteCategory {
+  //未知类型
+  UNKNOWN_SUBSITE_CATEGORY = -1;
+  //房产
+  SUBSITE_CATEGORY_REAL_ESTATE = 0;
+  //汽车
+  SUBSITE_CATEGORY_CAR = 1;
+  //旅游
+  SUBSITE_CATEGORY_TRAVEL = 2;
+  //电视台
+  SUBSITE_CATEGORY_TV = 3;
+}
+/**
+ * @brief 关联类型
+ **/
+enum CutRelatedVideoType {
+  //未知类型
+  UNKNOWN_CUT_RELATED_VIDEO_TYPE = -1;
+  //NLP标签关联
+  CUT_RELATED_VIDEO_TYPE_TAG_NLP = 0;
+  //重庆标签编辑关联
+  CUT_RELATED_VIDEO_TYPE_CHONGQING_TAG_EDITOR = 1;
+}
+/**
+ * @brief 小剧场Act类型
+ * @details 1: 陪看点播视频的直播
+2: 陪看漫画的直播
+3: 陪读轻小说的直播
+ **/
+enum LiveActType {
+  //未知类型
+  UNKNOWN_LIVE_ACT_TYPE = -1;
+  //陪看点播视频的直播
+  LIVE_ACT_TYPE_VIDEO = 0;
+  //陪看漫画的直播
+  LIVE_ACT_TYPE_COMIC = 1;
+  //陪读轻小说的直播
+  LIVE_ACT_TYPE_LIGHT_NOVEL = 2;
+}
+/**
+ * @brief 付费类型
+ **/
+enum PayType {
+  //未知类型
+  UNKNOWN_PAY_TYPE = -1;
+  //免费内容
+  PAY_TYPE_FREE = 0;
+  //VIP会员内容
+  PAY_TYPE_VIP = 1;
+}
+/**
+ * @brief 需求方类型
+ **/
+enum DemanderType {
+  //未知类型
+  UNKNOWN_DEMANDER_TYPE = -1;
+  //头条
+  DEMANDER_TYPE_TOUTIAO = 0;
+  //泡泡
+  DEMANDER_TYPE_PAOPAO = 1;
+}
+/**
+ * @brief 素材修改类型
+ **/
+enum OpenRichMediaUpdateType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE = -1;
+  //编辑修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_EDITOR = 0;
+  //爱奇艺号写手修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_IQIYIHAO = 1;
+}
+/**
+ * @brief 审核状态
+ **/
+enum OpenRichMediaCheckStatus {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS = -1;
+  //审核中
+  OPEN_RICH_MEDIA_CHECK_STATUS_CHECKING = 0;
+  //审核通过
+  OPEN_RICH_MEDIA_CHECK_STATUS_PASSED = 1;
+  //审核不通过-机审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MACHINE = 2;
+  //审核不通过-人审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MANUAL = 3;
+}
+/**
+ * @brief 信息流业务类型
+ **/
+enum BeehiveBusinessType {
+  //未知类型
+  UNKNOWN_BEEHIVE_BUSINESS_TYPE = -1;
+  //泡泡
+  BEEHIVE_BUSINESS_TYPE_PAOPAO = 0;
+  //动漫
+  BEEHIVE_BUSINESS_TYPE_COMIC = 1;
+  //文学
+  BEEHIVE_BUSINESS_TYPE_BOOK = 2;
+  //吃鲸
+  BEEHIVE_BUSINESS_TYPE_CHIJING = 3;
+  //广告
+  BEEHIVE_BUSINESS_TYPE_ADVERTISEMENT = 4;
+  //地方站
+  BEEHIVE_BUSINESS_TYPE_SUBSITE = 5;
+}
+/**
+ * @brief 爱奇艺号封禁状态
+ **/
+enum IqiyihaoBanStatus {
+  //未知类型
+  UNKNOWN_IQIYIHAO_BAN_STATUS = -1;
+  //正常使用
+  IQIYIHAO_BAN_STATUS_NORMAL = 0;
+  //临时禁止使用
+  IQIYIHAO_BAN_STATUS_TEMPORARY_BANNED = 1;
+  //禁止使用
+  IQIYIHAO_BAN_STATUS_BANNED = 2;
+}
+/**
+ * @brief 上传类型
+ **/
+enum UploadVideoType {
+  //未知类型
+  UNKNOWN_UPLOAD_VIDEO_TYPE = -1;
+  //自媒体
+  UPLOAD_VIDEO_TYPE_SELF_MEDIA = 0;
+  //网大
+  UPLOAD_VIDEO_TYPE_ONLINE_FILM = 1;
+  //网剧
+  UPLOAD_VIDEO_TYPE_ONLINE_DRAMA = 2;
+  //儿童
+  UPLOAD_VIDEO_TYPE_CHILD = 3;
+  //动漫
+  UPLOAD_VIDEO_TYPE_ANIMATION_COMIC = 4;
+  //教育
+  UPLOAD_VIDEO_TYPE_EDUCATION = 5;
+  //小视频
+  UPLOAD_VIDEO_TYPE_SHORT_VIDEO = 6;
+  //直转点
+  UPLOAD_VIDEO_TYPE_LIVE_TO_EPISODE = 7;
+  //图文机器合成
+  UPLOAD_VIDEO_TYPE_MACHINE_CONVERTED_VIDEO = 8;
+  //拆条
+  UPLOAD_VIDEO_TYPE_CUT = 9;
+}
+/**
+ * @brief 版权审核结果
+ **/
+enum CopyrightCheckResult {
+  //未知类型
+  UNKNOWN_COPYRIGHT_CHECK_RESULT = -1;
+  //侵权
+  COPYRIGHT_CHECK_RESULT_INFRINGE = 0;
+  //原创
+  COPYRIGHT_CHECK_RESULT_ORIGINAL = 1;
+}
+/**
+ * @brief 业务分成状态
+ **/
+enum RevenueSharedStatus {
+  //未知类型
+  UNKNOWN_REVENUE_SHARED_STATUS = -1;
+  //参与分成
+  REVENUE_SHARED_STATUS_ALLOWED = 0;
+  //不参与分成
+  REVENUE_SHARED_STATUS_NOT_ALLOWED = 1;
+}
+/**
+ * @brief 上传视频工具权限
+ **/
+enum UploadVideoToolType {
+  //未知类型
+  UNKNOWN_UPLOAD_VIDEO_TOOL_TYPE = -1;
+  //普通版（写入09表）
+  UPLOAD_VIDEO_TOOL_TYPE_COMMON = 0;
+  //专业版（写入00表）
+  UPLOAD_VIDEO_TOOL_TYPE_PROFESSIONAL = 1;
+}
+/**
+ * @brief 爱奇艺号用户类型
+ **/
+enum IqiyihaoUserType {
+  //未知类型
+  UNKNOWN_IQIYIHAO_USER_TYPE = -1;
+  //普通用户
+  IQIYIHAO_USER_TYPE_USER = 1;
+  //编辑
+  IQIYIHAO_USER_TYPE_EDITOR = 2;
+  //普通机器人用户
+  IQIYIHAO_USER_TYPE_USER_MACHINE = 3;
+  //编辑机器人
+  IQIYIHAO_USER_TYPE_EDITOR_MACHINE = 4;
+}
+/**
+ * @brief 播单类型
+ **/
+enum PlaylistType {
+  //未知类型
+  UNKNOWN_PLAYLIST_TYPE = -1;
+  //包含专辑
+  PLAYLIST_TYPE_ALBUM_INCLUSIVE = 0;
+  //不包含专辑
+  PLAYLIST_TYPE_ALBUM_EXCLUSIVE = 1;
+}
+/**
+ * @brief 文学笔记类型的feed
+ **/
+enum FeedNotesExtendedType {
+  //未知类型
+  UNKNOWN_FEED_NOTES_EXTENDED_TYPE = -1;
+  //文摘
+  FEED_NOTES_EXTENDED_TYPE_DIGEST = 0;
+  //评论
+  FEED_NOTES_EXTENDED_TYPE_COMMENT = 1;
+}
+/**
+ * @brief 热度展示方式
+ **/
+enum HotDisplayType {
+  //未知类型
+  UNKNOWN_HOT_DISPLAY_TYPE = -1;
+  //播次
+  HOT_DISPLAY_TYPE_PLAY_COUNT = 0;
+  //热度指数
+  HOT_DISPLAY_TYPE_HOT_INDEX = 1;
+  //不受限取值，指视频、专辑无限制时依据频道是否有限制取值，都无限制，则取任意值
+  HOT_DISPLAY_TYPE_UNRESTRICTED = 2;
+  //不显示
+  HOT_DISPLAY_TYPE_NOT_DISPLAY = 3;
+}
+/**
+ * @brief 图片生产方式
+ **/
+enum ImageProductionType {
+  //未知类型
+  UNKNOWN_IMAGE_PRODUCTION_TYPE = -1;
+  //按需生产
+  IMAGE_PRODUCTION_TYPE_ON_DEMAND = 0;
+  //预生产
+  IMAGE_PRODUCTION_TYPE_PREPARATION = 1;
+  //默认生产，是指当按需和预生产都没有完成的时候，会先给一个默认图，当按需或预生产完成的时候，会把默认图给覆盖掉
+  IMAGE_PRODUCTION_TYPE_DEFAULT = 2;
+}
+/**
+ * @brief 评论类型
+ **/
+enum CommentType {
+  //未知类型
+  UNKNOWN_COMMENT_TYPE = -1;
+  //表状
+  COMMENT_TYPE_TABLE = 0;
+  //树状
+  COMMENT_TYPE_TREE = 1;
+}
+/**
+ * @brief 动态视频封面类型
+ **/
+enum VideoCoverContentType {
+  //未知类型
+  UNKNOWN_VIDEO_COVER_CONTENT_TYPE = -1;
+  //连续
+  VIDEO_COVER_CONTENT_TYPE_SERIES = 0;
+  //不连续
+  VIDEO_COVER_CONTENT_TYPE_SPLICE = 1;
+}
+/**
+ * @brief 视频类型
+ **/
+enum VideoType {
+  //未知类型
+  UNKNOWN_VIDEO_TYPE = -1;
+  //小视频（根据时长，宽高比及上传来源判断是否是小视频）
+  VIDEO_TYPE_SHORT_VIDEO = 0;
+}
+/**
+ * @brief 原创判定结果
+ **/
+enum OriginalCheckResult {
+  //未知类型
+  UNKNOWN_ORIGINAL_CHECK_RESULT = -1;
+  //原创
+  ORIGINAL_CHECK_RESULT_ORIGINAL = 0;
+  //转载
+  ORIGINAL_CHECK_RESULT_REPRINT = 1;
+}
+/**
+ * @brief 播单模板类型
+ **/
+enum PlaylistTemplateType {
+  //未知类型
+  UNKNOWN_PLAYLIST_TEMPLATE_TYPE = -1;
+  //短视频样式
+  PLAYLIST_TEMPLATE_TYPE_SHORT_VIDEO = 0;
+  //长视频列表样式
+  PLAYLIST_TEMPLATE_TYPE_VIDEO_LIST = 1;
+  //长视频大图样式
+  PLAYLIST_TEMPLATE_TYPE_VIDEO_LARGE_IMAGE = 2;
+  //长视频电影样式
+  PLAYLIST_TEMPLATE_TYPE_MOVIE = 3;
+}
+/**
+ * @brief 云腾信息类别
+ **/
+enum YuntengContentType {
+  //未知类型
+  UNKNOWN_YUNTENG_CONTENT_TYPE = -1;
+  //故事大纲
+  YUNTENG_CONTENT_TYPE_BOOK_OUTLINE = 0;
+  //人物小传
+  YUNTENG_CONTENT_TYPE_BIOGRAPHY = 1;
+}
+/**
+ * @brief 码流水印类型
+ **/
+enum StreamLogoType {
+  //未知类型
+  UNKNOWN_STREAM_LOGO_TYPE = -1;
+  //无水印
+  STREAM_LOGO_TYPE_NONE = 0;
+  //主站常规水印
+  STREAM_LOGO_TYPE_IQIYI_COMMON = 1;
+  //iqiyi自制节目水印
+  STREAM_LOGO_TYPE_IQIYI_PRODUCED = 2;
+  //iqiyi独播节目水印
+  STREAM_LOGO_TYPE_IQIYI_EXCLUSIVE = 3;
+  //iqiyi短视频水印
+  STREAM_LOGO_TYPE_IQIYI_SHORT_VIDEO = 4;
+  //iqiyi台湾站水印
+  STREAM_LOGO_TYPE_IQIYI_TW = 5;
+  //吃鲸水印
+  STREAM_LOGO_TYPE_CHIJING = 6;
+  //纳豆水印
+  STREAM_LOGO_TYPE_NADOU = 7;
+  //新英体育水印
+  STREAM_LOGO_TYPE_IQIYI_SPORT = 8;
+  //台湾站自制水印
+  STREAM_LOGO_TYPE_TW_PRODUCED = 9;
+  //台湾站独播水印
+  STREAM_LOGO_TYPE_TW_EXCLUSIVE = 10;
+}

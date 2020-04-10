@@ -1,0 +1,31 @@
+// Author: Jiannan Tan (tanjiannan@qiyi.com)
+//
+// 定义存储在zookeeper上的数据结构.
+//
+
+package knowledge.pub.service.fusion;
+
+option java_multiple_files = true;
+option java_outer_classname = "Message";
+
+//
+// Definition of rpcPayload which stored in zookeeper.
+//
+message RpcPayload {
+  enum TProtocolType {
+    BINARY = 1;       // TBinaryProtocol
+    COMPACT = 2;      // TCompactProtocol
+    JSON = 3;         // TJSONProtocol
+    SIMPLE_JSON = 4;  // TSimpleJSONProtocol
+  }
+  optional TProtocolType protocl_type = 1 [default = BINARY];
+
+  enum TTransportType {
+    SOCKET = 1;               // TSocket
+    FRAMED_TRANSPORT = 2;     // TFramedTransport
+    FILE_TRANSPORT = 3;       // TFileTransport
+    NON_BLOCKING_TRANSPORT= 4;  // TNonblockingTransport
+    HTTP_CLIENT = 5;          // THttpClient
+  }
+  optional TTransportType transport_type = 2 [default = SOCKET];
+}

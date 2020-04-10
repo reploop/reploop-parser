@@ -1,0 +1,43 @@
+option java_package = "com.qiyi.qiyu.portal.area.proto.resys30";
+option java_outer_classname="PpsCSquirrelProtos";
+
+// Rec unit exposed to outside
+message EntityInfo {
+    // The rec id
+    optional int64 id = 1 [ default = -1 ];
+    optional string name = 2;
+    optional int32 channel_id = 3;
+    optional DisplayFields display_fields = 4;
+    optional int32 first_child_is_member_only = 5;
+    optional int32 first_child_purchase_type = 6;
+    optional double sns_score = 7;
+    optional double pps_wiki_score = 8;
+    optional int32 album_is_member_only = 9;
+    optional bool is_qiyi_produced = 10;
+}
+
+message DisplayFields {
+    optional int64 album_id = 1;
+    optional int64 tv_id = 2;
+    optional string vid = 3;
+    optional string picture_url = 4;
+    optional string page_url = 5;
+    optional int32 is_member_only = 6;
+    optional int32 is_exclusive = 7;
+    optional int32 format_property = 8;
+    optional int32 purchase_type = 9;
+    optional int32 is_boss_mixer = 10;
+    optional string play_url = 11;
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message RecResponse {
+  optional string code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  repeated EntityInfo data = 3;
+}

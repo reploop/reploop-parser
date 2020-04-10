@@ -1,0 +1,68 @@
+// Define the live channel information.
+message LiveChannel {
+  //option
+  option (entity_option).table = LIVE_CHANNEL_TABLE;
+  option (entity_option).entity_name = "live_channel";
+  option (table_option).hbase_table_name = "qipu_live_channel_table";
+  option (entity_option).entity_id_type = LIVE_CHANNEL;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  // The operation information of live channel.
+  optional LiveChannelBase live_channel_base = 2 [(field_option).column_group = LIVE_CHANNEL_BASE, (column_option).column_name = "lvcn_base"];
+
+  // True: the live channel is opening; vice versa.
+  optional bool is_enable = 3 [(column_option).has_value = false, (field_option).column_group = IS_ENABLE, (column_option).column_name = "is_enable"];
+
+  // The children(that are live programs) summaries of live channel.
+  repeated MetaSummary live_episode_summary = 4 [(field_option).column_group = CHILD_LIVE_EPISODE, (column_option).column_name = "chd_lvepd_", (column_option).column_suffix = "${entity_id}"];
+
+  // The default live streaming info of live channel.
+  optional LiveStream default_live_stream = 5 [(field_option).column_group = DEFAULT_LIVE_STREAM, (column_option).column_name = "dftlvstm"];
+
+  // The live streams of live channel.
+  repeated LiveStream live_stream = 6 [(field_option).column_group = LIVE_STREAM, (column_option).column_name = "lvstm_", (column_option).column_suffix = "${uuid}"];
+
+  repeated string tag = 7 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // The accounting info of live channel.
+  optional Boss boss = 8 [(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+
+  // The play control info of live channel.
+  repeated AccessPlayControl access_play_control = 9 [(field_option).column_group = ACCESS_PLAY_CONTROL, (column_option).column_name = "accplayctrl_", (column_option).column_suffix = "${play_platform}"];
+
+  optional int64 last_update_time = 10 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional Qitan qitan = 11 [(field_option).column_group = QITAN, (column_option).column_name = "qtn"];
+
+  optional bool deleted = 12 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 13 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  // 直播中心伪静态播放页URL.
+  optional string page_url = 14 [(field_option).column_group = PAGE_URL, (column_option).column_name = "page_url"];
+
+  // 全景视频参数
+  optional PanoFormat pano_format= 15 [(field_option).column_group = PANO_FORMAT, (column_option).column_name = "pano_fmt"];
+
+  /**
+  * url格式： "qisu:// tvid=246005500;vid=5ec8bb5e840b2b1445c9d0a07be463af; ischarge=true;vtype=0"
+  * <ol>
+  *<li>tvid对应metadata. entity_id，为int型 ；</li>
+  *<li>ischarge对应boss.status的值，如果boss.status值为PAIED_AVAILABLE则输出ischarge=ture，boss.status=其他值或者不存在的时候则输出ischarge=false； </li>
+  *<li>vtype对于奇谱id以22结尾的直播节目都会强制写为vtype=1。</li>
+  * </ol>
+  **/
+  optional Qisu qisu = 16 [(field_option).column_group = QISU, (column_option).column_name = "qisu"];
+  optional PaopaoSummary paopao_summary = 17 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "paopao_sum"];
+
+  // 专题页URL.
+  optional string subject_url = 18 [(field_option).column_group = SUB_URL, (column_option).column_name = "sub_url"];
+
+  // Define the top recommend place of pps category for the album, episode, collection or ppsCategory.
+  repeated PpsCategoryRanking pps_category_ranking = 19 [(field_option).column_group = PPS_CATEGORY_RANKING, (column_option).column_name = "pps_cat_rk_", (column_option).column_suffix = "${pps_category_id}"];
+
+  // 3d 直播信息
+  optional ThreeDFormat	three_d_format = 20 [(field_option).column_group = THREE_D_FORMAT, (column_option).column_name = "three_d_fmt"];
+}

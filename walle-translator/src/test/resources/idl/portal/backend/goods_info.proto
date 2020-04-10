@@ -1,0 +1,155 @@
+option java_package = "com.qiyi.qiyu.portal.model.proto";
+option java_outer_classname="GoodsInfoProtos";
+
+message PropertyItem {
+  optional string key = 1;
+  repeated string value = 2;
+}
+
+message GoodsInfo {
+  // entity id
+  optional int64 id = 1 ;
+
+  // entity name
+  optional string name = 2 ;
+
+  // recommended or not
+  // determined by approval_status and count
+  optional bool is_valid = 3 ;
+
+  // id of category the entity belongs to
+  optional int64 category_id = 4 ;
+
+  // entity type: fixed price or pre sale.
+  optional string type = 5 ;
+
+  // image of the entity
+  optional string picture_url = 6 ;
+
+  // entity description
+  optional string description = 7 ;
+
+  // main video related to the entity
+  optional int64 main_episode_id = 8 ;
+
+  // the web url of the entity
+  optional string page_url = 9 ;
+
+  // seller id
+  optional int64 seller_id = 10 ;
+
+  // nick name of seller
+  optional string seller_nick = 11 ;
+
+  // entity's location.
+  optional string location = 12 ;
+
+  // determined by the list-time till now
+  optional int64 final_time = 13 ;
+
+  // sale point of the entity.
+  optional string sell_point = 14 ;
+
+  // slogan of promotion ads
+  optional string promotion_slogan = 15 ;
+
+  // time point when the entity is put on the shelves
+  optional int64 list_time = 16 ;
+
+  // time point when the entity is out of service.
+  optional int64 delist_time = 17 ;
+
+  // total number of reviews on the entity
+  optional int64 review_count = 18 ;
+
+  // total sales
+  optional int64 sales_volume = 19 ;
+
+  // monthly sales
+  optional int64 monthly_sales_volume = 20 ;
+
+  // total number of orders
+  optional int64 orders_volume = 21 ;
+
+  // monthly orders
+  optional int64 monthly_orders_volume = 22 ;
+
+  // total inventory
+  optional int64 count = 23 ;
+
+  // entity price
+  optional int32 price = 24 ;
+
+  // commission rate
+  optional string auction_point = 25 ;
+
+  // with/without member discounts
+  optional bool has_discount = 26 ;
+
+  // be new product or not
+  optional bool is_new_product = 27 ;
+
+  // be virtual(not real goods) or not
+  optional bool is_virtual = 28 ;
+
+  // be on shelves at specific time or not
+  optional bool is_timing = 29 ;
+
+  // be frozen or not
+  optional bool is_freeze = 30 ;
+
+  // be hidden or not
+  optional bool is_hide = 31 ;
+
+  // be illegal or not
+  optional bool is_violated = 32 ;
+
+  // invoice available or not
+  optional bool has_invoice = 33 ;
+
+  // warrant policy available or not
+  optional bool has_warranty = 34 ;
+
+  // Returns commitment available or not
+  optional bool sell_promise = 35 ;
+
+  // be dispatch within 24 hours or not
+  optional bool is_lightning_consignment = 36 ;
+
+  // freight payer:seller or buyer
+  optional string freight_payer = 37 ;
+
+  // recommended in the shop window or not
+  optional bool has_shopwindow_recommend = 38 ;
+
+  // parent id of the entity
+  optional int64 parent_id = 39 ;
+
+  // brand name of the entity
+  optional string brand_name = 40 ;
+
+  // ids of children of the entity
+  repeated int64 child_ids = 41 ;
+
+  // ids of related albums
+  repeated int64 spu_album_ids = 42 ;
+
+  // ids of related episodes
+  repeated int64 spu_episode_ids = 43 ;
+
+  // ids of releated people
+  repeated string spu_people_names = 44 ;
+
+  // ids of releated videos
+  repeated int64 video_ids = 45 ;
+
+  // ids of related property(entertainment)
+  repeated int64 related_ids = 46 ;
+
+  // properties from spu and skus
+  repeated PropertyItem properties = 47 ;
+
+  // last update time of the qipu entity
+  optional int64 last_update_time = 48;
+}
+

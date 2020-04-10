@@ -1,0 +1,161 @@
+// Author: Wang Tianxing<wangtianxing@qiyi.com>
+//
+// Proto definitions for the query service properties
+
+import "knowledge/graph/pub/properties.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/pub/common.proto";
+
+package knowledge.pub.query;
+
+enum QueryHitFormat {
+  UNKNOWN_RESULT_DATA_TYPE = 0;
+  // json 字符串类型
+  SOURCE = 1;
+  // Album, Episode, etc
+  QIPU_ENTITY = 2;
+  // 即 knowledge.graph.pub.AlbumVideoData, 包含主要的视频信息
+  VIDEO_SUMMARY = 3;
+  // 即 knowledge.graph.pub.CelebrityData, 包含主要的人物信息
+  PEOPLE_SUMMARY = 4;
+}
+
+enum QueryHitSortBy {
+  UNKNOWN_SORT_BY = 0;
+  // 按照播放量（热度）排序
+  DISPLAY_PLAY_COUNT = 1;
+  // 按照电影/电视剧的上映时间排序
+  PUBLISH_DATE = 2;
+  // 按照视频在iqiyi的上线时间排序
+  PAGE_PUBLISH_TIME = 3;
+}
+
+message QipuEntity {
+  optional Album album = 1;
+  optional Episode episode = 2;
+  optional ClipSceneShot css = 3;
+  optional Collection collection = 4;
+  optional People people = 5;
+  optional Image image = 6;
+  optional VideoGroup video_group = 7;
+  optional UgcEpisode ugc_episode = 8;
+//  optional LiveBroadcast live_broadcast = 9;
+  optional ResourceContainer resource_container = 10;
+//  optional PpsUgcChannel pps_ugc_channel = 11;
+  optional FilmTvLibrary film_tv_library = 12;
+  optional OrganizationSharePartner organization_share_partner = 13;
+  optional UgcCollection ugc_collection = 14;
+  optional AdsMaterial ads_material = 15;
+  optional TvLiveCenter tv_live_center = 16;
+  optional PpsCategory pps_category = 17;
+  optional AppGroup app_group = 18;
+//  optional MiniAutoCluster mini_auto_cluster = 19;
+  optional LiveChannel live_channel = 20;
+  optional LiveEpisode live_episode = 21;
+  optional Commodity commodity = 22;
+  optional Spu spu = 23;
+  optional ItemBrand item_brand = 24;
+  optional Theater theater = 25;
+  optional QiquTag qiqu_tag = 26;
+  optional Topic topic = 27;
+  optional Shop shop = 28;
+  optional Presenter presenter = 29;
+  optional ShowRoom showRoom = 30;
+  optional Festival festival = 31;
+  optional SpecialSubject special_subject = 32;
+  optional Character character = 33;
+  optional Category category = 34;
+  optional Taxonomy taxonomy = 35;
+  optional GraphEntity graph_entity = 36;
+  optional Book book = 37;
+  optional BookVolume book_volume = 38;
+  optional BookChapter book_chapter = 39;
+  // optional Category category = 40;
+  optional FestivalSeries festival_series = 41;
+  optional FestivalAward festival_award = 42;
+  optional OperationTip operation_tip = 43;
+  optional Paopao paopao = 44;
+  optional Circle circle = 45;
+  optional CircleFeed circle_feed = 46;
+  optional BookAuthor book_author = 47;
+  optional Event event = 48;
+  optional Competition competition = 49;
+  optional Match match = 50;
+  optional CircleFeedComment circle_feed_comment = 51;
+  optional ComicBook comic_book = 52;
+  optional ComicBookChapter comic_book_chapter = 53;
+  optional ContentProvider content_provider = 54;
+  optional SubjectPage subject_page = 55;
+  optional PaopaoActivity paopao_activity = 56;
+  optional IntellectualProperty intellectual_property = 57;
+  optional PaopaoCollection paopao_collection = 58;
+  optional HeadLine head_line = 59;
+  optional HotEvent hot_event = 60;
+  optional OpenRichMedia open_rich_media = 61;
+  optional VideoFormat video_format = 62;
+  optional MultiPublishEpisode multi_publish_episode = 63;
+  optional MultiPublishAlbum multi_publish_album = 64;
+  optional PeopleImage people_image = 65;
+  optional LiveRoom live_room = 66;
+  //图集
+  optional ImageAlbum image_album = 67;
+  //头条专辑
+  optional HeadLineAlbum head_line_album = 68;
+  //游戏专场
+  optional GameActivity game_activity = 69;
+  //爱奇艺用户
+  optional IqiyiUser iqiyi_user = 70;
+  //轻小说
+  optional LightNovel light_novel = 71;
+  //轻小说卷
+  optional LightNovelVolume light_novel_volume = 72;
+  //轻小说章
+  optional LightNovelChapter light_novel_chapter = 73;
+  //小剧场直播
+  optional LiveAct live_act = 74;
+  //短视频项目
+  optional PizzaVideo pizza_video = 75;
+}
+
+message QueryHit {
+  // 对应 Elasticsearch 检索结果的 index, type, id, score, source 字段
+  message QueryHitBase {
+    optional string index = 1;
+    optional string type = 2;
+    optional int64 id = 3;
+    optional float score = 4;
+    optional string source = 5;
+    optional int64 version = 6;
+  }
+  optional QueryHitBase base = 1;
+
+  optional QueryHitFormat format = 2;
+
+  optional QipuEntity qipu_entity = 3;
+
+  // 视频类型的基本信息
+  optional knowledge.graph.pub.AlbumVideoData video_summary = 4;
+
+  // 人物（明星）的基本信息
+  optional knowledge.graph.pub.CelebrityData people_summary = 5;
+}
+
+// 便于把多个 QueryHit 当成一个 Message 来使用
+message QueryHitList {
+  repeated QueryHit hit = 1;
+}
+
+message QueryAggregation {
+  optional string name = 1;
+
+  message Item {
+    optional string name = 1;
+    optional string string_value = 2;
+    optional double double_value = 3;
+    optional int64 long_value = 4;
+    optional string key = 5;
+    optional int64 doc_count = 6;
+    repeated QueryHit queryHits = 7;
+  }
+  repeated Item item = 2;
+}

@@ -1,0 +1,37 @@
+/**
+ * @brief 头条专辑
+ * @details 头条专辑
+ **/
+message HeadLineAlbum {
+  //option
+  option (entity_option).table = HEAD_LINE_ALBUM_TABLE;
+  option (entity_option).entity_name = "head_line_album";
+  option (table_option).hbase_table_name = "qipu_head_line_album_table";
+  option (entity_option).entity_id_type = HEAD_LINE_ALBUM;
+  //实体id
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //头条专辑Meta信息
+  optional HeadLineAlbumMetadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  //内容摘要
+  repeated HeadLineAlbumCardSummary card_summary = 3 [(field_option).column_group = CARD_SUMMARY, (column_option).column_name = "card_summary_", (column_option).column_suffix = "${order}"];
+  //频道
+  repeated int32 channel_id = 4 [(field_option).column_group = CHANNEL_ID, (column_option).column_name = "channel_id_"];
+  //标签
+  repeated string tag = 5 [(field_option).column_group = TAG, (column_option).column_name = "tag_"];
+  //详情页信息
+  optional HeadLineAlbumAvailableStatus available_status = 6 [default = HEAD_LINE_ALBUM_AVAILABLE_STATUS_OFFLINE, (field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "avail"];
+  //最后更新时间
+  optional int64 last_update_time = 7 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //创建时间
+  optional int64 create_time = 8 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "create_time"];
+  //头条专辑类型
+  optional HeadLineAlbumType album_type = 9 [default = HEAD_LINE_ALBUM_TYPE_AUTO, (field_option).column_group = ALBUM_TYPE, (column_option).column_name = "album_type"];
+  //头条专辑原站点信息
+  optional HeadLineIqiyiOriginalInfo iqiyi_original_info = 10 [(field_option).column_group = IQIYI_ORIGINAL_INFO, (column_option).column_name = "iqy_orgl_info"];
+  //上传者信息
+  optional HeadLineAlbumUploaderInfo uploader_info = 11 [(field_option).column_group = UPLOADER_INFO, (column_option).column_name = "uploader_info"];
+  //详情页信息
+  optional HeadLineAlbumDetailPageInfo detail_page_info = 12 [(field_option).column_group = DETAIL_PAGE_INFO, (column_option).column_name = "detail_page_info"];
+  //是否删除
+  optional bool deleted = 13 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+}

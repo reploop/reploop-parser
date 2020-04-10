@@ -1,0 +1,28 @@
+import "google/protobuf/descriptor.proto";
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/pub/qipu_options.proto";
+
+package knowledge.pub;
+
+// Proto for return type of methods defined in timestamp_rpc_service.thrift
+message GetTimestampResponse {
+  option (knowledge.pub.service_message_options).method_name = "getTimestamp";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional RpcStatusInfo rpc_status_info = 1;
+  repeated int64 timestamp = 2;
+}
+
+// Proto for getTimestamp method defined in timestamp_rpc_service.thrift
+message GetTimestampRequest {
+  option (knowledge.pub.service_message_options).method_name = "getTimestamp";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional User user = 1;
+
+  optional int32 count = 2 [default = 1];
+
+  optional string session_uuid = 3;
+}

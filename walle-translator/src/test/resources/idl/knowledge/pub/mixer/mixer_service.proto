@@ -1,0 +1,22 @@
+// Author: Wang Tianxing<wangtianxing@qiyi.com>
+//
+// Proto definitions for the mixer service
+
+import "knowledge/graph/pub/properties.proto";
+import "knowledge/pub/common.proto";
+import "search/common/proto/library.proto";
+
+package knowledge.pub.mixer;
+
+message GetFilmTvLibPlaySourceRequest {
+  required knowledge.pub.User user = 1;
+  required int64 entity_id = 2;
+  optional bool include_pps = 3 [default = false];
+  optional bool first_only = 4 [default = false];
+}
+
+message GetFilmTvLibPlaySourceResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional int32 total_video_count = 2;
+  optional search.indexing.pub.PlaySource play_source = 3;
+}

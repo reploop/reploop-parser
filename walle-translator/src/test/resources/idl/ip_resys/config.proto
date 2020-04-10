@@ -1,0 +1,21 @@
+option java_package = "com.qiyi.ip.resys";
+option java_outer_classname="ConfigProtos";
+
+message GlobalConfig {
+    optional string version = 1 [ default = "1.0.0" ];
+    repeated string area_name = 2;
+    optional bool emergency_mode = 3 [ default = false ];
+}
+
+message AreaConfig {
+    optional string area_code = 1 [ default = "test" ];
+    optional string area_version = 2 [ default = "0.0.1" ];
+    repeated BucketConfig bucket = 3;
+    optional int32 cache_ttl = 4 [ default = 120 ];
+    optional int32 total_slice = 5 [ default = 100 ];
+}
+
+message BucketConfig {
+    optional string bucket_name = 1 [ default = "" ];
+    optional int32 slice_num = 2 [ default = 0 ];
+}

@@ -1,0 +1,26 @@
+// Define the cluster auto-produced.
+message MiniAutoCluster {
+  //option
+  option (entity_option).table = MINI_AUTO_CLUSTER_TABLE;
+  option (entity_option).entity_name = "mini_auto_cluster";
+  option (table_option).hbase_table_name = "qipu_mini_auto_cluster_table";
+  option (entity_option).entity_id_type = MINI_AUTO_CLUSTER;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional Metadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  repeated string tag = 4 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 5 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional knowledge.graph.pub.MiniAutoClusterBase mini_auto_cluster_base = 6 [(field_option).column_group = MINI_AUTO_CLUSTER_BASE, (column_option).column_name = "miniautocltbase"];
+
+  repeated knowledge.graph.pub.AlbumVideoData related_album_video = 7 [(field_option).column_group = RELATED_ALBUM_VIDEO_CHILD, (column_option).column_name = "chd_rlt_albv_", (column_option).column_suffix = "${qipu_id}"];
+
+  optional int64 last_update_time = 8 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+}
+

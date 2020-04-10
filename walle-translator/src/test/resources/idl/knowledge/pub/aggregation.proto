@@ -1,0 +1,24 @@
+// Define some utilities used by QiPu Aggregation.
+// Author: Yin Zeng (zengyin@qiyi.com)
+
+import "knowledge/pub/common.proto";
+
+package knowledge.pub;
+
+enum AggregationType {
+  // Aggregation of actors.
+  ACTOR = 1;
+
+  // Aggregation of brands.
+  BRAND = 2;
+
+  // Aggregation of all qiyi produced entities.
+  QIYI_PRODUCTION = 3;
+}
+
+// A summary of entity for aggregation result.
+message AggregationEntitySummary {
+  required int64 entity_id = 1;
+  required int32 channel_id = 2;
+  optional Date page_publish_time = 3;
+}

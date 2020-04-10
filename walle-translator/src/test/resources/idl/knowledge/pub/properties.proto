@@ -1,0 +1,4842 @@
+// Author: Cangliang Li (licangliang@qiyi.com)
+//
+// Proto definitions for copyright,opration,boss,stats
+
+package knowledge.pub;
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/formats.proto";
+
+// Copyright information
+// Next field id: 20
+/**
+ * @brief 字段类型：璞玉
+ * @brief 璞玉用来定义版权信息
+ *
+**/
+message Puyu {
+  //是否可下载，不建议继续使用，请使用播控AccessPlayControl的is_download_allowed字段
+  optional bool is_download_allowed = 1 [default = false];
+
+  //是否可分享
+  optional bool is_share_allowed = 2 [default = false];
+
+  //是否只有大陆可访问，不建议继续使用，请使用播控AccessPlayControl来定义权限；
+  optional bool is_domestic_only = 3 [default = true];
+
+  //版权开始时间
+  optional int64 start_time = 4;
+  //版权结束时间
+  optional int64 end_time = 5;
+
+  //是否有DRM保护
+  optional bool is_drm_required = 6 [default = false];
+
+  //支持的平台，
+  repeated DistributionPlatform allowed_platform = 7;
+
+  
+  /**
+   * 版权所有者
+   *
+  **/
+  message CopyrightOwner {
+    //版权所有者的id
+    optional int64 id = 1;
+    //版权所有者名字
+    optional string name = 2;
+    //版权所有者描述
+    optional string description = 3;
+  }
+  //版权所拥有者
+  repeated CopyrightOwner copyright_owner = 8;
+  //合同编码
+  optional int64 contract_code = 9;
+  //合同名称
+  optional string contract_name = 10;
+
+  //合同条形码，在合同代码出来之前就有条形码，这是合同的唯一识别符
+  optional string contract_barcode = 19;
+
+  
+  //节目编号
+  optional int64 program_id = 11;
+  //节目名称
+  optional string program_name = 12;
+
+  //合同规定的开始期数
+  optional int32 contract_begin_phase = 13;
+  //合同规定的结束期数
+  optional int32 contract_end_phase = 14;
+  //合同规定的开始时间
+  optional Date contract_begin_time = 15;
+  //合同规定的结束时间
+  optional Date contract_end_time = 16;
+
+  //合同规定的是否应付费
+  optional bool should_purchase = 17;
+
+  //是否与合作伙伴共享
+  optional bool is_cooperation_allowed = 18 [default = true];
+}
+
+/**
+ * @brief 字段类型：用来优化支持搜索引擎
+ * @details: 用来优化支持搜索引擎的设置
+**/
+message Seo {
+  //搜索引擎优化关键词
+  repeated string keyword = 1;
+}
+
+/**
+ *@brief 字段类型：不再使用，老播控
+ *@details 请使用AccessPlayControl
+ */
+message PlatformRegionControl {
+  message PerPlatformRegionControl {
+    optional PlayPlatform play_platform = 1;
+
+    message AccessControl {
+      optional bool is_download_allowed = 1 [default = false];
+
+      // We will only push videos into regions in whitelisted_region.
+      repeated Location whitelisted_region = 2;
+
+      // We will forbid to push videos into regions in blacklisted_region.
+      repeated Location blacklisted_region = 3;
+
+      optional AvailableStatus availabe_status = 4 [default = NONE];
+
+      enum PlayLimitLevel {
+        // Can not show on page, but can play.
+        ONLY_SHOW = 0;
+        // Can not show on page, but also can not play.
+        SHOW_PLAY = 1;
+        // Can show on page, and can play.
+        NONE = 2;
+      }
+      optional PlayLimitLevel play_limit_level = 5 [default = ONLY_SHOW];
+
+      // True: not enter into search; False: enter into search.
+      optional bool reject_search = 6 [default = false];
+    }
+
+    optional AccessControl access_control = 2;
+  }
+
+  repeated PerPlatformRegionControl per_platform_region_control = 1;
+}
+
+
+/**
+ *@brief 支持VRS的运营信息
+ *@details 支持VRS的运营信息
+ *
+ **/
+message CommonBase {
+  // Determine the head of episode, in order to skip
+  optional StartEndPoint video_head = 1;
+  // Determine the tail of episode, in order to skip
+  optional StartEndPoint video_tail = 2;
+}
+
+/**
+ *@brief 字段类型：运营信息
+ *@details 运营信息
+ **/
+message Base {
+  //更新策略
+  optional string update_strategy = 1;
+
+  message FeatureFilmInfo {
+    // Trailer corresponding feature film publishes time, only existing on movie clip channel
+    // it is just effective on trailer
+    //正片发布时间
+    optional Date publish_time = 1;
+
+    // The prevue corresponding the feature film plays order,
+    // e.g: break prison 10st prevue
+    //正片播放次序
+    optional int32 order = 2;
+  }
+  optional FeatureFilmInfo feature_info = 2;
+
+  enum LogoPosition {
+      //右上
+      R_UP = 0;
+      //右下
+      R_DOWN = 1;
+      L_UP = 2;
+      L_DOWN = 3;
+  }
+  // If no LogoPosition's member,which means no logo
+  optional LogoPosition logo_position = 3;
+  //奇艺发布日期
+  optional Date qiyi_publish_date = 4;  // year
+
+  //播放计划 E.g:play at 10:00 a.m every day or at 8:00 p.m from Monday to Friday.
+  optional string play_schedule = 5;
+
+  //播放进度（集数） E.g: play three sets every day.
+  optional string play_frequency = 6;
+  //内容类型
+  optional ContentType content_type = 7;
+
+  // Album highlights, one word recommend
+  //一句话推荐
+  optional string prompt_description = 8;
+
+ /**
+   *所属频道ID。目前已知的有：<ol>
+   *@brief 所属频道ID。
+   *@details 目前已知的有：<ol>
+   * <li>1 电影 dy</li>
+   * <li>2 电视剧 dsj</li>
+   * <li>3 纪录片 jlp</li>
+   * <li>4 动漫 dm</li>
+   * <li>5 音乐 yy</li>
+   * <li>6 综艺 zy</li>
+   * <li>7 娱乐 yl</li>
+   * <li>8 游戏 yx</li>
+   * <li>9 旅游 ly</li>
+   * <li>10 片花 ph</li>
+   * <li>11 公开课 gkk</li>
+   * <li>12 教育 jy</li>
+   * <li>13 时尚 ss</li>
+   * <li>14 时尚综艺 sszy</li>
+   * <li>15 少儿 se</li>
+   * <li>16 微电影 wdy</li>
+   * <li>17 体育 ty</li>
+   * <li>18 奥运 ay</li>
+   * <li>19 直播 zb</li>
+   * <li>20 广告 gg</li>
+   * <li>21 生活 sh</li>
+   * <li>22 搞笑 gx</li>
+   * <li>23 UGC ugc</li>
+   * <li>24 财经 cj</li>
+   * <li>25 资讯 zx</li>
+   * <li>26 汽车 qc</li>
+   * <li>27 原创 yc</li>
+   * <li>28 军事 js</li>
+   * <li>29 母婴 my</li>
+   * <li>30 科技 kj</li>
+   * <li>31 脱口秀 tkx</li>
+   * <li>32 健康 jk</li>
+   * <li>33 公益 gy</li>
+   * </li>
+   * </ol>
+   * </ol>
+   **/
+  optional int32 channel_id = 9;
+
+  // True: Good quality programs produced by the iqiyi
+  // False: the program is not produced by the iqiyi or
+  //        the ordinary program is produced by the iqiyi.
+  //爱奇艺出品：是/否
+  optional bool is_qiyi_produced = 10;
+
+  // The name for display
+  // 节目显示名称.
+  optional string display_name = 11;
+
+  // 短标题，主要用于移动端显示
+  optional string short_display_name = 22;
+  //影院上线时间
+  optional Date cinema_publish_date = 12;
+  //影院下线时间
+  optional Date cinema_offline_date = 13;
+
+  // Determine the head of episode, in order to skip
+  //片头的开始/结束时间
+  optional StartEndPoint video_head = 14;
+  // Determine the tail of episode, in order to skip
+  //片尾的开始/结束时间
+  optional StartEndPoint video_tail = 15;
+
+  // Push platform, can be modified by editor
+  //推送频道
+  repeated DistributionPlatform platform = 16;
+
+  // The start and end point of advertisement video, for jiangsu TV, or other TVs.
+  // If multiple advertisement videoes, one or multiple may be cancelled.
+  repeated StartEndPoint advertise_start_end_point = 17;
+
+  // This field will be deprecated after moving data complete. use entity.page_publish_status instead.
+  // Status definiton for the entity's page is pushed to the user
+  optional PagePublishStatus page_publish_status = 18 [default = PAGE_WAIT];
+
+  // The page of the entity will be pushed to the user according
+  // to below set time
+  optional Date page_publish_time = 19;
+
+  // The time segments can be skipped for episode.
+  repeated SkipTimeSegment skip_time_segment = 20;
+
+  // Set the status of drm for diferrent platforms by the editor
+  //各平台DRM状态
+  repeated DrmStatus drm_status = 21;
+
+  // Describe one episode or album's important degree for lego background editor.
+  enum EDITOR_RECOMMEND_LEVEL {
+    // It is only suitable for publishing as play page or album page.
+    NONE = 0;
+    // It is suitable for publishing as channel home page's content, but not key.
+    GENERAL = 1;
+    // It is suitable for publishing as channel home page's key content,
+    // or site home page's general content.
+    KEY = 2;
+    // It is suitable for publishing as site home page's headline, top, or key content.
+    STRONG = 3;
+  }
+  optional EDITOR_RECOMMEND_LEVEL editor_recommend_level = 23 [default = NONE];
+
+  // Distinguish pps and iqiyi when need. if the entity is producted by pps, pps must set
+  // brand=PPS. For backward-compatible with old data, iqiyi can not set brand=IQIYI.
+  optional Brand brand = 24;
+
+  // Use to control focus can be used by which brand(iqiyi and pps).
+  optional bool is_iqiyi_used = 25;
+  optional bool is_pps_used = 26;
+
+  // Use to longyuan counts pps and iqiyi sum total vv of the pps's episode.
+  optional int32 pps_sid = 27;
+
+  // Use to sort, rename from pps_sort_type and pps_sort_ward to expand to playlist, and so on.
+  optional SortType sort_type = 28;
+  optional SortWard sort_ward = 29;
+
+  enum SECURITY_LEVEL{
+    COPYRIGHTED = 0;
+    FUZZY_COPYRIGHTED = 1;
+    NONE_COPYRIGHTED = 2;
+  };
+  optional SECURITY_LEVEL security_level = 30;
+
+  // 内容类型标识
+  optional SpecialContentType special_content_type = 31;
+
+  // 播放策略短标题
+  optional string short_update_strategy = 32;
+
+  // 更新时间
+  repeated UpdateDay update_day = 33;
+  // 更新频率
+  optional UpdateFrequency update_frequency = 34;
+
+  //是否已完结
+  optional bool is_finished = 35 [default = true];
+
+  // 标题前缀
+  optional string display_name_prefix = 36;
+  // 跳转页面url
+  optional string redirect_url = 37;
+  //吸睛标题
+  optional string fantasy_title = 38;
+  //logo水印屏蔽位置
+  repeated LogoHidden logo_hidden = 39;
+  //是否分成
+  optional bool is_revenue_allowed = 40 [default = false];
+  //上传类型
+  optional UgcOperation.UploadActionType upload_action_type = 41 [default = SHOOTING];
+  //关联的正片专辑标题
+  optional string related_album_title = 42;
+}
+
+/**
+ *@brief 字段类型：百度合作信息
+ *@details 百度合作信息
+ **/
+message Baidu {
+  //首播电视台
+  optional string original_play_tv_station = 1;
+  //首播时间
+  optional string original_play_time = 2;
+  //首播播放进度
+  optional string original_play_frequency = 3;
+  // For baidu video square, corresponding to vrs.expand_type
+  //百度视频广场
+  repeated string video_square = 4;
+  //作品版本信息
+  optional string video_version_info = 5;
+
+  // For baidu bake link in play page.
+  optional string baike_url = 6;
+}
+
+/**
+ *@brief 字段类型：结算信息
+ *@details 结算信息
+ *计算规则如下<ol>
+ *<li>PurchaseType=0 is_member_only=false则为非会员免费影片</li>
+ *<li>PurchaseType=1 is_member_only=true is_memeber_free=true则为只会员免费影片</li>
+ *<li>PurchaseType=2 is_member_only=true is_memeber_free=false则为会员也要付费影片</li>
+ *</ol>
+ **/
+message Boss {
+
+  //是否只会员可看
+  optional bool is_member_only = 1 [default = false];
+
+  // Exists only if is_member_only = true
+  //会员是否免费
+  optional bool is_memeber_free = 2 [default = true];
+
+  // Episode pay status.(0:free; 1:paied but not pricing; 2:paied and pricing)
+  enum Status {
+    //免费
+    FREE = 0;
+    //已付费未划价，不可看视频
+    PAIED_NOT_AVAILABLE = 1;
+    //已付费划价，可看视频
+    PAIED_AVAILABLE = 2;
+  }
+  //向老版本系统展示付费状态
+  optional Status status = 3;
+  // free page on line time
+  //免费开始时间，编辑可修改
+  optional Date free_start_time = 4;
+  // the length of pay time to the live broadcast
+  optional int64 paid_start_time = 5;
+  optional int64 paid_end_time = 6;
+
+  // 收费但是可以免费试看的视频.
+  // 表示整集可以试看,不是6分钟试看.
+  optional bool is_free_probation = 7 [default = false];
+
+  // 是否支持点播
+  optional bool is_support_tvod = 8 [default= false];
+  // 是否支持包月
+  optional bool is_support_monthly = 9 [default= false];
+  // 是否支持点播券
+  optional bool is_support_tvod_coupon = 10 [default= false];
+  // 是否支持套餐
+  optional bool is_support_package= 11 [default= false];
+
+  message Tvod {//当且仅当is_support_tvod=true时。
+    // 点播视频原价
+    optional int32 original_price = 1;
+    // 点播视频结算价
+    optional int32 settlement_price = 2;
+    // 有效期
+    optional string valid_time = 3;
+  }
+
+  optional Tvod tvod = 12;
+
+  // 仅允许会员下载，如果为false，则按照access-play-control来控制。
+  // 视频是否可下载的逻辑：如果access-play-control中对应该平台是不可下载的，则是不可下载；否则判断是否会员可下载，如果是，则要求会员才可以下载。
+  optional bool is_member_downloadable_only = 13 [default = false] ;
+
+  message BookChargeInfo{
+    enum BookChargeMethod{
+      BY_BOOK = 1;  //按照书付费
+      BY_CHAPTER = 2; //按照章付费
+      // 包月
+      BY_MONTH = 3;
+    }
+    repeated BookChargeMethod charge_method = 1;
+  }
+  //和书相关的支付信息；
+  optional BookChargeInfo book_charge_info = 14;
+
+  /**
+  * 免费试看枚举
+  *
+  **/
+  enum FreeProbationType{
+    //默认值
+    UNDEFINED_PROBATION = -1;
+    //无试看
+    NO_PROBATION = 0;
+    //全集试看
+    FULL_PROBATION = 1;
+    //6分钟试看
+    SIX_MINUTES_PROBATION = 2;
+  }
+  //免费试看类型，由乐高写入。
+  //过渡期间前端业务逐步从is_free_probation的判断切换至free_probation_type
+  //过渡结束后废弃is_free_probation字段。
+  optional FreeProbationType free_probation_type = 15 [default = UNDEFINED_PROBATION];
+  /**
+  * 付费状态
+  */
+  enum ChargeStatus {
+      UNKNOWN_CHARGE_STATUS = -1;
+      //免费
+      CHARGE_STATUS_FREE = 1;
+      //已付费划价，可看视频
+      CHARGE_STATUS_PAIED_AVAILABLE = 2;
+      //已付费划价，部分可看
+      CHARGE_STATUS_PAID_PART = 3;
+  }
+  //向新版本系统展示内容付费状态
+  optional ChargeStatus charge_status = 16;
+  //VIP垂直业务类型
+  repeated VipType vip_type = 17;
+}
+
+/**
+ *@brief 字段类型：统计信息，已废弃
+ *@details 统计信息，已废弃
+ **/
+message Stats {
+  //播放次数
+  optional int64 play_count = 1;
+  //肯定次数
+  optional int64 num_of_positive = 2;
+  //否定次数
+  optional int64 num_of_negative = 3;
+}
+
+/**
+ *@brief 字段类型：视链信息
+ *@details 视链信息
+ **/
+message ViewLink {
+  optional string uuid = 7;
+
+  message ViewLinkName {
+    required int32 begin_time = 1;
+    required int32 end_time = 2;
+    required int32 x_pos = 3;
+    required int32 y_pos = 4;
+  }
+
+  required ViewLinkName view_link_name = 1;
+
+  message Frame {
+    required int32 width = 1;
+    required int32 height = 2;
+  }
+  optional Frame frame = 2;
+  //是否鼠标触发显示
+  optional string mouse_touch_show = 3;
+
+  // Define the type of the view link, two types: video and person event.
+  enum ViewLinkType {
+    PERSON_EVENT_LINK = 1;
+    VIDEOLINK = 2;
+  }
+  optional ViewLinkType type = 4;
+  //视链层
+  optional string level = 5;
+
+  message Description {
+    optional string title = 1;
+    //标题链接
+    optional string title_link = 2;
+    optional string subordinate_title = 3;
+    //副标题链接
+    optional string subordinate_title_link = 4;
+    //演员图片
+    optional string actor_pic = 5;
+    //主要角色
+    optional string leading_role = 6;
+    //主要角色链接
+    optional string leading_role_link = 7;
+    //饰演
+    optional string act = 8;
+    //饰演链接
+    optional string act_link = 9;
+    //内容
+    optional string content = 10;
+    //内容链接
+    optional string content_link = 11;
+    //详细链接
+    optional string detail_link = 12;
+
+    // The button which Player shows viewlink uses which text
+    enum ButtonTextShowType {
+      INSTANTLY_WATCH = 1;
+      INSTANTLY_DOWNLOAD = 2;
+      INSTANTLY_ENTER = 3;
+      RESERVED = 4;
+    }
+    optional ButtonTextShowType button_text_show_type = 13;
+  }
+  optional Description description = 6;
+}
+
+/**
+ *@brief 字段类型：奇谈关联信息
+ *@details 奇谈关联信息
+ **/
+message Qitan {
+  required int64 entity_id = 1;
+  optional bool should_display = 2 [default = true];
+}
+
+
+/**
+ *@brief 字段类型：视频片段起止信息
+ *@details 视频片段起止信息
+ **/
+message StartEndPoint {
+  optional int64 start_point = 1;
+  optional int64 end_point = 2;
+}
+
+
+/**
+ *@brief 字段类型：视频跳过时间
+ *@details 视频跳过时间
+ **/
+message SkipTimeSegment {
+  enum TimeSegmentType {
+    ADVERTISEMENT = 1;
+    OTHER = 2;
+  }
+  optional TimeSegmentType type = 1;
+  optional StartEndPoint start_end_point = 2;
+}
+
+
+/**
+ *@brief 字段类型：码流列表
+ *@details 码流列表
+ **/
+message StreamList {
+  message StreamInfo {
+    // The type of code stream.
+    enum StreamType {
+      //极速
+      TOP_SPEED = 1;
+      //流畅
+      SMOOTH = 2;
+      HIGH_DEFINITION = 3;
+      SUPER_CLEAR = 4;
+      RESOLUTION_720P = 5;
+      RESOLUTION_1080P = 6;
+      SPECIAL_H5 = 7;
+    }
+    //码流类型
+    optional StreamType stream_type = 1;
+    //码流url
+    optional string url = 2;
+
+    // Live id for connecting pps reservation.
+    optional string pps_live_id = 3;
+
+    optional bool is_default = 4 [default = false];
+
+    // The type of code stream format.
+    enum StreamFormatType {
+      FLV = 1;
+      TS = 2;
+    }
+    optional StreamFormatType stream_format_type = 5;
+  }
+  repeated StreamInfo stream_info = 1;
+}
+
+
+/**
+ *@brief 字段类型：分甘同味
+ *@details 分甘同味
+ **/
+message SharePartner {
+  required int64 id = 1;
+  required string name = 2;
+}
+
+
+/**
+ *@brief 字段类型：多播信息
+ *@details 一个视频可以被发放到多个频道上。由于每个视频现在仅限定于属于一个频道，要将其发送到多个频道，需通过这个多播来定义。 
+ * 多播不作为实体来保存。但是在VRS系统中，多播对应到具体的实体。 多播的信息在奇谱这边只能通过其所在的主视频来查找。 
+ **/
+message MultiPublish {
+  //后两位07标识episode多发，08标识album多发
+  required int64 entity_id = 1;
+  //品牌 iqiyi,pps
+  required Brand brand = 2;
+  //多发频道
+  required int32 channel_id = 3;
+
+  // Define the per platform information for published channel.
+  // Next field id : 10
+  message PerPlatformInfo {
+    //多发平台
+    optional Platform platform = 1;
+    //多发显示标题
+    optional string display_title = 2;
+    optional string short_display_title = 9;
+    //多发一句话推荐
+    optional string prompt_description = 3;
+    //多发seo
+    optional Seo seo = 4;
+
+    // Status definiton for the entity's page is pushed to the user
+    //多发页面状态
+    optional PagePublishStatus page_publish_status = 5 [default = PAGE_WAIT];
+
+    // The page of the entity will be pushed to the user according
+    // to below set time
+    //多发页面发布时间
+    optional Date page_publish_time = 6;
+
+    repeated string tag = 7;
+
+    // Store <name,value> pair specific terms
+    repeated KeyValuePair key_value_pair = 8;
+  }
+  repeated PerPlatformInfo per_platform_info = 4;
+
+  // 标识该多发是否有效
+  optional bool is_valid = 5 [default = true];
+
+  // 本地化相关的运营字段；
+  repeated LocaleBase base = 6;
+
+  // 支持本地化设置的图片。
+  repeated LocaleImage image = 7;
+
+  optional Base.EDITOR_RECOMMEND_LEVEL editor_recommend_level = 8 [default = NONE];
+  optional bool is_available_for_qiyihomepage = 9 [default=false]; 
+  
+}
+
+
+/**
+ *@brief 字段类型：外挂字幕味
+ *@details 外挂字幕
+ **/
+message Subtitle {
+  required string uuid = 1;
+  //字幕源文件存储路径
+  optional string source_filepath = 2;
+  //处理后字幕文件输出路径
+  //默认的xml格式的字幕路径
+  optional string destination_filepath = 3;
+  //字幕语言类型
+  optional int32 language_type = 4;
+
+  // This subtitle is the episode's first choice or not（是否首选）
+  optional bool is_preferred = 5 [default = false];
+  //裁切时间轴
+  // E.g: 01:01:01,01:02:02
+  optional string time_axis = 6;
+
+  //srt格式的字幕文件路径；
+  optional string destination_srt_filepath = 7;
+  //vtt格式的字幕文件路径；
+  optional string destination_vtt_filepath = 8;
+}
+
+
+/**
+ *@brief 字段类型：DRM Key信息
+ *@details DRM Key信息
+ **/
+message DrmKey {
+  required string content_id = 1;
+  required string content_key = 2;
+}
+
+
+/**
+ *@brief 字段类型：DRM 状态信息
+ *@details DRM 状态信息
+ **/
+message DrmStatus {
+  optional Platform platform = 1;
+  required bool is_valid = 2;
+}
+
+/**
+ *@brief 字段类型：游戏信息
+ *@details 游戏信息
+ **/
+message GameInfo {
+  // 赛事回顾
+  optional string review = 1;
+
+  // The father playlist of review video
+  optional int64 review_father_playlist_id = 6;
+  //赛事精彩集锦
+  // The wonderfulness of the game.
+  optional string highlights = 2;
+
+  // The father playlist of highlights video
+  optional int64 highlights_father_playlist_id = 7;
+
+  // The process of the game.
+  optional string stage = 3;
+
+  // The game is held at the address.
+  optional string location = 4;
+
+  // The sports items. e.g: football,basketball...
+  optional string program = 5;
+}
+
+/**
+ *@brief 字段类型：PPS UGC 栏目ID列表
+ *@details PPS UGC 栏目ID列表
+ **/
+message PpsUgcChannelIdList {
+  repeated int64 ugc_channel_id = 1;
+}
+
+/**
+ *@brief 字段类型：PPS UGC 栏目状态
+ *@details PPS UGC 栏目状态
+ **/
+message PpsUgcChannelAuditStatus {
+  // Manual audit result, -1: MASK; 0: WAIT; 1: PASS.
+  optional int32 manual_audit_result = 1;
+}
+
+
+/**
+ *@brief 字段类型：PPS UGC 栏目状态
+ *@details PPS UGC 栏目状态
+ **/
+message PpsUgcChannelStats {
+  optional int32 play_num = 1;
+  optional int32 subscribed_num = 2;
+  optional int32 video_num = 3;
+  optional int32 reply_num = 4;
+}
+
+/**
+ *@brief 字段类型：视频文件信息
+ *@details 视频文件信息
+ **/
+message VideoFileInfo {
+  optional string sha1_signature = 1;
+  optional float quality_score = 2;
+
+  optional string duration = 3;
+  optional string resolution = 4;
+  optional string pixel = 5;
+  optional string display_scale = 6;
+  optional int64 file_size = 7;
+  optional string frame_per_second = 8;
+  optional int32 audio_video_bitrate = 9;
+  optional string subtitle = 10;
+  optional string audio_track = 11;
+  optional string auto_crop = 12;
+  optional string video_bitrate = 13;
+  optional string video_encode_format = 14;
+
+  optional int64 pps_video_file_id = 15;
+}
+
+/**
+ *@brief 字段类型：UGC视频运营信息
+ *@details UGC视频运营信息
+ **/
+message UgcBase {
+  // Different partner. E.g: pps, taobao, tieba, and so on.
+  optional string source_provider = 1;
+
+  // Remote upload client id. E.g: iqiyi pc web client id, iqiyi client id...
+  optional int32 upload_platform = 2;
+
+  repeated int32 iqiyi_category = 3;
+  repeated int32 pps_category = 4;
+
+  // True: not enter into search; False: enter into search.
+  //是：禁止进入搜索；否：允许进入搜索
+  optional bool reject_search = 5 [default = false];
+
+  // True: not enter into recommend; False: enter into recommend.
+  //是：禁止进入推荐；否：允许进入推荐
+  optional bool reject_recommend = 6 [default = false];
+
+  // True: not enter into top list; False: enter into top list.
+  //是：禁止进入首页；否：允许进入首页。先进行一级判断——是否进推荐
+  //不进推荐肯定进不了首页，进推荐以后根据编辑判断进不进主页
+  optional bool reject_top_list = 7 [default = false];
+
+  // True: permit to revenue; False: forbid to revenue.
+  optional bool is_revenue_allowed = 8 [default = false];
+
+  // The play control of episode's copyright.
+  message PlayControl {
+    optional DistributionPlatform platform = 1;
+    repeated Location place_blacklist = 2;
+    repeated Location place_whitelist = 3;
+    repeated StartEndPoint time_segment_blacklist = 4;
+    repeated StartEndPoint time_segment_whitelist = 5;
+  }
+  optional PlayControl iqiyi_play_control = 9;
+  optional PlayControl pps_play_control = 10;
+
+  // This is the same to PGC, so old data need move to here from content_rank.
+  optional ContentRating content_rating = 11;
+
+  // Describe one ugc episode or album's important degree for lego background editor.
+  optional Base.EDITOR_RECOMMEND_LEVEL editor_recommend_level = 12 [default = NONE];
+
+  // Describe the ugc episode is only iqiyi or pps release.
+  optional bool is_exclusive = 13 [default = false];
+
+  // Describe the ugc episode is iqiyi pps first release.
+  optional bool is_first_release = 14 [default = false];
+
+  // Describe iqiyi or pps has copyright or not.
+  optional bool has_copyright = 15 [default = false];
+
+  // Store who can share the revenues of the ugc episode.
+  repeated int64 revenue_shared_passport_id = 16;
+  //推荐等级的理由
+  repeated string editor_recommend_level_reason = 17 [deprecated = true];
+  //水印位置
+  optional Base.LogoPosition logo_position = 18 [default = R_UP];
+}
+
+/**
+ *@brief 字段类型：版权保护信息
+ *@details 版权保护信息
+ **/
+message CopyrightProtection {
+  // Store who can share the revenues of the ugc episode.
+  repeated int64 revenue_shared_passport_id = 1;
+}
+
+/**
+ *@brief 字段类型：UGC运营优化信息
+ *@details UGC运营优化信息
+ **/
+message UgcOperation {
+  enum UploadActionType {
+    // Video is capured by camera.
+    SHOOTING = 0;
+    // Video is from other uploader.
+    REPRINT = 1;
+    // Video is spliced together with other videos.
+    ORIGINAL = 2;
+  }
+  optional UploadActionType upload_action_type = 1;
+
+  //节目显示名称
+  optional string display_name = 2;
+
+  //短标题
+  optional string short_display_name = 3;
+
+  // 内容类型标识
+  optional SpecialContentType special_content_type = 4;
+  //吸睛标题
+  optional string fantasy_title = 5;
+}
+
+/**
+ *@brief 字段类型：PPS视频URL地址信息
+ *@details PPS视频URL地址信息
+ **/
+message PpsUrls {
+   optional string pps_client_url = 1;
+
+   optional string pps_flash_url = 2;
+}
+
+/**
+ *@brief 字段类型：UGC视频审核信息
+ *@details UGC视频审核信息
+ **/
+message UgcCheck {
+  optional ResultCheck iqiyi_result_check = 1;
+  optional ResultCheck pps_result_check = 2;
+
+  // The reason for the result be handled
+  optional string iqiyi_check_reason = 3;
+  optional string pps_check_reason = 4;
+
+  // The danger rank of the video
+  enum DangerLevel {
+    SAFE = 0;
+    DANGEROUS_HIGH = 1;
+    DANGEROUS_MIDDLE = 2;
+    DANGEROUS_LOW = 3;
+  }
+  optional DangerLevel danger_level = 5 [default = SAFE];
+
+  optional string water_mark = 6;
+  //审核结果的处理原因（由监控中心维护，参见http://wiki.qiyi.domain/pages/viewpage.action?pageId=165221501）
+  optional int32 check_result_reason = 8;
+  //检查时间（时间戳单位：毫秒）
+  optional int64 check_time = 9;
+}
+
+/**
+ *@brief 字段类型：相关人物列表
+ *@details 相关人物列表
+ **/
+message RelatedPeopleList {
+  message RelatedPeople {
+    enum RelationName {
+      FATHER = 1;
+      MOTHER = 2;
+      WIFE = 3;
+      HUSBAND = 4;
+      SON = 5;
+      DAUGHTER = 6;
+      BAND = 7;
+      TEACHER = 8;
+      STUDENT = 9;
+      OTHER = 10;
+    }
+    optional RelationName relation_name = 1;
+    optional int64 people_id = 2;
+    optional string people_name = 3;
+  }
+
+  repeated RelatedPeople related_people = 1;
+}
+
+/**
+ *@brief 字段类型：相关视频列表
+ *@details 相关视频列表
+ **/
+message RelatedEpisodeList {
+  message EpisodeIdentity {
+    // This id is from album and episode.
+    optional int64 episode_id = 1;
+    optional string display_name = 2;
+  }
+  repeated EpisodeIdentity related_episode = 1;
+}
+
+/**
+ *@brief 字段类型：代表作
+ *@details 代表作
+ **/
+message RepresentativeWorkList {
+  // This id is from film_tv_library.
+  repeated int64 entity_id = 1;
+}
+
+
+/**
+ *@brief 字段类型：相关图像
+ *@details 相关图像
+ **/
+message RelatedImage {
+  optional int64 qipu_image_id = 1;
+  optional string image_url = 2;
+  // If the image has many sizes, please use ';' to split.
+  optional string image_size = 4;
+
+  enum Type {
+    POSTER = 1;
+    GALLERY = 2;
+  }
+  optional Type type = 3;
+}
+
+/**
+ *@brief 字段类型：直播节目的附加信息
+ *@details 直播节目的附加信息
+ **/
+message ProgramAdditionalInfo {
+  required string id = 1;
+
+  optional string description = 2;
+  //参与直播节目的成员
+  repeated Metadata.Contributor contributor = 3;
+
+  // The wonderfulness of the game.
+  optional string highlights = 4;
+  //看点回顾
+  // The game plays back.
+  optional string review = 5;
+  //切块长度
+  // The length(s) of the live video's piece.
+  optional int32 video_piece_length = 6;
+
+  // For player control audio track and language, e.g: left channel and chinese;
+  // right channel and english.
+  repeated LiveMetadata.AudioChannelLanguageControl audio_channel_language_control = 7;
+
+  // The water mark exists or not
+  optional bool water_mark_flag = 8;
+  //关联非直播的节目
+  // When On-demand live, user can play episode list.
+  repeated MetaSummary episode_list = 9;
+
+  // Related to weibo of this entity.
+  optional string weibo_topic = 10;
+
+  // Related to Qitan of this entity.
+  optional Qitan qitan = 11;
+
+  // The game is held at the address.
+  optional string game_location = 12;
+
+  // The sports items. e.g: football,basketball...
+  optional string game_program = 13;
+
+  // The process of the game.
+  optional string game_stage = 14;
+}
+
+
+/**
+ *@brief 字段类型：电子节目单定义
+ *@details 电子节目单定义
+ **/
+message ElectronicProgramGuide {
+  required int64 program_id = 1;
+  required string program_name = 2;
+
+  optional Date start_play_time = 3;
+  optional Date stop_play_time = 4;
+
+  repeated string tag = 5;
+
+  repeated ProgramAdditionalInfo program_additional_info = 6;
+
+  // The tv's channel id of the EPG.
+  optional int32 tv_channel_id = 7;
+}
+
+
+/**
+ *@brief 字段类型：电视频道
+ *@details 电视频道
+ **/
+message TvChannel {
+  required int32 id = 1;
+
+  required string name = 2;
+  //频道简称
+  optional string short_name = 3;
+  //频道代码
+  optional string universal_code = 4;
+
+  // Define the type of tv channel.
+  enum Type {
+    STAR_TV = 1;
+    LOCAL_TV = 2;
+    CCTV = 3;
+    FOREIGN_TV = 4;
+    HK_MACAO_TAIWAN_TV = 5;
+    GAME = 6;
+    VARIETY = 7;
+    E_SPORTS = 8;
+    OTHER = 9;
+  }
+  optional Type type = 5;
+
+  // The player scale: 4:3 or 16:9.
+  optional string player_scale = 6;
+  //所属国家
+  // The code of country according to ISO 3166-1.
+  optional string country_code = 7;
+  //所属城市
+  optional string city_code = 8;
+  //驻地
+  optional Location location = 9;
+  //频道LOGO
+  optional string logo_image_url = 10;
+  //频道启用状态
+  optional bool is_enable = 11;
+  //频道描述
+  optional string description = 12;
+
+  // HTTP stream channel.
+  optional string cutter_channel_id = 13;
+
+  optional int64 baidu_baike_id = 14;
+  //直播类型
+  optional LiveType live_type = 15;
+  //是否收录
+  optional bool is_record_archive = 16;
+  //回看最大时间
+  // The max time(s) of the player permit to play back.
+  optional int32 look_back_max_duration = 17;
+  //是否卫星频道
+  // Identifying Satellite Television Channel.
+  optional bool is_satellite_channel = 18;
+}
+
+
+/**
+ *@brief 字段类型：电视直播码流列表，已废弃
+ *@details 电视直播码流列表
+ **/
+message TvLiveStreamList {
+  required int32 tv_channel_id = 1;
+
+  message TvLiveStreamInfo {
+    //直播流名称
+    optional string name = 1;
+    //直播流品牌
+    optional Brand brand = 2;
+
+    // Publish platform
+    repeated DistributionPlatform allowed_platform = 3;
+
+    // The type of code stream.
+    optional StreamList.StreamInfo.StreamType stream_type = 4;
+
+    optional string bitrate = 5;
+
+    optional string url = 6;
+    //画面比例
+    // E.g: "16:9"
+    optional string aspect_ratio = 7;
+    //画面尺寸
+    // E.g: "640*480"
+    optional string screen_size = 8;
+
+    // Format type.
+    enum FormatType {
+      FLV = 1;
+      MP4 = 2;
+      TS = 3;
+      P2P = 4;
+
+      HCDN = 5; // 支持HCDN流类型
+    }
+    optional FormatType format_type = 9;
+  }
+
+  repeated TvLiveStreamInfo tv_live_stream_info = 2;
+
+  optional bool is_available_status = 3 [default = true];
+}
+
+/**
+ *@brief 字段类型：直播运营信息，已废弃
+ *@details 直播运营信息，已废弃
+ **/
+message TvLiveBase {
+  required int32 tv_channel_id = 1;
+  //分终端信息
+  message PerPlatformInfo {
+    //推送平台列表
+    optional DistributionPlatform platform = 1;
+    //频道排序
+    optional string tv_channel_sort = 2;
+    //默认频道ID
+    optional int32 default_tv_channel_id = 3;
+    //直播延迟时间
+    optional int32 live_delay_time = 4;
+    //ip段延迟时间
+    optional string ip_segment_delay_time = 5;
+
+    // We will forbid to push live stream into regions in blacklisted_region.
+    repeated Location blacklisted_region = 6;
+
+    optional AvailableStatus available_status = 7 [default = ONLINE];
+  }
+
+  repeated PerPlatformInfo per_platform_info = 2;
+}
+
+/**
+ *@brief 字段类型：PPS分类运营信息
+ *@details PPS分类运营信息
+ **/
+message PpsCategoryBase {
+  enum CategoryLevel {
+    TOP_LEVEL = 1;
+    SECOND_LEVEL = 2;
+  }
+  optional CategoryLevel category_level = 1 [default = TOP_LEVEL];
+
+  // 默认排序.
+  optional SortType sort_type = 2;
+
+  optional SortWard sort_ward = 3;
+
+  optional bool enable_commet = 4 [default = false];
+  optional bool enable_big_filter = 5 [default = false];
+  optional bool enable_small_filter = 6 [default = false];
+
+  // 检索条件显示设置.
+  repeated SortType enable_show_sort_types = 7;
+  
+  // PPS客户端搜索热词
+  message HotSearchTerm {
+    // PPS客户端，搜索热词排名位置
+    optional int32 order = 1; 
+    //PPS客户端，搜索热词名称
+    optional string term = 2;
+  };
+  //PPS客户端搜索热词
+  repeated HotSearchTerm hot_search_term = 8;
+
+}
+
+
+/**
+ *@brief 字段类型：PPS分类平台信息
+ *@details PPS分类平台信息
+ **/
+message PpsCategoryPlatformData {
+  message PerPpsCategoryPlatformData {
+    optional PlayPlatform play_platform = 1;
+
+    repeated MetaSummary entity_summary = 2;
+
+    optional int32 order_number = 3;
+
+    optional int32 max_display_count = 4;
+
+    optional bool is_default_expand = 5;
+
+    enum PlaySetting {
+      JUMP_OUT = 1;
+      NOT_JUMP = 2;
+    }
+    optional PlaySetting play_setting = 6 [default = JUMP_OUT];
+  }
+
+  repeated PerPpsCategoryPlatformData per_pps_platform_category_data = 1;
+}
+
+/**
+ *@brief 字段类型：UGC播单信息
+ *@details UGC播单信息
+ **/
+message UgcPlayListInfo {
+  optional PublicLevel public_level = 1;
+
+  optional UgcCheck ugc_check = 2;
+
+  repeated int64 administrator_passport_ids = 3;
+
+  optional int64 last_update_administrator = 4;
+
+  optional int64 uploader_id = 5;
+}
+
+/**
+ *@brief 字段类型：FilmTV中的搜索信息
+ *@details FilmTV中的搜索信息
+ **/
+message SearchInfo {
+  // Used to get play source from search.
+  optional string search_doc_id = 1;
+
+  optional string third_party_search_doc_id = 2;
+
+  optional string third_party_search_url = 3;
+}
+
+/**
+ *@brief 字段类型：FilmTV中的搜索信息
+ *@details FilmTV中的搜索信息
+ **/
+message VoteInfo {
+  required int64 vote_id = 1;
+
+  repeated DistributionPlatform platform = 2;
+
+  optional Date start_time = 3;
+  optional Date end_time = 4;
+
+  message ChildOption {
+    optional StartEndPoint start_end_point = 1;
+    optional int64 child_id = 2;
+  }
+  repeated ChildOption child_options = 5;
+}
+
+/**
+ *@brief 字段类型：App运营信息
+ *@details App运营信息
+ **/
+message AppBase {
+  enum PublishAreas {
+    MAINLAND = 1;
+    HONGKONG = 2;
+    MACAO = 3;
+    TAIWAN = 4;
+    ANYWHERE = 5;
+    OTHER = 6;
+  }
+  //发布区域
+  repeated PublishAreas publish_areas = 1;
+  //发布时间
+  optional Date publish_time = 2;
+
+  optional string download_url = 3;
+  //价格，以分为单位
+  message Price {
+    enum Currency {
+      CNY = 1;
+      HKD = 2;
+      USD = 3;
+      MOP = 4;
+      TWD = 5;
+    }
+    optional Currency currency = 1;
+    // Unit: cent.
+    optional int32 price = 2;
+  }
+  repeated Price price = 4;
+
+  enum RunningPlatform {
+    UNKNOWN_PLATFORM = -1;
+    IPAD_APP = 22;
+    IPAD_WEB = 24;
+    IPHONE_APP = 32;
+    IPHONE_WEB = 34;
+    ANDROID_PAD_APP = 23;
+    ANDROID_PAD_WEB = 21;
+    ANDROID_PHONE_APP = 33;
+    ANDROID_PHONE_WEB = 31;
+    PC_APP = 12;
+    PC_WEB = 11;
+    TV_APP = 5201;
+
+    ANDROID_BOX_APP = 25; // 安卓游戏盒子的app
+
+    // H5小游戏
+    IOS_H5 = 42;
+    ANDROID_H5 = 43;
+  }
+  //App运行目标平台
+  repeated RunningPlatform running_platform = 5;
+
+  optional ContentRating.Rank content_rank = 6;
+
+  // 包大小，Unit: byte.
+  optional int32 program_package_size = 7;
+
+  optional string logo_url = 8;
+  //简介
+  optional string description_brief = 9;
+
+  optional int32 top_category_id = 10;
+
+  // 游戏P2P下载地址.
+  optional string p2p_download_url = 11;
+
+  // 存放app大图, 图片大小为320x180.(区别于logo_url).
+  optional string app_img = 12;
+
+  // 应用分类的类别，中文名称，如“动作冒险”、”休闲竞技”.
+  // 和AppBase.topCategoryId字段对应.
+  optional string top_category_name = 13;
+
+  // 短链接下载地址
+  optional string short_download_url = 14 ;
+
+  // app apk的md5值，用于hcdn下载时校验文件的完整性
+  optional string app_apk_md5 = 15;
+
+  //IP关联位的应用大图，尺寸为180*236
+  optional string app_ip_img_url = 16;
+}
+
+
+/**
+ *@brief 字段类型：App评分
+ *@details App评分，由评分系统定时写入
+ **/
+message AppRating {
+  optional double rating = 1;
+
+  optional double history_version_total_rating = 2;
+}
+
+/**
+ *@brief 字段类型：App审核结果
+ *@details App审核结果
+ **/
+message AppCheck {
+  //审核结果
+  optional ResultCheck result_check = 1;
+}
+
+
+/**
+ *@brief 字段类型：App媒体列表
+ *@details App媒体列表
+ **/
+message AppMediaList {
+  message AppMedia {
+    enum MediaType {
+      IMAGE = 1;
+      VIDEO = 2;
+      OTHER = 3;
+    }
+    //媒体类型
+    optional MediaType media_type = 1;
+
+    optional string media_url = 2;
+
+    // Store the entity qipu id.
+    optional int64 entity_id = 3;
+  }
+  repeated AppMedia app_media = 1;
+}
+
+
+/**
+ *@brief 字段类型：App权限信息
+ *@details App权限信息
+ **/
+message AppPermissionList {
+  message AppPermission {
+    enum PermissionType {
+      PRIVACY = 1;
+      SECURITY = 2;
+      OTHERS = 3;
+    }
+    //权限类型
+    optional PermissionType permission_type = 1;
+
+    optional int32 id = 2;
+  }
+
+  repeated AppPermission app_permission = 1;
+}
+
+
+/**
+ *@brief 字段类型：App版本变更信息
+ *@details App版本变更信息
+ **/
+message AppVersionChangeInfo {
+  //版本号，单调递增
+  required int32 version_code = 1;
+  //版本名称
+  optional string version_name = 2;
+  //新特性描述
+  optional string new_features_description = 3;
+  //更新时间
+  optional int64 update_time = 4;
+
+  optional AppBase app_base = 5;
+
+  repeated AppMediaList app_media_list = 6;
+
+  repeated AppPermissionList app_permission_list = 7;
+
+  optional AppRating app_rating = 8;
+}
+
+/**
+ *@brief 字段类型：App游戏相关信息
+ *@details App游戏相关信息
+ **/
+message AppGameInfo {
+  enum GameType {
+    WEB_PAGE = 1;
+    MOBILE_ONLINE = 2;
+    MOBILE_CONSOLE_CLIENT = 3;
+    FLASH = 4;
+    PC_CONSOLE_CLIENT = 5;
+
+    // 游戏盒子.
+    BOX_GAME = 6;
+
+    //  H5小游戏
+    H5 = 7;
+    //休闲游戏
+    CHESS_GAME = 8;
+  }
+  //游戏类型
+  optional GameType game_type = 1;
+
+  enum GameStyle {
+    // European and America style.
+    OCCIDENT_STYLE = 1;
+    JAPAN_KOREA_STYLE = 2;
+    CHINA_STYLE = 3;
+    Q_VERSION_STYLE = 4;
+    FANTASY_STYLE = 5;
+  }
+  //游戏风格
+  optional GameStyle game_style = 2;
+
+  // E.g: The Three Kingdoms, World War II, and so on.
+  optional string game_background = 3;
+
+  enum PaintingStyle {
+    REALISM = 1;
+    AESTHETICISM = 2;
+    Q_VERSION = 3;
+    INK_PAINTING = 4;
+  }
+  //游戏画风
+  optional PaintingStyle painting_style = 4;
+  //其他相似游戏大作
+  repeated string similar_famous_game = 5;
+  // hot和has_card字段，H5端还会用到，先保留
+  //是否热门
+  optional bool is_hot = 6 [default = false];
+  //是否新服
+  optional bool is_new_service = 7 [default = false];
+  //礼包领取地址
+  optional string gift_big_receive_url = 8;
+  //支付地址
+  optional string pay_url = 9;
+  //bbs地址
+  optional string bbs_url = 10;
+  //试玩地址
+  optional string demo_url = 11;
+
+  /**
+   * 游戏属性列表.
+   * 属性对应表: 1 首发 2 独家 3 新游 4 推荐 5 热门 6 精品 7 封测 8 内测 9 礼包 10 必玩 11 最新
+   */
+  repeated int32 attribute = 12;
+
+  // hot和has_card字段，H5端还会用到，先保留
+  // 游戏是否包含礼包. true:包含  false:不包含
+  optional bool has_card = 13 [default = false];
+
+  enum OperationType {
+   GAME_BOX_HANDLE = 1; // 游戏盒子手柄
+   GAME_BOX_REMOTE_CONTROL = 2; // 游戏盒子遥控器
+   MOBILE_VIRTUAL_HANDLE = 3; // 手机虚拟手柄
+   MOUSE = 4; // 鼠标
+  }
+  // 游戏支持的操作类型.
+  repeated OperationType op_type = 14;
+
+  enum PublishType {
+   DEMO_GAME = 1; // Demo游戏.
+   FULL_VERSION_GAME = 2; // 完整游戏.
+   DLC_GAME = 3; // DLC游戏.
+  }
+  // 盒子游戏发布类型.
+  optional PublishType publish_type = 15;
+}
+
+
+/**
+ *@brief 字段类型：处理成UGC视频的PPC视频上的UGC信息
+ *@details 处理成UGC视频的PPC视频上的UGC信息
+ **/
+message VirtualUgcInfo {
+  optional int64 uploader_id = 1;
+}
+
+// Define the recommend data source list of PpsCategory.
+/**
+ *@brief 字段类型：处理成UGC视频的PPC视频上的UGC信息
+ *@details 处理成UGC视频的PPC视频上的UGC信息
+ **/
+message RecommendDataSourceList {
+  message RecommendDataSource {
+    enum DataType {
+      BY_KEYWORD = 1;
+      BY_QIPU_ID = 2;
+    }
+    //推荐片单的产生方式
+    optional DataType data_type = 1;
+    //产生推荐片单的关键词
+    repeated string keywords = 2;
+    //产生推荐片单的奇谱ID列表
+    repeated int64 qipu_ids = 3;
+  }
+  repeated RecommendDataSource recommend_data_source = 1;
+}
+
+
+/**
+ *@brief 字段类型：视频在线人数的更新策略
+ *@details 视频在线人数的更新策略
+ **/
+message OnlineCountUpdateStrategy {
+  enum UpdateStrategy {
+    SCOPE = 1;
+    PERCENTAGE = 2;
+    CATEGORY = 3;
+  }
+  optional UpdateStrategy update_strategy = 1;
+  optional Date start_time = 2;
+  optional Date end_time = 3;
+  optional int64 min_value = 4;
+  optional int64 max_value = 5;
+  optional int32 percentage = 6;
+  optional int64 category_id = 7;
+  optional int32 sort_value = 8;
+}
+
+/**
+ *@brief 字段类型：音悦台项目爬虫抓取时使用的临时字段
+ *@details 音悦台项目爬虫抓取时使用的临时字段，用来存放音乐相关的信息。
+ **/
+message MusicInfo {
+  optional string song_name = 1;
+  repeated Metadata.Creator creator = 2;
+  repeated Metadata.Contributor contributor = 3;
+  optional Date date = 4;
+  repeated KeyValuePair places = 5;
+  repeated KeyValuePair languages = 6;
+  repeated KeyValuePair schools = 7;
+  repeated KeyValuePair music_types = 8;
+}
+
+
+
+/**
+ *@brief 字段类型：影视大全的站点信息，废弃，请使用Feed
+ *@details 影视大全的站点信息，废弃，请使用Feed
+ **/
+message SiteInfoList {
+  message SiteInfo {
+    optional int64 site_id = 1;
+    optional string site_name = 2;
+  }
+  repeated SiteInfo site_infos = 1;
+}
+
+/**
+ *@brief 字段类型：影视大全的豆瓣信息
+ *@details 影视大全的豆瓣信息
+ **/
+message DoubanInfo {
+  optional int64 douban_id = 1;
+  optional double douban_score = 2;
+}
+
+/**
+ *@brief 字段类型：视频指纹信息
+ *@details 视频指纹信息
+ **/
+message Fingerprint {
+  optional int64 content_id = 1;
+  optional string video_fingerprint = 2;
+  optional string audio_fingerprint = 3;
+}
+/**
+ *@brief 字段类型：播控
+ *@details 播控信息， 播控字段的使用参见 http://wiki.qiyi.domain/pages/viewpage.action?pageId=25607995
+ */
+message AccessPlayControl {
+  optional PlayPlatform play_platform = 1;
+
+  message Control {
+    // True: it is allowed to download; vice versa.
+    optional bool is_download_allowed = 1 [default = false];
+
+    // True: it is protected by copyright; vice versa.
+    optional bool is_drm = 2 [default = false];
+
+    // True: it is allowed to play by offline sharing; vice versa.
+    optional bool is_share_allowed = 3;
+
+    // True: it is allowed to play by offline cooperation; vice versa.
+    optional bool is_cooperation_allowed = 4;
+
+    optional AvailableStatus availabe_status = 5 [default = NONE];
+
+    // True: not enter into search; False: enter into search.
+    optional bool reject_search = 6 [default = false];
+
+    // True: not enter into recommend; vice versa.
+    optional bool reject_recommend = 7;
+
+    // True: not enter into top list; vice versa.
+    optional bool reject_top = 8;
+
+    // The delay time of live play.
+    optional int64 live_delay_time = 9;
+
+    // The delay time for ip segment of live play.
+    optional int64 ip_segment_delay_time = 10;
+
+    // 屏蔽免费书架字段
+    optional bool reject_free_bookshelf = 11 [default = false];
+
+    // 屏蔽DRM码流
+    optional RejectDrmPlay reject_drm_play = 12 [default = REJECT_NONE , deprecated = true];
+
+    // 屏蔽1080P码流
+    optional bool reject_1080p_play = 13 [default = false];
+
+    //屏蔽DRM码流
+    optional RejectDrmType reject_drm_type = 14 [default = REJECT_TYPE_NONE];
+  }
+  // The default play control setting.
+  required Control default_control = 2;
+
+  // The specified play control setting for the region.
+  message RegionControl {
+    repeated Location location = 1;
+    required Control location_control = 2;
+  }
+  repeated RegionControl region_control = 3;
+  //首次发布时间（时间戳，单位毫秒）
+  optional int64 first_publish_time = 4;
+}
+
+
+/**
+ *@brief 字段类型：直播频道的运营信息
+ *@details 直播频道的运营信息
+ **/
+message LiveChannelBase {
+  //直播频道名称
+  optional string name = 1;
+  //频道简称
+  optional string short_name = 2;
+
+  /*
+   * The first letter abbreviations of every word in channel's name spelling.
+   * For example: the acronyms of "television" is TV.
+   */
+  //直播频道拼音名称
+  optional string abbr_name = 3;
+
+  // The channel code.
+  //直播频道代码
+  optional string universal_code = 4;
+  //频道描述
+  optional string description = 5;
+  //频道大V帐号
+  // The account numbers of big-V peoples.
+  repeated int64 passport_id = 6;
+  //PPS百科ID
+  optional int64 pps_baike_id = 7;
+  //直播类型
+  optional LiveType live_type = 8;
+  //频道类型
+  optional LiveChannelType type = 9;
+  //频道所在地区
+  optional Location location = 10;
+  //频道LOGO
+  optional MetaSummary logo = 11;
+
+  // The max time(unit: s) of looking back.
+  optional int32 max_playback_period = 12;
+
+  message TempName{
+    optional string alias = 1;
+
+    // The valid time for temporary name.
+    optional int64 start_time = 2;
+    optional int64 end_time = 3;
+  }
+  // The temporary name for the live channel.
+  optional TempName temp_name = 13;
+
+  optional int32 order = 14;
+  
+  // 控制弹幕开关；
+  // 1) 频道弹幕为关，所有节目上的弹幕都为关，不可修改。节目单上提示：“不可编辑，请到频道上，打开弹幕总开关“
+  // 2) 频道弹幕为开：所有节目上的弹幕，才可用；
+  // 3) 新建节目单，继承频道的弹幕状态。
+  // 修改后LiveChannel、LiveEpisode两个实体上都有弹幕开关，逻辑关系如江山所说，不过是通过后台系统控制的，奇谱不需要关心。
+  // 两层的弹幕开关对于奇谱来说是独立的，只需要新增一个LiveChannel上的column存储总开关即可。
+  // 类似点播节目的评论ID，在专辑上也有，节目上也有，通过后台业务系统自动继承专辑上的字段信息到节目上写入奇谱。
+  optional bool allow_popups = 15 [default = false];
+
+  // 播放器提示信息
+  optional string player_tips = 16;
+
+  //节目单更新时间；
+  optional int64 episode_update_time = 17;
+
+  //是否奇艺出品
+  optional bool is_qiyi_produced = 18;
+
+  //是否奇艺独播
+  optional bool exclusive_status_iqiyi = 19;
+
+  //关联老奇谱ID(老TV_LIVE_CENTER ID与新的LiveChannel ID对应关系)
+  optional int64 tv_live_center_id = 20;
+
+  //备播库播单ID：一些点播节目ID，用于直播、点播视频衔接不上时，备用视频集
+  repeated MetaSummary alternate_play_collection_summary = 21;
+
+  // 轮播台台号
+  optional int32 carousel_table_no = 22;
+
+}
+
+/**
+ *@brief 字段类型：直播流信息
+ *@details 直播流信息
+ **/
+message LiveStream {
+  // The id of live stream.
+  optional string uuid = 1;
+  //清晰度，默认为SMOOTH
+  optional StreamType stream_type = 2;
+
+  // The bit stream of live broadcast.
+  optional string bit_rate = 3;
+
+  // The live broadcast link address.
+  optional string url = 4;
+  //画面比例
+  optional string aspect_ratio = 5;
+  //画面尺寸
+  optional string screen_size = 18;
+
+  // The bitstream format of live broadcast.
+  optional string format_type = 19;
+
+  // 码流名称
+  optional string stream_name = 20;
+
+  // 码流编码方案
+  optional Format.Code code = 21 [default = H264];
+}
+
+/**
+ *@brief 字段类型：直播付费信息
+ *@details 直播付费信息
+ **/
+message LiveEpisodeChargeInfo {
+  optional bool is_free = 1;
+
+  optional PricingStatus pricing_status = 2;
+
+  optional PaidStatus paid_status = 3;
+}
+
+/**
+ *@brief 字段类型：直播视频运营信息
+ *@details 直播视频运营信息
+ **/
+message LiveEpisodeBase {
+  optional LiveProgramType type = 1;
+
+  repeated Metadata.Contributor contributor = 2;
+
+  optional int32 video_piece_length = 3;
+
+  // The audio language of live program.
+  optional string audio_channel = 4;
+
+  // The left & right channels.
+  optional string left_audio_channel = 5;
+  optional string right_audio_channel = 6;
+
+  optional bool water_mark_flag = 7;
+
+  // The related episodes of live program.
+  // 关联直播转点播后的节目ID
+  repeated MetaSummary episode_summary = 8;
+
+  optional int32 qitan_id = 9;
+
+  // The names of weibo topic.
+  repeated string weibo_topic = 10;
+
+  // Additional informations.
+  repeated KeyValuePair key_value_pair = 11;
+
+  // The popups switch of live episode.
+  optional bool allow_popups = 12 [default = false];
+
+  // 直播中心伪静态播放页URL.
+  optional string page_url = 13;
+
+  // 直播前节目集锦
+  repeated MetaSummary episode_start_summay = 14;
+
+  // 直播后节目集锦
+  repeated MetaSummary episode_end_summary = 15;
+
+  // 是否奇艺出品
+  optional bool is_qiyi_produced = 16;
+
+  // 是否奇艺独播
+  optional bool exclusive_status_iqiyi = 17;
+
+  //轮播台关联节目ID：轮播台关联直播、点播节目的对应关系
+  repeated MetaSummary carousel_episode_summary = 18;
+
+  //播放类型：标记直播流类型（0：点播，1：直播）
+  optional bool is_live= 19;
+
+  // 推荐等级
+  optional int32 recommend_rate = 20;
+  // 一句话推荐语
+  optional string recommend_remark = 21;
+  // 专题页url
+  optional string subject_url = 22;
+
+  //副用户ID
+  repeated int64 co_passport_id = 23;
+  //视频来源
+  optional ProviderType provider = 24 [default=NULL_TYPE];
+  //直播节目内容频道
+  optional int32 channel_id = 25;
+
+  // 节目直播状态
+  optional PlayStatus play_status = 26 [default=PLAY_STATUS_NULL];
+  // 节目流挂接类型
+  optional StreamMountType stream_mount_type = 27;
+  // 最大回看时间
+  optional int64 max_playback_period  = 28;
+  // 用户ID
+  optional int64 passport_id = 29;
+  //直播类型
+  repeated LiveEpisodeType live_episode_type = 30;
+  //主播头像
+  optional string passport_url = 31;
+  //主播的昵称
+  optional string nickname = 32;
+  //房间ID
+  optional int64 room_id = 33;
+  // 是否是测试数据
+  optional bool is_online_test = 34 [default = false];
+  //广告投放类型
+  optional SaleType sale_type = 35;
+  //隐私级别
+  optional PublicLevel public_level = 36;
+  //logo水印屏蔽位置
+  repeated LogoHidden logo_hidden = 37;
+  //直播子业务类型
+  optional LiveEpisodeSubType live_episode_sub_type = 38 [default = UNKNOWN_LIVE_EPISODE_SUB_TYPE];
+  //播放页tab内容控制
+  repeated LiveEpisodeTabControl tab_control = 41;
+  //是否展示广告
+  optional bool is_display_ad = 39 [default = false];
+  //是否展示推荐
+  optional bool is_display_recommend = 40 [default = false];
+  //赛事正式开始时间（时间戳，单位：毫秒）
+  optional int64 start_time = 42;
+}
+
+/**
+ *@brief 字段类型：直播体育频道信息
+ *@details 直播体育频道信息
+ **/
+message LiveSports {
+  // The id of highlight collection(it can not be null only if the type of live program is sports).
+  repeated int64 collection_id = 1;
+
+  message Part {
+    optional string name = 1;
+    optional int32 score = 2;
+  }
+  // The related informations of against teams.
+  repeated LiveSports.Part part = 2;
+}
+
+/**
+ *@brief 字段类型：影视大全聚合站点信息
+ *@details 影视大全聚合站点信息
+ **/
+message Feed {
+  // The unique identifier, it likes the site_name of SiteInfo of FilmTvLibrary.
+  optional string source_provider = 1;
+
+  // The id of episode or album in the site(it also contains the id of douban.)
+  optional string item_id = 2;
+
+  // To variety show, it is playing time of the lastest show;
+  // To tv series, it is the lastest episode number of tv series.
+  optional string last_episode = 3;
+
+  // True: the tv show is vip; and vice versa.
+  optional bool is_vip = 4 [default = false];
+
+  // It's writen by qipu.
+  optional int64 last_update_time = 5;
+}
+
+/**
+ *@brief 字段类型：电商商品运营信息
+ *@details 电商商品运营信息
+ **/
+message CommodityBase {
+  optional int64 category_id = 1;
+
+  enum Type {
+      FIXED = 1;
+      PRESALE = 2;
+  }
+  // The type of commodity: fixed price or pre sale.
+  optional Type type = 2;
+
+  optional bool is_new_product = 3;
+
+  // The category which is defined by seller self.
+  repeated string seller_category_id = 4;
+
+  optional int64 seller_id = 5;
+
+  // The nick name of seller.
+  optional string seller_nick = 6;
+
+  // The related property(entertainment) id list.
+  repeated int64 related_id = 7;
+
+  // The commodity's location.
+  optional Location location = 8;
+
+  // The default decorated template of commodity.
+  optional int64 template_id = 9;
+
+  // The decorated template of commodity which is defined by user self.
+  optional int64 inner_shop_auction_template_id = 10;
+
+  // The specificated anchor information of commodity description.
+  optional string desc_module_info = 11;
+
+  // The sale point of commodity.
+  optional string sell_point = 12;
+
+  // The barcode of commodity.
+  optional string barcode = 13;
+
+  // True: the commodity is virtual and not be existed in the real world; vice versa.
+  optional bool is_virtual = 14;
+
+  // True: it is supported to shelves timing; vice versa.
+  optional bool is_timing = 15;
+
+  // The title of commodity.
+  optional Title title = 16;
+
+  // The price of commodity.
+  optional int32 price= 17;
+
+  // True: it is supported discount to site's members; vice versa.
+  optional bool has_discount = 18;
+
+  // The value ratio of commodities trading which will be given to online mall owner.
+  optional string auction_point = 19;
+
+  optional int64 spu_id = 20;
+
+  // The all images of commodity(that contains the main image).
+  optional string main_image = 21;
+  repeated string images = 22;
+
+  // The web page url of commodity detail.
+  optional string detail_page_url = 23;
+
+  // The slogan of promotion ads.
+  optional string promotion_slogan = 24;
+
+  // 促销价
+  optional int32 discount_price = 25;
+
+  // 商品品牌ID
+  optional int64 brand_id = 26;
+
+  //商品详情文字
+  optional string detail = 27; 
+
+  //商品创建时间
+  optional int64 create_time = 28;
+
+  //上下架时间
+  optional int64 list_time= 29; 
+}
+
+/**
+ *@brief 字段类型：电商商品分类信息
+ *@details 电商商品分类信息
+ **/
+message CommodityCategory {
+
+  //类目ID
+  optional int64 category_id = 1; 
+
+  //类目名
+  optional string category_name = 2;
+
+  //层级
+  optional int32 level = 3;
+
+  //是否叶子类目
+  optional bool is_leaf = 4;
+}
+
+
+/**
+ *@brief 字段类型：电商商品统计信息
+ *@details 电商商品统计信息
+ **/
+message ItemStat {
+  optional int64 review_count = 1;
+
+  // The total number of commodity sales.
+  optional int64 sales_volume = 2;
+
+  optional int64 monthly_sales_volume = 3;
+
+  // The amount of commodity.
+  optional int64 count = 4;
+}
+
+/**
+ *@brief 字段类型：电商商品平台相关的描述信息
+ *@details 电商商品平台相关的描述信息
+ **/
+message ItemDescription {
+  // The commodity related platform.
+  optional Platform platform = 1;
+
+  optional string description = 2;
+
+  // The link address of the commodity description.
+  optional string url = 3;
+}
+
+
+/**
+ *@brief 字段类型：电商商品上下架信息
+ *@details 电商商品上下架信息
+ **/
+message ItemShelving {
+  optional bool is_freeze = 1;
+
+  optional bool is_hide = 2;
+
+  // True: this a illegal commodity; vice versa.
+  optional bool is_violated = 3;
+
+  // The time is when commodity is put on the shelves.
+  optional int64 list_time = 4;
+
+  // The time is when commodity is out from the shelves.
+  optional int64 delist_time = 5;
+}
+
+/**
+ *@brief 字段类型：电商商品售后服务信息
+ *@details 电商商品售后服务信息
+ **/
+message ItemAfterSale {
+  // The id of after sale service.
+  optional int64 after_sale_id = 1;
+
+  // True: the commodity is supported invoicing; vice versa.
+  optional bool has_invoice = 2;
+
+  // True: the commodity is supported warranty policy; vice versa.
+  optional bool has_warranty = 3;
+
+  // True: the commodity is supported return policy; vice versa.
+  optional bool sell_promise = 4;
+}
+
+
+/**
+ *@brief 字段类型：电商商品快递信息
+ *@details 电商商品快递信息
+ **/
+message ItemShipment {
+  // True: the commodity will dispatch within 24 hours; vice versa.
+  optional bool is_lightning_consignment = 1;
+
+  enum FreightPayer {
+    SELLER = 1;
+    BUYER = 2;
+  }
+  // The people who should pay the freight.
+  optional FreightPayer freight_payer = 2;
+
+  // The default billing template of commodity.
+  optional int64 postage_template_id = 3;
+
+  // The billing template of cash-on-delivery.
+  optional int64 cod_postage_template_id = 4;
+
+  // The weight of commodity, used to charge the carriage.(unit: kg)
+  optional string item_weight = 5;
+
+  // The volume of commodity, used to charge the carriage.(unit: m^3)
+  optional string item_size = 6;
+}
+
+/**
+ *@brief 字段类型：电商商品扩展属性
+ *@details 电商商品扩展属性
+ **/
+message ItemProperty {
+  // The pid of commodity property.
+  optional string key = 1;
+
+  // The id of commodity property pid.
+  optional int64 key_id = 2;
+
+  // True: the commodity property is defined by user self; vice versa.
+  optional bool is_user_defined = 3;
+
+  // The name of commodity property(that is pid or vid).
+  optional string name = 4;
+
+  // The another name of commodity property(that is pid or vid).
+  optional string alias = 5;
+
+  // The image of commodity property.
+  repeated string image_url = 6;
+
+  // The field is deprecated
+  // Recommended, to use the field of ItemValue.
+  // The vid of commodity property.
+  optional string value = 7;
+
+  // The field is deprecated
+  // Recommended, to use the field of ItemValue.
+  // The id of commodity property vid.
+  optional int64 value_id = 8;
+
+  // The description of commodity property.
+  optional string description = 9;
+
+  // The values of commodity property.
+  message ItemValue {
+    optional int64 value_id = 1;
+    optional string value = 2;
+  }
+  repeated ItemValue item_value = 10;
+
+  // 是否是搜索属性
+  optional bool is_search_prop = 11;
+}
+
+/**
+ *@brief 字段类型：电商商品附加属性
+ *@details 电商商品附加属性
+ **/
+message CommodityExtra {
+  // The amount of commodity without payment.
+  optional int32 with_hold_quantity = 1;
+
+  enum SubStock {
+    SUPPORT_TO_PAT_SALE = 1;
+    NOT_SUPPORT_TO_PAT_SALE = 2;
+    NONE = 3;
+  }
+  optional SubStock sub_stock = 2 [default = SUPPORT_TO_PAT_SALE];
+
+  // True: the commodity is recommend by shopwindow; vice versa.
+  optional bool has_shopwindow_recommend = 3;
+
+  optional int64 creat_time = 4;
+
+  // The commodity period of validity.
+  optional string valid_thru = 5 [default = "7"];
+}
+
+/**
+ *@brief 字段类型：库存商品信息（SKU）
+ *@details 库存商品信息（SKU）
+ **/
+message Sku {
+  optional int64 sku_id = 1;
+
+  // The code of commodity which is privided by factory.
+  optional string product_code = 2;
+
+  // The sale properties list of sku.
+  repeated ItemProperty item_property = 3;
+
+  // The amount of the commodity.
+  optional int32 quantity = 4;
+
+  optional int32 price = 5;
+
+  optional int64 create_time = 6;
+
+  // The id of the product specification.
+  optional int64 sku_spec_id = 7;
+
+  optional string barcode = 8;
+}
+
+/**
+ *@brief 字段类型：国际化支持的属性字段
+ *@details 国际化支持的属性字段
+ **/
+message I18nProperty {
+  optional string locale = 1;
+
+  // The corresponding encoding of the locale.
+  optional string value = 2;
+}
+
+/**
+ *@brief 字段类型：商品品牌的运营信息
+ *@details 商品品牌的运营信息
+ **/
+message ItemBrandBase {
+  optional string home_page = 1;
+
+  optional string description = 2;
+
+  optional int64 create_time = 3;
+
+  // The locale of brand.
+  repeated I18nProperty name = 4;
+
+  optional string logo_image_url = 5;
+  //别名
+  optional string alias = 6;
+}
+
+/**
+ *@brief 字段类型：SPU运营信息
+ *@details SPU运营信息
+ **/
+message SpuBase {
+  optional int64 category_id = 1;
+
+  optional string name = 2;
+
+  optional int64 brand_id = 3;
+
+  // The id list of sale property.
+  repeated int64 sku_property_id = 4;
+}
+
+/**
+ *@brief 字段类型：影视节目院线信息
+ *@details 影视节目院线信息
+ **/
+message OnTheater {
+  // The score of film.
+  optional int32 score = 1;
+
+  // The rank of film.
+  optional int32 rank = 2;
+
+  optional bool has_2D = 3;
+  optional bool has_3D = 4;
+  optional bool has_IMAX = 5;
+
+  // The id of baidu partner who provides the data source.
+  optional int64 source_provider_id = 6;
+
+  // The field is written by operational people.
+  optional int32 sort = 7 [default = 0];
+
+  // True: the film will be screened in the theater; and vice versa.
+  optional bool is_show_in_theaters = 8;
+}
+
+/**
+ *@brief 字段类型：电影院运营信息
+ *@details 电影院运营信息
+ **/
+message TheaterBase {
+  // The full name of theater.
+  required string name = 1;
+  // The another name of theater.
+  repeated string alias = 2;
+
+  // The detailed description of theater.
+  optional string description = 3;
+
+  // The address info of theater.
+  optional string address = 4;
+
+  // The location info of theater.
+  optional Location location = 5;
+
+  // The fixed-line|service telephone of theater.
+  repeated string phone = 6;
+
+  // The company corresponding to theater.
+  optional string company = 7;
+
+  // True: has the IMAX film hall; and vice versa.
+  optional bool has_imax = 8;
+
+  // The latitude, longitude and altitude info of theater.
+  repeated Geo geo = 9;
+
+  // The number of film halls.
+  optional int32 projection_room_count = 10;
+
+  optional int64 source_provider_id = 11;
+}
+
+/**
+ *@brief 字段类型：电影院评分信息
+ *@details 电影院评分信息
+ **/
+message TheaterScore {
+  // The overall evaluation of theater.
+  // The range of value lying between 0 and 100.
+  optional int32 overall_score = 1;
+
+  // The service evaluation of theater.
+  // The range of value lying between 0 and 100.
+  optional int32 service_score = 2;
+
+  // The environment evaluation of theater.
+  // The range of value lying between 0 and 100.
+  optional int32 environment_score = 3;
+}
+
+/**
+ *@brief 字段类型：电影院线路信息
+ *@details 电影院线路信息
+ **/
+message Route {
+  // The local route info of taking the bus to theater.
+  optional string by_bus = 1;
+
+  // The local route info of taking the subway to theater.
+  optional string by_metro = 2;
+}
+
+/**
+ *@brief 字段类型：地理位置信息
+ *@details 地理位置信息
+ **/
+message Geo {
+  optional float latitude = 1;
+  optional float longitude = 2;
+  optional float altitude = 3;
+}
+
+/**
+ *@brief 字段类型：PPS分类排名信息
+ *@details PPS分类排名信息
+ **/
+message PpsCategoryRanking {
+  optional int64 pps_category_id = 1;
+
+  // The order of recommend place.
+  optional int32 ranking = 2;
+
+  // 具体的值和对应关系，由Pps维护；1=小分类区，2=专辑区，3=节目区，4=公共区
+  optional int32 section = 3;
+}
+
+/**
+ *@brief 字段类型：PPS自动播单设置
+ *@details PPS自动播单设置
+ **/
+message AutoPlaylistInfo {
+  // 创建片单方式.
+  enum DataType {
+    BY_KEYWORD = 1;
+    BY_QIPU_ID = 2;
+  }
+
+  optional DataType data_type = 1;
+
+  // 对应的标签.
+  repeated string keyword = 2;
+
+  // 对应的奇谱id.
+  repeated int64 qipu_id = 3;
+
+  //编辑设置片单下节目的一个下限值，如果推荐接口返回的节目数据低于该值，那数据使用方（如pps客户端列表）可能会根据某些策略舍弃该片单，不作显示。
+  optional int32 min_output_count = 4;
+
+  // 单位为“天数”。客户端列表请求推荐接口时传入该值，便可获取编辑指定天数内的节目，而非全部
+  optional int32 number_of_days = 5; 
+
+}
+
+/**
+ *@brief 字段类型：影视大全分集信息
+ *@details 影视大全分集信息
+ **/
+message Season {
+  // 编号.
+  required int32 order = 1;
+  // 剧情.
+  optional string plot = 2;
+}
+
+/**
+ *@brief 字段类型：店铺基本信息
+ *@details 店铺基本信息
+ **/
+message ShopBase {
+  // 用户ID
+  optional int64 owner_id = 1;
+  // 用户昵称
+  optional string owner_nick = 2;
+  // 店铺名称
+  optional string title = 3;
+  // 店铺描述
+  optional string description = 4;
+  // 店铺icon
+  optional string thumbnail_url = 5;
+  // 别名
+  optional string site_alias = 6;
+  // 绑定的评论ID
+  optional int64 qitan_id = 7;
+  // 创建时间
+  optional int64 create_time = 8;
+  // 有效期
+  optional int64 valid_time = 9;
+  // 备注
+  optional string remark = 10;
+}
+
+
+/**
+ *@brief 字段类型：店铺联系信息
+ *@details 店铺联系信息
+ **/
+message ShopLinkage {
+  // 联系人姓名
+  optional string contact_name = 1;
+  // 联系人手机
+  optional string mobile = 2;
+  // 联系人电话
+  optional string phone = 3;
+  // 客服QQ
+  optional string qq = 4;
+  // 联系人地址
+  optional string address = 5;
+}
+
+
+/**
+ *@brief 字段类型：店铺动态评分信息
+ *@details 店铺动态评分信息
+ **/
+message ShopScore {
+  // 商品描述评分
+  optional int32 item_score = 1;
+  // 服务评分
+  optional int32 service_score = 2;
+  // 发货速度评分
+  optional int32 delivery_score = 3;
+}
+
+
+/**
+ *@brief 字段类型：视频标签
+ *@details 视频标签
+ **/
+message OcrTag {
+  // 标签路径.
+  optional string path = 1;
+}
+
+
+/**
+ *@brief 字段类型：音轨标签
+ *@details 音轨标签
+ **/
+message AsrTag {
+  // 标签路径.
+  optional string path = 1;
+}
+
+
+/**
+ *@brief 字段类型：智能标签
+ *@details 智能标签
+ **/
+message SmartTag {
+  message Detail {
+    optional StartEndPoint start_end_point = 1;
+
+    message Tag {
+      optional int64 id = 1;
+      optional float confidence = 2;
+      //位置信息，形状信息
+      optional Rect rect = 3;
+      //颜色信息（rgb、颜色均值、颜色方差）
+      optional int64 color = 4;
+      //纹理特征
+      optional int64 veins = 5;
+    }
+    repeated Tag tag = 2;
+    //图片地址，仅一张图片。
+    optional string image_url = 3;
+
+    //视频标签打点id
+    optional int64 clip_id = 4;
+  }
+  repeated Detail detail = 1;
+  //模型版本信息
+  optional int32 version = 2;
+  //剧集内容是否发生改变
+  optional bool flag = 3;
+}
+
+/**
+ *@brief 字段类型：话题引用
+ *@details 话题引用
+ **/
+message TopicSummary {
+  // 话题 qipu id.
+  required int64 topic_id = 1;
+  // 投票数
+  optional int64 vote_count = 2;
+}
+
+
+/**
+ *@brief 字段类型：智能广告打点标记
+ *@details 智能广告打点标记
+ **/
+message AdPointTag {
+  message AdPoint {
+    // 广告打点时间.
+    optional int64 start_point = 1;
+  }
+
+  // 广告打点.
+  repeated AdPoint ad_point = 1;
+}
+
+
+/**
+ *@brief 字段类型：活动通知
+ *@details 活动通知
+ **/
+message Notice {
+  // 通知ID.
+  optional int64 notice_id = 1;
+
+  // 活动类型.
+  enum NoticeType{
+    INTERACTION = 0; // 节目互动
+    DISCOUNT = 1; // 商城优惠
+  }
+  required NoticeType notice_type = 2;
+
+  // 通知名称.
+  optional Title title = 3;
+  // 通知详细内容.
+  optional string details = 4;
+  // 通知开始时间
+  optional int64 start_time = 5;
+  // 通知结束时间.
+  optional int64 end_time = 6;
+  // 是否有效，默认为有效
+  optional bool Is_available = 7 [default = true];
+  // 活动平台.
+  repeated PlayPlatform platform = 8;
+  // 相关URL.
+  repeated string correlation_url = 9;
+  // 绑定的节目目奇谱ID.
+  repeated int64 correlation_id = 10;
+
+  //消息提醒
+  message Tip{
+      optional OSType os_type = 1;
+      optional string title = 2;
+      optional string detail = 3;
+  }
+
+  repeated Tip tip = 11;
+
+  optional string short_title = 12;
+
+  // 相关联节目的播放地址
+  optional string play_url = 13;
+}
+
+
+/**
+*@brief 字段类型：促销字段
+*@details 促销字段
+**/
+message Promotion {
+
+  // 促销ID
+  optional int64 promotion_id = 1;
+
+  // 促销标题
+  optional string title = 2;
+
+  // 促销tag
+  optional string tag = 3;
+
+  // 促销显示文本
+  optional string show_desc = 4;
+
+  // 促销类型：1、MJS（满就送），2、XSZK（限时折扣），3、CXJ（促销价）
+  enum PromotionType {
+    MJS = 1;
+    XSZK = 2;
+    CXJ = 3;
+  }
+  optional PromotionType type = 5;
+
+  // 范围： 1、ALL_PRODUCT（全店商品），2、PART_PRODUCT（部分商品）
+  enum PromotionRange {
+    ALL_PRODUCT = 1;
+    PART_PRODUCT = 2;
+  }
+  optional PromotionRange range = 6;
+
+  // 会员类型：0、ORDINARY（普通会员），1、VIP（vip会员）
+  enum MemberType {
+    ORDINARY = 1;
+    VIP = 2;
+  }
+  optional MemberType member_type = 7;
+
+  // 开始时间
+  optional int64 start_time = 8;
+
+  // 结束时间
+  optional int64 end_time = 9;
+}
+
+/**
+*@brief 字段类型：专题元数据
+*@details 专题元数据
+**/
+message SpecialSubjectMetadata {
+  required int64 entity_id = 1;
+  //专题名称
+  optional string name = 2;
+  //关系见 http://wiki.qiyi.domain/pages/viewpage.action?pageId=21168659
+  //频道(1 电影,2 电视剧,3 纪录片,4 动漫,5 音乐,6 综艺,7 娱乐,8 游戏,9 旅游,10 片花,11 公开课,12 教育,13 时尚,14 时尚综艺,15 少儿,16 微电影,17 体育,18 奥运,19 直播,20 广告,21 生活,22 搞笑,23 奇葩,24 财经,25 资讯,26 汽车,27 原创,28,军事，29母婴30，科技，31，脱口秀，32健康，33公益，89 PPS,91 淘米,92 联想合作,96 编码器测试,97 其他,99 测试频道 )对应关系可以参照
+  optional int32 channel_id = 3;
+  enum Type{
+    UNKNOWN_TYPE = -1;
+    //CMS专题
+    CMS = 1;
+    //快速专题
+    FAST = 2;
+  }
+  //创建来源类型（CMS专题/快速（乐高）专题），
+  optional Type type = 4;
+  //Type的子类型
+  enum SubType {
+    UNKNOWN_SUB_TYPE = -1;
+    //专题
+    SPECIAL = 1;
+    //二级频道
+    SECONDARY_CHANNEL = 2;
+  }
+  //类型（专题、二级频道）
+  optional SubType sub_type = 5;
+  //推送平台
+  repeated DistributionPlatform platform = 6;
+  //关键字
+  repeated string keyword = 7;
+  //描述
+  optional string description = 8;
+  //图片
+  optional string image_url = 9;
+}
+
+/**
+*
+* @brief 字段类型：本地化运营字段；
+* @details 本地化运营相关的设置。
+*/
+message LocaleBase{
+  //语言
+  optional Language language = 1;
+  // 节目显示名称.
+  optional string display_name = 2;
+
+  // 短标题，主要用于移动端显示
+  optional string short_display_name = 3;
+
+  //副标题
+  optional string subordinate_title =4;
+
+  //一句话推荐
+  optional string prompt_description = 5;
+
+  //描述
+  optional string description = 7;
+
+  //更新策略；
+  optional string update_strategy = 8;
+
+  //SEO关键词列表，用于生成播放页面上的title,description等内容。
+  repeated string seo = 9;
+
+  //播放策略短标题
+  optional string short_update_strategy = 10;
+}
+
+message LocaleImage{
+  /**
+   * 图片类型
+    *
+  **/
+  enum ImageType {
+    POSTER = 600; // 海报图
+    COVER = 601; // 封面图
+    LIFE_PHOTO = 602; // 生活
+    ART_PHOTO = 603; // 剧照
+    IMAGE_PEOPLE = 604; // 人物图
+    HEADER = 605; // 头图
+    PREVIEW = 611; // 成片预览图
+    OTHER = 699; // 其他
+    //全景图片
+    PANO = 614;
+    //TV封面图
+    TV_COVER = 701;
+    //动态封面图
+    DYNAMIC_IMAGE_COVER = 702;
+    //视频首帧封面图
+    FIRST_FRAME_COVER = 616;
+  }
+  //类型
+  optional ImageType type = 1;
+
+  //语言
+  optional Language language = 2;
+  //是否默认
+  optional bool is_default = 3;
+
+  optional string image_url = 4;
+
+  optional string bpg_image_url = 5;
+  //图片分级
+  optional ContentRating rating = 6;
+
+  optional string webp55_image_url = 7;
+
+  optional string webp85_image_url = 8;
+  //图片支持的尺寸
+  optional string image_size = 9;
+  //成图尺寸
+  optional string product_image_size = 10;
+  //webp格式图片地址
+  optional string image_webp_url = 11;
+  //JPG低质图片地址
+  optional string jpg_image_url_lq = 12;
+  //图片来源
+  optional ImageSource image_source = 13 [default = UNKNOWN_IMAGE_SOURCE];
+  //gif格式图片地址
+  optional string image_gif_url = 14;
+  //图片生产方式
+  repeated ImageProductionType image_production_type = 15;
+}
+
+/**
+* @brief 字段类型：和语言相关的Category设置；
+* @details 和语言相关的Category设置；
+**/
+message CategoryBase{
+  //语言代码，
+  optional Language language = 1;
+  //名称
+  optional string category_name = 5;
+  //ppc是否显示
+  optional int32 display = 17;
+  //ugc是否显示，在前台是否显示出来
+  optional int32 ugc_display = 19;
+  //pgc是否使用，
+  optional int32 ppc_used = 20;
+  //ugc是否使用
+  optional int32 ugc_used = 21;
+  //tv是否显示；
+  optional int32 tv_display = 22;
+  //tv端显示的序号
+  optional int32 tv_order = 23;
+
+  // 是否可以用于推荐.
+  optional bool reject_recommend = 7 [default = false];
+
+  // 是否用于置顶列表
+  optional bool reject_top = 8 [default = false];
+
+  // 是否用于置顶列表
+  optional bool reject_favorite = 9 [default = false];
+
+  // 是否直播使用，
+  optional int32 live_used = 24 [default = 0];
+
+  // 是否直播显示，
+  optional int32 live_display = 25 [default = 0];
+  //标签描述、注解
+  optional string category_description = 26;
+  //标签适用频道
+  repeated CategoryAvailableBookChannel available_book_channel = 27;
+  //开放平台是否展示
+  optional int32 open_platform_display = 28;
+}
+
+/**
+ * 发布相关的设置
+ *
+**/
+message Publication{
+  //平台；
+  optional PlayPlatform platform = 1;
+  //上线状态；
+  optional AvailableStatus available_status = 2;
+  //首次上线时间
+  optional int64 first_online_time = 3;
+  //最后上线时间
+  optional int64 last_online_time = 4;
+
+  // True: not enter into search; False: enter into search.
+  optional bool reject_search = 6 [default = false];
+
+  // True: not enter into recommend; vice versa.
+  optional bool reject_recommend = 7;
+
+  // True: not enter into top list; vice versa.
+  optional bool reject_top = 8;
+
+  // 屏蔽免费书架字段
+  optional bool reject_free_bookshelf = 11 [default = false];
+
+  // 是否可下载
+  optional bool is_download_allowed = 12 [default = false];
+  //地区控制
+  repeated BookRegionControl region_control = 13;
+}
+
+/**
+*
+* 图书内容
+*
+**/
+message BookContent{
+  optional string content = 1;
+}
+/**
+* 编后语，题外话等
+*
+**/
+message Afterword{
+  //内容，可以是html文本
+  optional string content = 1;
+}
+
+/**
+* @brief 字段类型：广告图片和flash
+* @details 广告图片和乐高图片的生产流程不同。一般是外部直接提供的图片或flash素材。
+*
+**/
+message AdImage{
+  //有效开始时间
+  optional Date start_time = 1;
+  //有效结束时间
+  optional Date end_time = 2;
+  //广告图片，可以有多个。
+  repeated ImageFormat image = 3;
+
+  //广告 Flash，可以有多个。 
+  repeated ImageFormat flash = 4; 
+}
+
+message RegionBase{
+  optional Region region = 1 [default= CN];
+  optional bool is_available_for_homepage = 2 [default= false];
+}
+
+/**
+* @brief 看点
+*
+**/
+message SceneShot {
+  optional int64 start_time = 1;
+  optional int64 end_time = 2;
+  optional string image_url = 3;
+  optional string description = 4; 
+}
+/**
+* @brief 人物（明星）看点信息
+*
+*/
+message PeopleSceneShot {
+  //People 表的ID
+  optional int64 entity_id = 1;
+  //人物名字
+  optional string entity_name = 2; 
+  //看点；
+  repeated SceneShot scene_shot = 3; 
+}
+
+/**
+* 各种语言的提示语
+*
+**/
+message LocaleTip {
+  //语言
+  optional Language language = 1;
+  //对应该语言的提示语
+  optional string tip = 2;
+}
+/**
+* 站点及业务的付费状态
+**/
+message ChargeControl{
+  /**
+   * 付费站点
+   */
+  enum ChargeSite {
+     UNKNOWN_CHARGE_SITE = -1;
+     CHARGE_SITE_CN = 1;
+     CHARGE_SITE_TW = 2;
+  }
+  //付费站点类型
+  optional ChargeSite site = 1;
+   /**
+    * 付费业务类型
+   */
+  enum ChargeBusinessType{
+     UNKNOWN_CHARGE_BUSINESS_TYPE = -1;
+     //主站
+     CHARGE_BUSINESS_TYPE_MAINSTATION = 1;
+     //OTT
+     CHARGE_BUSINESS_TYPE_OTT = 2;
+     //动画屋
+     CHARGE_BUSINESS_TYPE_ANIMATIONROOM = 3;
+   }
+  //付费业务类型
+  optional ChargeBusinessType business = 2;
+  //业务/站点下的付费状态
+  optional Boss.ChargeStatus status = 3 [deprecated = true];
+  //业务/站点下的付费角标
+  optional PayMark pay_mark = 4;
+  //是否支持点播
+  optional bool is_support_tvod = 5;
+  //是否支持包月
+  optional bool is_support_monthly = 6;
+  //是否支持点播券
+  optional bool is_support_tvod_coupon = 7;
+  //是否支持套餐
+  optional bool is_support_package = 8;
+  //免费试看类型
+  optional Boss.FreeProbationType free_probation_type = 9;
+  //点播收费信息
+  optional Boss.Tvod tvod = 10;
+  /**
+  * 付费状态
+  */
+  enum ChargeStatus {
+    UNKNOWN_CHARGE_STATUS = -1;
+    //免费
+    CHARGE_STATUS_FREE = 1;
+    //已付费划价，可看视频
+    CHARGE_STATUS_PAID_AVAILABLE = 2;
+  }
+  //业务/站点下的付费状态
+  optional ChargeStatus charge_status = 11;
+  //是否支持全集试看
+  optional bool is_free_probation = 12;
+  //角标地址
+  optional string pay_mark_url = 13;
+}
+
+
+/**
+*@brief 字段类型：付费相关信息
+*@details  付费相关信息
+**/
+message ChargeBase{
+  // 由乐高代为进行付费角标判断，统一写入boss的column
+  // 付费角标
+  optional PayMark pay_mark = 1 [default= NONE_MARK];
+  /**
+  * 付费类型
+  */
+  enum PayType {
+    UNKNOWN_PAY_TYPE = -1;
+    //全部付费
+    PAY_TYPE_PAID_ALL = 1;
+    //部分付费
+    PAY_TYPE_PAID_PART = 2;
+  }
+  // 付费类型
+  optional PayType pay_type = 2;
+  // 站点及业务的付费状态
+  repeated ChargeControl charge_control = 3;
+  //角标地址
+  optional string pay_mark_url = 4;
+}
+
+
+/**
+*@brief 字段类型：相关实体id
+*@details  相关实体id
+**/
+message RelatedEntityId {
+   //电影票
+  optional int64 ticket_id = 1;
+  // 圈子
+  optional int64 circle_id = 2;
+  // 阅读
+  optional int64 book_id = 3;
+  // 应用
+  optional int64 app_id = 4;
+  //关联苹果应用入口
+  optional int64 app_id_ios = 5;
+  //漫画
+  optional int64 comic_id = 6;
+}
+
+/**
+*@brief 字段类型：聊天室
+*@details  聊天室
+**/
+message ChatRoomSummary {
+  optional int64 chat_room_id = 1;
+  optional bool should_display = 2 [default=true];
+  optional bool is_enable = 3 [default=true];
+  //发言权限
+  enum ChatRights {
+    UNKNOWN_CHAT_RIGHTS = -1;
+    CHAT_RIGHTS_ALL = 1;
+    CHAT_RIGHTS_VIP_CHAT = 2;
+    CHAT_RIGHTS_PAY_CHAT = 3;
+  }
+  optional ChatRights chat_rights = 4;
+
+  // 前端聊天消息是否为假写
+  optional bool is_send_fake = 5 [default=true];
+
+  // 是否开启弹幕
+  optional bool	show_popups = 6  [default=true];
+}
+
+
+/**
+*@brief 字段类型：地方站属性
+*@details  地方站属性
+**/
+message Subsite {
+  optional int32 subsite_id = 1;
+  optional string subsite_name = 2;
+
+  // 废弃，不再写入
+  optional SubsiteLevel subsite_level = 3 [deprecated = true];
+
+  // 地方站相关性得分，目前取值范围为0.0~2.0
+  optional float relevance_score = 4 [default = 0.0];
+
+  // 人工推荐等级
+  optional SubsiteRecommendLevel recommend_level = 5 [default = SUBSITE_RECOMMEND_LEVEL_NOT_RECOMMENDED];
+}
+
+/**
+*@brief 字段类型：商品标签
+*@details  商品标签
+**/
+message CommodityTag {
+  // 标签ID
+  optional int64 id = 1;
+  // 标签名
+  optional string title = 2;
+  // 标签显示名
+  optional string display_title = 3;
+  // 是否显示
+  optional bool is_display = 4 [default = true];
+}
+
+message BookBase {
+  // 编辑寄语
+  optional string editor_note = 1;
+
+  // 授权方式
+  optional BookAuthType auth_type = 2;
+  // 签约状态
+  optional BookSigningStatus signing_status = 3;
+  // 签约类型
+  optional BookSigningType signing_type = 4 [default = BOOK_SIGN_UNKNOWN];
+  // 推荐等级
+  optional int32 level = 5;
+  // 是否支持弹幕
+  optional bool dan_maku = 6 [default = false];
+  //书来源地区
+  optional RegionType book_source_region = 9 [default = UNKNOWN_REGION];
+  //转授权状态
+  optional DelegationAuthStatus delegation_auth_status = 10 [default = UNKNOWN_DELEGATION_AUTH_STATUS];
+  //是否联合签约
+  optional bool is_joint_signing = 11 [default = false];
+  //是否为参赛作品
+  optional bool is_competition_work = 12 [default = false];
+}
+
+// 动画屋
+message IqiyiChild {
+  // 年龄段
+  repeated ChildAge age = 1;
+  // 动画屋app是否付费
+  optional bool is_member_only = 2;
+  //推荐等级
+  optional EditorRecommendLevel editor_recommend_level = 3;
+  //类型
+  optional string type = 4;
+  //主题
+  optional string subject_matter = 5;
+  //性别
+  optional PeopleMetadata.Gender gender = 6;
+  //发行商
+  optional string publisher = 7;
+  //地区
+  optional string region = 8;
+  //自定义标签
+  repeated string tag = 9;
+  //包含的角色id
+  repeated int64 character = 10;
+}
+
+/**
+ *@brief 字段类型：PGC运营信息
+ *@details PGC运营信息
+ **/
+message PgcBase {
+  optional bool is_reward_allowed = 1;
+  // 个性化"求赏语"
+  optional string reward_message = 2;
+  //网大质量等级
+  optional string online_film_quality_rating = 3;
+}
+
+/**
+ *@brief 字段类型：Event泡泡运营信息
+ *@details Event泡泡运营信息
+ **/
+message EventPaopaoBase {
+  // 默认同步的圈子id
+  optional int64 default_circle_id = 1;
+  // 今日热议有效期(结束时间)
+  optional int64 hot_end_time = 2;
+}
+
+/**
+ *@brief 字段类型：游戏运营后台参数
+ *@details 游戏运营后台参数
+ **/
+message AppGameParameter {
+  // 游戏所属的渠道参数uuid
+  optional string channel_uuid = 1;
+}
+
+/**
+ *@brief 字段类型：爬虫数据字段
+ *@details 爬虫数据字段
+ **/
+message CrawlerInfo {
+  // 赞数
+  optional int64 like_count = 1;
+  // 评论数
+  optional int64 comment_count = 2;
+  // 转发数
+  optional int64 repost_count = 3;
+  // 精华
+  optional bool is_distillate = 4;
+  // 大v
+  optional bool is_verified = 5;
+  // 关键词
+  optional string keywords = 6;
+  // 长图文点赞数
+  optional int64 thumb_count = 7;
+  // 阅读数
+  optional int64 read_count = 8;
+  //第三方标签
+  repeated string tag = 9;
+  //是否来自明星账号
+  optional bool is_star = 10 [default = false];
+}
+
+message EpisodeViewpoint {
+  // 视点文件URL
+  optional string viewpoint_url = 1;
+  // 视点类型
+  optional EpisodeViewpointType viewpoint_type = 2;
+}
+
+message CompetitionBase {
+  // 展示筛选项
+  repeated CompetitionFilterType filter_type = 1;
+}
+
+//截图
+message Screenshot {
+  required string uuid = 1;
+  //图片存储地址
+  optional string url = 2;
+  //时间间隔，单位秒
+  optional int64 interval = 3;
+  //图片：width-hight
+  optional string image_size = 4;
+  //拼接大图内小图排列方式，行_列
+  optional string merge_count = 5;
+}
+
+//ip实体运营信息
+message IntellectualPropertyBase {
+    //ip名称
+    optional string proper_title = 1;
+    //描述
+    optional string description = 2;
+    //自定义标签
+    repeated string custom_tag = 3;
+    //ip显示名称
+    optional string display_name = 4;
+    //短标题
+    optional string short_display_name = 5;
+    //一句话推荐
+    optional string prompt_description = 6;
+    //url地址
+    optional string url = 7;
+}
+
+message IntellectualPropertySummary {
+    //节目id
+    optional int64 entity_id = 1;
+    //名称
+    optional string proper_title = 2;
+    //排序
+    optional int32 order = 3;
+    //图片
+    optional string image_url = 4;
+    //一句话推荐
+    optional string prompt_description = 5;
+  //游戏业务内部id
+  //游戏业务内部id，非奇谱id.
+  optional int64 game_id = 6;
+  //内容的展现控制字段
+  optional string show_control = 7;
+}
+
+message DrmInfo {
+    //内容的唯一标识，以码流为基本单位，不同码流可以有不同的contentID
+    optional string content_id = 1;
+    //加密内容的key
+    optional string content_key = 2;
+    //供播放用的字符串
+    optional string uuid = 3;
+    //DRM类型
+    optional Format.DrmType drm_type = 4;
+}
+
+
+//头条内容
+message HeadLineContent {
+    //所有类型item(文字/图片/音频/视频/图集)
+    optional HeadLineItemType item_type = 1;
+    //所有类型item(文字/图片/音频/视频/图集)
+    optional int64 source_id = 2;
+    //用于item类型为文字类型，或者图解头条里每张图片的描述
+    optional string text = 3;
+    //用于item类型为图片类型
+    optional string image_url = 4;
+    //用于item类型为图片类型
+    optional string image_url_hq = 5;
+    //用于item类型为图片类型，图片的原始尺寸的宽
+    optional int64 image_width = 6;
+    //用于item类型为图片类型，图片的原始尺寸的高
+    optional int64 image_height = 7;
+    //所有类型item的order
+    optional int64 order = 8;
+    //所有类型item，是否换行
+    optional bool is_new_row = 9;
+
+    // webp55 图片地址
+    optional string url_webp55 = 10;
+
+    // webp85 图片地址
+    optional string url_webp85 = 11;
+
+    //人脸识别结果
+    optional FaceRecognitionResult face_recognition_result = 12;
+}
+
+//原始站点信息
+message OriginalSiteInfo {
+    //原始素材url
+    optional string content_url = 1;
+    //原始站点id
+    optional string site_name = 2;
+    //原始站点赞数
+    optional int64 like_count = 3;
+    //原始站评论数
+    optional int64 comment_count = 4;
+    //原始站分享数
+    optional int64 share_count = 5;
+    //原始站页面浏览次数
+    optional int64 view_count = 6;
+    //原始站发布时间
+    optional int64 publish_time = 7;
+    //原始站作者昵称
+    optional string author_nickname = 8;
+    //原始站作者用户名
+    optional string author_username = 9;
+    //原始站频道
+    optional string channel = 10;
+    //原始站标签
+    repeated string tag = 11;
+    // 原始站点播放次数
+    optional int64 play_count = 12;
+  //原始站作者ID
+  optional string author_id = 14;
+  //原始站点二级频道
+  optional string second_level_channel = 15;
+  //原始站点三级频道
+  optional string third_level_channel = 16;
+  //原始站点是否为大V
+  optional bool is_verified = 17;
+  //原始站点背景音乐id（外网抓取）
+  optional string background_music_id = 18;
+  //原始站点背景音乐标题
+  optional string background_music_title = 19;
+}
+
+message IntegerList {
+    repeated int32 value = 1;
+}
+
+message StringList {
+    repeated string value = 1;
+}
+
+message CategorySummaryList {
+    repeated CategorySummary value = 1;
+}
+
+//图书页面信息
+message BookPageInfo {
+  //详情页地址
+  optional string detail_url = 1;
+  //目录页地址
+  optional string catalog_url = 2;
+}
+
+//热点事件所需要展示的内容
+message HotEventSummary {
+  //每个feed的奇谱id
+  optional int64 entity_id = 1;
+  //item的顺序
+  optional int64 order = 2;
+}
+
+//相关事件/脉络
+message RelatedHotEvent {
+  //事件/脉络id
+  optional int64 entity_id = 1;
+  //热点事件类型
+  enum HotEventType {
+    UNKNOWN_HOT_EVENT_TYPE = -1;
+    HOT_EVENT_TYPE_HOT_EVENT = 1;
+  }
+  optional HotEventType type = 2;
+  //事件/脉络名称
+  optional string entity_name = 3;
+}
+
+//相关明星
+message RelatedPeople {
+  //明星id
+  optional int64 people_id = 1;
+  //明星姓名
+  optional string people_name = 2;
+}
+//图书文件信息
+message BookFile {
+  //图书的URL
+  optional string file_url = 1;
+  //密钥
+  optional string key = 2;
+  //文件大小
+  optional int64 size = 3;
+  //MD5值
+  optional string md5 = 4;
+}
+
+//分析信息
+message RecognizeInfo {
+  enum RecognizeInfoType {
+    UNKNOWN_RECOGNIZE_INFO_TYPE = -1;
+    //行为识别
+    RECOGNIZE_INFO_TYPE_ACTIVITY = 0;
+    //情绪识别
+    RECOGNIZE_INFO_TYPE_EMOTION = 1;
+    //对话识别
+    RECOGNIZE_INFO_TYPE_DIALOG = 2;
+  }
+  // 分析类型
+  optional RecognizeInfoType recognize_info_type = 1;
+  message RecognizeInfoDetail {
+    optional string value = 1;
+    optional int64 id = 2;
+    message AppearInfo {
+      optional int32 start = 1;
+      optional int32 end = 2;
+      optional float score = 3;
+    }
+    repeated AppearInfo appear_info = 3;
+  }
+  // 分析结果详细
+  repeated RecognizeInfoDetail recognize_info_detail = 2;
+}
+
+// 开放平台富媒体实体内容
+message OpenRichMediaContent {
+  //所有类型item(文字/图片/音频/视频/图集)
+  optional OpenRichMediaItemType item_type = 1;
+
+  //所有类型item(文字/图片/音频/视频/图集)
+  optional int64 source_id = 2;
+
+  //用于item类型为文字类型，或者图解头条里每张图片的描述
+  optional string text = 3;
+
+  //用于item类型为图片类型
+  optional string image_url = 4;
+
+  //用于item类型为图片类型
+  optional string image_url_hq = 5;
+
+  //用于item类型为图片类型，图片的原始尺寸的宽
+  optional int64 image_width = 6;
+
+  //用于item类型为图片类型，图片的原始尺寸的高
+  optional int64 image_height = 7;
+
+  //所有类型item的order
+  optional int64 order = 8;
+
+  //所有类型item，是否换行
+  optional bool is_new_row = 9;
+
+  //webp55图片地址
+  optional string url_webp55 = 10;
+
+  //webp85图片地址
+  optional string url_webp85 = 11;
+
+  //人脸识别结果
+  optional FaceRecognitionResult face_recognition_result = 12;
+}
+
+message LongList {
+    repeated int64 value = 1;
+}
+
+// 视频相关base[无维度]
+message VideoCommonBase {
+  // Determine the head of episode, in order to skip
+  optional StartEndPoint video_head = 1;
+
+  // Determine the tail of episode, in order to skip
+  optional StartEndPoint video_tail = 2;
+
+  // The time segments can be skipped for episode.
+  repeated SkipTimeSegment skip_time_segment = 3;
+
+  // The start and end point of advertisement video, for jiangsu TV, or other TVs.
+  // If multiple advertisement videoes, one or multiple may be cancelled.
+  repeated StartEndPoint advertise_start_end_point = 4;
+}
+
+// 主展示运营base[无维度]
+message OperationBase {
+  // 爱奇艺出品:是/否
+  optional bool is_qiyi_produced = 1;
+
+  // 关键字
+  optional string video_related_keyword = 2;
+
+  // 正片间关键字
+  optional string video_feature_keyword = 3;
+
+  // 剧集内排序字段 pps
+  optional SortType pps_sort_type = 4;
+
+  // 剧集内排序方式 pps
+  optional SortWard pps_sort_ward = 5;
+
+  // 版权危险等级
+  optional SecurityLevel pps_security_level = 6;
+
+  // 内容类型标识
+  optional SpecialContentType special_content_type = 7;
+
+  // 更新频率
+  optional int32 pps_update_interval_in_minutes = 9;
+
+  // 水印位置
+  optional Base.LogoPosition logo_position = 10;
+
+  // 是否开启第三方抓取
+  optional bool pps_is_enable_third_spider = 11 [default = false];
+
+  // 列表客户端对应PB文件URL
+  optional string pps_update_source = 12;
+
+  repeated KeyValuePair key_value_pair = 13;
+  //logo水印屏蔽位置
+  repeated LogoHidden logo_hidden = 14;
+}
+
+// 合作相关运营[无维度]
+message OperationCooperationBase {
+  // For baidu video square, corresponding to vrs.expand_type
+  // 百度视频广场
+  repeated string video_square = 1;
+
+  // 作品版本信息
+  optional string video_version_info = 2;
+
+  // 艾瑞统计频道
+  optional int32 ext_irsearch_stat_channel = 3;
+
+  // 对外合作推广类型,电影、电视剧、动漫、综艺、其他
+  optional int32 television_program = 4;
+
+  repeated KeyValuePair key_value_pair = 5;
+}
+
+// 控制base[站点](分站点)
+message OperationControlBase {
+  // 是否强制播广告
+  optional bool ad_status = 1 [default = false];
+
+  // 是否独播
+  optional bool exclusive_status = 2 [default = false];
+
+  // 是否政治敏感
+  optional bool is_politically_sensitive = 3 [default = false];
+
+  // 敏感人物
+  optional string sensitive_person = 4;
+
+  // 是否展现评论区
+  optional bool is_display_comment_status = 5 [default = true];
+
+  // 是否开启弹幕
+  optional bool is_display_barrage = 6 [default = true];
+
+  repeated KeyValuePair key_value_pair = 7;
+  //是否屏蔽音频模式
+  optional bool reject_audio_mode = 8 [default = false];
+  //是否展示顶踩
+  optional bool is_display_up_down_status = 9 [default = true];
+  //是否展示广告
+  optional bool is_display_ad = 10 [default = false];
+  //下载缓存天数（取值1-45，无天数限制则为空）
+  optional int32 download_cache_day = 11;
+  //热度展示方式
+  optional HotDisplayType hot_display_type = 12 [default = HOT_DISPLAY_TYPE_UNRESTRICTED];
+}
+
+// 多发控制base[站点]乐高来写(分站点和分多发)
+message OperationMultiControlBase {
+  // 是否允许进入首页
+  optional bool is_available_for_homepage = 1 [default = false];
+
+  // 推荐等级
+  optional EditorRecommendLevel editor_recommend_level = 2 [default = EDITOR_RECOMMEND_LEVEL_NONE];
+  //推荐等级的理由
+  repeated string editor_recommend_level_reason = 3 [deprecated = true];
+}
+
+// 多语言显示base(分多发)
+message OperationLanguageBase {
+  // 语言
+  optional Language language = 1;
+
+  // 短标题，用于移动端显示
+  optional string short_display_name = 2;
+
+  // 显示名称
+  optional string display_name = 3;
+
+  // pps短标题，主要用于移动端显示
+  optional string pps_short_display_name = 4;
+
+  // pps显示名称
+  optional string pps_display_name = 5;
+
+  // 副标题
+  optional string subordinate_title = 6;
+
+  // 爱奇艺更新策略
+  optional string update_strategy = 7;
+
+  // 描述
+  optional string description = 8;
+
+  // 一句话推荐
+  optional string prompt_description = 9;
+
+  // 播放策略短标题
+  optional string short_update_strategy = 10;
+
+  // 吸睛标题
+  optional string fantasy_title = 11;
+}
+
+// 页面相关[站点](分站点分多发)
+message OperationPage {
+  // 页面状态
+  optional PagePublishStatus page_publish_status = 1 [default = PAGE_WAIT];
+
+  // 页面发布时间
+  optional Date page_publish_time = 2;
+
+  // 页面首次发布时间
+  optional int64 page_first_publish_time = 3;
+
+  // 页面URL
+  optional string page_url = 4;
+}
+
+// 高级信息
+message MetaAdvancedInfo {
+  // IMDB编号
+  optional string imdb_id = 1;
+
+  // 豆瓣关联
+  optional DoubanInfo douban_info = 2;
+
+  // 时光网ID
+  optional string mtime_id = 3;
+
+  // 百度百科URL
+  optional string baike_url = 4;
+
+  // 电视台关联
+  optional TvInfo tv_info = 5;
+}
+
+message StagePhotos {
+  repeated RelatedImage stage_photo = 1;
+}
+
+message Feeds {
+  repeated Feed feed = 1;
+  optional string filmtv_update_strategy = 2;   // 资料更新策略
+  optional int64 filmtv_last_update_episode_publishtime = 3; // (资料最新一集更新)的发布时间
+}
+
+message LiveRoomBase {
+  // 直播间公告
+  optional string notify = 1;
+  // 默认封面，主播开播的设置的图片
+  optional string cover_image = 2;
+  // 流地址
+  optional string rtmp_url = 3;
+  // 直播节目id
+  optional int64 episode_id = 4;
+  // 是否循环播放
+  optional bool is_loop_play = 5 [default = false];
+  // 直播状态
+  optional PlayStatus live_status = 6 [default = PLAY_STATUS_NULL];
+}
+/**
+ * @brief 视频明星看点
+ **/
+message EpisodeStarViewpoint {
+  //明星看点
+  repeated StarViewpoint star_viewpoint = 1;
+}
+/**
+ * @brief 明星看点
+ **/
+message StarViewpoint {
+  //明星id列表
+  repeated int64 people_id = 1;
+  //看点起始点列表
+  repeated StartEndPoint start_end_point = 2;
+}
+/**
+ * @brief 头条关联节目信息
+ **/
+message FatherProgramInfo {
+  //头条关联视频id
+  optional int64 father_episode_id = 1;
+  //头条关联专辑id
+  optional int64 father_album_id = 2;
+  //头条播放顺序
+  optional int32 order = 3;
+  //唯一标识
+  optional string uuid = 4;
+}
+/**
+ * @brief 奖品信息
+ **/
+message PrizeInfo {
+  //奖品描述
+  optional string prize_description = 1;
+  //奖品个数
+  optional int64 prize_number = 2;
+  //奖品缩略图地址
+  optional string prize_thumbnail_url = 3;
+  //奖品图片地址
+  optional string prize_picture_url = 4;
+  //奖品开始时间
+  optional int64 prize_start_time = 5;
+  //奖品结束时间
+  optional int64 prize_end_time = 6;
+}
+/**
+ * @brief 短视频拆条信息
+ **/
+message CutInfo {
+  //短视频拆条来源
+  optional CutFrom cut_from = 1;
+  //（已废弃）关联原视频ID
+  optional int64 father_episode_id = 2 [deprecated = true];
+  //（已废弃）拆条视频在原视频的起止时间点
+  optional StartEndPoint start_end_point = 3 [deprecated = true];
+  //相关拆条视频
+  repeated CutSummary cut_summary = 4;
+  //片段类型
+  optional CutType cut_type = 5 [default = UNKNOWN_CUT_TYPE];
+  //短视频时长（s） 例如15s
+  //10s、30s等
+  optional int32 cut_duration = 6;
+  //动态视频封面类型
+  optional VideoCoverContentType video_cover_content_type = 7 [default = UNKNOWN_VIDEO_COVER_CONTENT_TYPE];
+}
+/**
+ * @brief 关联影视剧
+ **/
+message HotEventRelatedVideo {
+  //影视剧ID
+  optional int64 video_id = 1;
+  //影视剧名称
+  optional string video_name = 2;
+}
+/**
+ * @brief 单个标签结果
+ **/
+message CommonTag {
+  //唯一名
+  optional string uniq_name = 1;
+  //分类id
+  repeated int64 category_id = 2;
+  //可信度
+  //可信度范围0~1
+  optional double confidence = 3;
+}
+/**
+ * @brief 标签来源分类
+ **/
+message UnifiedClassification {
+  //重庆编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_chongqing_editor = 1;
+  //频道编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_channel_editor = 2;
+  //NLP机器自动标签
+  repeated UnifiedClassificationSourceInfo source_info_nlp_auto = 3;
+}
+/**
+ * @brief 标签来源分类信息
+ **/
+message UnifiedClassificationSourceInfo {
+  //单个标签结果
+  optional CommonTag common_tag = 1;
+  //更新时间
+  optional int64 update_time = 2;
+}
+/**
+ * @brief 注册制信息
+ **/
+message RegistrationInfo {
+  //直播插件关联业务方ID
+  optional BizId biz_id = 1 [default = UNKNOWN_BIZ_ID];
+  //直播插件关联子业务方ID
+  optional BizSubId biz_sub_id = 2 [default = UNKNOWN_BIZ_SUB_ID];
+  //插件子业务方动态参数
+  //若biz_sub_id标识是游戏直播，动态参数为roomid；若biz_sub_id标识是PGC直播，动态参数为roomid；若
+  //biz_sub_id标识是PPC直播，动态参数为tvid
+  optional string biz_dynamic_params = 3;
+}
+/**
+ * @brief 用户cut截取限制
+ **/
+message UgcCutLimit {
+  //cut截取限制状态
+  optional CutLimitStatus cut_limit_status = 1 [default = UNKNOWN_CUT_LIMIT_STATUS];
+  //允许截取的时间段
+  optional string cut_allow_time_range = 2;
+}
+/**
+ * @brief 评分人数
+ **/
+message SnsStarNumberInfo {
+  //评分总人数
+  optional int64 star_total_number = 1;
+  //评分5星(9-10分)人数
+  optional int64 five_star_number = 2;
+  //评分4星（7-8分）人数
+  optional int64 four_star_number = 3;
+  //评分3星（5-6分）人数
+  optional int64 three_star_number = 4;
+  //评分2星（3-4分）人数
+  optional int64 two_star_number = 5;
+  //评分1星（1-2分）人数
+  optional int64 one_star_number = 6;
+}
+/**
+ * @brief 漫画更新信息
+ **/
+message ComicBookUpdateInfo {
+  //更新频率
+  optional UpdateFrequency update_frequency = 1 [default = UNKNOWN_UPDATE_FREQUENCY];
+  //周更新时间
+  repeated UpdateDay weekly_update_time = 2;
+  //月更新时间
+  optional int32 monthly_update_time = 3;
+}
+/**
+ * @brief 结算信息
+ **/
+message SettlementInfo {
+  //是否结算
+  optional bool should_settle = 1 [default = true];
+  //结算停止时间
+  optional int64 settle_stop_time = 2;
+}
+/**
+ * @brief 主播信息
+ **/
+message AnchorInfo {
+  //主播id
+  optional int64 anchor_id = 1;
+}
+/**
+ * @brief 弹幕群聊信息
+ **/
+message MynaInfo {
+  //是否有群聊
+  optional bool is_myna_chat = 1 [default = false];
+  //弹幕类型
+  optional DanmuType danmu_type = 2 [default = DANMU_TYPE_COMMON];
+}
+/**
+ * @brief 主站统计数据
+ **/
+message IqiyiDailyStatistics {
+  //播放次数
+  optional int64 play_count = 1;
+  //评论数
+  optional int64 comment_count = 2;
+  //分享数
+  optional int64 share_count = 3;
+  //顶数
+  optional int64 up_count = 4;
+  //踩数
+  optional int64 down_count = 5;
+}
+/**
+ * @brief 奇搜统计数据
+ **/
+message QisoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+}
+/**
+ * @brief 头条天级统计数据
+ **/
+message ToutiaoDailyStatistics {
+  //1天播放时长
+  optional int32 median_play_seconds_1_day = 1;
+  //7天播放时长
+  optional int32 median_play_seconds_7_days = 2;
+  //15天播放时长
+  optional int32 median_play_seconds_15_days = 3;
+  //点击人数
+  optional int64 click_uv_count = 4;
+  //浏览完成率
+  optional float view_completion_rate = 5;
+}
+/**
+ * @brief 头条小时级统计数据
+ **/
+message ToutiaoHourlyStatistics {
+  //展现次数
+  optional int64 impression_count = 1;
+  //点击数
+  optional int64 click_count = 2;
+  //评论数
+  optional int64 comment_count = 3;
+  //分享数
+  optional int64 share_count = 4;
+  //顶数
+  optional int64 up_count = 5;
+  //收藏数
+  optional int64 collect_count = 6;
+  //负反馈数
+  optional int64 negative_feedback_count = 7;
+}
+/**
+ * @brief 游戏价格信息
+ **/
+message GamePriceInfo {
+  //原价(单位为分)
+  optional int64 original_price = 1;
+  //折扣价（单位为分）
+  optional int64 discount_price = 2;
+  //会员价（单位为分）
+  optional int64 vip_price = 3;
+  //代币租用价
+  optional int64 qibei_price = 4;
+}
+/**
+ * @brief 游戏鉴权类型
+ **/
+message GameAuthenticationType {
+  //是否需要付费
+  optional bool is_charge = 1 [default = false];
+  //是否支持买断
+  optional bool is_buyout = 2 [default = false];
+  //是否打折
+  optional bool is_discount = 3 [default = false];
+  //是否存在会员价
+  optional bool is_vip_price = 4 [default = false];
+  //是否支持租用
+  optional bool is_rent = 5 [default = false];
+}
+/**
+ * @brief 爱奇艺号信息
+ **/
+message IqiyihaoInfo {
+  //爱奇艺用户ID
+  optional int64 iqiyi_user_id = 1;
+  //当前加权总分
+  optional float current_weighted_total_score = 2;
+  //当前爱奇艺号作者等级
+  optional IqiyihaoAuthorLevel current_author_level = 3 [default = UNKNOWN_IQIYIHAO_AUTHOR_LEVEL];
+}
+/**
+ * @brief 爱奇艺号
+ **/
+message Iqiyihao {
+  //用户ID
+  optional int64 uid = 1;
+  //评分信息
+  optional IqiyihaoScoreInfo score_info = 2 [deprecated = true];
+  //作者等级
+  optional IqiyihaoAuthorLevel author_level = 3 [default = UNKNOWN_IQIYIHAO_AUTHOR_LEVEL, deprecated = true];
+}
+/**
+ * @brief 评分信息
+ **/
+message IqiyihaoScoreInfo {
+  //加权总分
+  optional float weighted_total_score = 1;
+  //内容质量得分
+  optional int32 content_quality_score = 2 [deprecated = true];
+  //用户原创程度得分
+  optional int32 content_originality_score = 3 [deprecated = true];
+  //用户活跃度得分
+  optional int32 author_activation_score = 4 [deprecated = true];
+  //用户领域专业度得分
+  optional int32 author_specialization_score = 5 [deprecated = true];
+  //用户互动得分
+  optional int32 author_interaction_score = 6 [deprecated = true];
+  //爱奇艺号得分更新时间，单位秒
+  optional int64 score_update_time = 7;
+  //内容质量得分，替代content_quality_score
+  optional float score_quality = 8;
+  //吸粉能力得分
+  optional float score_fans_following = 9;
+  //平台活跃得分，替代author_activation_score
+  optional float score_activeness = 10;
+  //用户互动得分，替代author_interaction_score
+  optional float score_interaction = 11;
+  //平台奖励得分
+  optional float score_platform_award = 12;
+}
+/**
+ * @brief 关联标签
+ **/
+message TagSummary {
+  //标签来源类型
+  optional TagSummarySourceType source_type = 1;
+  //更新时间（时间戳，单位毫秒）
+  optional int64 update_time = 2;
+  //通用标签列表
+  repeated TagSummaryCommonTag common_tag = 3;
+}
+/**
+ * @brief 标签列表
+ **/
+message TagSummaryCommonTag {
+  //标签类型
+  optional TagSummaryTagType tag_type = 1;
+  //标签唯一名
+  optional string unique_name = 2;
+  //分类ID
+  optional int64 category_id = 3;
+  //置信度（范围0~1）
+  optional double confidence = 4;
+  //标签抓取站点（文学业务）
+  optional string tag_crawl_site = 5;
+}
+/**
+ * @brief 视频片头、片中、片尾信息
+ **/
+message VideoHeadTailInfo {
+  //片头/片中/片尾类型
+  optional VideoHeadTailType type = 1;
+  //片段信息
+  repeated VideoHeadTailSegmentInfo segment_info = 2;
+}
+/**
+ * @brief cut_summary
+ **/
+message CutSummary {
+  //关联原视频ID
+  optional int64 father_episode_id = 1;
+  //起始点
+  optional StartEndPoint start_end_point = 2;
+  //顺序
+  optional int32 order = 3;
+  //关联原专辑ID
+  optional int64 father_album_id = 4;
+}
+/**
+ * @brief 圈子关联标签
+ **/
+message CircleTagSummary {
+  //33实体ID
+  optional int64 entity_id = 1;
+  //标签权重（取值0.1-1）
+  optional float tag_weight = 2;
+  //标签类型
+  optional TagSummaryTagType tag_type = 3 [default = UNKNOWN_TAG_SUMMARY_TAG_TYPE];
+  //标签名
+  optional string tag_name = 4;
+}
+/**
+ * @brief 片段信息
+ **/
+message VideoHeadTailSegmentInfo {
+  //时间起始点
+  optional StartEndPoint start_end_point = 1;
+}
+/**
+ * @brief 片段关联的视频信息
+ **/
+message CutRelatedVideoInfo {
+  //片段关联视频的ID
+  optional int64 entity_id = 1;
+  //片段的播放顺序
+  optional int32 order = 2;
+}
+/**
+ * @brief 播放页tab内容控制
+ **/
+message LiveEpisodeTabControl {
+  //tab类型
+  optional LiveEpisodeTabType tab_type = 1 [default = UNKNOWN_LIVE_EPISODE_TAB_TYPE];
+  //显示名称
+  optional string tab_name = 2;
+  //是否显示tab
+  optional bool is_display_tab = 3 [default = false];
+  //活动地址
+  optional string activity_url = 4;
+  //是否为默认展示的tab
+  optional bool is_default_tab = 5 [default = false];
+}
+/**
+ * @brief 话题素材相关信息
+ **/
+message EventMaterialInfo {
+  //素材ID
+  optional int64 material_id = 1;
+  //素材顺序
+  optional int32 order = 2;
+  //话题素材类型
+  optional EventMaterialType material_type = 3 [default = UNKNOWN_EVENT_MATERIAL_TYPE];
+}
+/**
+ * @brief 电影票信息（乐高写入）
+ **/
+message MovieTicketBase {
+  //是否院线电影
+  optional bool is_cinema_movie = 1 [default = false];
+  //一句话介绍
+  optional string prompt_description = 2;
+}
+/**
+ * @brief 电影票统计相关信息（电影票写入）
+ **/
+message MovieTicketStatistics {
+  //购票用户评分
+  optional double ticket_user_score = 1;
+  //购票评分人数
+  optional int64 ticket_score_number = 2;
+  //编辑评分
+  optional double editor_score = 3;
+  //是否有排期
+  optional bool has_cinema_schedule = 4 [default = false];
+}
+/**
+ * @brief 粉丝等级头衔
+ **/
+message LevelTitleSummary {
+  //用户等级（1-15级）
+  optional int32 level = 1;
+  //用户头衔
+  optional string title = 2;
+}
+/**
+ * @brief 片段合集关联视频信息
+ **/
+message CutSetRelatedVideoInfo {
+  //片段合集关联的视频ID
+  optional int64 related_video_id = 1;
+  //片段合集的顺序
+  optional int32 cut_set_order = 2;
+}
+/**
+ * @brief 图片质量信息
+ **/
+message ImageQualityInfo {
+  //图片类型
+  optional LocaleImage.ImageType image_type = 1 [default = COVER];
+  //质量标记
+  repeated ImageQualityMark quality_mark = 2;
+}
+/**
+ * @brief 图片质量标记
+ **/
+message ImageQualityMark {
+  //图片尺寸
+  optional string image_size = 1;
+  //检查状态
+  optional ResultCheck check_status = 2 [default = UNCHECKED_NOW];
+  //图片来源
+  optional ImageSource image_source = 3 [default = UNKNOWN_IMAGE_SOURCE];
+  //图片版本（记录此时图片的版本号，核对标注的图片与线上图片一致性）
+  optional string image_verson = 4;
+  //是否不清晰
+  optional bool is_low_resolution = 5 [default = false];
+  //是否不完整
+  optional bool is_incomplete = 6 [default = false];
+  //是否黑边
+  optional bool is_black_border = 7 [default = false];
+  //是否毛玻璃
+  optional bool is_frosted_glass = 8 [default = false];
+  //是否拉伸
+  optional bool is_stretched = 9 [default = false];
+  //是否尺寸不合适
+  optional bool is_off_size = 10 [default = false];
+}
+/**
+ * @brief 基本信息
+ **/
+message LightNovelMetadata {
+  //实体id
+  optional int64 entity_id = 1;
+  //书内容格式
+  optional BookMediaType book_media_type = 2 [default = UNKNOWN_BOOKE_MEDIA_TYPE];
+  //标题相关（title）
+  optional Title title = 3;
+  //简介
+  optional string description = 4;
+  //一句话简介
+  optional string prompt_description = 5;
+  //来源类型
+  optional BookSourceType source_type = 6;
+  //阅读顺序（纯图片的轻小说写入该字段）
+  optional BookReadOrder read_order = 7 [default = UNKNOWN_BOOK_READ_ORDER];
+  //创建时间(轻小说在奇谱的创建时间，乐高维护，单位毫秒)
+  optional int64 create_time = 8;
+}
+/**
+ * @brief 作者相关情况(CP商提供)
+ **/
+message CpCreatorInfo {
+  //作者名称
+  optional string author = 1;
+  //画师名称
+  optional string painter = 2;
+  //译者名称
+  optional string translator = 3;
+}
+/**
+ * @brief 作者信息
+ **/
+message CreatorSummary {
+  //作者id
+  optional int64 entity_id = 1;
+  //创作者名称
+  optional string creator_name = 2;
+  //创作者类型
+  optional CreatorType creator_type = 3 [default = UNKNOWN_CREATOR_TYPE];
+}
+/**
+ * @brief cp相关
+ **/
+message CpInfo {
+  //本书人气值（CP商提供的初始值）
+  optional int64 popularity = 1;
+  //创作者信息
+  optional CpCreatorInfo creator_info = 2;
+}
+/**
+ * @brief 卷基本信息
+ **/
+message LightNovelVolumeMetadata {
+  //卷id
+  optional int64 entity_id = 1;
+  //卷标题
+  optional string title = 2;
+  //卷类型
+  optional VolumeType type = 3;
+}
+/**
+ * @brief 基本信息
+ **/
+message LightNovelChapterMetadata {
+  //章ID
+  optional int64 entity_id = 1;
+  //章名称
+  optional string chapter_name = 2;
+}
+/**
+ * @brief 轻小说更新信息
+ **/
+message LightNovelUpdateInfo {
+  //更新频率
+  optional UpdateFrequency update_frequency = 1 [default = UNKNOWN_UPDATE_FREQUENCY];
+  //周更新时间
+  repeated UpdateDay weekly_update_time = 2;
+}
+/**
+ * @brief 书地区控制
+ **/
+message BookRegionControl {
+  //地区
+  repeated Location location = 1;
+  //上线状态
+  optional AvailableStatus available_status = 2 [default = NONE];
+  //屏蔽搜索（True: not enter into search; False: enter into search.）
+  optional bool reject_search = 3 [default = false];
+  //屏蔽推荐（True: not enter into recommend; vice versa.）
+  optional bool reject_recommend = 4 [default = false];
+  //屏蔽进入TOP榜（True: not enter into top list; vice versa.）
+  optional bool reject_top = 5 [default = false];
+  //屏蔽免费书架字段（True: not enter into free bookshekf; vice versa.）
+  optional bool reject_free_bookshelf = 6 [default = false];
+  //是否可下载（True:allowed to download; vice versa.）
+  optional bool is_download_allowed = 7 [default = false];
+}
+/**
+ * @brief 圈子控制字段
+ **/
+message CircleOperationControl {
+  //拒绝进搜索
+  optional bool reject_search = 1 [default = false];
+  //拒绝推荐
+  optional bool reject_recommend = 2 [default = true];
+  //是否允许发布feed
+  optional bool is_feed_allowed = 3 [default = true];
+}
+/**
+ * @brief 漫画、文学、轻小说等的付费控制信息
+ **/
+message PublicatonChargeControl {
+  //平台
+  optional PlayPlatform platform = 1 [default = UNKNOWN_PLAYPLATFORM];
+  //付费状态
+  optional Boss.ChargeStatus status = 2 [default = UNKNOWN_CHARGE_STATUS];
+  //付费方式
+  optional Boss.BookChargeInfo.BookChargeMethod charge_method = 3 [default = BY_CHAPTER];
+  //是否会员可见
+  optional bool is_member_only = 4 [default = false];
+}
+/**
+ * @brief PGC审核信息
+ **/
+message PgcCheck {
+  //安全审核
+  optional SafetyCheck safety_check = 1;
+}
+/**
+ * @brief 搜索运营信息
+ * @details 搜索运营信息
+ **/
+message SearchBase {
+  //明星背景图url，如果要各端不同的尺寸，请在设计环节生产多套图，并用cms进行固定文件名上传，覆盖全尺寸url地址。
+  optional string background_image_url = 1;
+  //明星名字后的身份icon图片url
+  optional string icon_url = 2;
+}
+/**
+ * @brief 爱奇艺号认证信息
+ **/
+message IqiyihaoAuthInfo {
+  //爱奇艺号类型
+  optional IqiyihaoType iqiyihao_type = 1 [default = UNKNOWN_IQIYIHAO_TYPE];
+  //爱奇艺号认证状态
+  optional IqiyihaoAuthStatus auth_status = 2 [default = UNKNOWN_IQIYIHAO_AUTH_STATUS];
+  //首次认证时间（时间戳，单位毫秒）
+  optional int64 first_auth_time = 3;
+  //爱奇艺号版权信息
+  optional IqiyihaoCopyright copyright = 4 [default = UNKNOWN_IQIYIHAO_COPYRIGHT];
+  //推荐等级
+  optional int32 recommend_level = 5;
+  //最后更新时间（时间戳，单位毫秒）
+  optional int64 last_update_time = 6;
+  //频道（多个频道用分号隔开）
+  optional string channel = 7;
+  //业务别名
+  optional string alias = 8;
+  //业务分成状态
+  optional RevenueSharedStatus revenue_shared_status = 9 [default = UNKNOWN_REVENUE_SHARED_STATUS];
+  //上传视频工具类型
+  optional UploadVideoToolType upload_video_tool_type = 10 [default = UNKNOWN_UPLOAD_VIDEO_TOOL_TYPE];
+}
+/**
+ * @brief 爱奇艺号运营信息
+ **/
+message IqiyihaoBase {
+  //认证标识
+  optional AuthMark auth_mark = 1 [default = UNKNOWN_AUTH_MARK];
+  //纳豆标识
+  optional IqiyihaoNadouMark iqiyihao_nadou_mark = 2 [default = UNKNOWN_IQIYIHAO_NADOU_MARK];
+  //是否开启泡泡圈
+  optional bool is_open_circle = 3 [default = false];
+  //泡泡圈ID
+  optional int64 circle_id = 4;
+  //爱奇艺号空间展示模板
+  optional IqiyihaoSpaceTemplate space_template = 5 [default = UNKNOWN_IQIYIHAO_SPACE_TEMPLATE];
+  //擅长领域
+  optional string speciality_description = 6;
+  //爱奇艺号说明
+  optional string verify_introduction = 7;
+  //爱奇艺号用户类型
+  optional IqiyihaoUserType iqiyihao_user_type = 8 [default = UNKNOWN_IQIYIHAO_USER_TYPE];
+}
+/**
+ * @brief 爱奇艺用户质量等级
+ **/
+message IqiyiUserQualityInfo {
+  //质量分数
+  optional float quality_score = 1;
+  //质量等级
+  optional int32 quality_level = 2;
+  //爱奇艺号封禁状态
+  optional IqiyihaoBanStatus iqiyihao_ban_status = 3 [default = IQIYIHAO_BAN_STATUS_NORMAL];
+}
+/**
+ * @brief 爱奇艺号等级信息
+ **/
+message IqiyihaoLevelInfo {
+  //等级
+  optional int32 level = 1;
+}
+/**
+ * @brief 合成型视频信息
+ **/
+message ConvertedVideoInfo {
+  //视频合成方式
+  optional ConvertedVideoType converted_type = 1 [default = UNKNOWN_CONVERTED_VIDEO_TYPE];
+  //合成型视频来源信息
+  repeated ConvertedVideoSourceInfo converted_video_source_info = 2;
+}
+/**
+ * @brief 合成型视频来源信息
+ **/
+message ConvertedVideoSourceInfo {
+  //视频来源ID
+  optional int64 entity_id = 1;
+  //合成来源
+  optional ConvertedVideoSource source = 2 [default = UNKNOWN_CONVERTED_VIDEO_SOURCE];
+}
+/**
+ * @brief 内容等级信息
+ **/
+message PublicationContentRatingInfo {
+  //适用年龄范围
+  optional string age_range = 1;
+  //内容等级
+  repeated PublicationContentRating content_rating = 2;
+}
+/**
+ * @brief 内容等级
+ **/
+message PublicationContentRating {
+  //等级名称
+  optional string rating_name = 1;
+  //一级等级
+  optional string first_rating = 2;
+  //二级等级
+  optional string second_rating = 3;
+}
+/**
+ * @brief 短视频关联信息
+ **/
+message CutRelatedVideoSummary {
+  //关联类型
+  optional CutRelatedVideoType related_type = 1 [default = UNKNOWN_CUT_RELATED_VIDEO_TYPE];
+  //关联的长视频信息
+  repeated CutRelatedVideoInfo cut_related_video_info = 2;
+}
+/**
+ * @brief 行业信息
+ **/
+message DomainInfo {
+  //爱奇艺号类型
+  optional IqiyihaoType iqiyihao_type = 1;
+  //行业list
+  repeated DomainList domain_list = 2;
+}
+/**
+ * @brief 行业ID
+ **/
+message DomainList {
+  //行业编号
+  optional int32 domain_id = 1;
+  //行业名称
+  optional string domain_name = 2;
+}
+/**
+ * @brief 代表作信息
+ **/
+message RepresentativeWorkInfo {
+  //唯一标识
+  optional int64 entity_id = 1;
+  //展示顺序
+  optional int32 order = 2;
+  //推荐语
+  optional string prompt_description = 3;
+}
+/**
+ * @brief 小剧场直播元数据
+ **/
+message LiveActMetadata {
+  //业务方的小剧场ID
+  //直播业务ActID
+  optional int64 act_id = 1;
+  //Act类型
+  optional LiveActType act_type = 2 [default = UNKNOWN_LIVE_ACT_TYPE];
+}
+/**
+ * @brief 小剧场直播视频信息
+ **/
+message LiveActVideoInfo {
+  //原视频id
+  //00/09奇谱ID
+  optional int64 source_episode_id = 1;
+  //原视频专辑id
+  //01奇谱ID
+  optional int64 source_album_id = 2;
+}
+/**
+ * @brief 小剧场直播付费相关信息
+ **/
+message LiveActChargeBase {
+  //付费类型
+  optional PayType pay_type = 1 [default = UNKNOWN_PAY_TYPE];
+}
+/**
+ * @brief 开始结束时间信息
+ **/
+message StartEndTimeInfo {
+  //开始时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 start_time = 1;
+  //结束时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 end_time = 2;
+}
+/**
+ * @brief 各个业务方的封面图信息
+ **/
+message ImageFormatDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //封面图信息
+  repeated ImageFormat image_format = 2;
+}
+/**
+ * @brief 各个业务方的关联标签
+ **/
+message TagSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //关联标签
+  repeated TagSummary tag_summary = 2;
+}
+/**
+ * @brief 各个业务方的运营信息
+ **/
+message BaseDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //一句话推荐
+  optional string prompt_description = 2;
+  //显示名称
+  optional string display_name = 3;
+}
+/**
+ * @brief 各个业务方的内容信息
+ **/
+message ContentDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //内容信息
+  repeated OpenRichMediaContent content = 2;
+}
+/**
+ * @brief 素材修改信息
+ **/
+message OpenRichMediaUpdateInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //修改数据来源类型
+  optional OpenRichMediaUpdateType type = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE];
+}
+/**
+ * @brief 各个业务方的feed信息
+ **/
+message FeedSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //feed的ID
+  repeated int64 entity_id = 2;
+}
+/**
+ * @brief 分发信息
+ **/
+message DispatchInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //是否分发
+  optional bool is_dispatched = 2 [default = false];
+}
+/**
+ * @brief 关联的其他素材信息
+ **/
+message RelatedOpenRichMediaInfo {
+  //关联的素材ID
+  optional int64 entity_id = 1;
+}
+/**
+ * @brief 审核信息
+ **/
+message OpenRichMediaCheckStatusInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //审核状态
+  optional OpenRichMediaCheckStatus check_status = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS];
+}
+/**
+ * @brief 视频投生产时的视频AI识别信息
+ **/
+message AiProductionInfo {
+  //是否带有原始站点logo
+  optional bool has_original_site_logo = 1 [default = false];
+}
+/**
+ * @brief 审核
+ **/
+message Check {
+  //爱奇艺结果审核
+  optional ResultCheck iqiyi_result_check = 1 [default = PASS];
+  //The reason for the result be handled
+  optional string iqiyi_check_reason = 2;
+  //危险等级
+  optional UgcCheck.DangerLevel danger_level = 3 [default = SAFE];
+  //水印
+  optional string water_mark = 4;
+  //审批不通过原因编码
+  optional int32 check_result_code = 5;
+  //检查时间（时间戳单位：毫秒）
+  optional int64 check_time = 6;
+  //审核方式（由监控中心维护，参见http: wiki.qiyi.domain/pages/viewpage.action?pageId=165221501）
+  optional int32 check_type = 7;
+  //是否强制下线
+  optional bool is_force_offline = 8 [default = false];
+}
+/**
+ * @brief 上传视频信息
+ **/
+message UploadVideoInfo {
+  //上传来源（格式：类型_业务_来源_抓取方 eg:ugc_paopao_zhuaqu_youku）wiki:http://wiki.qiyi.domain/pages/viewpage.action?pageId=187013628
+  optional string source_provider = 1;
+  //上传平台（wiki：http://wiki.qiyi.domain/pages/viewpage.action?pageId=14254362）
+  optional int32 upload_platform = 2;
+  //上传方式
+  optional UgcOperation.UploadActionType upload_action_type = 3 [default = REPRINT];
+  //上传类型
+  optional UploadVideoType upload_video_type = 4 [default = UNKNOWN_UPLOAD_VIDEO_TYPE];
+}
+/**
+ * @brief 版权判定信息
+ **/
+message CopyrightCheckInfo {
+  //版权判定结果
+  optional CopyrightCheckResult copyright_check_result = 1 [default = UNKNOWN_COPYRIGHT_CHECK_RESULT];
+  //版权侵权信息
+  repeated CopyrightInfringeInfo copyright_infringe_info = 2;
+}
+/**
+ * @brief 版权侵权信息
+ **/
+message CopyrightInfringeInfo {
+  //版权内容奇谱id
+  optional int64 copyright_video_id = 1;
+}
+/**
+ * @brief 课程信息
+ **/
+message CourseInfo {
+  //课程大纲富文本地址
+  optional string outline_rich_text_url = 1;
+  //课程介绍富文本地址
+  optional string introduction_rich_text_url = 2;
+  //课程ppt自动处理成图片后的系列的图片信息
+  repeated PptImageInfo ppt_image_info = 3;
+  //PPT起始付费页数
+  optional int64 ppt_pay_start_page = 8;
+}
+/**
+ * @brief 课程ppt自动处理成图片后的系列的图片信息
+ **/
+message PptImageInfo {
+  //ppt图片地址
+  optional string image_url = 1;
+  //ppt图片顺序
+  optional int64 image_order = 2;
+}
+/**
+ * @brief 原创判定信息
+ **/
+message OriginalCheckInfo {
+  //原创判定结果
+  optional OriginalCheckResult original_check_result = 1 [default = UNKNOWN_ORIGINAL_CHECK_RESULT];
+  //转载原因
+  optional string reprint_reason = 2;
+}
+/**
+ * @brief 爱奇艺号任务信息
+ **/
+message IqiyihaoTaskInfo {
+  //任务ID
+  optional int32 task_id = 1;
+  //任务名称
+  optional string task_name = 2;
+}
+/**
+ * @brief 播单运营信息
+ **/
+message CollectionBase {
+  //播单模板类型
+  optional PlaylistTemplateType playlist_template_type = 1 [default = UNKNOWN_PLAYLIST_TEMPLATE_TYPE];
+}
+/**
+ * @brief 爱奇艺号MCN信息
+ **/
+message McnInfo {
+  //MCNID
+  optional int64 mcn_id = 1;
+  //创建时间（单位：毫秒）
+  optional int64 create_time = 2;
+}
+/**
+ * @brief 云腾书库信息
+ **/
+message YuntengLibraryInfo {
+  //云腾信息id
+  optional int64 id = 1;
+  //云腾信息内容类别
+  optional YuntengContentType content_type = 2 [default = UNKNOWN_YUNTENG_CONTENT_TYPE];
+  //云腾信息内容（网址）
+  optional string content_url = 3;
+}
+/**
+ * @brief 关联信息流
+ **/
+message FeedInfo {
+  //是否用于热点推荐
+  optional bool is_recommend_for_hot = 1 [default = false];
+}

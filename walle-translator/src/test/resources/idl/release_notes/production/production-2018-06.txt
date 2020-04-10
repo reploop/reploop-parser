@@ -1,0 +1,833 @@
+2018/06/28 (2.0.180628)
+48feed实体增加是否来自明星账号字段
+1. /knowledge/pub/properties.proto
+message CrawlerInfo {
+  //是否来自明星账号
+  optional bool is_star = 10 [default = false];
+}
+2018/06/27 (2.0.180627)
+00&09对播控、专辑、分成、上传类型等字段调整【郑程记得上线同步关系】
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 审核
+ **/
+message Check {
+  //爱奇艺结果审核
+  optional ResultCheck iqiyi_result_check = 1 [default = PASS];
+  //The reason for the result be handled
+  optional string iqiyi_check_reason = 2;
+  //危险等级
+  optional UgcCheck.DangerLevel danger_level = 3 [default = SAFE];
+  //水印
+  optional string water_mark = 4;
+  //审批不通过原因编码
+  optional int32 check_result_code = 5;
+  //检查时间（时间戳单位：毫秒）
+  optional int64 check_time = 6;
+  //审核方式（由监控中心维护，参见http: wiki.qiyi.domain/pages/viewpage.action?pageId=165221501）
+  optional int32 check_type = 7;
+  //是否强制下线
+  optional bool is_force_offline = 8 [default = false];
+}
+message Base {
+  //是否分成
+  optional bool is_revenue_allowed = 40 [default = false];
+  //上传类型
+  optional UgcOperation.UploadActionType upload_action_type = 41 [default = SHOOTING];
+}
+2. /knowledge/pub/common.proto
+enum AvailableStatus {
+  //码流未生产完成，吃鲸判断该字段可通过云盘播放，其他端不可播放。
+  OFFLINE_BUT_YUNPAN_PLAY = 7;
+}
+enum ColumnGroup {
+  CHECK = 704;
+}
+enum PlayPlatform {
+  //安卓手机纳豆
+  ANDROID_PHONE_NADOU_APP = 25;
+  //IOS手机纳豆
+  IOS_PHONE_NADOU_APP = 26;
+  //安卓手机动漫
+  ANDROID_PHONE_ANIMATION_APP = 29;
+  //IOS手机动漫
+  IOS_PHONE_ANIMATION_APP = 30;
+  //安卓手机吃鲸
+  ANDROID_PHONE_CHIJING_APP = 31;
+  //IOS手机吃鲸
+  IOS_PHONE_CHIJING_APP = 32;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //审核
+  optional Check check = 251 [(field_option).column_group = CHECK, (column_option).column_name = "c_251_n"];
+}
+4. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //审核
+  optional Check check = 128 [(field_option).column_group = CHECK, (column_option).column_name = "c_128_n"];
+  //该视频所在的Album。一个视频仅可能存在一个Album中。 写入该数据后，奇谱会自动将数据同步到Album.episode_summary字段中。
+  optional FatherInfo father_album = 129 [(field_option).column_group = FATHER_ALBUM, (column_option).column_name = "c_129_n"];
+}
+2018/06/27 (2.0.180627)
+智能库增加信息流热点事件字段
+message IntelligentFeature {
+  // 信息流热点事件
+  optional BeehiveHotEventInfo s6_beehive_hot_event_info = 416 [(column_option).column_name = "c_416_n"];
+}
+// 信息流热点事件
+message BeehiveHotEventInfo {
+  // 版本
+  optional string version = 1;
+  // 热点分数
+  optional double hot_score = 3;
+  // 关联热点
+  repeated HotSummary hot_summary = 4;
+
+  message HotSummary {
+    // 热点词
+    optional string hot_term = 1;
+    // 热点词描述
+    optional string hot_term_description = 2;
+    // 热点次抓取时间 时间戳 毫秒
+    optional int64 hot_term_crawl_time = 3；
+    // 可信度
+    optional double confidence = 4;
+  }
+}
+2018/06/25 (2.0.180625)
+09表增加是否上传水印视频标识字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 视频投生产时的视频AI识别信息
+ **/
+message AiProductionInfo {
+  //是否带有原始站点logo
+  optional bool has_original_site_logo = 1 [default = false];
+}
+2. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //视频投生产时的视频AI识别信息
+  optional AiProductionInfo ai_production_info = 132 [(field_option).column_group = AI_PRODUCTION_INFO, (column_option).column_name = "c_132_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  AI_PRODUCTION_INFO = 717;
+}
+2018/06/25 (2.0.180625)
+1070新增业务方对套壳数据的运营字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 素材修改信息
+ **/
+message OpenRichMediaUpdateInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //修改数据来源类型
+  optional OpenRichMediaUpdateType type = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE];
+}
+/**
+ * @brief 关联的其他素材信息
+ **/
+message RelatedOpenRichMediaInfo {
+  //关联的素材ID
+  optional int64 entity_id = 1;
+}
+/**
+ * @brief 各个业务方的关联标签
+ **/
+message TagSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //关联标签
+  repeated TagSummary tag_summary = 2;
+}
+/**
+ * @brief 分发信息
+ **/
+message DispatchInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //是否分发
+  optional bool is_dispatched = 2 [default = false];
+}
+/**
+ * @brief 审核信息
+ **/
+message OpenRichMediaCheckStatusInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //审核状态
+  optional OpenRichMediaCheckStatus check_status = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS];
+}
+/**
+ * @brief 各个业务方的内容信息
+ **/
+message ContentDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //内容信息
+  repeated OpenRichMediaContent content = 2;
+}
+/**
+ * @brief 各个业务方的封面图信息
+ **/
+message ImageFormatDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //封面图信息
+  repeated ImageFormat image_format = 2;
+}
+/**
+ * @brief 各个业务方的关联标签
+ **/
+message TagSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //关联标签
+  repeated TagSummary tag_summary = 2;
+}
+/**
+ * @brief 各个业务方的运营信息
+ **/
+message BaseDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //一句话推荐
+  optional string prompt_description = 2;
+  //显示名称
+  optional string display_name = 3;
+}
+/**
+ * @brief 各个业务方的内容信息
+ **/
+message ContentDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //内容信息
+  repeated OpenRichMediaContent content = 2;
+}
+/**
+ * @brief 素材修改信息
+ **/
+message OpenRichMediaUpdateInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //修改数据来源类型
+  optional OpenRichMediaUpdateType type = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE];
+}
+/**
+ * @brief 各个业务方的feed信息
+ **/
+message FeedSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //feed的ID
+  repeated int64 entity_id = 2;
+}
+/**
+ * @brief 分发信息
+ **/
+message DispatchInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //是否分发
+  optional bool is_dispatched = 2 [default = false];
+}
+/**
+ * @brief 关联的其他素材信息
+ **/
+message RelatedOpenRichMediaInfo {
+  //关联的素材ID
+  optional int64 entity_id = 1;
+}
+/**
+ * @brief 审核信息
+ **/
+message OpenRichMediaCheckStatusInfo {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //审核状态
+  optional OpenRichMediaCheckStatus check_status = 2 [default = UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS];
+}
+/**
+ * @brief 各个业务方的运营信息
+ **/
+message BaseDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //一句话推荐
+  optional string prompt_description = 2;
+  //显示名称
+  optional string display_name = 3;
+}
+message OriginalSiteInfo {
+  //原始站作者ID
+  optional string author_id = 14;
+}
+/**
+ * @brief 各个业务方的feed信息
+ **/
+message FeedSummaryDemander {
+  //需求方类型
+  optional DemanderType demander_type = 1 [default = UNKNOWN_DEMANDER_TYPE];
+  //feed的ID
+  repeated int64 entity_id = 2;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 需求方类型
+ **/
+enum DemanderType {
+  //未知类型
+  UNKNOWN_DEMANDER_TYPE = -1;
+  //头条
+  DEMANDER_TYPE_TOUTIAO = 0;
+  //泡泡
+  DEMANDER_TYPE_PAOPAO = 1;
+}
+/**
+ * @brief 素材修改类型
+ **/
+enum OpenRichMediaUpdateType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE = -1;
+  //编辑修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_EDITOR = 0;
+  //爱奇艺号写手修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_IQIYIHAO = 1;
+}
+/**
+ * @brief 审核状态
+ **/
+enum OpenRichMediaCheckStatus {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS = -1;
+  //审核中
+  OPEN_RICH_MEDIA_CHECK_STATUS_CHECKING = 0;
+  //审核通过
+  OPEN_RICH_MEDIA_CHECK_STATUS_PASSED = 1;
+  //审核不通过-机审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MACHINE = 2;
+  //审核不通过-人审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MANUAL = 3;
+}
+/**
+ * @brief 素材修改类型
+ **/
+enum OpenRichMediaUpdateType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPDATE_TYPE = -1;
+  //编辑修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_EDITOR = 0;
+  //爱奇艺号写手修改
+  OPEN_RICH_MEDIA_UPDATE_TYPE_IQIYIHAO = 1;
+}
+/**
+ * @brief 审核状态
+ **/
+enum OpenRichMediaCheckStatus {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_CHECK_STATUS = -1;
+  //审核中
+  OPEN_RICH_MEDIA_CHECK_STATUS_CHECKING = 0;
+  //审核通过
+  OPEN_RICH_MEDIA_CHECK_STATUS_PASSED = 1;
+  //审核不通过-机审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MACHINE = 2;
+  //审核不通过-人审
+  OPEN_RICH_MEDIA_CHECK_STATUS_FAILED_MANUAL = 3;
+}
+enum ColumnGroup {
+  RELATED_OPEN_RICH_MEDIA_INFO = 705;
+  BEEHIVE_SOURCE_ID = 706;
+  IMAGE_FORMAT_DEMANDER = 707;
+  TAG_SUMMARY_DEMANDER = 708;
+  BASE_DEMANDER = 709;
+  CONTENT_DEMANDER = 710;
+  FEED_SUMMARY_DEMANDER = 711;
+  CHECK_STATUS_INFO = 712;
+  DISPATCH_INFO = 713;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //关联的1070素材信息
+  repeated RelatedOpenRichMediaInfo related_open_rich_media_info = 252 [(field_option).column_group = RELATED_OPEN_RICH_MEDIA_INFO, (column_option).column_name = "c_252_n_", (column_option).column_suffix = "${entity_id}"];
+}
+4. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //记录该feed信息的原始来源ID
+  optional int64 beehive_source_id = 58 [(field_option).column_group = BEEHIVE_SOURCE_ID, (column_option).column_name = "c_58_n"];
+  //修改数据来源类型
+  repeated OpenRichMediaUpdateInfo update_info = 59 [(field_option).column_group = UPDATE_INFO, (column_option).column_name = "c_59_n_", (column_option).column_suffix = "${demander_type}"];
+}
+5. /entity/schema-1070-open-rich-media.fproto
+message OpenRichMedia {
+  //各个业务方的封面图信息
+  repeated ImageFormatDemander image_format_demander = 28 [(field_option).column_group = IMAGE_FORMAT_DEMANDER, (column_option).column_name = "c_28_n_", (column_option).column_suffix = "${demander_type}"];
+  //关联标签
+  repeated TagSummary tag_summary = 29 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_29_n_", (column_option).column_suffix = "${source_type}"];
+  //各个业务方的关联标签
+  repeated TagSummaryDemander tag_summary_demander = 30 [(field_option).column_group = TAG_SUMMARY_DEMANDER, (column_option).column_name = "c_30_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的运营信息
+  repeated BaseDemander base_demander = 31 [(field_option).column_group = BASE_DEMANDER, (column_option).column_name = "c_31_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的内容信息
+  repeated ContentDemander content_demander = 32 [(field_option).column_group = CONTENT_DEMANDER, (column_option).column_name = "c_32_n_", (column_option).column_suffix = "${demander_type}"];
+  //可用状态（并非上下线状态）
+  optional AvailableStatus available_status = 33 [default = ONLINE, (field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "c_33_n"];
+  //修改数据来源信息
+  repeated OpenRichMediaUpdateInfo update_info = 34 [(field_option).column_group = UPDATE_INFO, (column_option).column_name = "c_34_n_", (column_option).column_suffix = "${demander_type}"];
+  //各个业务方的feed信息
+  repeated FeedSummaryDemander feed_summary_demander = 35 [(field_option).column_group = FEED_SUMMARY_DEMANDER, (column_option).column_name = "c_35_n_", (column_option).column_suffix = "${demander_type}"];
+  //审核信息
+  repeated OpenRichMediaCheckStatusInfo check_status_info = 36 [(field_option).column_group = CHECK_STATUS_INFO, (column_option).column_name = "c_36_n_", (column_option).column_suffix = "${demander_type}"];
+  //分发信息
+  repeated DispatchInfo dispatch_info = 37 [(field_option).column_group = DISPATCH_INFO, (column_option).column_name = "c_37_n_", (column_option).column_suffix = "${demander_type}"];
+  //关联的00/09/1070素材信息
+  repeated RelatedOpenRichMediaInfo related_open_rich_media_info = 38 [(field_option).column_group = RELATED_OPEN_RICH_MEDIA_INFO, (column_option).column_name = "c_38_n_", (column_option).column_suffix = "${entity_id}"];
+}
+6. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //原始站点信息
+  optional OriginalSiteInfo original_site_info = 130 [(field_option).column_group = ORIGINAL_SITE_INFO, (column_option).column_name = "c_130_n"];
+  //关联的其他素材信息
+  repeated RelatedOpenRichMediaInfo related_open_rich_media_info = 131 [(field_option).column_group = RELATED_OPEN_RICH_MEDIA_INFO, (column_option).column_name = "c_131_n_", (column_option).column_suffix = "${entity_id}"];
+}
+2018/06/22 (2.0.180622)
+23新增体育直播字段
+1. /knowledge/pub/properties.proto
+message LiveEpisodeBase {
+  //赛事正式开始时间（时间戳，单位：毫秒）
+  optional int64 start_time = 42;
+}
+2. /knowledge/pub/common.proto
+enum LiveEpisodeSubType {
+  //新英体育足球
+  //对应type里面SPORTS
+  LIVE_EPISODE_SUB_TYPE_FOOTBALL = 10;
+  //新英体育网球
+  LIVE_EPISODE_SUB_TYPE_TENNIS = 11;
+  //新英体育高尔夫
+  LIVE_EPISODE_SUB_TYPE_GOLF = 12;
+  //新英体育羽毛球
+  LIVE_EPISODE_SUB_TYPE_BADMINTON = 13;
+  //新英体育排球
+  LIVE_EPISODE_SUB_TYPE_VOLLEYBALL = 14;
+  //新英体育格斗
+  LIVE_EPISODE_SUB_TYPE_COMBAT = 15;
+}
+enum LiveEpisodeType {
+  //新英体育直播（关联subtype 10-15）
+  //业务方：大直播，开播使用方：体育
+  LIVE_EPISODE_TYPE_SPORTS = 7;
+}
+2018/06/22 (2.0.180622)
+tab类型字段新增体育项目枚举值
+1. /knowledge/pub/common.proto
+enum LiveEpisodeTabType {
+  //赛况
+  LIVE_EPISODE_TAB_TYPE_MATCH_EVENT = 4;
+  //阵容
+  LIVE_EPISODE_TAB_TYPE_MATCH_LINEUP = 5;
+}
+2018/06/15 (2.0.180615)
+播放平台字段新增来源端
+1. /knowledge/pub/common.proto
+enum PlayPlatform {
+  //安卓手机泡泡
+  ANDROID_PHONE_PAOPAO_APP = 27;
+  //IOS手机泡泡
+  IOS_PHONE_PAOPAO_APP = 28;
+}
+2018/06/14 (2.0.180614)
+48新增区分泡泡发布来源端的字段
+1. /entity/schema-48-circle-feed.fproto
+message CircleFeed {
+  //feed平台
+  optional PlayPlatform play_platform = 64 [default = UNKNOWN_PLAYPLATFORM, (field_option).column_group = PLAY_PLATFORM, (column_option).column_name = "c_64_n"];
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  PLAY_PLATFORM = 716;
+}
+enum PlayPlatform {
+  //H5 泡泡
+  H5_PAOPAO_APP = 33;
+}
+2018/06/14 (2.0.180614)
+小视频上传方式字段增加图片视频上传枚举值
+1. /knowledge/pub/common.proto
+enum FeedShortVideoUploadType {
+  //用户上传合成视频
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_USER_CONVERTED = 3;
+}
+2018/06/14 (2.0.180614)
+48新增一种新类型的feed字段
+1. /knowledge/pub/common.proto
+enum FeedContentType {
+  //动图
+  FEED_DYNAMIC_IMAGE = 108;
+}
+2018/06/13 (2.0.180613)
+boss字段下vip_type新增体育会员枚举值
+1. /knowledge/pub/common.proto
+enum VipType {
+  //体育会员
+  VIP_TYPE_SPORTS_VIP = 6;
+}
+2018/06/13 (2.0.180613)
+20游戏新增下载与登录量字段
+1. /entity/schema-20-app-group.fproto
+message AppGroup {
+  //90天下载完成设备数
+  optional int64 download_device_count_90_days = 32 [(field_option).column_group = DOWNLOAD_DEVICE_COUNT_90_DAYS, (column_option).column_name = "c_32_n"];
+  //30天登录用户数
+  optional int64 login_count_30_days = 33 [(field_option).column_group = LOGIN_COUNT_30_DAYS, (column_option).column_name = "c_33_n"];
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  DOWNLOAD_DEVICE_COUNT_90_DAYS = 714;
+  LOGIN_COUNT_30_DAYS = 715;
+}
+2018/06/07 (2.0.180607)
+新建直播小剧场实体二维表
+1. /knowledge/pub/common.proto
+enum EntityIdType {
+  //小剧场直播
+  LIVE_ACT = 2270;
+}
+/**
+ * @brief 付费类型
+ **/
+enum PayType {
+  //未知类型
+  UNKNOWN_PAY_TYPE = -1;
+  //免费内容
+  PAY_TYPE_FREE = 0;
+  //VIP会员内容
+  PAY_TYPE_VIP = 1;
+}
+enum Table {
+  //小剧场直播
+  LIVE_ACT_TABLE = 72;
+}
+/**
+ * @brief 小剧场Act类型
+ * @details 1: 陪看点播视频的直播
+2: 陪看漫画的直播
+3: 陪读轻小说的直播
+ **/
+enum LiveActType {
+  //未知类型
+  UNKNOWN_LIVE_ACT_TYPE = -1;
+  //陪看点播视频的直播
+  LIVE_ACT_TYPE_VIDEO = 0;
+  //陪看漫画的直播
+  LIVE_ACT_TYPE_COMIC = 1;
+  //陪读轻小说的直播
+  LIVE_ACT_TYPE_LIGHT_NOVEL = 2;
+}
+/**
+ * @brief 付费类型
+ **/
+enum PayType {
+  //未知类型
+  UNKNOWN_PAY_TYPE = -1;
+  //免费内容
+  PAY_TYPE_FREE = 0;
+  //VIP会员内容
+  PAY_TYPE_VIP = 1;
+}
+enum ColumnGroup {
+  PLAY_STATUS = 700;
+  START_END_TIME_INFO = 701;
+  SOURCE_VIDEO_INFO = 702;
+  LIVE_ROOM_SUMMARY = 703;
+}
+2. /knowledge/fusion/query/properties.proto
+message QipuEntity {
+  //小剧场直播
+  optional LiveAct live_act = 74;
+}
+3. /knowledge/pub/read_service.proto
+message GetEntityResponse {
+  // Response for request of entity: LiveAct
+  repeated LiveAct live_act = 74;
+}
+4. /knowledge/pub/write_service.proto
+
+// Proto for setLiveAct method defined in write_rpc_service.thrift
+message SetLiveActRequest {
+  //option
+  option (request_options).set_table = LIVE_ACT_TABLE;
+  option (request_options).set_interface = "setLiveAct";
+
+  required User user = 1;
+
+  optional LiveAct merge_live_act = 2;
+  optional LiveAct delete_live_act = 3;
+
+  // Whether to send message to activeMQ to notify audience. If you don't know
+  // what exactly it is, leave it as default.
+  optional bool should_notify_audience = 4 [default = true];
+
+  // If you're doing a batch update,
+  // please consider setting is_updated_in_batch_mode = true.
+  // So the audience will know this is a batch update,
+  // in which they may optimize the message processing.
+  optional bool is_updated_in_batch_mode = 5 [default = false];
+
+  // 消息优先级
+  optional Priority priority = 6;
+}
+5. /entity/schema-2270-live-act.fproto
+/**
+ * @brief 小剧场直播
+ * @details 小剧场直播是主播陪用户看点播视频的一场直播。
+一场直播过程中，我们称一个点播视频内容的陪看为一个Act，一场直播会对应多个Act
+ * 。
+该实体粒度小于直播场次的奇谱类型，对应到每个Act，描述该Act对应的直播场次、点播视频、点播专辑、直转点视频。
+ **/
+message LiveAct {
+  //option
+  option (entity_option).table = LIVE_ACT_TABLE;
+  option (entity_option).entity_name = "live_act";
+  option (table_option).hbase_table_name = "qipu_live_act_table";
+  option (entity_option).entity_id_type = LIVE_ACT;
+  //实体id
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //小剧场直播元数据
+  optional LiveActMetadata metadata = 4 [(field_option).column_group = METADATA, (column_option).column_name = "c_4_n"];
+  //节目直播状态
+  optional PlayStatus play_status = 5 [default = PLAY_STATUS_NULL, (field_option).column_group = PLAY_STATUS, (column_option).column_name = "c_5_n"];
+  //开始结束时间信息
+  optional StartEndTimeInfo start_end_time_info = 6 [(field_option).column_group = START_END_TIME_INFO, (column_option).column_name = "c_6_n"];
+  //原视频信息
+  optional LiveActVideoInfo source_video_info = 7 [(field_option).column_group = SOURCE_VIDEO_INFO, (column_option).column_name = "c_7_n"];
+  //直播场次关联信息
+  optional MetaSummary live_summary = 8 [(field_option).column_group = LIVE_SUMMARY, (column_option).column_name = "c_8_n"];
+  //直播间关联信息
+  optional MetaSummary live_room_summary = 9 [(field_option).column_group = LIVE_ROOM_SUMMARY, (column_option).column_name = "c_9_n"];
+  //直播转点播
+  optional MetaSummary episode_summary = 10 [(field_option).column_group = EPISODE_SUMMARY, (column_option).column_name = "c_10_n"];
+  //付费相关信息
+  optional LiveActChargeBase charge_base = 11 [(field_option).column_group = CHARGE_BASE, (column_option).column_name = "c_11_n"];
+}
+6. /knowledge/pub/properties.proto
+/**
+ * @brief 小剧场直播付费相关信息
+ **/
+message LiveActChargeBase {
+  //付费类型
+  optional PayType pay_type = 1 [default = UNKNOWN_PAY_TYPE];
+}
+/**
+ * @brief 小剧场直播视频信息
+ **/
+message LiveActVideoInfo {
+  //原视频id
+  //00/09奇谱ID
+  optional int64 source_episode_id = 1;
+  //原视频专辑id
+  //01奇谱ID
+  optional int64 source_album_id = 2;
+}
+/**
+ * @brief 小剧场直播元数据
+ **/
+message LiveActMetadata {
+  //业务方的小剧场ID
+  //直播业务ActID
+  optional int64 act_id = 1;
+  //Act类型
+  optional LiveActType act_type = 2 [default = UNKNOWN_LIVE_ACT_TYPE];
+}
+/**
+ * @brief 小剧场直播视频信息
+ **/
+message LiveActVideoInfo {
+  //原视频id
+  //00/09奇谱ID
+  optional int64 source_episode_id = 1;
+  //原视频专辑id
+  //01奇谱ID
+  optional int64 source_album_id = 2;
+}
+/**
+ * @brief 小剧场直播付费相关信息
+ **/
+message LiveActChargeBase {
+  //付费类型
+  optional PayType pay_type = 1 [default = UNKNOWN_PAY_TYPE];
+}
+/**
+ * @brief 开始结束时间信息
+ **/
+message StartEndTimeInfo {
+  //开始时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 start_time = 1;
+  //结束时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 end_time = 2;
+}
+/**
+ * @brief 开始结束时间信息
+ **/
+message StartEndTimeInfo {
+  //开始时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 start_time = 1;
+  //结束时间-时间戳(秒)
+  //时间戳(秒)
+  optional int64 end_time = 2;
+}
+2018/06/04 (2.0.180604)
+53实体新增代表作字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 代表作信息
+ **/
+message RepresentativeWorkInfo {
+  //唯一标识
+  optional int64 entity_id = 1;
+  //展示顺序
+  optional int32 order = 2;
+  //推荐语
+  optional string prompt_description = 3;
+}
+2. /entity/schema-53-iqiyi-user.fproto
+message IqiyiUser {
+  //代表作信息
+  repeated RepresentativeWorkInfo representative_work_info = 13 [(field_option).column_group = REPRESENTATIVE_WORK_INFO, (column_option).column_name = "c_13_n_", (column_option).column_suffix = "${entity_id}"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  REPRESENTATIVE_WORK_INFO = 697;
+}
+2018/06/04 (2.0.180604)
+53实体新增行业字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 行业信息
+ **/
+message DomainInfo {
+  //爱奇艺号类型
+  optional IqiyihaoType iqiyihao_type = 1;
+  //行业list
+  repeated DomainList domain_list = 2;
+}
+/**
+ * @brief 行业ID
+ **/
+message DomainList {
+  //行业编号
+  optional int32 domain_id = 1;
+  //行业名称
+  optional string domain_name = 2;
+}
+/**
+ * @brief 行业ID
+ **/
+message DomainList {
+  //行业编号
+  optional int32 domain_id = 1;
+  //行业名称
+  optional string domain_name = 2;
+}
+2. /entity/schema-53-iqiyi-user.fproto
+message IqiyiUser {
+  //爱奇艺号行业信息
+  repeated DomainInfo iqiyihao_domain_info = 14 [(field_option).column_group = IQIYIHAO_DOMAIN_INFO, (column_option).column_name = "c_14_n_", (column_option).column_suffix = "${iqiyihao_type}"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  IQIYIHAO_DOMAIN_INFO = 698;
+}
+2018/06/04 (2.0.180604)
+1.智能库新增信息流去重信息
+message IntelligentFeature {
+  // 信息流去重信息
+  optional BeehiveDuplication v6_beehive_duplication = 306 [(column_option).column_name = "c_306_n"];
+}
+// 信息流去重信息
+message BeehiveDuplication {
+  // 版本
+  optional string version = 1;
+  // 重复算法
+  optional DuplicationAlgorithmType duplication_algorithm_type = 2;
+  // 重复算法
+  enum DuplicationAlgorithmType {
+      UNKNOWN_ALGORITHM_TYPE = -1;
+      // sha1
+      SHA1 = 1;
+      // ai
+      AI = 2;
+      // 用户片段
+      USER_VIDEO_CLIP = 3;
+  }
+  // 重复信息
+  repeated DuplicationInfo duplication_info = 3;
+  // 重复信息
+  message DuplicationInfo {
+    // 重复的奇谱id
+    optional int64 duplication_qipu_id = 1;
+    // 重复等级
+    optional DuplicationLevel duplication_level = 2;
+    // 重复等级
+    enum DuplicationLevel {
+      UNKNOWN_DUPLICATE = -1;
+      // 重复
+      DUPLICATE = 1;
+      // 相似
+      SIMILAR = 2;
+    }
+    // 图片重复分数
+    optional double image_duplication_score = 3;
+    // 视频重复分数
+    optional double video_duplication_score = 4;
+    // 标题重复分数
+    optional double title_duplication_score = 5;
+  }
+}
+2018/06/01 (2.0.180601)
+00、09实体新增关联长视频信息字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 短视频关联信息
+ **/
+message CutRelatedVideoSummary {
+  //关联类型
+  optional CutRelatedVideoType related_type = 1 [default = UNKNOWN_CUT_RELATED_VIDEO_TYPE];
+  //关联的长视频信息
+  repeated CutRelatedVideoInfo cut_related_video_info = 2;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 关联类型
+ **/
+enum CutRelatedVideoType {
+  //未知类型
+  UNKNOWN_CUT_RELATED_VIDEO_TYPE = -1;
+  //NLP标签关联
+  CUT_RELATED_VIDEO_TYPE_TAG_NLP = 0;
+  //重庆标签编辑关联
+  CUT_RELATED_VIDEO_TYPE_CHONGQING_TAG_EDITOR = 1;
+}
+enum ColumnGroup {
+  CUT_RELATED_VIDEO_SUMMARY = 699;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //短视频与长视频的关联信息
+  repeated CutRelatedVideoSummary cut_related_video_summary = 250 [(field_option).column_group = CUT_RELATED_VIDEO_SUMMARY, (column_option).column_name = "c_250_n_", (column_option).column_suffix = "${related_type}"];
+}
+4. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //短视频关联信息
+  repeated CutRelatedVideoSummary cut_related_video_summary = 127 [(field_option).column_group = CUT_RELATED_VIDEO_SUMMARY, (column_option).column_name = "c_127_n_", (column_option).column_suffix = "${related_type}"];
+}

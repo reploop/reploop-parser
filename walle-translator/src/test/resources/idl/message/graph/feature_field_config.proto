@@ -1,0 +1,51 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+//
+// Proto definitions for field of content for qipu graph computing.
+
+import "knowledge/pub/common.proto";
+
+package knowledge.graph.extractor;
+
+// This message is used to describe the fields of FeatureContent used for graph, including
+// related fields in knowledge entity and the mapping method.
+// If a field of FeatureContent is extracted from multiple fields of knowledge entity,
+// a merger method is defined.
+message FeatureFieldVsEntityFieldConfig {
+  // The corresponding field in the FeatureContent.
+  required string feature_field = 1;
+
+  // Method description, including method name and parameters' type.
+  message MethodDescription {
+    required string method_name = 1;
+    repeated string parameter_type = 2;
+
+    // 抽取特定属性值的工具类, 提供的方法(即: method_name)必须为静态方法.
+    required string extractor_class = 3[ default = ""];
+  }
+  // The method defined in FeatureContent to set related field.
+  required MethodDescription field_setter = 2;
+
+  message EntityConfig {
+    repeated knowledge.pub.Table table = 1;
+
+    message FieldConfig {
+      // The fully-specified path of field described in knowledge protocol buffer.
+      repeated string field_path = 1;
+
+      // The method defined in a subclass of FeatureExtractor to mapping knowledge
+      // entity fields to FeatureContent filed.
+      optional MethodDescription mapping_method = 2;
+    }
+    repeated FieldConfig field_config = 2;
+  }
+  repeated EntityConfig entity_config = 3;
+
+  // If a FeatureContent field need be extracted from multiple fields of knowledge entity
+  // the merger method will do the merging job.
+  optional MethodDescription merge_method = 4;
+}
+
+// This message define all fields needed to extract for FeatureContent.
+message FeatureFieldConfigList {
+  repeated FeatureFieldVsEntityFieldConfig feature_field_config = 1;
+}

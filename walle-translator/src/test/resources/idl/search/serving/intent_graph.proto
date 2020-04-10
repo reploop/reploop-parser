@@ -1,0 +1,47 @@
+// Author: Xuan Gao (gaoxuan@qiyi.com)
+
+package search.serving;
+
+enum Type {
+  TYPE_NORMAL = 0;
+  TYPE_INTENT = 1;
+  TYPE_GRAPH = 2;
+}
+
+enum IntentSubType {
+  INTENT_SUB_TYPE_ALBUM = 1;
+  INTENT_SUB_TYPE_VIDEO = 2;
+  INTENT_SUB_TYPE_STAR = 3;
+  INTENT_SUB_TYPE_PLAYLIST = 4;
+  INTENT_SUB_TYPE_SMART_VIEW = 5;
+}
+
+enum IntentActionType {
+  NO_LABEL = 0;
+  THREE_CATEGORY = 1;
+  GRAPH_LABEL = 2;
+}
+
+enum GraphSubType {
+  STAR_PROPERTY = 1;
+  VIDEO_PROPERTY = 2;
+  ACTOR_LIST = 3;
+  PLOT = 4;
+  STAR_RELATION = 5;
+  STILLS = 6;
+  FESTIVAL_STAR = 7;
+  VIDEO_PROPERTY_WITH_LINK = 8;
+  LIVE = 9;
+}
+
+// The type of intent and graph.
+message GraphType {
+  optional Type type = 1;
+
+  optional IntentSubType intent_sub_type = 2;
+
+  optional IntentActionType intent_action_type = 3;
+
+  optional GraphSubType graph_sub_type = 4;
+}
+

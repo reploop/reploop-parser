@@ -1,0 +1,128 @@
+// Author: Chuanqian Wang(wangchuanqian@qiyi.com)
+//
+// Define data structure to encapsulate column group and its relevant column name or column
+// prefix in hbase and its field names in entity message and rpc response/request message.
+
+import "knowledge/pub/common.proto";
+
+package knowledge.base;
+
+message EntityConfigDescription {
+  // The full qualified name of protobuffer message for given entity type.
+  required string entity_message_name = 1;
+
+  // The trailing two numbers of entity id indicate the the type of entity.
+  required int32 entity_type_flag = 2;
+
+  // The field name in response message of getEntity interface.
+  required string field_name_in_read_response = 3;
+
+  // The relevant Table enum for given entity type.
+  required knowledge.pub.Table entity_related_table = 4;
+
+  // The table name in storage to save entity of given type.
+  required string hbase_table_name = 5;
+}
+
+enum StoredDataType {
+  EXIST_TRUE = 1;
+  STRING = 2;
+  INT64 = 3;
+  INT32 = 4;
+  BOOLEAN = 5;
+  PROTO_MESSAGE = 6;
+  PROTO_ENUM = 7;
+  VINT64 = 8;
+  FLOAT = 9;
+}
+
+message ColumnGroupConfigDescription {
+  required knowledge.pub.ColumnGroup column_group = 1;
+  required string hbase_column_name_or_prefix = 2;
+  required string entity_field_name = 3;
+  optional bool has_value = 4 [default = true];
+  required StoredDataType stored_data_type = 5;
+  required string read_response_field_name = 6;
+  required string write_request_field_name = 7;
+
+  // Only table specified by this field can have this column_group. If this field is empty,
+  // means all tables can have this column_group.
+  repeated knowledge.pub.Table specific_table = 8;
+
+  // The qualified class name of generated proto_message.
+  optional string proto_message_name = 9;
+
+  optional bool is_repeated = 10 [default = false];
+
+  // If it's repeated protocol buffer field in message and its internal nested
+  // protocol buffer message is used to identify its uniqueness, we need to set
+  // this field.
+  optional string suffix_nested_message_field = 11;
+
+  message ColumnSuffix {
+    required string column_suffix_field = 1;
+    required int32 order = 2;
+  }
+  repeated ColumnSuffix column_suffix = 12;
+
+  optional knowledge.pub.Table related_father_child_table = 13;
+
+  message OrderByField {
+    required string order_by_field_name = 1;
+    optional bool is_desc = 2 [default = false];
+    required int32 order = 3;
+  }
+
+  repeated OrderByField order_by_field = 14;
+}
+
+message ReadConfigDescription {
+  required string interface_name = 1;
+  required string read_request_message_name = 2;
+  required string read_response_message_name = 3;
+  repeated knowledge.pub.ColumnGroup column_group_applicable = 4;
+  optional string default_column_prefix = 5;
+  // In order to get specific column in repeated field, we need to specify the naming field in request.
+  optional string additional_name_field = 6;
+}
+
+enum DirtyBitType {
+  UPDATE = 1;
+  C2F = 2;
+  STATS_SYNC = 3;
+}
+
+message WriteConfigDescription {
+  required string interface_name = 1;
+  required string write_request_message_name = 2;
+  repeated knowledge.pub.ColumnGroup column_group_applicable = 3;
+  repeated DirtyBitType dirty_bit = 4;
+
+  enum RequestType {
+    SET = 1;
+    ADD = 2;
+    DELETE = 3;
+  }
+  required RequestType request_type = 5;
+  optional bool is_father_child_related = 6 [default = false];
+  optional string id_field_of_child_father = 7;
+  optional knowledge.pub.ColumnGroup default_column_group_applicable = 8;
+}
+
+message ObserverConfigDescription {
+  required DirtyBitType dirty_bit_type = 1;
+  required string dirty_bit_column = 2;
+  repeated string prefix_of_column_needed = 3;
+  repeated string full_name_of_column_needed = 4;
+  // Only table specified by this field can have this column_group. If this field is empty,
+  // means all tables can have this column_group.
+  repeated knowledge.pub.Table specific_table = 5;
+}
+
+message QipuServiceConfigDescriptionList {
+  repeated ColumnGroupConfigDescription column_group_description = 1;
+  repeated ReadConfigDescription read_description = 2;
+  repeated WriteConfigDescription write_description = 3;
+  repeated EntityConfigDescription entity_description = 4;
+  repeated ObserverConfigDescription observer_description = 5;
+}

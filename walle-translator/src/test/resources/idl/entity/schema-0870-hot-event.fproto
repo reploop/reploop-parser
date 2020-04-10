@@ -1,0 +1,58 @@
+/**
+ * 热点事件
+ */
+message HotEvent {
+  //option
+  option (entity_option).table = HOT_EVENT_TABLE;
+  option (entity_option).entity_name = "hot_event";
+  option (table_option).hbase_table_name = "qipu_hot_event_table";
+  option (entity_option).entity_id_type = HOT_EVENT;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  //运营信息
+  optional Base base = 4 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+
+  //元数据
+  optional HotEventMetadata metadata = 5 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  //关联事件id
+  repeated int64 father_id = 6 [(column_option).has_value = false,(field_option).column_group = FATHER_ID, (column_option).column_name = "father_"];
+
+  //事件内容
+  repeated HotEventSummary hotevent_summary = 7 [(field_option).column_group = HOT_EVENT_SUMMARY, (column_option).column_name = "hot_event_summary_", (column_option).column_suffix = "${entity_id}"];
+
+  //相关脉络/事件
+  repeated RelatedHotEvent related_hotevent = 8 [(field_option).column_group = RELATED_HOT_EVENT, (column_option).column_name = "related_hot_event_", (column_option).column_suffix = "${entity_id}"];
+
+  //相关明星
+  repeated RelatedPeople related_people = 9 [(field_option).column_group = RELATED_PEOPLE, (column_option).column_name = "related_people_", (column_option).column_suffix = "${people_id}"];
+
+  //创建时间
+  optional int64 create_time = 10 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+
+  //标签
+  repeated string tag = 11 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  //上线状态
+  optional HotEventStatus status = 12 [(field_option).column_group = STATUS, (column_option).column_name = "status"];
+
+  //阅读数
+  optional int64 read_count = 13 [default = 0, (field_option).column_group = READ_COUNT, (column_option).column_name = "read_count"];
+
+  //评论数
+  optional int64 comment_count = 14 [default = 0, (field_option).column_group = COMMENT_COUNT, (column_option).column_name = "comment_count"];
+
+  //点赞数
+  optional int64 like_count = 15 [default = 0, (field_option).column_group = LIKE_COUNT, (column_option).column_name = "like_count"];
+  //热点类型
+  optional HotCollectionType hot_collection_type = 16 [(field_option).column_group = HOT_COLLECTION_TYPE, (column_option).column_name = "c_16_n"];
+  //关联影视剧
+  repeated HotEventRelatedVideo related_video = 17 [(field_option).column_group = RELATED_VIDEO, (column_option).column_name = "c_17_n_", (column_option).column_suffix = "${video_id}"];
+}

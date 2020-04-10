@@ -1,0 +1,89 @@
+// Author: Yingjie Chen (chenyingjie@qiyi.com)
+//
+// TermQuery represents a atom unit of a query request.
+// Such as a segmented token, a filter condition.
+
+import "search/serving/slot.proto";
+import "search/serving/common.proto";
+
+package search.serving;
+
+message TermQuery {
+  // The content of term.
+  optional string term = 1;
+
+  // In structure search and filtering, you should fill this field.
+  optional string field = 2;
+
+  // The weight of the term.
+  optional float weight = 3;
+
+  // Whether the term_query is filtering field.
+  optional bool is_filter = 4 [default = false];
+
+  // The occurrence condition for the term_query.
+  optional Occur occur = 5 [default = SHOULD];
+
+  // The original term before rewrite.
+  optional string original_term = 6;
+
+  // The expanded term for the current term.
+  message ExpandTerm {
+    // The content of term.
+    optional string term = 1;
+
+    // The weight of the term.
+    optional float weight = 2;
+
+    // Term idf score.
+    optional float idf_score = 3;
+
+    // The original expand term before rewrite.
+    optional string original_term = 4;
+
+    optional int32 distance = 5 [default = 10];
+
+    optional search.common.TermSlot term_slot = 6;
+
+    repeated ExpandTerm third_subterm = 7;
+    
+    // Term id.
+    optional int32 term_id = 8;
+  }
+
+  repeated ExpandTerm synonym_term = 7;
+
+  // Set true if the current term query is set by intent recognizer.
+  optional bool is_from_intent = 8 [default = false];
+
+  // If the TermQuery is set by intent recongnizer, and the field is
+  // category, set the id corresponding the field to the category_id.
+  optional string category_id = 9;
+
+  optional string field_name = 10;
+
+  // The part-of-speech info of the term.
+  optional string pos = 11;
+
+  // The term type.
+  optional QRTermType term_type = 12;
+
+  repeated ExpandTerm sub_term = 13;
+
+  // Term idf score.
+  optional float idf_score = 14;
+
+  optional bool disappear = 15 [default = false];
+
+  // Term distance to next term.
+  optional int32 distance = 16 [default = 255];
+
+  // Slot information for Live Broad cast.
+  optional search.common.LiveBroadcastSlot live_broad_cast_slot = 17 [ default = UNKOWN ];
+  
+  // Term slot for each term.
+  optional search.common.TermSlot term_slot = 18;
+
+  // Term id.
+  optional int32 term_id = 19;
+}

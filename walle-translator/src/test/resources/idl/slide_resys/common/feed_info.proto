@@ -1,0 +1,36 @@
+package common;
+
+option java_package = "com.qiyi.slide.resys.common";
+option java_outer_classname="FeedInfoProtos";
+
+enum ItemType {
+  UNKNOWN_ITEM_TYPE = -1;
+  NEWS = 1;
+  VIDEO = 2;
+}
+
+message FeedInfo {
+  optional int64 wall_id = 1;
+  optional int64 feed_id = 2;
+  optional string uid = 3;
+  optional string description = 4;
+  optional int64 view_size = 5;
+  optional int64 agree_users_size = 6;
+  optional string fingerprint = 7;
+  optional bool is_valid = 8;
+  repeated int64 tv_id = 9;
+  optional int32 short_video_extended_type = 10;
+  optional string name = 11;
+  optional string circle_name = 12;
+  optional bool is_circle_master_create = 13;
+  optional int32 user_type = 14;
+  optional int64 create_time = 15;
+  optional int32 source_type = 16;
+  optional int32 crawled_source = 17;
+  optional int32 channel_id = 18;
+  optional int32 crawled_source_is_big_v = 19;
+  optional int32 crawled_source_is_selected = 20;
+  optional ItemType item_type = 21;
+  optional int64 dup_cluster_id = 22;
+  repeated string top_n_tag = 25;
+}

@@ -1,0 +1,105 @@
+option java_package = "com.qiyi.slide.resys";
+option java_outer_classname="ConfigProtos";
+
+message GlobalConfig {
+    optional string version = 1 [ default = "1.0.0" ];
+    repeated string area_name = 2;
+    repeated ChannelSpecificConfig channel_specific_config = 3;
+}
+
+message AreaConfig {
+    required string area_code = 1 ;
+    optional string area_version = 2 [ default = "0.0.1" ];
+    optional int32 total_slice_num = 3 [ default = 100 ];
+    optional bool random_hash = 4 [ default = false ];
+    repeated BucketConfig bucket = 5;
+    optional MantissaConfig ppc_mantissa = 6;
+    optional MantissaConfig ugc_mantissa = 7;
+    optional int32 play_platform_mask = 8 [ default = 0x7FFFFFFF ];
+}
+
+message ChannelUserGroupScore {
+    repeated int32 cid = 1;
+    optional double user_group_score_weight = 2 [ default = 0 ];
+}
+
+message MantissaConfig {
+    repeated int32 mantissa = 1;
+}
+
+message FreshnessConfig {
+    optional double min_score = 1 [ default = 1.0 ];
+    optional double decay_ratio = 2;
+    optional double decay_interval = 3;
+    optional int32 day_threshold = 4 [ default = 0 ];
+}
+
+message TimelengthConfig {
+    optional double min_score = 1 [ default = 1.0 ];
+    optional double scale = 2;
+    optional double offset = 3;
+    optional double step = 4 [ default = 1.0 ];
+    optional double shift = 5;
+}
+
+message ChannelSpecificConfig {
+    repeated int32 cid = 1;
+    optional FreshnessConfig freshness_config = 2;
+    optional TimelengthConfig timelength_config = 3;
+    optional double apref_weight = 4;
+}
+
+message SlideStrategy {
+    optional string booster = 1 [ default = "default_booster" ];
+    optional string sorter = 2 [ default = "default_sorter" ];
+    optional string selector = 3 [ default = "default_selector" ];
+    optional string checker = 4 [ default = "default_checker" ];
+    optional string enforcer = 5 [ default = "default_enforcer" ];
+}
+
+message SiteFilter {
+    repeated string site = 1;
+}
+
+message VipConfig {
+    optional bool filter_non_vip = 1 [ default = false ];   // 过滤非vip、非付费点播
+    optional bool filter_vip = 2 [ default = false ];       // 仅过滤vip（不包括付费点播）
+    optional bool filter_purchase = 3 [ default = false ];  // 仅过滤付费点播
+}
+
+message ChannelAdjustment {
+    required int32 cid = 1;
+    optional double score_adjustment = 2;
+}
+
+message BucketConfig {
+    required string bucket_name = 1 [ default = "" ];
+    optional int32 slice_num = 2 [ default = 0 ];
+    optional SlideStrategy strategy = 3;
+    optional double default_user_group_weight = 4 [ default = 1.0 ];
+    repeated ChannelUserGroupScore channel_user_group_score = 5;
+    optional string ctr_file = 6 [ default = "" ];
+    repeated ChannelSpecificConfig channel_specific_config = 7;
+    optional SiteFilter site_filter = 8;  // 播放源过滤
+    optional VipConfig vip_config = 9;
+
+    // deprecated
+    optional bool allow_non_ysdq = 10 [ default = false ];  // 允许非影视大全的视频
+
+    optional uint32 random_threshold = 11 [ default = 50 ];
+    repeated ChannelAdjustment channel_adjustment = 12;
+    optional bool short_title_filter = 13;
+    optional bool prompt_keyword_filter = 14;
+    optional bool use_common_slides = 15 [ default = true ]; // 是否使用通用资源池slides
+    repeated int32 mapped_channel_id = 16; // 映射到0频道的channel_id
+    optional bool p0_platform_region_check = 17 [ default = true ]; // 是否需要对p0数据做平台和区域过滤.
+}
+
+message TitleDedupRemovePattern {
+    message ChannelPattern {
+        repeated int32 cid = 1;
+        optional string pattern = 2;
+    }
+    optional string default_pattern = 1;
+    repeated ChannelPattern channel_pattern = 2;
+}

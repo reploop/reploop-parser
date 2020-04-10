@@ -1,0 +1,17 @@
+
+package com.qiyi.knowledge.service.test;
+
+message User {
+  required string name = 1;
+  required string password = 2;
+}
+// Proto for return type of methods defined in hello.thrift
+message HelloResponse {
+  required string message = 1;
+}
+
+// Proto for setMetadata method defined in hello.thrift
+message HelloRequest {
+  required string name = 1;
+  optional User user = 2;
+  }

@@ -1,0 +1,181 @@
+2018/05/31 (2.0.180531)
+00 01实体pay_mark新增FUN会员角标
+1. /knowledge/pub/common.proto
+enum PayMark {
+  //FUN会员角标
+  PAY_MARK_FUN_VIP_MARK = 7;
+}
+2018/05/31 (2.0.180531)
+视频和头条实体新增两种动图地址
+1. /knowledge/pub/formats.proto
+message ImageFormat {
+  //webp动图地址
+  optional string dynamic_image_url_webp = 13;
+  //gif动图地址
+  optional string dynamic_image_url_gif = 14;
+}
+2. /knowledge/pub/properties.proto
+message LocaleImage {
+  //gif格式图片地址
+  optional string image_gif_url = 14;
+}
+2018/05/25 (2.0.180525)
+00视频新增自定义图片类型
+1. /knowledge/pub/properties.proto
+enum ImageType {
+    //视频首帧封面图
+    FIRST_FRAME_COVER = 616;
+}
+2018/05/23 (2.0.180523)
+48feed实体增加feed来源的枚举值
+1. /knowledge/pub/common.proto
+enum FeedSourceType {
+  //地方站发布
+  FEED_SUBSITE = 22;
+}
+2018/05/18 (2.0.180518)
+1070实体新增地方站相关字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 品类关系
+ **/
+enum SubsiteCategory {
+  //未知类型
+  UNKNOWN_SUBSITE_CATEGORY = -1;
+  //房产
+  SUBSITE_CATEGORY_REAL_ESTATE = 0;
+  //汽车
+  SUBSITE_CATEGORY_CAR = 1;
+  //旅游
+  SUBSITE_CATEGORY_TRAVEL = 2;
+  //电视台
+  SUBSITE_CATEGORY_TV = 3;
+}
+enum ColumnGroup {
+  SUBSITE_CATEGORY = 687;
+}
+2. /entity/schema-01-album.fproto
+message Album {
+  //品类关系
+  repeated SubsiteCategory subsite_category = 103 [(field_option).column_group = SUBSITE_CATEGORY, (column_option).column_name = "c_103_n_"];
+}
+3. /entity/schema-1070-open-rich-media.fproto
+message OpenRichMedia {
+  //站点关系
+  //用来表示内容对应的站点
+  repeated Subsite subsite = 26 [(field_option).column_group = SUBSITE, (column_option).column_name = "c_26_n_", (column_option).column_suffix = "${subsite_id}"];
+  //品类关系
+  //表示内容对应的本地品类（如房产、汽车、旅游等本地服务，地方站独有）
+  repeated SubsiteCategory subsite_category = 27 [(field_option).column_group = SUBSITE_CATEGORY, (column_option).column_name = "c_27_n_"];
+}
+2018/05/14 (2.0.180514)
+48feed实体增加小视频类型上传字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 小视频上传方式
+ **/
+enum FeedShortVideoUploadType {
+  //未知类型
+  UNKNOWN_FEED_SHORT_VIDEO_UPLOAD_TYPE = -1;
+  //本地上传
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_LOCAL = 1;
+  //拍摄上传
+  FEED_SHORT_VIDEO_UPLOAD_TYPE_SHOOTING = 2;
+}
+2. /knowledge/pub/metadatas.proto
+message FeedContentSource {
+  //小视频上传方式
+  optional FeedShortVideoUploadType short_video_upload_type = 9 [default = UNKNOWN_FEED_SHORT_VIDEO_UPLOAD_TYPE];
+}
+2018/05/11 (2.0.180511)
+视频新增danmu控制结构
+1. /entity/schema-01-album.fproto
+message Album {
+  //弹幕控制信息
+  repeated AccessPlayControl danmu_control = 228 [(field_option).column_group = DANMU_CONTROL, (column_option).column_name = "c_228_n_", (column_option).column_suffix = "${play_platform}"];
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //弹幕控制信息
+  repeated AccessPlayControl danmu_control = 249 [(field_option).column_group = DANMU_CONTROL, (column_option).column_name = "c_249_n_", (column_option).column_suffix = "${play_platform}"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  DANMU_CONTROL = 688;
+}
+2018/05/11 (2.0.180511)
+39book实体中新增联合签约字段
+1. /knowledge/pub/properties.proto
+message BookBase {
+  //是否联合签约
+  optional bool is_joint_signing = 11 [default = false];
+}
+2018/05/08 (2.0.180508)
+39文学新建内容等级数据结构
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 内容等级信息
+ **/
+message PublicationContentRatingInfo {
+  //适用年龄范围
+  optional string age_range = 1;
+  //内容等级
+  repeated PublicationContentRating content_rating = 2;
+}
+/**
+ * @brief 内容等级
+ **/
+message PublicationContentRating {
+  //等级名称
+  optional string rating_name = 1;
+  //一级等级
+  optional string first_rating = 2;
+  //二级等级
+  optional string second_rating = 3;
+}
+/**
+ * @brief 内容等级
+ **/
+message PublicationContentRating {
+  //等级名称
+  optional string rating_name = 1;
+  //一级等级
+  optional string first_rating = 2;
+  //二级等级
+  optional string second_rating = 3;
+}
+2. /entity/schema-39-book.fproto
+message Book {
+  //内容等级信息
+  optional PublicationContentRatingInfo content_rating_info = 96 [(field_option).column_group = CONTENT_RATING_INFO, (column_option).column_name = "c_96_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  CONTENT_RATING_INFO = 694;
+}
+2018/05/08 (2.0.180508)
+业务类型字段增加动漫枚举值
+1. /knowledge/pub/common.proto
+enum BusinessType {
+  //动漫app
+  BUSINESS_TYPE_ANIMATION_COMIC = 2;
+}
+2018/05/03 (2.0.180503)
+0770IP关联表增加轻小说关联字段
+1. /entity/schema-0770-intellectual-property.fproto
+message IntellectualProperty {
+  //轻小说
+  repeated IntellectualPropertySummary light_novel_summary = 20 [(field_option).column_group = LIGHT_NOVEL_SUMMARY, (column_option).column_name = "c_20_n_", (column_option).column_suffix = "${entity_id}"];
+  //nlp轻小说
+  repeated IntellectualPropertySummary nlp_light_novel_summary = 21 [(field_option).column_group = NLP_LIGHT_NOVEL_SUMMARY, (column_option).column_name = "c_21_n_", (column_option).column_suffix = "${entity_id}"];
+}
+2. /entity/schema-1870-light-novel.fproto
+message LightNovel {
+  //关联IP
+  optional IntellectualPropertySummary ip_summary = 24 [(field_option).column_group = IP_SUMMARY, (column_option).column_name = "c_24_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  LIGHT_NOVEL_SUMMARY = 695;
+  NLP_LIGHT_NOVEL_SUMMARY = 696;
+}

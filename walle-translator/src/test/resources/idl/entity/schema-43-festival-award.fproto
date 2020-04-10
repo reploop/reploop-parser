@@ -1,0 +1,34 @@
+/**
+* 电影节奖项信息
+*
+**/
+message FestivalAward {
+  //option
+  option (entity_option).table = FESTIVAL_AWARD_TABLE;
+  option (entity_option).entity_name = "festival_award";
+  option (table_option).hbase_table_name = "qipu_festival_award_table";
+  option (entity_option).entity_id_type = FESTIVAL_AWARD;
+
+  required int64 id = 1 [(column_option).is_auto_set = true]; 
+
+  optional FestivalAwardMetadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "fes_awa_meta"];
+ 
+  //所在的分年电影节，写入后，奇谱自动将信息同步到FestivalSeries.award_list或FestivalSeries.nomiated_list上。
+  optional FatherInfo festival_series = 3 [(field_option).column_group = FATHER_SERIES, (column_option).column_name = "dad_ser"];
+  //获奖的制作者和角色
+  optional Metadata.Creator creator = 4 [(field_option).column_group = CREATOR, (column_option).column_name = "creator"];
+  //获奖的演员和角色
+  optional Metadata.Contributor contributor = 5 [(field_option).column_group = CONTRIBUTOR, (column_option).column_name = "contributor"];
+  //获奖影片， 写入后，奇谱将自动同步到Episode的AwardSummary上；
+  repeated MetaSummary episode_summary = 6 [(field_option).column_group = CHILD_EPISODE, (column_option).column_name = "chd_epd_", (column_option).column_suffix = "${entity_id}"];
+  //获奖电视剧， 写入后，奇谱将自动同步到Album的AwardSummary上；
+  repeated MetaSummary album_summary = 7 [(field_option).column_group = CHILD_ALBUM, (column_option).column_name = "chd_alb_", (column_option).column_suffix = "${entity_id}"];
+  //获奖资料， 写入后，奇谱将自动同步到FilmTVLibrary的AwardSummary上；
+  repeated MetaSummary film_tv_summary = 8 [(field_option).column_group = CHILD_FILM_TV, (column_option).column_name = "chd_fil_", (column_option).column_suffix = "${entity_id}"];
+
+  optional AwardSummary.Type type = 9 [(field_option).column_group = AWARD_TYPE, (column_option).column_name = "type"];
+  optional AwardStatus status = 10 [(field_option).column_group = STATUS , (column_option).column_name = "status"];
+  optional bool deleted = 11 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 12 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+}

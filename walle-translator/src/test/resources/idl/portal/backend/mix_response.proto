@@ -1,0 +1,72 @@
+option java_package = "com.qiyi.qiyu.portal.model.proto";
+option java_outer_classname="MixResponseProtos";
+
+message Attribute {
+    optional string area = 1 [default = "unknown"];
+    optional string bucket = 2 [default = "unknown"];
+    optional string event_id = 3 [default = "-1"];
+}
+
+message ResysRequest {
+    required string area = 1;
+    required int64 rec_id = 2;
+    repeated TypeNumRequest type_num = 3;
+    optional string rltfmt = 4 [ default = "json" ];
+    optional string event_id = 5;
+    optional int32 debug_level = 6 [ default = -1 ];
+}
+
+enum RecType {
+  REC_TYPE_UNDEFINED = 0;
+  VIDEO = 1;
+  APP = 2;
+  GOODS = 3;
+  TICKET = 4;
+};
+
+message TypeNumRequest {
+  required RecType type = 1;
+  required int32 num = 2;
+}
+
+message ResysElement {
+    required int64 rec_id = 1;
+    optional double score = 2 [ default = 0.0 ];
+    optional string reason = 3;
+}
+
+message TypeRecommendation {
+    required RecType type = 1;
+    repeated ResysElement resys_element = 2 ;
+}
+
+message ResysResponse {
+    optional string code = 1 [ default = "A00000" ];
+    optional string version = 2 [default = "unknown"];
+    optional Attribute attribute = 3;
+    repeated TypeRecommendation type_rec_result = 4;
+    optional string debug_info = 5;
+}
+
+// Rec unit exposed to outside
+message RecItem {
+  required int64 rec_id = 1 [ default = -1 ];
+  optional string reason = 2 [ default = "" ];
+}
+
+message RecResult {
+    required RecType type = 1;
+    repeated RecItem rec_item = 2;
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message RecResponse {
+  optional string status_code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  repeated RecResult rec_result = 3;
+}

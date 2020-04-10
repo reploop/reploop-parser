@@ -1,0 +1,29 @@
+// Define SpecialSubject info.
+//专题
+message SpecialSubject {
+  //option
+  option (entity_option).table = SPECIAL_SUBJECT_TABLE;
+  option (entity_option).entity_name = "special_subject";
+  option (table_option).hbase_table_name = "qipu_special_subject_table";
+  option (entity_option).entity_id_type = SPECIAL_SUBJECT;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //基本信息
+  optional SpecialSubjectMetadata metadata = 2 [(field_option).column_group = SUBJECT_METADATA, (column_option).column_name = "spe_meta"];
+  //发布状态
+  optional PagePublishStatus page_publish_status = 3 [default = PAGE_WAIT, (field_option).column_group = PAGE_PUBLISH_STATUS, (column_option).column_name = "ppsts"];
+  //创建时间
+  optional int64 create_time = 4 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cre_time"];
+  //最近修改时间
+  optional int64 last_update_time = 5 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //第一次上线时间
+  optional int64 first_online_time = 6 [(field_option).column_group = FIRST_ONLINE_TIME, (column_option).column_name = "fir_time"];
+  //最后上线时间
+  optional int64 last_online_time = 7 [(field_option).column_group = LAST_ONLINE_TIME, (column_option).column_name = "last_time"];
+  //URL（CMS直接写入）
+  optional string url = 8 [(field_option).column_group = URL, (column_option).column_name = "url"];
+  //播控
+  repeated AccessPlayControl access_play_control = 9 [(field_option).column_group = ACCESS_PLAY_CONTROL, (column_option).column_name = "accplayctrl_", (column_option).column_suffix = "${play_platform}"];
+
+  optional bool deleted = 10 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+}

@@ -1,0 +1,240 @@
+// Author: Yanjun Miao (miaoyanjun@qiyi.com)
+//
+// The proto define the interface of intent recognizer service and mixer.
+
+import "search/serving/common.proto";
+import "search/serving/intent_graph.proto";
+
+package search.serving;
+
+option cc_generic_services = true;
+
+enum GraphNodeType {
+  GRAPH_ALBUM = 1;
+
+  GRAPH_PEOPLE = 2;
+
+  GRAPH_ROLE = 3;
+}
+
+enum IntentPropertyType {
+  // The celebrity properties.
+  ENGLISH_NAME = 1;
+
+  ALIAS_NAME = 2;
+
+  GENDER = 3;
+
+  BIRTHDAY = 4;
+
+  CONSTELLATION = 5;
+
+  HEIGHT = 6;
+
+  WEIGHT = 7;
+
+  BIRTH_PLACE = 8;
+
+  NATIONALITY = 9;
+
+  OCCUPATION = 10;
+
+  HOBBY = 11;
+
+  GRADUATION_SCHOOL = 12;
+
+  BLOOD_TYPE = 13;
+
+  AGE = 14;
+
+  DESCRIPTION = 15;
+
+  AGENCY_COMPANY = 16;
+
+  TOTAL_EPISODES = 17;
+
+  UPDATE_SCHEDULE = 18;
+
+  PUBLISH_TIME = 19;
+
+  PLAY_TV_STATION = 20;
+}
+
+message IntentProperty {
+  optional IntentPropertyType property_type = 1;
+  optional string property_value = 2;
+}
+
+message IntentGraph {
+  // The entity docid.
+  optional string docid = 1;
+
+  // The entity name.
+  optional string name = 2;
+
+  // The entity type.
+  optional GraphNodeType graph_node_type = 3;
+
+  optional string description = 4;
+
+  // The content of relation.
+  optional string relation = 5;
+
+  // The property of album and people is role;
+  // The property of role and people is album;
+  repeated IntentGraph property = 6;
+
+  // The result of intent recognization.
+  optional IntentQuery intent_query = 7;
+
+  repeated IntentGraph intent_graph = 8;
+
+  repeated IntentProperty entity_properties = 9;
+
+  // The properties of celebrity or album.
+  repeated IntentPropertyType property_type = 10;
+}
+
+message IntentQuery {
+  // The docid of entity.
+  optional string docid = 1;
+
+  // The content of query.
+  optional string query = 2;
+
+  // In structure search and filtering, you should fill this field.
+  optional string field = 3;
+
+  // The weight of the term.
+  optional float weight = 4;
+
+  // Whether the query is filtering field.
+  optional bool is_filter = 5 [default = false];
+
+  // The occurrence condition for the query.
+  optional Occur occur = 6 [default = SHOULD];
+
+  // If the TermQuery is set by intent recongnizer, and the field is
+  // category, set the id corresponding the field to the category_id.
+  optional string category_id = 7;
+
+  optional string field_name = 8;
+
+  optional QRTermType term_type = 9;
+}
+
+message GraphCategory {
+  // It's used to show reason.
+  optional string desc = 1;
+
+  // The field id.
+  optional string field = 2;
+
+  // The field name.
+  optional string field_name = 3;
+
+  // The categories.
+  repeated string value = 4;
+
+  // The category list.
+  repeated GraphCategoryValue category_value = 5;
+
+  // The hit category id.
+  optional string hit = 6;
+}
+
+message GraphCategoryValue {
+  // The category id;
+  optional string id = 1;
+
+  // The category name.
+  optional string name = 2;
+}
+
+// The request proto of intent recognizer service.
+message IntentRequest {
+  // Intent query list.
+  repeated IntentQuery intent_query = 1;
+
+  // The scoring mode.
+  optional ScoringMode scoring_mode = 3 [default = RELEVANCE_MODE];
+
+  // The search type of request.
+  optional SearchType search_type = 4 [default = NORMAL_SEARCH];
+
+  // If is must
+  optional bool is_must = 5 [default = false];
+
+  // The field is used by intent recognizer.
+  //   0: use both of videolib_cateogry and threeCategory;
+  //   1: Only use threeCategory;
+  optional int32 intent_category_type = 6 [default = 0];
+
+  // The value is from the graph root.
+  optional string event_id = 7;
+
+  // It's used to get graph_categories from graph service.
+  // when turn the page of graph results.
+  optional bool need_tag = 8 [default = false];
+
+  // It's used to identify which query is chosen as "hit";
+  // When the statement called "intent_request.hit_query_size()" is zero, it
+  // means "ALL" is chosen and you should do nothing for hit_query.
+  repeated string hit_query = 11;
+
+  // Bucket name for smart ABtest.
+  optional string bucket_name = 12;
+}
+
+// The response proto of intent recognizer service.
+message IntentResponse {
+  // Result code of intent recognizer.
+  optional ErrorCode code = 1;
+
+  // The result of intent recognization.
+  repeated IntentGraph intent_graph = 2;
+
+  // The intent query unconcerned the graph service.
+  repeated IntentQuery intent_query = 3;
+
+  // Set by the intent recoginizer.
+  // The default value is RELEVANCE_MODE. If it's set to FRESHNESS_MODE
+  // or MOST_CLICK_COUNT_MODE, the leaf will use the mode to index.
+  optional ScoringMode scoring_mode = 4 [default = RELEVANCE_MODE];
+
+  // The type of query recognization.
+  // 0: not be the result of query recognization.
+  // 1: the result of query recognization including actor or dicrector.
+  // 2: the result of query recognization excluding actor or dicrector.
+  // 3: the result of commodity query recognization for spu.
+  // 4: the result of commodity query recognization for category.
+  // 5: Don't need to visit the leaf.
+  // 6: Need to visit the leaf.
+  // 7: The celebrity property.
+  // 8: The relation of celebrity.
+  // 9: V2P (The actor list).
+  // 10: The album property.
+  // 11: P2R. (The relation of role and actors; when visit_leaf is true.)
+  // 12: P2R. (The relation of role and actors; when visit_leaf is false.)
+  // 13: V2V. (The relation of related videoes and album.)
+  // 14: game intent.
+  // 15: live intent.
+  optional int32 intent_type = 5 [default = 0];
+
+  // If don't need to visit the leaf, set it to false,
+  // else set it to true.
+  optional bool visit_leaf = 6 [default = true];
+
+  // The categories received from graph service.
+  repeated GraphCategory graph_categories = 7;
+
+  // The type of intent and graph.
+  optional GraphType graph_type = 8;
+
+  // The value is returned by the intent recognizer.
+  optional string event_id = 9;
+}
+
+service IntentRecognizerService{
+  rpc RecognizeIntent (IntentRequest) returns (IntentResponse);
+}

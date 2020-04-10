@@ -1,0 +1,526 @@
+{
+  "appId": 184,
+  "archiveInfo": {
+    "end": 1515042494,
+    "state": 2
+  },
+  "auditImg": {
+    "distInfo": {
+      "tasks": [
+        "a_0_128_80",
+        "a_0_200_150",
+        "a_0_480_360",
+        "a_1_128_80",
+        "a_1_200_150",
+        "a_1_480_360",
+        "a_2_128_80",
+        "a_2_200_150",
+        "a_2_480_360",
+        "a_3_128_80",
+        "a_3_200_150",
+        "a_3_480_360",
+        "a_4_128_80",
+        "a_4_200_150",
+        "a_4_480_360",
+        "a_5_128_80",
+        "a_5_200_150",
+        "a_5_480_360"
+      ],
+      "state": 2,
+      "info": {
+        "a_3_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_3_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_3_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_480_360": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_128_80": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_200_150": {
+          "end": 1515042590,
+          "processId": 2157366475,
+          "start": 1515042585,
+          "state": 2
+        }
+      },
+      "internalState": 2,
+      "internalInfo": {
+        "a_3_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_3_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_3_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_5_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_480_360": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_4_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_1_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_2_128_80": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        },
+        "a_0_200_150": {
+          "end": 1515042592,
+          "processId": 2157366492,
+          "start": 1515042585,
+          "state": 2
+        }
+      }
+    },
+    "end": 1515042590,
+    "notifyLego": 2,
+    "notifyLegoInternal": 2,
+    "notifyLegoInternalProcessId": 2157366482,
+    "notifyLegoProcessId": 2157366465,
+    "notifyOpenApi": 2,
+    "transInfo": {
+      "cbState": 2,
+      "end": 1515042585,
+      "processId": 2157364061,
+      "start": 1515042568,
+      "state": 2
+    }
+  },
+  "auditBitrate": {
+    "distInfo": {
+      "end": 1515042673,
+      "processId": 2157393913,
+      "start": 1515042673,
+      "state": 2
+    },
+    "notifyLego": 2,
+    "notifyLegoProcessId": 2157364243,
+    "transInfo": {
+      "cbState": 2,
+      "end": 1515042673,
+      "processId": 2157364243,
+      "start": 1515042569,
+      "state": 2
+    }
+  },
+  "auditInfo": {
+    "end": 1515042752,
+    "start": 1515042674,
+    "state": 2
+  },
+  "bitrates": {
+    "distState": 2,
+    "firstDistState": 2,
+    "firstTransState": 2,
+    "info": {
+      "PC_720P": {
+        "distInfo": {
+          "tasks": [
+            "metaName",
+            "m3u8Name",
+            "outFiles1"
+          ],
+          "state": 2,
+          "info": {
+            "metaName": {
+              "end": 1515042910,
+              "processId": 2157467950,
+              "start": 1515042905,
+              "state": 2
+            },
+            "outFiles1": {
+              "end": 1515043012,
+              "processId": 2157467964,
+              "start": 1515042905,
+              "state": 2
+            },
+            "m3u8Name": {
+              "end": 1515042910,
+              "processId": 2157467950,
+              "start": 1515042905,
+              "state": 2
+            }
+          }
+        },
+        "notifyLego": 2,
+        "notifyLegoProcessId": 2157364215,
+        "transInfo": {
+          "cbState": 2,
+          "end": 1515042905,
+          "processId": 2157364215,
+          "start": 1515042569,
+          "state": 2
+        }
+      },
+      "PC_600": {
+        "distInfo": {
+          "tasks": [
+            "metaName",
+            "m3u8Name",
+            "outFiles1"
+          ],
+          "state": 2,
+          "info": {
+            "metaName": {
+              "end": 1515042755,
+              "processId": 2157430221,
+              "start": 1515042749,
+              "state": 2
+            },
+            "outFiles1": {
+              "end": 1515042767,
+              "processId": 2157430235,
+              "start": 1515042749,
+              "state": 2
+            },
+            "m3u8Name": {
+              "end": 1515042755,
+              "processId": 2157430221,
+              "start": 1515042749,
+              "state": 2
+            }
+          }
+        },
+        "notifyLego": 2,
+        "notifyLegoProcessId": 2157364187,
+        "transInfo": {
+          "cbState": 2,
+          "end": 1515042749,
+          "processId": 2157364187,
+          "start": 1515042569,
+          "state": 2
+        }
+      },
+      "MOBILE_300": {
+        "distInfo": {
+          "tasks": [
+            "m3u8Name",
+            "outFiles1"
+          ],
+          "state": 2,
+          "info": {
+            "outFiles1": {
+              "end": 1515042737,
+              "processId": 2157420746,
+              "start": 1515042718,
+              "state": 2
+            },
+            "m3u8Name": {
+              "end": 1515042724,
+              "processId": 2157420731,
+              "start": 1515042718,
+              "state": 2
+            }
+          }
+        },
+        "notifyLego": 2,
+        "notifyLegoProcessId": 2157364229,
+        "transInfo": {
+          "cbState": 2,
+          "end": 1515042718,
+          "processId": 2157364229,
+          "start": 1515042569,
+          "state": 2
+        }
+      },
+      "PC_300": {
+        "distInfo": {
+          "tasks": [
+            "metaName",
+            "m3u8Name",
+            "outFiles1"
+          ],
+          "state": 2,
+          "info": {
+            "metaName": {
+              "end": 1515042729,
+              "processId": 2157424366,
+              "start": 1515042724,
+              "state": 2
+            },
+            "outFiles1": {
+              "end": 1515042757,
+              "processId": 2157424382,
+              "start": 1515042724,
+              "state": 2
+            },
+            "m3u8Name": {
+              "end": 1515042729,
+              "processId": 2157424366,
+              "start": 1515042724,
+              "state": 2
+            }
+          }
+        },
+        "notifyLego": 2,
+        "notifyLegoProcessId": 2157364201,
+        "transInfo": {
+          "cbState": 2,
+          "end": 1515042724,
+          "processId": 2157364201,
+          "start": 1515042569,
+          "state": 2
+        }
+      }
+    },
+    "tasks": [
+      "PC_600",
+      "PC_300",
+      "PC_720P",
+      "MOBILE_300"
+    ],
+    "transState": 2
+  },
+  "coverImgInfo": {
+    "end": 1515042634,
+    "legoTaskId": 245321507,
+    "start": 1515042592,
+    "tasks": [
+      "c_0_0_785_441",
+      "s_116_65",
+      "s_180_101",
+      "c_96_0_1080_719",
+      "c_276_0_719_719",
+      "c_366_0_540_719",
+      "s_120_160"
+    ],
+    "state": 2,
+    "info": {
+      "s_4b2358d36d254f21aea8ef2272fbabf0 245321507": {
+        "distState": 2,
+        "transState": 2
+      },
+      "c_96_0_1080_719": {
+        "distState": 2,
+        "transState": 2
+      },
+      "c_366_0_540_719": {
+        "distState": 2,
+        "transState": 2
+      },
+      "c_276_0_719_719": {
+        "distState": 2,
+        "transState": 2
+      },
+      "c_0_0_785_441": {
+        "distState": 2,
+        "transState": 2
+      }
+    }
+  },
+  "createTime": 1515042274,
+  "duration": 197,
+  "fileId": "4b2358d36d254f21aea8ef2272fbabf0",
+  "id": "5a4db5e2e4b0f0893401bd95",
+  "inputPipeline": 2,
+  "ip": "27.188.238.215",
+  "isp": "电信",
+  "legoEnqueue": 2,
+  "legoSendAuditImgTask": 2,
+  "legoSendBitratesTask": 2,
+  "notifyThird": 2,
+  "pageInfo": {
+    "end": 1515042768,
+    "state": 2
+  },
+  "parseInfo": {
+    "cbState": 2,
+    "end": 1515042567,
+    "notifyLego": 2,
+    "notifyLegoProcessId": 2157338996,
+    "processId": 2157338996,
+    "start": 1515042494,
+    "state": 2
+  },
+  "province": "河北",
+  "qipuId": 11011958509,
+  "repeatCheckResult": 2,
+  "size": 100397078,
+  "taskType": 0,
+  "uid": 1036745737,
+  "updateTime": 1515043012,
+  "uploadInfo": {
+    "end": 1515042491,
+    "start": 1515042275,
+    "state": 2
+  },
+  "uploadType": 0,
+  "userType": 0
+}

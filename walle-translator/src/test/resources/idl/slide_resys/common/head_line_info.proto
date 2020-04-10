@@ -1,0 +1,69 @@
+package common;
+
+option java_package = "com.qiyi.slide.resys.common";
+option java_outer_classname="HeadLineInfoProtos";
+
+import "slide_resys/common/entity_info.proto";
+
+message OriginalInfo {
+  optional string author_nickname = 1;
+  optional string author_username = 2;
+  optional string channel = 3;
+  optional int64 comment_count = 4;
+  optional string content_url = 5;
+  optional int64 like_count = 6;
+  optional int64 play_count = 7;
+  optional int64 publish_time = 8;
+  optional int64 share_count = 9;
+  optional string site_name = 10;
+  repeated string tag = 11;
+  optional int64 view_count = 12;
+
+}
+
+message HeadLineInfo {
+  // id
+  optional int64 id = 1;
+  // 频道
+  repeated int32 channel_id = 2;
+  // 标题
+  optional string name = 3;
+  // 摘要
+  optional string summary = 4;
+  //头条类型
+  // 1.新闻
+  // 2.视频
+  // 3.图集
+  // 4.音频
+  optional int32 head_line_type = 5;
+  // 头条号uid
+  optional string uploader_id = 6;
+  // 标签，包含lego三级分类标签、内容型标签
+  repeated string tag = 7;
+  // 城市
+  optional int32 city_id = 8;
+  // 视频id（仅视频类头条）
+  optional int64 tv_id = 9;
+  // 创建时间
+  optional int64 final_time = 10;
+  // 是否有效
+  // 1.delete
+  // 2.available status
+  // 3.check_status
+  // 4.Reject_recommend
+  optional bool is_valid = 11;
+  // 浏览PV
+  optional int32 display_view_count = 12;
+  // 视频VV（仅视频类头条）
+  optional int32 display_play_count = 13;
+  // 赞数
+  optional int32 agree_count = 14;
+  // 评论数
+  optional int32 comment_count = 15;
+  // 分享数
+  optional int32 fw_count = 16;
+  //Category
+  repeated Category category = 17;
+  optional OriginalInfo original_info= 18;
+  optional string highest_score_tag = 19;
+}

@@ -1,0 +1,138 @@
+// Author: Tianxing Wang (wangtianxing@qiyi.com)
+//
+// This file defines constants and Exceptions
+//
+namespace cpp knowledge.pub
+namespace java knowledge.pub
+
+/**
+ * Numeric codes indicating the type of error that occurred on the service.
+ * <dl>
+ * <dt>UNKNOWN</dt>
+ * <dd>No information available about the error</dd>
+ * <dt>BAD_DATA_FORMAT</dt>
+ * <dd>The format of the request data was incorrect</dd>
+ * <dt>PERMISSION_DENIED</dt>
+ * <dd>Not permitted to perform action</dd>
+ * <dt>INTERNAL_ERROR</dt>
+ * <dd>Unexpected problem with the service</dd>
+ * <dt>DATA_REQUIRED</dt>
+ * <dd>A required parameter/field was absent</dd>
+ * <dt>LIMIT_REACHED</dt>
+ * <dd>Operation denied due to data model limit</dd>
+ * <dt>QUOTA_REACHED</dt>
+ * <dd>Operation denied due to user storage limit</dd>
+ * <dt>INVALID_AUTH</dt>
+ * <dd>Username and/or password incorrect</dd>
+ * <dt>AUTH_EXPIRED</dt>
+ * <dd>Authentication token expired</dd>
+ * <dt>DATA_CONFLICT</dt>
+ * <dd>Change denied due to data model conflict</dd>
+ * <dt>ENML_VALIDATION</dt>
+ * <dd>Content of submitted note was malformed</dd>
+ * <dt>SHARD_UNAVAILABLE</dt>
+ * <dd>Service shard with account data is temporarily down</dd>
+ * <dt>LEN_TOO_SHORT</dt>
+ * <dd>Operation denied due to data model limit, where something such
+ * as a string length was too short</dd>
+ * <dt>LEN_TOO_LONG</dt>
+ * <dd>Operation denied due to data model limit, where something such
+ * as a string length was too long</dd>
+ * <dt>TOO_FEW</dt>
+ * <dd>Operation denied due to data model limit, where there were
+ * too few of something.</dd>
+ * <dt>TOO_MANY</dt>
+ * <dd>Operation denied due to data model limit, where there were
+ * too many of something.</dd>
+ * <dt>UNSUPPORTED_OPERATION</dt>
+ * <dd>Operation denied because it is currently unsupported.</dd>
+ * <dt>TAKEN_DOWN</dt>
+ * <dd>Operation denied because access to the corresponding object is
+ * prohibited in response to a take-down notice.</dd>
+ * <dt>RATE_LIMIT_REACHED</dt>
+ * <dd>Operation denied because the calling application has reached
+ * its hourly API call limit for this user.</dd>
+ * </dl>
+ */
+enum RpcErrorCode{
+  UNKNOWN = 1,
+  BAD_DATA_FORMAT = 2,
+  PERMISSION_DENIED = 3,
+  INTERNAL_ERROR = 4,
+  DATA_REQUIRED = 5,
+  LIMIT_REACHED = 6,
+  QUOTA_REACHED = 7,
+  INVALID_AUTH = 8,
+  AUTH_EXPIRED = 9,
+  DATA_CONFLICT = 10,
+  ENML_VALIDATION = 11,
+  SHARD_UNAVAILABLE = 12,
+  LEN_TOO_SHORT = 13,
+  LEN_TOO_LONG = 14,
+  TOO_FEW = 15,
+  TOO_MANY = 16,
+  UNSUPPORTED_OPERATION = 17,
+  TAKEN_DOWN = 18,
+  RATE_LIMIT_REACHED = 19
+}
+
+/**
+ * This exception is thrown by Qipu procedures when a call fails as a result of
+ * a problem in the service that could not be changed through caller action.
+ *
+ * errorCode: The numeric code indicating the type of error that occurred.
+ * must be one of the values of RpcErrorCode.
+ *
+ * message: This may contain additional information about the error
+ *
+ * rateLimitDuration: Indicates the minimum number of seconds that an application should
+ * expect subsequent API calls for this user to fail. The application should not retry
+ * API requests for the user until at least this many seconds have passed. Present only
+ * when errorCode is RATE_LIMIT_REACHED,
+ */
+exception RpcException {
+  1: optional RpcErrorCode errorCode,
+  2: optional string message,
+  3: optional i32 rateLimitDuration
+}
+
+/**
+ * This exception is thrown by  procedures when a call fails as a result of
+ * a problem that a caller may be able to resolve. For example, if the user
+ * attempts to add a note to their account which would exceed their storage
+ * quota, this type of exception may be thrown to indicate the source of the
+ * error so that they can choose an alternate action.
+ *
+ * This exception would not be used for internal system errors that do not
+ * reflect user actions, but rather reflect a problem within the service that
+ * the user cannot resolve.
+ *
+ * errorCode: The numeric code indicating the type of error that occurred.
+ * must be one of the values of RpcErrorCode.
+ *
+ * parameter: If the error applied to a particular input parameter, this will
+ * indicate which parameter.
+ */
+exception UserException {
+  1: optional RpcErrorCode errorCode,
+  2: optional string parameter
+}
+
+
+/**
+ * This exception is thrown by Qipu procedures when a caller asks to perform
+ * an operation on an object that does not exist. This may be thrown based on an invalid
+ * primary identifier (e.g. a bad GUID), or when the caller refers to an object
+ * by another unique identifier (e.g. a User's email address).
+ *
+ * identifier: A description of the object that was not found on the server.
+ * For example, "Note.notebookGuid" when a caller attempts to create a note in a
+ * notebook that does not exist in the user's account.
+ *
+ * key: The value passed from the client in the identifier, which was not
+ * found. For example, the GUID that was not found.
+ */
+exception EntityNotFoundException {
+  1: optional string identifier,
+  2: optional string key
+}

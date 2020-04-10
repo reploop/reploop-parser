@@ -1,0 +1,65 @@
+// Author: Jiannan Tan(tanjiannan@qiyi.com)
+//
+// Define wal message of write service.
+
+import "knowledge/pub/common.proto";
+
+package com.qiyi.knowledge.observer.wal;
+
+option java_multiple_files = true;
+option java_outer_classname = "Message";
+
+message WALMessage {
+  // 实体id
+  required int64 entity_id = 1;
+
+  // 待合并处理的实体属性.
+  optional bytes merged_entity = 2;
+  // 待删除的实体属性
+  optional bytes removal_entity = 3;
+
+  // 写入时间.
+  optional int64 updated_time = 4;
+  // 修改人账号.
+  optional string updater = 5;
+
+  // 修改人User(权限验证使用)
+  optional .knowledge.pub.User user = 12;
+
+  // Indicates whether it is belong to a batch operation.
+  optional bool is_updated_in_batch_mode = 6 [default = false];
+
+  // Indicates whether it needs to send the activeMq notifier to audience.
+  optional bool should_notify_audience = 7 [default = true];
+
+  // 同一session操作id, 用以跟踪每次write service的操作流程.
+  // session只在write service调用add接口时产生,此后处理(包括中间产生的新的wal message)都是沿用此id.
+  optional int64 session_id = 8;
+
+  optional .knowledge.pub.Priority priority = 9;
+  
+  // 线上批量处理标记[非刷数据],进入单独online通道
+  optional bool is_online = 10 [default = false];
+
+  // skip write data-integrity
+  optional bool delete_skip_c2f = 11 [default = false];
+
+  // 写入的session_uuid,用于kafka batch写入，便于跟踪消息写入情况
+  optional string session_uuid = 13;
+  
+  // 站点
+  repeated .knowledge.pub.SiteType site = 14;
+
+  optional bool is_c2f = 17 [default = false];  // 是否是c2f写入
+
+  //关系层关系变更
+  optional RelationChangeInfo relation_change_info = 18;
+}
+
+//关系变更
+message RelationChangeInfo{
+  //删除关联id
+  repeated int64 deleted_relation_id = 1;
+  //新增关联id
+  repeated int64 add_relation_id = 2;
+}

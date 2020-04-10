@@ -1,0 +1,25 @@
+// Define an album or episode set
+//播单子集
+// Next field id is: 10
+message VideoGroup {
+  //option
+  option (entity_option).table = VIDEO_GROUP_TABLE;
+  option (entity_option).entity_name = "video_group";
+  option (table_option).hbase_table_name = "qipu_videogroup_table";
+  option (entity_option).entity_id_type = VIDEO_GROUP;
+  
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional Metadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  repeated MetaSummary album_summary = 4 [(field_option).column_group = CHILD_ALBUM, (column_option).column_name = "chd_alb_", (column_option).column_suffix = "${entity_id}"];
+  repeated MetaSummary episode_summary = 5[(field_option).column_group = CHILD_EPISODE, (column_option).column_name = "chd_epd_", (column_option).column_suffix = "${entity_id}", (column_option).order_by = "order,entity_id"];
+
+  repeated FatherInfo father_collection = 6 [(field_option).column_group = FATHER_COLLECTION, (column_option).column_name = "dad_cln_", (column_option).column_suffix = "${father_id}"];
+  repeated FatherInfo father_ugc_collection = 9 [(field_option).column_group = FATHER_UGC_COLLECTION, (column_option).column_name = "dad_ugccln_", (column_option).column_suffix = "${father_id}"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 7 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional int64 last_update_time = 8 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+}

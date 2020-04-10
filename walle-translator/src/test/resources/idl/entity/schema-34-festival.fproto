@@ -1,0 +1,21 @@
+// Define Festival info.
+// 电影节
+message Festival {
+  //option
+  option (entity_option).table = FESTIVAL_TABLE;
+  option (entity_option).entity_name = "festival";
+  option (table_option).hbase_table_name = "qipu_festival_table";
+  option (entity_option).entity_id_type = FESTIVAL;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional FestivalMetadata metadata = 2 [(field_option).column_group = FESTIVAL_METADATA, (column_option).column_name = "fes_meta"];
+  //分年奖项列表
+  repeated MetaSummary festival_series = 5 [(field_option).column_group = FESTIVAL_SERIES_SUMMARY, (column_option).column_name = "fes_ser_", (column_option).column_suffix = "${entity_id}"];
+
+  //海报图
+  repeated LocaleImage poster = 8 [(field_option).column_group = POSTER, (column_option).column_name = "poster_", (column_option).column_suffix = "${language}_${type}"];
+
+  optional bool deleted = 6 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 7 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+}

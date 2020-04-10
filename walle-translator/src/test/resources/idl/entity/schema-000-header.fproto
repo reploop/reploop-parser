@@ -1,0 +1,73 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+// Author: Lin Liu (lynnliu@qiyi.com)
+// Author: Yin Zeng (zengyin@qiyi.com)
+//
+// Proto definitions for entity status, tag
+// Proto definitions for collection, album, episode(feature,clip,scene,shot),
+// css(focus), people and image.
+
+//- 共有数据： 有 pps_base, pps_platform_region_control, base, puyu 节点
+//- PPS独有数据： 只有 pps_base, pps_platform_region_control节点
+//- 奇艺独有数据： 只有 base, puyu节点
+import "google/protobuf/descriptor.proto";
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/formats.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/properties.proto";
+import "knowledge/graph/pub/properties.proto";
+import "knowledge/pub/library/film_library_idl.proto";
+import "knowledge/pub/validator.proto";
+import "knowledge/pub/tracker/tracker_service.proto";
+import "knowledge/hbase/options.proto";
+
+package knowledge.pub;
+
+message EntityOptions {
+  optional Table table = 1;
+  optional string entity_name = 2;
+  optional EntityIdType entity_id_type = 3;
+}
+
+// 除去主站之外，其他站点的信息
+message MultiSiteOptions {
+  message SiteOption {
+    // 站点
+    optional SiteType site = 1;
+    // 站点表名
+    optional string table_name = 2;
+    // 所属站点
+    optional SiteType fallback_site = 3 [default = SITE_ZH];
+  }
+  optional SiteOption zh_tw = 1;
+}
+
+extend google.protobuf.MessageOptions {
+  optional .com.qiyi.knowledge.hbase.option.TableOptions table_option = 50021;
+  optional EntityOptions entity_option = 50001;
+  optional MultiSiteOptions site_option = 50033;
+}
+
+message FieldOptions {
+  optional ColumnGroup column_group = 1;
+  //是否在消息中通知repeated column 的key
+  optional bool is_repeated_column_notified = 2 [default = false];
+  optional FieldMultiType multi_type = 3 [default = FIELD_MULTI_TYPE_NONE];
+}
+
+// 字段属性
+enum FieldMultiType {
+  // 普通字段
+  FIELD_MULTI_TYPE_NONE = 0;
+  // 多站点字段
+  FIELD_MULTI_TYPE_SITE = 1;
+  // 多语言字段
+  FIELD_MULTI_TYPE_LANGUAGE = 2;
+}
+
+extend google.protobuf.FieldOptions {
+  optional .com.qiyi.knowledge.hbase.option.ColumnOptions column_option = 50022;
+  optional FieldOptions field_option = 50002;
+  optional knowledge.pub.tracker.TrackOptions track_option = 50013;
+}
+//@@@@@@

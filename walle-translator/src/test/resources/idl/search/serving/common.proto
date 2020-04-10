@@ -1,0 +1,425 @@
+// Author: Yingjie Chen (chenyingjie@qiyi.com)
+//
+// Common parameters.
+
+package search.serving;
+
+enum ErrorCode {
+  OK = 0;
+
+  FAIL = 1;
+}
+
+// ScoringMode specify in which order should we sort the results.
+enum ScoringMode {
+  RELEVANCE_MODE = 1;
+
+  // Order by created time.
+  FRESHNESS_MODE = 2;
+
+  POPULARITY_MODE = 3;
+
+  // Order by latest update time.
+  LATEST_UPDATE_TIME_MODE = 4;
+
+  // Order by view count.
+  MOST_VIEW_COUNT_MODE = 5;
+
+  // Order by subscribe count, used for pps channel.
+  MOST_SUBSCRIBE_COUNT_MODE = 6;
+
+  // Order by the videos count contained by album, used for pps channel.
+  MOST_EPISODE_COUNT_MODE = 7;
+
+  // Order by users' rate.
+  USER_RATE_MODE = 8;
+
+  // Order by user click count history. This is used to sort between
+  // iqiyi docs and doc from other websites.
+  MOST_CLICK_COUNT_MODE = 9;
+
+  // Order by click count of the week.
+  WEEKLY_CLICK_COUNT_MODE = 10;
+
+  // Order by click count of the past day.
+  YESTERDAY_CLICK_COUNT_MODE = 11;
+
+  APP_LATEST_UPDATE_TIME_MODE = 12;
+
+  APP_MOST_CLICK_MODE = 13;
+
+  APP_MOST_INSTALL_MODE = 14;
+
+  APP_MONTHLY_DOWNLOAD_COUNT_MODE = 15;
+
+  MARKET_RELEASE_DATE_ASC_MODE = 16;
+
+  TOPICALITY_MODE = 17;
+
+  // Order by click count of the month.
+  MONTHLY_CLICK_COUNT_MODE = 18;
+
+  // Order by sales volume of the month.
+  MONTHLY_SALES_VOLUME_MODE = 21;
+
+  // Order by sales volume of the week.
+  WEEKLY_SALES_VOLUME_MODE = 22;
+
+  // Order by sales volume of yesterday.
+  YESTERDAY_SALES_VOLUME_MODE = 23;
+
+  // List model rank mode.
+  LIST_MODEL_RANK_MODE = 24;
+
+  // Order by reward count of history.
+  MOST_REWARD_COUNT_MODE = 31;
+
+  // Order by reward count of the month.
+  MONTHLY_REWARD_COUNT_MODE = 32;
+
+  // Order by reward count of the week.
+  WEEKLY_REWARD_COUNT_MODE = 33;
+
+  // Order by reward count of yesterday.
+  YESTERDAY_REWARD_COUNT_MODE = 34;
+
+  // This is the commodity search, sales volume or price
+  MOST_SALES_VOLUME_MODE = 51;
+
+  // Commodity price from low to high.
+  PRICE_ASC_MODE = 52;
+
+  // Commodity price from high to low.
+  PRICE_DESC_MODE = 53;
+
+  // Word count from low to high.
+  WORD_COUNT_ASC_MODE = 61;
+
+  // Word count from high to low.
+  WORD_COUNT_DESC_MODE = 62;
+
+  // For paopao card search, order by card score.
+  PAOPAO_CARD_SCORE_MODE = 71;
+}
+
+enum Occur {
+  MUST = 1;
+
+  SHOULD = 2;
+
+  MUST_NOT = 3;
+}
+
+enum SearchType {
+  NORMAL_SEARCH = 1;
+
+  LIST_SEARCH = 2;
+
+  COMMODITY_SEARCH = 3;
+}
+
+message NodeServiceInfo {
+  // Port number of service.
+  optional int32 service_port = 1;
+
+  // Name of service, used to construct the data of the zookeeper node.
+  optional string service_name = 2;
+
+  // Name of function, used to construct the data of the zookeeper node.
+  optional string function_name = 3;
+
+  // Onebox path of the service to register to zookeeper server.
+  optional string service_path = 4;
+
+  // Number of worker threads.
+  optional int32 thread_number = 5;
+};
+
+message ZookeeperInfo {
+  // Ip or host name of zookeeper server.
+  optional string zookeeper_address = 1;
+
+  // User name of zookeeper server.
+  optional string zookeeper_username = 2;
+
+  // Password of zookeeper server.
+  optional string zookeeper_password = 3;
+};
+
+// The couchbase information.
+message CouchbaseInfo {
+  optional string hosts = 1;
+  optional string username = 2;
+  optional string password = 3;
+  optional string bucket = 4;
+}
+
+message RedisInfo {
+  optional string host = 1 [default = "127.0.0.1"];
+  optional int32 port = 2 [default = 10230];
+  optional int32 conn_timeout_sec = 3 [default = 1];
+}
+message Date {
+  optional int32 year = 1;
+  optional int32 month = 2;
+  optional int32 day = 3;
+  optional int32 hour = 4;
+  optional int32 minute = 5;
+  optional int32 second = 6;
+}
+message RedisCacheInfo {
+  // Enable flag for cache
+  optional bool cache_enable = 1;
+
+  // Cache monitor period  seconds
+  optional uint32 cache_monitor_period_seconds = 2;
+
+  // Max expire time for cache item,second
+  optional uint32 cache_max_expire_seconds = 4;
+
+  // Min expire time for cache item,second
+  optional uint32 cache_min_expire_seconds = 5;
+
+  // Should decompress the content read from couchbase
+  optional bool should_decompress = 6 [default = false];
+
+  // Reader pool size
+  optional uint32 reader_count = 7;
+}
+
+message MemCacheInfo {
+  // Enable flag for cache
+  optional bool cache_enable = 1;
+
+  // Cache monitor period  seconds
+  optional uint32 cache_monitor_period_seconds = 2;
+
+  // Cache max size
+  optional uint64 cache_max_size = 3;
+
+  // Max expire time for cache item,second
+  optional uint32 cache_max_expire_seconds = 4;
+
+  // Min expire time for cache item,second
+  optional uint32 cache_min_expire_seconds = 5;
+
+  // Should decompress the content read from couchbase
+  optional bool should_decompress = 6 [default = false];
+
+  // Reader pool size
+  optional uint32 reader_count = 7;
+}
+
+message MemCachedDatabaseInfo {
+  // Cache load data period  seconds
+  optional uint32 cache_load_data_period_seconds = 1;
+
+  // Cache max size
+  optional uint64 cache_max_size = 2;
+
+  // Max period count for data update
+  optional uint32 cache_max_expire_period_cnt = 3;
+
+  // Reader pool size
+  optional uint32 reader_count = 4;
+
+  // Load data retry times
+  optional uint32 cache_load_data_retry_times = 5 [default = 1];
+
+  // Index key Prefix
+  optional string index_key_prefix = 6;
+
+  // Key Prefix
+  optional string key_prefix = 7;
+}
+
+enum SourceType {
+    PPC = 1;
+    UGC = 2;
+}
+
+enum QRTermType {
+  QR_COMMON = 1;
+
+  QR_AMBIGUOUS_WORD = 2;
+
+  QR_URL = 3;
+
+  QR_ALBUM = 4;
+
+  QR_SONG = 5;
+
+  QR_IT = 6;
+
+  QR_APP = 7;
+
+  QR_GAME = 8;
+
+  QR_NOVEL = 9;
+
+  QR_DISH = 10;
+
+  QR_PRODUCT = 11;
+
+  QR_ROLE = 12;
+
+  QR_PERSON = 13;
+
+  QR_YEAR = 14;
+
+  QR_GAME_COMMENTATOR = 15;
+
+  QR_DANCE = 16;
+
+  QR_DANCE_TEAM = 17;
+
+  QR_GAME_MAP = 18;
+
+  QR_MEDIA = 19;
+
+  QR_CAR_MODEL = 20;
+
+  QR_ELECTRONICS = 21;
+}
+
+message SuperSerial {
+  // A mark to represent whether there is serial results in it.
+  optional bool has_super_serial = 1 [default = false];
+
+  message SerialInfo {
+    // Channel id of serial.
+    optional int32 serial_channel_id = 1;
+
+    // Global doc id for serial doc.
+    repeated string serial_doc_id = 2;
+  }
+
+  // Channel id and docs' id of an serial.
+  repeated SerialInfo serial_info = 2;
+}
+
+// Response commodity's property structure.
+message MallPropertyResponse {
+
+  message ItemProperty {
+
+    message ItemPropertyValue {
+      // The commodity's property values which have the common key id.
+      optional int64 value_id = 1;
+
+      // The doc count of each value_id.
+      optional int32 value_count = 2;
+    }
+
+    // The key id of commodity's common property.
+    optional int64 key_id = 1;
+
+    // The doc count of each key_id.
+    optional int32 key_count = 2;
+
+    // The commodity's value info under the key_id.
+    repeated ItemPropertyValue item_property_value = 3;
+  }
+
+  repeated ItemProperty item_property = 1;
+}
+
+// Response commodity's category structure.
+message MallCategoryResponse {
+
+  message CategoryProperty {
+
+    message LeafCategoryValue {
+      // The root category's leaf node.
+      optional int64 leaf_category_id = 1;
+
+      // The doc count of each leaf node.
+      optional int32 leaf_category_count = 2;
+    }
+
+    // The root category id.
+    optional int64 category_id = 1;
+
+    // The doc count of each category id.
+    optional int32 category_count = 2;
+
+    // Root category's leaf node.
+    repeated LeafCategoryValue leaf_category_value = 3;
+  }
+
+  repeated CategoryProperty category_property = 1;
+}
+
+// 7: Get the entity property.
+enum IntentRecognizerType {
+  ENTITY_PROPERTIES = 7;
+
+  CELEBRITY_RELATION = 8;
+
+  V2P_ACTOR_LIST = 9;
+
+  ALBUM_PROPERTIES = 10;
+
+  ROLE_VIDEOS_INTENT = 11;
+
+  ROLE_INTENT = 12;
+
+  VIDEO_INTENT = 13;
+}
+
+enum IndexIndicatorType {
+  // Request primary index only.
+  PRIMARY_INDEX_ENOUGH = 1;
+
+  // Request primary index but check result in root.
+  PRIMARY_INDEX_POSSIBLE = 2;
+
+  // Request full index.
+  PRIMARY_INDEX_IMPOSSIBLE = 3;
+}
+
+enum PaoSearchType {
+  // Request three circle and twenty paopao.
+  NORMAL_PAO_SEARCH = 0;
+
+  // Request paopao.
+  PAOPAO_SEARCH = 1;
+
+  // Request circle.
+  CIRCLE_SEARCH = 2;
+}
+
+message ServiceInfo {
+  optional string type = 1;
+
+  optional int32 shard = 2;
+
+  optional int32 lower_bound = 3;
+
+  optional int32 upper_bound = 4;
+
+  optional string ip = 5;
+}
+
+enum InputSourceType {
+  // Text input directly.
+  NORMAL_INPUT = 0;
+
+  // Voice input.
+  VOICE_INPUT = 1;
+}
+
+enum NavboostType {
+  // Total navboost data.
+  TOTAL = 0;
+
+  // Instant navboost data.
+  INSTANT = 1;
+
+  // Real time navboost data
+  REAL = 2;
+}
+
+message PbrpcClientInspector {
+  optional int32 port = 1;
+}

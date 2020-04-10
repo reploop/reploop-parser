@@ -1,0 +1,37 @@
+// Define Character info.
+//角色
+message Character {
+  //option
+  option (entity_option).table = CHARACTER_TABLE;
+  option (entity_option).entity_name = "character";
+  option (table_option).hbase_table_name = "qipu_character_table";
+  option (entity_option).entity_id_type = CHARACTER;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional CharMetadata metadata = 2 [(field_option).column_group = CHAR_METADATA, (column_option).column_name = "char_meta"];
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 4 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  //关联的其他角色；
+  repeated CharacterSummary related_character= 5 [(field_option).column_group = RELATED_CHARACTER, (column_option).column_name = "rel_char_", (column_option).column_suffix = "${entity_id}"];
+  //关联的播单
+  repeated MetaSummary related_collection = 6 [(field_option).column_group = RELATED_COLLECTION, (column_option).column_name = "rel_col_", (column_option).column_suffix = "${entity_id}"];
+  //关联的资源位
+  repeated MetaSummary related_resources = 7 [(field_option).column_group = RELATED_RESOURCES, (column_option).column_name = "rel_res_", (column_option).column_suffix = "${entity_id}"];
+  //关联的影视资料， 代表作品
+  repeated Metadata related_film_tv = 8 [(field_option).column_group = RELATED_FILM_TV, (column_option).column_name = "rel_film_", (column_option).column_suffix = "${entity_id}"];
+
+  //头像
+  repeated MetaSummary icon_image = 9 [(field_option).column_group = ICON_IMAGE, (column_option).column_name = "icon_img_", (column_option).column_suffix = "${entity_id}"];
+
+  //其他图片
+  repeated MetaSummary other_image = 10 [(field_option).column_group = CHAR_OTHER_IMAGE, (column_option).column_name = "oth_img_", (column_option).column_suffix = "${entity_id}"];
+
+  //角色对应的自定义标签
+  repeated string tag = 11 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  repeated KeyValuePair key_value_pair = 12 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  //角色图片
+  optional CharacterImageList character_image_list = 13 [(field_option).column_group = CHARACTER_IMAGE_LIST, (column_option).column_name = "chract_img_lst"];
+}

@@ -1,0 +1,143 @@
+// Author: Jiannan Tan (tanjiannan@qiyi.com)
+//
+// Proto definitions for rpc requests and responses for accessing the avatar service.
+
+import "knowledge/avatar/properties.proto";
+import "knowledge/graph/pub/properties.proto";
+import "knowledge/pub/common.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/qipu_options.proto";
+
+package knowledge.pub;
+
+// 获取明星相关视频id.
+message GetRelatedVideoIdsOfCelebrityRequest {
+  optional int64 id = 1;
+  optional SiteType iqiyi_site = 2 [default = SITE_ZH];
+  repeated Language iqiyi_language = 3;
+}
+
+message GetRelatedVideoIdsOfCelebrityResponse {
+  repeated int64 related_video_id = 1;
+}
+
+// 对视频进行过滤.
+message GetFilteredVideosRequest {
+  repeated int64 id = 1;
+
+  // 和需要过滤视频相关联的明星id.
+  optional int64 related_people_id = 2;
+
+  // 过滤掉指定entity类型的视频.
+  repeated knowledge.pub.EntityIdType exclude_entity_type = 3;
+
+  // If you specify some channel ids here,
+  // we will only return the works of those channels.
+  // If not, we will return videos of all channels.
+  repeated int32 include_channel_id = 4;
+
+  // only qiyi produced flag, if it is true, filter out the non-qiyi produced album
+  optional bool should_only_qiyi_produced = 5 [default = false];
+
+  // If true, will only return videos with role info
+  optional bool should_filter_no_roles = 6 [default = false];
+  repeated string include_role = 7;
+  repeated string exclude_role = 8;
+
+  // 播控过滤
+  // 调用方的平台类型
+  optional knowledge.pub.PlayPlatform caller_play_platform = 9;
+  // 调用方的IP地址，用于播控过滤
+  optional string caller_ip_address = 10;
+  // 如果为true，将过滤掉reject_search的视频
+  optional bool should_exclude_reject_search = 11 [default = false];
+
+  // If true, will keep film_tv_lib instead of album/episode if they have the same title
+  optional bool should_film_tv_lib_first = 12 [default = false];
+
+  optional SiteType iqiyi_site = 13 [default = SITE_ZH];
+  repeated Language iqiyi_language = 14;
+}
+
+message GetFilteredVideosResponse {
+  repeated int64 id = 1;
+}
+
+// 对视频进行排序.
+message GetRankedVideosRequest {
+  repeated int64 id = 1;
+    // 相关联的明星id.
+  optional int64 related_people_id = 2;
+
+  optional knowledge.pub.avatar.RankingPolicy ranking_policy = 3 [default = PUBLISH_TIME];
+
+  optional SiteType iqiyi_site = 4 [default = SITE_ZH];
+  repeated Language iqiyi_language = 5;
+}
+
+message GetRankedVideosResponse {
+  repeated int64 id = 1;
+}
+
+// 获取视频相关信息.
+message GetVideoDataFromIdsRequest {
+  repeated int64 id = 1;
+    // 相关联的明星id.
+  optional int64 related_people_id = 2;
+
+  // The from of start point begins with 0.
+  optional int32 from = 3[default = 0];
+  optional int32 size = 4[default = 5];
+
+  // If true, will return all child videos of albums
+  optional bool should_include_child_data = 5 [default = false];
+  // If true, will return film_tv_category for related entities
+  optional bool should_include_category_info = 6 [default = false];
+  // If true, will return film_tv_category for related entities
+  optional bool should_include_tag_info = 7 [default = false];
+
+  // If true, will include qipu entity info in response
+  optional bool should_include_entity = 8 [default = false];
+
+  // Columns of entities that user want to include in response
+  repeated knowledge.pub.ColumnGroup entity_columns = 9;
+
+  optional SiteType iqiyi_site = 10 [default = SITE_ZH];
+  repeated Language iqiyi_language = 11;
+}
+
+message GetVideoDataFromIdsResponse {
+  // 分页前视频的数量.
+  optional int32 total = 1;
+  repeated knowledge.graph.pub.AlbumVideoData album_video_data = 2;
+}
+
+// 获取明星相关明星id.
+message GetRelatedCelebrityIdsOfCelebrityRequest {
+  optional int64 id = 1;
+}
+
+message GetRelatedCelebrityIdsOfCelebrityResponse {
+  repeated int64 related_celebrity_id = 1;
+}
+
+// 获取明星相关信息.
+message GetCelebrityDataFromIdsRequest {
+  repeated int64 id = 1;
+
+  // 相关联的明星id.
+  optional int64 related_people_id = 2;
+
+  // The from of start point begins with 0.
+  optional int32 from = 3[default = 0];
+  optional int32 size = 4[default = 5];
+  optional SiteType iqiyi_site = 5 [default = SITE_ZH];
+  repeated Language iqiyi_language = 6;
+}
+
+message GetCelebrityDataFromIdsResponse {
+  // 分页前明星的数量.
+  optional int32 total = 1;
+  repeated knowledge.graph.pub.CelebrityData celebrity_data = 2;
+}

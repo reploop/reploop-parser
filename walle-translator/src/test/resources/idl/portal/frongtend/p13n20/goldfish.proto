@@ -1,0 +1,45 @@
+option java_package = "com.qiyi.qiyu.portal.area.proto.p13n20";
+option java_outer_classname="GoldfishProtos";
+
+// Rec unit exposed to outside
+message EntityInfo {
+    optional int64 id = 1 [ default = -1 ];
+    optional string name = 2;
+    optional DisplayFields display_fields = 3;
+    optional int32 time_duration = 4;
+    optional double sns_score = 5;
+    optional ParentInfo parent_album = 6;
+    optional int32 channel_id = 7;
+}
+
+message DisplayFields {
+    optional string prompt_description = 1;
+    optional string picture_url = 2;
+    optional string latest_episode = 3;
+    optional int32 total_episode_num = 4;
+    optional string play_url = 5;
+    optional string short_title = 6;
+    optional string global_publish_date = 7;
+    optional string source_name = 8;
+}
+
+message ParentInfo {
+    optional int64 id = 1;
+}
+
+message RecResult {
+    required int32 channel_id = 1;
+    repeated EntityInfo rec_item_list = 2;
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message RecResponse {
+  optional string code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  repeated RecResult data = 3;
+}

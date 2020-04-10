@@ -1,0 +1,74 @@
+/**
+ * 圈子
+ * album 和 episode到circle的关系都是多对一
+ */
+message Circle {
+  //option
+  option (entity_option).table = CIRCLE_TABLE;
+  option (entity_option).entity_name = "circle";
+  option (table_option).hbase_table_name = "qipu_circle_table";
+  option (entity_option).entity_id_type = CIRCLE;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional CircleMetadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+  // 创建时间
+  optional int64 create_time = 3 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+   //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。 
+  optional bool deleted = 4 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 5 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  repeated MetaSummary album_summary = 6 [(field_option).column_group = ALBUM_SUMMARY, (column_option).column_name = "alb_sum_", (column_option).column_suffix = "${entity_id}"];
+  repeated MetaSummary episode_summary = 7 [(field_option).column_group = EPISODE_SUMMARY, (column_option).column_name = "epi_sum_", (column_option).column_suffix = "${entity_id}"];
+  repeated MetaSummary paopao_summary = 8 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "pao_sum_", (column_option).column_suffix = "${entity_id}"];
+  optional MetaSummary people_summary = 9 [(field_option).column_group = PEOPLE_SUMMARY, (column_option).column_name = "people_sum"];
+  optional MetaSummary feed_summary = 10 [(field_option).column_group = FEED_SUMMARY, (column_option).column_name = "feed_sum"];
+  optional MetaSummary book_summary = 11 [(field_option).column_group = BOOK_SUMMARY, (column_option).column_name = "book_sum"];
+  repeated KeyValuePair key_value_pair = 23 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  repeated MetaSummary event_summary = 24 [(field_option).column_group = EVENT_SUMMARY, (column_option).column_name = "feed_sum_", (column_option).column_suffix = "${entity_id}"];
+  // 热度值sort
+  optional int64 hot_sort = 25 [(field_option).column_group = HOT_SORT, (column_option).column_name = "hot_sort"];
+
+  // 推荐等级 0 unknown 1 general 2 high 3 strong
+  optional int64 recommended_level = 26 [(field_option).column_group = RECOMMENDED_LEVEL, (column_option).column_name = "rec_level"];
+  // 加圈人数
+  optional int64 circle_user_count = 27 [(field_option).column_group = CIRCLE_USER_COUNT, (column_option).column_name = "percnt"];
+  // 有效feed数量
+  optional int64 valid_feed_count = 28 [(field_option).column_group = VALID_FEED_COUNT, (column_option).column_name = "valfeedcnt"];
+
+  repeated MetaSummary activity_summary = 29 [(field_option).column_group = ACTIVITY_SUMMARY, (column_option).column_name = "activ_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  repeated MetaSummary library_summary = 30 [(field_option).column_group = LIBRARY_SUMMARY, (column_option).column_name = "lib_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  //爱频道用户uid
+  optional int64 i_channel_uid = 31 [(field_option).column_group = I_CHANNEL_UID, (column_option).column_name = "i_channel_uid"];
+
+  //认证用户id
+  optional int64 verified_user_id = 32 [(field_option).column_group = VERIFIED_USER_ID, (column_option).column_name = "v_user_id"];
+  //漫画实体
+  optional MetaSummary comic_book_summary = 33 [(field_option).column_group = COMIC_BOOK_SUMMARY, (column_option).column_name = "com_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  //关联的资源位id
+  optional int64 resource_container_id = 35 [(field_option).column_group = RESOURCE_CONTAINER_ID, (column_option).column_name = "resource_container_id"];
+
+  // 是否打开基线入口
+  optional bool baseline_entrance = 36 [default = true, (field_option).column_group = BASELINE_ENTRANCE, (column_option).column_name = "bl_etrce"];
+  //圈子标签
+  optional string circle_tag = 37 [(field_option).column_group = CIRCLE_TAG, (column_option).column_name = "circle_tag"];
+  //是否展现抓取feed
+  optional bool display_crawl_feed = 38 [default = true, (field_option).column_group = DISPLAY_CRAWL_FEED, (column_option).column_name = "dspl_crl_fd"];
+  //是否展现套壳feed
+  optional bool display_shell_feed = 39 [default = true, (field_option).column_group = DISPLAY_SHELL_FEED, (column_option).column_name = "dspl_shl_fd"];
+  //创建类型
+  optional CircleCreatorType creator_type = 40 [default = UNKNOWN_CIRCLE_CREATOR_TYPE, (field_option).column_group = CREATOR_TYPE, (column_option).column_name = "c_40_n"];
+  //圈子关联标签
+  repeated CircleTagSummary tag_summary = 41 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_41_n_", (column_option).column_suffix = "${entity_id}"];
+  //粉丝名称
+  optional string fans_name = 42 [(field_option).column_group = FANS_NAME, (column_option).column_name = "c_42_n"];
+  //粉丝等级头衔
+  repeated LevelTitleSummary level_title_summary = 43 [(field_option).column_group = LEVEL_TITLE_SUMMARY, (column_option).column_name = "c_43_n_", (column_option).column_suffix = "${level}"];
+  //圈子控制信息
+  optional CircleOperationControl operation_control = 44 [(field_option).column_group = OPERATION_CONTROL, (column_option).column_name = "c_44_n"];
+}

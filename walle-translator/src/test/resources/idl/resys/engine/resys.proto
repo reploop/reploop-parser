@@ -1,0 +1,27 @@
+option java_package = "com.qiyi.knowledge.resys.engine";
+option java_outer_classname="ResysProtos";
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/qipu_options.proto";
+import "portal/backend/resys_response.proto";
+
+message GuessSimilarityResponse {
+    option (knowledge.pub.service_message_options).method_name = "guessSimilarity";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+    optional RecCookie rec_cookie = 2;
+    repeated RecItem rec_item = 3;
+}
+
+message GuessSimilarityRequest {
+    option (knowledge.pub.service_message_options).method_name = "guessSimilarity";
+    option (knowledge.pub.service_message_options).type = REQUEST;
+
+    optional string area = 1;
+    optional string event_id = 2;
+    optional string uid = 3;
+    optional int64 rec_id = 4;
+    optional int32 rltnum = 5;
+    optional knowledge.pub.User user = 999;
+}

@@ -1,0 +1,1748 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+//
+// Proto definitions for the query and response of read server.
+
+// NOTE:
+//   We support getting response for a list of entity_ids of the same entity
+//   type. But requests with a list of entity ids of different types will be
+//   DENIED;
+
+import "knowledge/pub/aggregation.proto";
+import "knowledge/pub/common.proto";
+import "knowledge/pub/formats.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/properties.proto";
+import "knowledge/pub/library/film_library_idl.proto";
+import "knowledge/pub/qipu_options.proto";
+
+package knowledge.pub;
+
+// The definition of request for getting entity.
+message GetEntityRequest {
+  option (knowledge.pub.service_message_options).method_name = "getEntity";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required User user = 1;
+  repeated int64 entity_id = 2;
+  // If this field is set as false, only columngroup specified by field:4 and column is requred
+  // will be kept. Otherwise the specified field will be clear.
+  optional bool is_reverse_select = 3 [default = true];
+  repeated ColumnGroup specified_column_group = 4;
+  optional SiteType site = 5 [default = SITE_ZH];
+  repeated Language language = 6;
+}
+
+// The definition of request for read entity.
+message ReadEntityRequest {
+  option (knowledge.pub.service_message_options).method_name = "readEntity";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required User user = 1;
+  repeated int64 entity_id = 2;
+  // If this field is set as false, only columngroup specified by field:4 and column is requred
+  // will be kept. Otherwise the specified field will be clear.
+  optional bool is_reverse_select = 3 [default = true];
+  repeated ColumnGroup specified_column_group = 4;
+  optional SiteType site = 5 [default = SITE_ZH];
+  repeated Language language = 6;
+}
+
+// The definition of response for read entity.
+message ReadEntityResponse {
+  option (knowledge.pub.service_message_options).method_name = "readEntity";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required RpcStatusInfo rpc_status_info = 1;
+
+  // Response for request of entity
+  repeated Entity entity = 2;
+  message Entity {
+    required int64 entity_id = 1;
+    optional bytes entity_bytes = 2;
+  }
+}
+
+// The definition of response for getting entity.
+message GetEntityResponse {
+  option (knowledge.pub.service_message_options).method_name = "getEntity";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required RpcStatusInfo rpc_status_info = 1;
+
+  // Response for request of entity:album.
+  repeated Album album = 2;
+
+  // Response for request of entity:episode.
+  repeated Episode episode = 3;
+
+  // Response for request of entity:clip scene shot.
+  repeated ClipSceneShot css = 4;
+
+  // Response for request of entity:collection.
+  repeated Collection collection = 5;
+
+  // Response for request of entity:people.
+  repeated People people = 6;
+
+  // Response for request of entity:image.
+  repeated Image image = 7;
+
+  // Response for request of entity:video_group.
+  repeated VideoGroup video_group = 8;
+
+  // Response for request of entity: ugc_episode.
+  repeated UgcEpisode ugc_episode = 9;
+
+  // Response for request of entity: live.
+  //repeated LiveBroadcast live_broadcast = 10;
+
+  // Response for request of entity: ResourceContainer
+  repeated ResourceContainer resource_container = 11;
+
+  // Response for request of entity: PpsUgcChannel
+  //repeated PpsUgcChannel pps_ugc_channel = 12;
+
+  // Response for request of entity: FilmTvLibrary
+  repeated FilmTvLibrary film_tv_library = 13;
+
+  // Response for request of entity: OrganizationSharePartner
+  repeated OrganizationSharePartner organization_share_partner = 14;
+
+  // Response for request of entity: UgcCollection
+  repeated UgcCollection ugc_collection = 15;
+
+  // Response for request of entity: AdsMaterial
+  repeated AdsMaterial ads_material = 16;
+
+  // Response for request of entity: TvLiveCenter
+  repeated TvLiveCenter tv_live_center = 17;
+
+  // Response for request of entity: PpsCategory
+  repeated PpsCategory pps_category = 18;
+
+  // Response for request of entity: AppGroup
+  repeated AppGroup app_group = 19;
+
+  // Response for request of entity: MiniAutoCluster
+  //repeated MiniAutoCluster mini_auto_cluster = 20;
+
+  // Response for request of entity: LiveChannel
+  repeated LiveChannel live_channel = 21;
+
+  // Response for request of entity: LiveEpisode
+  repeated LiveEpisode live_episode = 22;
+
+  // Response for request of entity: Commodity
+  repeated Commodity commodity = 23;
+
+  // Response for request of entity: Spu
+  repeated Spu spu = 24;
+
+  // Response for request of entity: ItemBrand
+  repeated ItemBrand item_brand = 25;
+
+  // Response for request of entity: Theater
+  repeated Theater theater = 26;
+
+  // Response for request of entity: QiquTag
+  repeated QiquTag qiqu_tag = 27;
+
+  // Response for request of entity: Topic
+  repeated Topic topic = 28;
+
+  // Response for request of entity: Shop
+  repeated Shop shop = 29;
+
+  // Response for request of entity: Presenter
+  repeated Presenter presenter = 30;
+
+  // Response for request of entity: ShowRoom
+  repeated ShowRoom showRoom = 31;
+
+  // Response for request of entity: Festival
+  repeated Festival festival = 32;
+
+  // Response for request of entity: SpecialSubject
+  repeated SpecialSubject special_subject = 33;
+
+  // Response for request of entity: Character
+  repeated Character character = 34;
+
+  // Response for request of entity: Taxonomy
+  repeated Taxonomy taxonomy = 35;
+
+  // Response for request of entity: GraphEntity
+  repeated GraphEntity graph_entity = 36;
+
+  // Response for request of entity: Book
+  repeated Book book = 37;
+
+  // Response for request of entity: BookVolume
+  repeated BookVolume book_volume = 38;
+
+  // Response for request of entity: BookChapter
+  repeated BookChapter book_chapter = 39;
+
+  // Response for request of entity: Category
+  repeated Category category = 40;
+
+  // Response for request of entity: FestivalSeries
+  repeated FestivalSeries festival_series = 41;
+
+  // Response for request of entity: FestivalAward
+  repeated FestivalAward festival_award = 42;
+
+  // Response for request of entity: OperationTip
+  repeated OperationTip operation_tip = 43;
+
+  // Response for request of entity: Paopao
+  repeated Paopao paopao = 44;
+
+  // Response for request of entity: Circle
+  repeated Circle circle = 45;
+
+  // Response for request of entity: CircleFeed
+  repeated CircleFeed circle_feed = 46;
+
+  // Response for request of entity: BookAuthor
+  repeated BookAuthor book_author = 47;
+
+  // Response for request of entity: Event
+  repeated Event event = 48;
+
+  // Response for request of entity: Competition
+  repeated Competition competition = 49;
+
+  // Response for request of entity: Match
+  repeated Match match = 50;
+
+  // Response for request of entity: CircleFeedComment
+  repeated CircleFeedComment circle_feed_comment = 51;
+
+  // Response for request of entity: ComicBook
+  repeated ComicBook comic_book = 52;
+
+  // Response for request of entity: ComicBookChapter
+  repeated ComicBookChapter comic_book_chapter = 53;
+
+  // Response for request of entity: ContentProvider
+  repeated ContentProvider content_provider = 54;
+
+  // Response for request of entity: SubjectPage
+  repeated SubjectPage subject_page = 55;
+
+  // Response for request of entity: PaopaoActivity
+  repeated PaopaoActivity paopao_activity = 56;
+
+  // Response for request of entity: PaopaoCollection 
+  repeated PaopaoCollection paopao_collection = 57;
+
+  // Response for request of entity: IntellectualProperty
+  repeated IntellectualProperty intellectual_property = 58;
+
+  // Response for request of entity: HeadLine
+  repeated HeadLine head_line = 59;
+
+  // Response for request of entity: HotEvent
+  repeated HotEvent hot_event = 60;
+
+  // Response for request of entity: OpenRichMedia
+  repeated OpenRichMedia open_rich_media = 61;
+
+  // Response for request of entity: VideoFormat
+  repeated VideoFormat video_format = 62;
+
+  // Response for request of entity: MultiPublishEpisode
+  repeated MultiPublishEpisode multi_publish_episode = 63;
+
+  // Response for request of entity: MultiPublishAlbum
+  repeated MultiPublishAlbum multi_publish_album = 64;
+
+  // Response for request of entity: PeopleImage
+  repeated PeopleImage people_image = 65;
+
+  // Response for request of entity: LiveRoom
+  repeated LiveRoom live_room = 66;
+
+  // Response for request of entity: ImageAlbum
+  repeated ImageAlbum image_album = 67;
+  // Response for request of entity: HeadLineAlbum
+  repeated HeadLineAlbum head_line_album = 68;
+  // Response for request of entity: GameActivity
+  repeated GameActivity game_activity = 69;
+  // Response for request of entity: IqiyiUser
+  repeated IqiyiUser iqiyi_user = 70;
+  // Response for request of entity: LightNovel
+  repeated LightNovel light_novel = 71;
+  // Response for request of entity: LightNovelVolume
+  repeated LightNovelVolume light_novel_volume = 72;
+  // Response for request of entity: LightNovelChapter
+  repeated LightNovelChapter light_novel_chapter = 73;
+  // Response for request of entity: LiveAct
+  repeated LiveAct live_act = 74;
+  // Response for request of entity: PizzaVideo
+  repeated PizzaVideo pizza_video = 75;
+}
+
+// The definition of request for getting metadata.
+message GetMetadataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting metadata.
+message GetMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  // Response for request of metadata(album,episode,collection,css).
+  message MetadataInfo {
+    required int64 entity_id = 1;
+    required Metadata metadata = 2;
+  }
+  repeated MetadataInfo metadata_info = 2;
+}
+
+message GetImageMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ImageMetadataInfo {
+    required int64 entity_id = 1;
+    required ImageMetadata metadata = 2;
+  }
+  repeated ImageMetadataInfo image_metadata_info = 2;
+}
+
+message GetPeopleMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PeopleMetadataInfo {
+    required int64 entity_id = 1;
+    required PeopleMetadata metadata = 2;
+  }
+  repeated PeopleMetadataInfo people_metadata_info = 2;
+}
+
+message GetPpsUgcChannelMetadataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetPpsUgcChannelMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsUgcChannelMetadataInfo {
+    required int64 entity_id = 1;
+    required PpsUgcChannelMetadata metadata = 2;
+  }
+  repeated PpsUgcChannelMetadataInfo pps_ugc_channel_metadata_info = 2;
+}
+
+message GetOrganizationSharePartnerMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message OrganizationSharePartnerMetadataInfo {
+    required int64 entity_id = 1;
+    required OrganizationSharePartnerMetadata metadata = 2;
+  }
+  repeated OrganizationSharePartnerMetadataInfo organization_share_partner_metadata_info = 2;
+}
+
+message GetAdsMaterialMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message AdsMaterialMetadataInfo {
+    required int64 entity_id = 1;
+    required AdsMaterialMetadata metadata = 2;
+  }
+  repeated AdsMaterialMetadataInfo ads_material_metadata_info = 2;
+}
+
+message GetTvLiveCenterMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TvLiveCenterMetadataInfo {
+    required int64 entity_id = 1;
+    required TvLiveCenterMetadata metadata = 2;
+  }
+  repeated TvLiveCenterMetadataInfo tv_live_center_metadata_info = 2;
+}
+
+// The definition of request for getting format.
+message GetFormatRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // If not specifying format uuid, we will return all format.
+  optional string format_uuid = 3;
+}
+
+// The definition of response for getting format.
+message GetFormatResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message EntityFormat {
+    required int64 entity_id = 1;
+
+    repeated Format format = 2;
+  }
+  repeated EntityFormat entity_format = 2;
+}
+
+// The definition of request for getting image format.
+message GetImageFormatRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // If not specifying format name, we will return all format.
+  optional string image_format_uuid = 3;
+}
+
+// The definition of response for getting image format.
+message GetImageFormatResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message EntityFormat {
+    required int64 entity_id = 1;
+
+    repeated ImageFormat image_format = 2;
+  }
+  repeated EntityFormat entity_format = 2;
+}
+
+// The definition of request for getting children summary.
+message GetChildSummaryRequest {
+  required User user = 1;
+
+  // If not specify column_group, we'll return all child summary.
+  optional ColumnGroup column_group = 2;
+
+  repeated int64 entity_id = 3;
+}
+
+// The definition of response for getting child summary.
+message GetChildSummaryResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ChildMetaSummary {
+    required int64 entity_id = 1;
+    repeated MetaSummary album_summary = 2;
+    repeated MetaSummary episode_summary = 3;
+    repeated MetaSummary css_summary = 4;
+    repeated MetaSummary image_summary = 5;
+    repeated MetaSummary people_summary = 6;
+    repeated MetaSummary prevue_summary = 7;
+    repeated MetaSummary titbit_summary = 8;
+    repeated MetaSummary trailer_summary = 9;
+    repeated MetaSummary video_group_summary = 10;
+    repeated MetaSummary clip_summary = 11;
+    repeated MetaSummary other_summary = 12;
+    repeated MetaSummary category_summary = 13;
+  }
+  repeated ChildMetaSummary child_meta_summary = 2;
+}
+
+// The definition of request for getting tag.
+message GetTagRequest {
+  required User user = 1;
+
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting tags and getting tag.
+message GetTagResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TagSet {
+    required int64 entity_id = 1;
+
+    repeated string tag = 2;
+  }
+  repeated TagSet tag_set = 2;
+}
+
+// The definition of request for getting key_value pair.
+message GetKeyValuePairRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting key_value pair tag.
+message GetKeyValuePairResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message KeyValuePairInfo {
+    required int64 entity_id = 1;
+    repeated KeyValuePair key_value_pair = 2;
+  }
+  repeated KeyValuePairInfo key_value_pair_info = 2;
+}
+
+// The definition of request for getting viewlink.
+message GetViewLinkRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting viewlink.
+message GetViewLinkResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ViewLinkInfo {
+    required int64 entity_id = 1;
+    repeated ViewLink view_link = 2;
+  }
+  repeated ViewLinkInfo view_link_info = 2;
+}
+
+// The definition of request for getting Subtitle.
+message GetSubtitleRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting Subtitle.
+message GetSubtitleResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message SubtitleInfo {
+    required int64 entity_id = 1;
+    repeated Subtitle subtitle = 2;
+  }
+  repeated SubtitleInfo subtitle_info = 2;
+}
+
+// The definition of request for getting status.
+message GetDeletedRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting status.
+message GetDeletedResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message DeletedInfo {
+    required int64 entity_id = 1;
+    optional bool deleted = 2;
+  }
+  repeated DeletedInfo deleted_info = 2;
+}
+
+// The definition of request for getting puyu message.
+message GetPuyuRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // Only ColumnGroup in set
+  // [PUYU,PPS_PUYU] is allowed.
+  optional ColumnGroup column_group = 3 [default = PUYU];
+}
+
+// The definition of response for getting puyu message.
+message GetPuyuResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PuyuInfo {
+    required int64 entity_id = 1;
+    optional Puyu puyu = 2;
+    optional Puyu pps_puyu = 3;
+  }
+  repeated PuyuInfo puyu_info = 2;
+}
+
+// The definition of request for getting seo message
+message GetSeoRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting seo message.
+message GetSeoResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message SeoInfo {
+    required int64 entity_id = 1;
+    optional Seo seo = 2;
+  }
+  repeated SeoInfo seoInfo = 2;
+}
+
+// The definition of request for getting PlatformRegionControl message
+message GetPlatformRegionControlRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // Only ColumnGroup in set
+  // [IQIYI_PLATFORM_REGION_CONTROL,PPS_PLATFORM_REGION_CONTROL] is allowed.
+  // If not set, then return all.
+  optional ColumnGroup column_group = 3;
+}
+
+// The definition of response for getting PlatformRegionControl message.
+message GetPlatformRegionControlResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PlatformRegionControlInfo {
+    required int64 entity_id = 1;
+    optional PlatformRegionControl iqiyi_platform_region_control = 2;
+    optional PlatformRegionControl pps_platform_region_control = 3;
+  }
+  repeated PlatformRegionControlInfo platform_region_control_info = 2;
+}
+
+// The definition of request for getting base message
+message GetBaseRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // Only ColumnGroup in set
+  // [BASE,PPS_BASE] is allowed.
+  optional ColumnGroup column_group = 3 [default = BASE];
+}
+
+// The definition of response for getting base message.
+message GetBaseResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message BaseInfo {
+    required int64 entity_id = 1;
+    optional Base base = 2;
+    optional Base pps_base = 3;
+  }
+  repeated BaseInfo base_info = 2;
+}
+
+// The definition of request for getting boss message
+message GetBossRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting boss message.
+message GetBossResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message BossInfo {
+    required int64 entity_id = 1;
+    optional Boss boss = 2;
+  }
+  repeated BossInfo boss_info = 2;
+}
+
+// The definition of request for getting statistics message
+message GetStatsRequest {
+  required User user = 1;
+
+  // If not specify column_group, we'll return all stats.
+  optional ColumnGroup column_group = 2;
+
+  repeated int64 entity_id = 3;
+}
+
+// The definition of response for getting statistics message.
+message GetStatsResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message StatsInfo {
+    required int64 entity_id = 1;
+    optional Stats stats_pc = 2;
+    optional Stats stats_pad = 3;
+    optional Stats stats_phone = 4;
+    optional Stats stats_tv = 5;
+  }
+  repeated StatsInfo stats_info = 2;
+}
+
+// The definition of request for getting qitan message
+message GetQitanRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting qitan message.
+message GetQitanResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message QitanInfo {
+    required int64 entity_id = 1;
+    optional Qitan qitan = 2;
+  }
+  repeated QitanInfo qitan_info = 2;
+}
+
+// The definition of request for getting baidu message
+message GetBaiduRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting baidu message.
+message GetBaiduResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message BaiduInfo {
+    required int64 entity_id = 1;
+    optional Baidu baidu = 2;
+  }
+  repeated BaiduInfo baidu_info = 2;
+}
+
+// The definition of request for getting StartEndPoint message
+message GetStartEndPointRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting StartEndPoint message.
+message GetStartEndPointResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message StartEndPointInfo {
+    required int64 entity_id = 1;
+    optional StartEndPoint start_end_point = 2;
+  }
+  repeated StartEndPointInfo start_end_point_info = 2;
+}
+
+// The definition of request for getting CollectionType message
+message GetCollectionTypeRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting CollectionType message.
+message GetCollectionTypeResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message CollectionTypeInfo {
+    required int64 entity_id = 1;
+    optional CollectionCommon.CollectionType collection_type = 2;
+  }
+  repeated CollectionTypeInfo collection_type_info = 2;
+}
+
+// The definition of request for getting CollectionSubType message
+message GetCollectionSubTypeRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting CollectionSubType message.
+message GetCollectionSubTypeResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message CollectionSubTypeInfo {
+    required int64 entity_id = 1;
+    optional CollectionCommon.CollectionSubType collection_sub_type = 2;
+  }
+  repeated CollectionSubTypeInfo collection_sub_type_info = 2;
+}
+
+// The definition of request for getting AvailableStatus message
+message GetAvailableStatusRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // When add this new field,
+  // we make this field optional to adapt the old requests
+  // for seamless transition of the online interface.
+  // Only ColumnGroup in set
+  // [AVAILABLE_STATUS, IQIYI_AVAILABLE_STATUS, PPS_AVAILABLE_STATUS] is allowed.
+  optional ColumnGroup column_group = 3 [default = AVAILABLE_STATUS];
+}
+
+// The definition of response for getting AvailableStatus message.
+message GetAvailableStatusResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message AvailableStatusInfo {
+    required int64 entity_id = 1;
+    optional AvailableStatus available_status = 2;
+    optional AvailableStatus iqiyi_available_status = 3;
+    optional AvailableStatus pps_available_status = 4;
+  }
+  repeated AvailableStatusInfo available_status_info = 2;
+}
+
+// The definition of request for getting PagePublishStatus message
+message GetPagePublishStatusRequest {
+  required User user = 1;
+  // Only ColumnGroup in set
+  // [PAGE_PUBLISH_STATUS, IQIYI_PAGE_PUBLISH_STATUS, PPS_PAGE_PUBLISH_STATUS] is allowed.
+  required ColumnGroup column_group = 2;
+  repeated int64 entity_id = 3;
+}
+
+// The definition of response for getting PagePublishStatus message.
+message GetPagePublishStatusResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PagePublishStatusInfo {
+    required int64 entity_id = 1;
+    optional PagePublishStatus page_publish_status = 2;
+    optional PagePublishStatus iqiyi_page_publish_status = 3;
+    optional PagePublishStatus pps_page_publish_status = 4;
+  }
+  repeated PagePublishStatusInfo page_publish_status_info = 2;
+}
+
+// The definition of request for getting Live status message
+message GetLiveStatusRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting Live status message.
+message GetLiveStatusResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message LiveStatusInfo {
+    required int64 entity_id = 1;
+    optional LiveStatus live_status = 2;
+  }
+  repeated LiveStatusInfo live_status_info = 2;
+}
+
+// The definition of request for getting SharePartner message
+message GetSharePartnerRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting SharePartner message.
+message GetSharePartnerResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message SharePartnerInfo {
+    required int64 entity_id = 1;
+    optional SharePartner share_partner = 2;
+  }
+  repeated SharePartnerInfo share_partner_info = 2;
+}
+
+// The definition of request for getting DrmKey message
+message GetDrmKeyRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting DrmKey message.
+message GetDrmKeyResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message DrmKeyInfo {
+    required int64 entity_id = 1;
+    optional DrmKey drm_key = 2;
+  }
+  repeated DrmKeyInfo drm_key_info = 2;
+}
+
+// The definition of request for getting display play count, play count
+// comments count, share count, up down count message
+message GetCountRequest {
+  option (knowledge.pub.service_message_options).method_name = "getCount";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required User user = 1;
+
+  // Only ColumnGroup in set
+  // [DISPLAY_PLAY_COUNT,PLAY_COUNT,COMMENT_COUNT,UP_COUNT,DOWN_COUNT,SHARE_COUNT,SUBSCRIBE_COUNT] is allowed.
+  // If you do not set ColumnGroup, then it will return all count.
+  optional ColumnGroup column_group = 2;
+
+  repeated int64 entity_id = 3;
+  optional SiteType site = 4 [default = SITE_ZH];
+  repeated Language language = 5;
+}
+
+// The definition of response for getting display play count, play count
+// comments count, share count, up down count message.
+message GetCountResponse {
+  option (knowledge.pub.service_message_options).method_name = "getCount";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message CountInfo {
+    required int64 entity_id = 1;
+    optional int64 display_play_count = 2;
+    optional int64 play_count = 3;
+    optional int64 up_count = 4;
+    optional int64 down_count = 5;
+    optional int64 comments_count = 6;
+    optional int64 share_count = 7;
+    optional int64 subscribe_count = 8;
+  }
+  repeated CountInfo count_info = 2;
+}
+
+// The definition of request for getting douban id message
+message GetDoubanIdRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting douban id message.
+message GetDoubanIdResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message DoubanIdInfo {
+    required int64 entity_id = 1;
+    optional int64 douban_id = 2;
+  }
+  repeated DoubanIdInfo douban_id_info = 2;
+}
+
+// The definition of request for getting father album id message
+message GetFatherAlbumRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting father id message.
+message GetFatherAlbumResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FatherAlbumInfo {
+    required int64 entity_id = 1;
+    optional FatherInfo father_album = 2;
+  }
+  repeated FatherAlbumInfo father_album_info = 2;
+}
+
+// The definition of request for getting father ugc collection id message
+message GetFatherUgcCollectionRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting father id message.
+message GetFatherUgcCollectionResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FatherUgcCollectionInfo {
+    required int64 entity_id = 1;
+    repeated FatherInfo father_ugc_collection = 2;
+  }
+  repeated FatherUgcCollectionInfo father_ugc_collection_id_info = 2;
+}
+
+// The definition of request for getting father collection id message
+message GetFatherCollectionRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting father id message.
+message GetFatherCollectionResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FatherCollectionInfo {
+    required int64 entity_id = 1;
+    repeated FatherInfo father_collection = 2;
+  }
+  repeated FatherCollectionInfo father_collection_id_info = 2;
+}
+
+// The definition of request for getting father VideoGroup id message
+message GetFatherVideoGroupRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting father id message.
+message GetFatherVideoGroupResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FatherVideoGroupInfo {
+    required int64 entity_id = 1;
+    repeated FatherInfo father_video_group = 2;
+  }
+  repeated FatherVideoGroupInfo father_video_group_info = 2;
+}
+
+// The definition of request for getting father PpsCategory message
+message GetFatherPpsCategoryRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting father PpsCatgory message.
+message GetFatherPpsCategoryResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FatherPpsCategoryInfo {
+    required int64 entity_id = 1;
+    optional FatherInfo father_pps_category = 2;
+  }
+  repeated FatherPpsCategoryInfo father_pps_category_info = 2;
+}
+
+// The definition of request for getting official episode id.
+message GetOfficialEpisodeIdRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting official episode id.
+message GetOfficialEpisodeIdResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+  message OfficialEpisodeIdInfo {
+    required int64 entity_id = 1;
+    optional int64 official_episode_id = 2;
+  }
+  repeated OfficialEpisodeIdInfo official_episode_id_info = 2;
+}
+
+// The definition of request for getting last update time.
+message GetLastUpdateTimeRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting last update time.
+message GetLastUpdateTimeResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+  message LastUpdateTimeInfo {
+    required int64 entity_id = 1;
+    optional int64 last_update_time = 2;
+  }
+  repeated LastUpdateTimeInfo last_update_time_info = 2;
+}
+
+// The definition of request for getting multi_publish.
+message GetMultiPublishRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting multi_publish.
+message GetMultiPublishResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+  message MultiPublishInfo {
+    required int64 entity_id = 1;
+    repeated MultiPublish multi_publish = 2;
+  }
+  repeated MultiPublishInfo multi_publish_info = 2;
+}
+
+// The definition of request for getting ugc information.
+message GetUgcMetadataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting ugc information.
+message GetUgcMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+  message UgcMetadataInfo {
+    required int64 entity_id = 1;
+    optional UgcMetadata metadata = 2;
+  }
+  repeated UgcMetadataInfo ugc_info = 2;
+}
+
+// The definition of request for getting live information.
+message GetLiveMetadataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting live information.
+message GetLiveMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+  message LiveMetadataInfo {
+    required int64 entity_id = 1;
+    optional LiveMetadata metadata = 2;
+  }
+  repeated LiveMetadataInfo ugc_info = 2;
+}
+
+// The definition of request for getting Game info message
+message GetGameInfoRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting Game Info message.
+message GetGameInfoResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message GameInfoInfo {
+    required int64 entity_id = 1;
+    optional GameInfo game_info = 2;
+  }
+  repeated GameInfoInfo game_info_info = 2;
+}
+
+// The definition of request for getting Stream List.
+message GetStreamListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting stream List.
+message GetStreamListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message StreamListInfo {
+    required int64 entity_id = 1;
+
+    optional StreamList stream_list = 2;
+  }
+  repeated StreamListInfo Stream_list_info = 2;
+}
+
+// The definition of request for getting related people list.
+message GetRelatedPeopleListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting related people List.
+message GetRelatedPeopleListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message RelatedPeopleListInfo {
+    required int64 entity_id = 1;
+
+    optional RelatedPeopleList related_people_list = 2;
+  }
+  repeated RelatedPeopleListInfo related_people_list_info = 2;
+}
+
+// The definition of request for getting related episode list.
+message GetRelatedEpisodeListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting related episode List.
+message GetRelatedEpisodeListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message RelatedEpisodeListInfo {
+    required int64 entity_id = 1;
+
+    optional RelatedEpisodeList related_episode_list = 2;
+  }
+  repeated RelatedEpisodeListInfo related_episode_list_info = 2;
+}
+
+// The definition of request for getting representative work list.
+message GetRepresentativeWorkListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting representative work List.
+message GetRepresentativeWorkListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message RepresentativeWorkListInfo {
+    required int64 entity_id = 1;
+
+    optional RepresentativeWorkList representative_work_list = 2;
+  }
+  repeated RepresentativeWorkListInfo representative_work_list_info = 2;
+}
+
+// The definition of request for getting passport id.
+message GetPassportIdRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting passport id.
+message GetPassportIdResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PassportIdInfo {
+    required int64 entity_id = 1;
+
+    optional int64 passport_id = 2;
+  }
+  repeated PassportIdInfo passport_id_info = 2;
+}
+
+// The definition of request for getting liveChildSummary.
+message GetLiveChildSummaryRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting liveChildSummary.
+message GetLiveChildSummaryResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message LiveChildSummaryInfo {
+    required int64 entity_id = 1;
+
+    optional LiveMetaSummary live_meta_summay = 2;
+  }
+  repeated LiveChildSummaryInfo live_child_summary_info = 2;
+}
+
+// The definition of request for getting ResourceElementsChildSummary.
+message GetResourceElementsChildSummaryRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+
+  // Only ColumnGroup in set
+  // [RESOURCE_ELEMENTS_SUMMARY,SECONDARY_RESOURCE_ELEMENTS_SUMMARY] is allowed.
+  optional ColumnGroup column_group = 3 [default = RESOURCE_ELEMENTS_SUMMARY];
+}
+
+// The definition of response for getting ResourceElementsChildSummary.
+message GetResourceElementsChildSummaryResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ResourceElementsChildSummaryInfo {
+    required int64 entity_id = 1;
+
+    repeated ResourceMetaSummary elements_summary = 2;
+
+    repeated ResourceMetaSummary secondary_elements_summary = 3;
+  }
+  repeated ResourceElementsChildSummaryInfo resource_elements_child_summary_info = 2;
+}
+
+// The definition of request of getting IsResourceGroup.
+message GetIsResourceGroupRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting IsRosourceGroup.
+message GetIsResourceGroupResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message IsResourceGroupInfo {
+    required int64 entity_id = 1;
+    optional bool is_resource_group = 2;
+  }
+
+  repeated IsResourceGroupInfo is_resource_group_info = 2;
+}
+
+message GetResourceTypeRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetResourceTypeResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ResourceTypeInfo {
+    required int64 entity_id = 1;
+    optional ResourceContainer.ResourceType resource_type = 2;
+  }
+
+  repeated ResourceTypeInfo resource_type_info = 2;
+}
+
+// The definition of request for getting PpsUgcChannelIdList.
+message GetPpsUgcChannelIdListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsUgcChannelIdList.
+message GetPpsUgcChannelIdListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsUgcChannelIdListInfo {
+    required int64 entity_id = 1;
+
+    optional PpsUgcChannelIdList pps_ugc_channel_id_list = 2;
+  }
+  repeated PpsUgcChannelIdListInfo pps_ugc_channel_id_list_info = 2;
+}
+
+// The definition of request for getting PpsUgcChannelAuditStatus.
+message GetPpsUgcChannelAuditStatusRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsUgcChannelAuditStatus.
+message GetPpsUgcChannelAuditStatusResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsUgcChannelAuditStatusInfo {
+    required int64 entity_id = 1;
+
+    optional PpsUgcChannelAuditStatus pps_ugc_channel_audit_status = 2;
+  }
+  repeated PpsUgcChannelAuditStatusInfo pps_ugc_channel_audit_status_info = 2;
+}
+
+// The definition of request for getting PpsUgcChannelStats.
+message GetPpsUgcChannelStatsRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsUgcChannelStats.
+message GetPpsUgcChannelStatsResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsUgcChannelStatsInfo {
+    required int64 entity_id = 1;
+
+    optional PpsUgcChannelStats pps_ugc_channel_stats = 2;
+  }
+  repeated PpsUgcChannelStatsInfo pps_ugc_channel_stats_info = 2;
+}
+
+// The definition of request for getting aggregation.
+message GetAggregationRequest {
+  required User user = 1;
+
+  message RequestInfo {
+    required AggregationType aggregation_type = 1;
+
+    // Specify the key of the required aggregation.
+    optional string key = 2;
+
+    // Specify the entity types of the required aggregation.
+    // If client leaves this field an empty list, the service will return
+    // the complete aggregation result which contains all entity types.
+    repeated EntityIdType entity_id_type = 3;
+
+    // Specify the channels of the required aggregation.
+    // If client leaves channal_id field an empty list, the service will return
+    // the complete aggregation result which contains all the channals.
+    repeated int32 channel_id = 4;
+  }
+  repeated RequestInfo request_info = 2;
+}
+
+// The definition of response for getting aggregation.
+message GetAggregationResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message AggregationRecord {
+    required AggregationType aggregation_type = 1;
+    required string key = 2;
+    repeated AggregationEntitySummary aggregation_entity_summary = 3;
+  }
+  repeated AggregationRecord aggregation_record = 2;
+}
+
+message GetFilmTvMetadataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetFilmTvMetadataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FilmTvMetadataInfo {
+    required int64 entity_id = 1;
+    optional knowledge.pub.library.FilmTvMetadata metadata = 2;
+  }
+  repeated FilmTvMetadataInfo film_tv_metadata_info = 2;
+}
+
+message GetPlaySourceIdRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetPlaySourceIdResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PlaySourceInfo {
+    required int64 entity_id = 1;
+    optional string play_source_id = 2;
+  }
+  repeated PlaySourceInfo play_source_info = 2;
+}
+
+message GetPosterRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetPosterResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PosterInfo {
+    required int64 entity_id = 1;
+    optional RelatedImage poster = 2;
+  }
+  repeated PosterInfo poster_info = 2;
+}
+
+message GetOtherImageRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetOtherImageResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message RelatedImageInfo {
+    required int64 entity_id = 1;
+    repeated RelatedImage other_image = 2;
+  }
+  repeated RelatedImageInfo related_image_info = 2;
+}
+
+message GetQipuIdRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetQipuIdResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message QipuIdInfo {
+    required int64 entity_id = 1;
+    optional int64 qipu_id = 2;
+  }
+  repeated QipuIdInfo qipu_id_info = 2;
+}
+
+message GetUgcBaseRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetUgcBaseResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message UgcBaseInfo {
+    required int64 entity_id = 1;
+    optional UgcBase ugc_base = 2;
+  }
+  repeated UgcBaseInfo ugc_base_info = 2;
+}
+
+message GetVideoFileInfoRequest {
+  required User user = 1;
+
+  // Only ColumnGroup in set
+  // [RAW_VIDEO_FILE_INFO,FILM_VIDEO_FILE_INFO] is allowed.
+  // If you do not set ColumnGroup, then it will return all.
+  optional ColumnGroup column_group = 2;
+
+  repeated int64 entity_id = 3;
+}
+
+message GetVideoFileInfoResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message VideoFileInfoInfo {
+    required int64 entity_id = 1;
+    optional VideoFileInfo raw_video_file_info = 2;
+    optional VideoFileInfo film_video_file_info = 3;
+  }
+  repeated VideoFileInfoInfo video_file_info_info = 2;
+}
+
+message GetUgcCheckRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetUgcCheckResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message UgcCheckInfo {
+    required int64 entity_id = 1;
+    optional UgcCheck ugc_check = 2;
+  }
+  repeated UgcCheckInfo ugc_check_info = 2;
+}
+
+// The definition of request for getting TvChannel.
+message GetTvChannelRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting TvChannel.
+message GetTvChannelResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TvChannelInfo {
+    required int64 entity_id = 1;
+    repeated TvChannel tv_channel = 2;
+  }
+  repeated TvChannelInfo tv_channel_info = 2;
+}
+
+// The definition of request for getting ElectronicProgramGuide.
+message GetElectronicProgramGuideRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting ElectronicProgramGuide.
+message GetElectronicProgramGuideResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ElectronicProgramGuideInfo {
+    required int64 entity_id = 1;
+    repeated ElectronicProgramGuide electronic_program_guide = 2;
+  }
+  repeated ElectronicProgramGuideInfo electronic_program_guide_info = 2;
+}
+
+// The definition of request for getting TvLiveBase.
+message GetTvLiveBaseRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting TvLiveBase.
+message GetTvLiveBaseResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TvLiveBaseInfo {
+    required int64 entity_id = 1;
+    repeated TvLiveBase tv_live_base = 2;
+  }
+  repeated TvLiveBaseInfo tv_live_base_info = 2;
+}
+
+// The definition of request for getting TvLiveStreamList.
+message GetTvLiveStreamListRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting TvLiveStreamList.
+message GetTvLiveStreamListResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TvLiveStreamListInfo {
+    required int64 entity_id = 1;
+    repeated TvLiveStreamList tv_live_stream_list = 2;
+  }
+  repeated TvLiveStreamListInfo tv_live_stream_list_info = 2;
+}
+
+// The definition of request for getting UgcOperation message
+message GetUgcOperationRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting UgcOperation message.
+message GetUgcOperationResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message UgcOperationInfo {
+    required int64 entity_id = 1;
+    optional UgcOperation ugc_operation = 2;
+  }
+  repeated UgcOperationInfo ugc_operation_info = 2;
+}
+
+// The definition of request for getting PpsUrls message
+message GetPpsUrlsRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsUrls message.
+message GetPpsUrlsResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsUrlsInfo {
+    required int64 entity_id = 1;
+    optional PpsUrls pps_urls = 2;
+  }
+  repeated PpsUrlsInfo pps_urls_info = 2;
+}
+
+// The definition of request for getting ContentType message
+message GetContentTypeRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting ContentType message.
+message GetContentTypeResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message ContentTypeInfo {
+    required int64 entity_id = 1;
+    optional ContentType content_type = 2;
+  }
+  repeated ContentTypeInfo content_type_info = 2;
+}
+
+// The definition of request for getting PpsCategoryBase message
+message GetPpsCategoryBaseRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsCategoryBase message.
+message GetPpsCategoryBaseResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsCategoryBaseInfo {
+    required int64 entity_id = 1;
+    optional PpsCategoryBase pps_category_base = 2;
+  }
+  repeated PpsCategoryBaseInfo pps_category_base_info = 2;
+}
+
+// The definition of request for getting PpsCategoryPlatformData message
+message GetPpsCategoryPlatformDataRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsCategoryPlatformData message.
+message GetPpsCategoryPlatformDataResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsCategoryPlatformDataInfo {
+    required int64 entity_id = 1;
+    optional PpsCategoryPlatformData pps_category_platform_data = 2;
+  }
+  repeated PpsCategoryPlatformDataInfo pps_category_platform_data_info = 2;
+}
+
+// The definition of request for getting total_duration
+message GetTotalDurationRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting total_duration.
+message GetTotalDurationResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message TotalDurationInfo {
+    required int64 entity_id = 1;
+    optional int32 total_duration = 2;
+  }
+  repeated TotalDurationInfo total_duration_info = 2;
+}
+
+// The definition of request for getting UgcPlayListInfo message.
+message GetUgcPlayListInfoRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting UgcPlayListInfo message.
+message GetUgcPlayListInfoResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message UgcPlayListInfoInfo {
+    required int64 entity_id = 1;
+    optional UgcPlayListInfo ugc_play_list_info = 2;
+  }
+  repeated UgcPlayListInfoInfo ugc_play_list_info_info = 2;
+}
+
+// The definition of request for getting SearchInfo message.
+message GetSearchInfoRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting SearchInfo message.
+message GetSearchInfoResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message SearchInfoInfo {
+    required int64 entity_id = 1;
+    optional SearchInfo search_info = 2;
+  }
+  repeated SearchInfoInfo search_info_info = 2;
+}
+
+// The definition of request for getting Brand message.
+message GetBrandRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting Brand message.
+message GetBrandResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message BrandInfo {
+    required int64 entity_id = 1;
+    optional Brand which_brand_create = 2;
+  }
+  repeated BrandInfo brand_info = 2;
+}
+
+// The definition of request for getting FilmTvCheckStatus message.
+message GetFilmTvCheckStatusRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting FilmTvCheckStatus message.
+message GetFilmTvCheckStatusResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FilmTvCheckStatusInfo {
+    required int64 entity_id = 1;
+    optional FilmTvCheckStatus film_tv_check_status = 2;
+  }
+  repeated FilmTvCheckStatusInfo film_tv_check_status_info = 2;
+}
+
+// The definition of request for getting Fingerprint message.
+message GetFingerprintRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting Fingerprint message.
+message GetFingerprintResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message FingerprintInfo {
+    required int64 entity_id = 1;
+    optional Fingerprint fingerprint = 2;
+  }
+  repeated FingerprintInfo fingerprint_info = 2;
+}
+
+// The definition of request for getting AccessPlayControl message
+message GetAccessPlayControlRequest {
+    required User user = 1;
+    repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting AccessPlayControl message.
+message GetAccessPlayControlResponse {
+    required RpcStatusInfo rpc_status_info = 1;
+
+    message AccessPlayControlInfo {
+        required int64 entity_id = 1;
+        repeated AccessPlayControl access_play_control = 2;
+    }
+    repeated AccessPlayControlInfo access_play_control_info = 2;
+}
+
+// The definition of request for getting PpsCategoryRanking message
+message GetPpsCategoryRankingRequest {
+  required User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+// The definition of response for getting PpsCategoryRanking message.
+message GetPpsCategoryRankingResponse {
+  required RpcStatusInfo rpc_status_info = 1;
+
+  message PpsCategoryRankingInfo {
+    required int64 entity_id = 1;
+    repeated PpsCategoryRanking pps_category_ranking = 2;
+  }
+  repeated PpsCategoryRankingInfo pps_category_ranking_info = 2;
+}

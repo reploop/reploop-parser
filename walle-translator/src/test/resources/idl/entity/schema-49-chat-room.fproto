@@ -1,0 +1,13 @@
+/**
+ * ChatRoom
+ * 聊天室，空实体，分配占用id段
+ */
+message ChatRoom {
+  //option
+  option (entity_option).table = CHAT_ROOM_TABLE;
+  option (entity_option).entity_name = "chat_room";
+  option (table_option).hbase_table_name = "qipu_chat_room_table";
+  option (entity_option).entity_id_type = CHAT_ROOM;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+}

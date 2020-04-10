@@ -1,0 +1,29 @@
+/**
+ * @brief 图谱计算所使用的分类体系
+ * @details 仅支持两级分类。一级分类作为独立的实体来保存，二级分类保存在SubTaxonomy中。 
+ **/
+message Taxonomy {
+  //option
+  option (entity_option).table = TAXONOMY_TABLE;
+  option (entity_option).entity_name = "taxonomy";
+  option (table_option).hbase_table_name = "qipu_taxonomy_table";
+  option (entity_option).entity_id_type = TAXONOMY;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional TaxonomyMetadata metadata = 4 [(field_option).column_group = TAXONOMY_METADATA, (column_option).column_name = "tax_meta"]; 
+  enum Type {
+    UNKNOWN_TAXONOMY_TYPE = -1;
+    CHANNEL = 1;
+    CATEGORY = 2; 
+  };
+  optional Type type = 5 [(field_option).column_group = TAXONOMY_TYPE, (column_option).column_name = "tax_type"]; 
+
+  message SubTaxonomy{
+    required int64 sub_id = 1; 
+    optional TaxonomyMetadata metadata = 2; 
+  }
+  repeated SubTaxonomy sub_taxonomy = 6 [(field_option).column_group = SUB_TAXONOMY, (column_option).column_name = "sub_tax_", (column_option).column_suffix = "${sub_id}"]; 
+}

@@ -1,0 +1,36 @@
+// Define the tv live center with EPG.
+// The message is deprecated.
+// Recommended, to use the message of LiveChannel and LiveEpisode.
+// 该实体已被拆分成LiveEpisode和LiveChannel二个实体.
+// 直播组写时是同时写TvLiveCenter和LiveEpisode(LiveChannel).
+// 一些业务组(如:推荐)还在使用当前实体,而其它业务组(如:广告)则使用新的实体(LiveChannel,LiveEpisode).
+message TvLiveCenter {
+  //option
+  option (entity_option).table = TV_LIVE_CENTER_TABLE;
+  option (entity_option).entity_name = "tv_live_center";
+  option (table_option).hbase_table_name = "qipu_tv_live_center_table";
+  option (entity_option).entity_id_type = TV_LIVE_CENTER;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  optional TvLiveCenterMetadata metadata = 2 [(field_option).column_group = TV_LIVE_CENTER_METADATA, (column_option).column_name = "tvlive_meta"];
+
+  repeated TvChannel tv_channel = 3 [(field_option).column_group = TV_CHANNEL, (column_option).column_name = "tvchn_", (column_option).column_suffix = "${id}"];
+
+  repeated ElectronicProgramGuide electronic_program_guide = 4 [(field_option).column_group = ELECTRONIC_PROGRAM_GUIDE, (column_option).column_name = "epg_", (column_option).column_suffix = "${program_id}"];
+
+  repeated TvLiveBase tv_live_base = 5 [(field_option).column_group = TV_LIVE_BASE, (column_option).column_name = "tvl_base_", (column_option).column_suffix = "${tv_channel_id}"];
+
+  repeated TvLiveStreamList tv_live_stream_list = 6 [(field_option).column_group = TV_LIVE_STREAM_LIST, (column_option).column_name = "tvl_stmlst_", (column_option).column_suffix = "${tv_channel_id}"];
+
+  repeated string tag = 7 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 8 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional int64 last_update_time = 9 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional bool deleted = 10 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  optional Boss boss = 11 [(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+}

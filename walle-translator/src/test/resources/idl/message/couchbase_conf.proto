@@ -1,0 +1,13 @@
+// Author: Qi Qiao (qiaoqi@qiyi.com)
+//
+// A brief Definition of CouchBase configuration.
+
+package com.qiyi.couchbase;
+
+message CouchbaseConfiguration {
+  required string url = 1;
+
+  required string bucket_name = 2;
+
+  required string password = 3;
+}

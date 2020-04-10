@@ -1,0 +1,343 @@
+2017/10/10 (2.0.171010-SNAPSHOT)
+39BOOK实体表签约时间字段
+1. /knowledge/pub/properties.proto
+message BookBase {
+  //首次签约时间
+  optional int64 first_signing_time = 7;
+  //最后签约时间
+  optional int64 last_signing_time = 8;
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+39BOOK实体表签约时间字段
+1. /knowledge/pub/properties.proto
+message BookBase {
+  //首次签约时间
+  optional int64 first_signing_time = 7;
+  //最后签约时间
+  optional int64 last_signing_time = 8;
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/10 (2.0.171010-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+会员增加垂直会员类型枚举
+1. /knowledge/pub/common.proto
+/**
+ * @brief VIP类型
+ **/
+enum VipType {
+  //未知类型
+  UNKNOWN_VIP_TYPE = -1;
+  //VIP会员(黄金会员，观看影视剧内容)
+  VIP_TYPE_COMMON_VIP = 0;
+  //网球会员
+  VIP_TYPE_TENNIS_VIP = 1;
+  //高尔夫会员
+  VIP_TYPE_GOLF_VIP = 2;
+}
+2. /knowledge/pub/properties.proto
+message Boss {
+  //VIP垂直业务类型
+  repeated VipType vip_type = 17;
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+会员增加垂直会员类型枚举
+1. /knowledge/pub/common.proto
+/**
+ * @brief VIP类型
+ **/
+enum VipType {
+  //未知类型
+  UNKNOWN_VIP_TYPE = -1;
+  //VIP会员(黄金会员，观看影视剧内容)
+  VIP_TYPE_COMMON_VIP = 0;
+  //网球会员
+  VIP_TYPE_TENNIS_VIP = 1;
+  //高尔夫会员
+  VIP_TYPE_GOLF_VIP = 2;
+}
+2. /knowledge/pub/properties.proto
+message Boss {
+  //VIP垂直业务类型
+  repeated VipType vip_type = 17;
+}
+2017/10/08 (2.0.171008-SNAPSHOT)
+会员增加垂直会员类型枚举
+1. /knowledge/pub/common.proto
+/**
+ * @brief VIP类型
+ **/
+enum VipType {
+  //未知类型
+  UNKNOWN_VIP_TYPE = -1;
+  //VIP会员(黄金会员，观看影视剧内容)
+  VIP_TYPE_COMMON_VIP = 0;
+  //网球会员
+  VIP_TYPE_TENNIS_VIP = 1;
+  //高尔夫会员
+  VIP_TYPE_GOLF_VIP = 2;
+}
+2. /knowledge/pub/properties.proto
+message Boss {
+  //VIP垂直业务类型
+  repeated VipType vip_type = 17;
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+视频增加解绑专辑信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原绑定专辑信息
+ **/
+message LastFatherAlbumInfo {
+  //原绑定专辑ID
+  optional int64 album_id = 1;
+  //上一次修改的时间（解绑和换绑）
+  optional int64 last_update_time = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //原关联专辑信息
+  optional LastFatherAlbumInfo last_father_album = 230 [(field_option).column_group = LAST_FATHER_ALBUM, (column_option).column_name = "c_230_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+视频增加解绑专辑信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原绑定专辑信息
+ **/
+message LastFatherAlbumInfo {
+  //原绑定专辑ID
+  optional int64 album_id = 1;
+  //上一次修改的时间（解绑和换绑）
+  optional int64 last_update_time = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //原关联专辑信息
+  optional LastFatherAlbumInfo last_father_album = 230 [(field_option).column_group = LAST_FATHER_ALBUM, (column_option).column_name = "c_230_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+视频增加解绑专辑信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原绑定专辑信息
+ **/
+message LastFatherAlbumInfo {
+  //原绑定专辑ID
+  optional int64 album_id = 1;
+  //上一次修改的时间（解绑和换绑）
+  optional int64 last_update_time = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //原关联专辑信息
+  optional LastFatherAlbumInfo last_father_album = 230 [(field_option).column_group = LAST_FATHER_ALBUM, (column_option).column_name = "c_230_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+视频增加解绑专辑信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原绑定专辑信息
+ **/
+message LastFatherAlbumInfo {
+  //原绑定专辑ID
+  optional int64 album_id = 1;
+  //上一次修改的时间（解绑和换绑）
+  optional int64 last_update_time = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //原关联专辑信息
+  optional LastFatherAlbumInfo last_father_album = 230 [(field_option).column_group = LAST_FATHER_ALBUM, (column_option).column_name = "c_230_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+视频增加解绑专辑信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原绑定专辑信息
+ **/
+message LastFatherAlbumInfo {
+  //原绑定专辑ID
+  optional int64 album_id = 1;
+  //上一次修改的时间（解绑和换绑）
+  optional int64 last_update_time = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //原关联专辑信息
+  optional LastFatherAlbumInfo last_father_album = 230 [(field_option).column_group = LAST_FATHER_ALBUM, (column_option).column_name = "c_230_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/10/03 (2.0.171003-SNAPSHOT)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}

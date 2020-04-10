@@ -1,0 +1,528 @@
+2017/08/31 (2.0.170831)
+视频00实体增加 “短视频来源”奇谱字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 用户cut截取限制
+ **/
+message UgcCutLimit {
+  //cut截取限制状态
+  optional CutLimitStatus cut_limit_status = 1 [default = UNKNOWN_CUT_LIMIT_STATUS];
+  //允许截取的时间段
+  optional string cut_allow_time_range = 2;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief cut截取限制状态
+ **/
+enum CutLimitStatus {
+  //截取限制未知
+  UNKNOWN_CUT_LIMIT_STATUS = -1;
+  //允许全部截取
+  CUT_LIMIT_STATUS_ALL_ALLOWED = 0;
+  //允许部分截取
+  CUT_LIMIT_STATUS_PARTIALLY_ALLOWED = 1;
+  //禁止截取
+  CUT_LIMIT_STATUS_FORBIDDEN = 2;
+}
+enum CutFrom {
+  //用户拆条
+  CUT_FROM_USER = 2;
+}
+enum ColumnGroup {
+  UGC_CUT_LIMIT = 618;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //用户cut截取限制
+  optional UgcCutLimit ugc_cut_limit = 226 [(field_option).column_group = UGC_CUT_LIMIT, (column_option).column_name = "c_226_n"];
+}
+4. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //短视频拆条信息
+  optional CutInfo cut_info = 112 [(field_option).column_group = CUT_INFO, (column_option).column_name = "c_112_n"];
+}
+2017/08/30 (2.0.170830)
+23直播视频增加注册制参数字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 注册制信息
+ **/
+message RegistrationInfo {
+  //直播插件关联业务方ID
+  optional BizId biz_id = 1 [default = UNKNOWN_BIZ_ID];
+  //直播插件关联子业务方ID
+  optional BizSubId biz_sub_id = 2 [default = UNKNOWN_BIZ_SUB_ID];
+  //插件子业务方动态参数
+  //若biz_sub_id标识是游戏直播，动态参数为roomid；若biz_sub_id标识是PGC直播，动态参数为roomid；若
+  //biz_sub_id标识是PPC直播，动态参数为tvid
+  optional string biz_dynamic_params = 3;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 直播插件关联子业务方ID
+ **/
+enum BizSubId {
+  //关联子业务方ID未知
+  UNKNOWN_BIZ_SUB_ID = -1;
+  //游戏直播间
+  BIZ_SUB_ID_GAME_LIVE_ROOM = 2;
+  //PGC直播间
+  BIZ_SUB_ID_PGC_LIVE_ROOM = 5;
+  //PPC直播间
+  BIZ_SUB_ID_PPC_LIVE_ROOM = 6;
+}
+/**
+ * @brief 直播插件关联业务方ID
+ **/
+enum BizId {
+  //未知关联业务方
+  UNKNOWN_BIZ_ID = -1;
+  //直播插件
+  BIZ_ID_LIVE_PLUGIN = 9;
+}
+/**
+ * @brief 直播插件关联子业务方ID
+ **/
+enum BizSubId {
+  //关联子业务方ID未知
+  UNKNOWN_BIZ_SUB_ID = -1;
+  //游戏直播间
+  BIZ_SUB_ID_GAME_LIVE_ROOM = 2;
+  //PGC直播间
+  BIZ_SUB_ID_PGC_LIVE_ROOM = 5;
+  //PPC直播间
+  BIZ_SUB_ID_PPC_LIVE_ROOM = 6;
+}
+enum ColumnGroup {
+  REGISTRATION_INFO = 614;
+}
+3. /entity/schema-23-live-episode.fproto
+message LiveEpisode {
+  //注册制信息
+  optional RegistrationInfo registration_info = 43 [(field_option).column_group = REGISTRATION_INFO, (column_option).column_name = "c_43_n"];
+}
+2017/08/30 (2.0.170830)
+48CircleFeed增加明星素材ID
+1. /knowledge/pub/metadatas.proto
+message FeedMetadata {
+  //素材ID
+  optional int64 material_id = 16;
+}
+2017/08/29 (2.0.170829)
+UGC 09 & PPC/PGC 00增加通用标签Schema
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 单个标签结果
+ **/
+message CommonTag {
+  //唯一名
+  optional string uniq_name = 1;
+  //分类id
+  repeated int64 category_id = 2;
+  //可信度
+  //可信度范围0~1
+  optional double confidence = 3;
+}
+/**
+ * @brief 标签来源分类
+ **/
+message UnifiedClassification {
+  //重庆编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_chongqing_editor = 1;
+  //频道编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_channel_editor = 2;
+  //NLP机器自动标签
+  repeated UnifiedClassificationSourceInfo source_info_nlp_auto = 3;
+}
+/**
+ * @brief 标签来源分类信息
+ **/
+message UnifiedClassificationSourceInfo {
+  //单个标签结果
+  optional CommonTag common_tag = 1;
+  //更新时间
+  optional int64 update_time = 2;
+}
+/**
+ * @brief 标签来源分类信息
+ **/
+message UnifiedClassificationSourceInfo {
+  //单个标签结果
+  optional CommonTag common_tag = 1;
+  //更新时间
+  optional int64 update_time = 2;
+}
+/**
+ * @brief 标签来源分类
+ **/
+message UnifiedClassification {
+  //重庆编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_chongqing_editor = 1;
+  //频道编辑人工标签
+  repeated UnifiedClassificationSourceInfo source_info_channel_editor = 2;
+  //NLP机器自动标签
+  repeated UnifiedClassificationSourceInfo source_info_nlp_auto = 3;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //标签来源分类
+  optional UnifiedClassification unified_classification = 224 [(field_option).column_group = UNIFIED_CLASSIFICATION, (column_option).column_name = "c_224_n"];
+}
+3. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //标签来源分类
+  optional UnifiedClassification unified_classification = 109 [(field_option).column_group = UNIFIED_CLASSIFICATION, (column_option).column_name = "c_109_n"];
+  //True：禁止进入推荐；Flase：允许进入推荐
+  optional bool reject_recommend = 110 [default = false, (field_option).column_group = REJECT_RECOMMEND, (column_option).column_name = "c_110_n"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  UNIFIED_CLASSIFICATION = 603;
+}
+2017/08/29 (2.0.170829)
+23直播视频实体增加直播类型
+1. /knowledge/pub/common.proto
+/**
+ * @brief 直播子业务类型
+ **/
+enum LiveEpisodeSubType {
+  //直播子业务类型未知
+  UNKNOWN_LIVE_EPISODE_SUB_TYPE = -1;
+  //动漫直播
+  LIVE_EPISODE_SUB_TYPE_ANIMATION = 0;
+  //拍客直播
+  LIVE_EPISODE_SUB_TYPE_PAIKE = 1;
+}
+enum LiveEpisodeType {
+  //PGC普通直播
+  //除了奇秀，电商，游戏这几个特殊直播类型以外的PGC直播
+  LIVE_EPISODE_TYPE_PGC_GENERAL = 5;
+}
+2. /knowledge/pub/properties.proto
+message LiveEpisodeBase {
+  //直播子业务类型
+  optional LiveEpisodeSubType live_episode_sub_type = 38 [default = UNKNOWN_LIVE_EPISODE_SUB_TYPE];
+}
+2017/08/29 (2.0.170829)
+0870实体增加关联视频信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 关联影视剧
+ **/
+message HotEventRelatedVideo {
+  //影视剧ID
+  optional int64 video_id = 1;
+  //影视剧名称
+  optional string video_name = 2;
+}
+2. /entity/schema-0870-hot-event.fproto
+message HotEvent {
+  //关联影视剧
+  repeated HotEventRelatedVideo related_video = 17 [(field_option).column_group = RELATED_VIDEO, (column_option).column_name = "c_17_n_", (column_option).column_suffix = "${video_id}"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  RELATED_VIDEO = 617;
+}
+2017/08/25 (2.0.170825)
+焦点图，ip推荐Request加入User
+1.message SlideResysRequest {
+    option (knowledge.pub.service_message_options).method_name = "resys";
+    option (knowledge.pub.service_message_options).type = REQUEST;
+
+    optional string event_id = 1 [default = "unknown"]; // identification of request
+    required string area = 2;                           // for choosing policy
+    optional string uid = 3;                            // user cookie id
+    optional string ppuid = 4;                          // qiyi passport id
+    optional int32 debug = 5 [default = 0];             // debug level
+    optional string rltfmt = 6 [ default = "pb" ];      // result format, [ "pb" | "json_debug" ]
+    repeated ChannelRequest channel_request = 7;        // {channel id, request num} pairs
+    optional string platform = 8;                       // client platform
+    optional int32 source = 9 [ default = 0 ];          // data source: 0-all, 1-only14
+    optional int64 resource_id = 10;                    // resource id for different areas
+    optional string play_platform = 11;
+    optional string ip = 12;
+    optional string location_mode = 13;
+    optional knowledge.pub.User user = 999;
+}
+message SlideResysResponse {
+    option (knowledge.pub.service_message_options).method_name = "resys";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional string event_id = 1 [default = "-1"];
+    optional string code = 2 [default = "A00000"];
+    optional string version = 3 [default = "unknown"];
+    optional string area = 4 [default = "unknown"];
+    optional string bucket = 5 [default = "unknown"];
+    repeated SlideElements slides = 6;
+    optional string debug_info = 7;
+}
+2.
+message ResysRequest {
+    option (knowledge.pub.service_message_options).method_name = "iprecommend";
+    option (knowledge.pub.service_message_options).type = REQUEST;
+
+    optional string area = 1;
+    optional string event_id = 2;
+    optional string rltfmt = 3;
+    optional string uid = 4;
+    optional int32 cid = 5;
+    optional int64 rec_id = 6;
+    optional int32 rltnum = 7;
+    optional knowledge.pub.User user = 999;
+}
+
+message ResysResponse {
+    option (knowledge.pub.service_message_options).method_name = "iprecommend";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional string code = 1 [ default = "A00000" ];
+    optional string version = 2 [default = "unknown"];
+    optional Attribute attributes = 3;
+    optional RecResult rec_result = 4;
+    optional string debug_info = 5;
+}
+
+2017/08/24 (2.0.170824)
+00、01的控制base数据结构新增顶踩控制功能
+1. /knowledge/pub/properties.proto
+message OperationControlBase {
+  //是否展示顶踩
+  optional bool is_display_up_down_status = 9 [default = true];
+}
+2017/08/24 (2.0.170824)
+快速专题组件增加组件跳转类型字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 订阅组件跳转类型
+ **/
+enum SubscriptionRedirectType {
+  //跳转类型未知
+  UNKNOWN_SUBSCRIPTION_REDIRECT_TYPE = -1;
+  //不跳转
+  SUBSCRIPTION_REDIRECT_TYPE_NO_REDIRECT = 0;
+  //跳转爱奇艺号
+  SUBSCRIPTION_REDIRECT_TYPE_REDIRECT_TO_IQIYIHAO_PAGE = 1;
+}
+2. /knowledge/pub/metadatas.proto
+message SubjectPageComponent {
+  //订阅组件跳转类型
+  optional SubscriptionRedirectType subscription_redirect_type = 18 [default = UNKNOWN_SUBSCRIPTION_REDIRECT_TYPE];
+  //大V用户ID
+  optional int64 iqiyihao_id = 19;
+}
+2017/08/22 (2.0.170822)
+短视频拆条补充子段
+1. /knowledge/pub/properties.proto
+message CutInfo {
+  //关联原视频ID
+  optional int64 father_episode_id = 2;
+  //拆条视频在原视频的起止时间点
+  optional StartEndPoint start_end_point = 3;
+}
+2017/08/22 (2.0.170822)
+视频00实体增加 “短视频来源”奇谱字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 短视频拆条信息
+ **/
+message CutInfo {
+  //短视频拆条来源
+  optional CutFrom cut_from = 1;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 短视频拆条来源
+ **/
+enum CutFrom {
+  //未知
+  UNKNOWN_CUT_FROM = -1;
+  //编辑人工拆条
+  CUT_FROM_MANUAL = 0;
+  //机器自动拆条
+  CUT_FROM_AUTO = 1;
+}
+enum ColumnGroup {
+  CUT_INFO = 600;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //短视频拆条信息
+  optional CutInfo cut_info = 223 [(field_option).column_group = CUT_INFO, (column_option).column_name = "c_223_n"];
+}
+2017/08/17 (2.0.170817)
+在控制base数据结构中新增音频模式布尔字段
+1. /knowledge/pub/properties.proto
+message OperationControlBase {
+  //是否屏蔽音频模式
+  optional bool reject_audio_mode = 8 [default = false];
+}
+2017/08/16 (2.0.170816)
+0170漫画章节实体新增低质漫画版本相关字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 图片清晰度
+ **/
+enum ImageResolution {
+  //未知状态
+  UNKNOWN_IMAGE_RESOLUTION = -1;
+  //高
+  IMAGE_RESOLUTION_HIGH = 0;
+  //低
+  IMAGE_RESOLUTION_LOW = 1;
+}
+enum ColumnGroup {
+  TOTAL_ORIGINAL_IMAGE_SIZE_BYTE_50 = 606;
+  TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE_50 = 607;
+  TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE_50 = 608;
+  TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE_50 = 609;
+}
+2. /entity/schema-0170-comic-book-chapter.fproto
+message ComicBookChapter {
+  //低质原画图片总大小，单位为Byte
+  optional int64 total_original_image_size_byte_50 = 40 [(field_option).column_group = TOTAL_ORIGINAL_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_40_n"];
+  //低质定宽章节JPG图片大小
+  optional int64 total_fixed_width_image_size_byte_50 = 41 [(field_option).column_group = TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_41_n"];
+  //低质原图章节WEBP图片大小
+  optional int64 total_webp_original_image_size_byte_50 = 42 [(field_option).column_group = TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_42_n"];
+  //低质定宽章节WEBP图片大小
+  optional int64 total_webp_fixed_width_image_size_byte_50 = 43 [(field_option).column_group = TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_43_n"];
+}
+3. /knowledge/pub/formats.proto
+message ComicImageFormat {
+  //图片清晰度
+  optional ImageResolution image_resolution = 9 [default = UNKNOWN_IMAGE_RESOLUTION];
+}
+2017/08/15 (2.0.170815)
+Schema3.0 增加多发多站点表配置
+1. entity/schema-07-multi-publish-episode.fproto
+message MultiPublishEpisode {
+  option (site_option).zh_tw.site = SITE_ZH_TW;
+  option (site_option).zh_tw.table_name = "qipu_multi_publish_episode_tw_table";
+}
+
+2. entity/schema-08-multi-publish-album.fproto
+message MultiPublishAlbum {
+  option (site_option).zh_tw.site = SITE_ZH_TW;
+  option (site_option).zh_tw.table_name = "qipu_multi_publish_album_tw_table";
+}
+
+2017/08/15 (2.0.170815)
+01专辑实体新增episode_type
+1. /entity/schema-01-album.fproto
+message Album {
+  //Episode类型
+  optional EpisodeType episode_type = 222 [default = UNKNOWN_EPISODE_TYPE, (field_option).column_group = EPISODE_TYPE, (column_option).column_name = "c_222_n"];
+}
+2017/08/14 (2.0.170814)
+0770 IP实体增加电商书籍summary
+1. /entity/schema-0770-intellectual-property.fproto
+message IntellectualProperty {
+  //电商书籍
+  repeated IntellectualPropertySummary commodity_book_summary = 14 [(field_option).column_group = COMMODITY_BOOK_SUMMARY, (column_option).column_name = "c_14_n_", (column_option).column_suffix = "${entity_id}"];
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  COMMODITY_BOOK_SUMMARY = 605;
+}
+2017/08/09 (2.0.170809)
+事件51实体新增奖品信息字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 奖品信息
+ **/
+message PrizeInfo {
+  //奖品描述
+  optional string prize_description = 1;
+  //奖品个数
+  optional int64 prize_number = 2;
+  //奖品缩略图地址
+  optional string prize_thumbnail_url = 3;
+  //奖品图片地址
+  optional string prize_picture_url = 4;
+  //奖品开始时间
+  optional int64 prize_start_time = 5;
+  //奖品结束时间
+  optional int64 prize_end_time = 6;
+}
+2. /entity/schema-51-event.fproto
+message Event {
+  //奖品信息
+  optional PrizeInfo prize_info = 15 [(field_option).column_group = PRIZE_INFO, (column_option).column_name = "c_15_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  PRIZE_INFO = 602;
+}
+2017/08/08 (2.0.170808)
+明星美图实体（1270）增加创建用户uid
+1. /entity/schema-1270-people-image.fproto
+message PeopleImage {
+  //创建用户ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}
+2017/08/08 (2.0.170808)
+头条0570实体新增头条关联节目信息字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 头条关联节目信息
+ **/
+message FatherProgramInfo {
+  //头条关联视频id
+  optional int64 father_episode_id = 1;
+  //头条关联专辑id
+  optional int64 father_album_id = 2;
+  //头条播放顺序
+  optional int32 order = 3;
+  //唯一标识
+  optional string uuid = 4;
+}
+2. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //头条关联节目信息
+  repeated FatherProgramInfo father_program_info = 38 [(field_option).column_group = FATHER_PROGRAM_INFO, (column_option).column_name = "c_38_n_", (column_option).column_suffix = "${uuid}"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  FATHER_PROGRAM_INFO = 599;
+}
+2017/08/07 (2.0.170807)
+Feed换图我拍 新增换图视频枚举字段
+1. /knowledge/pub/common.proto
+enum FeedSelfVideoExtendedType {
+  //换图视频
+  FEED_SELF_VIDEO_EXTENDED_TYPE_CHANGE_IMAGE = 11;
+}
+2017/08/02 (2.0.170802)
+开放平台和头条业务新增upload_type的枚举值
+1. /knowledge/pub/common.proto
+enum OpenRichMediaUploadType {
+  //头条前端用户写入
+  OPEN_RICH_MEDIA_UPLOAD_TYPE_HEAD_LINE_UGC = 6;
+}
+enum HeadLineUploadType {
+  //头条前端用户写入
+  HEAD_LINE_UPLOAD_TYPE_HEAD_LINE_UGC = 6;
+}
+2017/08/02 (2.0.170802)
+0870热点事件实体增加热点类型枚举值
+1. /knowledge/pub/common.proto
+/**
+ * @brief 热点类型
+ **/
+enum HotCollectionType {
+  //默认
+  UNKNOWN_HOT_COLLECTION_TYPE = -1;
+  //明星类热点
+  HOT_COLLECTION_TYPE_PEOPLE = 0;
+  //视频类热点
+  HOT_COLLECTION_TYPE_VIDEO = 1;
+}
+enum ColumnGroup {
+  HOT_COLLECTION_TYPE = 601;
+}
+2. /entity/schema-0870-hot-event.fproto
+message HotEvent {
+  //热点类型
+  optional HotCollectionType hot_collection_type = 16 [(field_option).column_group = HOT_COLLECTION_TYPE, (column_option).column_name = "c_16_n"];
+}

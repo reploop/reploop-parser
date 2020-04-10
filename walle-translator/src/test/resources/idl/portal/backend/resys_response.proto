@@ -1,0 +1,58 @@
+option java_package = "com.qiyi.qiyu.portal.model.proto";
+option java_outer_classname="ResysResponseProtos";
+
+message Attribute {
+    optional string area = 1 [default = "unknown"];
+    optional string bucket = 2 [default = "unknown"];
+    optional string event_id = 3 [default = "-1"];
+}
+
+message UgcResysRequest {
+    optional int64 rec_id = 1 [ default = -1 ];
+    optional int64 current_episode_id = 2 [ default = -1 ];
+    optional int32 channel_id = 3 [ default = 0 ];
+    optional int32 rltnum = 4 [ default = 0 ];
+    optional int32 debug_level = 5 [ default = -1 ];
+    optional string area = 6 [ default = "zebra" ];
+    optional string event_id = 7;
+    optional string rltfmt = 8 [ default = "pb" ];
+    optional string entity_source = 9 [ default = "" ];
+}
+
+message ResysElement {
+    optional int64 rec_id = 1;
+    optional int64 uploader_id = 2;
+    optional double score = 3 [ default = 0.0 ];
+    optional string reason = 4;
+    optional int64 tv_id = 5 [ default = -1 ];
+}
+
+message UgcResysResponse {
+    optional string code = 1 [ default = "A00000" ];
+    optional string version = 2 [default = "unknown"];
+    optional Attribute attribute = 3;
+    repeated ResysElement resys_element = 4;
+    optional string debug_info = 5;
+}
+
+// Rec unit exposed to outside
+message RecItem {
+  optional int64 rec_id = 1 [ default = -1 ];
+  optional int64 uploader_id = 2 [ default = -1 ];
+  optional int64 tv_id = 3 [ default = -1 ];
+  optional string reason = 4 [ default = "" ];
+  optional uint32 source = 5;
+  optional int64 qipu_id = 6 [ default = -1 ];
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message RecResponse {
+  optional string status_code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  repeated RecItem rec_item = 3;
+}

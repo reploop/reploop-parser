@@ -1,0 +1,648 @@
+2017/10/30 (2.0.171030)
+会员增加垂直会员类型枚举
+1. /knowledge/pub/common.proto
+/**
+ * @brief VIP类型
+ **/
+enum VipType {
+  //未知类型
+  UNKNOWN_VIP_TYPE = -1;
+  //VIP会员(黄金会员，观看影视剧内容)
+  VIP_TYPE_COMMON_VIP = 0;
+  //网球会员
+  VIP_TYPE_TENNIS_VIP = 1;
+  //高尔夫会员
+  VIP_TYPE_GOLF_VIP = 2;
+}
+2. /knowledge/pub/properties.proto
+message Boss {
+  //VIP垂直业务类型
+  repeated VipType vip_type = 17;
+}
+2017/10/30 (2.0.171030)
+新增53爱奇艺用户实体，添加爱奇艺号相关字段
+1. /knowledge/pub/common.proto
+enum EntityIdType {
+  //爱奇艺用户
+  IQIYI_USER = 53;
+}
+/**
+ * @brief 爱奇艺号作者等级
+ **/
+enum IqiyihaoAuthorLevel {
+  //爱奇艺号作者等级未知
+  UNKNOWN_IQIYIHAO_AUTHOR_LEVEL = -1;
+  //小白
+  IQIYIHAO_AUTHOR_LEVEL_FRESH = 1;
+  //初级
+  IQIYIHAO_AUTHOR_LEVEL_PRIMARY = 2;
+  //中级
+  IQIYIHAO_AUTHOR_LEVEL_INTERMEDIATE = 3;
+  //高级
+  IQIYIHAO_AUTHOR_LEVEL_ADVANCED = 4;
+  //专家
+  IQIYIHAO_AUTHOR_LEVEL_PRIMARY_PROFESSIONAL = 5;
+  //元老级
+  IQIYIHAO_AUTHOR_LEVEL_JUNIOR_PROFESSIONAL = 6;
+  //骨灰级
+  IQIYIHAO_AUTHOR_LEVEL_SENIOR_PROFESSIONAL = 7;
+}
+enum Table {
+  //爱奇艺用户
+  IQIYI_USER_TABLE = 68;
+}
+enum ColumnGroup {
+  IQIYIHAO = 615;
+  IQIYIHAO_INFO = 616;
+}
+2. /knowledge/fusion/query/properties.proto
+message QipuEntity {
+  //爱奇艺用户
+  optional IqiyiUser iqiyi_user = 70;
+}
+3. /knowledge/pub/read_service.proto
+message GetEntityResponse {
+  // Response for request of entity: IqiyiUser
+  repeated IqiyiUser iqiyi_user = 70;
+}
+4. /knowledge/pub/write_rpc_service.thrift
+
+  /**
+   * The write interfaces of setting for IqiyiUser.
+   * Set all field of IqiyiUser,
+   * or throws an exception if this operation is not valid.
+   */
+  binary setIqiyiUser(1:binary set_iqiyi_user_request)
+      throws (1:InvalidWriteOperation e);
+5. /knowledge/pub/write_service.proto
+
+// Proto for setIqiyiUser method defined in write_rpc_service.thrift
+message SetIqiyiUserRequest {
+  //option
+  option (request_options).set_table = IQIYI_USER_TABLE;
+  option (request_options).set_interface = "setIqiyiUser";
+
+  required User user = 1;
+
+  optional IqiyiUser merge_iqiyi_user = 2;
+  optional IqiyiUser delete_iqiyi_user = 3;
+
+  // Whether to send message to activeMQ to notify audience. If you don't know
+  // what exactly it is, leave it as default.
+  optional bool should_notify_audience = 4 [default = true];
+
+  // If you're doing a batch update,
+  // please consider setting is_updated_in_batch_mode = true.
+  // So the audience will know this is a batch update,
+  // in which they may optimize the message processing.
+  optional bool is_updated_in_batch_mode = 5 [default = false];
+
+  // 消息优先级
+  optional Priority priority = 6;
+}
+6. /entity/schema-53-iqiyi-user.fproto
+/**
+ * @brief 爱奇艺用户
+ * @details 爱奇艺用户，包括爱奇艺号和普通用户。
+ **/
+message IqiyiUser {
+  //option
+  option (entity_option).table = IQIYI_USER_TABLE;
+  option (entity_option).entity_name = "iqiyi_user";
+  option (table_option).hbase_table_name = "qipu_iqiyi_user_table";
+  option (entity_option).entity_id_type = IQIYI_USER;
+  //实体id
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  //爱奇艺号
+  optional Iqiyihao iqiyihao = 4 [(field_option).column_group = IQIYIHAO, (column_option).column_name = "c_4_n"];
+}
+7. /knowledge/pub/properties.proto
+/**
+ * @brief 评分信息
+ **/
+message IqiyihaoScoreInfo {
+  //加权总分
+  optional float weighted_total_score = 1;
+  //内容质量得分
+  optional int32 content_quality_score = 2;
+  //用户原创程度得分
+  optional int32 content_originality_score = 3;
+  //用户活跃度得分
+  optional int32 author_activation_score = 4;
+  //用户领域专业度得分
+  optional int32 author_specialization_score = 5;
+  //用户互动得分
+  optional int32 author_interaction_score = 6;
+  //爱奇艺号得分更新时间，单位秒
+  optional int64 score_update_time = 7;
+}
+/**
+ * @brief 爱奇艺号
+ **/
+message Iqiyihao {
+  //用户ID
+  optional int64 uid = 1;
+  //评分信息
+  optional IqiyihaoScoreInfo score_info = 2;
+  //作者等级
+  optional IqiyihaoAuthorLevel author_level = 3 [default = UNKNOWN_IQIYIHAO_AUTHOR_LEVEL];
+}
+/**
+ * @brief 爱奇艺号信息
+ **/
+message IqiyihaoInfo {
+  //爱奇艺用户ID
+  optional int64 iqiyi_user_id = 1;
+  //当前加权总分
+  optional float current_weighted_total_score = 2;
+  //当前爱奇艺号作者等级
+  optional IqiyihaoAuthorLevel current_author_level = 3 [default = UNKNOWN_IQIYIHAO_AUTHOR_LEVEL];
+}
+/**
+ * @brief 爱奇艺号
+ **/
+message Iqiyihao {
+  //用户ID
+  optional int64 uid = 1;
+  //评分信息
+  optional IqiyihaoScoreInfo score_info = 2;
+  //作者等级
+  optional IqiyihaoAuthorLevel author_level = 3 [default = UNKNOWN_IQIYIHAO_AUTHOR_LEVEL];
+}
+/**
+ * @brief 评分信息
+ **/
+message IqiyihaoScoreInfo {
+  //加权总分
+  optional float weighted_total_score = 1;
+  //内容质量得分
+  optional int32 content_quality_score = 2;
+  //用户原创程度得分
+  optional int32 content_originality_score = 3;
+  //用户活跃度得分
+  optional int32 author_activation_score = 4;
+  //用户领域专业度得分
+  optional int32 author_specialization_score = 5;
+  //用户互动得分
+  optional int32 author_interaction_score = 6;
+  //爱奇艺号得分更新时间，单位秒
+  optional int64 score_update_time = 7;
+}
+8. /entity/schema-01-album.fproto
+message Album {
+  //爱奇艺号信息
+  optional IqiyihaoInfo iqiyihao_info = 223 [(field_option).column_group = IQIYIHAO_INFO, (column_option).column_name = "c_223_n"];
+}
+9. /entity/schema-00-episode.fproto
+message Episode {
+  //爱奇艺号信息
+  optional IqiyihaoInfo iqiyihao_info = 225 [(field_option).column_group = IQIYIHAO_INFO, (column_option).column_name = "c_225_n"];
+}
+10. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //爱奇艺号信息
+  optional IqiyihaoInfo iqiyihao_info = 111 [(field_option).column_group = IQIYIHAO_INFO, (column_option).column_name = "c_111_n"];
+}
+2017/10/27 (2.0.171027)
+23直播视频增加游戏直播的枚举值
+1. /knowledge/pub/common.proto
+enum LiveEpisodeSubType {
+  //游戏直播
+  LIVE_EPISODE_SUB_TYPE_GAME = 4;
+}
+2017/10/27 (2.0.171027)
+20游戏实体新增付费相关字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 游戏鉴权类型
+ **/
+message GameAuthenticationType {
+  //是否需要付费
+  optional bool is_charge = 1 [default = false];
+  //是否支持买断
+  optional bool is_buyout = 2 [default = false];
+  //是否打折
+  optional bool is_discount = 3 [default = false];
+  //是否存在会员价
+  optional bool is_vip_price = 4 [default = false];
+  //是否支持租用
+  optional bool is_rent = 5 [default = false];
+}
+2. /entity/schema-20-app-group.fproto
+message AppGroup {
+  //游戏鉴权类型
+  optional GameAuthenticationType authentication_type = 31 [(field_option).column_group = AUTHENTICATION_TYPE, (column_option).column_name = "c_31_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  AUTHENTICATION_TYPE = 621;
+}
+2017/10/27 (2.0.171027)
+20游戏实体新增付费相关字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 游戏价格信息
+ **/
+message GamePriceInfo {
+  //原价(单位为分)
+  optional int64 original_price = 1;
+  //折扣价（单位为分）
+  optional int64 discount_price = 2;
+  //会员价（单位为分）
+  optional int64 vip_price = 3;
+  //代币租用价
+  optional int64 qibei_price = 4;
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  OPERATION_GROUP = 610;
+  GAME_PRICE_INFO = 611;
+  SCREENSHOT_RATIO = 612;
+}
+/**
+ * @brief 截图比例
+ **/
+enum ScreenshotRatio {
+  //宽高比未知
+  UNKNOWN_SCREENSHOT_RATIO = -1;
+  //宽高比为3:5
+  SCREENSHOT_RATIO_WIDTH_3_HEIGHT_5 = 0;
+  //宽高比为5:3
+  SCREENSHOT_RATIO_WIDTH_5_HEIGHT_3 = 1;
+}
+3. /entity/schema-20-app-group.fproto
+message AppGroup {
+  //运营组
+  optional int32 operation_group = 28 [(field_option).column_group = OPERATION_GROUP, (column_option).column_name = "c_28_n"];
+  //游戏价格信息
+  optional GamePriceInfo game_price_info = 29 [(field_option).column_group = GAME_PRICE_INFO, (column_option).column_name = "c_29_n"];
+  //截图比例
+  optional ScreenshotRatio screenshot_ratio = 30 [default = UNKNOWN_SCREENSHOT_RATIO, (field_option).column_group = SCREENSHOT_RATIO, (column_option).column_name = "c_30_n"];
+}
+2017/10/27 (2.0.171027)
+20app实体增加新的游戏类型枚举值
+1. /knowledge/pub/properties.proto
+enum GameType {
+    //休闲游戏
+    CHESS_GAME = 8;
+}
+2017/10/25 (2.0.171025)
+ab测试配置文件定义移到knowledge-sdk-java中
+1./knowledge/pub/proctor.proto
+message MapFieldEntry {
+  required string key = 1;
+  optional Payload value = 2;
+}
+
+message Payload{
+  optional double doubleValue = 1;
+  repeated double doubleArray = 2;
+  optional int64 longValue = 3;
+  repeated int64 longArray = 4;
+  optional string stringValue = 5;
+  repeated string stringArray = 6;
+  repeated MapFieldEntry map = 7;
+}
+
+
+message TestBucket {
+  required string name = 1 [default = ""];
+  optional int32 value = 2;
+  optional string description = 3;
+  optional Payload payload = 4;
+}
+
+message Range{
+  required int32 bucketValue = 1;
+  required double length = 2;
+}
+
+message Allocation{
+  optional string rule = 1;
+  repeated Range ranges = 2;
+}
+
+enum TestType{
+  RANDOM = 1;
+  QIPU_ID = 2;
+  UID = 3;
+}
+
+message TestDefinition{
+  repeated MapFieldEntry constants = 1;
+  optional string name = 2;
+  optional string version = 3;
+  optional string salt = 4;
+  optional string rule = 5;
+  repeated TestBucket buckets = 6;
+  repeated Allocation allocations = 7;
+  optional TestType testType = 8 [default = RANDOM];
+  optional string description = 9;
+}
+
+2017/10/19 (2.0.171019)
+sequential_service.proto添加Bridge用options
+1./knowledge/sequential/sequential_service.proto
+message ReadSequentialRequest {
+  option (knowledge.pub.service_message_options).method_name = "read";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  optional string entity_id = 2;
+  optional int64 timestamp = 3;
+}
+
+// The definition of response for read entity.
+message ReadSequentialResponse {
+  option (knowledge.pub.service_message_options).method_name = "read";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+
+  // Response for request of entity
+  optional string entity_id = 2;
+  optional bytes entity_bytes = 3;
+}
+
+// Proto for return type of methods defined in seq_rpc_service.thrift
+message WriteSequentialResponse {
+  option (knowledge.pub.service_message_options).method_name = "write";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+}
+
+// Proto for setEntity method defined in seq_rpc_service.thrift
+message WriteSequentialRequest {
+  option (knowledge.pub.service_message_options).method_name = "write";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+
+  optional string entity_id = 2;
+
+  optional bytes entity = 3;
+
+  repeated int32 field_num = 4;
+
+  optional int64 timestamp = 5;
+}
+
+// Proto for return type of methods finish
+message WriteSequentialFinishResponse {
+  option (knowledge.pub.service_message_options).method_name = "finish";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+}
+
+message WriteSequentialFinishRequest {
+  option (knowledge.pub.service_message_options).method_name = "finish";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  optional string id_type = 2;
+  repeated int32 field_num = 3;
+  optional int64 timestamp = 4;
+}
+
+// Proto for return type of methods defined in seq_rpc_service.thrift
+message GetSequentialTimestampResponse {
+  option (knowledge.pub.service_message_options).method_name = "getTimestamp";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional int64 timestamp = 2;
+}
+
+// Proto for setEntity method defined in seq_rpc_service.thrift
+message GetSequentialTimestampRequest {
+  option (knowledge.pub.service_message_options).method_name = "getTimestamp";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  optional string id_type = 2;
+  repeated int32 field_num = 3;
+}
+
+2017/10/17 (2.0.171017)
+47圈子增加圈子创建来源
+1. /knowledge/pub/common.proto
+/**
+ * @brief 圈子创建类型
+ **/
+enum CircleCreatorType {
+  //未知类型
+  UNKNOWN_CIRCLE_CREATOR_TYPE = -1;
+  //泡泡官方创建
+  CIRCLE_CREATOR_TYPE_OFFICIAL = 0;
+  //用户自创建
+  CIRCLE_CREATOR_TYPE_USER = 1;
+}
+enum ColumnGroup {
+  CREATOR_TYPE = 635;
+}
+2. /entity/schema-47-circle.fproto
+message Circle {
+  //创建类型
+  optional CircleCreatorType creator_type = 40 [default = UNKNOWN_CIRCLE_CREATOR_TYPE, (field_option).column_group = CREATOR_TYPE, (column_option).column_name = "c_40_n"];
+}
+2017/10/16 (2.0.171016)
+百度高展数据tag入奇谱
+1. /knowledge/pub/metadatas.proto
+message BaiduSummary {
+  //百度抓取的站外url
+  optional string source_url = 4;
+  //百度上传者昵称
+  optional string uploader_name = 5;
+  //百度人工一级分类
+  optional string audit_category = 6;
+  //百度人工二级分类
+  optional string audit_sub_category = 7;
+  //百度人工标签（多个用“;”分割）
+  optional string audit_tag = 8;
+  //百度人工评分(评分范围0-4分)
+  optional int32 audit_score = 9;
+  //百度抓取/百家号填写的自定义标签，多个用";"分隔
+  optional string crawl_and_baijiahao_tag = 10;
+  //百度抓取/百家号填写的一级分类，多个用";"分隔
+  optional string crawl_and_baijiahao_category = 11;
+  //百度抓取/百家号填写的二级分类，多个用";"分隔
+  optional string crawl_and_baijiahao_sub_category = 12;
+  //百家号的打分(评分范围0-10分)
+  optional int32 baijiahao_score = 13;
+  //视频在内容方首次生成日期（若视频为抓取，即为在第三方站点的生成日期），格式为年月日，如：20171012
+  optional int64 source_create_date = 14;
+  //标题
+  optional string title = 15;
+  //副标题
+  optional string sub_title = 16;
+  //别名（多个用";"分隔）
+  optional string alias = 17;
+  //英文标题
+  optional string english_title = 18;
+  //描述
+  optional string description = 19;
+  //视频类型（正片，片花，预告片等等）
+  optional string content_type = 20;
+  //语言版本
+  optional string language = 21;
+  //主持人（多个用";"分隔）
+  optional string host = 22;
+  //嘉宾（多个用";"分隔）
+  optional string guest = 23;
+  //地区（多个用";"分隔）
+  optional string location = 24;
+  //导演（多个用";"分隔）
+  optional string director = 25;
+  //主演（多个用";"分隔）
+  optional string main_actor = 26;
+  //演员（多个用";"分隔）
+  optional string actor = 27;
+  //当前第几集
+  optional int32 current_episode_order = 28;
+  //上映时间，时间戳（单位毫秒）
+  optional int64 release_date = 29;
+  //总播放量
+  optional int64 play_count = 30;
+  //总支持数（顶）
+  optional int64 up_count = 31;
+  //总反对数（踩）
+  optional int64 down_count = 32;
+  //总分享数
+  optional int64 share_count = 33;
+  //总评论数
+  optional int64 comment_count = 34;
+  //封面图URL list，视频封面图片（大于320*240）,样例：{"imageSet":["http://www.baidu.com/a.jpg", "http://www.baidu.com/b.jpg"]}
+  optional string cover_image_url = 35;
+  //是否独家资源
+  optional bool is_exclusive = 36 [default = false];
+  //是否原创
+  optional bool is_original = 37 [default = false];
+  //百度的高展数据
+  repeated KeyValuePair key_value_pair = 38;
+  //视频最后一次更新时间（任何修改都需要更新此字段），时间戳（单位毫秒）
+  optional int64 last_update_time = 39;
+}
+2017/10/16 (2.0.171016)
+百度高展数据tag入奇谱
+1. /knowledge/pub/common.proto
+/**
+ * @brief 百度的人工时效性判断
+ **/
+enum BaiduAuditEffectiveTime {
+  //未知类型
+  UNKNOWN_BAIDU_AUDIT_EFFECTIVE_TIME = -1;
+  //24小时
+  BAIDU_AUDIT_EFFECTIVE_TIME_24_HOURS = 0;
+  //3天
+  BAIDU_AUDIT_EFFECTIVE_TIME_3_DAYS = 1;
+  //7天
+  BAIDU_AUDIT_EFFECTIVE_TIME_7_DAYS = 2;
+  //长期
+  BAIDU_AUDIT_EFFECTIVE_TIME_LONG_TERM = 3;
+}
+2. /knowledge/pub/metadatas.proto
+message BaiduSummary {
+  //百度的人工时效性判断
+  optional BaiduAuditEffectiveTime baidu_audit_effective_time = 40 [default = UNKNOWN_BAIDU_AUDIT_EFFECTIVE_TIME];
+}
+2017/10/16 (2.0.171016)
+feed实体增加我拍拓展类型枚举值
+1. /knowledge/pub/common.proto
+enum FeedSelfVideoExtendedType {
+  //音乐
+  FEED_SELF_VIDEO_EXTENDED_TYPE_MUSIC = 13;
+}
+2017/10/12 (2.0.171012)
+头条开放平台新增枚举字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 内容来源类型
+ **/
+enum OpenRichMediaSourceType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE = -1;
+  //PPC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_PPC = 1;
+  //PGC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_PGC = 2;
+  //UGC
+  OPEN_RICH_MEDIA_SOURCE_TYPE_UGC = 3;
+}
+/**
+ * @brief 上传者类型
+ **/
+enum OpenRichMediaUploaderType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE = -1;
+  //普通用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COMMON_USER = 1;
+  //版权方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COPYRIGHT_OWNER = 2;
+  //认证用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_AUTHENTICATED_USER = 3;
+  //机器人
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_ROBOT = 4;
+  //其他合作方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_OTHER_PARTNER = 5;
+  //搬运工
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_HAULER = 6;
+}
+/**
+ * @brief 上传者类型
+ **/
+enum OpenRichMediaUploaderType {
+  //未知类型
+  UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE = -1;
+  //普通用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COMMON_USER = 1;
+  //版权方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_COPYRIGHT_OWNER = 2;
+  //认证用户
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_AUTHENTICATED_USER = 3;
+  //机器人
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_ROBOT = 4;
+  //其他合作方
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_OTHER_PARTNER = 5;
+  //搬运工
+  OPEN_RICH_MEDIA_UPLOADER_TYPE_HAULER = 6;
+}
+enum ColumnGroup {
+  OPEN_RICH_MEDIA_SOURCE_TYPE = 631;
+  OPEN_RICH_MEDIA_UPLOADER_TYPE = 632;
+  PANO_TYPE = 633;
+}
+2. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //内容来源类型
+  optional OpenRichMediaSourceType open_rich_media_source_type = 44 [default = UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_SOURCE_TYPE, (column_option).column_name = "c_44_n"];
+  //上传者类型
+  optional OpenRichMediaUploaderType open_rich_media_uploader_type = 45 [default = UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_UPLOADER_TYPE, (column_option).column_name = "c_45_n"];
+  //全景视频类型
+  optional PanoFormat.VideoType pano_type = 46 [default = COMMON_VIDEO, (field_option).column_group = PANO_TYPE, (column_option).column_name = "c_46_n"];
+  //百度相关信息
+  optional BaiduSummary baidu_summary = 47 [(field_option).column_group = BAIDU_SUMMARY, (column_option).column_name = "c_47_n"];
+}
+3. /entity/schema-1070-open-rich-media.fproto
+message OpenRichMedia {
+  //内容来源类型
+  optional OpenRichMediaSourceType open_rich_media_source_type = 22 [default = UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_SOURCE_TYPE, (column_option).column_name = "c_22_n"];
+  //上传者类型
+  optional OpenRichMediaUploaderType open_rich_media_uploader_type = 23 [default = UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_UPLOADER_TYPE, (column_option).column_name = "c_23_n"];
+  //全景视频类型
+  optional PanoFormat.VideoType pano_type = 24 [default = COMMON_VIDEO, (field_option).column_group = PANO_TYPE, (column_option).column_name = "c_24_n"];
+  //百度相关信息
+  optional BaiduSummary baidu_summary = 25 [(field_option).column_group = BAIDU_SUMMARY, (column_option).column_name = "c_25_n"];
+}
+2017/10/10 (2.0.171010)
+51事件实体增加用户id
+1. /entity/schema-51-event.fproto
+message Event {
+  //话题创建者ID
+  optional int64 creator_id = 16 [(field_option).column_group = CREATOR_ID, (column_option).column_name = "c_16_n"];
+}

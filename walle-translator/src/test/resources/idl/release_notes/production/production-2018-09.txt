@@ -1,0 +1,173 @@
+2018/09/17 (2.0.180917)
+0870热点事件来源类型新加百科枚举值
+1. /knowledge/pub/metadatas.proto
+enum SourceType {
+    //百科
+    SOURCE_TYPE_BAIKE = 5;
+}
+2018/09/17 (2.0.180917)
+09用户视频运营信息字段新加水印显示位置枚举值
+1. /knowledge/pub/properties.proto
+message UgcBase {
+  //水印位置
+  optional Base.LogoPosition logo_position = 18 [default = R_UP];
+}
+2018/09/14 (2.0.180914)
+00&09表format码流增加码流水印类型字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 码流水印类型
+ **/
+enum StreamLogoType {
+  //未知类型
+  UNKNOWN_STREAM_LOGO_TYPE = -1;
+  //无水印
+  STREAM_LOGO_TYPE_NONE = 0;
+  //主站常规水印
+  STREAM_LOGO_TYPE_IQIYI_COMMON = 1;
+  //iqiyi自制节目水印
+  STREAM_LOGO_TYPE_IQIYI_PRODUCED = 2;
+  //iqiyi独播节目水印
+  STREAM_LOGO_TYPE_IQIYI_EXCLUSIVE = 3;
+  //iqiyi短视频水印
+  STREAM_LOGO_TYPE_IQIYI_SHORT_VIDEO = 4;
+  //iqiyi台湾站水印
+  STREAM_LOGO_TYPE_IQIYI_TW = 5;
+  //吃鲸水印
+  STREAM_LOGO_TYPE_CHIJING = 6;
+  //纳豆水印
+  STREAM_LOGO_TYPE_NADOU = 7;
+  //新英体育水印
+  STREAM_LOGO_TYPE_IQIYI_SPORT = 8;
+  //台湾站自制水印
+  STREAM_LOGO_TYPE_TW_PRODUCED = 9;
+  //台湾站独播水印
+  STREAM_LOGO_TYPE_TW_EXCLUSIVE = 10;
+}
+2. /knowledge/pub/formats.proto
+message Format {
+  //码流水印类型
+  optional StreamLogoType stream_logo_type = 50 [default = STREAM_LOGO_TYPE_NONE];
+}
+2018/09/14 (2.0.180914)
+09UGC视频原始站点信息新增背景音乐字段
+1. /knowledge/pub/properties.proto
+message OriginalSiteInfo {
+  //原始站点背景音乐id（外网抓取）
+  optional string background_music_id = 18;
+  //原始站点背景音乐标题
+  optional string background_music_title = 19;
+}
+2018/09/13 (2.0.180913)
+00视频&09用户视频新增是否用于热点推荐字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 关联信息流
+ **/
+message FeedInfo {
+  //是否用于热点推荐
+  optional bool is_recommend_for_hot = 1 [default = false];
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //feed信息（由信息流业务方写入）
+  optional FeedInfo feed_info = 261 [(field_option).column_group = FEED_INFO, (column_option).column_name = "c_261_n"];
+}
+3. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //feed信息（由信息流业务方写入）
+  optional FeedInfo feed_info = 141 [(field_option).column_group = FEED_INFO, (column_option).column_name = "c_141_n"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  FEED_INFO = 739;
+}
+2018/09/10 (2.0.180910)
+39book新增云腾书库字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 云腾书库信息
+ **/
+message YuntengLibraryInfo {
+  //云腾信息id
+  optional int64 id = 1;
+  //云腾信息内容类别
+  optional YuntengContentType content_type = 2 [default = UNKNOWN_YUNTENG_CONTENT_TYPE];
+  //云腾信息内容（网址）
+  optional string content_url = 3;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 云腾信息类别
+ **/
+enum YuntengContentType {
+  //未知类型
+  UNKNOWN_YUNTENG_CONTENT_TYPE = -1;
+  //故事大纲
+  YUNTENG_CONTENT_TYPE_BOOK_OUTLINE = 0;
+  //人物小传
+  YUNTENG_CONTENT_TYPE_BIOGRAPHY = 1;
+}
+enum ColumnGroup {
+  YUNTENG_LIBRARY_INFO = 736;
+}
+3. /entity/schema-39-book.fproto
+message Book {
+  //云腾书库信息
+  repeated YuntengLibraryInfo yunteng_library_info = 97 [(field_option).column_group = YUNTENG_LIBRARY_INFO, (column_option).column_name = "c_97_n_", (column_option).column_suffix = "${id}"];
+}
+2018/09/10 (2.0.180910)
+53爱奇艺用户新增MCN信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 爱奇艺号MCN信息
+ **/
+message McnInfo {
+  //MCNID
+  optional int64 mcn_id = 1;
+  //创建时间（单位：毫秒）
+  optional int64 create_time = 2;
+}
+2. /entity/schema-53-iqiyi-user.fproto
+message IqiyiUser {
+  //爱奇艺号MCN信息
+  optional McnInfo mcn_info = 20 [(field_option).column_group = MCN_INFO, (column_option).column_name = "c_20_n"];
+}
+3. /knowledge/pub/common.proto
+enum ColumnGroup {
+  MCN_INFO = 737;
+}
+2018/09/06 (2.0.180906)
+02播单新加前端播单展示样式枚举值
+1. /knowledge/pub/common.proto
+/**
+ * @brief 播单模板类型
+ **/
+enum PlaylistTemplateType {
+  //未知类型
+  UNKNOWN_PLAYLIST_TEMPLATE_TYPE = -1;
+  //短视频样式
+  PLAYLIST_TEMPLATE_TYPE_SHORT_VIDEO = 0;
+  //长视频列表样式
+  PLAYLIST_TEMPLATE_TYPE_VIDEO_LIST = 1;
+  //长视频大图样式
+  PLAYLIST_TEMPLATE_TYPE_VIDEO_LARGE_IMAGE = 2;
+  //长视频电影样式
+  PLAYLIST_TEMPLATE_TYPE_MOVIE = 3;
+}
+enum ColumnGroup {
+  COLLECTION_BASE = 738;
+}
+2. /knowledge/pub/properties.proto
+/**
+ * @brief 播单运营信息
+ **/
+message CollectionBase {
+  //播单模板类型
+  optional PlaylistTemplateType playlist_template_type = 1 [default = UNKNOWN_PLAYLIST_TEMPLATE_TYPE];
+}
+3. /entity/schema-02-collection.fproto
+message Collection {
+  //播单运营信息
+  optional CollectionBase collection_base = 56 [(field_option).column_group = COLLECTION_BASE, (column_option).column_name = "c_56_n"];
+}

@@ -1,0 +1,255 @@
+// Author: Jiannan Tan (tanjiannan@qiyi.com)
+//
+// Proto definitions for rpc requests and responses for accessing the avatar service.
+
+import "knowledge/graph/pub/properties.proto";
+import "knowledge/pub/common.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/qipu_options.proto";
+import "knowledge/pub/mixer/properties.proto";
+
+package knowledge.pub;
+
+// 获取相关视频的概要.
+// include_list 指定了需要返回的属性 exclude_list指定不需要返回的属性
+// 如果用户恶意把两者同时使用，则以include_list为准，exclude_list 无效
+message GetVideoSummaryRequest {
+  option (knowledge.pub.service_message_options).method_name = "getVideoSummary";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  
+  optional knowledge.pub.User user = 1;
+  repeated int64 entity_id = 2;
+  repeated string include = 3;
+  repeated string exclude = 4;
+  optional SiteType iqiyi_site = 10 [default = SITE_ZH];
+  repeated Language iqiyi_language = 11;
+}
+
+message GetVideoSummaryResponse {
+  option (knowledge.pub.service_message_options).method_name = "getVideoSummary";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+  
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  repeated knowledge.graph.pub.AlbumVideoData video_data =3;
+}
+
+message GetVideoBriefRequest {
+  option (knowledge.pub.service_message_options).method_name = "getVideoBrief,getAlbumBrief";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  repeated int64 entity_id = 2;
+  repeated string include = 3;
+  repeated string exclude = 4;
+  optional SiteType iqiyi_site = 5 [default = SITE_ZH];
+}
+
+message GetVideoBriefResponse {
+  option (knowledge.pub.service_message_options).method_name = "getVideoBrief,getAlbumBrief";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  repeated knowledge.pub.mixer.VideoBrief video_data =3;
+}
+
+// 需要获取的VideoBrief列表类型
+enum VideoBriefListType {
+  EPISODE_LIST = 1;
+  PREVUE_LIST = 2;
+  MUSIC_LIST = 3;
+  ALBUM_LIST = 4;
+}
+
+message GetVideoBriefListRequest {
+  option (knowledge.pub.service_message_options).method_name = "getVideoBriefList";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  // 专辑id
+  optional int64 album_id = 2;
+  // 字段过滤，返回的字段
+  repeated string include = 3;
+  // 字段过滤，不返回的字段
+  repeated string exclude = 4;
+  // 需要获取的VideoBrief列表类型
+  repeated VideoBriefListType type = 5;
+  // 是否对于非VIP的剧集，不返回预告片
+  optional bool filter_free_prevue = 6 [default = false];
+  // 窗口信息
+  repeated VideoBriefListRequestPageInfo page_info = 7;
+  // 返回结果排序规则
+  optional SortOrder order = 8 [default = ASC];
+  // 多站点支持，主站还是台湾站
+  optional SiteType iqiyi_site = 9 [default = SITE_ZH];
+  // 播单id
+  optional int64 collection_id = 10;
+}
+
+message GetVideoBriefListResponse {
+  option (knowledge.pub.service_message_options).method_name = "getVideoBriefList";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  // 影视原声列表
+  repeated knowledge.pub.mixer.VideoBrief music = 3;
+  // 所属episode列表
+  repeated knowledge.pub.mixer.VideoBrief episode = 4;
+  // 预告片列表
+  repeated knowledge.pub.mixer.VideoBrief prevue = 5;
+  // 返回页数，个数信息
+  repeated VideoBriefListResponsePageInfo page_info = 6;
+  // 专辑id
+  optional int64 album_id = 7;
+  // 专辑下的视频更新到的最后一集集数
+  optional int32 episode_latest_order = 8;
+  // 专辑下的视频总集数
+  optional int32 episode_total_count = 9;
+  // 第一个是vip播放的视频的order
+  optional int32 first_vip_episode_order = 10;
+  // 播单所属album列表
+  repeated knowledge.pub.mixer.VideoBrief album = 11;
+}
+
+message FilmTvAndCelebrityData {
+  optional FilmTvLibrary film_tv_lib = 1;
+  repeated knowledge.graph.pub.CelebrityData celebrity_data = 2;
+}
+
+message GetFilmTvAndCelebrityRequest {
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvAndCelebrity";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  repeated int64 entity_id = 2;
+}
+
+message GetFilmTvAndCelebrityResponse {
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvAndCelebrity";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  repeated FilmTvAndCelebrityData film_tv_data =3;
+}
+
+message CelebrityAndFilmTvData {
+  optional knowledge.graph.pub.CelebrityData celebrity_data = 1;
+  repeated knowledge.graph.pub.AlbumVideoData video_data =2;
+}
+
+message GetRelatedFilmTvOfCelebrityRequest {
+  option (knowledge.pub.service_message_options).method_name = "getRelatedFilmTvOfCelebrity";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  repeated int64 entity_id = 2;
+  optional int32 from = 3 [default = 0];
+  optional int32 size = 4 [default = 5];
+  optional knowledge.graph.pub.RankingPolicy ranking_policy = 5 [default = RELEVANCE];
+}
+
+message GetRelatedFilmTvOfCelebrityResponse {
+  option (knowledge.pub.service_message_options).method_name = "getRelatedFilmTvOfCelebrity";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  repeated CelebrityAndFilmTvData celebrity_film_tv_data = 3;
+}
+
+message GetUgcSummaryOfFilmTvRequest {
+  option (knowledge.pub.service_message_options).method_name = "getUgcSummaryOfFilmTv";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  optional knowledge.pub.User user = 1;
+  optional int64 entity_id = 2;
+}
+
+message GetUgcSummaryOfFilmTvResponse {
+  option (knowledge.pub.service_message_options).method_name = "getUgcSummaryOfFilmTv";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+  optional knowledge.pub.RpcStatus rpc_status = 1;
+  optional string error_message = 2;
+  repeated knowledge.pub.MetaSummary ugc_summary = 3;
+}
+
+message VideoBriefListRequestPageInfo{
+    // 对应的VideoBrief列表类型
+    optional VideoBriefListType type = 1;
+    // 请求第几页，从1开始
+    optional int32 page = 2 [default = 1];
+    // 请求窗口大小
+    optional int32 size = 3;
+}
+
+message VideoBriefListResponsePageInfo{
+    // 对应的VideoBrief列表类型
+    optional VideoBriefListType type = 1;
+    // 总返回窗口，最小1页
+    optional int32 total_page = 2 [default = 1];
+    // 总返回个数
+    optional int32 total_size = 3;
+}
+
+message GetSourceVideoBriefListRequest{
+  option (knowledge.pub.service_message_options).method_name = "getSourceVideoBriefList";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  optional knowledge.pub.User user = 1;
+  optional int64 album_id = 2;
+  // 以下为根据日期范围查询视频用
+  repeated knowledge.pub.Date filter_date = 3;
+  optional SortOrder order = 4 [default = ASC];
+  // 以下为查询往期视频用
+  optional int64 from_episode_id = 5;
+  optional knowledge.pub.Date from_date = 6;
+  optional int32 size = 7;
+  optional SiteType iqiyi_site = 8 [default = SITE_ZH];
+  repeated string include = 9;
+  repeated string exclude = 10;
+}
+
+message GetSourceVideoBriefListResponse{
+    option (knowledge.pub.service_message_options).method_name = "getSourceVideoBriefList";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+    optional knowledge.pub.RpcStatus rpc_status = 1;
+    optional string error_message = 2;
+    repeated knowledge.pub.mixer.VideoBrief episode = 3;
+}
+
+enum MixOrder {
+  ORDER_BY_ORDER = 1;
+  ORDER_BY_PAGE_PUBLISH_TIME = 2;
+  ORDER_BY_PUBLISH_TIME = 3;
+}
+
+enum MixType {
+  ALBUM_ONLY = 1;
+  VIDEO_ONLY = 2;
+  VIDEO_FIRST = 3;
+}
+
+message GetMixVideoBriefListRequest{
+  option (knowledge.pub.service_message_options).method_name = "getMixVideoBriefList,getMixVideoBriefListByAlbum";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  optional knowledge.pub.User user = 1;
+  optional int64 entity_id = 2;
+  repeated knowledge.pub.ContentType content_type = 3;
+  repeated MixOrder mix_order = 4;
+  optional MixType mix_type = 5 [default = VIDEO_ONLY];
+  optional int32 size = 6 [default = 20];
+  repeated string include = 7;
+  repeated string exclude = 8;
+  optional SiteType iqiyi_site = 9 [default = SITE_ZH];
+}
+
+message GetMixVideoBriefListResponse{
+    option (knowledge.pub.service_message_options).method_name = "getMixVideoBriefList,getMixVideoBriefListByAlbum";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+    optional knowledge.pub.RpcStatus rpc_status = 1;
+    optional string error_message = 2;
+    repeated knowledge.pub.mixer.VideoBrief episode = 3;
+}

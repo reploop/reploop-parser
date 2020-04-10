@@ -1,0 +1,447 @@
+// Author: Yin Zeng (zengyin@qiyi.com)
+//
+// Proto definitions for rpc requests and responses for accessing the Graph.
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/metadatas.proto";
+import "knowledge/pub/knowledge.proto";
+import "knowledge/graph/pub/properties.proto";
+import "search/common/proto/library.proto";
+import "search/serving/mixer.proto";
+import "knowledge/pub/qipu_options.proto";
+
+package knowledge.graph.pub;
+
+message GetCanonicalIdsRequest {
+  required knowledge.pub.User user = 1;
+
+  // The name and aliases of the celebrity.
+  required string name = 2;
+  repeated string alias = 3;
+}
+
+message GetCanonicalIdsResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+
+  // Canonical entity ids for the name.
+  repeated int64 entity_id = 2;
+}
+
+// Next tag id is 8;
+message GetRelatedEntitiesRequest {
+  option (knowledge.pub.service_message_options).method_name = "getRelatedEntities";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  required knowledge.pub.User user = 1;
+  repeated int64 entity_id = 2;
+
+  // The offset of start point begins with 0.
+  optional int32 offset = 6 [default = 0];
+  optional int32 limit = 3 [default = 5];
+
+  optional knowledge.graph.pub.RankingPolicy ranking_policy = 4 [default = PUBLISH_TIME];
+
+  // If you specify some channel ids here,
+  // we will only return the works of those channels.
+  // If not, we will return works of all channels.
+  repeated int32 channel_id = 5;
+
+  optional bool include_film_tv_lib = 7 [default = false];
+
+  // only qiyi produced flag, if it is true, filter out the non-qiyi produced album
+  optional bool only_qiyi_produced = 8 [default = false];
+
+  repeated string include_role = 9;
+  repeated string exclude_role = 10;
+
+  // If true, will return film_tv_category for related entities
+  optional bool include_category_info = 11 [default = false];
+
+  // If true, will return film_tv_category for related entities
+  optional bool include_tag_info = 12 [default = false];
+
+  // If true, will keep film_tv_lib instead of album/episode if they have the same title
+  optional bool film_tv_lib_first = 13 [default = false];
+
+  // If true, will remove Albums from response
+  optional bool exclude_album = 14 [default = false];
+
+  // If true, will include qipu entity info in response
+  optional bool include_entity = 15 [default = false];
+
+  // Columns of entities that user want to include in response
+  repeated knowledge.pub.ColumnGroup entity_columns = 16;
+
+  // NOTE: this function is moved to GetFilmTvLibPlaySource
+  optional bool include_film_tv_play_source = 17 [deprecated = true];
+
+  // NOTE: this function is moved to GetFilmTvLibPlaySource
+  optional bool filter_pps_play_source = 18 [deprecated = true];
+
+  // If true, will return all child videos of albums
+  optional bool include_child_data = 19 [default = false];
+
+  // 调用方的平台类型和IP地址，用于播控过滤
+  optional knowledge.graph.pub.CallerInfo caller_info = 20;
+
+  // If true, will only return videos with role info
+  optional bool filter_no_roles = 21 [default = false];
+
+  optional knowledge.pub.SiteType iqiyi_site = 22 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 23;
+}
+
+message GetRelatedEntitiesResponse {
+  option (knowledge.pub.service_message_options).method_name = "getRelatedEntities";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated AlbumVideoData related_entity = 2;
+  optional int64 total_count = 3;
+}
+
+message GetRelatedCelebritiesRequest {
+
+  option (knowledge.pub.service_message_options).method_name = "getRelatedCelebrities";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required knowledge.pub.User user = 1;
+
+  // Used to identify one person id.
+  repeated int64 entity_id = 2;
+
+  optional int32 offset = 4 [default = 0];
+  optional int32 limit = 3 [default = 6];
+
+  // 是否在返回结果中包含被查询明星自己的信息
+  optional bool include_self_info = 5 [default = false];
+
+  optional knowledge.pub.SiteType iqiyi_site = 6 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 7;
+}
+
+message GetRelatedCelebritiesResponse {
+
+  option (knowledge.pub.service_message_options).method_name = "getRelatedCelebrities";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional CelebrityDataList related_celebrity = 2;
+  optional int32 total_count = 3;
+
+  // 被查询的明星本人的信息
+  optional CelebrityDataList self_info = 4;
+}
+
+message GetRelatedCelebritiesOfVideoRequest {
+
+  option (knowledge.pub.service_message_options).method_name = "getRelatedCelebritiesOfVideo";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required knowledge.pub.User user = 1;
+  required int64 video_id = 2;
+
+  // The required celebrity number for this video.
+  optional int32 limit = 3 [default = 3];
+
+  optional int32 offset = 4 [default = 0];
+
+  // Indicates whether limit needs to be filled up.
+  optional bool should_be_filled_up = 5 [default = false];
+
+  optional knowledge.pub.SiteType iqiyi_site = 6 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 7;
+}
+
+message GetRelatedCelebritiesOfVideoResponse {
+  // Just give out some cases, assuming if there are total 5 celebrities have
+  // direct relation with this video which means that the video 'contains' these people:
+  // Firstly, total_count will always be 5.
+  // Secondly, when (offset + limit) <= 5, then direct_count equals limit, the size of
+  // related_celebrity is equal to limit;
+  // Thirdly, two conditions are met:
+  // 1. the corresponding request's should_be_filled_up is false.
+  //    when offset< 5 < offset + limit,then direct_count equals (5-offset), the size of
+  //    related_celebrity is equal to direct_count; when 5<= offset, then direct_count and
+  //    related_celebrity both are equal to 0.
+  // 2. the corresponding request's should_be_filled_up is true.
+  //    when offset< 5 < offset + limit,then direct_count equals (5-offset), the size of
+  //    related_celebrity is meant to be equal to limit; when 5<= offset, then direct_count equals 0 and
+  //    related_celebrity is meant to be equal to limit. That is to say, we'll fetch indirect celebrities
+  //    as such as we can to make sure limit is filled up.
+
+  option (knowledge.pub.service_message_options).method_name = "getRelatedCelebritiesOfVideo";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional CelebrityDataList related_celebrity = 2;
+
+  // Indicates the total number of celebrities who have direct relation with this video.
+  optional int32 total_count = 3;
+
+  // Indicates the number of returned celebrities who have direct relation with this video.
+  optional int32 direct_count = 4;
+}
+
+message GetTopicListRequest {
+  required knowledge.pub.User user = 1;
+  required knowledge.pub.Date start_date = 2;
+
+  // A constraint meaning the returned topic's contained videos count must be great or equal than this number.
+  required int32 minimum_video_count = 3 [default = 4];
+  optional int32 offset = 4 [default = 0];
+  optional int32 limit = 5 [default = 10];
+  optional RankingPolicy rank_policy = 6 [default = PLAY_COUNT];
+}
+
+message GetTopicListResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+
+  repeated MicroClusterData topic = 2;
+}
+
+message GetRelatedVideosRequest {
+  required knowledge.pub.User user = 1;
+  required int64 entity_id = 2;
+  optional string property_key = 3;
+
+  optional int32 offset = 4 [default = 0];
+  optional int32 limit = 5 [default = 5];
+
+  optional knowledge.pub.SiteType iqiyi_site = 6 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 7;
+
+  option (knowledge.pub.service_message_options).method_name = "getRelatedVideos,getRelatedFilm";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+}
+
+message GetRelatedVideosResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated AlbumVideoData related_video = 2;
+  optional int64 total_count = 3;
+  optional string test_bucket_value = 4;
+  option (knowledge.pub.service_message_options).method_name = "getRelatedVideos,getRelatedFilm";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}
+
+message GetUploadedVideosRequest {
+  option (knowledge.pub.service_message_options).method_name = "getUploadedVideos";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+
+  required knowledge.pub.User user = 1;
+  required int64 uploader_id = 2;
+  repeated int32 channel_id = 3;
+  optional bool exclude_album = 4 [deprecated=true];
+
+  optional int32 offset = 5;
+  // limit=0 means limit=infinity.
+  optional int32 limit = 6 [default = 10];
+
+  // table we are interested in.
+  // targetTableCount=0 means all(Episode, UgcEpisode and Album).
+  repeated knowledge.pub.Table target_table = 7;
+
+  optional knowledge.graph.pub.RankingPolicy ranking_policy = 8 [default = PUBLISH_TIME];
+
+  optional bool include_editor_republish = 9 [default = false];
+
+  optional knowledge.pub.SiteType iqiyi_site = 10 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 11;
+}
+
+message GetUploadedVideosResponse {
+  option (knowledge.pub.service_message_options).method_name = "getUploadedVideos";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated AlbumVideoData uploaded_video = 2;
+  optional int64 total_count = 3;
+}
+
+message GetTopicSearchIndexRequest {
+  required knowledge.pub.User user = 1;
+  required string topic_name = 2;
+}
+
+message GetTopicSearchIndexResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional int64 search_index = 2 [default = 0];
+}
+
+message GetRelatedTopicNewsRequest {
+  required knowledge.pub.User user = 1;
+  required string topic_name = 2;
+  optional int32 limit = 3 [default = 10];
+}
+
+message GetRelatedTopicNewsResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated Topic.NewsSummary news = 2;
+}
+
+message GetRecommendTopicVideoRequest {
+  required knowledge.pub.User user = 1;
+  optional int32 limit = 2 [default = 5];
+  repeated string exclude_word = 3;
+}
+
+message GetRecommendTopicVideoResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated RecommendVideo video = 2;
+}
+
+message GetRecommendTopicRequest {
+  required knowledge.pub.User user = 1;
+  optional int32 limit = 2 [default = 10];
+  repeated string exclude_word = 3;
+}
+
+message GetRecommendTopicResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated string topic_name = 2;
+}
+
+message GetFilmTvLibPlaySourceRequest {
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibPlaySource";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  required knowledge.pub.User user = 1;
+  optional int64 entity_id = 2;
+  optional bool include_pps = 3 [default = false, deprecated = true];
+  optional bool first_only = 4 [default = false];
+  optional string site = 5;
+  // Default platform is 3: PPS client
+  // Reason: this param is added after PPS client using
+  optional int32 platform = 6 [default = 3];
+  repeated int64 film_tv_lib_id = 7;
+  optional string site_ban = 8;
+  optional knowledge.pub.SiteType iqiyi_site = 9 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 10;
+}
+
+message GetFilmTvLibPlaySourceResponse {
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibPlaySource";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional int32 total_video_count = 2;
+  optional search.indexing.pub.PlaySource play_source = 3;
+  optional search.indexing.pub.PlaySourceList play_source_list = 4;
+}
+
+message GetEntityIdRequest {
+  required knowledge.pub.User user = 1;
+  optional int64 uid = 2;
+  optional knowledge.pub.SiteType iqiyi_site = 3 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 4;
+
+  option (knowledge.pub.service_message_options).method_name = "getEntityId";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+}
+
+message GetEntityIdResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional int64 entity_id = 2;
+  option (knowledge.pub.service_message_options).method_name = "getEntityId";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}
+
+message GetFilmTvLibInfoRequest {
+  required knowledge.pub.User user = 1;
+  required int64 entity_id = 2;
+  optional bool include_album_episode = 3 [default = false];
+  repeated knowledge.pub.ColumnGroup album_episode_columns = 4;
+  optional knowledge.pub.SiteType iqiyi_site = 5 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 6;
+
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibInfo";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+}
+
+message GetFilmTvLibInfoResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  optional knowledge.pub.FilmTvLibrary film_tv_library = 2;
+  optional knowledge.pub.Album album = 3;
+  optional knowledge.pub.Episode episode = 4;
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibInfo";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}
+
+message GetFilmTvLibsRequest {
+  required knowledge.pub.User user = 1;
+  optional int32 from_date = 2;
+  optional int32 to_date = 3;
+  repeated knowledge.pub.ColumnGroup columns = 4;
+  repeated int32 channel_ids = 5;
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibs";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  optional int32 from = 6 [default = 0];
+  optional int32 size = 7 [default = 10];
+  optional knowledge.pub.SiteType iqiyi_site = 8 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 9;
+}
+
+message GetFilmTvLibsResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated knowledge.pub.FilmTvLibrary film_tv_libs = 2;
+  optional int64 total_count = 3;
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibs";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}
+
+message GetFilmTvLibPrevueRequest {
+  required knowledge.pub.User user = 1;
+  required int64 entity_id = 2;
+  optional bool include_prevue_entity = 3 [default = false];
+  repeated knowledge.pub.ColumnGroup include_columns = 4;
+  optional int32 offset = 5 [default = 0];
+  optional int32 limit = 6 [default = 20];
+  optional bool is_must = 7 [default = false];
+
+  // 用于区分电影频道还是电视剧频道；
+  // 如果是电视剧频道，返回结果中除了包含预告片，还要包含片花
+  enum CategoryType {
+      UNKNOWN = -1;
+      FILM = 0;     //电影
+      TV = 1;       //电视剧
+      COMIC = 2;    //动漫
+      VARIETY = 3;  //综艺
+  }
+  optional CategoryType category_type = 8;
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibPrevue";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+  optional string site_ban = 9;
+  optional knowledge.pub.SiteType iqiyi_site = 10 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 11;
+}
+
+message GetFilmTvLibPrevueResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated knowledge.pub.MetaSummary prevue_summary = 2;
+  optional search.serving.MixerResponse search_result = 3;
+  repeated knowledge.pub.Episode prevues = 4;
+  optional int32 total_count = 5;
+  option (knowledge.pub.service_message_options).method_name = "getFilmTvLibPrevue";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}
+
+message GetCollectionsRequest {
+  required knowledge.pub.User user = 1;
+  optional knowledge.pub.Date from_date = 2;
+  optional knowledge.pub.Date to_date = 3;
+  repeated knowledge.pub.ColumnGroup columns = 4;
+  repeated int32 channel_ids = 5;
+  optional knowledge.pub.CollectionCommon.CollectionType collection_type = 6;
+  optional int32 limit = 7 [default = 50];
+  optional int32 offset = 8;
+  optional bool include_all_columns = 9 [default = false];
+  optional knowledge.pub.SiteType iqiyi_site = 10 [default = SITE_ZH];
+  repeated knowledge.pub.Language iqiyi_language = 11;
+
+  option (knowledge.pub.service_message_options).method_name = "getCollections";
+  option (knowledge.pub.service_message_options).type = REQUEST;
+}
+
+message GetCollectionsResponse {
+  required knowledge.pub.RpcStatusInfo rpc_status_info = 1;
+  repeated knowledge.pub.Collection collections = 2;
+  optional int64 total_count = 3;
+  option (knowledge.pub.service_message_options).method_name = "getCollections";
+  option (knowledge.pub.service_message_options).type = RESPONSE;
+}

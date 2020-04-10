@@ -1,0 +1,504 @@
+/**
+ *@brief  PPC(Professional Produced Content)视频，包括电影，电视剧的某一集内容，广告等。
+ *@details 这里视频指PGC视频，即由奇艺制作的，有版权(记录在Boss字段中)的视频。 
+ *
+ * <p>奇艺在视频播放的时候会投放广告。对于VIP用户，去广告的逻辑：<ol>
+ * <li>视频属性：是否支持全集试看、是否支持前N分钟试看、会员包月观看、会员用券观看、会员付费观看、普通用户可付费点播观看、普通用户不可点播观看;</li>
+ * <li>广告属性：禁止投放给会员、会员可跳过（会员服务类消息，可投放给会员，但是会员可跳过） </li>
+ * <li>VIP会员：非VIP会员、白银、黄金、白金</li>
+ * </ol>
+ * </p>
+ **/
+message Episode {
+  //option
+  option (entity_option).table = EPISODE_TABLE;
+  option (entity_option).entity_name = "episode";
+  option (table_option).hbase_table_name = "qipu_episode_table";
+  option (entity_option).entity_id_type = EPISODE;
+
+  option (site_option).zh_tw.site = SITE_ZH_TW;
+  option (site_option).zh_tw.table_name = "qipu_episode_tw_table";
+
+  //唯一识别ID，所有的Episode的ID最后两位都是00;
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //元数据
+  optional Metadata metadata = 2 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。 
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  // 该视频是否可以播放。
+  optional AvailableStatus available_status = 4 [default = ONLINE, (field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "avail"];
+
+  //视频码流，由媒资写入。 
+  repeated Format format = 5 [(field_option).column_group = FORMAT, (column_option).column_name = "fmt_", (column_option).column_suffix = "${uuid}"];
+
+  //本视频相关的片花(clip),场景(scene),镜头(shot)视频
+  repeated MetaSummary css_summary = 6 [(field_option).column_group = CHILD_CSS, (column_option).column_name = "chd_css_", (column_option).column_suffix = "${entity_id}"];
+  //本视频相关的图片
+  repeated MetaSummary image_summary = 7 [(field_option).column_group = CHILD_IMAGE, (column_option).column_name = "chd_img_", (column_option).column_suffix = "${entity_id}", (validator_options).id_type.type = "04", (validator_options).id_type.inside_field = "entity_id"];
+  //本视频相关的预告片视频
+  repeated MetaSummary prevue_summary = 8 [(field_option).column_group = CHILD_PREVUE, (column_option).column_name = "chd_pre_", (column_option).column_suffix = "${entity_id}", (column_option).order_by = "order", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+  //本视频相关的片花视频
+  repeated MetaSummary trailer_summary = 9 [(field_option).column_group = CHILD_TRAILER, (column_option).column_name = "chd_tlr_", (column_option).column_suffix = "${entity_id}", (column_option).order_by = "order", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+  //本视频相关的花絮视频
+  repeated MetaSummary titbit_summary = 10 [(field_option).column_group = CHILD_TITBIT, (column_option).column_name = "chd_ttb_", (column_option).column_suffix = "${entity_id}", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+  //本视频相关的剪辑视频
+  repeated MetaSummary clip_summary = 46 [(field_option).column_group = CHILD_CLIP, (column_option).column_name = "chd_clp_", (column_option).column_suffix = "${entity_id}", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+  //其他相关视频
+  repeated MetaSummary other_summary = 47 [(field_option).column_group = CHILD_OTHER, (column_option).column_name = "chd_oth_", (column_option).column_suffix = "${entity_id}", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+
+  //版权信息
+  optional Puyu puyu = 11 [(field_option).column_group = PUYU, (column_option).column_name = "puyu"];
+  //PPS的版本信息
+  optional Puyu pps_puyu = 48 [(field_option).column_group = PPS_PUYU, (column_option).column_name = "ppspuyu"];
+  //搜索引擎优化信息
+  optional Seo  seo = 12 [(field_option).column_group = SEO, (column_option).column_name = "seo"];
+  //公用运营相关的信息
+  optional CommonBase common_base = 55 [(field_option).column_group = COMMON_BASE, (column_option).column_name = "cmbase"];
+  //运营信息；
+  optional Base base = 13 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+  //PPS运营信息；
+  optional Base pps_base = 49 [(field_option).column_group = PPS_BASE, (column_option).column_name = "ppsbase"];
+
+  /**
+   *@brief 内容类型
+   *@details Episode中定义了三个内容类型，除这个，在base和pps_base中也分别定义ContentType。<ol>
+   *<li>本content_type是由mems，媒资写入</li>
+   *<li>base.content_type是由lego写入，乐高从mems中获取值后再写入的。</li>
+   *<li>pps_base.content_type是复制base.content_type的值写入了。</li>
+   *</ol>
+   *这三个值应该是一致的，但是存在不相同或者某个值为空的可能。这种情况下，Episode的ContentType的优先取值顺序是：content_type, base.content_type, pps_base.content_type。
+  **/
+  optional ContentType content_type = 52 [(field_option).column_group = CONTENT_TYPE, (column_option).column_name = "contype"];
+  //付费信息
+  optional Boss boss = 14 [(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+
+  //废弃， 不再使用
+  optional Stats stats_pc = 15 [(field_option).column_group = STATS_PC, (column_option).column_name = "st_pc", (track_option).notracker=true];
+  //废弃， 不再使用
+  optional Stats stats_pad = 31 [(field_option).column_group = STATS_PAD, (column_option).column_name = "st_pad", (track_option).notracker=true];
+  //废弃， 不再使用
+  optional Stats stats_phone = 32 [(field_option).column_group = STATS_PHONE, (column_option).column_name = "st_phn", (track_option).notracker=true];
+  //废弃， 不再使用
+  optional Stats stats_tv = 33 [(field_option).column_group = STATS_TV, (column_option).column_name = "st_tv", (track_option).notracker=true];
+
+  //废弃， 不再使用
+  optional Stats up_down = 36;
+
+  //在页面上显示的播放数。播放数据play_count是保密数据，不直接显示在页面上。页面上显示请使用这个数据。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 display_play_count = 38 [(column_option).is_vint64 = true, (field_option).column_group = DISPLAY_PLAY_COUNT, (column_option).column_name = "dpcnt", (track_option).notracker=true];
+  //实际播放播放数。播放数据play_count是保密数据，不直接显示在页面上。页面上显示请使用display_play_count这个数据。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 play_count = 39 [(column_option).is_vint64 = true, (field_option).column_group = PLAY_COUNT, (column_option).column_name = "pycnt", (track_option).notracker=true];
+  //评论数据。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 comments_count = 40 [(column_option).is_vint64 = true, (field_option).column_group = COMMENT_COUNT, (column_option).column_name = "cmtcnt", (track_option).notracker=true];
+  //分享总计数。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 share_count = 41 [(column_option).is_vint64 = true, (field_option).column_group = SHARE_COUNT, (column_option).column_name = "shrcnt", (track_option).notracker=true];
+  //顶次数。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 up_count = 42 [(column_option).is_vint64 = true, (field_option).column_group = UP_COUNT, (column_option).column_name = "upcnt", (track_option).notracker=true];
+  //踩次数。该数据由龙源定期写入，每3小时写入一次。 
+  optional int64 down_count = 43 [(column_option).is_vint64 = true, (field_option).column_group = DOWN_COUNT, (column_option).column_name = "dwncnt", (track_option).notracker=true];
+
+  //该视频所在的Album。一个视频仅可能存在一个Album中。 写入该数据后，奇谱会自动将数据同步到Album.episode_summary字段中。 
+  optional FatherInfo father_album = 16 [(field_option).column_group = FATHER_ALBUM, (column_option).column_name = "dad_alb"
+                                         , (validator_options).id_type.type = "01", (validator_options).id_type.inside_field = "father_id"];
+  //该视频所在的播单。 一个视频可以存在多个播单中。写入该数据后，奇谱会自动将该数据同步到Collection.episode_summary中。
+  repeated FatherInfo father_collection = 17 [(field_option).column_group = FATHER_COLLECTION, (column_option).column_name = "dad_cln_", (column_option).column_suffix = "${father_id}", (validator_options).id_type.type = "02", (validator_options).id_type.inside_field = "father_id"];
+  //该视频所在的老播单。 一个视频可以存在多个老播单中。写入该数据后，奇谱会自动将该数据同步到VideoGroup.episode_summary中。
+  repeated FatherInfo father_video_group = 18 [(field_option).column_group = FATHER_VIDEO_GROUP, (column_option).column_name = "dad_vgp_", (column_option).column_suffix = "${father_id}", (validator_options).id_type.type = "06", (validator_options).id_type.inside_field = "father_id"];
+  //视频所在的Ugc播单中。不再使用。
+  repeated FatherInfo father_ugc_collection = 44 [(field_option).column_group = FATHER_UGC_COLLECTION, (column_option).column_name = "dad_ugccln_", (column_option).column_suffix = "${father_id}"];
+
+  //非正片视频，如剪辑、片花、预告片等，通过这个字段来标注其所在的正片。写入这个数据后，奇谱会自动根据contentType将数据同步到正片的css_summary,tittit_summary,trailer_summary等字段中。
+  optional FatherInfo father_official_episode = 19 [(field_option).column_group = FATHER_OFFICIAL_EPISODE, (column_option).column_name = "dad_esd_", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "father_id"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 20 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true,(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+  //对应的豆瓣ID
+  optional int64 douban_id = 21 [(field_option).column_group = DOUBAN_ID, (column_option).column_name = "db_id"];
+  /**
+   * 三级分类标签
+   */
+  repeated string tag = 22 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+ 
+  /**
+  * 仅供临时、内部使用的属性值，可以使用key-value键值对来保存。
+  * 注意：奇谱项目组强烈**不**建议使用Key-Value来存取属性。
+  * 如有需要，请务必事先和奇谱项目组沟通，确认无问题后才能使用。 
+  * 当前已知的key-value如下:<ol>
+  * <li>pageurl_iqiyi_pc_29: 乐高写入，视频播放页地址,最后一位是频道id。</li>
+  * <li>exclusive_status_iqiyi: 乐高写入，是否奇艺独播剧。</li>
+  * <li>format_iqiyi_pc：乐高写入的默认码流格式。</li>
+  * <li>audit_status_version:最后一次审核结果时间。</li>
+  * </ol>
+  **/
+  repeated KeyValuePair key_value_pair = 23 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}", (field_option).is_repeated_column_notified = true];
+
+  // 关联的奇谈系统的ID
+  optional Qitan qitan = 24 [(field_option).column_group = QITAN, (column_option).column_name = "qtn"];
+
+  // 支持百度视频搜索的相关信息
+  optional Baidu baidu = 25 [(field_option).column_group = BAIDU, (column_option).column_name = "bdu"];
+
+  // 关联的视链信息
+  repeated ViewLink view_link = 26 [(field_option).column_group = VIEWLINK, (column_option).column_name = "vlk_", (column_option).column_suffix = "${view_link_name.begin_time}_${view_link_name.end_time}_${view_link_name.x_pos}_${view_link_name.y_pos}"];
+
+  // 关联的多播信息。
+  repeated MultiPublish multi_publish = 27 [(field_option).column_group = MULTI_PUBLISH, (column_option).column_name = "mtp_", (column_option).column_suffix = "${brand}_${channel_id}"];
+
+  // 关联的直播视频
+  optional LiveMetaSummary live_summary = 28 [(field_option).column_group = LIVE_SUMMARY, (column_option).column_name = "chd_live"];
+
+  // 第三方及分甘同味的分享信息
+  optional SharePartner share_partner = 29 [(field_option).column_group = SHARE_PARTNER, (column_option).column_name = "spr"];
+
+  // 字幕插件信息
+  repeated Subtitle subtitle = 30 [(field_option).column_group = SUBTITLE, (column_option).column_name = "sbt_", (column_option).column_suffix = "${uuid}"];
+
+  // DRM key信息
+  optional DrmKey drm_key = 34 [(field_option).column_group = DRM_KEY, (column_option).column_name = "drm"];
+
+  //页面发布状态
+  optional PagePublishStatus page_publish_status = 37 [default = PAGE_WAIT, (field_option).column_group = PAGE_PUBLISH_STATUS, (column_option).column_name = "ppsts"];
+
+  //关联的视频文件信息
+  optional VideoFileInfo film_video_file_info = 45 [(field_option).column_group = FILM_VIDEO_FILE_INFO, (column_option).column_name = "filmvfile"];
+
+
+  /**
+   * @brief 老播控字段，新播空请使用access_play_control字段
+   * @details 视频的新老播控字段映射关系如下：<ol>
+   * <li>iqiyi的所有端新播控都下线(ps.默认端端下线并且任何一个地域下线)，映射老播控为下线。 <ul>
+   * <li>新播控: <br/>
+   *     <code>access_play_controls.platfroms =  [ANDROID_PHONE_IQIYI,ANDROID_PAD_IQIYI,IOS_PHONE_IQIYI,IOS_PAD_IQIYI,PC_QIYI,H5_QIYI,PAD_WEB_QIYI,PC_CLIENT_IQIYI] //iqiyi的所有端</br>
+   *      episode.access_play_controls.default_control.availabe_status <> ONLINE and episode.access_play_controls.region_controls.availabe_status <> ONLINE  //iqiyi的所有端（地域和默认端）不存在上线
+   *	</code></li>
+   * <li>老播控
+   *      <code> episode.availabe_status = OFFLINE_COPYRIGHT</code></li>
+   *   </ul></li>
+   * <li>iqiyi有任何一个端播控上线(ps.默认端端上线或者任何一个地域上线)，映射老播控上线。<ul>
+   * <li>新播控:
+   *     <code>episode.access_play_control.play_platform in [ANDROID_PHONE_IQIYI,ANDROID_PAD_IQIYI,IOS_PHONE_IQIYI,IOS_PAD_IQIYI,PC_QIYI,H5_QIYI,PAD_WEB_QIYI,PC_CLIENT_IQIYI] and (episode.access_play_control.default_control.availabe_status == ONLINE or  episode.access_play_control.region_controls.availabe_status contains ONLINE)</code>
+   * </li> 
+   * <li>老播控
+   *     <code>episode.availabe_status = ONLINE</code></li>
+   * </ul></li>
+   * </ol>
+   **/
+  optional PlatformRegionControl iqiyi_platform_region_control = 50 [(field_option).column_group = IQIYI_PLATFORM_REGION_CONTROL, (column_option).column_name = "iqiyiprc"];
+   // 不再使用，播空请使用access_play_control字段
+  optional PlatformRegionControl pps_platform_region_control = 51 [(field_option).column_group = PPS_PLATFORM_REGION_CONTROL, (column_option).column_name = "ppsprc"];
+
+  // 支持奇搜的相关信息
+  optional SearchInfo search_info = 53 [(field_option).column_group = SEARCH_INFO, (column_option).column_name = "sci"];
+
+  optional FilmTvCheckStatus film_tv_check_status = 54 [(field_option).column_group = FILM_TV_CHECK_STATUS, (column_option).column_name = "ftcs"];
+
+  //关联的影视资料库ID。这个字段写入后，奇谱会自动在对应的FilmTVLibrary下将qipu_id设置为当前视频的ID
+  optional int64 film_tv_id = 56 [(field_option).column_group = FILM_TV_ID, (column_option).column_name = "ftvid"];
+
+  //投票信息
+  optional VoteInfo vote_info = 57 [(field_option).column_group = VOTE_INFO, (column_option).column_name = "voteinfo"];
+
+  //部分PCC视频会按照运营需要被设置为UGC的视频。 通过这个字段来记录UGC的信息。 
+  optional VirtualUgcInfo virtual_ugc_info = 58 [(field_option).column_group = VIRTUAL_UGC_INFO, (column_option).column_name = "vugc"];
+
+  //在线计数器更新策略
+  optional OnlineCountUpdateStrategy online_count_update_strategy = 59 [(field_option).column_group = ONLINE_COUNT_UPDATE_STRATEGY, (column_option).column_name = "onlcnt_us"];
+
+  //视频指纹。两个视频的指纹数据相似度越高，表示这两个视频的内容的相似度越高。
+  optional Fingerprint fingerprint = 60 [(field_option).column_group = FINGERPRINT, (column_option).column_name = "fgrpt"];
+
+  //播控信息，使用方式参见http://wiki.qiyi.domain/pages/viewpage.action?pageId=25607995 
+  repeated AccessPlayControl access_play_control = 61 [(field_option).column_group = ACCESS_PLAY_CONTROL, (column_option).column_name = "accplayctrl_", (column_option).column_suffix = "${play_platform}"];
+
+  // 相关的奇趣标签
+  repeated QiquTagSummary qiqu_tag_summary = 62 [(field_option).column_group = CHILD_QIQU_TAG, (column_option).column_name = "chd_qtg_", (column_option).column_suffix = "${qiqu_tag_id}"];
+
+  // Define the top recommend place of pps category for the album, episode, collection or ppsCategory.
+  repeated PpsCategoryRanking pps_category_ranking = 63 [(field_option).column_group = PPS_CATEGORY_RANKING, (column_option).column_name = "pps_cat_rk_", (column_option).column_suffix = "${pps_category_id}"];
+
+  //Episode类型
+  optional EpisodeType episode_type = 64[default = PPC, (field_option).column_group = EPISODE_TYPE, (column_option).column_name = "epd_type"];
+
+  // 视频标签.
+  optional OcrTag ocr_tag = 65 [(field_option).column_group = OCR_TAG, (column_option).column_name = "ocr_tag"];
+  // 音轨标签.
+  optional AsrTag asr_tag = 66 [(field_option).column_group = ASR_TAG, (column_option).column_name = "asr_tag"];
+  // 标签.
+  optional SmartTag smart_tag = 67 [(field_option).column_group = SMART_TAG, (column_option).column_name = "smart_tag"];
+
+  // 奇趣标签列表.
+  repeated CategorySummary category_summary = 68 [(field_option).column_group = CATEGORY_SUMMARY, (column_option).column_name = "cat_summary_", (column_option).column_suffix = "${category_id}"];
+
+  // 智能广告打点标记.
+  optional AdPointTag ad_point_tag = 69 [(field_option).column_group = AD_POINT_TAG, (column_option).column_name = "ad_point_tag"];
+
+  // 活动通知列表.
+  repeated Notice notice = 70 [(field_option).column_group = NOTICE, (column_option).column_name = "notice_", (column_option).column_suffix = "${notice_id}"];
+
+  //相关视频，由奇搜定时写入。 目前是每三小时更新一次，不发消息
+  optional MetaSummaryList related_videos = 71 [(field_option).column_group = RELATED_VIDEOS, (column_option).column_name = "related_videos", (track_option).notracker=true];
+
+  //相关明星，由奇搜定时写入。 目前是每三小时更新一次，不发消息
+  optional MetaSummaryList related_celebrities = 72 [(field_option).column_group = RELATED_CELEBRITIES, (column_option).column_name = "related_celebrities", (track_option).notracker=true];
+
+  // 顶踩数
+  optional float up_down_score = 73 [(field_option).column_group = UP_DOWN_SCORE, (column_option).column_name = "updwnsc", (track_option).notracker=true];
+
+  // 综合评分
+  optional float sns_score = 74 [(field_option).column_group = SNS_SCORE, (column_option).column_name = "snssc"];
+
+  // 移动端杜比码流格式；由乐高媒资写入。
+  repeated AudioFormat audio_format = 75 [(field_option).column_group = AUDIO_FORMAT, (column_option).column_name = "aufmt_", (column_option).column_suffix = "${uuid}"];
+
+  // 影视原声列表
+  repeated MetaSummary music_summary = 76 [(field_option).column_group = CHILD_MUSIC, (column_option).column_name = "music_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  // 全景视频参数
+  optional PanoFormat pano_format= 77 [(field_option).column_group = PANO_FORMAT, (column_option).column_name = "pano_fmt"];
+
+  // 实体视频信息
+  repeated FigureOut celebrity_figure_out = 78 [(field_option).column_group = CELEBRITY_FIGURE_OUT, (column_option).column_name = "cel_fig_out_", (column_option).column_suffix = "${figure_id}"];
+
+  // 音视频质量
+  optional Quality quality = 79 [(field_option).column_group = QUALITY_SCORE, (column_option).column_name = "quality"];
+
+  //关联角色
+  repeated CharacterSummary related_character= 80 [(field_option).column_group = RELATED_CHARACTER, (column_option).column_name = "rel_char_", (column_option).column_suffix = "${entity_id}"];
+
+  //视频码流概要信息
+  optional VideoInfo video_info = 81 [(field_option).column_group = VIDEO_INFO, (column_option).column_name = "videoinfo"];
+
+  //本地化相关的运营字段；
+  repeated LocaleBase local_base = 82 [(field_option).column_group = LOCAL_BASE, (column_option).column_name = "loc_base_", (column_option).column_suffix = "${language}"];
+
+  //支持本地化设置的图片。
+  repeated LocaleImage local_image = 83 [(field_option).column_group = LOCAL_IMAGE, (column_option).column_name = "loc_image_", (column_option).column_suffix = "${language}_${type}"];
+
+  /**
+  * url格式： "qisu:// tvid=246005500;vid=5ec8bb5e840b2b1445c9d0a07be463af; ischarge=true;vtype=0"
+  * 对于点播 <ul>
+  * <li>tvid对应id，为int型 ；</li>
+  *  <li>vid对应key_value_pair中format_iqiyi_pc的值 ，为string型；</li>
+  *  <li>ischarge对应boss.status的值，如果boss.status值为PAIED_AVAILABLE则输出ischarge=ture，boss.status= * 其他值或者不存在的时候则输出ischarge=false； </li>
+  *  <li>vtype对于奇谱id以00和09结尾的episode都会强制写为vtype=0。</li>
+  * </ul>
+  **/
+  optional Qisu qisu = 84 [(field_option).column_group = QISU, (column_option).column_name = "qisu"];
+
+  //关联投票信息；target_id为空；
+  repeated VoteSummary vote_summary  = 85 [(field_option).column_group = VOTE_SUMMARY, (column_option).column_name = "vote_sum_", (column_option).column_suffix = "${vote_id}"];
+
+  /**
+   *@brief 广告图片设置；
+   * @details 支持DSP广告的图片。这个图片是由乐高写入，但是和普通图片生产方式不同，它可以是由投放方直接提供的图片。Episode符合站外投放要求的条件有两个：
+   * 1. 该视频有用于站外投放的图片素材，即这个字段有内容；
+   * 2. 该视频的站外投放视频时间有效（当前时间>上线时间，当前时间<=转免时间）。 后羿会在有站外投递任务时，调用此接口，获取影片TV ID 列表；
+  **/
+  optional AdImage ad_image = 86 [(field_option).column_group = AD_IMAGE, (column_option).column_name = "ad_image"];
+
+  //关联的电影节获奖信息，由奇谱负责同步；
+  repeated AwardSummary award_summary = 87 [(field_option).column_group = AWARD_SUMMARY, (column_option).column_name = "awa_sum_", (column_option).column_suffix = "${award_id}", (validator_options).id_type.type = "43", (validator_options).id_type.inside_field = "award_id"];
+
+  //多地区运营信息
+  repeated RegionBase region_base = 88 [(field_option).column_group = REGION_BASE, (column_option).column_name = "reg_base_", (column_option).column_suffix = "${region}"];
+
+  //明星看点
+  repeated PeopleSceneShot people_scene_shot = 89 [(field_option).column_group = PEOPLE_SCENE_SHOT, (column_option).column_name = "peo_sce_", (column_option).column_suffix = "${entity_id}"];
+
+  //关联圈子
+  optional PaopaoSummary paopao_summary = 90 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "paopao_sum", (validator_options).id_type.type = "47", (validator_options).id_type.inside_field = "circle_id"];
+
+  //乐高写入相关视频的挂接父视频； 一个视频可以挂接到多个关联父视频
+  repeated FatherInfo relative_father_episode = 91 [(field_option).column_group = RELATIVE_FATHER_EPISODE, (column_option).column_name = "rel_dad_epi_", (column_option).column_suffix = "${father_id}", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "father_id"];
+  //乐高写入相关视频的挂接父专辑； 一个视频可以挂接到多个关联父专辑
+  repeated FatherInfo relative_father_album = 92 [(field_option).column_group = RELATIVE_FATHER_ALBUM, (column_option).column_name = "rel_dad_alb_", (column_option).column_suffix = "${father_id}", (validator_options).id_type.type = "01", (validator_options).id_type.inside_field = "father_id"];
+  //奇谱自动将Episode 下的relative_father_episode的关联内容同步到这里
+  repeated MetaSummary relative_child_episode = 93 [(field_option).column_group = RELATIVE_CHILD_EPISODE, (column_option).column_name = "rel_chd_epi_", (column_option).column_suffix = "${entity_id}", (validator_options).id_type.type = "00", (validator_options).id_type.inside_field = "entity_id"];
+
+  //标签相关圈子
+  //optional CircleSummary circle_summary  = 94 [(field_option).column_group = CIRCLE_SUMMARY, (column_option).column_name = "circle_sum"];
+
+  //付费相关信息
+  optional ChargeBase charge_base = 95 [(field_option).column_group = CHARGE_BASE, (column_option).column_name = "charge_base"];
+
+  //地方站属性标签
+  repeated Subsite subsite = 96 [(field_option).column_group = SUBSITE, (column_option).column_name = "reg_sta", (column_option).column_suffix = "${subsite_id}"];
+
+  // 动画屋
+  optional IqiyiChild iqiyi_child = 97 [(field_option).column_group = IQIYI_CHILD, (column_option).column_name = "iqiyi_child"];
+
+  // 版权保护字段
+  optional CopyrightProtection copyright_protection = 98 [(field_option).column_group = COPYRIGHT_PROTECTION, (column_option).column_name = "cprt_pt"];
+
+  // 对应直播节目
+  optional MetaSummary live_episode_summary = 99 [(field_option).column_group = LIVE_EPISODE_SUMMARY, (column_option).column_name = "live_video", (validator_options).id_type.type = "23", (validator_options).id_type.inside_field = "entity_id"];
+
+  //PGC运营信息,专业版的额外功能字段
+  optional PgcBase pgc_base = 100 [(field_option).column_group = PGC_BASE, (column_option).column_name = "pgcbase"];
+
+  // 视点
+  optional EpisodeViewpoint viewpoint = 101 [(field_option).column_group = EPISODE_VIEWPOINT, (column_option).column_name = "viewpoint"];
+
+  // 音轨信息
+  optional AudioInfo audio_info = 102 [(field_option).column_group = AUDIO_INFO, (column_option).column_name = "auinfo"];
+
+  //截图
+  repeated Screenshot screenshot = 103 [(field_option).column_group = SCREENSHOT, (column_option).column_name = "screenshot", (column_option).column_suffix = "${uuid}"];
+
+  //关联的ip实体的id
+  optional int64 ip_id = 104 [(field_option).column_group = IP_ID, (column_option).column_name = "ip_id"];
+
+  repeated DrmInfo drm_info = 105 [(field_option).column_group = DRM_INFO, (column_option).column_name = "drminfo_", (column_option).column_suffix = "${content_id}"];
+
+  //业务类型
+  repeated BusinessType business_type = 106 [(field_option).column_group = BUSINESS_TYPE, (column_option).column_name = "business_type_", (column_option).column_suffix = "${business_type}"];
+
+  // 分析信息
+  repeated RecognizeInfo recognize_info = 107 [(field_option).column_group = RECOGNIZE_INFO, (column_option).column_name = "recognize_info_", (column_option).column_suffix = "${recognize_info_type}"];
+
+  //电商打点
+  optional SmartTag e_business_smart_tag = 108 [(field_option).column_group = E_BUSINESS_SMART_TAG, (column_option).column_name = "e_busi_smt_tag"];
+
+  // 视频本身经乐高加权后播放量，不包括片花和预告片
+  optional int64 weighted_play_count = 109 [(field_option).column_group = WEIGHTED_PLAY_COUNT, (column_option).column_name = "weighted_pycnt"];
+
+  // IP相关信息
+  optional IntellectualPropertySummary ip_summary = 110 [(field_option).column_group = IP_SUMMARY, (column_option).column_name = "ip_sum"];
+
+  // VideoFormat ID 关联 同步
+  optional FormatSummary format_summary = 200 [(field_option).column_group = FORMAT_SUMMARY, (column_option).column_name = "format_sum"];
+
+  // 资料的上下线状态
+  optional AvailableStatus film_tv_available_status = 201 [(field_option).column_group = FILM_TV_AVAILABLE_STATUS, (column_option).column_name = "film_tv_avail"];
+
+  // 基础信息(不分站点,不分语种,不分多发)
+  optional MetaBasicInfo meta_basic_info = 202 [(field_option).column_group = META_BASIC_INFO, (column_option).column_name = "meta_bsc_info"];
+
+  // 多语种相关信息(不分站点,分语种,不分多发)
+  repeated MetaMultilingualInfo meta_multilingual_info = 203 [(field_option).column_group = META_MULTILINGUAL_INFO, (column_option).column_name = "meta_mul_lang_info_", (column_option).column_suffix = "${language}",(field_option).multi_type = FIELD_MULTI_TYPE_LANGUAGE];
+
+  // 高级信息
+  optional MetaAdvancedInfo meta_advanced_info = 204 [(field_option).column_group = META_ADVANCED_INFO, (column_option).column_name = "meta_adv_info"];
+
+  // 内容分级(分站点)
+  optional ContentRating content_rating = 205 [(field_option).column_group = CONTENT_RATING, (column_option).column_name = "con_rat",(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+
+  // 视频相关base[无维度]
+  optional VideoCommonBase video_common_base = 206 [(field_option).column_group = VIDEO_COMMON_BASE, (column_option).column_name = "v_cm_base"];
+
+  // 主展示运营base[无维度]
+  optional OperationBase operation_base = 207 [(field_option).column_group = OPERATION_BASE, (column_option).column_name = "op_base"];
+
+  // 合作相关运营[无维度]
+  optional OperationCooperationBase operation_cooperation_base = 208 [(field_option).column_group = OPERATION_COOPERATION_BASE, (column_option).column_name = "op_coop_base"];
+
+  // 控制base[站点](分站点)
+  optional OperationControlBase operation_control_base = 209 [(field_option).column_group = OPERATION_CONTROL_BASE, (column_option).column_name = "op_ctrl_base",(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+
+  // 多发控制base[站点]乐高来写(分站点,分多发)
+  optional OperationMultiControlBase operation_multi_control_base = 210 [(field_option).column_group = OPERATION_MULTI_CONTROL_BASE, (column_option).column_name = "op_mul_ctrl_base",(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+
+  // 频道ID
+  optional int32 channel_id = 211 [(field_option).column_group = CHANNEL_ID, (column_option).column_name = "c_id"];
+
+  // 多语言显示base(分多发)
+  repeated OperationLanguageBase operation_language_base = 212 [(field_option).column_group = OPERATION_LANGUAGE_BASE, (column_option).column_name = "op_lang_base_", (column_option).column_suffix = "${language}",(field_option).multi_type = FIELD_MULTI_TYPE_LANGUAGE];
+
+  // 页面相关[站点](分站点,分多发)
+  optional OperationPage operation_page = 213 [(field_option).column_group = OPERATION_PAGE, (column_option).column_name = "op_page",(field_option).multi_type = FIELD_MULTI_TYPE_SITE];
+
+  // 关联人物信息
+  optional RelatedPeopleInfo related_people_info = 214 [(field_option).column_group = RELATED_PEOPLE_INFO, (column_option).column_name = "related_people"];
+
+  // 关联角色信息
+  optional RelatedCharacterInfo related_character_info = 215 [(field_option).column_group = RELATED_CHARACTER_INFO, (column_option).column_name = "related_char"];
+
+  // 资料关联的ugc视频
+  repeated MetaSummary ugc_summary = 216 [(field_option).column_group = UGC_SUMMARY, (column_option).column_name = "ugc_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  optional StagePhotos stage_photos = 217 [(field_option).column_group = STAGE_PHOTOS, (column_option).column_name = "stage_pto"];
+
+  optional Feeds feeds = 218 [(field_option).column_group = FEEDS, (column_option).column_name = "feeds"];
+
+  // 影视大全相关视频
+  repeated MetaSummary filmtv_related_summary = 219 [(field_option).column_group = FILMTV_RELATED_SUMMARY, (column_option).column_name = "flv_rltd_sum", (column_option).column_suffix = "${entity_id}"];
+  //NLP自动识别IP信息
+  optional IntellectualPropertySummary nlp_ip_summary = 220 [(field_option).column_group = NLP_IP_SUMMARY, (column_option).column_name = "nlp_ip_summary"];
+  //关联商品
+  repeated CommoditySummary commodity_summary = 111 [(field_option).column_group = COMMODITY_SUMMARY, (column_option).column_name = "commodity_summary_", (column_option).column_suffix = "${entity_id}"];
+  //相关feed
+  repeated FeedSummary feed_summary = 221 [(field_option).column_group = FEED_SUMMARY, (column_option).column_name = "c_221_n_", (column_option).column_suffix = "${entity_id}"];
+  //视频明星看点
+  optional EpisodeStarViewpoint episode_star_viewpoint = 222 [(field_option).column_group = EPISODE_STAR_POINT, (column_option).column_name = "c_222_n"];
+  //短视频拆条信息
+  optional CutInfo cut_info = 223 [(field_option).column_group = CUT_INFO, (column_option).column_name = "c_223_n"];
+  //标签来源分类
+  optional UnifiedClassification unified_classification = 224 [(field_option).column_group = UNIFIED_CLASSIFICATION, (column_option).column_name = "c_224_n"];
+  //用户cut截取限制
+  optional UgcCutLimit ugc_cut_limit = 226 [(field_option).column_group = UGC_CUT_LIMIT, (column_option).column_name = "c_226_n"];
+  //评分信息
+  optional SnsStarNumberInfo sns_star_number_info = 227 [(field_option).column_group = SNS_STAR_NUMBER_INFO, (column_option).column_name = "c_227_n"];
+  //主播信息
+  optional AnchorInfo anchor_info = 228 [(field_option).column_group = ANCHOR_INFO, (column_option).column_name = "c_228_n"];
+  //弹幕群聊信息
+  optional MynaInfo myna_info = 231 [(field_option).column_group = MYNA_INFO, (column_option).column_name = "c_231_n"];
+  //弹幕数
+  optional int64 danmu_count = 229 [(field_option).column_group = DANMU_COUNT, (column_option).column_name = "c_229_n"];
+  //爱奇艺号信息
+  optional IqiyihaoInfo iqiyihao_info = 225 [(field_option).column_group = IQIYIHAO_INFO, (column_option).column_name = "c_225_n"];
+  //关联标签
+  repeated TagSummary tag_summary = 233 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_233_n_", (column_option).column_suffix = "${source_type}"];
+  //片头、片中、片尾信息
+  repeated VideoHeadTailInfo video_head_tail_info = 232 [(field_option).column_group = VIDEO_HEAD_TAIL_INFO, (column_option).column_name = "c_232_n_", (column_option).column_suffix = "${type}"];
+  //关联圈子（原paopao_summary将00视频转成feed再与不同类型的圈子进行关联，circle_summary依据业务需要如视频标签直接与圈子进行关联）
+  repeated MetaSummary circle_summary = 235 [(field_option).column_group = CIRCLE_SUMMARY, (column_option).column_name = "c_235_n_", (column_option).column_suffix = "${entity_id}"];
+  //关联的片段（cut）
+  repeated MetaSummary cut_summary = 234 [(field_option).column_group = CUT_SUMMARY, (column_option).column_name = "c_234_n_", (column_option).column_suffix = "${entity_id}"];
+  //多维度标签（视频特殊分类标签，字段值：软色情、重口味、负能量、政治敏感、其他）
+  repeated string restricted_dimension = 237 [(field_option).column_group = RESTRICTED_DIMENSION, (column_option).column_name = "c_237_n_"];
+  //推荐等级的理由
+  repeated string editor_recommend_level_reason = 240 [(field_option).column_group = EDITOR_RECOMMEND_LEVEL_REASON, (column_option).column_name = "c_240_n_"];
+  //电影票统计相关信息（电影票写入）
+  optional MovieTicketStatistics movie_ticket_statistics = 238 [(field_option).column_group = MOVIE_TICKET_STATISTICS, (column_option).column_name = "c_238_n"];
+  //电影票信息（乐高写入）
+  optional MovieTicketBase movie_ticket_base = 239 [(field_option).column_group = MOVIE_TICKET_BASE, (column_option).column_name = "c_239_n"];
+  //图片质量信息
+  repeated ImageQualityInfo image_quality_info = 243 [(field_option).column_group = IMAGE_QUALITY_INFO, (column_option).column_name = "c_243_n_", (column_option).column_suffix = "${image_type}"];
+  //封面视频的父视频信息
+  optional FatherInfo video_cover_father_episode = 246 [(field_option).column_group = VIDEO_COVER_FATHER_EPISODE, (column_option).column_name = "c_246_n"];
+  //动态视频封面
+  repeated MetaSummary video_cover_summary = 236 [(field_option).column_group = VIDEO_COVER_SUMMARY, (column_option).column_name = "c_236_n_", (column_option).column_suffix = "${entity_id}"];
+  //PGC审核信息
+  optional PgcCheck pgc_check = 245 [(field_option).column_group = PGC_CHECK, (column_option).column_name = "c_245_n"];
+  //关联头条信息
+  repeated MetaSummary toutiao_summary = 247 [(field_option).column_group = TOUTIAO_SUMMARY, (column_option).column_name = "c_247_n_", (column_option).column_suffix = "${entity_id}"];
+  //合成型视频信息
+  //由图文转换而成的视频，一个视频可能有不同的图文来源。
+  optional ConvertedVideoInfo converted_video_info = 248 [(field_option).column_group = CONVERTED_VIDEO_INFO, (column_option).column_name = "c_248_n"];
+  //弹幕控制信息
+  repeated AccessPlayControl danmu_control = 249 [(field_option).column_group = DANMU_CONTROL, (column_option).column_name = "c_249_n_", (column_option).column_suffix = "${play_platform}"];
+  //短视频与长视频的关联信息
+  repeated CutRelatedVideoSummary cut_related_video_summary = 250 [(field_option).column_group = CUT_RELATED_VIDEO_SUMMARY, (column_option).column_name = "c_250_n_", (column_option).column_suffix = "${related_type}"];
+  //关联的1070素材信息
+  repeated RelatedOpenRichMediaInfo related_open_rich_media_info = 252 [(field_option).column_group = RELATED_OPEN_RICH_MEDIA_INFO, (column_option).column_name = "c_252_n_", (column_option).column_suffix = "${entity_id}"];
+  //审核
+  optional Check check = 251 [(field_option).column_group = CHECK, (column_option).column_name = "c_251_n"];
+  //视频投生产时的视频AI识别信息
+  optional AiProductionInfo ai_production_info = 253 [(field_option).column_group = AI_PRODUCTION_INFO, (column_option).column_name = "c_253_n"];
+  //上传视频信息
+  optional UploadVideoInfo upload_video_info = 255 [(field_option).column_group = UPLOAD_VIDEO_INFO, (column_option).column_name = "c_255_n"];
+  //版权判定信息
+  optional CopyrightCheckInfo copyright_check_info = 256 [(field_option).column_group = COPYRIGHT_CHECK_INFO, (column_option).column_name = "c_256_n"];
+  //地方站品类
+  repeated SubsiteCategory subsite_category = 254 [(field_option).column_group = SUBSITE_CATEGORY, (column_option).column_name = "c_254_n_"];
+  //课程信息
+  optional CourseInfo course_info = 257 [(field_option).column_group = COURSE_INFO, (column_option).column_name = "c_257_n"];
+  //原创属性系统判定信息
+  optional OriginalCheckInfo original_check_info = 258 [(field_option).column_group = ORIGINAL_CHECK_INFO, (column_option).column_name = "c_258_n"];
+  //爱奇艺号任务信息
+  repeated IqiyihaoTaskInfo iqiyihao_task_info = 260 [(field_option).column_group = IQIYIHAO_TASK_INFO, (column_option).column_name = "c_260_n_", (column_option).column_suffix = "${task_id}"];
+  //feed信息（由信息流业务方写入）
+  optional FeedInfo feed_info = 261 [(field_option).column_group = FEED_INFO, (column_option).column_name = "c_261_n"];
+}

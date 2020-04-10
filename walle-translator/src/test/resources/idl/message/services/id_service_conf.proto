@@ -1,0 +1,28 @@
+// Author:Qi Qiao(qiaoqi@qiyi.com)
+//
+// Define the configuration of IdService, mapping related entity id to corresponding
+// mysql table and function.
+
+import "knowledge/pub/common.proto";
+
+package knowledge.services.id;
+
+message EntityTableFunctionMapping {
+  // Indicates the supported entity id type.
+  required knowledge.pub.EntityIdType entity_id_type = 1;
+
+  // The database table corresponding to a fixed EntityIdType.
+  required string db_table_name = 2;
+  
+  // The corresponding function of a database table used to generate unique ids.
+  required string db_table_function = 3;
+}
+
+message IdServiceConfiguration {
+  // The maximum number of id per request.
+  required int32 max_num_of_ids_per_request = 1;
+  
+  // Id generator policy. Assigned to 1, it means use database to support id-generating. 
+  required int32 id_gen_policy = 2;
+  repeated EntityTableFunctionMapping entity_table_function_mapping = 3;
+}

@@ -1,0 +1,17 @@
+image: docker-registry.qiyi.virtual/walle/maven:jdk8-mvn3
+
+cache:
+  paths:
+    - /data/.m2/
+
+compile_job:
+  stage: test
+  script:
+    - mvn -U clean compile
+
+deploy_job:
+  stage: deploy
+  script:
+    - mvn -U clean package deploy
+  only:
+    - master@walle/walle-parser

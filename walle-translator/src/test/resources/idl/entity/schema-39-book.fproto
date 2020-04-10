@@ -1,0 +1,172 @@
+/**
+ * @brief 图书的实体；
+ * @details 图书的实体。
+ *
+ **/
+message Book {
+  //option
+  option (entity_option).table = BOOK_TABLE;
+  option (entity_option).entity_name = "book";
+  option (table_option).hbase_table_name = "qipu_book_table";
+  option (entity_option).entity_id_type = BOOK;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  //元数据
+  optional BookMetadata metadata = 4 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+  //图书格式
+  repeated BookFormat format = 5 [(field_option).column_group = FORMAT, (column_option).column_name = "fmt_", (column_option).column_suffix = "${file_type}"];
+
+  //总卷数，由奇谱自动计算；
+  optional int64 volume_count = 6 [(field_option).column_group = VOLUME_COUNT, (column_option).column_name = "vol_count", (track_option).notracker=true];
+
+  //总章节数，由奇谱自动计算；
+  optional int64 chapter_count = 7 [(field_option).column_group = CHAPTER_COUNT, (column_option).column_name = "cha_count", (track_option).notracker=true];
+
+  //总销量
+  optional int64 sales_volume = 8 [default = 0, (field_option).column_group = SALES_VOLUME, (column_option).column_name = "sal_vol", (track_option).notracker=true];
+
+  //点击量，由龙源提供，由奇谱自动聚合龙源数据；
+  optional int64 click_count = 9 [default = 0, (field_option).column_group = CLICK_COUNT, (column_option).column_name = "cli_count", (track_option).notracker=true];
+
+  //完结状态
+  optional BookAvailableStatus serialize_status = 10 [(field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "avail"];
+ 
+  //适读人群
+  repeated HumanGroup suitable_group = 11 [(field_option).column_group = SUITABLE_GROUP, (column_option).column_name = "sui_group_", (column_option).column_suffix = "${suitable_group}"];
+
+  //类别，三级分类，以前用Tag，现在全部改用Category
+  repeated CategorySummary category = 12 [(field_option).column_group = CATEGORY_SUMMARY, (column_option).column_name = "cate_", (column_option).column_suffix = "${category_id}"];
+
+  //自定义标签
+  repeated string tag = 13 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  //版权信息
+  optional Puyu puyu = 14 [(field_option).column_group = PUYU, (column_option).column_name = "puyu"];
+
+  //付费
+  optional Boss boss = 15 [(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+
+  //相关图片，包括封面图
+  repeated LocaleImage locale_image = 16 [(field_option).column_group = LOCAL_IMAGE, (column_option).column_name = "loc_image_", (column_option).column_suffix = "${language}_${type}"];
+
+  //发布相关的日期
+  repeated Publication publication= 17 [(field_option).column_group = BOOK_PUBLICATION, (column_option).column_name = "publication_", (column_option).column_suffix = "${platform}"];
+
+  //卷
+  repeated MetaSummary volume_summary = 18 [(field_option).column_group = CHILD_VOLUME, (column_option).column_name = "chd_vol_", (column_option).column_suffix = "${entity_id}"];
+
+  //最新章发布时间，由奇谱自动计算；
+  optional int64 chapter_last_online_time = 19 [(field_option).column_group = LAST_ONLINE_TIME, (column_option).column_name = "cha_las_onl_time"];
+
+  //首次上线时间
+  optional int64 book_first_online_time = 20 [(field_option).column_group = BOOK_FIRST_ONLINE_TIME, (column_option).column_name = "book_fir_onl_time"];
+
+  //最后上线时间
+  optional int64 book_last_online_time = 21 [(field_option).column_group = BOOK_LAST_ONLINE_TIME, (column_option).column_name = "book_las_onl_time"];
+
+  //章节
+  repeated MetaSummary chapter_summary = 22 [(field_option).column_group = CHILD_CHAPTER, (column_option).column_name = "chd_cap_", (column_option).column_suffix = "${entity_id}"];
+
+  //播控信息，使用方式参见http://wiki.qiyi.domain/pages/viewpage.action?pageId=25607995 
+  repeated AccessPlayControl access_play_control = 23 [(field_option).column_group = ACCESS_PLAY_CONTROL, (column_option).column_name = "accplayctrl_", (column_option).column_suffix = "${play_platform}"];
+
+  //Book_tag类别
+  repeated CategorySummary book_tag = 24 [(field_option).column_group = BOOK_TAG, (column_option).column_name = "book_tag_", (column_option).column_suffix = "${category_id}"];
+
+  // 昨日销售额
+  optional int64 sales_yesterday = 25 [(field_option).column_group = SALES_YESTERDAY, (column_option).column_name = "sal_yest"];
+  // 七天内销售额
+  optional int64 sales_week= 26 [(field_option).column_group = SALES_WEEK, (column_option).column_name = "sal_week"];
+  // 三十天内销售额
+  optional int64 sales_month = 27 [(field_option).column_group = SALES_MONTH, (column_option).column_name = "sal_month"];
+  // 销售额日环比
+  optional float sales_day_on_day = 28 [(field_option).column_group = SALES_DAY_ON_DAY, (column_option).column_name = "sales_dod"];
+  // 昨日点击量
+  optional int64 click_count_yesterday = 29 [(field_option).column_group = CLICK_COUNT_YESTERDAY, (column_option).column_name = "cli_count_yest", (track_option).notracker=true];
+  // 七天内点击量
+  optional int64 click_count_week = 30 [(field_option).column_group = CLICK_COUNT_WEEK, (column_option).column_name = "cli_count_week", (track_option).notracker=true];
+  // 三十天内点击量
+  optional int64 click_count_month = 31 [(field_option).column_group = CLICK_COUNT_MONTH, (column_option).column_name = "cli_count_month", (track_option).notracker=true];
+
+  // 昨日销售额
+  optional float income_yesterday = 32 [(field_option).column_group = INCOME_YESTERDAY, (column_option).column_name = "inc_yest"];
+
+  //圈子关联
+  optional PaopaoSummary paopao_summary = 90 [(field_option).column_group = PAOPAO_SUMMARY, (column_option).column_name = "paopao_sum"];
+
+  // 阅读免费章节数
+  //optional int64 read_free_chapter_count = 33 [(field_option).column_group = READ_FREE_CHAPTER_COUNT, (column_option).column_name = "read_free_chp_count", (track_option).notracker=true];
+  // 阅读付费章节数
+  //optional int64 read_paid_chapter_count = 34 [(field_option).column_group = READ_PAID_CHAPTER_COUNT, (column_option).column_name = "read_paid_chp_count", (track_option).notracker=true];
+  // 阅读字数
+  //optional int64 read_word_count = 35 [(field_option).column_group = READ_WORD_COUNT, (column_option).column_name = "read_word_count", (track_option).notracker=true];
+
+  //运营信息；
+  optional BookBase base = 36 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+
+  // 书写入作者
+  repeated MetaSummary author_summary = 37 [(field_option).column_group = AUTHOR_SUMMARY, (column_option).column_name = "aut_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  // 总阅读章节数
+  optional int64 read_chapter_count = 38 [(field_option).column_group = READ_CHAPTER_COUNT, (column_option).column_name = "read_chp_cunt", (track_option).notracker=true];
+  // 昨日阅读章节数
+  optional int64 read_chapter_count_yesterday = 39 [(field_option).column_group = READ_CHAPTER_COUNT_YESTERDAY, (column_option).column_name = "read_chp_cunt_yest", (track_option).notracker=true];
+  // 总加入书架数
+  optional int64 added_to_bookshelf_count = 40 [(field_option).column_group = ADDED_TO_BOOKSHELF_COUNT, (column_option).column_name = "add_shelf_cunt", (track_option).notracker=true];
+  // 昨日加入书架数
+  optional int64 added_to_bookshelf_count_yesterday = 41 [(field_option).column_group = ADDED_TO_BOOKSHELF_COUNT_YESTERDAY, (column_option).column_name = "add_shelf_cunt_yest", (track_option).notracker=true];
+  // 总购买章节数
+  optional int64 saled_chapter_count = 42 [(field_option).column_group = SALED_CHAPTER_COUNT, (column_option).column_name = "saled_chp_cunt", (track_option).notracker=true];
+  // 昨日购买章节数
+  optional int64 saled_chapter_count_yesterday = 43 [(field_option).column_group = SALED_CHAPTER_COUNT_YESTERDAY, (column_option).column_name = "saled_chp_cunt_yest", (track_option).notracker=true];
+  // 周人均阅读章节数
+  optional int64 read_chapter_average_week = 44 [(field_option).column_group = READ_CHAPTER_AVERAGE_WEEK, (column_option).column_name = "read_chp_ave_week", (track_option).notracker=true];
+  // 周加入书架
+  optional int64 added_to_bookshelf_uv_week = 45 [(field_option).column_group = ADDED_TO_BOOKSHELF_UV_WEEK, (column_option).column_name = "add_bookshelf_uv_week", (track_option).notracker=true];
+
+  // 章节平均订阅
+  optional int64 saled_chapter_average = 46 [(field_option).column_group = SALED_CHAPTER_AVERAGE, (column_option).column_name = "saled_chapter_average", (track_option).notracker=true];
+  // 章节最高订阅
+  optional int64 saled_chapter_most = 47 [(field_option).column_group = SALED_CHAPTER_MOST, (column_option).column_name = "saled_chapter_most", (track_option).notracker=true];
+  // 总付费用户
+  optional int64 saled_count_uv = 48 [(field_option).column_group = SALED_COUNT_UV, (column_option).column_name = "saled_count_uv", (track_option).notracker=true];
+  //图书关联模板的URL
+  optional StringList template_url_list = 49 [(field_option).column_group = TEMPLATE_URL_LIST, (column_option).column_name = "template_url_list"];
+  //图书页面信息
+  optional BookPageInfo page_info = 50 [(field_option).column_group = PAGE_INFO, (column_option).column_name = "book_page_info"];
+  //图书文件包
+  optional BookFile book_file = 51 [(field_option).column_group = BOOK_FILE, (column_option).column_name = "book_file"];
+  //试看的图书包
+  optional BookFile file_trial = 52 [(field_option).column_group = FILE_TRIAL, (column_option).column_name = "file_trial"];
+  //目录
+  optional string catalog = 53 [(field_option).column_group = CATALOG, (column_option).column_name = "catalog"];
+
+  //关联的ip实体的id
+  optional int64 ip_id = 54 [(field_option).column_group = IP_ID, (column_option).column_name = "ip_id"];
+
+  // IP相关信息
+  optional IntellectualPropertySummary ip_summary = 55 [(field_option).column_group = IP_SUMMARY, (column_option).column_name = "ip_sum"];
+
+  // 开始收费的章节序号
+  optional int32 start_charge_chapter = 56 [(field_option).column_group = START_CHARGE_CHAPTER, (column_option).column_name = "s_chrg_chptr"];
+  //合同号，由乐高写入
+  repeated int64 contract_code = 57 [(field_option).column_group = CONTRACT_CODE, (column_option).column_name = "contract_code_"];
+  //结算控制信息
+  optional SettlementInfo settlement_info = 91 [(field_option).column_group = SETTLEMENT_INFO, (column_option).column_name = "c_91_n"];
+  //关联标签
+  repeated TagSummary tag_summary = 92 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_92_n_", (column_option).column_suffix = "${source_type}"];
+  //书籍总加入书架人数
+  optional int64 added_to_bookshelf_uv = 93 [(field_option).column_group = ADDED_TO_BOOKSHELF_UV_COUNT, (column_option).column_name = "c_93_n"];
+  //书籍总阅读人数
+  optional int64 read_book_uv = 94 [(field_option).column_group = READ_BOOK_UV_COUNT, (column_option).column_name = "c_94_n"];
+  //书籍总订阅人数
+  optional int64 saled_book_uv = 95 [(field_option).column_group = SALED_BOOK_UV_COUNT, (column_option).column_name = "c_95_n"];
+  //内容等级信息
+  optional PublicationContentRatingInfo content_rating_info = 96 [(field_option).column_group = CONTENT_RATING_INFO, (column_option).column_name = "c_96_n"];
+  //云腾书库信息
+  repeated YuntengLibraryInfo yunteng_library_info = 97 [(field_option).column_group = YUNTENG_LIBRARY_INFO, (column_option).column_name = "c_97_n_", (column_option).column_suffix = "${id}"];
+}

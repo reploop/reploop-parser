@@ -1,0 +1,45 @@
+2018/02/28 (2.0.180228)
+0570头条增加feed下线原因字段
+1. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //下线原因
+  optional string offline_reason = 55 [(field_option).column_group = OFFLINE_REASON, (column_option).column_name = "c_55_n"];
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  OFFLINE_REASON = 669;
+}
+2018/02/26 (2.0.180226)
+47圈子新增标签类型和名称
+1. /knowledge/pub/properties.proto
+message CircleTagSummary {
+  //标签类型
+  optional TagSummaryTagType tag_type = 3 [default = UNKNOWN_TAG_SUMMARY_TAG_TYPE];
+  //标签名
+  optional string tag_name = 4;
+}
+2018/02/06 (2.0.180206)
+00 CUT新增爱奇艺号CUT来源
+1. /knowledge/pub/common.proto
+enum CutFrom {
+  //爱奇艺号拆条
+  CUT_FROM_IQIYIHAO = 5;
+}
+2018/02/06 (2.0.180206)
+20游戏新增大图图片地址
+1. /knowledge/pub/properties.proto
+message AppBase {
+  //IP关联位的应用大图，尺寸为180*236
+  optional string app_ip_img_url = 16;
+}
+2018/02/06 (2.0.180206)
+0570头条实体复用00/09的tag_summary
+1. /entity/schema-0570-head-line.fproto
+message HeadLine {
+  //关联标签
+  //开放平台写入
+  repeated TagSummary tag_summary = 56 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_56_n_", (column_option).column_suffix = "${source_type}"];
+  //地方站属性标签
+  //开放平台写入
+  repeated Subsite subsite = 57 [(field_option).column_group = SUBSITE, (column_option).column_name = "c_57_n_", (column_option).column_suffix = "${subsite_id}"];
+}

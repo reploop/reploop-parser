@@ -1,0 +1,49 @@
+// Define the table of the ugc episode set.
+// Next field id is: 24
+message UgcCollection {
+  //option
+  option (entity_option).table = UGC_COLLECTION_TABLE;
+  option (entity_option).entity_name = "ugc_collection";
+  option (table_option).hbase_table_name = "qipu_ugc_collection_table";
+  option (entity_option).entity_id_type = UGC_COLLECTION;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional UgcMetadata metadata = 2 [(field_option).column_group = UGC_METADATA, (column_option).column_name = "ugc_meta"];
+  optional bool deleted = 3 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  repeated MetaSummary episode_summary = 4 [(field_option).column_group = CHILD_EPISODE, (column_option).column_name = "chd_epd_", (column_option).column_suffix = "${entity_id}", (column_option).order_by = "order,entity_id"];
+  repeated MetaSummary image_summary = 5 [(field_option).column_group = CHILD_IMAGE, (column_option).column_name = "chd_img_", (column_option).column_suffix = "${entity_id}"];
+  // Define the elements of playlist
+  repeated MetaSummary video_group_summary = 6 [(field_option).column_group = CHILD_VIDEO_GROUP, (column_option).column_name = "chd_vgp_", (column_option).column_suffix = "${entity_id}"];
+
+  optional UgcBase ugc_base = 7 [(field_option).column_group = UGC_BASE, (column_option).column_name = "ugcbase"];
+
+  optional int64 display_play_count = 8 [(column_option).is_vint64 = true, (field_option).column_group = DISPLAY_PLAY_COUNT, (column_option).column_name = "dpcnt", (track_option).notracker=true];
+  optional int64 play_count = 9 [(column_option).is_vint64 = true, (field_option).column_group = PLAY_COUNT, (column_option).column_name = "pycnt", (track_option).notracker=true];
+  optional int64 comments_count = 10 [(column_option).is_vint64 = true, (field_option).column_group = COMMENT_COUNT, (column_option).column_name = "cmtcnt", (track_option).notracker=true];
+  optional int64 share_count = 11 [(column_option).is_vint64 = true, (field_option).column_group = SHARE_COUNT, (column_option).column_name = "shrcnt", (track_option).notracker=true];
+  optional int64 up_count = 12 [(column_option).is_vint64 = true, (field_option).column_group = UP_COUNT, (column_option).column_name = "upcnt", (track_option).notracker=true];
+  optional int64 down_count = 13 [(column_option).is_vint64 = true, (field_option).column_group = DOWN_COUNT, (column_option).column_name = "dwncnt", (track_option).notracker=true];
+
+  repeated string tag = 14 [(column_option).has_value = false, (field_option).column_group = TAG, (column_option).column_name = "tag_"];
+
+  // Store <name,value> pair specific terms
+  repeated KeyValuePair key_value_pair = 15 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+
+  optional int64 last_update_time = 16 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional UgcCheck ugc_check = 17 [(field_option).column_group = UGC_CHECK, (column_option).column_name = "ugcchk"];
+
+  optional AvailableStatus iqiyi_available_status = 18 [default = ONLINE, (field_option).column_group = IQIYI_AVAILABLE_STATUS, (column_option).column_name = "iqyavail"];
+  optional AvailableStatus pps_available_status = 19 [default = ONLINE, (field_option).column_group = PPS_AVAILABLE_STATUS, (column_option).column_name = "ppsavail"];
+
+  optional PagePublishStatus iqiyi_page_publish_status = 20 [default = PAGE_WAIT, (field_option).column_group = IQIYI_PAGE_PUBLISH_STATUS, (column_option).column_name = "ppiqysts"];
+  optional PagePublishStatus pps_page_publish_status = 21 [default = PAGE_WAIT, (field_option).column_group = PPS_PAGE_PUBLISH_STATUS, (column_option).column_name = "ppppssts"];
+
+  // Support platform and region control.
+  optional PlatformRegionControl iqiyi_platform_region_control = 22 [(field_option).column_group = IQIYI_PLATFORM_REGION_CONTROL, (column_option).column_name = "iqiyiprc"];
+  optional PlatformRegionControl pps_platform_region_control = 23 [(field_option).column_group = PPS_PLATFORM_REGION_CONTROL, (column_option).column_name = "ppsprc"];
+
+  // 顶踩数
+  optional float up_down_score = 24 [(field_option).column_group = UP_DOWN_SCORE, (column_option).column_name = "updwnsc", (track_option).notracker=true];
+}

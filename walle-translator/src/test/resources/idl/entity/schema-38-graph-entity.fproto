@@ -1,0 +1,28 @@
+/**
+ * @brief 图谱计算所使用的实体；
+ * @details 图谱计算所使用的实体。
+ *
+ **/
+message GraphEntity {
+  //option
+  option (entity_option).table = GRAPH_ENTITY_TABLE;
+  option (entity_option).entity_name = "graph_entity";
+  option (table_option).hbase_table_name = "qipu_graph_entity_table";
+  option (entity_option).entity_id_type = GRAPH_ENTITY;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del", (track_option).notracker=true];
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  optional int64 qipu_id = 4 [(field_option).column_group = QIPU_ID, (column_option).column_name = "qipu_id", (track_option).notracker=true]; ;
+  optional GraphEntityMetadata metadata = 5 [(field_option).column_group = ENTITY_METADATA, (column_option).column_name = "ent_meta", (track_option).notracker=true];
+  repeated KeyValuePair display_property = 6 [deprecated = true,(field_option).column_group = DISPLAY_PROPERTY, (column_option).column_name = "dis_pro_", (column_option).column_suffix = "${name}", (track_option).notracker=true];
+  repeated KeyValuePair hidden_property = 7 [deprecated = true, (field_option).column_group = HIDDEN_PROPERTY, (column_option).column_name = "hid_pro_", (column_option).column_suffix = "${name}", (track_option).notracker=true];
+  // 一个graph_id 会和多个graph_id 有关系。这个ralation是描述一个graph id 和其他graph id的关系
+  // 同一个graph_id + relation_name只会有一条数据
+  repeated Relation relation = 8 [deprecated = true, (field_option).column_group = RELATION, (column_option).column_name = "rel_", (column_option).column_suffix = "${graph_id}_${relation_name}", (track_option).notracker=true];
+  //属性
+  repeated KeyValuePair property = 9 [(field_option).column_group = PROPERTY, (column_option).column_name = "c_9_n_", (column_option).column_suffix = "${name}"];
+  //图谱关系
+  repeated Relation graph_relation = 10 [(field_option).column_group = GRAPH_RELATION, (column_option).column_name = "c_10_n_", (column_option).column_suffix = "${graph_id}"];
+}

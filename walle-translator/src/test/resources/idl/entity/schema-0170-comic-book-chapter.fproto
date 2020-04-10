@@ -1,0 +1,85 @@
+// 动漫书 话（章节）
+message ComicBookChapter {
+  //option
+  option (entity_option).table = COMIC_BOOK_CHAPTER_TABLE;
+  option (entity_option).entity_name = "comic_book_chapter";
+  option (table_option).hbase_table_name = "qipu_comic_book_chapter_table";
+  option (entity_option).entity_id_type = COMIC_BOOK_CHAPTER;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+  //是否删除。奇谱不真正删除数据。 使用这个标识来标记该数据已经删除。 
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+  
+  //基本信息
+  optional ComicBookChapterMetadata metadata = 4 [(field_option).column_group = METADATA, (column_option).column_name = "meta"];
+
+   //所在的图书
+  optional FatherInfo father_book = 5 [(field_option).column_group = FATHER_BOOK, (column_option).column_name = "dad_book"];
+
+  //发布相关
+  repeated Publication publication = 6 [(field_option).column_group = BOOK_PUBLICATION, (column_option).column_name = "publication_", (column_option).column_suffix = "${platform}"];
+  
+  // 图片生产相关
+  repeated ComicImageFormat format = 7 [(field_option).column_group = FORMAT, (column_option).column_name = "fmt_", (column_option).column_suffix = "${uuid}"];
+  
+  //付费
+  optional Boss boss = 8[(field_option).column_group = BOSS, (column_option).column_name = "boss"];
+  
+  // 日销量
+  optional int64 sales_yesterday = 19 [(field_option).column_group = SALES_YESTERDAY, (column_option).column_name = "sal_yest", (track_option).notracker=true];
+  // 周销量
+  optional int64 sales_week= 20 [(field_option).column_group = SALES_WEEK, (column_option).column_name = "sal_week", (track_option).notracker=true];
+  // 月销量
+  optional int64 sales_month = 21 [(field_option).column_group = SALES_MONTH, (column_option).column_name = "sal_month", (track_option).notracker=true];
+  // 总销量
+  optional int64 sales_volume = 22 [default = 0, (field_option).column_group = SALES_VOLUME, (column_option).column_name = "sal_vol", (track_option).notracker=true];
+  
+  // 日展示量
+  optional int64 click_count_yesterday = 23 [(field_option).column_group = CLICK_COUNT_YESTERDAY, (column_option).column_name = "cli_count_yest", (track_option).notracker=true];
+  // 周展示量
+  optional int64 click_count_week= 24 [(field_option).column_group = CLICK_COUNT_WEEK, (column_option).column_name = "cli_count_week", (track_option).notracker=true];
+  // 月展示量
+  optional int64 click_count_month = 25 [(field_option).column_group = CLICK_COUNT_MONTH, (column_option).column_name = "cli_count_month", (track_option).notracker=true];
+  // 总展示量
+  optional int64 click_count = 26 [default = 0, (field_option).column_group = CLICK_COUNT, (column_option).column_name = "cli_count", (track_option).notracker=true];
+  
+  // 日打赏
+  optional int64 reward_yesterday = 27 [(field_option).column_group = REWARD_YESTERDAY, (column_option).column_name = "rew_yest", (track_option).notracker=true];
+  // 周打赏
+  optional int64 reward_week= 28 [(field_option).column_group = REWARD_WEEK, (column_option).column_name = "rew_week", (track_option).notracker=true];
+  // 月打赏
+  optional int64 reward_month = 29 [(field_option).column_group = REWARD_MONTH, (column_option).column_name = "rew_month", (track_option).notracker=true];
+  // 总打赏
+  optional int64 reward_count = 30 [(field_option).column_group = REWARD_COUNT, (column_option).column_name = "rew_count", (track_option).notracker=true];
+
+  //下载量，总量
+  optional int64 download_count = 31 [default = 0, (field_option).column_group = DOWNLOAD_COUNT, (column_option).column_name = "down_count", (track_option).notracker=true];
+  //日下载量
+  optional int64 download_count_day = 32 [default = 0,(field_option).column_group = DOWNLOAD_COUNT_DAY, (column_option).column_name = "down_count_day", (track_option).notracker=true];
+  //周下载量
+  optional int64 download_count_week = 33 [default = 0,(field_option).column_group = DOWNLOAD_COUNT_WEEK, (column_option).column_name = "down_count_week", (track_option).notracker=true];
+  //月下载量
+  optional int64 download_count_month = 34 [default = 0, (field_option).column_group = DOWNLOAD_COUNT_MONTH, (column_option).column_name = "down_count_month", (track_option).notracker=true];
+  //原画图片总大小，单位为Byte
+  optional int64 total_original_image_size_byte = 35 [(field_option).column_group = TOTAL_ORI_IMG_SIZE, (column_option).column_name = "total_ori_img_size"];
+  //定宽章节JPG图片大小
+  optional int64 total_fixed_width_image_size_byte = 36 [(field_option).column_group = TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE, (column_option).column_name = "c_36_n"];
+  //原图章节WEBP图片大小
+  optional int64 total_webp_original_image_size_byte = 37 [(field_option).column_group = TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE, (column_option).column_name = "c_37_n"];
+  //定宽章节WEBP图片大小
+  optional int64 total_webp_fixed_width_image_size_byte = 38 [(field_option).column_group = TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE, (column_option).column_name = "c_38_n"];
+  //漫画PCW页面信息
+  optional BookPageInfo page_info = 39 [(field_option).column_group = PAGE_INFO, (column_option).column_name = "c_39_n"];
+  //低质原画图片总大小，单位为Byte
+  optional int64 total_original_image_size_byte_50 = 40 [(field_option).column_group = TOTAL_ORIGINAL_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_40_n"];
+  //低质定宽章节JPG图片大小
+  optional int64 total_fixed_width_image_size_byte_50 = 41 [(field_option).column_group = TOTAL_FIXED_WIDTH_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_41_n"];
+  //低质原图章节WEBP图片大小
+  optional int64 total_webp_original_image_size_byte_50 = 42 [(field_option).column_group = TOTAL_WEBP_ORIGINAL_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_42_n"];
+  //低质定宽章节WEBP图片大小
+  optional int64 total_webp_fixed_width_image_size_byte_50 = 43 [(field_option).column_group = TOTAL_WEBP_FIXED_WIDTH_IMAGE_SIZE_BYTE_50, (column_option).column_name = "c_43_n"];
+  //付费控制字段
+  repeated PublicatonChargeControl charge_control = 44 [(field_option).column_group = CHARGE_CONTROL, (column_option).column_name = "c_44_n_", (column_option).column_suffix = "${platform}"];
+}

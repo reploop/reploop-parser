@@ -1,0 +1,161 @@
+/**
+ * 头条
+ */
+message HeadLine {
+  //option
+  option (entity_option).table = HEAD_LINE_TABLE;
+  option (entity_option).entity_name = "head_line";
+  option (table_option).hbase_table_name = "qipu_head_line_table";
+  option (entity_option).entity_id_type = HEAD_LINE;
+
+  required int64 id = 1 [(column_option).is_auto_set = true];
+
+  //是否删除
+  optional bool deleted = 2 [default = false, (column_option).has_value = false, (field_option).column_group = DELETED, (column_option).column_name = "del"];
+
+  //最后更新时间，任何字段更新都会导致这个最后更新时间被修改。这个字段由奇谱自动维护。
+  optional int64 last_update_time = 3 [(field_option).column_group = LAST_UPDATE_TIME, (column_option).column_name = "lut", (column_option).is_auto_set = true, (track_option).notracker=true];
+
+  //来源类型
+  optional HeadLineUploadType upload_type = 4 [default = HEAD_LINE_UPLOAD_TYPE_AUTO_CRAWL,(field_option).column_group = UPLOAD_TYPE, (column_option).column_name = "uptype"];
+
+  //类别
+  optional CategorySummaryList category_summaries = 5 [(field_option).column_group = CATEGORY_SUMMARIES, (column_option).column_name = "cate"];
+
+  //标签
+  optional StringList tags = 6 [(field_option).column_group = TAGS, (column_option).column_name = "tag"];
+
+  //城市id，具体到市
+  repeated int64 city_id = 7 [(column_option).has_value = false,(field_option).column_group = CITY_ID, (column_option).column_name = "city_"];
+
+  // 数据第一次写入奇谱的时间
+  optional int64 create_time = 8 [(field_option).column_group = CREATE_TIME, (column_option).column_name = "cret"];
+
+  //原始站点信息
+  optional OriginalSiteInfo original_site_info = 9 [(field_option).column_group = ORIGINAL_SITE_INFO, (column_option).column_name = "ori_site_info"];
+
+  //关联的feed id列表
+  repeated MetaSummary feed_summary = 10 [(field_option).column_group = FEED_SUMMARY, (column_option).column_name = "feed_sum_", (column_option).column_suffix = "${entity_id}"];
+
+  //封面图
+  repeated ImageFormat cover_image = 11 [(field_option).column_group = COVER_IMAGE, (column_option).column_name = "coverimg_", (column_option).column_suffix = "${order}"];
+
+  //头条内容
+  repeated HeadLineContent content = 12 [(field_option).column_group = CONTENT, (column_option).column_name = "content_", (column_option).column_suffix = "${order}"];
+
+  //上下线状态
+  optional AvailableStatus available_status = 13 [default = ONLINE, (field_option).column_group = AVAILABLE_STATUS, (column_option).column_name = "avail"];
+
+  //浏览PV
+  optional int64 display_view_count = 14 [default = 0, (field_option).column_group = DISPLAY_VIEW_COUNT, (column_option).column_name = "dis_view_count", (track_option).notracker=true];
+
+  //视频VV（仅视频类头条）
+  optional int64 display_play_count = 15 [default = 0, (field_option).column_group = DISPLAY_PLAY_COUNT, (column_option).column_name = "dis_play_count", (track_option).notracker=true];
+
+  //点赞数
+  optional int64 like_count = 16 [default = 0, (field_option).column_group = LIKE_COUNT, (column_option).column_name = "like_count", (track_option).notracker=true];
+
+  //评论数
+  optional int64 comment_count = 17 [default = 0, (field_option).column_group = COMMENT_COUNT, (column_option).column_name = "comment_count", (track_option).notracker=true];
+
+  //分享数
+  optional int64 share_count = 18 [default = 0, (field_option).column_group = SHARE_COUNT, (column_option).column_name = "share_count", (track_option).notracker=true];
+
+  //头条审核状态
+  optional HeadLineCheckStatus check_status = 19 [default = HEAD_LINE_CHECK_STATUS_CHECKING, (field_option).column_group = CHECK_STATUS, (column_option).column_name = "check_status"];
+
+  //头条类型
+  optional HeadLineType type = 20 [default = UNKNOWN_HEAD_LINE_TYPE, (field_option).column_group = TYPE, (column_option).column_name = "type"];
+
+  optional Base base = 21 [(field_option).column_group = BASE, (column_option).column_name = "base"];
+
+  //头条最近一次发布时间
+  optional int64 publish_time = 22 [(field_option).column_group = HEAD_LINE_PUBLISH_TIME, (column_option).column_name = "pubt"];
+
+  //头条h5地址
+  optional string h5_page_url = 23 [(field_option).column_group = H5_PAGE_URL, (column_option).column_name = "h5_page_url"];
+
+  //头条号uid
+  optional int64 uploader_id = 24 [default = 0, (field_option).column_group = UPLOADER_ID, (column_option).column_name = "uploader_id"];
+
+  //频道
+  optional IntegerList channel_ids = 25 [(field_option).column_group = CHANNEL_IDS, (column_option).column_name = "cid"];
+
+  //关联的素材实体id
+  optional int64 material_id = 26 [(field_option).column_group = MATERIAL_ID, (column_option).column_name = "material_id"];
+
+  //搜索过滤：true是过滤，false是不过滤
+  optional bool reject_search = 27 [default = false, (field_option).column_group = REJECT_SEARCH, (column_option).column_name = "reject_search"];
+
+  //推荐过滤
+  optional bool reject_recommend =28 [default = false, (field_option).column_group = REJECT_RECOMMEND, (column_option).column_name = "reject_recommend"];
+
+  //标记tag和category是否经过人工修改
+  optional HeadLineLabelType label_type = 29 [default = HEAD_LINE_LABEL_TYPE_AUTO, (field_option).column_group = LABEL_TYPE, (column_option).column_name = "label_type"];
+
+  //推荐等级
+  optional Base.EDITOR_RECOMMEND_LEVEL editor_recommend_level = 30 [default = GENERAL, (field_option).column_group = EDITOR_RECOMMEND_LEVEL, (column_option).column_name = "edit_recom_lev"];
+
+  optional Qitan qitan = 31 [(field_option).column_group = QITAN, (column_option).column_name = "qtn"];
+
+  // 父素材ID
+  optional int64 father_material_id = 32 [(field_option).column_group = FATHER_MATERIAL_ID, (column_option).column_name = "fthr_mtrl_id"];
+
+  // 最后更新原因
+  optional HeadLineUpdateReason last_update_reason = 33 [(field_option).column_group = LAST_UPDATE_REASON, (column_option).column_name = "lu_reason"];
+  //kvp数组，数据定义请咨询业务线。
+  repeated KeyValuePair key_value_pair = 34 [(field_option).column_group = KEY_VALUE_PAIR, (column_option).column_name = "kvp_", (column_option).column_suffix = "${name}"];
+  //套壳UGC视频运营信息
+  optional UgcBase ugc_base = 35 [(field_option).column_group = UGC_BASE, (column_option).column_name = "ugc_base"];
+  //是否为奇艺独播剧
+  optional bool is_iqiyi_exclusive = 36 [default = false, (field_option).column_group = IS_IQIYI_EXCLUSIVE, (column_option).column_name = "is_iqy_exclv"];
+  //头条关联节目信息
+  repeated FatherProgramInfo father_program_info = 38 [(field_option).column_group = FATHER_PROGRAM_INFO, (column_option).column_name = "c_38_n_", (column_option).column_suffix = "${uuid}"];
+  //主站统计数据
+  optional IqiyiDailyStatistics iqiyi_daily_statistics = 39 [(field_option).column_group = IQIYI_DAILY_STATISTICS, (column_option).column_name = "c_39_n"];
+  //奇搜统计数据
+  optional QisoDailyStatistics qiso_daily_statistics = 40 [(field_option).column_group = QISO_DAILY_STATISTICS, (column_option).column_name = "c_40_n"];
+  //头条天级统计数据
+  optional ToutiaoDailyStatistics toutiao_daily_statistics = 41 [(field_option).column_group = TOUTIAO_DAILY_STATISTICS, (column_option).column_name = "c_41_n"];
+  //头条小时级统计数据
+  optional ToutiaoHourlyStatistics toutiao_hourly_statistics = 42 [(field_option).column_group = TOUTIAO_HOURLY_STATISTICS, (column_option).column_name = "c_42_n"];
+  //视频时长
+  optional int32 video_duration_seconds = 43 [(field_option).column_group = VIDEO_DURATION_SECONDS, (column_option).column_name = "c_43_n"];
+  //内容来源类型
+  optional OpenRichMediaSourceType open_rich_media_source_type = 44 [default = UNKNOWN_OPEN_RICH_MEDIA_SOURCE_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_SOURCE_TYPE, (column_option).column_name = "c_44_n"];
+  //上传者类型
+  optional OpenRichMediaUploaderType open_rich_media_uploader_type = 45 [default = UNKNOWN_OPEN_RICH_MEDIA_UPLOADER_TYPE, (field_option).column_group = OPEN_RICH_MEDIA_UPLOADER_TYPE, (column_option).column_name = "c_45_n"];
+  //全景视频类型
+  optional PanoFormat.VideoType pano_type = 46 [default = COMMON_VIDEO, (field_option).column_group = PANO_TYPE, (column_option).column_name = "c_46_n"];
+  //百度相关信息
+  optional BaiduSummary baidu_summary = 47 [(field_option).column_group = BAIDU_SUMMARY, (column_option).column_name = "c_47_n"];
+  //是否热点
+  //区分每天最新的一些热点内容
+  optional bool is_hot = 37 [default = false, (field_option).column_group = IS_HOT, (column_option).column_name = "is_hot"];
+  //片头、片中、片尾信息
+  repeated VideoHeadTailInfo video_head_tail_info = 48 [(field_option).column_group = VIDEO_HEAD_TAIL_INFO, (column_option).column_name = "c_48_n_", (column_option).column_suffix = "${type}"];
+  //短视频拆条信息
+  optional CutInfo cut_info = 49 [(field_option).column_group = CUT_INFO, (column_option).column_name = "c_49_n"];
+  //NLP自动识别IP信息
+  optional IntellectualPropertySummary nlp_ip_summary = 50 [(field_option).column_group = NLP_IP_SUMMARY, (column_option).column_name = "c_50_n"];
+  //推荐等级的理由
+  repeated string editor_recommend_level_reason = 51 [(field_option).column_group = EDITOR_RECOMMEND_LEVEL_REASON, (column_option).column_name = "c_51_n_"];
+  //多维度标签（视频特殊分类标签，字段值：软色情、重口味、负能量、政治敏感、其他）
+  repeated string restricted_dimension = 52 [(field_option).column_group = RESTRICTED_DIMENSION, (column_option).column_name = "c_52_n_"];
+  //热度状态更改时间（时间戳，毫秒）
+  optional int64 hot_status_change_time = 53 [(field_option).column_group = HOT_STATUS_CHANGE_TIME, (column_option).column_name = "c_53_n"];
+  //推荐等级更改时间（时间戳，毫秒）
+  optional int64 recommend_level_change_time = 54 [(field_option).column_group = RECOMMEND_LEVEL_CHANGE_TIME, (column_option).column_name = "c_54_n"];
+  //关联标签
+  //开放平台写入
+  repeated TagSummary tag_summary = 56 [(field_option).column_group = TAG_SUMMARY, (column_option).column_name = "c_56_n_", (column_option).column_suffix = "${source_type}"];
+  //地方站属性标签
+  //开放平台写入
+  repeated Subsite subsite = 57 [(field_option).column_group = SUBSITE, (column_option).column_name = "c_57_n_", (column_option).column_suffix = "${subsite_id}"];
+  //下线原因
+  optional string offline_reason = 55 [(field_option).column_group = OFFLINE_REASON, (column_option).column_name = "c_55_n"];
+  //记录该feed信息的原始来源ID
+  optional int64 beehive_source_id = 58 [(field_option).column_group = BEEHIVE_SOURCE_ID, (column_option).column_name = "c_58_n"];
+  //修改数据来源类型
+  repeated OpenRichMediaUpdateInfo update_info = 59 [(field_option).column_group = UPDATE_INFO, (column_option).column_name = "c_59_n_", (column_option).column_suffix = "${demander_type}"];
+}

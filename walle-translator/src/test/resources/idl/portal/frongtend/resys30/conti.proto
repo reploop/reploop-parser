@@ -1,0 +1,37 @@
+option java_package = "com.qiyi.qiyu.portal.area.proto.resys30";
+option java_outer_classname="ContiProtos";
+
+// Rec unit exposed to outside
+message EntityInfo {
+    // The rec id
+    optional int64 id = 1 [ default = -1 ];
+    optional string name = 2;
+    optional DisplayFields display_fields = 3;
+    optional int64 final_time = 4 [ default = 1271865600 ];
+    optional int32 time_duration = 5;
+    repeated People main_contributor = 6;
+    repeated People support_contributor = 7;
+}
+
+message DisplayFields {
+    optional string page_url = 1;
+    optional string picture_url = 2;
+    optional int64 display_play_count = 3;
+    optional string vid = 4;
+}
+
+message People {
+    optional string name = 1;
+}
+
+message RecCookie {
+  optional string area = 1 [ default = "" ];
+  optional string bucket = 2 [ default = "" ];
+  optional string event_id = 3 [ default = "" ];
+}
+
+message RecResponse {
+  optional string code = 1 [ default = "A00001" ];
+  optional RecCookie rec_cookie = 2;
+  repeated EntityInfo data = 3;
+}

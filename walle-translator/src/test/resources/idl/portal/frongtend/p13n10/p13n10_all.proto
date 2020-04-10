@@ -1,0 +1,101 @@
+option java_package = "com.qiyi.qiyu.portal.area.proto.p13n10";
+option java_outer_classname="P13N10AllProtos";
+
+message RecCookie {
+    optional string event_id = 1 [default = "-1"];
+    optional string bkt = 2 [default = "unknown"];
+    optional string area = 3 [default = "unknown"];
+    optional string config_version = 4 [default = "unknown"];
+    optional string area_version = 5 [default = "unknown"];
+}
+
+message EntityInfo {
+    // DisplayFields.album_id
+    optional int64 album_id = 1;
+    optional double score = 2;
+    // EntityInfo.name
+    optional string album_name = 3;
+    // DisplayFields.picture_url
+    optional string pic_url = 4;
+    // DisplayFields.page_url
+    optional string play_url = 5;
+    // DisplayFields.prompt_description
+    optional string focus = 6;
+    // DisplayFields.type
+    repeated string type = 7;
+    // EntityInfo.channel_id 
+    optional int32 channel_id = 8;
+    // DisplayFields.tv_id
+    optional int64 tv_id = 9;
+    // DisplayFields.vid
+    optional string vid = 10;
+    // DisplayFields.is_member_only
+    optional int32 is_purchase = 11 [ default = 1 ];
+    // DisplayFields.is_download_allowed
+    optional int32 is_download = 12;
+    // DisplayFields.source_name
+    repeated string source = 13;
+    optional string reason = 14 [ default = "" ];
+    // DisplayFields.episode_order
+    optional int32 play_order = 15 [ default = 1 ];
+    // DisplayFields.latest_episode
+    optional int32 current_set_num = 16 [ default = 1 ];
+    // DisplayFields.total_episode_num
+    optional int32 total_set_num = 17 [ default = 1 ];
+    // DisplayFields.global_publish_date
+    optional string prem_date = 18 [ default = "" ];
+    // EntityInfo.time_duration
+    optional int32 time_length = 19 [ default = -1 ];
+    // EntityInfo.is_qiyi_produced
+    optional int32 phase = 20 [ default = -1 ];
+    // DisplayFields.format property
+    optional int32 is_3d = 21 [ default = -1 ];
+    
+    // json : album_hc
+    // 1
+    optional int32 is_hc = 22 [ default = -1 ];
+    
+    // DisplayFields.purchase_type
+    optional int32 purchase_type = 23 [ default = -1 ];
+    // DisplayFields.format property
+    optional int32 is_1080p = 24 [ default = -1 ];
+    // false
+    optional bool is_watched = 25 [default = false];
+    
+    optional string album_desc = 26 [ default = "" ];
+    // EntityInfo.creator
+    repeated string director = 27;
+    // EntityInfo.main_contributor
+    repeated string main_actor = 28;
+    //Deprecated
+    optional Counterpart counterpart = 29;
+    
+    // DisplayFields.sub_title
+    optional string subtitle = 30 [ default = "" ];
+    // DisplayFields.short_title
+    optional string short_title = 31 [ default = "" ];
+    // EntityInfo.final_time
+    optional int64 final_time = 32 [ default = -1 ];
+    // DisplayFields.is_exclusive
+    optional int32 exclusive_status = 33 [ default = -1 ];
+}
+
+message Counterpart {
+     optional int64 album_id = 1;
+     optional int64 tv_id = 2;
+     optional string vid = 3 [ default = "" ];
+     optional int32 cid = 4;
+}
+
+message RecResult {
+    required int32 cid = 1;
+    repeated EntityInfo selected_album = 2 ;
+}
+
+message RecResponse {
+    optional string code = 1 [ default = "A00000" ];
+    optional string version = 2 [default = "unknown"];
+    optional RecCookie attribute = 3;
+    repeated RecResult channel_rec = 4 ;
+    optional string debug_info = 5 [ default = "" ];
+}

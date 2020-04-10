@@ -1,0 +1,212 @@
+// Author: Yongqiang Li (liyongqiang@qiyi.com)
+//
+// This file includes MixerResponse proto.
+
+import "search/common/proto/docinfo.proto";
+import "search/serving/common.proto";
+import "search/serving/intent_graph.proto";
+import "search/serving/intent_recognizer.proto";
+import "search/serving/query.proto";
+
+package search.serving;
+
+message SearchDocInfo {
+    optional string doc_id = 1;
+    optional float score = 2;
+    optional int32 pos = 3 [default = 2];
+    optional search.indexing.AlbumDocInfo albumDocInfo = 5;
+    optional int32 sort = 6;
+    optional bool is_from_intent = 7 [default = false];
+    optional bool is_exactly_same = 8 [default = false];
+    optional int32 interleaving_method_name = 9;
+    optional int32 interleaving_method_A_rank = 10;
+    optional int32 interleaving_method_B_rank = 11;
+}
+
+// The type of query recognization.
+// 0: not be the result of query recognization.
+// 1: the result of query recognization including actor or dicrector.
+// 2: the result of query recognization excluding actor or dicrector.
+// 3: the result of commodity query recognization for spu.
+// 4: the result of commodity query recognization for category.
+// 5: need to visit intent recognizer service(don't need to visit leaf)
+// 6: need to visit intent recognizer service(need to visit leaf).
+// 7: query starts with the label of "@".
+// 8: live broadcast.
+
+enum IntentType {
+    NORMAL = 0;
+    INTENT_INCLUDE_ACTOR_DIRECTOR = 1;
+    INTENT_EXCLUDE_ACTOR_DIRECTOR = 2;
+    COMMODITY_SPU = 3;
+    COMMODITY_CATEGORY = 4;
+    INTENT_RECOGNIZER = 5;
+    INTENT_RECOGNIZER_LEAF = 6;
+    START_WITH_AT = 7;
+    LIVE_BROADCAST = 8;
+    INTENT_SMART_VIEW = 9;
+    INTENT_EXTENSIVE_SEARCH = 10;
+    INTENT_UPCOMING_SEARCH = 11;
+    INTENT_LIVE = 15;
+}
+
+enum SimpleIntentType {
+    SIT_VIDEO = 0;
+    SIT_INTENT_VIDEO = 1;
+    SIT_INTENT_RECOGNIZER = 2;
+    SIT_OTHER = 100;
+}
+
+enum IndexLayer {
+    ONLY_PRIMARY_INDEX = 1;
+    ONLY_FULL_INDEX = 2;
+    PRIMARY_FULL_INDEX = 12;
+}
+
+message IntentGraphDocInfo {
+    // The entity docid.
+    optional string docid = 1;
+
+    optional search.indexing.AlbumDocInfo docinfo = 2;
+
+    // The entity name.
+    optional string name = 3;
+
+    // The content of relation.
+    optional string relation = 4;
+
+    // The entity type.
+    optional GraphNodeType node_type = 5;
+
+    repeated IntentGraphDocInfo child_nodes = 6;
+
+    repeated IntentGraphDocInfo properties = 7;
+
+    repeated IntentProperty entity_properties = 8;
+
+    optional string description = 9;
+}
+
+// MixerResponse represents mixer node's search result.
+message MixerResponse {
+    // Whether the search request succeed.
+    optional ErrorCode code = 1;
+
+    // Docinfo list.
+    repeated SearchDocInfo docinfos = 2;
+
+    // Debug info.
+    optional string debug = 3;
+
+    // Result number.
+    optional int32 result_num = 4;
+
+    // Query correction result.
+    optional string qc = 5;
+
+    // If need qc.
+    optional bool need_qc = 6 [default = true];
+
+    // Is original query word replaced.
+    optional bool isreplaced = 7 [default = false];
+
+    // Unique event id.
+    optional string event_id = 8;
+
+    // Bucket name.
+    optional string bkt = 9;
+
+    // Terms of query rewrite (show-reason).
+    repeated string terms = 10;
+
+    optional string debug_string = 11;
+
+    // The search time of mixer.
+    optional int32 search_time = 12;
+
+    // The time of server.
+    optional string server_time = 13;
+
+    // All channels in the following format: 电影,1;电视剧,2;...
+    optional string all_channels = 14;
+
+    // Page num.
+    optional int32 page_num = 15;
+
+    // Page size.
+    optional int32 page_size = 16;
+
+    // Max result number.
+    optional int32 max_result_number = 17;
+
+    // The real query that will be retrived after nomalizing.
+    optional string real_query = 18;
+
+    // The term query that is set by intent recognizer.
+    repeated TermQuery term_query = 20;
+
+    // The type of intent recognization.
+    // 0: not be the result of intent recognization;
+    // 1: the result of intent recognization including actor or director;
+    // 2: the result of intent recognization excluding actor or director;
+    // 3: the result of commodity spu
+    // 4: the result of commodity category
+    // 5: the result of knowledge graph root
+    optional int32 intent_type = 21 [default = 0];
+
+    // the id of the spu or category.
+    optional string commodity_id = 22;
+
+    optional int32 intent_result_num = 23;
+
+    repeated IntentGraphDocInfo intent_graph_docinfos = 24;
+
+    optional int32 intent_action_type = 25 [default = 0];
+
+    optional int32 scoring_mode = 26;
+
+    optional bool is_invalid_query = 27 [default = false];
+
+    // The serial info of results.
+    optional SuperSerial super_serial = 28;
+
+    // The common property structure for MALL_SEARCH.
+    optional MallPropertyResponse mall_property = 29;
+
+    // The category structrue for MALL_SEARCH.
+    optional MallCategoryResponse mall_category = 30;
+
+    // This tag is for the year from intent recognition.
+    optional string intent_term_query_year = 31;
+
+    // A mark to represent whether the response may contain some unnormal copyright results.
+    optional bool has_unnormal_copyright = 32 [default = false];
+
+    // The type of intent and graph.
+    optional GraphType graph_type = 33;
+
+    // The categories received from graph service.
+    repeated GraphCategory graph_categories = 34;
+
+    // Circle result num.
+    optional int32 circle_result_num = 35;
+
+    // Intent recognition card impression position.
+    optional int32 intent_pos = 36;
+
+    // A flag for justing interleaving.
+    optional bool is_interleaving = 37 [default = false];
+
+    // A mark represents which index layer the request searched.
+    // 1:  primary index leaf.
+    // 2:  full index leaf.
+    // 12: firstly, search primary index leaf, then, search full index leaf.
+    optional IndexLayer index_layer = 97;
+
+    // A mark to represent whether need to search the full index leaf.
+    optional bool need_second_search = 98 [default = false];
+
+    // A mark to represent whether the result is the full index leaf.
+    optional bool is_second_search = 99 [default = false];
+
+}

@@ -1,0 +1,60 @@
+/**
+ * 版本监控库
+ *
+**/
+import "google/protobuf/descriptor.proto";
+
+package knowledge.pub;
+
+message VersionEntityOptions {
+  optional string entity_name = 1;
+  optional string table_name = 2;
+}
+
+extend google.protobuf.MessageOptions {
+  optional VersionEntityOptions version_entity_option = 70001;
+}
+
+message VersionColumnOptions {
+  optional bool is_required = 1 [default = false];
+  optional string column_name = 2;
+  optional string request_field = 3;
+}
+extend google.protobuf.FieldOptions {
+  optional VersionColumnOptions version_column_option = 70002;
+}
+
+/**
+*CREATE TABLE `qipu_version_table` (
+*  `user_name` varchar(20) NOT NULL,
+*  `context` varchar(20000) DEFAULT NULL,
+*  `version` varchar(20) DEFAULT NULL,
+*  `last_updated_time` bigint(20) unsigned DEFAULT NULL,
+*  `ip` varchar(30) NOT NULL,
+*  `port` int(10) unsigned DEFAULT NULL,
+*  PRIMARY KEY (`user_name`,`ip`)
+*) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+*/
+/**
+ * @brief 
+ * @details version版本库
+ *
+**/
+message VersionInfo {
+  //option
+  option (version_entity_option).entity_name = "version";
+  option (version_entity_option).table_name = "qipu_version_table";
+
+  // 当前账号
+  optional string user_name = 1 [(version_column_option).is_required = true, (version_column_option).column_name = "user_name", (version_column_option).request_field = "user.name"];
+  // System.getProperties()属性值
+  optional string context = 2 [(version_column_option).column_name = "context", (version_column_option).request_field = "context"];
+  // 当前版本
+  optional string version = 3 [(version_column_option).column_name = "version", (version_column_option).request_field = "version"];
+  // 当前时间
+  optional int64 last_updated_time = 4 [(version_column_option).column_name = "last_updated_time", (version_column_option).request_field = "timestamp"];
+  // IP地址
+  optional string ip = 5 [(version_column_option).is_required = true, (version_column_option).column_name = "ip", (version_column_option).request_field = "ip"];
+  // 服务所在端口
+  optional int64 port = 6 [(version_column_option).column_name = "port", (version_column_option).request_field = "port"];
+}

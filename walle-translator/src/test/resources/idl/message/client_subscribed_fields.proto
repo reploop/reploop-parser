@@ -1,0 +1,17 @@
+// client_subsribed_fields.proto
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+
+package knowledge.base;
+
+message Subscription {
+   required string client_name = 1;
+   repeated string interested_field = 2;
+}
+
+message SubscriptionSet {
+   // Hidden field means can not go public without control for security reasons.
+   repeated string hidden_field = 1;
+
+   // Client subscribed fields.
+   repeated Subscription subscription = 2;
+}

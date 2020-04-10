@@ -1,0 +1,24 @@
+package com.qiyi.knowledge.hbase.option;
+
+message TableOptions {
+  optional string hbase_table_name = 1;
+}
+
+message ColumnOptions {
+  // column family名，默认为d
+  optional string column_family = 1 [default = "d"];
+  // column名
+  optional string column_name = 2;
+  // column后缀(repeated字段使用)
+  optional string column_suffix = 3;
+  // 指定排序字段
+  optional string order_by = 4;
+  // 排序是否降序
+  optional bool is_desc = 5 [default = false];
+  // bool字段是否保存值（字段值存在代表true）
+  optional bool has_value = 6 [default = true];
+  // vint64为使用bytes.toLong转为bytes的字段
+  optional bool is_vint64 = 7 [default = false];
+  // 字段为自动设值(例：last_update_time)
+  optional bool is_auto_set = 8 [default = false];
+}

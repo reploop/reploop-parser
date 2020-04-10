@@ -1,0 +1,326 @@
+2018/08/30 (2.0.180830)
+00视频实体视频码流字段新增sha1和奇传id
+1. /knowledge/pub/common.proto
+message VideoInfo {
+  //sha1值（视频数字指纹）
+  optional string sha1_signature = 10;
+  //奇传id
+  optional string qichuan_id = 14;
+}
+2018/08/30 (2.0.180830)
+23直播子业务类型新增新英体育其他枚举值
+1. /knowledge/pub/common.proto
+enum LiveEpisodeSubType {
+  //新英体育其他
+  LIVE_EPISODE_SUB_TYPE_SUPER_SPORTS_OTHER = 16;
+}
+2018/08/27 (2.0.180827)
+00视频&09用户视频新增任务爱奇艺号任务信息
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 爱奇艺号任务信息
+ **/
+message IqiyihaoTaskInfo {
+  //任务ID
+  optional int32 task_id = 1;
+  //任务名称
+  optional string task_name = 2;
+}
+2. /entity/schema-00-episode.fproto
+message Episode {
+  //爱奇艺号任务信息
+  repeated IqiyihaoTaskInfo iqiyihao_task_info = 260 [(field_option).column_group = IQIYIHAO_TASK_INFO, (column_option).column_name = "c_260_n_", (column_option).column_suffix = "${task_id}"];
+}
+3. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //爱奇艺号任务信息
+  repeated IqiyihaoTaskInfo iqiyihao_task_info = 139 [(field_option).column_group = IQIYIHAO_TASK_INFO, (column_option).column_name = "c_139_n_", (column_option).column_suffix = "${task_id}"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  IQIYIHAO_TASK_INFO = 735;
+}
+2018/08/22 (2.0.180822)
+00视频实体播控平台新增TV院线枚举值
+1. /knowledge/pub/common.proto
+enum PlayPlatform {
+  //TV院线APP（只能播放院线电影）
+  TV_CINEMA_APP = 34;
+}
+2018/08/22 (2.0.180822)
+48信息流新增feed子类型枚举值
+1. /knowledge/pub/common.proto
+enum FeedShortVideoExtendedType {
+  //加锁内容
+  FEED_SHORT_VIDEO_LOCKED_CONTENT = 9;
+}
+2018/08/20 (2.0.180820)
+00视频实体视频码流信息字段新增付费视频时长及试看最大时长字段
+1. /knowledge/pub/common.proto
+message VideoInfo {
+  //付费视频持续时长（单位：毫秒）
+  optional int64 paid_video_duration = 11;
+  //付费视频试看最大时长（单位：毫秒）
+  optional int64 paid_video_probation_max_duration = 12;
+}
+2018/08/17 (2.0.180817)
+00视频实体&09用户视频实体运营信息字段新增视频原创属性系统判断结果字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 原创判定信息
+ **/
+message OriginalCheckInfo {
+  //原创判定结果
+  optional OriginalCheckResult original_check_result = 1 [default = UNKNOWN_ORIGINAL_CHECK_RESULT];
+  //转载原因
+  optional string reprint_reason = 2;
+}
+2. /knowledge/pub/common.proto
+/**
+ * @brief 原创判定结果
+ **/
+enum OriginalCheckResult {
+  //未知类型
+  UNKNOWN_ORIGINAL_CHECK_RESULT = -1;
+  //原创
+  ORIGINAL_CHECK_RESULT_ORIGINAL = 0;
+  //转载
+  ORIGINAL_CHECK_RESULT_REPRINT = 1;
+}
+enum ColumnGroup {
+  ORIGINAL_CHECK_INFO = 732;
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //原创属性系统判定信息
+  optional OriginalCheckInfo original_check_info = 258 [(field_option).column_group = ORIGINAL_CHECK_INFO, (column_option).column_name = "c_258_n"];
+}
+4. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //原创属性系统判定信息
+  optional OriginalCheckInfo original_check_info = 136 [(field_option).column_group = ORIGINAL_CHECK_INFO, (column_option).column_name = "c_136_n"];
+}
+2018/08/16 (2.0.180816)
+1870轻小说实体新增阅读量及收藏量字段
+1. /entity/schema-1870-light-novel.fproto
+message LightNovel {
+  //日阅读量
+  optional int64 click_count_yesterday = 25 [(field_option).column_group = CLICK_COUNT_YESTERDAY, (column_option).column_name = "c_25_n"];
+  //周阅读量
+  optional int64 click_count_week = 26 [(field_option).column_group = CLICK_COUNT_WEEK, (column_option).column_name = "c_26_n"];
+  //月阅读量
+  optional int64 click_count_month = 27 [(field_option).column_group = CLICK_COUNT_MONTH, (column_option).column_name = "c_27_n"];
+  //总阅读量
+  optional int64 click_count = 28 [(field_option).column_group = CLICK_COUNT, (column_option).column_name = "c_28_n"];
+  //日收藏量
+  optional int64 collect_count_yesterday = 29 [(field_option).column_group = COLLECT_COUNT_YESTERDAY, (column_option).column_name = "c_29_n"];
+  //周收藏量
+  optional int64 collect_count_week = 30 [(field_option).column_group = COLLECT_COUNT_WEEK, (column_option).column_name = "c_30_n"];
+  //月收藏量
+  optional int64 collect_count_month = 31 [(field_option).column_group = COLLECT_COUNT_MONTH, (column_option).column_name = "c_31_n"];
+  //总收藏量
+  optional int64 collect_count = 32 [(field_option).column_group = COLLECT_COUNT, (column_option).column_name = "c_32_n"];
+}
+2. /knowledge/pub/common.proto
+enum ColumnGroup {
+  COLLECT_COUNT_YESTERDAY = 729;
+}
+2018/08/10 (2.0.180810)
+00视频信息码流字段新增小视频枚举值
+1. /knowledge/pub/common.proto
+/**
+ * @brief 视频类型
+ **/
+enum VideoType {
+  //未知类型
+  UNKNOWN_VIDEO_TYPE = -1;
+  //小视频（根据时长，宽高比及上传来源判断是否是小视频）
+  VIDEO_TYPE_SHORT_VIDEO = 0;
+}
+message VideoInfo {
+  //视频类型
+  optional VideoType video_type = 13 [default = UNKNOWN_VIDEO_TYPE];
+}
+2. /entity/schema-09-ugc-episode.fproto
+message UgcEpisode {
+  //视频码流概要信息
+  optional VideoInfo video_info = 138 [(field_option).column_group = VIDEO_INFO, (column_option).column_name = "c_138_n"];
+}
+2018/08/10 (2.0.180810)
+00视频实体&01专辑实体业务类型字段新增知识付费枚举值
+1. /knowledge/pub/common.proto
+enum BusinessType {
+  //知识付费
+  BUSINESS_TYPE_KNOWLEDGE_PAYMENT = 3;
+}
+2018/08/10 (2.0.180810)
+00视频实体&01专辑实体新增知识付费字段
+1. /knowledge/pub/properties.proto
+/**
+ * @brief 课程ppt自动处理成图片后的系列的图片信息
+ **/
+message PptImageInfo {
+  //ppt图片地址
+  optional string image_url = 1;
+  //ppt图片顺序
+  optional int64 image_order = 2;
+}
+/**
+ * @brief 课程信息
+ **/
+message CourseInfo {
+  //课程大纲富文本地址
+  optional string outline_rich_text_url = 1;
+  //课程介绍富文本地址
+  optional string introduction_rich_text_url = 2;
+  //课程ppt自动处理成图片后的系列的图片信息
+  repeated PptImageInfo ppt_image_info = 3;
+  //PPT起始付费页数
+  optional int64 ppt_pay_start_page = 8;
+}
+/**
+ * @brief 课程ppt自动处理成图片后的系列的图片信息
+ **/
+message PptImageInfo {
+  //ppt图片地址
+  optional string image_url = 1;
+  //ppt图片顺序
+  optional int64 image_order = 2;
+}
+2. /entity/schema-01-album.fproto
+message Album {
+  //课程专辑信息
+  optional CourseInfo course_album_info = 229 [(field_option).column_group = COURSE_ALBUM_INFO, (column_option).column_name = "c_229_n"];
+}
+3. /entity/schema-00-episode.fproto
+message Episode {
+  //课程信息
+  optional CourseInfo course_info = 257 [(field_option).column_group = COURSE_INFO, (column_option).column_name = "c_257_n"];
+}
+4. /knowledge/pub/common.proto
+enum ColumnGroup {
+  COURSE_ALBUM_INFO = 730;
+  COURSE_INFO = 731;
+}
+2018/08/06 (2.0.180806)
+00视频实体短视频拆条信息字段新增短视频时长和封面类型字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 动态视频封面类型
+ **/
+enum VideoCoverContentType {
+  //未知类型
+  UNKNOWN_VIDEO_COVER_CONTENT_TYPE = -1;
+  //连续
+  VIDEO_COVER_CONTENT_TYPE_SERIES = 0;
+  //不连续
+  VIDEO_COVER_CONTENT_TYPE_SPLICE = 1;
+}
+message FatherInfo {
+  //短视频时长（s） 例如15s 10s、30s等
+  optional int32 cut_duration = 16;
+  //动态视频封面类型
+  optional VideoCoverContentType video_cover_content_type = 17 [default = UNKNOWN_VIDEO_COVER_CONTENT_TYPE];
+}
+2. /knowledge/pub/properties.proto
+message CutInfo {
+  //短视频时长（s） 例如15s
+  //10s、30s等
+  optional int32 cut_duration = 6;
+  //动态视频封面类型
+  optional VideoCoverContentType video_cover_content_type = 7 [default = UNKNOWN_VIDEO_COVER_CONTENT_TYPE];
+}
+3. /knowledge/pub/metadatas.proto
+message MetaSummary {
+  //短视频时长（s） 例如15s
+  optional int32 cut_duration = 42;
+  //动态视频封面类型
+  optional VideoCoverContentType video_cover_content_type = 43 [default = UNKNOWN_VIDEO_COVER_CONTENT_TYPE];
+}
+2018/08/06 (2.0.180806)
+21feed评论实体新增feed评论业务方类型
+1. /knowledge/pub/common.proto
+enum CircleFeedCommentBusinessType {
+  //半屏页视频
+  CIRCLE_FEED_COMMENT_BUSINESS_TYPE_HALF_SCREEN_VIDEO = 17;
+}
+2018/08/06 (2.0.180806)
+21信息流评论实体新加feed评论类型枚举值
+1. /knowledge/pub/common.proto
+/**
+ * @brief 评论类型
+ **/
+enum CommentType {
+  //未知类型
+  UNKNOWN_COMMENT_TYPE = -1;
+  //表状
+  COMMENT_TYPE_TABLE = 0;
+  //树状
+  COMMENT_TYPE_TREE = 1;
+}
+enum ColumnGroup {
+  COMMENT_TYPE = 734;
+}
+2. /entity/schema-21-circle-feed-comment.fproto
+message CircleFeedComment {
+  //feed评论类型
+  optional CommentType comment_type = 11 [default = COMMENT_TYPE_TABLE, (field_option).column_group = COMMENT_TYPE, (column_option).column_name = "c_11_n"];
+}
+2018/08/03 (2.0.180803)
+1870轻小说实体表运营信息字段新增是否参赛作品标识
+1. /knowledge/pub/properties.proto
+message BookBase {
+  //是否为参赛作品
+  optional bool is_competition_work = 12 [default = false];
+}
+2018/08/03 (2.0.180803)
+00视频实体本地图片字段增加图片生产方式字段
+1. /knowledge/pub/common.proto
+/**
+ * @brief 图片生产方式
+ **/
+enum ImageProductionType {
+  //未知类型
+  UNKNOWN_IMAGE_PRODUCTION_TYPE = -1;
+  //按需生产
+  IMAGE_PRODUCTION_TYPE_ON_DEMAND = 0;
+  //预生产
+  IMAGE_PRODUCTION_TYPE_PREPARATION = 1;
+  //默认生产，是指当按需和预生产都没有完成的时候，会先给一个默认图，当按需或预生产完成的时候，会把默认图给覆盖掉
+  IMAGE_PRODUCTION_TYPE_DEFAULT = 2;
+}
+2. /knowledge/pub/properties.proto
+message LocaleImage {
+  //图片生产方式
+  repeated ImageProductionType image_production_type = 15;
+}
+2018/08/01 (2.0.180801)
+0370专题页面实体新增知识付费业务类型
+1. /knowledge/pub/common.proto
+enum SubjectPageBusinessType {
+  //知识付费专题
+  SUBJECT_PAGE_BUSINESS_KNOWLEDGE_PAYMENT_TOPIC = 5;
+}
+2018/08/01 (2.0.180801)
+00视频实体&01专辑实体控制base站点字段新增播次展示方式枚举值
+1. /knowledge/pub/common.proto
+/**
+ * @brief 热度展示方式
+ **/
+enum HotDisplayType {
+  //未知类型
+  UNKNOWN_HOT_DISPLAY_TYPE = -1;
+  //播次
+  HOT_DISPLAY_TYPE_PLAY_COUNT = 0;
+  //热度指数
+  HOT_DISPLAY_TYPE_HOT_INDEX = 1;
+  //不受限取值，指视频、专辑无限制时依据频道是否有限制取值，都无限制，则取任意值
+  HOT_DISPLAY_TYPE_UNRESTRICTED = 2;
+  //不显示
+  HOT_DISPLAY_TYPE_NOT_DISPLAY = 3;
+}
+2. /knowledge/pub/properties.proto
+message OperationControlBase {
+  //热度展示方式
+  optional HotDisplayType hot_display_type = 12 [default = HOT_DISPLAY_TYPE_UNRESTRICTED];
+}

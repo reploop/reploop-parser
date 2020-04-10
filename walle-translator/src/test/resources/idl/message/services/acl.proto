@@ -1,0 +1,94 @@
+// Author: Chuanqian Wang(wangchuanqian@qiyi.com)
+//
+// Define data structure for access control list conf.
+
+import "knowledge/pub/common.proto";
+
+package knowledge.services.base;
+
+message AccessControlList {
+  message UserSpec {
+    required knowledge.pub.User user = 1;
+
+    // qps = -1 means unlimited.
+    required int32 qps = 2;
+
+    message TableSpec {
+      required knowledge.pub.Table table = 1;
+
+      // If allowed_column_group is not set,
+      // user has full access to this table.
+      repeated knowledge.pub.ColumnGroup allowed_column_group = 2;
+    }
+    repeated TableSpec table_spec= 3;
+    
+    // 必须设置is_updated_in_batch_mode=true
+    optional bool is_batch= 4 [default = false];
+    // 必须设置should_notify_audience=false
+    optional bool is_silent = 5 [default = false];
+    
+    // 线上批量处理标记[非刷数据],进入单独online通道
+    optional bool is_online = 6 [default = false];
+  }
+  repeated UserSpec user_spec = 1;
+}
+
+message UserPermissionList {
+   message UserPermission {
+     required knowledge.pub.User user = 1;
+     optional WritePermissionInfo write_info = 2;
+     optional DefaultPermissionInfo id_info = 3;
+     optional DefaultPermissionInfo read_info = 4;
+     
+     //For gateway
+     optional InterfacePermissionInfo interface_info = 5;
+   }
+   repeated UserPermission user_permission = 1;
+}
+
+message WritePermissionInfo {
+   optional int32 qps = 1 [default = 0];
+   optional bool is_admin = 2 [default = false];
+   repeated TableSpec table_spec= 3;
+  
+   // batch用户，进入batch通道
+   optional bool is_batch= 4 [default = false];
+   // 线上批量处理标记[非刷数据],进入单独online通道
+   optional bool is_online = 5 [default = false];
+   // 强制不允许发送消息
+   optional bool is_silent = 6 [default = false];
+   // 允许发送高优先级消息
+   optional bool is_high_allowed  = 7 [default = false];
+}
+
+message DefaultPermissionInfo {
+   optional int32 qps = 1 [default = 0];
+   optional bool is_admin = 2 [default = false];
+   repeated TableSpec table_spec= 3;
+}
+
+message TableSpec {
+   required knowledge.pub.Table table = 1;
+
+   // If allowed_column_group is not set,
+   // user has full access to this table.
+   repeated knowledge.pub.ColumnGroup allowed_column_group = 2;
+}
+
+message InterfacePermissionInfo {
+   //user的qps
+   optional int32 qps = 1 [default = 0];
+   //接口的qps
+   optional int32 def_interface_qps = 2 [default = 0];
+   //是否拒绝访问所有接口
+   optional bool deny_all = 3 [default = false];
+   //是否可以访问所有接口
+   optional bool accept_all = 4 [default = false];
+   repeated InterfaceSpec accept_list = 5;
+   repeated InterfaceSpec deny_list = 6;
+}
+
+message InterfaceSpec {
+   optional string interface_name = 1;
+   optional int32 qps = 2;
+}

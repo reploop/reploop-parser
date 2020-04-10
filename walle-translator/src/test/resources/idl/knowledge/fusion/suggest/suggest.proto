@@ -1,0 +1,67 @@
+option java_package = "com.qiyi.knowledge.suggest.service";
+option java_outer_classname="SuggestProtos";
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/qipu_options.proto";
+import "knowledge/pub/service_common.proto";
+
+message SuggestQueryRequest {
+
+       option (knowledge.pub.service_message_options).method_name = "suggestQuery";
+       option (knowledge.pub.service_message_options).type = REQUEST;
+
+       // 业务类型
+       enum BusinessType {
+           UNKNOWN_BUSINESS_TYPE = 0;
+           TV_CHILD = 1;
+       }
+       optional string keyword = 1;
+       optional int32 count = 2 [ default = 10 ];
+       optional BusinessType business_type = 4 [default = UNKNOWN_BUSINESS_TYPE];
+}
+
+message SuggestQueryResponse {
+
+    option (knowledge.pub.service_message_options).method_name = "suggestQuery";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional bool has_error = 1 [default = false];
+    optional string error_message = 2;
+    repeated string suggest = 4;
+}
+
+message SuggestQueryPlusRequest {
+    option (knowledge.pub.service_message_options).method_name = "suggestQueryPlus";
+    option (knowledge.pub.service_message_options).type = REQUEST;
+
+    // 业务类型
+    enum BusinessType {
+        UNKNOWN_BUSINESS_TYPE = 0;
+        ACN = 1;
+    }
+
+    optional string keyword = 1;
+    optional int32 page = 2 [ default = 1 ];
+    optional int32 size = 3 [ default = 10 ];
+    optional BusinessType business_type = 4 [default = UNKNOWN_BUSINESS_TYPE];
+}
+
+message SuggestItem {
+    enum ItemType {
+        ANIMATION = 1;
+        COMIC_BOOK = 2;
+        LIGHT_NOVEL = 3;
+    }
+    optional int64 id = 1;
+    optional string suggest = 2;
+    optional ItemType type = 3;
+}
+
+message SuggestQueryPlusResponse {
+    option (knowledge.pub.service_message_options).method_name = "suggestQueryPlus";
+    option (knowledge.pub.service_message_options).type = RESPONSE;
+
+    optional bool has_error = 1 [ default = false ];
+    optional string error_message = 2;
+    repeated SuggestItem suggest_item = 3;
+}

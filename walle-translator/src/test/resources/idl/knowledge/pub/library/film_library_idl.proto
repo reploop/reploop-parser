@@ -1,0 +1,78 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+
+import "knowledge/pub/common.proto";
+import "knowledge/pub/metadatas.proto";
+
+package knowledge.pub.library;
+
+// The basic information of film and tv.
+message FilmTvMetadata {
+    required int64 entity_id = 1;
+    required string title = 2;
+
+    // The first letter of each word in title.
+    required string title_initial = 3;
+
+    optional string foreign_name = 4;
+
+    repeated string alias = 5;
+
+    optional string description = 6;
+
+    // Id indicate the channel(such as movie, variety) of the entity
+    required int32 channel_id = 7;
+
+    optional knowledge.pub.Metadata.Contributor contributor = 8;
+    optional knowledge.pub.Metadata.Creator creator = 9;
+
+    repeated string language = 10;
+
+    repeated string region = 11;
+
+    repeated string category = 12;
+
+    // Only for channel of cartoon
+    repeated string version = 13;
+
+    repeated string audience = 14;
+
+    // The amount of children to the album.
+    optional int32 total_number_of_episodes = 15;
+
+    // The duration of video in seconds.
+    optional int32 duration = 16;
+
+    optional int32 season = 17;
+
+    // The first day when the entity is available for watching.
+    optional Date global_publish_date = 18;
+    optional Date china_publish_date = 19;
+
+    optional CheckStatus check_status = 20[default = UNCHECKED];
+
+    optional string imdb_id = 21;
+
+    // Summary of every episode of album.
+    repeated string episode_summary = 22;
+
+    repeated string play_tv_station = 23;
+
+    optional string update_schedule = 24;
+
+    // Only one sentence, may be for seo.
+    optional string short_comment = 25;
+
+    repeated Award award = 26;
+
+    optional knowledge.pub.Metadata.Publisher publisher = 27;
+}
+
+// The enum to define the check status.
+enum CheckStatus {
+    UNCHECKED = 1;
+    CHECKING = 2;
+    CHECKED = 3;
+    NEED_RECHECK = 4;
+    // First publish, later check.
+    WILL_CHECK_LATER = 5;
+}
