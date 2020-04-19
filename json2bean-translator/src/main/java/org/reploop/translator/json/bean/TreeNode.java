@@ -1,4 +1,6 @@
-package org.reploop.parser.json.path;
+package org.reploop.translator.json.bean;
+
+import org.reploop.translator.json.type.JsonType;
 
 import java.util.List;
 import java.util.Objects;
@@ -7,10 +9,10 @@ import java.util.stream.Stream;
 public class TreeNode {
     private TreeNode parent;
     private String name;
-    private String type;
+    private JsonType type;
     private List<TreeNode> children;
 
-    public TreeNode(TreeNode parent, String name, String type, List<TreeNode> children) {
+    public TreeNode(TreeNode parent, String name, JsonType type, List<TreeNode> children) {
         this.parent = parent;
         this.name = name;
         this.type = type;
@@ -37,7 +39,7 @@ public class TreeNode {
         return name;
     }
 
-    public String getType() {
+    public JsonType getType() {
         return type;
     }
 

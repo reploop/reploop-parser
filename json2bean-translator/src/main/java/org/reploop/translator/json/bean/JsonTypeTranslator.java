@@ -1,16 +1,18 @@
-package org.reploop.parser.json.path;
+package org.reploop.translator.json.bean;
 
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
-import org.reploop.parser.json.tree.Bool;
-import org.reploop.parser.json.tree.*;
 import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.*;
+import org.reploop.translator.json.type.JsonType;
+import org.reploop.translator.json.type.ListType;
 
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.strip;
+import static org.reploop.translator.json.bean.Support.itemName;
 
-public class JsonTreeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
+public class JsonTypeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
 
     @Override
     public TreeNode visitNode(Node node, NodeBuilder context) {
@@ -24,7 +26,7 @@ public class JsonTreeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
     @Override
     public TreeNode visitJson(Json json, NodeBuilder context) {
         if (null == context) {
-            context = TreeNode.newBuilder().name("$");
+            context = TreeNode.newBuilder().parent(null).name("$");
         }
         return visitValue(json.getValue(), context);
     }
@@ -62,10 +64,12 @@ public class JsonTreeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
     @Override
     public TreeNode visitObject(Entity value, NodeBuilder context) {
         List<Pair> pairs = value.getPairs();
+        TreeNode parent = context.build();
         for (Pair pair : pairs) {
+            TreeNode node = visitPair(pair, TreeNode.newBuilder().parent(parent));
             context.child(visitPair(pair, TreeNode.newBuilder()));
         }
-        return context.build();
+        return parent;
     }
 
     @Override
@@ -102,10 +106,17 @@ public class JsonTreeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
 
     @Override
     public TreeNode visitArray(Array array, NodeBuilder context) {
-        String pattern = "[%d]";
         List<Value> values = array.getValues();
         for (int i = 0; i < values.size(); i++) {
-            TreeNode node = visitValue(values.get(i), TreeNode.newBuilder().name(String.format(pattern, i)));
+            TreeNode node = visitValue(values.get(i), TreeNode.newBuilder().name(itemName(i)));
+            if (node.isLeaf()) {
+                JsonType type = node.getType();
+                ListType listType = new ListType(type);
+                context.type(listType);
+                // Now clear all its children, this makes current array node's parent as leaf node.
+                context.clear();
+                break;
+            }
             context.child(node);
         }
         return context.build();

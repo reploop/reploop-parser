@@ -2,11 +2,11 @@ package com.qiyi.walle.translator.json;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
-import com.qiyi.walle.parser.QualifiedName;
+import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.tree.*;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.FieldType;
 
 import java.util.List;
 import java.util.Objects;

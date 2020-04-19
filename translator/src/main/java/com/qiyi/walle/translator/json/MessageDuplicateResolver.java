@@ -1,13 +1,13 @@
 package com.qiyi.walle.translator.json;
 
-import com.qiyi.walle.parser.QualifiedName;
+import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
-import com.qiyi.walle.parser.protobuf.Node;
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.type.FieldType;
-import com.qiyi.walle.parser.protobuf.type.ListType;
-import com.qiyi.walle.parser.protobuf.type.StructType;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.ListType;
+import org.reploop.parser.protobuf.type.StructType;
 
 import java.util.List;
 import java.util.Objects;

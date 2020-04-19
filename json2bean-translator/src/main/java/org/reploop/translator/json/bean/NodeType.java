@@ -1,4 +1,4 @@
-package org.reploop.parser.json.path;
+package org.reploop.translator.json.bean;
 
 import java.lang.reflect.Type;
 import java.util.Objects;

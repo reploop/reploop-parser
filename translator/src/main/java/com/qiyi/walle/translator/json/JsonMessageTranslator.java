@@ -3,23 +3,23 @@ package com.qiyi.walle.translator.json;
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.google.common.base.Splitter;
-import com.qiyi.walle.parser.QualifiedName;
+import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
-import com.qiyi.walle.parser.json.Node;
-import com.qiyi.walle.parser.json.tree.DoubleVal;
-import com.qiyi.walle.parser.json.tree.Entity;
-import com.qiyi.walle.parser.json.tree.LongVal;
-import com.qiyi.walle.parser.json.tree.Number;
-import com.qiyi.walle.parser.json.tree.Pair;
-import com.qiyi.walle.parser.json.tree.Value;
-import com.qiyi.walle.parser.json.tree.*;
-import com.qiyi.walle.parser.protobuf.tree.*;
-import com.qiyi.walle.parser.protobuf.type.*;
+import org.reploop.parser.json.Node;
+import org.reploop.parser.json.tree.Entity;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.Value;
+import org.reploop.parser.json.tree.*;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.*;
 
+import java.lang.Number;
 import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+;
 
 public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.protobuf.Node, JsonMessageContext> {
     @Override

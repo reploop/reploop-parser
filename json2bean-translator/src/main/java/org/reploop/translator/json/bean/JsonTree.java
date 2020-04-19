@@ -1,4 +1,6 @@
-package org.reploop.parser.json.path;
+package org.reploop.translator.json.bean;
+
+import org.reploop.translator.json.type.JsonType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +25,7 @@ public class JsonTree {
             return nodes.get(0);
         } else {
             for (TreeNode node : nodes) {
-                String type = node.getType();
-                if (type.contains(Double.class.getSimpleName())) {
-                    return node;
-                } else if (type.contains(Float.class.getSimpleName())) {
-                    return node;
-                }
+                JsonType type = node.getType();
             }
         }
         throw new IllegalStateException();

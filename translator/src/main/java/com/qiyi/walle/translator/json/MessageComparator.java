@@ -1,7 +1,8 @@
 package com.qiyi.walle.translator.json;
 
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Message;
+
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.Message;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -2,15 +2,16 @@ package com.qiyi.walle.translator.json;
 
 
 import com.google.common.collect.ImmutableList;
-import com.qiyi.walle.parser.Classpath;
+import org.reploop.parser.Classpath;
 import org.reploop.parser.json.AstVisitor;
-import com.qiyi.walle.parser.json.Node;
-import com.qiyi.walle.parser.json.tree.DoubleVal;
-import com.qiyi.walle.parser.json.tree.LongVal;
-import com.qiyi.walle.parser.json.tree.*;
-import com.qiyi.walle.parser.thrift.tree.Entity;
-import com.qiyi.walle.parser.thrift.tree.Header;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
+import org.reploop.parser.json.Node;
+import org.reploop.parser.json.tree.Json;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.*;
+import org.reploop.parser.thrift.tree.Entity;
+import org.reploop.parser.thrift.tree.Header;
+import org.reploop.parser.thrift.tree.ThriftProgram;
+import org.reploop.parser.thrift.tree.Value;
 
 import java.nio.file.Path;
 import java.util.List;

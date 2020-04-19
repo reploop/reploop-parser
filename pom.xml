@@ -23,6 +23,7 @@
         <module>translator</module>
         <module>java-parser</module>
         <module>mysql-parser</module>
+        <module>json2bean-translator</module>
     </modules>
 
     <profiles>
@@ -80,6 +81,13 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5-parent</artifactId>
+                <version>5.0</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>

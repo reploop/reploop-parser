@@ -1,11 +1,11 @@
 package org.reploop.parser.json;
 
-import org.reploop.parser.json.base.JsonBaseBaseVisitor;
-import org.reploop.parser.json.base.JsonBaseParser;
-import org.reploop.parser.json.tree.*;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.reploop.parser.json.base.JsonBaseBaseVisitor;
+import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +13,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static org.apache.commons.lang3.StringUtils.strip;
 
 /**
  * What's this about?
@@ -40,7 +42,8 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
 
     @Override
     public Pair visitPair(JsonBaseParser.PairContext ctx) {
-        return new Pair(ctx.STRING().getText(), visit(ctx.value(), Value.class));
+        String text = strip(ctx.STRING().getText(), "\"").replaceAll("\\s+", "");
+        return new Pair(text, visit(ctx.value(), Value.class));
     }
 
     @Override

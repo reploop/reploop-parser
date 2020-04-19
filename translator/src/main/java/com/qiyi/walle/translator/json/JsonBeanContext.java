@@ -1,8 +1,11 @@
 package com.qiyi.walle.translator.json;
 
-import com.qiyi.walle.parser.QualifiedName;
 
-import java.util.*;
+import org.reploop.parser.QualifiedName;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class JsonBeanContext {
     private QualifiedName root;

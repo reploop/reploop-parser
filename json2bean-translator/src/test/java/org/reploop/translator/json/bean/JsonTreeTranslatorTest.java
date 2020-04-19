@@ -1,9 +1,9 @@
-package org.reploop.parser.json.path;
+package org.reploop.translator.json.bean;
 
 import com.google.common.collect.Iterables;
-import com.qiyi.walle.parser.json.JsonParser;
-import com.qiyi.walle.parser.json.base.JsonBaseParser;
-import com.qiyi.walle.parser.json.tree.Json;
+import org.reploop.parser.json.JsonParser;
+import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.tree.Json;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -102,7 +102,7 @@ public class JsonTreeTranslatorTest {
         System.out.println(max);
 
         Json2Bean j2b = new Json2Bean();
-        j2b.execute(root);
+        //j2b.execute(root);
         class $ {
             private String code;
             private List<$.Data> data;
