@@ -10,9 +10,9 @@ import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.FieldModifier;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.translator.json.type.FieldTypeComparator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.lang.Long.max;
 import static org.apache.commons.lang3.math.NumberUtils.toLong;
@@ -75,16 +75,16 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         // In case digit key, then use Map
         boolean numberedKey = true;
         FieldType keyType = null;
-        FieldType valueType = null;
 
         List<JsonMessageContext> contexts = new ArrayList<>();
+        List<FieldType> valueTypes = new ArrayList<>();
         for (Pair pair : pairs) {
             JsonMessageContext ctx = new JsonMessageContext(of(context.getName(), pair.getKey()));
             Field field = visitPair(pair, ctx);
             long n;
             long max = Long.MIN_VALUE;
             if (numberedKey && Long.MIN_VALUE != (n = toLong(field.getName(), Long.MIN_VALUE))) {
-                valueType = field.getType();
+                valueTypes.add(field.getType());
                 max = max(n, max);
                 keyType = keyType(max);
             } else {
@@ -93,13 +93,27 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             fields.add(field);
             contexts.add(ctx);
         }
+        // Merge contexts
+        contexts.forEach(jmc -> context.addNamedMessages(jmc.getNamedMessages()));
+
         if (!numberedKey) {
             QualifiedName fqn = context.getName();
             Message m = new Message(fqn, fields);
             context.addNamedMessage(fqn, m);
-            contexts.forEach(jmc -> context.addNamedMessages(jmc.getNamedMessages()));
             return new StructType(fqn);
         } else {
+            FieldType valueType = valueTypes.stream().max(new FieldTypeComparator()).get();
+            Set<FieldType> uniq = new HashSet<>();
+            for (FieldType ft : valueTypes) {
+                if (ft instanceof NumberType) {
+                    uniq.add(valueType);
+                } else {
+                    uniq.add(ft);
+                }
+            }
+            if (uniq.size() > 1) {
+                valueType = new StructType("Object");
+            }
             return new MapType(keyType, valueType);
         }
     }
@@ -146,11 +160,16 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     @Override
     public ListType visitArray(Array array, JsonMessageContext context) {
         List<org.reploop.parser.json.tree.Value> values = array.getValues();
-        Set<FieldType> types = values.stream()
-            .map(value -> visitValue(value, context)).collect(Collectors.toSet());
-        if (types.size() > 1) {
-            System.err.println(types);
+        FieldType fieldType;
+        if (null != values && values.size() > 0) {
+            fieldType = values.stream()
+                .map(value -> visitValue(value, context))
+                .max(new FieldTypeComparator())
+                .get();
+        } else {
+            // Empty array, we cannot infer element type, so Object it is.
+            fieldType = new StructType("Object");
         }
-        return new ListType(reduce(types));
+        return new ListType(fieldType);
     }
 }

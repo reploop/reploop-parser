@@ -1,6 +1,8 @@
 package org.reploop.translator.json.bean;
 
 import com.google.common.collect.Iterables;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.JsonParser;
 import org.reploop.parser.json.base.JsonBaseParser;
@@ -8,6 +10,7 @@ import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
 
 import java.io.IOException;
@@ -32,28 +35,8 @@ public class Json2Bean {
         this.translator = translator;
     }
 
-    private Integer valueTypeOrder(FieldType type) {
-        if (type instanceof CollectionType) {
-            return valueTypeOrder(((CollectionType) type).getElementType());
-        }
-        if (type instanceof MapType) {
-            return valueTypeOrder(((MapType) type).getValueType());
-        }
-        if (type instanceof StructType && type.getName().endsWith("Object")) {
-            return Integer.MIN_VALUE;
-        }
 
-        if (type instanceof NumberType) {
-            return ((NumberType) type).bits();
-        }
-        return 0;
-    }
-
-    public Comparator<FieldType> typeComparator = (f0, f1) -> {
-        Integer o0 = valueTypeOrder(f0);
-        Integer o1 = valueTypeOrder(f1);
-        return o0.compareTo(o1);
-    };
+    public Comparator<FieldType> typeComparator = new FieldTypeComparator();
 
     private FieldType expandValueType(FieldType fieldType) {
         if (fieldType instanceof CollectionType) {
@@ -99,39 +82,43 @@ public class Json2Bean {
     public Map<QualifiedName, Message> merge(JsonMessageContext context) {
         Map<QualifiedName, List<Message>> namedMessages = context.getNamedMessages();
         Map<QualifiedName, Message> messageMap = new HashMap<>();
-        for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
-            Map<String, Set<Field>> groups = entry.getValue().stream()
-                .map(Message::getFields)
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
+        if (null != namedMessages) {
+            for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
+                Map<String, Set<Field>> groups = entry.getValue().stream()
+                    .map(Message::getFields)
+                    .filter(Objects::nonNull)
+                    .flatMap(Collection::stream)
+                    .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
 
-            List<Field> uniqueFields = groups.values().stream()
-                .map(this::merge)
-                .filter(Objects::nonNull)
-                .sorted(Comparator.comparing(Field::getName))
-                .collect(Collectors.toList());
-            Message message = new Message(entry.getKey(), uniqueFields);
-            messageMap.put(entry.getKey(), message);
+                List<Field> uniqueFields = groups.values().stream()
+                    .map(this::merge)
+                    .filter(Objects::nonNull)
+                    .sorted(Comparator.comparing(Field::getName))
+                    .collect(Collectors.toList());
+                Message message = new Message(entry.getKey(), uniqueFields);
+                messageMap.put(entry.getKey(), message);
+            }
         }
         return messageMap;
     }
 
-    public void execute(String json) throws IOException {
-        execute(new StringReader(json));
+    public Map<QualifiedName, Message> execute(String json) throws IOException {
+        return execute(new StringReader(json));
     }
 
-    public void execute(StringReader reader) throws IOException {
+    public Map<QualifiedName, Message> execute(StringReader reader) throws IOException {
         JsonMessageContext context = new JsonMessageContext("$");
-        execute(reader, context);
+        return execute(reader, context);
     }
 
-    public void execute(StringReader reader, JsonMessageContext context) throws IOException {
-        Json json = (Json) parser.parse(reader, JsonBaseParser::json);
-        FieldType type = translator.visitJson(json, context);
-        System.out.println(type);
-        Map<QualifiedName, Message> messages = merge(context);
-        messages.forEach((name, message) -> System.out.println(message));
+    public Map<QualifiedName, Message> execute(StringReader reader, JsonMessageContext context) throws IOException {
+        return execute(CharStreams.fromReader(reader), context);
     }
 
+    public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) {
+        Json json = (Json) parser.parse(stream, JsonBaseParser::json);
+        FieldType fieldType = translator.visitJson(json, context);
+        context.setFieldType(fieldType);
+        return merge(context);
+    }
 }

@@ -2,12 +2,14 @@ package org.reploop.translator.json.bean;
 
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.type.FieldType;
 
 import java.util.*;
 
 public class JsonMessageContext {
     private QualifiedName name;
     private Map<QualifiedName, List<Message>> namedMessages;
+    private FieldType fieldType;
 
     public JsonMessageContext(QualifiedName name, Map<QualifiedName, List<Message>> namedMessages) {
         this.name = name;
@@ -23,6 +25,14 @@ public class JsonMessageContext {
     }
 
     public JsonMessageContext() {
+    }
+
+    public FieldType getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(FieldType fieldType) {
+        this.fieldType = fieldType;
     }
 
     public QualifiedName getName() {
