@@ -9,7 +9,7 @@ import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
-import org.reploop.parser.protobuf.type.*;
+import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
 
@@ -18,7 +18,7 @@ import java.io.StringReader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.max;
+import static org.reploop.translator.json.bean.Support.fieldNumberSpec;
 
 public class Json2Bean {
     private final FieldTypeAdaptor fieldTypeAdaptor;
@@ -38,15 +38,6 @@ public class Json2Bean {
 
     public Comparator<FieldType> typeComparator = new FieldTypeComparator();
 
-    private FieldType expandValueType(FieldType fieldType) {
-        if (fieldType instanceof CollectionType) {
-            return expandValueType(((CollectionType) fieldType).getElementType());
-        }
-        if (fieldType instanceof MapType) {
-            return expandValueType(((MapType) fieldType).getValueType());
-        }
-        return fieldType;
-    }
 
     public Field merge(Set<Field> fields) {
         int size = fields.size();
@@ -57,22 +48,9 @@ public class Json2Bean {
             return Iterables.getOnlyElement(fields);
         } else {
             Field field = fields.stream().max((f0, f1) -> typeComparator.compare(f0.getType(), f1.getType())).get();
-
-            boolean floating = false;
-            int bits = 0;
-
-            for (Field f : fields) {
-                FieldType fieldType = expandValueType(f.getType());
-                if (fieldType instanceof NumberType) {
-                    int n = ((NumberType) fieldType).bits();
-                    if (!floating && fieldType instanceof FloatingPointType) {
-                        floating = true;
-                    }
-                    bits = max(n, bits);
-                }
-            }
-            if (bits > 0) {
-                FieldType ft = fieldTypeAdaptor.visitFieldType(field.getType(), new NumberSpec(floating, bits));
+            Optional<NumberSpec> spec = fieldNumberSpec(fields);
+            if (spec.isPresent()) {
+                FieldType ft = fieldTypeAdaptor.visitFieldType(field.getType(), spec.get());
                 return new Field(field.getModifier(), field.getIndex(), field.getName(), ft, field.getValue(), field.getComments());
             }
             return field;

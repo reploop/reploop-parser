@@ -10,7 +10,7 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class ByteType extends FieldType implements IntegerType {
     public ByteType() {
-        super("byte");
+        super("Byte");
     }
 
     @Override

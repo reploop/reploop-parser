@@ -11,7 +11,7 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class BoolType extends FieldType {
     public BoolType() {
-        super("boolean");
+        super("Boolean");
     }
 
     @Override

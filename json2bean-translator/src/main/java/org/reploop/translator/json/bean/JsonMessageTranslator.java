@@ -11,12 +11,16 @@ import org.reploop.parser.protobuf.tree.FieldModifier;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.FieldTypeComparator;
+import org.reploop.translator.json.type.NumberSpec;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.Long.max;
 import static org.apache.commons.lang3.math.NumberUtils.toLong;
 import static org.reploop.parser.QualifiedName.of;
+import static org.reploop.translator.json.bean.Support.typeNumberSpec;
 
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
     @Override
@@ -157,15 +161,22 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         }
     }
 
+    private final FieldTypeAdaptor fieldTypeAdaptor = new FieldTypeAdaptor();
+
     @Override
     public ListType visitArray(Array array, JsonMessageContext context) {
         List<org.reploop.parser.json.tree.Value> values = array.getValues();
         FieldType fieldType;
-        if (null != values && values.size() > 0) {
-            fieldType = values.stream()
-                .map(value -> visitValue(value, context))
-                .max(new FieldTypeComparator())
-                .get();
+        List<FieldType> types = Stream.ofNullable(values)
+            .flatMap(Collection::stream)
+            .map(value -> visitValue(value, context))
+            .collect(Collectors.toList());
+        if (types.size() > 0) {
+            fieldType = types.stream().max(new FieldTypeComparator()).get();
+            Optional<NumberSpec> ons = typeNumberSpec(types);
+            if (ons.isPresent()) {
+                fieldType = fieldTypeAdaptor.visitFieldType(fieldType, ons.get());
+            }
         } else {
             // Empty array, we cannot infer element type, so Object it is.
             fieldType = new StructType("Object");

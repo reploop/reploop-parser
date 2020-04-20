@@ -10,7 +10,7 @@
         <antlr.version>4.8-1</antlr.version>
         <thrift.version>0.9.3</thrift.version>
         <guava.version>28.2-jre</guava.version>
-        <jdk.version>1.8</jdk.version>
+        <jdk.version>11</jdk.version>
         <testng.version>7.1.0</testng.version>
         <commons.lang3.version>3.10</commons.lang3.version>
         <jackson.version>2.10.3</jackson.version>

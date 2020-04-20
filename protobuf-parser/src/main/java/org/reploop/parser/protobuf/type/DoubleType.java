@@ -10,7 +10,7 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class DoubleType extends FieldType implements FloatingPointType {
     public DoubleType() {
-        super("double");
+        super("Double");
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class ShortType extends FieldType implements IntegerType {
     public ShortType() {
-        super("short");
+        super("Short");
     }
 
     @Override
