@@ -24,6 +24,7 @@ public class Json2Bean {
     private final FieldTypeAdaptor fieldTypeAdaptor;
     private final JsonParser parser;
     private final JsonMessageTranslator translator;
+    private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
 
     public Json2Bean() {
         this(new FieldTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
@@ -35,16 +36,11 @@ public class Json2Bean {
         this.translator = translator;
     }
 
-
-    public Comparator<FieldType> typeComparator = new FieldTypeComparator();
-
-
     public Field merge(Set<Field> fields) {
         int size = fields.size();
         if (0 == size) {
             return null;
-        }
-        if (fields.size() == 1) {
+        } else if (1 == size) {
             return Iterables.getOnlyElement(fields);
         } else {
             Field field = fields.stream().max((f0, f1) -> typeComparator.compare(f0.getType(), f1.getType())).get();
@@ -80,13 +76,8 @@ public class Json2Bean {
         return messageMap;
     }
 
-    public Map<QualifiedName, Message> execute(String json) throws IOException {
-        return execute(new StringReader(json));
-    }
-
-    public Map<QualifiedName, Message> execute(StringReader reader) throws IOException {
-        JsonMessageContext context = new JsonMessageContext("$");
-        return execute(reader, context);
+    public Map<QualifiedName, Message> execute(String json, JsonMessageContext context) throws IOException {
+        return execute(new StringReader(json), context);
     }
 
     public Map<QualifiedName, Message> execute(StringReader reader, JsonMessageContext context) throws IOException {

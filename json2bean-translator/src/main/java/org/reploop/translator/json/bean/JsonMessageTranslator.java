@@ -1,6 +1,5 @@
 package org.reploop.translator.json.bean;
 
-import com.google.common.collect.Iterables;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.tree.Number;
@@ -12,6 +11,8 @@ import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,6 +24,11 @@ import static org.reploop.parser.QualifiedName.of;
 import static org.reploop.translator.json.bean.Support.typeNumberSpec;
 
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JsonMessageTranslator.class);
+    private static final StructType OBJECT = new StructType("Object");
+    private final FieldTypeAdaptor fieldTypeAdaptor = new FieldTypeAdaptor();
+    private final FieldTypeComparator fieldTypeComparator = new FieldTypeComparator();
+
     @Override
     public Node visitNode(org.reploop.parser.json.Node node, JsonMessageContext context) {
         return process(node, context);
@@ -106,17 +112,11 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             context.addNamedMessage(fqn, m);
             return new StructType(fqn);
         } else {
-            FieldType valueType = valueTypes.stream().max(new FieldTypeComparator()).get();
-            Set<FieldType> uniq = new HashSet<>();
-            for (FieldType ft : valueTypes) {
-                if (ft instanceof NumberType) {
-                    uniq.add(valueType);
-                } else {
-                    uniq.add(ft);
-                }
-            }
-            if (uniq.size() > 1) {
-                valueType = new StructType("Object");
+            Optional<FieldType> ovt = typeOf(valueTypes);
+            FieldType valueType = ovt.orElse(OBJECT);
+            if (diffType(valueType, valueTypes)) {
+                LOGGER.warn("Value of different types, Use Object instead.");
+                valueType = OBJECT;
             }
             return new MapType(keyType, valueType);
         }
@@ -153,34 +153,49 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         return (FieldType) process(value, context);
     }
 
-    private FieldType reduce(Collection<FieldType> types) {
-        if (types.size() == 1) {
-            return Iterables.getOnlyElement(types);
-        } else {
-            return Iterables.getLast(types);
-        }
-    }
-
-    private final FieldTypeAdaptor fieldTypeAdaptor = new FieldTypeAdaptor();
-
     @Override
     public ListType visitArray(Array array, JsonMessageContext context) {
         List<org.reploop.parser.json.tree.Value> values = array.getValues();
-        FieldType fieldType;
         List<FieldType> types = Stream.ofNullable(values)
             .flatMap(Collection::stream)
             .map(value -> visitValue(value, context))
             .collect(Collectors.toList());
-        if (types.size() > 0) {
-            fieldType = types.stream().max(new FieldTypeComparator()).get();
+        Optional<FieldType> oft = typeOf(types);
+        // Empty array, we cannot infer element type, so Object it is.
+        FieldType fieldType = oft.orElse(OBJECT);
+        return new ListType(fieldType);
+    }
+
+    private Optional<FieldType> typeOf(List<FieldType> types) {
+        if (null != types && types.size() > 0) {
+            FieldType fieldType = types.stream().max(fieldTypeComparator).get();
             Optional<NumberSpec> ons = typeNumberSpec(types);
             if (ons.isPresent()) {
                 fieldType = fieldTypeAdaptor.visitFieldType(fieldType, ons.get());
             }
-        } else {
-            // Empty array, we cannot infer element type, so Object it is.
-            fieldType = new StructType("Object");
+            return Optional.of(fieldType);
         }
-        return new ListType(fieldType);
+        return Optional.empty();
+    }
+
+    /**
+     * Heterogeneous type
+     *
+     * @param valueType  expected value type
+     * @param valueTypes all value types
+     * @return true if all value types are heterogeneous type.
+     */
+    private boolean diffType(FieldType valueType, List<FieldType> valueTypes) {
+        Set<FieldType> uniq = new HashSet<>();
+        if (null != valueTypes) {
+            for (FieldType ft : valueTypes) {
+                if (ft instanceof NumberType && valueType instanceof NumberType) {
+                    uniq.add(valueType);
+                } else {
+                    uniq.add(ft);
+                }
+            }
+        }
+        return uniq.size() > 1;
     }
 }

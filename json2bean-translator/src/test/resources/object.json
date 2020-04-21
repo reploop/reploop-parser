@@ -1,0 +1,26 @@
+{
+  "data": {
+    "tv_id": 5780657809,
+    "tv_name": "66班那些事儿",
+    "play_url": "http://www.iqiyi.com/w_19rt22opod.html",
+    "count_yesterday": 348,
+    "count_last_week": 932,
+    "count_history": 932,
+    "rank_trend": 1,
+    "vv_week": 5970
+  },
+  "array": [
+    {
+      "tv_id": 5780657809,
+      "tv_name": "66班那些事儿",
+      "count_yesterday": 348,
+      "vv_week": 5970
+    },
+    {
+      "tv_id": 5780657802,
+      "tv_name": "66班那些",
+      "count_yesterday": 348,
+      "vv_week": 5970
+    }
+  ]
+}

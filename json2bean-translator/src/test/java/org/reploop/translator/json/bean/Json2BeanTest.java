@@ -88,7 +88,13 @@ public class Json2BeanTest {
     }
 
     @Test
-    public void testExecute() {
+    public void testExecute() throws Exception {
+        URL url = Json2BeanTest.class.getResource("/object.json");
+        QualifiedName root = QualifiedName.of("$");
+        JsonMessageContext context = new JsonMessageContext(root);
+        CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
+        Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
+        System.out.print(messageMap);
     }
 
     @Test
