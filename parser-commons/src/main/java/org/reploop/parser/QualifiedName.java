@@ -6,12 +6,7 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 import static com.google.common.collect.ImmutableList.copyOf;
 import static com.google.common.collect.Iterables.concat;
@@ -42,7 +37,7 @@ public class QualifiedName implements Comparable<QualifiedName> {
         Preconditions.checkNotNull(prefix);
         Preconditions.checkNotNull(suffix);
         List<String> names = prefix.map(QualifiedName::allParts)
-                .orElse(Collections.emptyList());
+            .orElse(Collections.emptyList());
         return new QualifiedName(concat(names, SPLITTER.split(suffix)));
     }
 
@@ -217,6 +212,10 @@ public class QualifiedName implements Comparable<QualifiedName> {
 
     @Override
     public int compareTo(QualifiedName o) {
-        return toString().compareTo(o.toString());
+        int c = Integer.compare(this.size(), o.size());
+        if (0 == c) {
+            c = toString().compareTo(o.toString());
+        }
+        return c;
     }
 }

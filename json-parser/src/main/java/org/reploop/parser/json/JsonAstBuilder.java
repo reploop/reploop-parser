@@ -25,6 +25,9 @@ import static org.apache.commons.lang3.StringUtils.strip;
 public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
     private CommonTokenStream tokens;
 
+    public JsonAstBuilder() {
+    }
+
     public JsonAstBuilder(CommonTokenStream tokens) {
         this.tokens = tokens;
     }
@@ -40,9 +43,17 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         return new Entity(visit(ctx.pair(), Pair.class));
     }
 
+    private String stripQuotationMark(String text) {
+        return strip(text, "\"");
+    }
+
+    private String removeAllWhitespace(String text) {
+        return text.replaceAll("\\s+", "");
+    }
+
     @Override
     public Pair visitPair(JsonBaseParser.PairContext ctx) {
-        String text = strip(ctx.STRING().getText(), "\"").replaceAll("\\s+", "");
+        String text = removeAllWhitespace(stripQuotationMark(ctx.STRING().getText()));
         return new Pair(text, visit(ctx.value(), Value.class));
     }
 
@@ -53,7 +64,7 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
 
     @Override
     public Text visitStringValue(JsonBaseParser.StringValueContext ctx) {
-        return new Text(ctx.STRING().getText());
+        return new Text(stripQuotationMark(ctx.STRING().getText()));
     }
 
     private <D extends Comparable<D>, T, E> Optional<E> castIf(D val, T min, T max, Function<T, D> to, Function<D, E> cast) {

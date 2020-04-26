@@ -1,7 +1,10 @@
 package org.reploop.translator.json.bean;
 
+import com.google.common.base.Supplier;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
+import org.reploop.parser.json.JsonParser;
+import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Number;
 import org.reploop.parser.json.tree.*;
 import org.reploop.parser.protobuf.Node;
@@ -14,12 +17,13 @@ import org.reploop.translator.json.type.NumberSpec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.StringReader;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.lang.Long.max;
-import static org.apache.commons.lang3.math.NumberUtils.toLong;
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
 import static org.reploop.parser.QualifiedName.of;
 import static org.reploop.translator.json.bean.Support.typeNumberSpec;
 
@@ -28,6 +32,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     private static final StructType OBJECT = new StructType("Object");
     private final FieldTypeAdaptor fieldTypeAdaptor = new FieldTypeAdaptor();
     private final FieldTypeComparator fieldTypeComparator = new FieldTypeComparator();
+    private final JsonParser jsonParser = new JsonParser();
 
     @Override
     public Node visitNode(org.reploop.parser.json.Node node, JsonMessageContext context) {
@@ -73,8 +78,30 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         return new DoubleType();
     }
 
-    private FieldType keyType(Long value) {
-        return new LongType();
+    private Optional<FieldType> startsWithDigit(String s) {
+        if (s.length() > 0) {
+            char c = s.charAt(0);
+            if (c >= '0' && c <= '9') {
+                return Optional.of(new LongType());
+            }
+        }
+        return Optional.empty();
+    }
+
+    private Optional<FieldType> ifNumber(String l, JsonMessageContext context) {
+        return ifNumberLiterals(l, context).or((Supplier<Optional<FieldType>>) () -> startsWithDigit(l));
+    }
+
+    private Optional<FieldType> ifNumberLiterals(String l, JsonMessageContext context) {
+        try {
+            Value value = (Value) jsonParser.parse(new StringReader(l), JsonBaseParser::value);
+            if (value instanceof Number) {
+                return Optional.of(visitValue(value, context));
+            }
+        } catch (Exception e) {
+            LOGGER.error("Cannot parse {} to value", l, e);
+        }
+        return Optional.empty();
     }
 
     @Override
@@ -84,19 +111,17 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
 
         // In case digit key, then use Map
         boolean numberedKey = true;
-        FieldType keyType = null;
 
         List<JsonMessageContext> contexts = new ArrayList<>();
+        List<FieldType> keyTypes = new ArrayList<>();
         List<FieldType> valueTypes = new ArrayList<>();
         for (Pair pair : pairs) {
             JsonMessageContext ctx = new JsonMessageContext(of(context.getName(), pair.getKey()));
             Field field = visitPair(pair, ctx);
-            long n;
-            long max = Long.MIN_VALUE;
-            if (numberedKey && Long.MIN_VALUE != (n = toLong(field.getName(), Long.MIN_VALUE))) {
+            Optional<FieldType> oft;
+            if (numberedKey && (oft = ifNumber(field.getName(), ctx)).isPresent()) {
+                keyTypes.add(oft.get());
                 valueTypes.add(field.getType());
-                max = max(n, max);
-                keyType = keyType(max);
             } else {
                 numberedKey = false;
             }
@@ -118,6 +143,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
                 LOGGER.warn("Value of different types, Use Object instead.");
                 valueType = OBJECT;
             }
+            FieldType keyType = typeOf(keyTypes).orElse(OBJECT);
             return new MapType(keyType, valueType);
         }
     }
@@ -129,7 +155,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
 
     @Override
     public StructType visitNull(Null value, JsonMessageContext context) {
-        return new StructType("Object");
+        return OBJECT;
     }
 
     @Override
@@ -144,7 +170,19 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     }
 
     @Override
-    public StringType visitText(Text value, JsonMessageContext context) {
+    public FieldType visitText(Text value, JsonMessageContext context) {
+        String val = value.getVal();
+        if (context.isJsonRawValue()) {
+            if (isNullOrEmpty(val)) {
+                return visitNull(new Null(), context);
+            }
+            String text = unescapeJson(val);
+            try {
+                Json json = (Json) jsonParser.parse(new StringReader(text), JsonBaseParser::json);
+                return visitJson(json, context);
+            } catch (Exception ignored) {
+            }
+        }
         return new StringType();
     }
 
@@ -179,7 +217,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     }
 
     /**
-     * Heterogeneous type
+     * Heterogeneous or homogeneous type
      *
      * @param valueType  expected value type
      * @param valueTypes all value types

@@ -8,10 +8,10 @@ import java.util.*;
 
 public class JsonMessageContext {
     private QualifiedName name;
-    private Map<QualifiedName, List<Message>> namedMessages;
+    private TreeMap<QualifiedName, List<Message>> namedMessages;
     private FieldType fieldType;
 
-    public JsonMessageContext(QualifiedName name, Map<QualifiedName, List<Message>> namedMessages) {
+    public JsonMessageContext(QualifiedName name, TreeMap<QualifiedName, List<Message>> namedMessages) {
         this.name = name;
         this.namedMessages = namedMessages;
     }
@@ -72,13 +72,22 @@ public class JsonMessageContext {
 
     public JsonMessageContext addNamedMessage(QualifiedName name, List<Message> messages) {
         if (namedMessages == null) {
-            namedMessages = new HashMap<>();
+            namedMessages = new TreeMap<>();
         }
         namedMessages.computeIfAbsent(name, key -> new ArrayList<>()).addAll(messages);
         return this;
     }
 
-    public void setNamedMessages(Map<QualifiedName, List<Message>> namedMessages) {
+    public void setNamedMessages(TreeMap<QualifiedName, List<Message>> namedMessages) {
         this.namedMessages = namedMessages;
+    }
+
+    public boolean isJsonRawValue(QualifiedName name) {
+        String expected = "$.log.entries.response.content.text";
+        return name.toString().equals(expected);
+    }
+
+    public boolean isJsonRawValue() {
+        return isJsonRawValue(name);
     }
 }

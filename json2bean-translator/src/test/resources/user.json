@@ -1,0 +1,381 @@
+{
+  "code": 1000,
+  "result": [
+    {
+      "user_id": "5566343c63afe",
+      "area_id": "52c669dae5308",
+      "user_gender": "2",
+      "ser_face": "59ba2201a3750.jpg",
+      "ser_utime": "1566455463",
+      "ser_starc": "5.0",
+      "ser_rmkc": "54",
+      "user_name": "u5361u5fb7u5c14u897fu65e5u90a3u4f9d",
+      "ser_sort": "500",
+      "gd_job": "u6cd5u5b66u7855u58ebu5728u8bfb",
+      "ser_hot": "0",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "ser_title": "u6211u4f1au5c3du5168u529bu8ba9u5927u5bb6u5b89u5fc3u3001u653eu5fc3u3001u8212u5fc3u3001u5f00u5fc3",
+      "ser_status": "1",
+      "guide_price": {
+        "1": 950,
+        "2": 1600,
+        "5": 2200,
+        "6": 2400,
+        "3": 450,
+        "4": 750,
+        "7": 950,
+        "8": 1150
+      },
+      "gd_edu": "u7855u58eb",
+      "gd_school": "u4f0au65afu5766u5e03u5c14u5927u5b66",
+      "user_avatar": "5566336ade406.jpg",
+      "gd_major": "u6cd5u5b66",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 450,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59ba2201a3750.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "user_id": "5b9042b9a3f0b",
+      "area_id": "52c669dae5308",
+      "user_gender": "1",
+      "ser_face": "5b99fec244188.jpg",
+      "ser_utime": "1544168037",
+      "ser_starc": "5.0",
+      "ser_rmkc": "11",
+      "user_name": "u4efbu5c11u6000",
+      "ser_sort": "498",
+      "gd_job": "u7f8eu672fu53f2u535au58ebu5728u8bfb",
+      "ser_hot": "0",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "ser_title": "u73a9u8f6cu6700u5730u9053u7684u4f0au65afu5766u5e03u5c14uff01",
+      "ser_status": "1",
+      "guide_price": {
+        "1": 1100,
+        "3": 600
+      },
+      "gd_edu": "u535au58eb",
+      "gd_school": "u4f0au65afu5766u5e03u5c14u5927u5b66",
+      "user_avatar": "5b9a003d99335.jpg",
+      "gd_major": "u7f8eu672fu53f2",
+      "tag": {
+        "0": "u5f92u6b65u5411u5bfc",
+        "2": "u5f92u6b65u63a5u9001u673a"
+      },
+      "price": 600,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/5b99fec244188.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "user_name": "u6768u5e05",
+      "ser_sort": "495",
+      "gd_job": "u6c11u7528u822au7a7au7a7au4e58u672cu79d1u5728u8bfb",
+      "ser_hot": "0",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "ser_title": "u53f6u5b50u843du5730u65f6u6709u98ceu63a0u8fc7u4e00u6837uff0cu6b22u8fceu6765u5230u571fu8033u5176",
+      "ser_status": "1",
+      "guide_price": {
+        "1": 900
+      },
+      "gd_edu": "u672cu79d1",
+      "gd_school": "",
+      "user_avatar": "5421408caa498.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "54214094adbb0",
+      "ser_face": "59ba2557a350b.jpg",
+      "user_gender": "2",
+      "ser_starc": "5.0",
+      "ser_utime": "1507117546",
+      "ser_rmkc": "5",
+      "gd_major": "u6c11u7528u822au7a7au7a7au4e58",
+      "tag": [
+        "u5f92u6b65u5411u5bfc"
+      ],
+      "price": 900,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59ba2557a350b.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 1100,
+        "2": 1900,
+        "6": 3000,
+        "3": 600,
+        "4": 800,
+        "8": 1200
+      },
+      "ser_hot": "0",
+      "ser_title": "u73a9u904du4e00u4e2au4e0du4e00u6837u7684u571fu8033u5176",
+      "gd_edu": "u82f1u8bed",
+      "gd_school": "u4f0au65afu5766u5e03u5c14u5927u5b66",
+      "user_avatar": "59e59a5775944.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "59b5922896143",
+      "ser_face": "5dd64ce89d701.jpg",
+      "user_gender": "1",
+      "ser_starc": "5.0",
+      "ser_utime": "1574325496",
+      "ser_rmkc": "6",
+      "gd_major": "u56fdu9645u8d38u6613(u82f1u8beduff09",
+      "user_name": "u5e93u5f97u6765u63d0",
+      "ser_sort": "494",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u56fdu9645u8d38u6613(u82f1u8beduff09u82f1u8bedu5728u8bfb",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 600,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/5dd64ce89d701.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 900,
+        "2": 1500,
+        "3": 500,
+        "4": 750
+      },
+      "ser_hot": "0",
+      "ser_title": "u8ddfu7740u5f53u5730u4ebau66f4u6df1u5165u5730u4e86u89e3u4f0au65afu5766u5e03u5c14",
+      "gd_edu": "u672cu79d1",
+      "gd_school": "u5317u4eacu5916u56fdu8bedu5927u5b66",
+      "user_avatar": "5d81daed8ef15.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "5ce7b5e8ad526",
+      "ser_face": "5d68ea3f5cb33.jpg",
+      "user_gender": "1",
+      "ser_starc": "5.0",
+      "ser_utime": "1569736811",
+      "ser_rmkc": "3",
+      "gd_major": "u4e2du6587",
+      "user_name": "u4e8eu5357u5b9euff08Erdemuff09",
+      "ser_sort": "494",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u82f1u8bedu6559u5e08",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 500,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/5d68ea3f5cb33.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 1000,
+        "2": 1800,
+        "5": 2750,
+        "6": 3250,
+        "3": 450,
+        "4": 750,
+        "7": 950,
+        "8": 1150
+      },
+      "ser_hot": "0",
+      "ser_title": "u571fu8033u5176uff0cu4e00u4e2au591au6587u5316u800cu795eu79d8u7684u56fdu5bb6",
+      "gd_edu": "u672cu79d1",
+      "gd_school": "u5b89u5361u62c9u5927u5b66",
+      "user_avatar": "562897622095e.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "5616d5f2646c0",
+      "ser_face": "59ba2444e01db.jpg",
+      "user_gender": "1",
+      "ser_starc": "4.8",
+      "ser_utime": "1536897104",
+      "ser_rmkc": "14",
+      "gd_major": "u65c5u6e38u7ba1u7406",
+      "user_name": "u827eu529b",
+      "ser_sort": "493",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u65c5u6e38u7ba1u7406u672cu79d1u5728u8bfb",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 450,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59ba2444e01db.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start2"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 900,
+        "2": 2100,
+        "5": 3000,
+        "6": 2700,
+        "3": 450,
+        "4": 750,
+        "7": 950,
+        "8": 1150
+      },
+      "ser_hot": "0",
+      "ser_title": "u4f0au65afu5766u5e03u5c14u2014u2014u4e00u4e2au6d77u6ee8u65c5u6e38u5ea6u5047u7684u7406u60f3u80dcu5730",
+      "gd_edu": "",
+      "gd_school": "",
+      "user_avatar": "54dd6f2509215.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "54dd6e5897a49",
+      "ser_face": "59f97d3903d07.jpg",
+      "user_gender": "1",
+      "ser_starc": "5.0",
+      "ser_utime": "1566455439",
+      "ser_rmkc": "13",
+      "gd_major": "",
+      "user_name": "u6797u6d77",
+      "ser_sort": "492",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u4e13u4e1au5411u5bfc",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 450,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59f97d3903d07.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 1000,
+        "3": 600
+      },
+      "ser_hot": "0",
+      "ser_title": "u4f0au65afu5766u5e03u5c14 u8fd9u5ea7u57ceu5e02u7684u8bb0u5fc6",
+      "gd_edu": "u672cu79d1",
+      "gd_school": "u4f0au65afu5766u5e03u5c14u5927u5b66",
+      "user_avatar": "596c4b8465dcd.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "593424944a514",
+      "ser_face": "59ba265f36507.jpg",
+      "user_gender": "1",
+      "ser_starc": "5.0",
+      "ser_utime": "1566455458",
+      "ser_rmkc": "3",
+      "gd_major": "u751fu7269u5b66",
+      "user_name": "u8feau4e9au5c14",
+      "ser_sort": "492",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u751fu7269u5b66u672cu79d1u5728u8bfb",
+      "tag": {
+        "0": "u5f92u6b65u5411u5bfc",
+        "2": "u5f92u6b65u63a5u9001u673a"
+      },
+      "price": 600,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59ba265f36507.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    },
+    {
+      "ser_status": "1",
+      "guide_price": {
+        "1": 900,
+        "2": 1550,
+        "5": 2200,
+        "6": 2400,
+        "3": 450,
+        "4": 750,
+        "7": 950,
+        "8": 1150
+      },
+      "ser_hot": "0",
+      "ser_title": "u84ddu8272u571fu8033u5176uff0cu4e00u4e2au4e1cu897fu65b9u6587u5316u878du6c47u56fdu5bb6",
+      "gd_edu": "u672cu79d1",
+      "gd_school": "u4f0au65afu5766u5e03u5c14u5927u5b66",
+      "user_avatar": "596735a00fe58.jpg",
+      "area_id": "52c669dae5308",
+      "user_id": "595b47d46b8f1",
+      "ser_face": "59ba261e2fde2.jpg",
+      "user_gender": "1",
+      "ser_starc": "5.0",
+      "ser_utime": "1569380249",
+      "ser_rmkc": "1",
+      "gd_major": "u571fu8033u5176u8bed",
+      "user_name": "u4e70u4e70u63d0u827eu529b",
+      "ser_sort": "490",
+      "area_name": "u571fu8033u5176 - u4f0au65afu5766u5e03u5c14",
+      "gd_job": "u571fu8033u5176u8bedu672cu79d1u5728u8bfb",
+      "tag": [
+        "u5f92u6b65u5411u5bfc",
+        "u5e26u8f66u5411u5bfc",
+        "u5f92u6b65u63a5u9001u673a",
+        "u5e26u8f66u63a5u9001u673a"
+      ],
+      "price": 450,
+      "service_face": "https://wanzi-hangzhou.oss-cn-hangzhou.aliyuncs.com/images/59ba261e2fde2.jpg?x-oss-process=style/w303_h177",
+      "remark": [
+        "start3",
+        "start3",
+        "start3",
+        "start3",
+        "start3"
+      ]
+    }
+  ],
+  "error": "",
+  "count": 12,
+  "date": "2020-04-23 10:36:20"
+}
