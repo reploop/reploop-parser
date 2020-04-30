@@ -8,12 +8,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.max;
 
 public class Support {
     public static final String pattern = "[%d]";
+    public static final Pattern LEGAL_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
 
     public static FieldType expandValueType(FieldType fieldType) {
         if (fieldType instanceof CollectionType) {
@@ -23,6 +25,10 @@ public class Support {
             return expandValueType(((MapType) fieldType).getValueType());
         }
         return fieldType;
+    }
+
+    public static boolean isLegalIdentifier(String s) {
+        return s != null && LEGAL_IDENTIFIER.matcher(s).matches();
     }
 
     public static Optional<NumberSpec> fieldNumberSpec(Collection<Field> fields) {

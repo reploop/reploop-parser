@@ -29,7 +29,6 @@ public class IntVal extends Number {
 
     @Override
     public String toString() {
-        Integer i;
         return String.valueOf(value);
     }
 }

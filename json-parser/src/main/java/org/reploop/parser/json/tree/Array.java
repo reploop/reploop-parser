@@ -1,8 +1,6 @@
 package org.reploop.parser.json.tree;
 
-import com.google.common.base.MoreObjects;
 import org.reploop.parser.json.AstVisitor;
-
 
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +12,7 @@ import java.util.Objects;
  * @since 2016-10-14 20
  */
 public class Array extends Value {
-    private List<Value> values;
+    private final List<Value> values;
 
     public Array(List<Value> values) {
         this.values = values;
@@ -44,8 +42,6 @@ public class Array extends Value {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("values", values)
-                .toString();
+        return values.toString();
     }
 }

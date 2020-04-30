@@ -55,7 +55,7 @@ public class Json2Bean {
 
     public Map<QualifiedName, Message> merge(JsonMessageContext context) {
         Map<QualifiedName, List<Message>> namedMessages = context.getNamedMessages();
-        Map<QualifiedName, Message> messageMap = new HashMap<>();
+        Map<QualifiedName, Message> messageMap = new TreeMap<>();
         if (null != namedMessages) {
             for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
                 Map<String, Set<Field>> groups = entry.getValue().stream()

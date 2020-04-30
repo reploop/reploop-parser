@@ -1,8 +1,6 @@
 package org.reploop.parser.json.tree;
 
-import com.google.common.base.MoreObjects;
 import org.reploop.parser.json.AstVisitor;
-
 
 import java.util.List;
 import java.util.Objects;
@@ -44,8 +42,7 @@ public class Entity extends Value {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("pairs", pairs)
-                .toString();
+
+        return "{" + "}";
     }
 }

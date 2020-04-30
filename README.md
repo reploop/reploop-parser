@@ -1,1 +1,1 @@
-A thrift and protobuf parser.
+= A thrift and protobuf parser.

@@ -19,12 +19,12 @@ public class FieldTypeComparator implements Comparator<FieldType> {
         if (type instanceof MapType) {
             return valueTypeOrder(((MapType) type).getValueType());
         }
-        if (type instanceof StructType && type.getName().endsWith("Object")) {
-            return Integer.MIN_VALUE;
-        }
-
+        // bits range from 8 to 64
         if (type instanceof NumberType) {
             return ((NumberType) type).bits();
+        }
+        if (type instanceof StructType && type.getName().endsWith("Object")) {
+            return Integer.MIN_VALUE;
         }
         return 0;
     }

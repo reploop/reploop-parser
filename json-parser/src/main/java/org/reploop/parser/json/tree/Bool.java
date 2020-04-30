@@ -1,7 +1,5 @@
 package org.reploop.parser.json.tree;
 
-import com.google.common.base.MoreObjects;
-
 import org.reploop.parser.json.AstVisitor;
 
 import java.util.Objects;
@@ -30,9 +28,7 @@ public class Bool extends Value {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("val", val)
-                .toString();
+        return String.valueOf(val);
     }
 
     @Override

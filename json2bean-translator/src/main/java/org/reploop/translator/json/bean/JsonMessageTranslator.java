@@ -1,6 +1,5 @@
 package org.reploop.translator.json.bean;
 
-import com.google.common.base.Supplier;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.JsonParser;
@@ -23,8 +22,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static org.apache.commons.lang3.math.NumberUtils.isParsable;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
-import static org.reploop.parser.QualifiedName.of;
+import static org.reploop.translator.json.bean.Support.isLegalIdentifier;
 import static org.reploop.translator.json.bean.Support.typeNumberSpec;
 
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
@@ -78,28 +78,15 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         return new DoubleType();
     }
 
-    private Optional<FieldType> startsWithDigit(String s) {
-        if (s.length() > 0) {
-            char c = s.charAt(0);
-            if (c >= '0' && c <= '9') {
-                return Optional.of(new LongType());
+    private Optional<FieldType> ifValueLiterals(String l, JsonMessageContext context) {
+        if (isParsable(l)) {
+            try {
+                StringReader reader = new StringReader(l);
+                Value value = (Value) jsonParser.parse(reader, JsonBaseParser::value);
+                return Optional.ofNullable(visitValue(value, context));
+            } catch (Exception e) {
+                LOGGER.error("Cannot parse {} to value", l, e);
             }
-        }
-        return Optional.empty();
-    }
-
-    private Optional<FieldType> ifNumber(String l, JsonMessageContext context) {
-        return ifNumberLiterals(l, context).or((Supplier<Optional<FieldType>>) () -> startsWithDigit(l));
-    }
-
-    private Optional<FieldType> ifNumberLiterals(String l, JsonMessageContext context) {
-        try {
-            Value value = (Value) jsonParser.parse(new StringReader(l), JsonBaseParser::value);
-            if (value instanceof Number) {
-                return Optional.of(visitValue(value, context));
-            }
-        } catch (Exception e) {
-            LOGGER.error("Cannot parse {} to value", l, e);
         }
         return Optional.empty();
     }
@@ -109,21 +96,33 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         List<Pair> pairs = entity.getPairs();
         List<Field> fields = new ArrayList<>();
 
-        // In case digit key, then use Map
-        boolean numberedKey = true;
-
         List<JsonMessageContext> contexts = new ArrayList<>();
         List<FieldType> keyTypes = new ArrayList<>();
         List<FieldType> valueTypes = new ArrayList<>();
+
+        // In case illegal key, then use Map instead of object
+        boolean anyIllegalIdentifier = pairs.stream()
+            .filter(Objects::nonNull)
+            .map(Pair::getKey)
+            .filter(Objects::nonNull)
+            .anyMatch(key -> !isLegalIdentifier(key));
+
         for (Pair pair : pairs) {
-            JsonMessageContext ctx = new JsonMessageContext(of(context.getName(), pair.getKey()));
-            Field field = visitPair(pair, ctx);
-            Optional<FieldType> oft;
-            if (numberedKey && (oft = ifNumber(field.getName(), ctx)).isPresent()) {
-                keyTypes.add(oft.get());
+            JsonMessageContext ctx;
+            Field field;
+            if (anyIllegalIdentifier) {
+                // If we find illegal identifier key, then treat this pair as an entry in Map.
+                // Do not add level, keeps to the parent's level
+                ctx = new JsonMessageContext(context.getName());
+                // Test the key type, Use string type by default.
+                FieldType keyType = ifValueLiterals(pair.getKey(), ctx).orElse(new StringType());
+                keyTypes.add(keyType);
+                // Visit the pair, and infer the value type.
+                field = visitPair(pair, ctx);
                 valueTypes.add(field.getType());
             } else {
-                numberedKey = false;
+                ctx = new JsonMessageContext(QualifiedName.of(context.getName(), pair.getKey()));
+                field = visitPair(pair, ctx);
             }
             fields.add(field);
             contexts.add(ctx);
@@ -131,12 +130,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         // Merge contexts
         contexts.forEach(jmc -> context.addNamedMessages(jmc.getNamedMessages()));
 
-        if (!numberedKey) {
-            QualifiedName fqn = context.getName();
-            Message m = new Message(fqn, fields);
-            context.addNamedMessage(fqn, m);
-            return new StructType(fqn);
-        } else {
+        if (anyIllegalIdentifier) {
             Optional<FieldType> ovt = typeOf(valueTypes);
             FieldType valueType = ovt.orElse(OBJECT);
             if (diffType(valueType, valueTypes)) {
@@ -145,6 +139,11 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             }
             FieldType keyType = typeOf(keyTypes).orElse(OBJECT);
             return new MapType(keyType, valueType);
+        } else {
+            QualifiedName fqn = context.getName();
+            Message m = new Message(fqn, fields);
+            context.addNamedMessage(fqn, m);
+            return new StructType(fqn);
         }
     }
 

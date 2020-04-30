@@ -1,12 +1,8 @@
 package org.reploop.parser.json.tree;
 
-import com.google.common.base.MoreObjects;
-
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
 
-import java.lang.*;
-import java.lang.Object;
 import java.util.Objects;
 
 /**
@@ -43,7 +39,7 @@ public class Pair extends Node implements Comparable<Pair> {
         if (o == null || getClass() != o.getClass()) return false;
         Pair pair = (Pair) o;
         return Objects.equals(key, pair.key) &&
-                Objects.equals(value, pair.value);
+            Objects.equals(value, pair.value);
     }
 
     @Override
@@ -53,10 +49,7 @@ public class Pair extends Node implements Comparable<Pair> {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("key", key)
-                .add("value", value)
-                .toString();
+        return key + ": " + value;
     }
 
     @Override
