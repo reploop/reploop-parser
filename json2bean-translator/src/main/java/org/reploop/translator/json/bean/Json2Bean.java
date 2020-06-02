@@ -10,6 +10,7 @@ import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.translator.json.ClassHierarchy;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
 
@@ -73,8 +74,11 @@ public class Json2Bean {
                 messageMap.put(entry.getKey(), message);
             }
         }
+        classHierarchy.infer(messageMap);
         return messageMap;
     }
+
+    private ClassHierarchy classHierarchy = new ClassHierarchy();
 
     public Map<QualifiedName, Message> execute(String json, JsonMessageContext context) throws IOException {
         return execute(new StringReader(json), context);
