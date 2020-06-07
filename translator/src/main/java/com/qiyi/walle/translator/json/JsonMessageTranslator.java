@@ -1,8 +1,10 @@
-package com.qiyi.walle.translator.json;
+package org.reploop.translator.json;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.google.common.base.Splitter;
+import com.qiyi.walle.translator.json.JsonMessageContext;
+import com.qiyi.walle.translator.json.MessageComparator;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
@@ -21,13 +23,13 @@ import java.util.stream.Collectors;
 
 ;
 
-public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.protobuf.Node, JsonMessageContext> {
+public class JsonMessageTranslator extends AstVisitor<org.reploop.parser.protobuf.Node, JsonMessageContext> {
     @Override
-    public com.qiyi.walle.parser.protobuf.Node visitNode(Node node, JsonMessageContext context) {
+    public org.reploop.parser.protobuf.Node visitNode(Node node, JsonMessageContext context) {
         return null;
     }
 
-    private <M extends com.qiyi.walle.parser.protobuf.Node, N extends Node> List<M> visit(List<N> nodes, Function<N, M> visit) {
+    private <M extends org.reploop.parser.protobuf.Node, N extends Node> List<M> visit(List<N> nodes, Function<N, M> visit) {
         return nodes.stream()
             .map(visit)
             .filter(Objects::nonNull)
@@ -80,9 +82,9 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
             .replaceAll("\\s+", "");
     }
 
-    private FieldType type(List<com.qiyi.walle.parser.protobuf.Node> values) {
+    private FieldType type(List<org.reploop.parser.protobuf.Node> values) {
         FieldType fieldType = null;
-        for (com.qiyi.walle.parser.protobuf.Node value : values) {
+        for (org.reploop.parser.protobuf.Node value : values) {
             FieldType type = type(value);
             if (null == fieldType) {
                 fieldType = type;
@@ -98,13 +100,13 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
         return fieldType;
     }
 
-    public FieldType type(com.qiyi.walle.parser.protobuf.Node value) {
+    public FieldType type(org.reploop.parser.protobuf.Node value) {
         FieldType fieldType;
         if (value instanceof BoolValue) {
             fieldType = new BoolType();
-        } else if (value instanceof com.qiyi.walle.parser.protobuf.tree.LongValue) {
+        } else if (value instanceof org.reploop.parser.protobuf.tree.LongValue) {
             fieldType = new LongType();
-        } else if (value instanceof com.qiyi.walle.parser.protobuf.tree.DoubleValue) {
+        } else if (value instanceof org.reploop.parser.protobuf.tree.DoubleValue) {
             fieldType = new DoubleType();
         } else if (value instanceof StringValue) {
             fieldType = new StringType();
@@ -149,7 +151,7 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
                     OptionPair op = (OptionPair) option;
                     String on = op.getName();
                     String oa = op.getAttr();
-                    com.qiyi.walle.parser.protobuf.tree.Value va = op.getValue();
+                    org.reploop.parser.protobuf.tree.Value va = op.getValue();
                     if ("map".equals(on)) {
                         if ("key".equals(oa)) {
                             keyType = type(va);
@@ -168,7 +170,7 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
 
     private FieldType visitValue(QualifiedName name, Value val, JsonMessageContext context) {
         context.push(name);
-        com.qiyi.walle.parser.protobuf.Node value = visitValue(val, context);
+        org.reploop.parser.protobuf.Node value = visitValue(val, context);
         context.pop();
         FieldType fieldType = type(value);
         // Inner Class Definition.
@@ -182,8 +184,8 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
                 fieldType = new StructType(message.getName());
             }
         } else if (value instanceof ListValue) {
-            List<com.qiyi.walle.parser.protobuf.Node> values = ((ListValue) value).getValues();
-            for (com.qiyi.walle.parser.protobuf.Node node : values) {
+            List<org.reploop.parser.protobuf.Node> values = ((ListValue) value).getValues();
+            for (org.reploop.parser.protobuf.Node node : values) {
                 if (node instanceof Message) {
                     Message m = (Message) node;
                     Optional<MapType> o = mapType(m);
@@ -204,18 +206,18 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
     }
 
     @Override
-    public com.qiyi.walle.parser.protobuf.Node visitValue(Value value, JsonMessageContext context) {
+    public org.reploop.parser.protobuf.Node visitValue(Value value, JsonMessageContext context) {
         return process(value, context);
     }
 
     @Override
-    public com.qiyi.walle.parser.protobuf.tree.LongValue visitLong(LongVal value, JsonMessageContext context) {
-        return new com.qiyi.walle.parser.protobuf.tree.LongValue(value.getVal());
+    public org.reploop.parser.protobuf.tree.LongValue visitLong(LongVal value, JsonMessageContext context) {
+        return new org.reploop.parser.protobuf.tree.LongValue(value.getVal());
     }
 
     @Override
-    public com.qiyi.walle.parser.protobuf.tree.DoubleValue visitDouble(DoubleVal value, JsonMessageContext context) {
-        return new com.qiyi.walle.parser.protobuf.tree.DoubleValue(value.getVal());
+    public org.reploop.parser.protobuf.tree.DoubleValue visitDouble(DoubleVal value, JsonMessageContext context) {
+        return new org.reploop.parser.protobuf.tree.DoubleValue(value.getVal());
     }
 
     @Override
@@ -226,11 +228,6 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
     @Override
     public NullValue visitNull(Null value, JsonMessageContext context) {
         return new NullValue();
-    }
-
-    @Override
-    public com.qiyi.walle.parser.protobuf.Node visitNumber(Number value, JsonMessageContext context) {
-        return process(value, context);
     }
 
     @Override
@@ -253,8 +250,8 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
         }
         List<Option> options = new ArrayList<>();
         if (null != f) {
-            com.qiyi.walle.parser.protobuf.tree.Value k = new StringValue(f.getType().toString());
-            com.qiyi.walle.parser.protobuf.tree.Value v = f.getValue().orElse(new StringValue("Object"));
+            org.reploop.parser.protobuf.tree.Value k = new StringValue(f.getType().toString());
+            org.reploop.parser.protobuf.tree.Value v = f.getValue().orElse(new StringValue("Object"));
             options.add(new OptionPair("map", "key", k));
             options.add(new OptionPair("map", "value", v));
         }
@@ -264,14 +261,14 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
     }
 
     @Override
-    public com.qiyi.walle.parser.protobuf.Node visitJson(Json json, JsonMessageContext context) {
+    public org.reploop.parser.protobuf.Node visitJson(Json json, JsonMessageContext context) {
         Pair pair = new Pair(context.pop().toString(), json.getValue());
         Field field = visitPair(pair, context);
 
         Map<QualifiedName, QualifiedName> dup = dup(context);
         context.setDup(dup);
 
-        Map<QualifiedName, Message> messages = context.messages;
+        Map<QualifiedName, Message> messages = context.getMessages();
 
         List<Message> order = new ArrayList<>(messages.values());
         order.sort(new MessageComparator());
@@ -307,7 +304,7 @@ public class JsonMessageTranslator extends AstVisitor<com.qiyi.walle.parser.prot
     }
 
     private Map<QualifiedName, QualifiedName> dup(JsonMessageContext context) {
-        Map<QualifiedName, Message> messages = context.messages;
+        Map<QualifiedName, Message> messages = context.getMessages();
         Map<QualifiedName, QualifiedName> replace = new TreeMap<>();
         Set<QualifiedName> names = messages.keySet();
         for (QualifiedName name : names) {

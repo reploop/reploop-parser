@@ -88,10 +88,25 @@ public class Json2Bean {
         return execute(CharStreams.fromReader(reader), context);
     }
 
+    private JsonBeanGenerator generator = new JsonBeanGenerator();
+    private JsonNameAdapter nameAdapter = new JsonNameAdapter();
+
     public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) {
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
         context.setFieldType(fieldType);
-        return merge(context);
+        Map<QualifiedName, Message> nameMessageMap = merge(context);
+
+        JsonMessageContext ctx0 = new JsonMessageContext();
+        nameMessageMap.forEach((name, message) -> {
+            nameAdapter.visitMessage(message, ctx0);
+        });
+        Map<QualifiedName, List<Message>> unifiedMessage = ctx0.getNamedMessages();
+        nameMessageMap.forEach((name, message) -> {
+            JsonBeanContext ctx = new JsonBeanContext(name);
+            generator.visitMessage(message, ctx);
+            System.out.println(ctx.toString());
+        });
+        return nameMessageMap;
     }
 }

@@ -3,6 +3,9 @@ package org.reploop.translator.json;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.type.CollectionType;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.StructType;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -76,16 +79,23 @@ public class ClassHierarchy {
 
     }
 
+    private boolean hasCommon(Point p1, Point p2) {
+        return p1.y - p2.y != 0 && p1.x - p2.x != 0;
+    }
+
+    private boolean hasCommon(Rect rect) {
+        return hasCommon(rect.lt, rect.rb);
+    }
+
     private void infer(Map<QualifiedName, Message> messageMap,
                        Map<Integer, QualifiedName> indexNameMap, Map<Integer, Field> indexFieldMap,
                        int ms, int fs, int[][] matrix) {
         Map<QualifiedName, List<QualifiedName>> same = new HashMap<>();
         // calculate max rect
         Optional<Rect> or = maxArea(matrix, fs, ms);
-        if (or.isPresent()) {
-            Rect rect = or.get();
-
-            // Fields in parent class
+        Rect rect;
+        if (or.isPresent() && hasCommon(rect = or.get())) {
+            // Fields may be in parent class
             Set<Field> fields = new HashSet<>();
             for (int f = rect.lt.x; f <= rect.rb.x; f++) {
                 Field field = indexFieldMap.get(f);
@@ -93,7 +103,7 @@ public class ClassHierarchy {
             }
 
             Message parent = null;
-            QualifiedName name = null;
+            QualifiedName name;
 
             List<Message> subClasses = new ArrayList<>();
             StringBuilder n = new StringBuilder();
@@ -109,7 +119,7 @@ public class ClassHierarchy {
                 List<Field> sub = message.getFields().stream()
                     .filter(field -> !fields.contains(field))
                     .collect(Collectors.toList());
-                // Same as parent
+                // Same as parent, we make this message as parent  without modifying it's name.
                 if (sub.isEmpty()) {
                     if (null == parent) {
                         parent = message;
@@ -118,10 +128,10 @@ public class ClassHierarchy {
                         same.computeIfAbsent(qn, qualifiedName -> new ArrayList<>()).add(parent.getName());
                     }
                 } else {
-                    Message subMessage = new Message(qn, sub, message.getMessages(), message.getEnumerations(), message.getOptions());
-                    subClasses.add(subMessage);
-                    // Update class.
-                    messageMap.put(qn, subMessage);
+                    Message child = new Message(qn, message.getComments(), sub, message.getMessages(), message.getEnumerations(), message.getOptions());
+                    subClasses.add(child);
+                    // Update the message
+                    messageMap.put(qn, child);
                 }
             }
             if (null == parent) {
@@ -134,8 +144,40 @@ public class ClassHierarchy {
             if (null != messages) {
                 subClasses.addAll(messages);
             }
-            Message pm = new Message(name, parent.getFields(), subClasses, parent.getEnumerations(), parent.getOptions());
+            Message pm = new Message(name, parent.getComments(), parent.getFields(), subClasses, parent.getEnumerations(), parent.getOptions());
             messageMap.put(name, pm);
+        }
+    }
+
+    private QualifiedName concreteType(FieldType type) {
+        if (type instanceof StructType) {
+            return (type.getName());
+        } else {
+            if (type instanceof CollectionType) {
+                return concreteType(((CollectionType) type).getElementType());
+            }
+        }
+        return null;
+    }
+
+    private Optional<Field> only(List<Field> fields) {
+        Field field;
+        if (null != fields && 1 == fields.size() && null != (field = fields.get(0))) {
+            return Optional.of(field);
+        }
+        return Optional.empty();
+    }
+
+    private void transit(Message parent, Message message) {
+        // Has only one field
+        boolean eq = only(message.getFields())
+            .map(Field::getType)
+            .map(this::concreteType)
+            .filter(q -> q.equals(parent.getName()))
+            .isPresent();
+        if (eq) {
+            // message equals parent + message.field
+            Field field = only(message.getFields()).get();
         }
     }
 

@@ -1,0 +1,70 @@
+{
+  "error": {
+    "id": "i2",
+    "reason": "r2",
+    "show": "s2"
+  },
+  "data": {
+    "list": [
+      {
+        "max_price": 2,
+        "min_price": 3,
+        "city_id": "cd",
+        "hotels": [
+          {
+            "additional_info": {
+              "room": [
+                {
+                  "list": [
+                    {
+                      "age": 0
+                    },
+                    {
+                      "age": 3
+                    },
+                    {
+                      "age": 5
+                    }
+                  ]
+                }
+              ],
+              "city_list": [
+                {
+                  "id": "i",
+                  "checkin": "2",
+                  "checkout": "w"
+                }
+              ],
+              "plan_prefer": {
+                "star": [
+                  3,
+                  2,
+                  1
+                ],
+                "price": {
+                  "lower": 23.2,
+                  "upper": 34.2
+                },
+                "tags": [
+                  "s1",
+                  "s2"
+                ]
+              }
+            },
+            "hotel_id": "",
+            "price": 0,
+            "name": "",
+            "name_en": "",
+            "star": 0,
+            "coord": "",
+            "checkin": "",
+            "checkout": "",
+            "tags": [
+              "52t"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

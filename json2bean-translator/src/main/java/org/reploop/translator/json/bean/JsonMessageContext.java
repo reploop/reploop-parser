@@ -5,10 +5,12 @@ import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
 
 import java.util.*;
+import java.util.function.Function;
 
 public class JsonMessageContext {
     private QualifiedName name;
     private TreeMap<QualifiedName, List<Message>> namedMessages;
+    private Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
     private FieldType fieldType;
 
     public JsonMessageContext(QualifiedName name, TreeMap<QualifiedName, List<Message>> namedMessages) {
@@ -82,6 +84,9 @@ public class JsonMessageContext {
         this.namedMessages = namedMessages;
     }
 
+    public Optional<QualifiedName> getIdentityName(QualifiedName qn){
+        return Optional.ofNullable(identityNames.get(qn));
+    }
     public boolean isJsonRawValue(QualifiedName name) {
         String expected = "$.log.entries.response.content.text";
         return name.toString().equals(expected);

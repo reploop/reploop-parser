@@ -4,12 +4,13 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.JsonParser;
 import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.tree.Entity;
 import org.reploop.parser.json.tree.Number;
 import org.reploop.parser.json.tree.*;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.Value;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.Field;
-import org.reploop.parser.protobuf.tree.FieldModifier;
-import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
@@ -141,7 +142,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             return new MapType(keyType, valueType);
         } else {
             QualifiedName fqn = context.getName();
-            Message m = new Message(fqn, fields);
+            Header header = new Namespace("");
+            Message m = new Message(fqn, fields, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
             context.addNamedMessage(fqn, m);
             return new StructType(fqn);
         }

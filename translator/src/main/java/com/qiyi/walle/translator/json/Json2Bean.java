@@ -13,6 +13,7 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.JsonParser;
 import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Json;
+import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.tree.Option;
 
@@ -125,9 +126,9 @@ public class Json2Bean {
         context.getDup().clear();
         context.getMessages().forEach(((name, message) -> {
             name.prefix()
-                    .map(qn -> qn.toString().toLowerCase())
-                    .map(QualifiedName::of)
-                    .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
+                .map(qn -> qn.toString().toLowerCase())
+                .map(QualifiedName::of)
+                .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
         }));
         reduce(context);
         direct(context);
@@ -147,30 +148,30 @@ public class Json2Bean {
     private void reduce(JsonMessageContext context) {
         TreeMap<QualifiedName, Message> map = (TreeMap<QualifiedName, Message>) context.getMessages();
         map.descendingKeySet()
-                .forEach(fqn -> {
-                    Map<QualifiedName, QualifiedName> dup = context.dup;
-                    Set<QualifiedName> names = new HashSet<>();
-                    context.dup(fqn)
-                            .ifPresent(qn -> {
-                                names.add(qn);
-                                List<String> parts = qn.allParts();
-                                int size = parts.size();
-                                for (int c = 1; c < size; c++) {
-                                    List<String> all = new ArrayList<>();
-                                    for (int j = size - c; j <= size - 1; j++) {
-                                        all.add(parts.get(j));
-                                    }
-                                    QualifiedName n = QualifiedName.of(all);
-                                    if (dup.containsKey(qn)) {
-                                        break;
-                                    }
-                                    if (!names.contains(n)) {
-                                        dup.put(qn, n);
-                                        names.add(n);
-                                    }
-                                }
-                            });
-                });
+            .forEach(fqn -> {
+                Map<QualifiedName, QualifiedName> dup = context.dup;
+                Set<QualifiedName> names = new HashSet<>();
+                context.dup(fqn)
+                    .ifPresent(qn -> {
+                        names.add(qn);
+                        List<String> parts = qn.allParts();
+                        int size = parts.size();
+                        for (int c = 1; c < size; c++) {
+                            List<String> all = new ArrayList<>();
+                            for (int j = size - c; j <= size - 1; j++) {
+                                all.add(parts.get(j));
+                            }
+                            QualifiedName n = QualifiedName.of(all);
+                            if (dup.containsKey(qn)) {
+                                break;
+                            }
+                            if (!names.contains(n)) {
+                                dup.put(qn, n);
+                                names.add(n);
+                            }
+                        }
+                    });
+            });
     }
 
     private MessageDuplicateResolver resolver = new MessageDuplicateResolver();
@@ -222,8 +223,8 @@ public class Json2Bean {
         List<String> list = new ArrayList<>();
         if (null != urls) {
             urls.stream()
-                    .filter(Objects::nonNull)
-                    .forEach(list::add);
+                .filter(Objects::nonNull)
+                .forEach(list::add);
         }
         if (null != url) {
             list.add(url);
@@ -252,7 +253,7 @@ public class Json2Bean {
 
             Json json = (Json) parser.parse(reader, JsonBaseParser::json);
             JsonMessageContext context = new JsonMessageContext(filename);
-            com.qiyi.walle.parser.protobuf.tree.Field field = (Field) translator.visitJson(json, context);
+            org.reploop.parser.protobuf.tree.Field field = (Field) translator.visitJson(json, context);
 
             // Handle qualified name, resolve package.
             context.getMessages().forEach((key, message) -> {

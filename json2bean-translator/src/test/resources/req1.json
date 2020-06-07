@@ -1,0 +1,39 @@
+{
+  "room": [
+    {
+      "list": [
+        {
+          "age": 0
+        },
+        {
+          "age": 3
+        },
+        {
+          "age": 5
+        }
+      ]
+    }
+  ],
+  "city_list": [
+    {
+      "id": "i",
+      "checkin": "2",
+      "checkout": "w"
+    }
+  ],
+  "plan_prefer": {
+    "star": [
+      3,
+      2,
+      1
+    ],
+    "price": {
+      "lower": 23.2,
+      "upper": 34.2
+    },
+    "tags": [
+      "s1",
+      "s2"
+    ]
+  }
+}

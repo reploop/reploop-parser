@@ -19,17 +19,14 @@ public class Message extends Entity {
     List<Field> fields;
     List<Message> messages;
     List<Enumeration> enumerations;
-    List<Option> options = new ArrayList<>();
+    List<Option> options;
 
     public Message(QualifiedName name, List<Field> fields) {
-        super(name);
-        this.fields = fields;
+        this(name, fields, Collections.emptyList());
     }
 
     public Message(QualifiedName name, List<Field> fields, List<Message> messages) {
-        super(name);
-        this.fields = fields;
-        this.messages = messages;
+        this(name, fields, messages, Collections.emptyList(), new ArrayList<>());
     }
 
     public Message(QualifiedName name,
@@ -85,7 +82,7 @@ public class Message extends Entity {
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
         return Objects.equals(name, message.name) &&
-                Objects.equals(fields, message.fields);
+            Objects.equals(fields, message.fields);
     }
 
     @Override
@@ -96,11 +93,11 @@ public class Message extends Entity {
     @Override
     public String toString() {
         return "Message{" +
-                "name=" + name +
-                ", comments=" + comments +
-                ", fields=" + fields +
-                ", messages=" + messages +
-                ", enumerations=" + enumerations +
-                '}';
+            "name=" + name +
+            ", comments=" + comments +
+            ", fields=" + fields +
+            ", messages=" + messages +
+            ", enumerations=" + enumerations +
+            '}';
     }
 }
