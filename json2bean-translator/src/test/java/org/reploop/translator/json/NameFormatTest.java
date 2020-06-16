@@ -41,10 +41,15 @@ public class NameFormatTest {
 
         id = "_9utf8AsTest_";
         f = format.format(id);
-        assertEquals("9utf8_as_test", f);
+        assertEquals("$9utf8_as_test", f);
 
         id = "__0utf8AsTest_";
         f = format.format(id);
-        assertEquals("0utf8_as_test", f);
+        assertEquals("$0utf8_as_test", f);
+    }
+
+    @Test
+    public void testPrint() {
+        format.print();
     }
 }
