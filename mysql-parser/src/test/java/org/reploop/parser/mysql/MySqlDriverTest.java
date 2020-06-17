@@ -1,6 +1,6 @@
 package org.reploop.parser.mysql;
 
-import com.qiyi.walle.parser.mysql.base.MySqlParser;
+import org.reploop.parser.mysql.base.MySqlParser;
 import org.reploop.parser.mysql.tree.Node;
 import org.junit.Test;
 
