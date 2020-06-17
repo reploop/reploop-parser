@@ -1,12 +1,12 @@
-package com.qiyi.walle.parser.java;
+package org.reploop.parser.java;
 
-import com.qiyi.walle.parser.ParserDriver;
-import com.qiyi.walle.parser.java.base.JavaLexer;
-import com.qiyi.walle.parser.java.base.JavaParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
+import org.reploop.parser.ParserDriver;
+import org.reploop.parser.java.base.JavaLexer;
+import org.reploop.parser.java.base.JavaParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ public class JavaParserDriver extends ParserDriver<Node, JavaLexer, JavaParser> 
 
     public Node parse(Path file, Function<JavaParser, ParserRuleContext> func) {
         try (Reader reader
-                     = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
+                 = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
             return parse(reader, func);
         } catch (IOException e) {
             LOG.error("Cannot read thrift file {}", file, e);

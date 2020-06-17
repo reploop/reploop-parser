@@ -1,10 +1,11 @@
 package com.qiyi.walle.parser.java;
 
-import com.qiyi.walle.parser.java.base.JavaLexer;
-import com.qiyi.walle.parser.java.base.JavaParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenStream;
+import org.reploop.parser.java.JavaParserDriver;
+import org.reploop.parser.java.base.JavaLexer;
+import org.reploop.parser.java.base.JavaParser;
 import org.testng.annotations.Test;
 
 import java.nio.file.Paths;

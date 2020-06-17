@@ -1,11 +1,11 @@
 package org.reploop.parser.mysql;
 
-import com.qiyi.walle.parser.mysql.base.MySqlParserBaseVisitor;
-import com.qiyi.walle.parser.mysql.base.MySqlParser;
-import com.qiyi.walle.parser.mysql.tree.*;
 import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.reploop.parser.mysql.base.MySqlParser;
+import org.reploop.parser.mysql.base.MySqlParserBaseVisitor;
+import org.reploop.parser.mysql.tree.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -59,9 +59,9 @@ public class MySqlAstBuilder extends MySqlParserBaseVisitor<Node> {
     private <T, C extends ParseTree> List<T> visit(List<C> contexts, Class<T> type) {
         if (null != contexts) {
             return contexts.stream()
-                    .map(this::visit)
-                    .map(type::cast)
-                    .collect(Collectors.toList());
+                .map(this::visit)
+                .map(type::cast)
+                .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }

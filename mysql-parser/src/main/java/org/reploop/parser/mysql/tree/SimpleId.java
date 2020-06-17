@@ -1,6 +1,4 @@
-package com.qiyi.walle.parser.mysql.tree;
-
-import com.google.common.base.MoreObjects;
+package org.reploop.parser.mysql.tree;
 
 public class SimpleId extends UID {
     String name;

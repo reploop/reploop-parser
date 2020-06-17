@@ -32,6 +32,7 @@
         <module>java-parser</module>
         <module>mysql-parser</module>
         <module>json2bean-translator</module>
+        <module>go-parser</module>
     </modules>
 
     <profiles>

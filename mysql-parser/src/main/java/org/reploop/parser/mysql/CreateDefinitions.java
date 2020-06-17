@@ -1,8 +1,8 @@
 package org.reploop.parser.mysql;
 
 import com.google.common.base.MoreObjects;
-import com.qiyi.walle.parser.mysql.tree.CreateDefinition;
-import com.qiyi.walle.parser.mysql.tree.Node;
+import org.reploop.parser.mysql.tree.CreateDefinition;
+import org.reploop.parser.mysql.tree.Node;
 
 import java.util.List;
 

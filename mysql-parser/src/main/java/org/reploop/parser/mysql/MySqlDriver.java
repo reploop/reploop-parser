@@ -1,9 +1,9 @@
 package org.reploop.parser.mysql;
 
-import com.qiyi.walle.parser.ParserDriver;
-import com.qiyi.walle.parser.mysql.base.MySqlLexer;
-import com.qiyi.walle.parser.mysql.base.MySqlParser;
-import com.qiyi.walle.parser.mysql.tree.Node;
+import org.reploop.parser.ParserDriver;
+import org.reploop.parser.mysql.base.MySqlLexer;
+import org.reploop.parser.mysql.base.MySqlParser;
+import org.reploop.parser.mysql.tree.Node;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;

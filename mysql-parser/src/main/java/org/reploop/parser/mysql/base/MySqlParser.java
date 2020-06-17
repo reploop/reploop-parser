@@ -1,5 +1,5 @@
-// Generated from com/qiyi/walle/parser/mysql/base/MySqlParser.g4 by ANTLR 4.8
-package com.qiyi.walle.parser.mysql.base;
+// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.8
+package org.reploop.parser.mysql.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;

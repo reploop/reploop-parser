@@ -1,7 +1,7 @@
 package org.reploop.parser.mysql;
 
 import com.qiyi.walle.parser.mysql.base.MySqlParser;
-import com.qiyi.walle.parser.mysql.tree.Node;
+import org.reploop.parser.mysql.tree.Node;
 import org.junit.Test;
 
 import java.io.IOException;

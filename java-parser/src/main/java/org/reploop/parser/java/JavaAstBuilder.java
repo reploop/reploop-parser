@@ -1,8 +1,8 @@
-package com.qiyi.walle.parser.java;
+package org.reploop.parser.java;
 
-import com.qiyi.walle.parser.java.base.JavaParser;
-import com.qiyi.walle.parser.java.base.JavaParserBaseVisitor;
 import org.antlr.v4.runtime.TokenStream;
+import org.reploop.parser.java.base.JavaParser;
+import org.reploop.parser.java.base.JavaParserBaseVisitor;
 
 public class JavaAstBuilder extends JavaParserBaseVisitor<Node> {
     TokenStream tokenStream;
