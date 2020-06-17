@@ -1,6 +1,6 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.thrift.ThriftParser;
+import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.testng.annotations.BeforeMethod;

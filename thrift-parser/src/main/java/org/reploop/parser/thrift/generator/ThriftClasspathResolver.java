@@ -1,6 +1,6 @@
 package org.reploop.parser.thrift.generator;
 
-import com.qiyi.walle.parser.thrift.ThriftParser;
+import org.reploop.parser.thrift.ThriftParser;
 import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.QualifiedName;
