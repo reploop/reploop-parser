@@ -1,12 +1,6 @@
 package com.qiyi.walle.translator.json;
 
 import com.google.common.base.CaseFormat;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.json.JsonParser;
-import com.qiyi.walle.parser.json.base.JsonBaseParser;
-import com.qiyi.walle.parser.json.tree.Json;
-import com.qiyi.walle.parser.protobuf.tree.Field;
-import com.qiyi.walle.parser.protobuf.tree.Message;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -15,6 +9,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.json.JsonParser;
+import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.tree.Json;
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.Message;
 import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,7 +33,7 @@ import java.util.Optional;
 public class JsonBeanTranslatorTest {
 
     private JsonParser parser;
-    private JsonMessageTranslator translator;
+    private org.reploop.translator.json.JsonMessageTranslator translator;
     private String url = "http://lijiehui-monitor-online020-jylt.qiyi.virtual/cloudstorage/uri?bizid=bj_ppc_prod&location=bj&production=ppc&type=prod&role=qichuan&usage=normal&app=ppconswift";
     private HttpClient client = HttpClientBuilder.create().build();
 
@@ -60,7 +60,7 @@ public class JsonBeanTranslatorTest {
     @BeforeMethod
     public void setUp() {
         parser = new JsonParser();
-        translator = new JsonMessageTranslator();
+        translator = new org.reploop.translator.json.JsonMessageTranslator();
         // url = "http://mixer.video.iqiyi.com/mixin/videos/avlist?albumId=203194401&size=2&page=1";
     }
 
@@ -114,9 +114,9 @@ public class JsonBeanTranslatorTest {
     private void dup(JsonMessageContext context) {
         context.messages.forEach(((name, message) -> {
             name.prefix()
-                    .map(qn -> qn.toString().toLowerCase())
-                    .map(QualifiedName::of)
-                    .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
+                .map(qn -> qn.toString().toLowerCase())
+                .map(QualifiedName::of)
+                .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
         }));
     }
 
@@ -158,14 +158,14 @@ public class JsonBeanTranslatorTest {
     public void testVisitJson(String url) throws Exception {
         Path path = Paths.get("/Users/george/source/walle/walle-parser/walle-translator/src/test/java");
         URI uri = URI.create(url);
-        String pkg = "com.qiyi.walle.translator";
+        String pkg = "org.reploop.translator";
         QualifiedName name = fqn(pkg, uri);
         QualifiedName namespace = name.prefix().orElse(null);
         QualifiedName filename = QualifiedName.of(name.suffix());
 
         Json json = (Json) parser.parse(reader(url), JsonBaseParser::json);
         JsonMessageContext context = new JsonMessageContext(filename);
-        com.qiyi.walle.parser.protobuf.tree.Field field = (Field) translator.visitJson(json, context);
+        org.reploop.parser.protobuf.tree.Field field = (Field) translator.visitJson(json, context);
 
         // API
 

@@ -5,13 +5,10 @@ import com.google.common.collect.ImmutableList;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
-import org.reploop.parser.json.tree.Json;
-import org.reploop.parser.json.tree.Pair;
 import org.reploop.parser.json.tree.*;
 import org.reploop.parser.thrift.tree.Entity;
 import org.reploop.parser.thrift.tree.Header;
 import org.reploop.parser.thrift.tree.ThriftProgram;
-import org.reploop.parser.thrift.tree.Value;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -64,14 +61,14 @@ public class JsonThriftTranslator extends AstVisitor<Node, Classpath<ThriftProgr
             return new LongVal(((LongVal) value).getVal());
         } else if (value instanceof DoubleVal) {
             return new DoubleVal(((DoubleVal) value).getVal());
-        } else if (value instanceof com.qiyi.walle.parser.json.tree.Entity) {
-            com.qiyi.walle.parser.json.tree.Entity entity = (com.qiyi.walle.parser.json.tree.Entity) value;
+        } else if (value instanceof org.reploop.parser.json.tree.Entity) {
+            org.reploop.parser.json.tree.Entity entity = (org.reploop.parser.json.tree.Entity) value;
             List<Pair> pairs = entity.getPairs();
             ImmutableList.Builder<Pair> pb = new ImmutableList.Builder<>();
             for (Pair pair : pairs) {
                 pb.add(visitPair(pair, context));
             }
-            return new com.qiyi.walle.parser.json.tree.Entity(pb.build());
+            return new org.reploop.parser.json.tree.Entity(pb.build());
         }
         return value;
     }

@@ -1,20 +1,20 @@
 package com.qiyi.walle.translator;
 
 import com.google.common.base.CaseFormat;
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.ProtobufParser;
-import com.qiyi.walle.parser.protobuf.generator.ProtobufClassnameResolver;
-import com.qiyi.walle.parser.protobuf.generator.ProtobufClasspathResolver;
-import com.qiyi.walle.parser.protobuf.generator.ProtobufResolver;
-import com.qiyi.walle.parser.protobuf.generator.ProtobufServiceResolver;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
 import com.qiyi.walle.parser.thrift.ThriftParser;
-import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
-import com.qiyi.walle.parser.thrift.generator.ThriftClasspathResolver;
-import com.qiyi.walle.parser.thrift.generator.ThriftResolver;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.ProtobufParser;
+import org.reploop.parser.protobuf.generator.ProtobufClassnameResolver;
+import org.reploop.parser.protobuf.generator.ProtobufClasspathResolver;
+import org.reploop.parser.protobuf.generator.ProtobufResolver;
+import org.reploop.parser.protobuf.generator.ProtobufServiceResolver;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.thrift.generator.GeneratorContext;
+import org.reploop.parser.thrift.generator.ThriftClasspathResolver;
+import org.reploop.parser.thrift.generator.ThriftResolver;
+import org.reploop.parser.thrift.tree.Service;
+import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

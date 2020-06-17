@@ -1,4 +1,4 @@
-// Generated from com/qiyi/walle/parser/thrift/base/ThriftBase.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.8
 package org.reploop.parser.thrift.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -17,32 +17,32 @@ public class ThriftBaseParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9,
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17,
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24,
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31,
-		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38,
-		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45,
-		T__45=46, T__46=47, T__47=48, T__48=49, T__49=50, T__50=51, T__51=52,
-		XsdAll=53, XsdOptional=54, XsdNillable=55, FieldRequiredness=56, ONEWAY=57,
-		ID=58, ST_ID=59, LITERAL=60, INT=61, DOUBLE=62, FLOAT=63, STRING=64, LINE_COMMENT=65,
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
+		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
+		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45, 
+		T__45=46, T__46=47, T__47=48, T__48=49, T__49=50, T__50=51, T__51=52, 
+		XsdAll=53, XsdOptional=54, XsdNillable=55, FieldRequiredness=56, ONEWAY=57, 
+		ID=58, ST_ID=59, LITERAL=60, INT=61, DOUBLE=62, FLOAT=63, STRING=64, LINE_COMMENT=65, 
 		COMMENT=66, WS=67;
 	public static final int
-		RULE_program = 0, RULE_header = 1, RULE_include = 2, RULE_cppInclude = 3,
-		RULE_namespace = 4, RULE_namespaceScope = 5, RULE_definition = 6, RULE_typeDefinition = 7,
-		RULE_typedef = 8, RULE_enumeration = 9, RULE_enumDef = 10, RULE_senum = 11,
-		RULE_senumDef = 12, RULE_constant = 13, RULE_constValue = 14, RULE_structHead = 15,
-		RULE_struct = 16, RULE_xsdAttributes = 17, RULE_xception = 18, RULE_service = 19,
-		RULE_function = 20, RULE_raise = 21, RULE_field = 22, RULE_fieldID = 23,
-		RULE_fieldValue = 24, RULE_functionType = 25, RULE_primitives = 26, RULE_fieldType = 27,
+		RULE_program = 0, RULE_header = 1, RULE_include = 2, RULE_cppInclude = 3, 
+		RULE_namespace = 4, RULE_namespaceScope = 5, RULE_definition = 6, RULE_typeDefinition = 7, 
+		RULE_typedef = 8, RULE_enumeration = 9, RULE_enumDef = 10, RULE_senum = 11, 
+		RULE_senumDef = 12, RULE_constant = 13, RULE_constValue = 14, RULE_structHead = 15, 
+		RULE_struct = 16, RULE_xsdAttributes = 17, RULE_xception = 18, RULE_service = 19, 
+		RULE_function = 20, RULE_raise = 21, RULE_field = 22, RULE_fieldID = 23, 
+		RULE_fieldValue = 24, RULE_functionType = 25, RULE_primitives = 26, RULE_fieldType = 27, 
 		RULE_commaOrSemicolon = 28, RULE_cppType = 29;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "header", "include", "cppInclude", "namespace", "namespaceScope",
-			"definition", "typeDefinition", "typedef", "enumeration", "enumDef",
-			"senum", "senumDef", "constant", "constValue", "structHead", "struct",
-			"xsdAttributes", "xception", "service", "function", "raise", "field",
-			"fieldID", "fieldValue", "functionType", "primitives", "fieldType", "commaOrSemicolon",
+			"program", "header", "include", "cppInclude", "namespace", "namespaceScope", 
+			"definition", "typeDefinition", "typedef", "enumeration", "enumDef", 
+			"senum", "senumDef", "constant", "constValue", "structHead", "struct", 
+			"xsdAttributes", "xception", "service", "function", "raise", "field", 
+			"fieldID", "fieldValue", "functionType", "primitives", "fieldType", "commaOrSemicolon", 
 			"cppType"
 		};
 	}
@@ -50,26 +50,26 @@ public class ThriftBaseParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'include'", "'cpp_include'", "'namespace'", "'smalltalk.category'",
-			"'smalltalk.prefix'", "'xsd_namespace'", "'php_namespace'", "'*'", "'cpp'",
-			"'java'", "'py'", "'perl'", "'rb'", "'cocoa'", "'csharp'", "'typedef'",
-			"'enum'", "'{'", "'}'", "'='", "'senum'", "'const'", "'['", "']'", "':'",
-			"'struct'", "'union'", "'xsd_attrs'", "'exception'", "'service'", "'extends'",
-			"'('", "')'", "'throws'", "'void'", "'string'", "'binary'", "'slist'",
-			"'bool'", "'byte'", "'i16'", "'i32'", "'i64'", "'double'", "'map'", "'<'",
-			"','", "'>'", "'set'", "'list'", "';'", "'cpp_type'", "'xsd_all'", "'xsd_optional'",
+			null, "'include'", "'cpp_include'", "'namespace'", "'smalltalk.category'", 
+			"'smalltalk.prefix'", "'xsd_namespace'", "'php_namespace'", "'*'", "'cpp'", 
+			"'java'", "'py'", "'perl'", "'rb'", "'cocoa'", "'csharp'", "'typedef'", 
+			"'enum'", "'{'", "'}'", "'='", "'senum'", "'const'", "'['", "']'", "':'", 
+			"'struct'", "'union'", "'xsd_attrs'", "'exception'", "'service'", "'extends'", 
+			"'('", "')'", "'throws'", "'void'", "'string'", "'binary'", "'slist'", 
+			"'bool'", "'byte'", "'i16'", "'i32'", "'i64'", "'double'", "'map'", "'<'", 
+			"','", "'>'", "'set'", "'list'", "';'", "'cpp_type'", "'xsd_all'", "'xsd_optional'", 
 			"'xsd_nillable'", null, "'oneway'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, "XsdAll", "XsdOptional", "XsdNillable",
-			"FieldRequiredness", "ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE",
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, "XsdAll", "XsdOptional", "XsdNillable", 
+			"FieldRequiredness", "ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE", 
 			"FLOAT", "STRING", "LINE_COMMENT", "COMMENT", "WS"
 		};
 	}
@@ -209,7 +209,7 @@ public class ThriftBaseParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_header; }
-
+	 
 		public HeaderContext() { }
 		public void copyFrom(HeaderContext ctx) {
 			super.copyFrom(ctx);
@@ -561,7 +561,7 @@ public class ThriftBaseParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_definition; }
-
+	 
 		public DefinitionContext() { }
 		public void copyFrom(DefinitionContext ctx) {
 			super.copyFrom(ctx);
@@ -681,7 +681,7 @@ public class ThriftBaseParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeDefinition; }
-
+	 
 		public TypeDefinitionContext() { }
 		public void copyFrom(TypeDefinitionContext ctx) {
 			super.copyFrom(ctx);
@@ -1898,7 +1898,7 @@ public class ThriftBaseParser extends Parser {
 			match(T__33);
 			setState(263);
 			match(T__31);
-			setState(265);
+			setState(265); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -1908,7 +1908,7 @@ public class ThriftBaseParser extends Parser {
 				field();
 				}
 				}
-				setState(267);
+				setState(267); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==INT );
@@ -2147,7 +2147,7 @@ public class ThriftBaseParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_functionType; }
-
+	 
 		public FunctionTypeContext() { }
 		public void copyFrom(FunctionTypeContext ctx) {
 			super.copyFrom(ctx);
@@ -2294,7 +2294,7 @@ public class ThriftBaseParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldType; }
-
+	 
 		public FieldTypeContext() { }
 		public void copyFrom(FieldTypeContext ctx) {
 			super.copyFrom(ctx);

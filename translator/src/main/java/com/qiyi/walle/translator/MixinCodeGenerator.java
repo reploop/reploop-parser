@@ -2,34 +2,21 @@ package com.qiyi.walle.translator;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Strings;
-
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
 import org.reploop.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
-import com.qiyi.walle.parser.thrift.tree.Entity;
-import com.qiyi.walle.parser.thrift.tree.Field;
-import com.qiyi.walle.parser.thrift.tree.Function;
-import com.qiyi.walle.parser.thrift.tree.FunctionType;
-import com.qiyi.walle.parser.thrift.tree.Header;
-import com.qiyi.walle.parser.thrift.tree.Lang;
-import com.qiyi.walle.parser.thrift.tree.LiteralNode;
-import com.qiyi.walle.parser.thrift.tree.Namespace;
-import com.qiyi.walle.parser.thrift.tree.NamespaceScope;
-import com.qiyi.walle.parser.thrift.tree.ReturnType;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
-import com.qiyi.walle.parser.thrift.tree.VoidType;
-import com.qiyi.walle.parser.thrift.type.CollectionType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
-import com.qiyi.walle.parser.thrift.type.ListType;
-import com.qiyi.walle.parser.thrift.type.MapType;
+import org.reploop.parser.thrift.generator.GeneratorContext;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.CollectionType;
+import org.reploop.parser.thrift.type.FieldType;
+import org.reploop.parser.thrift.type.ListType;
+import org.reploop.parser.thrift.type.MapType;
 
 import java.util.List;
 import java.util.Optional;
 
-import static com.qiyi.walle.parser.thrift.generator.GeneratorContext.ONE_INDENT_CONTEXT;
-import static com.qiyi.walle.parser.thrift.generator.GeneratorContext.ZERO_INDENT_CONTEXT;
+import static org.reploop.parser.thrift.generator.GeneratorContext.ONE_INDENT_CONTEXT;
+import static org.reploop.parser.thrift.generator.GeneratorContext.ZERO_INDENT_CONTEXT;
 
 /**
  * Code Generator.
@@ -231,7 +218,7 @@ public class MixinCodeGenerator extends AstVisitor<StringBuilder, GeneratorConte
         context.indent();
         String name = node.getName().suffix();
         String conf = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, name)
-                .replace("service", "config").toUpperCase();
+            .replace("service", "config").toUpperCase();
         indent(context).append("this(CloudZkConfig.").append(conf).append(");").append(NEW_LINE);
         context.dedent();
         indent(context).append("}").append(NEW_LINE).append(NEW_LINE);
@@ -272,11 +259,11 @@ public class MixinCodeGenerator extends AstVisitor<StringBuilder, GeneratorConte
         comments(node.getComments(), context);
         String name = name(node);
         indent(context)
-                .append("public class ")
-                .append(name)
-                .append(" extends QipuServiceAdapter<")
-                .append(node.getName().suffix())
-                .append(".Iface>").append(" {").append(NEW_LINE);
+            .append("public class ")
+            .append(name)
+            .append(" extends QipuServiceAdapter<")
+            .append(node.getName().suffix())
+            .append(".Iface>").append(" {").append(NEW_LINE);
 
         constructor(node, context.copyThenIndent());
 

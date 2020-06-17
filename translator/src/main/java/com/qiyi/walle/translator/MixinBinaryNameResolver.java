@@ -2,16 +2,16 @@ package com.qiyi.walle.translator;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.commons.LevenshteinDistance;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.commons.LevenshteinDistance;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
 import org.reploop.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
-import com.qiyi.walle.parser.thrift.tree.*;
-import com.qiyi.walle.parser.thrift.type.BinaryType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
-import com.qiyi.walle.parser.thrift.type.StructType;
+import org.reploop.parser.thrift.Node;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.BinaryType;
+import org.reploop.parser.thrift.type.FieldType;
+import org.reploop.parser.thrift.type.StructType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,9 +56,9 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
         ImmutableList.Builder<Function> fb = ImmutableList.builder();
         if (null != functions) {
             functions.stream()
-                    .map(f -> visitFunction(f, context))
-                    .filter(Objects::nonNull)
-                    .forEach(fb::add);
+                .map(f -> visitFunction(f, context))
+                .filter(Objects::nonNull)
+                .forEach(fb::add);
         }
         return new Service(node.getParent(), node.getName(), node.getComments(), fb.build());
     }
@@ -80,11 +80,11 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
         Set<Path> paths = relations.get(path);
         if (null != paths) {
             paths.stream()
-                    .filter(p -> Files.exists(p))
-                    .forEach(p -> {
-                        context.file(p);
-                        process(path, p);
-                    });
+                .filter(p -> Files.exists(p))
+                .forEach(p -> {
+                    context.file(p);
+                    process(path, p);
+                });
         }
         if (null != common) {
             context.file(common);
@@ -140,19 +140,19 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
         }
     }
 
-    private Map<Path, Map<QualifiedName, com.qiyi.walle.parser.protobuf.tree.Function>> functionMap
-            = new HashMap<>();
+    private Map<Path, Map<QualifiedName, org.reploop.parser.protobuf.tree.Function>> functionMap
+        = new HashMap<>();
 
     protected void process(Path thrift, Path proto) {
         ProtoProgram program = cpp.entity(proto);
-        List<com.qiyi.walle.parser.protobuf.tree.Service> services;
+        List<org.reploop.parser.protobuf.tree.Service> services;
         if (null != program && null != (services = program.getServices())) {
-            for (com.qiyi.walle.parser.protobuf.tree.Service service : services) {
-                List<com.qiyi.walle.parser.protobuf.tree.Function> functions = service.getFunctions();
+            for (org.reploop.parser.protobuf.tree.Service service : services) {
+                List<org.reploop.parser.protobuf.tree.Function> functions = service.getFunctions();
                 if (null != functions) {
-                    for (com.qiyi.walle.parser.protobuf.tree.Function func : functions) {
+                    for (org.reploop.parser.protobuf.tree.Function func : functions) {
                         functionMap.computeIfAbsent(thrift, dep -> new HashMap<>())
-                                .put(func.getName(), func);
+                            .put(func.getName(), func);
                     }
                 }
             }
@@ -161,11 +161,11 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
 
     private Function resolve(Function f, Classpath<ThriftProgram> context) {
         Path thrift = context.current();
-        com.qiyi.walle.parser.protobuf.tree.Function func
-                = functionMap.getOrDefault(thrift, Collections.emptyMap()).get(f.getName());
+        org.reploop.parser.protobuf.tree.Function func
+            = functionMap.getOrDefault(thrift, Collections.emptyMap()).get(f.getName());
         if (null != func) {
-            com.qiyi.walle.parser.protobuf.type.FieldType ct = func.getRequestType();
-            com.qiyi.walle.parser.protobuf.type.FieldType rt = func.getResponseType();
+            org.reploop.parser.protobuf.type.FieldType ct = func.getRequestType();
+            org.reploop.parser.protobuf.type.FieldType rt = func.getResponseType();
             if (null != ct && null != rt) {
                 List<Field> params = f.getParameters();
                 if (null != params && params.size() == 1) {
@@ -177,11 +177,11 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
                         pb.add(new Field(p.getComments(), pt, p.getFiledId(), name, p.isRequired()));
                     }
                     return new Function(f.getComments(),
-                            f.isOneWay(),
-                            f.getName(),
-                            ft,
-                            pb.build(),
-                            f.getExceptions());
+                        f.isOneWay(),
+                        f.getName(),
+                        ft,
+                        pb.build(),
+                        f.getExceptions());
                 }
             }
         }
@@ -241,7 +241,7 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
 
     @Override
     public FunctionType visitFunctionType(FunctionType
-                                                  node, Classpath<ThriftProgram> context) {
+                                              node, Classpath<ThriftProgram> context) {
         return (FunctionType) process(node, context);
     }
 
@@ -309,8 +309,8 @@ public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftPr
 
     private void distance(QualifiedName name, QualifiedName qn, int distance) {
         distanceMap.computeIfAbsent(name, n -> new TreeMap<>())
-                .computeIfAbsent(distance, d -> new ArrayList<>())
-                .add(qn);
+            .computeIfAbsent(distance, d -> new ArrayList<>())
+            .add(qn);
     }
 
     private Optional<QualifiedName> closestMatch(QualifiedName name) {

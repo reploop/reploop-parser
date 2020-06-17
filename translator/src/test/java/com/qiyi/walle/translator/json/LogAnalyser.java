@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.qiyi.walle.parser.QualifiedName;
 import org.apache.commons.lang3.StringUtils;
+import org.reploop.parser.QualifiedName;
 
 import java.io.File;
 import java.io.IOException;

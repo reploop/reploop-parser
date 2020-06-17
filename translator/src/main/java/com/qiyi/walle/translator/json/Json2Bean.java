@@ -16,6 +16,7 @@ import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.tree.Option;
+import org.reploop.translator.json.JsonMessageTranslator;
 
 import java.io.BufferedWriter;
 import java.io.File;

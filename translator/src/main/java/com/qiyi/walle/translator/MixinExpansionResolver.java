@@ -3,27 +3,27 @@ package com.qiyi.walle.translator;
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.QualifiedName;
-import com.qiyi.walle.parser.protobuf.tree.*;
-import com.qiyi.walle.parser.protobuf.tree.Entity;
-import com.qiyi.walle.parser.protobuf.tree.Enumeration;
-import com.qiyi.walle.parser.protobuf.type.*;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.tree.Entity;
+import org.reploop.parser.protobuf.tree.Enumeration;
+import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.*;
 import org.reploop.parser.thrift.AstVisitor;
-import com.qiyi.walle.parser.thrift.Node;
-import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
-import com.qiyi.walle.parser.thrift.tree.*;
-import com.qiyi.walle.parser.thrift.tree.Field;
-import com.qiyi.walle.parser.thrift.tree.Function;
-import com.qiyi.walle.parser.thrift.tree.IntValue;
-import com.qiyi.walle.parser.thrift.tree.Service;
-import com.qiyi.walle.parser.thrift.tree.StringValue;
-import com.qiyi.walle.parser.thrift.tree.StructValue;
-import com.qiyi.walle.parser.thrift.tree.Value;
-import com.qiyi.walle.parser.thrift.type.CollectionType;
-import com.qiyi.walle.parser.thrift.type.FieldType;
-import com.qiyi.walle.parser.thrift.type.StructType;
-import com.qiyi.walle.parser.thrift.type.WrapperType;
+import org.reploop.parser.thrift.Node;
+import org.reploop.parser.thrift.generator.GeneratorContext;
+import org.reploop.parser.thrift.tree.Field;
+import org.reploop.parser.thrift.tree.Function;
+import org.reploop.parser.thrift.tree.IntValue;
+import org.reploop.parser.thrift.tree.Service;
+import org.reploop.parser.thrift.tree.StringValue;
+import org.reploop.parser.thrift.tree.StructValue;
+import org.reploop.parser.thrift.tree.Value;
+import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.type.CollectionType;
+import org.reploop.parser.thrift.type.FieldType;
+import org.reploop.parser.thrift.type.StructType;
+import org.reploop.parser.thrift.type.WrapperType;
 
 import java.nio.file.Path;
 import java.util.*;
@@ -111,13 +111,13 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
 
     public Optional<Entity> search(QualifiedName name) {
         Optional<Path> path = cpp.names()
-                .entrySet()
-                .stream()
-                .filter(entry -> {
-                    Set<QualifiedName> names = entry.getValue();
-                    return null != names && names.contains(name);
-                }).map(Map.Entry::getKey)
-                .findAny();
+            .entrySet()
+            .stream()
+            .filter(entry -> {
+                Set<QualifiedName> names = entry.getValue();
+                return null != names && names.contains(name);
+            }).map(Map.Entry::getKey)
+            .findAny();
         if (path.isPresent()) {
             ProtoProgram program = cpp.entity(path.get());
             if (null != program) {
@@ -147,12 +147,12 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
         return c;
     };
 
-    private List<Field> adapt(List<com.qiyi.walle.parser.protobuf.tree.Field> from) {
+    private List<Field> adapt(List<org.reploop.parser.protobuf.tree.Field> from) {
         return from.stream()
-                .map(this::adapt)
-                .filter(Objects::nonNull)
-                .sorted(comparator)
-                .collect(Collectors.toList());
+            .map(this::adapt)
+            .filter(Objects::nonNull)
+            .sorted(comparator)
+            .collect(Collectors.toList());
     }
 
     private List<QualifiedName> exceptions = new ArrayList<>();
@@ -162,75 +162,75 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
         exceptions.add(QualifiedName.of("knowledge.pub.Common.RpcStatusInfo"));
     }
 
-    private FieldType adapt(com.qiyi.walle.parser.protobuf.type.FieldType from) {
+    private FieldType adapt(org.reploop.parser.protobuf.type.FieldType from) {
         QualifiedName name = from.getName();
         for (QualifiedName qn : exceptions) {
             if (name.endsWith(qn)) {
                 return null;
             }
         }
-        if (from instanceof com.qiyi.walle.parser.protobuf.type.StructType) {
+        if (from instanceof org.reploop.parser.protobuf.type.StructType) {
             return new StructType(from.getName());
         } else if (from instanceof ListType) {
-            return new com.qiyi.walle.parser.thrift.type.ListType(adapt(((ListType) from).getElementType()));
+            return new org.reploop.parser.thrift.type.ListType(adapt(((ListType) from).getElementType()));
         } else if (from instanceof LongType) {
-            return new com.qiyi.walle.parser.thrift.type.LongType();
+            return new org.reploop.parser.thrift.type.LongType();
         } else if (from instanceof IntType) {
-            return new com.qiyi.walle.parser.thrift.type.IntType();
+            return new org.reploop.parser.thrift.type.IntType();
         } else if (from instanceof StringType) {
-            return new com.qiyi.walle.parser.thrift.type.StringType();
+            return new org.reploop.parser.thrift.type.StringType();
         } else if (from instanceof BoolType) {
-            return new com.qiyi.walle.parser.thrift.type.BoolType();
+            return new org.reploop.parser.thrift.type.BoolType();
         } else if (from instanceof SetType) {
-            return new com.qiyi.walle.parser.thrift.type.SetType(adapt(((SetType) from).getElementType()));
+            return new org.reploop.parser.thrift.type.SetType(adapt(((SetType) from).getElementType()));
         } else if (from instanceof ByteType) {
-            return new com.qiyi.walle.parser.thrift.type.ByteType();
+            return new org.reploop.parser.thrift.type.ByteType();
         } else if (from instanceof ShortType) {
-            return new com.qiyi.walle.parser.thrift.type.ShortType();
+            return new org.reploop.parser.thrift.type.ShortType();
         } else if (from instanceof DoubleType) {
-            return new com.qiyi.walle.parser.thrift.type.DoubleType();
+            return new org.reploop.parser.thrift.type.DoubleType();
         } else if (from instanceof FloatType) {
-            return new com.qiyi.walle.parser.thrift.type.FloatType();
+            return new org.reploop.parser.thrift.type.FloatType();
         } else if (from instanceof ByteStringType) {
             return new WrapperType(from.getName());
         }
         throw new IllegalArgumentException(from.toString());
     }
 
-    private Optional<Value> adapt(com.qiyi.walle.parser.protobuf.tree.Value value) {
+    private Optional<Value> adapt(org.reploop.parser.protobuf.tree.Value value) {
         Value val = null;
         if (null != value) {
-            if (value instanceof com.qiyi.walle.parser.protobuf.tree.IntValue) {
-                val = new IntValue(((com.qiyi.walle.parser.protobuf.tree.IntValue) value).getValue());
-            } else if (value instanceof com.qiyi.walle.parser.protobuf.tree.StringValue) {
-                val = new StringValue(((com.qiyi.walle.parser.protobuf.tree.StringValue) value).getValue());
+            if (value instanceof org.reploop.parser.protobuf.tree.IntValue) {
+                val = new IntValue(((org.reploop.parser.protobuf.tree.IntValue) value).getValue());
+            } else if (value instanceof org.reploop.parser.protobuf.tree.StringValue) {
+                val = new StringValue(((org.reploop.parser.protobuf.tree.StringValue) value).getValue());
             } else if (value instanceof BoolValue) {
                 val = new BooleanValue(((BoolValue) value).getValue());
-            } else if (value instanceof com.qiyi.walle.parser.protobuf.tree.StructValue) {
-                val = new StructValue(((com.qiyi.walle.parser.protobuf.tree.StructValue) value).getName());
+            } else if (value instanceof org.reploop.parser.protobuf.tree.StructValue) {
+                val = new StructValue(((org.reploop.parser.protobuf.tree.StructValue) value).getName());
             }
         }
         return Optional.ofNullable(val);
     }
 
-    private Field adapt(com.qiyi.walle.parser.protobuf.tree.Field from) {
+    private Field adapt(org.reploop.parser.protobuf.tree.Field from) {
         FieldType type = adapt(from.getType());
         if (null != type) {
             if (from.getName().equals("code")
-                    && type instanceof com.qiyi.walle.parser.thrift.type.StringType) {
+                && type instanceof org.reploop.parser.thrift.type.StringType) {
                 return null;
             }
             Integer index = from.getIndex();
             FieldModifier md = from.getModifier();
             boolean required = md == FieldModifier.required;
             if (md == FieldModifier.repeated) {
-                if (type instanceof com.qiyi.walle.parser.thrift.type.IntType
-                        || type instanceof com.qiyi.walle.parser.thrift.type.LongType) {
+                if (type instanceof org.reploop.parser.thrift.type.IntType
+                    || type instanceof org.reploop.parser.thrift.type.LongType) {
                     required = true;
                 }
-                type = new com.qiyi.walle.parser.thrift.type.ListType(type);
+                type = new org.reploop.parser.thrift.type.ListType(type);
             }
-            Optional<com.qiyi.walle.parser.protobuf.tree.Value> value = from.getValue();
+            Optional<org.reploop.parser.protobuf.tree.Value> value = from.getValue();
             Optional<Value> val = adapt(value.orElse(null));
             return new Field(from.getComments(), type, index, from.getName(), required, val);
         }
@@ -318,7 +318,7 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
             return Collections.emptyList();
         }
         Field field = params.get(0);
-        com.qiyi.walle.parser.thrift.type.FieldType fieldType = field.getFieldType();
+        org.reploop.parser.thrift.type.FieldType fieldType = field.getFieldType();
 
         Optional<Entity> response = Optional.empty();
         FunctionType ft = node.getReturnType();
@@ -370,19 +370,19 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
         if (type.getName().suffix().equals("User")) {
             code.append("getUser()");
         } else {
-            if (type instanceof com.qiyi.walle.parser.thrift.type.BoolType) {
+            if (type instanceof org.reploop.parser.thrift.type.BoolType) {
                 Value value = last.getValue().orElse(new BooleanValue(false));
                 code.append(value);
-            } else if (type instanceof com.qiyi.walle.parser.thrift.type.IntType) {
+            } else if (type instanceof org.reploop.parser.thrift.type.IntType) {
                 Value value = last.getValue().orElse(new IntValue(0));
                 code.append(value);
-            } else if (type instanceof com.qiyi.walle.parser.thrift.type.LongType) {
+            } else if (type instanceof org.reploop.parser.thrift.type.LongType) {
                 Value value = last.getValue().orElse(new IntValue(0));
                 code.append(value).append("L");
-            } else if (type instanceof com.qiyi.walle.parser.thrift.type.ListType) {
-                FieldType ft = ((com.qiyi.walle.parser.thrift.type.ListType) type).getElementType();
+            } else if (type instanceof org.reploop.parser.thrift.type.ListType) {
+                FieldType ft = ((org.reploop.parser.thrift.type.ListType) type).getElementType();
                 code.append("Collections.<").append(ft.getName()).append(">emptyList()");
-            } else if (type instanceof com.qiyi.walle.parser.thrift.type.StringType) {
+            } else if (type instanceof org.reploop.parser.thrift.type.StringType) {
                 code.append("\"\"");
             } else if (type instanceof StructType || type instanceof WrapperType) {
                 Optional<Value> value = last.getValue();
@@ -457,7 +457,7 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
 
         String fieldName = type(result.getName());
         mcg.visitLiteralNode(new LiteralNode("return response.get"), gc).append(fieldName);
-        if (result.getFieldType() instanceof com.qiyi.walle.parser.thrift.type.ListType) {
+        if (result.getFieldType() instanceof org.reploop.parser.thrift.type.ListType) {
             bb.append("List");
         }
         bb.append("();").append(NEW_LINE);
@@ -465,8 +465,8 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
     }
 
     @Override
-    public com.qiyi.walle.parser.thrift.tree.Entity visitEntity(com.qiyi.walle.parser.thrift.tree.Entity node, Classpath<ThriftProgram> context) {
-        return (com.qiyi.walle.parser.thrift.tree.Entity) process(node, context);
+    public org.reploop.parser.thrift.tree.Entity visitEntity(org.reploop.parser.thrift.tree.Entity node, Classpath<ThriftProgram> context) {
+        return (org.reploop.parser.thrift.tree.Entity) process(node, context);
     }
 
     @Override
@@ -478,10 +478,10 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
             fb.addAll(functions);
             // #2 Try to expanse the parameters.
             functions.stream()
-                    .map(f -> expanse(f, context))
-                    .flatMap(Collection::stream)
-                    .filter(Objects::nonNull)
-                    .forEach(fb::add);
+                .map(f -> expanse(f, context))
+                .flatMap(Collection::stream)
+                .filter(Objects::nonNull)
+                .forEach(fb::add);
         }
         Collections.sort(fb);
         return new Service(node.getName(), node.getComments(), fb);
@@ -491,8 +491,8 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
 
     @Override
     public ThriftProgram visitProgram(ThriftProgram node, Classpath<ThriftProgram> context) {
-        ImmutableList.Builder<com.qiyi.walle.parser.thrift.tree.Entity> eb = new ImmutableList.Builder<>();
-        List<com.qiyi.walle.parser.thrift.tree.Entity> entities = node.getEntities();
+        ImmutableList.Builder<org.reploop.parser.thrift.tree.Entity> eb = new ImmutableList.Builder<>();
+        List<org.reploop.parser.thrift.tree.Entity> entities = node.getEntities();
         if (null != entities) {
             entities.forEach(entity -> eb.add(visitEntity(entity, context)));
         }

@@ -1,14 +1,14 @@
 package com.qiyi.walle.translator;
 
-import com.qiyi.walle.parser.Classpath;
-import com.qiyi.walle.parser.protobuf.ProtobufParser;
-import com.qiyi.walle.parser.protobuf.tree.Message;
-import com.qiyi.walle.parser.protobuf.tree.ProtoProgram;
 import com.qiyi.walle.parser.thrift.ThriftParser;
-import com.qiyi.walle.parser.thrift.generator.GeneratorContext;
-import com.qiyi.walle.parser.thrift.generator.ThriftBinaryNameResolver;
-import com.qiyi.walle.parser.thrift.generator.ThriftCodeGenerator;
-import com.qiyi.walle.parser.thrift.tree.ThriftProgram;
+import org.reploop.parser.Classpath;
+import org.reploop.parser.protobuf.ProtobufParser;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.thrift.generator.GeneratorContext;
+import org.reploop.parser.thrift.generator.ThriftBinaryNameResolver;
+import org.reploop.parser.thrift.generator.ThriftCodeGenerator;
+import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

@@ -1,4 +1,4 @@
-// Generated from com/qiyi/walle/parser/thrift/base/ThriftBase.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.8
 package org.reploop.parser.thrift.base;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -17,15 +17,15 @@ public class ThriftBaseLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9,
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17,
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24,
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31,
-		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38,
-		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45,
-		T__45=46, T__46=47, T__47=48, T__48=49, T__49=50, T__50=51, T__51=52,
-		XsdAll=53, XsdOptional=54, XsdNillable=55, FieldRequiredness=56, ONEWAY=57,
-		ID=58, ST_ID=59, LITERAL=60, INT=61, DOUBLE=62, FLOAT=63, STRING=64, LINE_COMMENT=65,
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
+		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
+		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45, 
+		T__45=46, T__46=47, T__47=48, T__48=49, T__49=50, T__50=51, T__51=52, 
+		XsdAll=53, XsdOptional=54, XsdNillable=55, FieldRequiredness=56, ONEWAY=57, 
+		ID=58, ST_ID=59, LITERAL=60, INT=61, DOUBLE=62, FLOAT=63, STRING=64, LINE_COMMENT=65, 
 		COMMENT=66, WS=67;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -37,15 +37,15 @@ public class ThriftBaseLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8",
-			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16",
-			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24",
-			"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32",
-			"T__33", "T__34", "T__35", "T__36", "T__37", "T__38", "T__39", "T__40",
-			"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "T__47", "T__48",
-			"T__49", "T__50", "T__51", "XsdAll", "XsdOptional", "XsdNillable", "FieldRequiredness",
-			"ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE", "FLOAT", "STRING",
-			"LINE_COMMENT", "COMMENT", "WS", "ID_LETTER", "DIGIT", "ESC", "SIGN",
+			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
+			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
+			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
+			"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
+			"T__33", "T__34", "T__35", "T__36", "T__37", "T__38", "T__39", "T__40", 
+			"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "T__47", "T__48", 
+			"T__49", "T__50", "T__51", "XsdAll", "XsdOptional", "XsdNillable", "FieldRequiredness", 
+			"ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE", "FLOAT", "STRING", 
+			"LINE_COMMENT", "COMMENT", "WS", "ID_LETTER", "DIGIT", "ESC", "SIGN", 
 			"EXPONENT"
 		};
 	}
@@ -53,26 +53,26 @@ public class ThriftBaseLexer extends Lexer {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'include'", "'cpp_include'", "'namespace'", "'smalltalk.category'",
-			"'smalltalk.prefix'", "'xsd_namespace'", "'php_namespace'", "'*'", "'cpp'",
-			"'java'", "'py'", "'perl'", "'rb'", "'cocoa'", "'csharp'", "'typedef'",
-			"'enum'", "'{'", "'}'", "'='", "'senum'", "'const'", "'['", "']'", "':'",
-			"'struct'", "'union'", "'xsd_attrs'", "'exception'", "'service'", "'extends'",
-			"'('", "')'", "'throws'", "'void'", "'string'", "'binary'", "'slist'",
-			"'bool'", "'byte'", "'i16'", "'i32'", "'i64'", "'double'", "'map'", "'<'",
-			"','", "'>'", "'set'", "'list'", "';'", "'cpp_type'", "'xsd_all'", "'xsd_optional'",
+			null, "'include'", "'cpp_include'", "'namespace'", "'smalltalk.category'", 
+			"'smalltalk.prefix'", "'xsd_namespace'", "'php_namespace'", "'*'", "'cpp'", 
+			"'java'", "'py'", "'perl'", "'rb'", "'cocoa'", "'csharp'", "'typedef'", 
+			"'enum'", "'{'", "'}'", "'='", "'senum'", "'const'", "'['", "']'", "':'", 
+			"'struct'", "'union'", "'xsd_attrs'", "'exception'", "'service'", "'extends'", 
+			"'('", "')'", "'throws'", "'void'", "'string'", "'binary'", "'slist'", 
+			"'bool'", "'byte'", "'i16'", "'i32'", "'i64'", "'double'", "'map'", "'<'", 
+			"','", "'>'", "'set'", "'list'", "';'", "'cpp_type'", "'xsd_all'", "'xsd_optional'", 
 			"'xsd_nillable'", null, "'oneway'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, "XsdAll", "XsdOptional", "XsdNillable",
-			"FieldRequiredness", "ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE",
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, "XsdAll", "XsdOptional", "XsdNillable", 
+			"FieldRequiredness", "ONEWAY", "ID", "ST_ID", "LITERAL", "INT", "DOUBLE", 
 			"FLOAT", "STRING", "LINE_COMMENT", "COMMENT", "WS"
 		};
 	}
