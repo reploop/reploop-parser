@@ -1,13 +1,21 @@
 package org.reploop.translator.json;
 
 import com.google.common.base.CaseFormat;
+import org.reploop.translator.json.util.Range;
+import org.reploop.translator.json.util.TreeNode;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.StringCharacterIterator;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.Character.*;
 import static java.text.CharacterIterator.DONE;
@@ -87,6 +95,7 @@ public class NameFormat {
             URL u = NameFormat.class.getResource(WORD_FILE);
             ws = Files.lines(Path.of(u.toURI()))
                 .map(String::toLowerCase)
+                .filter(s -> s.length() > 1)
                 .collect(Collectors.toUnmodifiableSet());
             root = tree(ws);
         } catch (Exception ignored) {
@@ -108,94 +117,119 @@ public class NameFormat {
         }
     }
 
-    public void print() {
-        print(tree);
+    public List<String> words(String org) {
+        return words(tree, org);
     }
 
-    public void print(TreeNode tree) {
-        if (tree != null) {
-            System.out.println(tree.getValue());
-            List<TreeNode> children = tree.children;
-            if (null != children) {
-                for (TreeNode node : children) {
-                    print(node);
+
+    private List<String> words(TreeNode root, String org) {
+        TreeNode parent = root;
+        TreeNode node;
+        int startIndex = -1;
+        boolean prevMatch = false;
+        Map<Integer, List<Range>> startRangeMap = new TreeMap<>();
+        StringCharacterIterator it = new StringCharacterIterator(org);
+        for (char c = it.first(); c != DONE; parent = node) {
+            int index = it.getIndex();
+            Optional<TreeNode> ont = parent.findChildByValue(c);
+            if (ont.isPresent()) {
+                prevMatch = true;
+                node = ont.get();
+                if (startIndex == -1) {
+                    startIndex = index;
                 }
-            }
-        }
-    }
-
-    private static Optional<TreeNode> findChild(TreeNode parent, char c) {
-        return find(parent.children, c);
-    }
-
-    private static Optional<TreeNode> find(List<TreeNode> children, char c) {
-        if (null != children) {
-            return children.stream().filter(tn -> tn.getValue() == c).findFirst();
-        }
-        return Optional.empty();
-    }
-
-    private static TreeNode tree(Set<String> words) {
-        TreeNode root = new TreeNode();
-        root.setValue(DOLLAR);
-        for (String word : words) {
-            StringCharacterIterator it = new StringCharacterIterator(word);
-            TreeNode parent = root;
-            TreeNode tn = null;
-            char c = MIN_VALUE;
-            for (c = it.first(); c != DONE; parent = tn, c = it.next()) {
-                Optional<TreeNode> otn = findChild(parent, c);
-                if (otn.isPresent()) {
-                    tn = otn.get();
+                // Find a match -> [index, endIndex]
+                if (!node.hasChild()) {
+                    startRangeMap.computeIfAbsent(startIndex, key -> new ArrayList<>()).add(new Range(startIndex, index));
+                }
+            } else {
+                // start a fresh new BFS.
+                node = root;
+                startIndex = -1;
+                if (prevMatch) {
+                    prevMatch = false;
                     continue;
                 }
-                tn = new TreeNode();
-                tn.setValue(c);
-                parent.addChild(tn);
             }
-            if (null != tn) {
-                tn.setEndOfAWord(true);
+            c = it.next();
+        }
+        List<String> words = new ArrayList<>();
+        startIndex = 0;
+        for (Map.Entry<Integer, List<Range>> entry : startRangeMap.entrySet()) {
+            Integer start = entry.getKey();
+            Range range = entry.getValue().stream().max(Range::compareTo).get();
+            if (startIndex != start) {
+                words.add(org.substring(startIndex, start));
             }
+            startIndex = range.getEnd() + 1;
+            words.add(org.substring(range.getStart(), startIndex));
+        }
+        return words;
+    }
+
+    public void print() throws IOException {
+        System.out.println(print(tree));
+    }
+
+
+    public String print(TreeNode tree) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("/tmp/word.tree"))) {
+            writer.write("digraph tree {");
+            writer.newLine();
+            travel(tree, new Stack<>(), writer);
+            writer.newLine();
+            writer.write("}");
+        }
+        return sb.toString();
+    }
+
+    public void travel(TreeNode tree, Stack<Character> stack, BufferedWriter writer) throws IOException {
+        if (tree != null) {
+            char c = tree.getValue();
+            if (c != DOLLAR) {
+                stack.push(tree.getValue());
+            } else {
+                stack.push('_');
+            }
+            List<TreeNode> children = tree.getChildren();
+            if (null != children && children.size() > 0) {
+                for (TreeNode node : children) {
+                    travel(node, stack, writer);
+                    stack.pop();
+                }
+            } else {
+                String text = stack.stream().map(String::valueOf).collect(Collectors.joining("->", "", ";"));
+                writer.write(text);
+                writer.newLine();
+            }
+        }
+    }
+
+    public static TreeNode tree(String... words) {
+        TreeNode root = new TreeNode(DOLLAR);
+        for (String word : words) {
+            word(root, word);
         }
         return root;
     }
 
-    private static class TreeNode {
-        private List<TreeNode> children;
-        private Character value;
-        private boolean endOfAWord;
+    private static TreeNode tree(Set<String> words) {
+        TreeNode root = new TreeNode(DOLLAR);
+        words.forEach(word -> word(root, word));
+        return root;
+    }
 
-        public boolean isEndOfAWord() {
-            return endOfAWord;
+    private static void word(TreeNode root, String word) {
+        StringCharacterIterator it = new StringCharacterIterator(word);
+        TreeNode parent = root;
+        TreeNode tn = null;
+        char c;
+        for (c = it.first(); c != DONE; parent = tn, c = it.next()) {
+            tn = parent.addIfChildAbsent(new TreeNode(c));
         }
-
-        public Character getValue() {
-            return value;
-        }
-
-        public void setValue(Character value) {
-            this.value = value;
-        }
-
-        public void setEndOfAWord(boolean endOfAWord) {
-            this.endOfAWord = endOfAWord;
-        }
-
-        public TreeNode addChild(TreeNode c) {
-            if (null == children) {
-                children = new ArrayList<>();
-            }
-            children.add(c);
-            return this;
-        }
-
-
-        @Override
-        public String toString() {
-            return "TreeNode{" +
-                ", children=" + children +
-                ", endOfAWord=" + endOfAWord +
-                '}';
+        if (null != tn) {
+            tn.setEndOfAWord(true);
         }
     }
 }

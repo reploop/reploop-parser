@@ -1,9 +1,15 @@
 package org.reploop.translator.json;
 
+import java.io.IOException;
+import java.util.List;
+
+import junit.framework.TestCase;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 public class NameFormatTest {
     NameFormat format;
@@ -49,7 +55,19 @@ public class NameFormatTest {
     }
 
     @Test
-    public void testPrint() {
+    public void testPrint() throws IOException {
         format.print();
+    }
+
+    @Test
+    public void testSubText() {
+        String text = "thankyouandyou";
+        List<String> words = format.words(text);
+        assertThat(words).isNotEmpty();
+    }
+
+    @Test
+    public void testTree() {
+        NameFormat.tree("and", "test");
     }
 }
