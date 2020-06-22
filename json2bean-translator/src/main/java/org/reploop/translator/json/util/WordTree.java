@@ -2,8 +2,7 @@ package org.reploop.translator.json.util;
 
 import org.reploop.translator.json.NameFormat;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -139,8 +138,17 @@ public class WordTree {
         }
     }
 
-    public void print(TreeNode tree) throws IOException {
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("/tmp/word.tree"))) {
+    public void print() throws IOException {
+        StringWriter sw = new StringWriter();
+        print(tree, sw);
+        System.out.println(sw);
+    }
+
+    public void print(TreeNode tree, OutputStream out) throws IOException {
+    }
+
+    public void print(TreeNode tree, Writer out) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter((out))) {
             writer.write("digraph tree {");
             writer.newLine();
             travel(tree, new Stack<>(), writer);
