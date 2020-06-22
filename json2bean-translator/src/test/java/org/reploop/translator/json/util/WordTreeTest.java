@@ -1,0 +1,34 @@
+package org.reploop.translator.json.util;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
+public class WordTreeTest {
+
+    WordTree wt;
+
+    @Before
+    public void setUp() throws Exception {
+        wt = new WordTree("/words.txt");
+    }
+
+    @Test
+    public void words() {
+        List<String> words = wt.words("thankyouandyou");
+        assertThat(words).isNotEmpty();
+        System.out.println(words);
+    }
+
+    @Test
+    public void tree() {
+    }
+
+    @Test
+    public void testTree() {
+    }
+}
