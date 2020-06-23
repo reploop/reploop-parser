@@ -6,7 +6,6 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.StringCharacterIterator;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,7 +27,7 @@ public class WordTree {
                 .map(String::toLowerCase)
                 .filter(s -> s.length() > 1)
                 .collect(Collectors.toUnmodifiableSet());
-            root = tree(ws);
+            root = buildTree(ws);
         } catch (Exception ignored) {
             root = null;
         }
@@ -44,7 +43,7 @@ public class WordTree {
     }
 
 
-    private List<String> words(TreeNode root, String org) {
+    private List<String> parseWords(TreeNode root, String org) {
         TreeNode parent = root;
         TreeNode node;
         int startIndex = -1;
@@ -68,6 +67,7 @@ public class WordTree {
                 // start a fresh new BFS.
                 node = root;
                 startIndex = -1;
+                // If this is the first mismatch after a match, we should re-search from root.
                 if (prevMatch) {
                     prevMatch = false;
                     continue;
@@ -89,43 +89,46 @@ public class WordTree {
                 words.add(org.substring(range.getStart(), startIndex));
             }
         }
+        if (startIndex != org.length()) {
+            words.add(org.substring(startIndex));
+        }
         return words;
     }
 
 
-    public List<String> words(String... words) {
-        return Stream.of(words).map(this::words).flatMap(Collection::stream).collect(Collectors.toList());
+    public List<String> parseWords(String... words) {
+        return Stream.of(words).map(this::parseWords).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
-    public List<String> words(List<String> words) {
-        return words.stream().map(this::words).flatMap(Collection::stream).collect(Collectors.toList());
+    public List<String> parseWords(List<String> words) {
+        return words.stream().map(this::parseWords).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
-    public List<String> words(String org) {
-        return words(tree, org);
+    public List<String> parseWords(String org) {
+        return parseWords(tree, org);
     }
 
-    public static TreeNode tree(String... words) {
+    public TreeNode buildTree(String... words) {
         TreeNode root = new TreeNode(DOLLAR);
-        return tree(root, words);
+        return addWords(root, words);
     }
 
-    public static TreeNode tree(TreeNode root, String... words) {
-        Stream.of(words).forEach(word -> word(root, word));
+    public TreeNode addWords(TreeNode root, String... words) {
+        Stream.of(words).forEach(word -> addWord(root, word));
         return root;
     }
 
-    private static TreeNode tree(Set<String> words) {
+    private TreeNode buildTree(Set<String> words) {
         TreeNode root = new TreeNode(DOLLAR);
-        return tree(root, words);
+        return addWords(root, words);
     }
 
-    private static TreeNode tree(TreeNode root, Set<String> words) {
-        words.forEach(word -> word(root, word));
+    private TreeNode addWords(TreeNode root, Set<String> words) {
+        words.forEach(word -> addWord(root, word));
         return root;
     }
 
-    private static void word(TreeNode root, String word) {
+    private void addWord(TreeNode root, String word) {
         StringCharacterIterator it = new StringCharacterIterator(word);
         TreeNode parent = root;
         TreeNode tn = null;

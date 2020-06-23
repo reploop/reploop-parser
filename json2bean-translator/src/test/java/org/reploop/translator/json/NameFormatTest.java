@@ -1,15 +1,10 @@
 package org.reploop.translator.json;
 
-import java.io.IOException;
-import java.util.List;
-
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class NameFormatTest {
     NameFormat format;
@@ -47,26 +42,17 @@ public class NameFormatTest {
 
         id = "_9utf8AsTest_";
         f = format.format(id);
-        assertEquals("$9utf8_as_test", f);
+        assertEquals("$9_utf8_as_test", f);
 
         id = "__0utf8AsTest_";
         f = format.format(id);
-        assertEquals("$0utf8_as_test", f);
-    }
-
-    @Test
-    public void testPrint() throws IOException {
-        //format.print();
+        assertEquals("$0_utf8_as_test", f);
     }
 
     @Test
     public void testSubText() {
-        String text = "thankyouandyou";
-//        List<String> words = format.words(text);
-        //       assertThat(words).isNotEmpty();
-    }
-
-    @Test
-    public void testTree() {
+        String text = "thankyouandyouasTestCase";
+        String f = format.format(text);
+        assertThat(f).isEqualTo("thank_you_and_you_as_test_case");
     }
 }

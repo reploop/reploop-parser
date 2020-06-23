@@ -20,7 +20,7 @@ public class WordTreeTest {
 
     @Test
     public void words() {
-        List<String> words = wt.words("thankyouandyou");
+        List<String> words = wt.parseWords("thankyouandyou");
         assertThat(words).isNotEmpty();
         System.out.println(words);
     }

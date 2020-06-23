@@ -1,16 +1,10 @@
 package org.reploop.translator.json;
 
 import com.google.common.base.CaseFormat;
-import org.reploop.translator.json.util.TreeNode;
 import org.reploop.translator.json.util.WordTree;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.StringCharacterIterator;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.lang.Character.*;
 import static java.text.CharacterIterator.DONE;
@@ -37,7 +31,7 @@ public class NameFormat {
     }
 
     public String format(String org, CaseFormat to) {
-        List<String> words = wordTree.words(split(org));
+        List<String> words = wordTree.parseWords(split(org));
         String lu = String.join(UNDER_SCORE_TEXT, words);
         return CaseFormat.LOWER_UNDERSCORE.to(to, lu);
 
