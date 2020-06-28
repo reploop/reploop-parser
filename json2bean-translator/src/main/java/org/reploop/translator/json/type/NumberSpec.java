@@ -4,9 +4,6 @@ public class NumberSpec {
     private boolean floating;
     private int bits;
 
-    public NumberSpec() {
-    }
-
     public NumberSpec(boolean floating, int bits) {
         this.floating = floating;
         this.bits = bits;

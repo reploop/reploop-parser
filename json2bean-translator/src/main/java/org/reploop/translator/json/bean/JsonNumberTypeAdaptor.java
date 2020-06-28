@@ -9,7 +9,23 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FieldTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
+public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
+
+    private static final Map<Integer, FieldType> integerTypeMap;
+
+    static {
+        Map<Integer, FieldType> map = new HashMap<>();
+        ByteType byteType = new ByteType();
+        map.put(byteType.bits(), byteType);
+        ShortType shortType = new ShortType();
+        map.put(shortType.bits(), shortType);
+        IntType intType = new IntType();
+        map.put(intType.bits(), intType);
+        LongType longType = new LongType();
+        map.put(longType.bits(), longType);
+
+        integerTypeMap = Collections.unmodifiableMap(map);
+    }
 
     @Override
     public FieldType visitNode(Node node, NumberSpec context) {
@@ -34,28 +50,12 @@ public class FieldTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         return new MapType(mapType.getKeyType(), valueType);
     }
 
-    private static final Map<Integer, FieldType> fieldTypeMap;
-
-    static {
-        Map<Integer, FieldType> map = new HashMap<>();
-        ByteType byteType = new ByteType();
-        map.put(byteType.bits(), byteType);
-        ShortType shortType = new ShortType();
-        map.put(shortType.bits(), shortType);
-        IntType intType = new IntType();
-        map.put(intType.bits(), intType);
-        LongType longType = new LongType();
-        map.put(longType.bits(), longType);
-
-        fieldTypeMap = Collections.unmodifiableMap(map);
-    }
-
     @Override
     public FieldType visitIntType(IntType intType, NumberSpec context) {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return fieldTypeMap.get(context.getBits());
+        return integerTypeMap.get(context.getBits());
     }
 
     @Override
@@ -63,7 +63,7 @@ public class FieldTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return fieldTypeMap.get(context.getBits());
+        return integerTypeMap.get(context.getBits());
     }
 
     @Override
@@ -71,7 +71,7 @@ public class FieldTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return fieldTypeMap.get(context.getBits());
+        return integerTypeMap.get(context.getBits());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class FieldTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitDoubleType(new DoubleType(), context);
         }
-        return fieldTypeMap.get(context.getBits());
+        return integerTypeMap.get(context.getBits());
     }
 
     @Override

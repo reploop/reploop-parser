@@ -17,9 +17,9 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
-                .map(visit)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+            .map(visit)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -164,7 +164,7 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         context.append("import com.google.common.base.MoreObjects;").newLine().newLine();
         comments(node.getComments(), context);
         context.append("public").whitespace().append("class").whitespace().append(name.suffix()).whitespace().append("implements Serializable").whitespace().openBrace().indent().newLine();
-        context.append("private static final long serialVersionUID = 71L;").newLine();
+        context.append("private static final long serialVersionUID = 1L;").newLine();
 
         List<Message> messages = visit(node.getMessages(), m -> visitMessage(m, context));
         List<Field> fields = visit(node.getFields(), n -> visitField(n, context));

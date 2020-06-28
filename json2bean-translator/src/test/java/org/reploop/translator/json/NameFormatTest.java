@@ -55,4 +55,11 @@ public class NameFormatTest {
         String f = format.format(text);
         assertThat(f).isEqualTo("thank_you_and_you_as_test_case");
     }
+
+    @Test
+    public void testDollar() {
+        String text = "$";
+        String f = format.format(text);
+        assertThat(f).isEqualTo(text);
+    }
 }

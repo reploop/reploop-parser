@@ -9,6 +9,7 @@ import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.Namespace;
 import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.ClassHierarchy;
 import org.reploop.translator.json.type.FieldTypeComparator;
@@ -17,22 +18,27 @@ import org.reploop.translator.json.type.NumberSpec;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
+import static org.reploop.translator.json.bean.Support.customTypeName;
 import static org.reploop.translator.json.bean.Support.fieldNumberSpec;
 
 public class Json2Bean {
-    private final FieldTypeAdaptor fieldTypeAdaptor;
+    private final JsonNumberTypeAdaptor numberTypeAdaptor;
     private final JsonParser parser;
     private final JsonMessageTranslator translator;
     private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
+    private final ClassHierarchy classHierarchy = new ClassHierarchy();
+    private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
+    private final JsonNameResolver nameResolver = new JsonNameResolver();
 
     public Json2Bean() {
-        this(new FieldTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
+        this(new JsonNumberTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
     }
 
-    public Json2Bean(FieldTypeAdaptor fieldTypeAdaptor, JsonParser parser, JsonMessageTranslator translator) {
-        this.fieldTypeAdaptor = fieldTypeAdaptor;
+    public Json2Bean(JsonNumberTypeAdaptor numberTypeAdaptor, JsonParser parser, JsonMessageTranslator translator) {
+        this.numberTypeAdaptor = numberTypeAdaptor;
         this.parser = parser;
         this.translator = translator;
     }
@@ -47,7 +53,7 @@ public class Json2Bean {
             Field field = fields.stream().max((f0, f1) -> typeComparator.compare(f0.getType(), f1.getType())).get();
             Optional<NumberSpec> spec = fieldNumberSpec(fields);
             if (spec.isPresent()) {
-                FieldType ft = fieldTypeAdaptor.visitFieldType(field.getType(), spec.get());
+                FieldType ft = numberTypeAdaptor.visitFieldType(field.getType(), spec.get());
                 return new Field(field.getModifier(), field.getIndex(), field.getName(), ft, field.getValue(), field.getComments());
             }
             return field;
@@ -74,11 +80,8 @@ public class Json2Bean {
                 messageMap.put(entry.getKey(), message);
             }
         }
-        classHierarchy.infer(messageMap);
         return messageMap;
     }
-
-    private ClassHierarchy classHierarchy = new ClassHierarchy();
 
     public Map<QualifiedName, Message> execute(String json, JsonMessageContext context) throws IOException {
         return execute(new StringReader(json), context);
@@ -88,23 +91,32 @@ public class Json2Bean {
         return execute(CharStreams.fromReader(reader), context);
     }
 
-    private JsonBeanGenerator generator = new JsonBeanGenerator();
-    private JsonNameAdapter nameAdapter = new JsonNameAdapter();
+    JsonMessageDependencyResolver dependencyResolver = new JsonMessageDependencyResolver();
 
     public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) {
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
         context.setFieldType(fieldType);
+        Optional<QualifiedName> of = customTypeName(fieldType);
         Map<QualifiedName, Message> nameMessageMap = merge(context);
-
-        JsonMessageContext ctx0 = new JsonMessageContext();
-        nameMessageMap.forEach((name, message) -> {
-            nameAdapter.visitMessage(message, ctx0);
-        });
-        Map<QualifiedName, List<Message>> unifiedMessage = ctx0.getNamedMessages();
+        // Try to aggregate class hierarchy, less duplicate code.
+        classHierarchy.infer(nameMessageMap);
+        Set<QualifiedName> names = new HashSet<>();
+        for (Map.Entry<QualifiedName, Message> entry : nameMessageMap.entrySet()) {
+            JsonMessageContext ctx0 = new JsonMessageContext();
+            dependencyResolver.visitMessage(entry.getValue(), ctx0);
+            Set<QualifiedName> deps = ctx0.getDependencies();
+            if (0 == deps.size()) {
+                break;
+            }
+            names.addAll(deps);
+        }
+        System.out.println(names);
+        JsonMessageContext ctx1 = new JsonMessageContext();
         nameMessageMap.forEach((name, message) -> {
             JsonBeanContext ctx = new JsonBeanContext(name);
-            generator.visitMessage(message, ctx);
+            Message msg = nameResolver.visitMessage(message, ctx1);
+            beanGenerator.visitMessage(msg, ctx);
             System.out.println(ctx.toString());
         });
         return nameMessageMap;

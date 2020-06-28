@@ -1,5 +1,6 @@
 package org.reploop.translator.json.bean;
 
+import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.NumberSpec;
@@ -25,6 +26,23 @@ public class Support {
             return expandValueType(((MapType) fieldType).getValueType());
         }
         return fieldType;
+    }
+
+    public static Optional<QualifiedName> customTypeName(FieldType type) {
+        if (type instanceof StructType) {
+            return Optional.of(type.getName());
+        } else if (type instanceof CollectionType) {
+            return customTypeName(((CollectionType) type).getElementType());
+        } else if (type instanceof MapType) {
+            MapType mapType = (MapType) type;
+            Optional<QualifiedName> key = customTypeName(mapType.getKeyType());
+            Optional<QualifiedName> val = customTypeName(mapType.getValueType());
+            if (key.isPresent()) {
+                return Optional.empty();
+            }
+            return val;
+        }
+        return Optional.empty();
     }
 
     public static boolean isLegalIdentifier(String s) {

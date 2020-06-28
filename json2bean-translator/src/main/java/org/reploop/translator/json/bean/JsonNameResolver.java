@@ -11,18 +11,13 @@ import org.reploop.translator.json.NameFormat;
 
 import java.util.List;
 
-public class JsonNameAdapter extends AstVisitor<Node, JsonMessageContext> {
+public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     private static final String ANNOTATION = "@JsonProperty(\"%s\")";
     private final NameFormat format = new NameFormat();
 
     @Override
     public Node visitNode(Node node, JsonMessageContext context) {
-        return node;
-    }
-
-    @Override
-    public Namespace visitNamespace(Namespace node, JsonMessageContext context) {
         return node;
     }
 
@@ -48,8 +43,7 @@ public class JsonNameAdapter extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public StructType visitStructType(StructType structType, JsonMessageContext context) {
         QualifiedName qn = structType.getName();
-        QualifiedName fqn = context.getIdentityName(qn).orElse(qn);
-        return new StructType(toUpperCamel(fqn));
+        return new StructType(toUpperCamel(qn));
     }
 
     @Override
@@ -72,12 +66,7 @@ public class JsonNameAdapter extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Enumeration visitEnumeration(Enumeration node, JsonMessageContext context) {
         QualifiedName qn = node.getName();
-        qn = context.getIdentityName(qn).orElse(qn);
         return new Enumeration(toUpperCamel(qn), node.getComments(), visitIfPresent(node.getFields(), f -> visitEnumField(f, context), EnumField.class));
-    }
-
-    public QualifiedName toLowerCamel(QualifiedName qn) {
-        return to(qn, CaseFormat.LOWER_CAMEL);
     }
 
     public String toLowerCamel(String qn) {

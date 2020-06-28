@@ -4,13 +4,12 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.JsonParser;
 import org.reploop.parser.json.base.JsonBaseParser;
-import org.reploop.parser.json.tree.Entity;
 import org.reploop.parser.json.tree.Number;
 import org.reploop.parser.json.tree.*;
-import org.reploop.parser.json.tree.Pair;
-import org.reploop.parser.json.tree.Value;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.FieldModifier;
+import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
@@ -28,20 +27,29 @@ import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
 import static org.reploop.translator.json.bean.Support.isLegalIdentifier;
 import static org.reploop.translator.json.bean.Support.typeNumberSpec;
 
+/**
+ * Translate JSON AST to protobuf message and it's type.
+ */
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonMessageTranslator.class);
     private static final StructType OBJECT = new StructType("Object");
-    private final FieldTypeAdaptor fieldTypeAdaptor = new FieldTypeAdaptor();
-    private final FieldTypeComparator fieldTypeComparator = new FieldTypeComparator();
-    private final JsonParser jsonParser = new JsonParser();
+    private final JsonNumberTypeAdaptor jsonNumberTypeAdaptor;
+    private final FieldTypeComparator fieldTypeComparator;
+    private final JsonParser jsonParser;
+
+    public JsonMessageTranslator() {
+        this(new JsonNumberTypeAdaptor(), new FieldTypeComparator(), new JsonParser());
+    }
+
+    public JsonMessageTranslator(JsonNumberTypeAdaptor jsonNumberTypeAdaptor, FieldTypeComparator fieldTypeComparator, JsonParser jsonParser) {
+        this.jsonNumberTypeAdaptor = jsonNumberTypeAdaptor;
+        this.fieldTypeComparator = fieldTypeComparator;
+        this.jsonParser = jsonParser;
+    }
 
     @Override
     public Node visitNode(org.reploop.parser.json.Node node, JsonMessageContext context) {
         return process(node, context);
-    }
-
-    public FieldType visitJson(Json json) {
-        return visitJson(json, new JsonMessageContext("$"));
     }
 
     @Override
@@ -138,11 +146,11 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
                 LOGGER.warn("Value of different types, Use Object instead.");
                 valueType = OBJECT;
             }
-            FieldType keyType = typeOf(keyTypes).orElse(OBJECT);
+            // Map key as string by default
+            FieldType keyType = typeOf(keyTypes).orElse(new StringType());
             return new MapType(keyType, valueType);
         } else {
             QualifiedName fqn = context.getName();
-            Header header = new Namespace("");
             Message m = new Message(fqn, fields, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
             context.addNamedMessage(fqn, m);
             return new StructType(fqn);
@@ -210,7 +218,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             FieldType fieldType = types.stream().max(fieldTypeComparator).get();
             Optional<NumberSpec> ons = typeNumberSpec(types);
             if (ons.isPresent()) {
-                fieldType = fieldTypeAdaptor.visitFieldType(fieldType, ons.get());
+                fieldType = jsonNumberTypeAdaptor.visitFieldType(fieldType, ons.get());
             }
             return Optional.of(fieldType);
         }

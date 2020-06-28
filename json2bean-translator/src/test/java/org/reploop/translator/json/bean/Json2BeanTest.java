@@ -138,7 +138,7 @@ public class Json2BeanTest {
     @Test
     public void testSimple() throws Exception {
         URL url = Json2BeanTest.class.getResource("/simple.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("root");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);

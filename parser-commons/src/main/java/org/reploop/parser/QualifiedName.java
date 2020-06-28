@@ -131,7 +131,7 @@ public class QualifiedName implements Comparable<QualifiedName> {
     }
 
     public Optional<QualifiedName> prefix() {
-        if (1 == parts.size()) {
+        if (1 >= parts.size()) {
             return Optional.empty();
         }
         return Optional.of(new QualifiedName(parts.subList(0, size() - 1)));
@@ -197,7 +197,7 @@ public class QualifiedName implements Comparable<QualifiedName> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         QualifiedName that = (QualifiedName) o;
-        return Objects.equals(parts, that.parts);
+        return 0 == compareTo(that);
     }
 
     @Override
@@ -212,9 +212,16 @@ public class QualifiedName implements Comparable<QualifiedName> {
 
     @Override
     public int compareTo(QualifiedName o) {
-        int c = Integer.compare(this.size(), o.size());
+        int c = Integer.compare(size(), o.size());
         if (0 == c) {
-            c = toString().compareTo(o.toString());
+            for (int i = 0; i < size(); i++) {
+                String t0 = partAt(i);
+                String t1 = o.partAt(i);
+                c = t0.compareTo(t1);
+                if (0 != c) {
+                    break;
+                }
+            }
         }
         return c;
     }

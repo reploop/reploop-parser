@@ -1,19 +1,32 @@
 package org.reploop.translator.json;
 
+import com.google.common.collect.ImmutableList;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.CollectionType;
 import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.parser.protobuf.type.StructType;
+import org.reploop.translator.json.bean.JsonFieldTypeResolver;
+import org.reploop.translator.json.bean.JsonMessageContext;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+import static org.reploop.translator.json.bean.Support.customTypeName;
+
 public class ClassHierarchy {
 
-    private List<Field> fields;
+    private final JsonFieldTypeResolver fieldTypeResolver;
+
+    public ClassHierarchy() {
+        this(new JsonFieldTypeResolver());
+    }
+
+    public ClassHierarchy(JsonFieldTypeResolver fieldTypeResolver) {
+        this.fieldTypeResolver = fieldTypeResolver;
+    }
 
     private void index(Map<QualifiedName, Message> messageMap,
                        Map<QualifiedName, Integer> nameIndexMap, Map<Integer, QualifiedName> indexNameMap,
@@ -75,7 +88,8 @@ public class ClassHierarchy {
         // print out
         print(ms, fs, matrix);
         // generate parent message
-        infer(messageMap, indexNameMap, indexFieldMap, ms, fs, matrix);
+        Map<QualifiedName, List<QualifiedName>> same = infer(messageMap, indexNameMap, indexFieldMap, ms, fs, matrix);
+        System.out.println(same);
 
     }
 
@@ -87,9 +101,10 @@ public class ClassHierarchy {
         return hasCommon(rect.lt, rect.rb);
     }
 
-    private void infer(Map<QualifiedName, Message> messageMap,
-                       Map<Integer, QualifiedName> indexNameMap, Map<Integer, Field> indexFieldMap,
-                       int ms, int fs, int[][] matrix) {
+    private Map<QualifiedName, List<QualifiedName>> infer(Map<QualifiedName, Message> messageMap,
+                                                          Map<Integer, QualifiedName> indexNameMap,
+                                                          Map<Integer, Field> indexFieldMap,
+                                                          int ms, int fs, int[][] matrix) {
         Map<QualifiedName, List<QualifiedName>> same = new HashMap<>();
         // calculate max rect
         Optional<Rect> or = maxArea(matrix, fs, ms);
@@ -145,8 +160,49 @@ public class ClassHierarchy {
                 subClasses.addAll(messages);
             }
             Message pm = new Message(name, parent.getComments(), parent.getFields(), subClasses, parent.getEnumerations(), parent.getOptions());
+            reduce(parent, subClasses, messageMap, same);
             messageMap.put(name, pm);
         }
+        return same;
+    }
+
+    private void reduce(Message parent, List<Message> subClasses, Map<QualifiedName, Message> messageMap, Map<QualifiedName, List<QualifiedName>> sameMap) {
+        List<Message> messages = subClasses.stream().sorted((o1, o2) -> o2.getName().size() - o1.getName().size()).collect(Collectors.toList());
+        JsonMessageContext ctx = new JsonMessageContext();
+        for (Message message : messages) {
+            Message msg = fieldTypeResolver.visitMessage(message, ctx);
+            Optional<Message> om = reduce(parent, msg, messageMap, ctx);
+            if (om.isPresent()) {
+                parent = om.get();
+            }
+        }
+    }
+
+    private Optional<Message> reduce(Message parent, Message message, Map<QualifiedName, Message> messageMap, JsonMessageContext context) {
+        List<Field> fields = message.getFields();
+        if (null == fields || fields.size() != 1) {
+            return Optional.empty();
+        }
+        // The only field
+        Field field = fields.get(0);
+        Optional<QualifiedName> oq = customTypeName(field.getType());
+        // A class has only one field and the field's type is same as it's parent, then we consider this class can be parent.
+        boolean same = oq.filter(qn -> qn.equals(parent.getName())).isPresent();
+        if (same) {
+            JsonMessageContext ctx = new JsonMessageContext(message.getName());
+            ctx.addIdentityName(parent.getName(), message.getName());
+            List<Field> merge = ImmutableList.<Field>builder()
+                .add(field)
+                .addAll(parent.getFields())
+                .build();
+            List<Field> list = merge.stream().map(f -> fieldTypeResolver.visitField(f, ctx)).distinct().collect(Collectors.toList());
+            Message msg = new Message(message.getName(), message.getComments(), list, message.getMessages(), message.getEnumerations(), message.getOptions());
+            messageMap.put(msg.getName(), msg);
+            // Parent is same as this message after fields merging.
+            context.addIdentityName(parent.getName(), message.getName());
+            return Optional.of(msg);
+        }
+        return Optional.empty();
     }
 
     private QualifiedName concreteType(FieldType type) {
