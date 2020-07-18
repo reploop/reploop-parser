@@ -1,0 +1,6244 @@
+{
+  "success": true,
+  "resultCode": "R3-0-0000",
+  "reason": null,
+  "result": [
+    {
+      "marketingId": 1,
+      "marketingName": "94折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:23:01",
+      "pause": false
+    },
+    {
+      "marketingId": 2,
+      "marketingName": "94折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:24:58",
+      "pause": false
+    },
+    {
+      "marketingId": 3,
+      "marketingName": "94折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:28:26",
+      "pause": false
+    },
+    {
+      "marketingId": 4,
+      "marketingName": "94折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:29:45",
+      "pause": false
+    },
+    {
+      "marketingId": 5,
+      "marketingName": "94折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:30:43",
+      "pause": false
+    },
+    {
+      "marketingId": 6,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:32:41",
+      "pause": false
+    },
+    {
+      "marketingId": 7,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:34:12",
+      "pause": false
+    },
+    {
+      "marketingId": 8,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:39:03",
+      "pause": false
+    },
+    {
+      "marketingId": 9,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:40:38",
+      "pause": false
+    },
+    {
+      "marketingId": 10,
+      "marketingName": "两件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:53:10",
+      "pause": false
+    },
+    {
+      "marketingId": 11,
+      "marketingName": "一件9折，两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 13:57:21",
+      "pause": false
+    },
+    {
+      "marketingId": 12,
+      "marketingName": "一件9折，两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:00:37",
+      "pause": false
+    },
+    {
+      "marketingId": 13,
+      "marketingName": "一件9折，两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:01:55",
+      "pause": false
+    },
+    {
+      "marketingId": 14,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:06:07",
+      "pause": false
+    },
+    {
+      "marketingId": 15,
+      "marketingName": "四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:07:32",
+      "pause": false
+    },
+    {
+      "marketingId": 16,
+      "marketingName": "两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:09:25",
+      "pause": false
+    },
+    {
+      "marketingId": 17,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:10:49",
+      "pause": false
+    },
+    {
+      "marketingId": 18,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:11:56",
+      "pause": false
+    },
+    {
+      "marketingId": 19,
+      "marketingName": "四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:13:06",
+      "pause": false
+    },
+    {
+      "marketingId": 20,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:14:04",
+      "pause": false
+    },
+    {
+      "marketingId": 21,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:16:10",
+      "pause": false
+    },
+    {
+      "marketingId": 22,
+      "marketingName": "两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:19:00",
+      "pause": false
+    },
+    {
+      "marketingId": 23,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:20:08",
+      "pause": false
+    },
+    {
+      "marketingId": 24,
+      "marketingName": "三件88折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:21:05",
+      "pause": false
+    },
+    {
+      "marketingId": 25,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:22:01",
+      "pause": false
+    },
+    {
+      "marketingId": 26,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:22:48",
+      "pause": false
+    },
+    {
+      "marketingId": 27,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:24:52",
+      "pause": false
+    },
+    {
+      "marketingId": 28,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:32:59",
+      "pause": false
+    },
+    {
+      "marketingId": 29,
+      "marketingName": "四件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:34:55",
+      "pause": false
+    },
+    {
+      "marketingId": 30,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:40:10",
+      "pause": false
+    },
+    {
+      "marketingId": 31,
+      "marketingName": "一件96折，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:41:16",
+      "pause": false
+    },
+    {
+      "marketingId": 32,
+      "marketingName": "一件96折，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:42:23",
+      "pause": false
+    },
+    {
+      "marketingId": 33,
+      "marketingName": "四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:43:54",
+      "pause": false
+    },
+    {
+      "marketingId": 34,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:45:33",
+      "pause": false
+    },
+    {
+      "marketingId": 35,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:46:23",
+      "pause": false
+    },
+    {
+      "marketingId": 36,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:57:09",
+      "pause": false
+    },
+    {
+      "marketingId": 37,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 14:59:38",
+      "pause": false
+    },
+    {
+      "marketingId": 38,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:01:03",
+      "pause": false
+    },
+    {
+      "marketingId": 39,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:01:48",
+      "pause": false
+    },
+    {
+      "marketingId": 40,
+      "marketingName": "一件97折，两家95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:07:34",
+      "pause": false
+    },
+    {
+      "marketingId": 41,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:08:27",
+      "pause": false
+    },
+    {
+      "marketingId": 42,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:09:16",
+      "pause": false
+    },
+    {
+      "marketingId": 43,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:10:26",
+      "pause": false
+    },
+    {
+      "marketingId": 44,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:11:49",
+      "pause": false
+    },
+    {
+      "marketingId": 45,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:18:32",
+      "pause": false
+    },
+    {
+      "marketingId": 46,
+      "marketingName": "8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:19:20",
+      "pause": false
+    },
+    {
+      "marketingId": 47,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:20:22",
+      "pause": false
+    },
+    {
+      "marketingId": 48,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:21:08",
+      "pause": false
+    },
+    {
+      "marketingId": 49,
+      "marketingName": "一件97折，两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:22:14",
+      "pause": false
+    },
+    {
+      "marketingId": 50,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:23:05",
+      "pause": false
+    },
+    {
+      "marketingId": 51,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:25:20",
+      "pause": false
+    },
+    {
+      "marketingId": 52,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:26:18",
+      "pause": false
+    },
+    {
+      "marketingId": 53,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:27:12",
+      "pause": false
+    },
+    {
+      "marketingId": 54,
+      "marketingName": "一件97折，两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:28:39",
+      "pause": false
+    },
+    {
+      "marketingId": 55,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:29:37",
+      "pause": false
+    },
+    {
+      "marketingId": 56,
+      "marketingName": "91折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:30:19",
+      "pause": false
+    },
+    {
+      "marketingId": 57,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:51:53",
+      "pause": false
+    },
+    {
+      "marketingId": 58,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:52:40",
+      "pause": false
+    },
+    {
+      "marketingId": 59,
+      "marketingName": "一件96折，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:53:41",
+      "pause": false
+    },
+    {
+      "marketingId": 60,
+      "marketingName": "一件97折，两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:54:42",
+      "pause": false
+    },
+    {
+      "marketingId": 61,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 15:55:43",
+      "pause": false
+    },
+    {
+      "marketingId": 62,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:02:12",
+      "pause": false
+    },
+    {
+      "marketingId": 63,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:02:59",
+      "pause": false
+    },
+    {
+      "marketingId": 64,
+      "marketingName": "96折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:03:40",
+      "pause": false
+    },
+    {
+      "marketingId": 65,
+      "marketingName": "96折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:04:27",
+      "pause": false
+    },
+    {
+      "marketingId": 66,
+      "marketingName": "96折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:05:06",
+      "pause": false
+    },
+    {
+      "marketingId": 67,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:05:50",
+      "pause": false
+    },
+    {
+      "marketingId": 68,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:06:29",
+      "pause": false
+    },
+    {
+      "marketingId": 69,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:07:10",
+      "pause": false
+    },
+    {
+      "marketingId": 70,
+      "marketingName": "一件97折，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:08:01",
+      "pause": false
+    },
+    {
+      "marketingId": 71,
+      "marketingName": "一件96折，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:08:52",
+      "pause": false
+    },
+    {
+      "marketingId": 72,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:10:27",
+      "pause": false
+    },
+    {
+      "marketingId": 73,
+      "marketingName": "两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:11:08",
+      "pause": false
+    },
+    {
+      "marketingId": 74,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:11:46",
+      "pause": false
+    },
+    {
+      "marketingId": 75,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:12:27",
+      "pause": false
+    },
+    {
+      "marketingId": 76,
+      "marketingName": "两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:13:09",
+      "pause": false
+    },
+    {
+      "marketingId": 77,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:13:52",
+      "pause": false
+    },
+    {
+      "marketingId": 78,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:14:36",
+      "pause": false
+    },
+    {
+      "marketingId": 79,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:15:19",
+      "pause": false
+    },
+    {
+      "marketingId": 80,
+      "marketingName": "一件98折，两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:16:10",
+      "pause": false
+    },
+    {
+      "marketingId": 81,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:16:49",
+      "pause": false
+    },
+    {
+      "marketingId": 82,
+      "marketingName": "三件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:17:29",
+      "pause": false
+    },
+    {
+      "marketingId": 83,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:18:17",
+      "pause": false
+    },
+    {
+      "marketingId": 84,
+      "marketingName": "两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:18:55",
+      "pause": false
+    },
+    {
+      "marketingId": 85,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:19:33",
+      "pause": false
+    },
+    {
+      "marketingId": 86,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:20:10",
+      "pause": false
+    },
+    {
+      "marketingId": 87,
+      "marketingName": "三件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:20:48",
+      "pause": false
+    },
+    {
+      "marketingId": 88,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:21:30",
+      "pause": false
+    },
+    {
+      "marketingId": 89,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:22:09",
+      "pause": false
+    },
+    {
+      "marketingId": 90,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:22:48",
+      "pause": false
+    },
+    {
+      "marketingId": 91,
+      "marketingName": "两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:23:33",
+      "pause": false
+    },
+    {
+      "marketingId": 92,
+      "marketingName": "97折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:24:13",
+      "pause": false
+    },
+    {
+      "marketingId": 93,
+      "marketingName": "三件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:24:54",
+      "pause": false
+    },
+    {
+      "marketingId": 94,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 16:25:32",
+      "pause": false
+    },
+    {
+      "marketingId": 95,
+      "marketingName": "6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:20:25",
+      "pause": false
+    },
+    {
+      "marketingId": 96,
+      "marketingName": "6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:22:53",
+      "pause": false
+    },
+    {
+      "marketingId": 97,
+      "marketingName": "6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:23:52",
+      "pause": false
+    },
+    {
+      "marketingId": 98,
+      "marketingName": "6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:24:37",
+      "pause": false
+    },
+    {
+      "marketingId": 99,
+      "marketingName": "六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:27:53",
+      "pause": false
+    },
+    {
+      "marketingId": 100,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:29:26",
+      "pause": false
+    },
+    {
+      "marketingId": 101,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:30:34",
+      "pause": false
+    },
+    {
+      "marketingId": 102,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:31:42",
+      "pause": false
+    },
+    {
+      "marketingId": 103,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:32:51",
+      "pause": false
+    },
+    {
+      "marketingId": 104,
+      "marketingName": "六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:33:43",
+      "pause": false
+    },
+    {
+      "marketingId": 105,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:34:55",
+      "pause": false
+    },
+    {
+      "marketingId": 106,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:35:57",
+      "pause": false
+    },
+    {
+      "marketingId": 107,
+      "marketingName": "两件9折，三家85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:36:59",
+      "pause": false
+    },
+    {
+      "marketingId": 108,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:37:54",
+      "pause": false
+    },
+    {
+      "marketingId": 109,
+      "marketingName": "两件折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:39:00",
+      "pause": false
+    },
+    {
+      "marketingId": 110,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:41:41",
+      "pause": false
+    },
+    {
+      "marketingId": 111,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:44:05",
+      "pause": false
+    },
+    {
+      "marketingId": 112,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:45:02",
+      "pause": false
+    },
+    {
+      "marketingId": 113,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:46:01",
+      "pause": false
+    },
+    {
+      "marketingId": 114,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:47:07",
+      "pause": false
+    },
+    {
+      "marketingId": 115,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:48:13",
+      "pause": false
+    },
+    {
+      "marketingId": 116,
+      "marketingName": "两件9折，三件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:49:12",
+      "pause": false
+    },
+    {
+      "marketingId": 117,
+      "marketingName": "两件9折，三件85折，六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:50:20",
+      "pause": false
+    },
+    {
+      "marketingId": 118,
+      "marketingName": "两件9折，六件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:52:09",
+      "pause": false
+    },
+    {
+      "marketingId": 119,
+      "marketingName": "两件9折，六件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:52:56",
+      "pause": false
+    },
+    {
+      "marketingId": 120,
+      "marketingName": "两件9折，六件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:54:42",
+      "pause": false
+    },
+    {
+      "marketingId": 121,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 17:56:57",
+      "pause": false
+    },
+    {
+      "marketingId": 122,
+      "marketingName": "两件9折，六件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:58:28",
+      "pause": false
+    },
+    {
+      "marketingId": 123,
+      "marketingName": "三件75折，五件7折，六件65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 17:59:37",
+      "pause": false
+    },
+    {
+      "marketingId": 124,
+      "marketingName": "三件75折，五件7折，六件65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:00:47",
+      "pause": false
+    },
+    {
+      "marketingId": 125,
+      "marketingName": "两件85折，六件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:01:55",
+      "pause": false
+    },
+    {
+      "marketingId": 126,
+      "marketingName": "一件9折，三件8折，五件7折，六件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:03:27",
+      "pause": false
+    },
+    {
+      "marketingId": 127,
+      "marketingName": "六件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:04:21",
+      "pause": false
+    },
+    {
+      "marketingId": 128,
+      "marketingName": "两件75折，四件6折，六件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 18:04:00",
+      "createTime": "2020-06-15 18:06:14",
+      "pause": false
+    },
+    {
+      "marketingId": 129,
+      "marketingName": "两件75折，四件6折，六件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:07:48",
+      "pause": false
+    },
+    {
+      "marketingId": 130,
+      "marketingName": "两件75折，四件6折，六件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:08:45",
+      "pause": false
+    },
+    {
+      "marketingId": 131,
+      "marketingName": "两件9折，三件85折，五件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:11:56",
+      "pause": false
+    },
+    {
+      "marketingId": 132,
+      "marketingName": "两件9折，三件85折，五件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:12:54",
+      "pause": false
+    },
+    {
+      "marketingId": 133,
+      "marketingName": "四件9折，五件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:13:41",
+      "pause": false
+    },
+    {
+      "marketingId": 134,
+      "marketingName": "两件9折，三件85折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:15:49",
+      "pause": false
+    },
+    {
+      "marketingId": 135,
+      "marketingName": "三件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:22:36",
+      "pause": false
+    },
+    {
+      "marketingId": 136,
+      "marketingName": "三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:23:14",
+      "pause": false
+    },
+    {
+      "marketingId": 137,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:24:25",
+      "pause": false
+    },
+    {
+      "marketingId": 138,
+      "marketingName": "一件95折，两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-20 12:59:59",
+      "createTime": "2020-06-15 18:25:34",
+      "pause": false
+    },
+    {
+      "marketingId": 139,
+      "marketingName": "一件95折，两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-16 21:03:00",
+      "createTime": "2020-06-15 18:26:32",
+      "pause": false
+    },
+    {
+      "marketingId": 140,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:27:39",
+      "pause": false
+    },
+    {
+      "marketingId": 141,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:29:10",
+      "pause": false
+    },
+    {
+      "marketingId": 142,
+      "marketingName": "一件95折，两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:30:12",
+      "pause": false
+    },
+    {
+      "marketingId": 143,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:31:20",
+      "pause": false
+    },
+    {
+      "marketingId": 144,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:32:31",
+      "pause": false
+    },
+    {
+      "marketingId": 145,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:33:30",
+      "pause": false
+    },
+    {
+      "marketingId": 146,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:34:31",
+      "pause": false
+    },
+    {
+      "marketingId": 147,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:35:33",
+      "pause": false
+    },
+    {
+      "marketingId": 148,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:36:34",
+      "pause": false
+    },
+    {
+      "marketingId": 149,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:37:34",
+      "pause": false
+    },
+    {
+      "marketingId": 150,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:41:44",
+      "pause": false
+    },
+    {
+      "marketingId": 151,
+      "marketingName": "一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:42:45",
+      "pause": false
+    },
+    {
+      "marketingId": 152,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:43:38",
+      "pause": false
+    },
+    {
+      "marketingId": 153,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:44:33",
+      "pause": false
+    },
+    {
+      "marketingId": 154,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:45:25",
+      "pause": false
+    },
+    {
+      "marketingId": 155,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:46:27",
+      "pause": false
+    },
+    {
+      "marketingId": 156,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:47:42",
+      "pause": false
+    },
+    {
+      "marketingId": 157,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:48:43",
+      "pause": false
+    },
+    {
+      "marketingId": 158,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:50:41",
+      "pause": false
+    },
+    {
+      "marketingId": 159,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:51:31",
+      "pause": false
+    },
+    {
+      "marketingId": 160,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:52:25",
+      "pause": false
+    },
+    {
+      "marketingId": 161,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:53:57",
+      "pause": false
+    },
+    {
+      "marketingId": 162,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:54:40",
+      "pause": false
+    },
+    {
+      "marketingId": 163,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 18:56:05",
+      "pause": false
+    },
+    {
+      "marketingId": 164,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 18:59:32",
+      "pause": false
+    },
+    {
+      "marketingId": 165,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:01:35",
+      "pause": false
+    },
+    {
+      "marketingId": 166,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:04:18",
+      "pause": false
+    },
+    {
+      "marketingId": 167,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:05:07",
+      "pause": false
+    },
+    {
+      "marketingId": 168,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:05:47",
+      "pause": false
+    },
+    {
+      "marketingId": 169,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:06:31",
+      "pause": false
+    },
+    {
+      "marketingId": 170,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:07:23",
+      "pause": false
+    },
+    {
+      "marketingId": 171,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:08:01",
+      "pause": false
+    },
+    {
+      "marketingId": 172,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:08:35",
+      "pause": false
+    },
+    {
+      "marketingId": 173,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:09:13",
+      "pause": false
+    },
+    {
+      "marketingId": 174,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:09:49",
+      "pause": false
+    },
+    {
+      "marketingId": 175,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:10:24",
+      "pause": false
+    },
+    {
+      "marketingId": 176,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:11:04",
+      "pause": false
+    },
+    {
+      "marketingId": 177,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:11:46",
+      "pause": false
+    },
+    {
+      "marketingId": 178,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:12:29",
+      "pause": false
+    },
+    {
+      "marketingId": 179,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-26 23:59:00",
+      "createTime": "2020-06-15 19:13:05",
+      "pause": false
+    },
+    {
+      "marketingId": 180,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:13:42",
+      "pause": false
+    },
+    {
+      "marketingId": 181,
+      "marketingName": "三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:14:17",
+      "pause": false
+    },
+    {
+      "marketingId": 182,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:15:17",
+      "pause": false
+    },
+    {
+      "marketingId": 183,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:16:25",
+      "pause": false
+    },
+    {
+      "marketingId": 184,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:17:08",
+      "pause": false
+    },
+    {
+      "marketingId": 185,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:17:44",
+      "pause": false
+    },
+    {
+      "marketingId": 186,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:18:22",
+      "pause": false
+    },
+    {
+      "marketingId": 187,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:18:56",
+      "pause": false
+    },
+    {
+      "marketingId": 188,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:19:33",
+      "pause": false
+    },
+    {
+      "marketingId": 189,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:20:09",
+      "pause": false
+    },
+    {
+      "marketingId": 190,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:20:44",
+      "pause": false
+    },
+    {
+      "marketingId": 191,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:21:22",
+      "pause": false
+    },
+    {
+      "marketingId": 192,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:21:57",
+      "pause": false
+    },
+    {
+      "marketingId": 193,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:22:33",
+      "pause": false
+    },
+    {
+      "marketingId": 194,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:23:13",
+      "pause": false
+    },
+    {
+      "marketingId": 195,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:23:00",
+      "createTime": "2020-06-15 19:23:48",
+      "pause": false
+    },
+    {
+      "marketingId": 196,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:24:28",
+      "pause": false
+    },
+    {
+      "marketingId": 197,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:24:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:25:04",
+      "pause": false
+    },
+    {
+      "marketingId": 198,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:25:41",
+      "pause": false
+    },
+    {
+      "marketingId": 199,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:26:24",
+      "pause": false
+    },
+    {
+      "marketingId": 200,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-18 20:30:00",
+      "createTime": "2020-06-15 19:27:04",
+      "pause": true
+    },
+    {
+      "marketingId": 201,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:27:44",
+      "pause": false
+    },
+    {
+      "marketingId": 202,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:28:31",
+      "pause": false
+    },
+    {
+      "marketingId": 203,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:29:11",
+      "pause": false
+    },
+    {
+      "marketingId": 204,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:29:47",
+      "pause": false
+    },
+    {
+      "marketingId": 205,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:30:26",
+      "pause": false
+    },
+    {
+      "marketingId": 206,
+      "marketingName": "三件级及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:31:04",
+      "pause": false
+    },
+    {
+      "marketingId": 207,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:31:40",
+      "pause": false
+    },
+    {
+      "marketingId": 208,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:32:15",
+      "pause": false
+    },
+    {
+      "marketingId": 209,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:32:50",
+      "pause": false
+    },
+    {
+      "marketingId": 210,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:33:52",
+      "pause": false
+    },
+    {
+      "marketingId": 211,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:34:39",
+      "pause": false
+    },
+    {
+      "marketingId": 212,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:35:32",
+      "pause": false
+    },
+    {
+      "marketingId": 213,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:36:12",
+      "pause": false
+    },
+    {
+      "marketingId": 214,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:36:51",
+      "pause": false
+    },
+    {
+      "marketingId": 215,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:37:32",
+      "pause": false
+    },
+    {
+      "marketingId": 216,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:38:22",
+      "pause": false
+    },
+    {
+      "marketingId": 217,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:39:00",
+      "pause": false
+    },
+    {
+      "marketingId": 218,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:40:16",
+      "pause": false
+    },
+    {
+      "marketingId": 219,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:41:08",
+      "pause": false
+    },
+    {
+      "marketingId": 220,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:41:44",
+      "pause": false
+    },
+    {
+      "marketingId": 221,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:42:37",
+      "pause": false
+    },
+    {
+      "marketingId": 222,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:43:24",
+      "pause": false
+    },
+    {
+      "marketingId": 223,
+      "marketingName": "三家及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:44:01",
+      "pause": false
+    },
+    {
+      "marketingId": 224,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:44:39",
+      "pause": false
+    },
+    {
+      "marketingId": 225,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-16 21:03:00",
+      "createTime": "2020-06-15 19:45:33",
+      "pause": false
+    },
+    {
+      "marketingId": 226,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:46:16",
+      "pause": false
+    },
+    {
+      "marketingId": 227,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:46:50",
+      "pause": false
+    },
+    {
+      "marketingId": 228,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 19:48:03",
+      "pause": false
+    },
+    {
+      "marketingId": 229,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:48:43",
+      "pause": false
+    },
+    {
+      "marketingId": 230,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 19:50:10",
+      "pause": false
+    },
+    {
+      "marketingId": 231,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:05:10",
+      "pause": false
+    },
+    {
+      "marketingId": 232,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:06:55",
+      "pause": false
+    },
+    {
+      "marketingId": 233,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:07:36",
+      "pause": false
+    },
+    {
+      "marketingId": 234,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:09:07",
+      "pause": false
+    },
+    {
+      "marketingId": 235,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:09:47",
+      "pause": false
+    },
+    {
+      "marketingId": 236,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:10:27",
+      "pause": false
+    },
+    {
+      "marketingId": 237,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:11:08",
+      "pause": false
+    },
+    {
+      "marketingId": 238,
+      "marketingName": "三件及以上75折",
+      "marketingType": 2,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:11:54",
+      "pause": true
+    },
+    {
+      "marketingId": 239,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:12:31",
+      "pause": false
+    },
+    {
+      "marketingId": 240,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:13:07",
+      "pause": false
+    },
+    {
+      "marketingId": 241,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:13:43",
+      "pause": false
+    },
+    {
+      "marketingId": 242,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:14:21",
+      "pause": false
+    },
+    {
+      "marketingId": 243,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:15:00",
+      "pause": false
+    },
+    {
+      "marketingId": 244,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:15:37",
+      "pause": false
+    },
+    {
+      "marketingId": 245,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:16:13",
+      "pause": false
+    },
+    {
+      "marketingId": 246,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-19 01:15:00",
+      "createTime": "2020-06-15 20:16:49",
+      "pause": true
+    },
+    {
+      "marketingId": 247,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-18 19:30:00",
+      "createTime": "2020-06-15 20:17:26",
+      "pause": true
+    },
+    {
+      "marketingId": 248,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:18:02",
+      "pause": false
+    },
+    {
+      "marketingId": 249,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:18:43",
+      "pause": false
+    },
+    {
+      "marketingId": 250,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:19:31",
+      "pause": false
+    },
+    {
+      "marketingId": 251,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:20:43",
+      "pause": false
+    },
+    {
+      "marketingId": 252,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:21:44",
+      "pause": false
+    },
+    {
+      "marketingId": 253,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:22:23",
+      "pause": false
+    },
+    {
+      "marketingId": 254,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:23:00",
+      "pause": false
+    },
+    {
+      "marketingId": 255,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:23:36",
+      "pause": false
+    },
+    {
+      "marketingId": 256,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-19 01:22:00",
+      "createTime": "2020-06-15 20:24:13",
+      "pause": true
+    },
+    {
+      "marketingId": 257,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:24:48",
+      "pause": false
+    },
+    {
+      "marketingId": 258,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:25:31",
+      "pause": false
+    },
+    {
+      "marketingId": 259,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:26:07",
+      "pause": false
+    },
+    {
+      "marketingId": 260,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:27:00",
+      "pause": false
+    },
+    {
+      "marketingId": 261,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:27:36",
+      "pause": false
+    },
+    {
+      "marketingId": 262,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:28:10",
+      "pause": false
+    },
+    {
+      "marketingId": 263,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:28:45",
+      "pause": false
+    },
+    {
+      "marketingId": 264,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:29:57",
+      "pause": false
+    },
+    {
+      "marketingId": 265,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:30:43",
+      "pause": false
+    },
+    {
+      "marketingId": 266,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:31:18",
+      "pause": false
+    },
+    {
+      "marketingId": 267,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:31:50",
+      "pause": false
+    },
+    {
+      "marketingId": 268,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-19 01:16:00",
+      "createTime": "2020-06-15 20:32:24",
+      "pause": true
+    },
+    {
+      "marketingId": 269,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:32:59",
+      "pause": false
+    },
+    {
+      "marketingId": 270,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:33:40",
+      "pause": false
+    },
+    {
+      "marketingId": 271,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:34:16",
+      "pause": false
+    },
+    {
+      "marketingId": 272,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:34:56",
+      "pause": false
+    },
+    {
+      "marketingId": 273,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:36:06",
+      "pause": false
+    },
+    {
+      "marketingId": 274,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:36:47",
+      "pause": false
+    },
+    {
+      "marketingId": 275,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:37:27",
+      "pause": false
+    },
+    {
+      "marketingId": 276,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:39:05",
+      "pause": false
+    },
+    {
+      "marketingId": 277,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:39:50",
+      "pause": false
+    },
+    {
+      "marketingId": 278,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:41:31",
+      "pause": false
+    },
+    {
+      "marketingId": 279,
+      "marketingName": "三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:44:09",
+      "pause": false
+    },
+    {
+      "marketingId": 280,
+      "marketingName": "Fresh 品牌任意产品三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 20:51:31",
+      "pause": false
+    },
+    {
+      "marketingId": 281,
+      "marketingName": "一件7折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:54:11",
+      "pause": false
+    },
+    {
+      "marketingId": 282,
+      "marketingName": "一件7折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:55:09",
+      "pause": false
+    },
+    {
+      "marketingId": 283,
+      "marketingName": "一件7折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:55:56",
+      "pause": false
+    },
+    {
+      "marketingId": 284,
+      "marketingName": "一件7折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:57:36",
+      "pause": false
+    },
+    {
+      "marketingId": 285,
+      "marketingName": "三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 20:58:58",
+      "pause": false
+    },
+    {
+      "marketingId": 286,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:03:02",
+      "pause": false
+    },
+    {
+      "marketingId": 287,
+      "marketingName": "两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:03:45",
+      "pause": false
+    },
+    {
+      "marketingId": 288,
+      "marketingName": "三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:04:30",
+      "pause": false
+    },
+    {
+      "marketingId": 289,
+      "marketingName": "三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:05:03",
+      "pause": false
+    },
+    {
+      "marketingId": 290,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:06:05",
+      "pause": false
+    },
+    {
+      "marketingId": 291,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:07:53",
+      "pause": false
+    },
+    {
+      "marketingId": 292,
+      "marketingName": "两件62折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:09:28",
+      "pause": false
+    },
+    {
+      "marketingId": 293,
+      "marketingName": "两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:11:54",
+      "pause": false
+    },
+    {
+      "marketingId": 294,
+      "marketingName": "两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 21:13:25",
+      "pause": false
+    },
+    {
+      "marketingId": 295,
+      "marketingName": "两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 21:14:46",
+      "pause": false
+    },
+    {
+      "marketingId": 296,
+      "marketingName": "LA MER 指定商品三件及三件以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-19 23:59:00",
+      "createTime": "2020-06-15 21:19:40",
+      "pause": false
+    },
+    {
+      "marketingId": 297,
+      "marketingName": "NARS 指定产品三件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 21:22:38",
+      "pause": false
+    },
+    {
+      "marketingId": 298,
+      "marketingName": "Shiseido 指定商品两件九折，三件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 21:55:59",
+      "pause": false
+    },
+    {
+      "marketingId": 299,
+      "marketingName": "三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 21:57:31",
+      "pause": false
+    },
+    {
+      "marketingId": 300,
+      "marketingName": "YSL 指定商品两件8折，三件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:05:18",
+      "pause": false
+    },
+    {
+      "marketingId": 301,
+      "marketingName": "YSL 指定商品两件75折 ，三件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:06:40",
+      "pause": false
+    },
+    {
+      "marketingId": 302,
+      "marketingName": "ARAMIS 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:09:19",
+      "pause": false
+    },
+    {
+      "marketingId": 303,
+      "marketingName": "Biotherm 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:11:06",
+      "pause": false
+    },
+    {
+      "marketingId": 305,
+      "marketingName": "BOBBI BROWN 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:14:25",
+      "pause": false
+    },
+    {
+      "marketingId": 306,
+      "marketingName": "BURBERRY 指定产品购买两件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:18:33",
+      "pause": false
+    },
+    {
+      "marketingId": 307,
+      "marketingName": "CPB指定商品两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:19:53",
+      "pause": false
+    },
+    {
+      "marketingId": 308,
+      "marketingName": "CLINIQUE 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:21:17",
+      "pause": false
+    },
+    {
+      "marketingId": 309,
+      "marketingName": "Darphin 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:22:23",
+      "pause": false
+    },
+    {
+      "marketingId": 310,
+      "marketingName": "Gucci 指定产品两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:32:29",
+      "pause": false
+    },
+    {
+      "marketingId": 311,
+      "marketingName": "两件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:35:01",
+      "pause": false
+    },
+    {
+      "marketingId": 312,
+      "marketingName": "赫莲娜指定商品两件及以上9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:39:44",
+      "pause": false
+    },
+    {
+      "marketingId": 313,
+      "marketingName": "Jo Malone 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:41:04",
+      "pause": false
+    },
+    {
+      "marketingId": 314,
+      "marketingName": "科颜氏指定商品两件及以上9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:42:30",
+      "pause": false
+    },
+    {
+      "marketingId": 315,
+      "marketingName": "LAB SERIES 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:44:27",
+      "pause": false
+    },
+    {
+      "marketingId": 316,
+      "marketingName": "两件及以上9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-25 23:59:00",
+      "createTime": "2020-06-15 22:45:17",
+      "pause": false
+    },
+    {
+      "marketingId": 317,
+      "marketingName": "MAC指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:51:35",
+      "pause": false
+    },
+    {
+      "marketingId": 318,
+      "marketingName": "ORIGINS指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:53:26",
+      "pause": false
+    },
+    {
+      "marketingId": 319,
+      "marketingName": "Tom Ford Beauty 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 22:56:38",
+      "pause": false
+    },
+    {
+      "marketingId": 320,
+      "marketingName": "YSL 指定产品任买两件及以上65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 22:58:56",
+      "pause": false
+    },
+    {
+      "marketingId": 321,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:01:12",
+      "pause": false
+    },
+    {
+      "marketingId": 322,
+      "marketingName": "BURBERRY 指定产品75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:20:15",
+      "pause": false
+    },
+    {
+      "marketingId": 323,
+      "marketingName": "Dior品牌任意购买95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:22:43",
+      "pause": false
+    },
+    {
+      "marketingId": 324,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:24:02",
+      "pause": false
+    },
+    {
+      "marketingId": 325,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:24:44",
+      "pause": false
+    },
+    {
+      "marketingId": 326,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:25:13",
+      "pause": false
+    },
+    {
+      "marketingId": 327,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:27:17",
+      "pause": false
+    },
+    {
+      "marketingId": 328,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:27:50",
+      "pause": false
+    },
+    {
+      "marketingId": 329,
+      "marketingName": "63折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:28:28",
+      "pause": false
+    },
+    {
+      "marketingId": 330,
+      "marketingName": "雅顿指定商品8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:29:18",
+      "pause": false
+    },
+    {
+      "marketingId": 331,
+      "marketingName": "Ferragamo指定商品9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:30:20",
+      "pause": false
+    },
+    {
+      "marketingId": 332,
+      "marketingName": "阿玛尼指定商品7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:31:40",
+      "pause": false
+    },
+    {
+      "marketingId": 333,
+      "marketingName": "Gucci 指定产品8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:33:41",
+      "pause": false
+    },
+    {
+      "marketingId": 334,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:34:55",
+      "pause": false
+    },
+    {
+      "marketingId": 335,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:35:37",
+      "pause": false
+    },
+    {
+      "marketingId": 336,
+      "marketingName": "10303099929",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:36:20",
+      "pause": false
+    },
+    {
+      "marketingId": 337,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:36:51",
+      "pause": false
+    },
+    {
+      "marketingId": 338,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:37:35",
+      "pause": false
+    },
+    {
+      "marketingId": 339,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:38:08",
+      "pause": false
+    },
+    {
+      "marketingId": 340,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:40:18",
+      "pause": false
+    },
+    {
+      "marketingId": 341,
+      "marketingName": "8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:44:32",
+      "pause": false
+    },
+    {
+      "marketingId": 342,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:46:13",
+      "pause": false
+    },
+    {
+      "marketingId": 343,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:48:07",
+      "pause": false
+    },
+    {
+      "marketingId": 344,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:49:44",
+      "pause": false
+    },
+    {
+      "marketingId": 345,
+      "marketingName": "95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:52:24",
+      "pause": false
+    },
+    {
+      "marketingId": 346,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:54:10",
+      "pause": false
+    },
+    {
+      "marketingId": 347,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-15 23:57:15",
+      "pause": false
+    },
+    {
+      "marketingId": 348,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-15 23:58:09",
+      "pause": false
+    },
+    {
+      "marketingId": 349,
+      "marketingName": "9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-16 00:01:26",
+      "pause": false
+    },
+    {
+      "marketingId": 350,
+      "marketingName": "Shiseido 指定商品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:05:47",
+      "pause": false
+    },
+    {
+      "marketingId": 351,
+      "marketingName": "Shiseido 指定商品两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:08:13",
+      "pause": false
+    },
+    {
+      "marketingId": 352,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-16 00:09:50",
+      "pause": false
+    },
+    {
+      "marketingId": 353,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:11:08",
+      "pause": false
+    },
+    {
+      "marketingId": 354,
+      "marketingName": "Tiffany指定产品8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-16 00:12:00",
+      "pause": false
+    },
+    {
+      "marketingId": 355,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:13:51",
+      "pause": false
+    },
+    {
+      "marketingId": 356,
+      "marketingName": "5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:14:38",
+      "pause": false
+    },
+    {
+      "marketingId": 357,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-16 00:15:33",
+      "pause": false
+    },
+    {
+      "marketingId": 358,
+      "marketingName": "85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:16:11",
+      "pause": false
+    },
+    {
+      "marketingId": 359,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:00:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 00:16:56",
+      "pause": false
+    },
+    {
+      "marketingId": 360,
+      "marketingName": "两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:32:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 02:33:19",
+      "pause": false
+    },
+    {
+      "marketingId": 361,
+      "marketingName": "两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 02:35:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 02:36:34",
+      "pause": false
+    },
+    {
+      "marketingId": 362,
+      "marketingName": "EL白金级花菁萃一件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 21:33:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-16 21:38:32",
+      "pause": false
+    },
+    {
+      "marketingId": 363,
+      "marketingName": "CPB基础护理修护霜套装一件95折，两件9折，三件79折",
+      "marketingType": 3,
+      "beginTime": "2020-06-16 21:41:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-16 21:43:07",
+      "pause": false
+    },
+    {
+      "marketingId": 364,
+      "marketingName": "DKNY两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-17 20:22:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-17 20:23:17",
+      "pause": false
+    },
+    {
+      "marketingId": 365,
+      "marketingName": "格莱魅两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-17 20:23:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-17 20:24:14",
+      "pause": false
+    },
+    {
+      "marketingId": 366,
+      "marketingName": "悦木之源两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-17 20:26:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-17 20:27:19",
+      "pause": false
+    },
+    {
+      "marketingId": 367,
+      "marketingName": "碧欧泉两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:25:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:26:56",
+      "pause": false
+    },
+    {
+      "marketingId": 368,
+      "marketingName": "巴芭比布朗两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:27:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:29:10",
+      "pause": false
+    },
+    {
+      "marketingId": 369,
+      "marketingName": "Dior 95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:33:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:37:31",
+      "pause": false
+    },
+    {
+      "marketingId": 370,
+      "marketingName": "倩碧两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:38:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:40:28",
+      "pause": false
+    },
+    {
+      "marketingId": 371,
+      "marketingName": "雅顿8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:41:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:43:49",
+      "pause": false
+    },
+    {
+      "marketingId": 372,
+      "marketingName": "7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:45:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-18 01:47:29",
+      "pause": false
+    },
+    {
+      "marketingId": 373,
+      "marketingName": "Gucci一件85折，两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:47:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-18 01:49:08",
+      "pause": false
+    },
+    {
+      "marketingId": 374,
+      "marketingName": "祖马龙两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:49:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-18 01:52:54",
+      "pause": false
+    },
+    {
+      "marketingId": 375,
+      "marketingName": "茱莉蔻三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:53:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:54:29",
+      "pause": false
+    },
+    {
+      "marketingId": 376,
+      "marketingName": "海蓝之谜三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:55:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 01:57:16",
+      "pause": false
+    },
+    {
+      "marketingId": 377,
+      "marketingName": "MAC两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 01:57:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 02:00:03",
+      "pause": false
+    },
+    {
+      "marketingId": 378,
+      "marketingName": "玫珂菲9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 02:00:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 02:02:04",
+      "pause": false
+    },
+    {
+      "marketingId": 379,
+      "marketingName": "NARS三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 02:02:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 02:04:43",
+      "pause": false
+    },
+    {
+      "marketingId": 380,
+      "marketingName": "悦木之源两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 02:04:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-18 02:06:17",
+      "pause": false
+    },
+    {
+      "marketingId": 381,
+      "marketingName": "资生堂两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 02:06:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-18 02:12:24",
+      "pause": false
+    },
+    {
+      "marketingId": 382,
+      "marketingName": "TF两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-18 02:12:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-18 02:14:21",
+      "pause": false
+    },
+    {
+      "marketingId": 384,
+      "marketingName": "雅诗兰黛花精萃护肤套组一件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-19 12:27:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-19 12:28:36",
+      "pause": false
+    },
+    {
+      "marketingId": 385,
+      "marketingName": "雅诗兰黛 Estée Lauder 奇迹丰盈抗皱精华露两件组两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-19 12:31:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-19 12:32:02",
+      "pause": false
+    },
+    {
+      "marketingId": 386,
+      "marketingName": "雅诗兰黛白金级奢宠紧颜乳霜及眼霜套装两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-19 23:44:00",
+      "endTime": "2020-06-21 23:59:00",
+      "createTime": "2020-06-19 23:45:30",
+      "pause": false
+    },
+    {
+      "marketingId": 387,
+      "marketingName": "海蓝之谜精华面霜三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-19 23:49:44",
+      "pause": false
+    },
+    {
+      "marketingId": 388,
+      "marketingName": "海蓝之谜（LAMER）紧致焕采眼霜三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-19 23:50:36",
+      "pause": false
+    },
+    {
+      "marketingId": 389,
+      "marketingName": "海蓝之谜（LAMER）精华乳霜三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-19 23:52:06",
+      "pause": false
+    },
+    {
+      "marketingId": 390,
+      "marketingName": "海蓝之谜调理舒缓喷雾三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-19 23:53:38",
+      "pause": false
+    },
+    {
+      "marketingId": 391,
+      "marketingName": "三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-19 23:55:09",
+      "pause": false
+    },
+    {
+      "marketingId": 392,
+      "marketingName": "海蓝之谜三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 00:01:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-20 00:00:57",
+      "pause": false
+    },
+    {
+      "marketingId": 393,
+      "marketingName": "一件95折，两件9折，三件79折",
+      "marketingType": 3,
+      "beginTime": "2020-06-20 13:01:00",
+      "endTime": "2020-06-22 23:59:00",
+      "createTime": "2020-06-20 13:00:46",
+      "pause": false
+    },
+    {
+      "marketingId": 394,
+      "marketingName": "雅诗兰黛(Estée Lauder)白金级奢宠紧颜乳霜及眼霜套装两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-22 13:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 13:02:27",
+      "pause": false
+    },
+    {
+      "marketingId": 395,
+      "marketingName": "BOBBI BROWN 指定商品一件75折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:15:37",
+      "pause": false
+    },
+    {
+      "marketingId": 396,
+      "marketingName": "雪肌精两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:16:29",
+      "pause": false
+    },
+    {
+      "marketingId": 397,
+      "marketingName": "BOBBI BROWN 指定商品两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:17:04",
+      "pause": false
+    },
+    {
+      "marketingId": 398,
+      "marketingName": "雅顿指定商品一件8折，两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:17:25",
+      "pause": false
+    },
+    {
+      "marketingId": 399,
+      "marketingName": "黛珂两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:18:16",
+      "pause": false
+    },
+    {
+      "marketingId": 400,
+      "marketingName": "BOBBI BROWN 指定商品两件75折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:18:38",
+      "pause": false
+    },
+    {
+      "marketingId": 401,
+      "marketingName": "CPB 指定商品一件9.5折，两件85折，三件及以上56折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:18:55",
+      "pause": false
+    },
+    {
+      "marketingId": 402,
+      "marketingName": "黛珂两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:19:36",
+      "pause": false
+    },
+    {
+      "marketingId": 403,
+      "marketingName": "BOBBI BROWN 指定商品两件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:19:43",
+      "pause": false
+    },
+    {
+      "marketingId": 404,
+      "marketingName": "纪梵希两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:20:35",
+      "pause": false
+    },
+    {
+      "marketingId": 405,
+      "marketingName": "CPB 指定商品一件9.5折，两件85折，三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:21:15",
+      "pause": false
+    },
+    {
+      "marketingId": 406,
+      "marketingName": "纪梵希两件9折，三件8折，六件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:22:40",
+      "pause": false
+    },
+    {
+      "marketingId": 407,
+      "marketingName": "E.LAUDER 指定商品一件9折，两件85折，三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:23:20",
+      "pause": false
+    },
+    {
+      "marketingId": 408,
+      "marketingName": "希思黎两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:23:37",
+      "pause": false
+    },
+    {
+      "marketingId": 409,
+      "marketingName": "希思黎单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:24:44",
+      "pause": false
+    },
+    {
+      "marketingId": 410,
+      "marketingName": "E.LAUDER 指定商品一件9折，两件63折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:24:57",
+      "pause": false
+    },
+    {
+      "marketingId": 411,
+      "marketingName": "娇兰两件95折，三件9折，四件85折，五件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:25:36",
+      "pause": false
+    },
+    {
+      "marketingId": 412,
+      "marketingName": "THREE两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:25:41",
+      "pause": false
+    },
+    {
+      "marketingId": 413,
+      "marketingName": "后活动5",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:26:52",
+      "pause": false
+    },
+    {
+      "marketingId": 414,
+      "marketingName": "娇兰两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:28:00",
+      "pause": false
+    },
+    {
+      "marketingId": 415,
+      "marketingName": "E.LAUDER 指定商品一件9折，两件63折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:28:13",
+      "pause": false
+    },
+    {
+      "marketingId": 416,
+      "marketingName": "后活动4",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:28:19",
+      "pause": false
+    },
+    {
+      "marketingId": 417,
+      "marketingName": "娇兰两件95折，三件9折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:29:03",
+      "pause": false
+    },
+    {
+      "marketingId": 418,
+      "marketingName": "后活动3",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:29:08",
+      "pause": false
+    },
+    {
+      "marketingId": 419,
+      "marketingName": "后活动2",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:30:06",
+      "pause": false
+    },
+    {
+      "marketingId": 420,
+      "marketingName": "娇兰两件8折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:30:15",
+      "pause": false
+    },
+    {
+      "marketingId": 421,
+      "marketingName": "后活动1",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:31:06",
+      "pause": false
+    },
+    {
+      "marketingId": 422,
+      "marketingName": "娇兰一件9折，两件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:31:14",
+      "pause": false
+    },
+    {
+      "marketingId": 423,
+      "marketingName": "E.LAUDER 指定商品两件8折，三件75折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:31:22",
+      "pause": false
+    },
+    {
+      "marketingId": 424,
+      "marketingName": "植村秀活动9",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:32:00",
+      "pause": false
+    },
+    {
+      "marketingId": 425,
+      "marketingName": "植村秀活动8",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:32:47",
+      "pause": false
+    },
+    {
+      "marketingId": 426,
+      "marketingName": "娇兰一件9折，两件85折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:33:25",
+      "pause": false
+    },
+    {
+      "marketingId": 427,
+      "marketingName": "E.LAUDER 指定商品两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:33:31",
+      "pause": false
+    },
+    {
+      "marketingId": 428,
+      "marketingName": "植村秀活动7",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:33:51",
+      "pause": false
+    },
+    {
+      "marketingId": 429,
+      "marketingName": "娇兰两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:34:12",
+      "pause": false
+    },
+    {
+      "marketingId": 430,
+      "marketingName": "植村秀活动6",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:34:41",
+      "pause": false
+    },
+    {
+      "marketingId": 431,
+      "marketingName": "娇兰一件9折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:34:58",
+      "pause": false
+    },
+    {
+      "marketingId": 432,
+      "marketingName": "E.LAUDER 指定商品两件66折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:35:08",
+      "pause": false
+    },
+    {
+      "marketingId": 433,
+      "marketingName": "娇兰两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:35:40",
+      "pause": false
+    },
+    {
+      "marketingId": 434,
+      "marketingName": "植村秀活动5",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:36:02",
+      "pause": false
+    },
+    {
+      "marketingId": 435,
+      "marketingName": "娇兰两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:36:17",
+      "pause": false
+    },
+    {
+      "marketingId": 436,
+      "marketingName": "娇兰一件85折，两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:36:00",
+      "createTime": "2020-06-22 23:36:57",
+      "pause": false
+    },
+    {
+      "marketingId": 437,
+      "marketingName": "植村秀活动4",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:37:07",
+      "pause": false
+    },
+    {
+      "marketingId": 438,
+      "marketingName": "科颜氏 指定商品两件95折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:37:00",
+      "createTime": "2020-06-22 23:37:47",
+      "pause": false
+    },
+    {
+      "marketingId": 439,
+      "marketingName": "植村秀活动3",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:38:16",
+      "pause": false
+    },
+    {
+      "marketingId": 440,
+      "marketingName": "科颜氏 指定商品一件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:38:29",
+      "pause": false
+    },
+    {
+      "marketingId": 441,
+      "marketingName": "科颜氏 指定商品一件7折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:39:14",
+      "pause": false
+    },
+    {
+      "marketingId": 442,
+      "marketingName": "植村秀活动2",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:39:14",
+      "pause": false
+    },
+    {
+      "marketingId": 443,
+      "marketingName": "植村秀活动1",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:40:18",
+      "pause": false
+    },
+    {
+      "marketingId": 444,
+      "marketingName": "Fresh 指定产品两件95折，三件88折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:41:05",
+      "pause": false
+    },
+    {
+      "marketingId": 445,
+      "marketingName": "SKII两件9折，四件84折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:41:40",
+      "pause": false
+    },
+    {
+      "marketingId": 446,
+      "marketingName": "SKII两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:43:18",
+      "pause": false
+    },
+    {
+      "marketingId": 447,
+      "marketingName": "Fresh 指定产品三件75折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:43:23",
+      "pause": false
+    },
+    {
+      "marketingId": 448,
+      "marketingName": "兰蔻两件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:43:36",
+      "pause": false
+    },
+    {
+      "marketingId": 449,
+      "marketingName": "SKII两件95折，三件9折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:44:17",
+      "pause": false
+    },
+    {
+      "marketingId": 450,
+      "marketingName": "Fresh 指定产品三件75折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:44:45",
+      "pause": false
+    },
+    {
+      "marketingId": 451,
+      "marketingName": "兰蔻两件9折，四件83折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:45:46",
+      "pause": false
+    },
+    {
+      "marketingId": 452,
+      "marketingName": "Fresh 指定产品三件75折，五件67折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:46:12",
+      "pause": false
+    },
+    {
+      "marketingId": 453,
+      "marketingName": "兰蔻一件95折，两件9折，三件85折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:47:00",
+      "pause": false
+    },
+    {
+      "marketingId": 454,
+      "marketingName": "蔻驰单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:47:33",
+      "pause": false
+    },
+    {
+      "marketingId": 455,
+      "marketingName": "兰蔻两件95折，三件8折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:47:48",
+      "pause": false
+    },
+    {
+      "marketingId": 456,
+      "marketingName": "娇韵诗两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:48:32",
+      "pause": false
+    },
+    {
+      "marketingId": 457,
+      "marketingName": "兰蔻两件8折，三件7折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:48:43",
+      "pause": false
+    },
+    {
+      "marketingId": 458,
+      "marketingName": "娇韵诗两件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:49:23",
+      "pause": false
+    },
+    {
+      "marketingId": 459,
+      "marketingName": "兰蔻一件95折，两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:49:25",
+      "pause": false
+    },
+    {
+      "marketingId": 460,
+      "marketingName": "兰蔻一件92折，两件88折，三件78折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:50:15",
+      "pause": false
+    },
+    {
+      "marketingId": 461,
+      "marketingName": "欧莱雅两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:50:40",
+      "pause": false
+    },
+    {
+      "marketingId": 462,
+      "marketingName": "兰蔻一件85折，两件8折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:50:58",
+      "pause": false
+    },
+    {
+      "marketingId": 463,
+      "marketingName": "兰蔻两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:51:39",
+      "pause": false
+    },
+    {
+      "marketingId": 464,
+      "marketingName": "欧莱雅两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:51:42",
+      "pause": false
+    },
+    {
+      "marketingId": 465,
+      "marketingName": "兰蔻两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:52:18",
+      "pause": false
+    },
+    {
+      "marketingId": 466,
+      "marketingName": "欧莱雅两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:52:26",
+      "pause": false
+    },
+    {
+      "marketingId": 467,
+      "marketingName": "兰蔻两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:52:52",
+      "pause": false
+    },
+    {
+      "marketingId": 468,
+      "marketingName": "Giorgio Armani 购买指定商品单件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:53:07",
+      "pause": false
+    },
+    {
+      "marketingId": 469,
+      "marketingName": "兰蔻两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:53:28",
+      "pause": false
+    },
+    {
+      "marketingId": 470,
+      "marketingName": "Giorgio Armani 购买指定商品单件7折，两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:53:49",
+      "pause": false
+    },
+    {
+      "marketingId": 471,
+      "marketingName": "LA MER 指定商品两件85折，三件58折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:53:49",
+      "pause": false
+    },
+    {
+      "marketingId": 472,
+      "marketingName": "兰蔻两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:54:19",
+      "pause": false
+    },
+    {
+      "marketingId": 473,
+      "marketingName": "兰蔻两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:54:55",
+      "pause": false
+    },
+    {
+      "marketingId": 474,
+      "marketingName": "欧舒丹单件9折，三件85折，五件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:55:40",
+      "pause": false
+    },
+    {
+      "marketingId": 475,
+      "marketingName": "Giorgio Armani 购买指定商品两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:56:22",
+      "pause": false
+    },
+    {
+      "marketingId": 476,
+      "marketingName": "欧舒丹两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:56:54",
+      "pause": false
+    },
+    {
+      "marketingId": 477,
+      "marketingName": "Giorgio Armani 购买指定商品两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:57:10",
+      "pause": false
+    },
+    {
+      "marketingId": 478,
+      "marketingName": "雪花秀单件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:57:38",
+      "pause": false
+    },
+    {
+      "marketingId": 479,
+      "marketingName": "Giorgio Armani 购买指定商品两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:58:14",
+      "pause": false
+    },
+    {
+      "marketingId": 480,
+      "marketingName": "圣罗兰两件95折，三件85折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:58:22",
+      "pause": false
+    },
+    {
+      "marketingId": 481,
+      "marketingName": "菲洛嘉指定商品两件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:59:00",
+      "pause": false
+    },
+    {
+      "marketingId": 482,
+      "marketingName": "圣罗兰两件95折，三件8折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:58:00",
+      "createTime": "2020-06-22 23:59:20",
+      "pause": false
+    },
+    {
+      "marketingId": 483,
+      "marketingName": "Jurlique 指定商品两件95折，三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-22 23:59:51",
+      "pause": false
+    },
+    {
+      "marketingId": 484,
+      "marketingName": "圣罗兰两件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:00:11",
+      "pause": false
+    },
+    {
+      "marketingId": 485,
+      "marketingName": "DKNY  指定商品两件75折，三件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:00:43",
+      "pause": false
+    },
+    {
+      "marketingId": 486,
+      "marketingName": "圣罗兰两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:00:54",
+      "pause": false
+    },
+    {
+      "marketingId": 487,
+      "marketingName": "圣罗兰两件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:02:09",
+      "pause": false
+    },
+    {
+      "marketingId": 488,
+      "marketingName": "圣罗兰单件75折，两件7折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:02:52",
+      "pause": false
+    },
+    {
+      "marketingId": 489,
+      "marketingName": "圣罗兰单件7张，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:03:39",
+      "pause": false
+    },
+    {
+      "marketingId": 490,
+      "marketingName": "雅顿指定商品一件8折，两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:06:39",
+      "pause": false
+    },
+    {
+      "marketingId": 491,
+      "marketingName": "LA MER 指定商品两件85折，三件64折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:06:41",
+      "pause": false
+    },
+    {
+      "marketingId": 492,
+      "marketingName": "雅顿指定商品一件8折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:07:26",
+      "pause": false
+    },
+    {
+      "marketingId": 493,
+      "marketingName": "LA MER 指定商品两件75折，三件53折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:07:48",
+      "pause": false
+    },
+    {
+      "marketingId": 494,
+      "marketingName": "雅顿指定商品一件8折，两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:08:12",
+      "pause": false
+    },
+    {
+      "marketingId": 495,
+      "marketingName": "LA MER 指定商品三件8折，四件73折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:08:41",
+      "pause": false
+    },
+    {
+      "marketingId": 496,
+      "marketingName": "雅顿指定商品一件8折，两件75折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:09:03",
+      "pause": false
+    },
+    {
+      "marketingId": 497,
+      "marketingName": "雅顿指定商品一件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:10:03",
+      "pause": false
+    },
+    {
+      "marketingId": 498,
+      "marketingName": "NARS 指定产品一件7折，两件65折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:10:35",
+      "pause": false
+    },
+    {
+      "marketingId": 499,
+      "marketingName": "雅顿指定商品一件8折，三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 00:10:00",
+      "createTime": "2020-06-23 00:10:55",
+      "pause": false
+    },
+    {
+      "marketingId": 500,
+      "marketingName": "NARS 指定产品两件95折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:11:33",
+      "pause": false
+    },
+    {
+      "marketingId": 501,
+      "marketingName": "雅顿指定商品两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:11:44",
+      "pause": false
+    },
+    {
+      "marketingId": 502,
+      "marketingName": "NARS 指定产品两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:12:27",
+      "pause": false
+    },
+    {
+      "marketingId": 503,
+      "marketingName": "Dior品牌指定商品两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:12:42",
+      "pause": false
+    },
+    {
+      "marketingId": 504,
+      "marketingName": "NARS 指定产品两件95折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:13:36",
+      "pause": false
+    },
+    {
+      "marketingId": 505,
+      "marketingName": "Dior品牌指定商品一件95折，两件59折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:14:56",
+      "pause": false
+    },
+    {
+      "marketingId": 506,
+      "marketingName": "Dior品牌指定商品一件95折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:15:39",
+      "pause": false
+    },
+    {
+      "marketingId": 507,
+      "marketingName": "Dior品牌指定商品一件95折，两件9折，三件73折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:17:12",
+      "pause": false
+    },
+    {
+      "marketingId": 508,
+      "marketingName": "BOBBI BROWN 指定商品两件75折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:17:36",
+      "pause": false
+    },
+    {
+      "marketingId": 509,
+      "marketingName": "Dior品牌指定商品一件95折，两件9折，三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:17:53",
+      "pause": false
+    },
+    {
+      "marketingId": 510,
+      "marketingName": "BURBERRY 指定产品一件8折，两件7折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:18:21",
+      "pause": false
+    },
+    {
+      "marketingId": 511,
+      "marketingName": "Dior品牌指定商品一件95折，两件9折，三件79折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:18:38",
+      "pause": false
+    },
+    {
+      "marketingId": 512,
+      "marketingName": "BURBERRY 指定产品一件75折，两件6折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:19:12",
+      "pause": false
+    },
+    {
+      "marketingId": 513,
+      "marketingName": "NARS 指定产品两件85折，三件8折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:19:22",
+      "pause": false
+    },
+    {
+      "marketingId": 514,
+      "marketingName": "BURBERRY 指定产品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:19:44",
+      "pause": false
+    },
+    {
+      "marketingId": 515,
+      "marketingName": "Dior品牌指定商品一件95折，两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:19:49",
+      "pause": false
+    },
+    {
+      "marketingId": 516,
+      "marketingName": "NARS 指定产品两件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:23:06",
+      "pause": false
+    },
+    {
+      "marketingId": 517,
+      "marketingName": "BURBERRY 指定产品一件75折，两件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:23:24",
+      "pause": false
+    },
+    {
+      "marketingId": 518,
+      "marketingName": "Dior品牌指定商品一件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 00:21:00",
+      "createTime": "2020-06-23 00:23:40",
+      "pause": false
+    },
+    {
+      "marketingId": 519,
+      "marketingName": "CLINIQUE 指定商品两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:24:28",
+      "pause": false
+    },
+    {
+      "marketingId": 520,
+      "marketingName": "NARS 指定产品两件85折，三件7折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:24:35",
+      "pause": false
+    },
+    {
+      "marketingId": 521,
+      "marketingName": "Dior品牌指定商品一件95折，两件8折，三件7折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:24:54",
+      "pause": false
+    },
+    {
+      "marketingId": 522,
+      "marketingName": "CLINIQUE 指定商品两件75折，三件7折，四件65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:25:30",
+      "pause": false
+    },
+    {
+      "marketingId": 523,
+      "marketingName": "NARS 指定产品两件85折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:25:35",
+      "pause": false
+    },
+    {
+      "marketingId": 524,
+      "marketingName": "Dior品牌指定商品两件95折，三件8折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:25:48",
+      "pause": false
+    },
+    {
+      "marketingId": 525,
+      "marketingName": "CLINIQUE 指定商品两件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:26:16",
+      "pause": false
+    },
+    {
+      "marketingId": 526,
+      "marketingName": "Shiseido 指定商品一件95折，两件及以上62折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:26:39",
+      "pause": false
+    },
+    {
+      "marketingId": 527,
+      "marketingName": "CLINIQUE 指定商品两件75折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:27:39",
+      "pause": false
+    },
+    {
+      "marketingId": 528,
+      "marketingName": "Shiseido 指定商品一件95折，两件9折，三件82折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:28:18",
+      "pause": false
+    },
+    {
+      "marketingId": 529,
+      "marketingName": "Darphin 指定商品两件75折，三件7折，四件65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:28:24",
+      "pause": false
+    },
+    {
+      "marketingId": 530,
+      "marketingName": "Darphin 指定商品两件75折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:29:05",
+      "pause": false
+    },
+    {
+      "marketingId": 531,
+      "marketingName": "Gucci 指定产品两件7折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:29:49",
+      "pause": false
+    },
+    {
+      "marketingId": 532,
+      "marketingName": "Shiseido 指定商品两件95折，三件9折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:30:20",
+      "pause": false
+    },
+    {
+      "marketingId": 533,
+      "marketingName": "Gucci 指定产品一件8折，两件7折，三件6折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:30:30",
+      "pause": false
+    },
+    {
+      "marketingId": 534,
+      "marketingName": "Gucci 指定产品两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:31:11",
+      "pause": false
+    },
+    {
+      "marketingId": 535,
+      "marketingName": "Gucci 指定产品两件9折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:31:42",
+      "pause": false
+    },
+    {
+      "marketingId": 536,
+      "marketingName": "Shiseido 指定商品两件95折，三件8折，五件65折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:31:47",
+      "pause": false
+    },
+    {
+      "marketingId": 537,
+      "marketingName": "Gucci 指定产品一件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:32:14",
+      "pause": false
+    },
+    {
+      "marketingId": 538,
+      "marketingName": "Gucci 指定产品两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:32:42",
+      "pause": false
+    },
+    {
+      "marketingId": 539,
+      "marketingName": "Shiseido 指定商品两件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:32:58",
+      "pause": false
+    },
+    {
+      "marketingId": 540,
+      "marketingName": "赫莲娜指定商品两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:33:18",
+      "pause": false
+    },
+    {
+      "marketingId": 541,
+      "marketingName": "ORIGINS 指定商品两件95折，三件9折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:33:59",
+      "pause": false
+    },
+    {
+      "marketingId": 542,
+      "marketingName": "Shiseido 指定商品两件9折，三件85折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:34:08",
+      "pause": false
+    },
+    {
+      "marketingId": 543,
+      "marketingName": "Tom Ford Beauty 指定商品三件75折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:34:34",
+      "pause": false
+    },
+    {
+      "marketingId": 544,
+      "marketingName": "Shiseido 指定商品两件9折，三件8折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:35:16",
+      "pause": false
+    },
+    {
+      "marketingId": 545,
+      "marketingName": "Tom Ford Beauty 指定商品两件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:35:19",
+      "pause": false
+    },
+    {
+      "marketingId": 546,
+      "marketingName": "Shiseido 指定商品两件9折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:36:15",
+      "pause": false
+    },
+    {
+      "marketingId": 547,
+      "marketingName": "Shiseido 指定商品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:37:12",
+      "pause": false
+    },
+    {
+      "marketingId": 548,
+      "marketingName": "Biotherm 指定商品两件75折，三件7折，四件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:38:12",
+      "pause": false
+    },
+    {
+      "marketingId": 549,
+      "marketingName": "Biotherm 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:39:41",
+      "pause": false
+    },
+    {
+      "marketingId": 550,
+      "marketingName": "Biotherm 指定商品两件75折，四件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:40:30",
+      "pause": false
+    },
+    {
+      "marketingId": 551,
+      "marketingName": "Biotherm 指定商品一件8折，两件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:41:33",
+      "pause": false
+    },
+    {
+      "marketingId": 552,
+      "marketingName": "BOBBI BROWN 指定商品一件75折，两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:43:08",
+      "pause": false
+    },
+    {
+      "marketingId": 553,
+      "marketingName": "BOBBI BROWN 指定商品一件75折，两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:45:22",
+      "pause": false
+    },
+    {
+      "marketingId": 554,
+      "marketingName": "BOBBI BROWN 指定商品一件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:46:50",
+      "pause": false
+    },
+    {
+      "marketingId": 555,
+      "marketingName": "Tom Ford Beauty 指定商品两件75折，三件5折，",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 00:56:04",
+      "pause": false
+    },
+    {
+      "marketingId": 556,
+      "marketingName": "Tom Ford Beauty 指定商品两件75折，三件7折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:02:58",
+      "pause": false
+    },
+    {
+      "marketingId": 557,
+      "marketingName": "CPB 指定商品一件95折，两件九折，三件85折，四件79折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:25:57",
+      "pause": false
+    },
+    {
+      "marketingId": 558,
+      "marketingName": "CPB 指定商品一件95折，两件九折，三件85折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:27:14",
+      "pause": false
+    },
+    {
+      "marketingId": 559,
+      "marketingName": "赫莲娜指定商品两件及以上9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:27:27",
+      "pause": false
+    },
+    {
+      "marketingId": 560,
+      "marketingName": "碧欧泉两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:28:06",
+      "pause": false
+    },
+    {
+      "marketingId": 561,
+      "marketingName": "LAB SERIES 指定商品两件75折，三件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:28:35",
+      "pause": false
+    },
+    {
+      "marketingId": 562,
+      "marketingName": "BOBBI BROWN 指定商品一件75折，两件7折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:29:13",
+      "pause": false
+    },
+    {
+      "marketingId": 563,
+      "marketingName": "MAC 指定商品两件及两件75折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:29:53",
+      "pause": false
+    },
+    {
+      "marketingId": 564,
+      "marketingName": "BOBBI BROWN 指定商品两件75折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:30:05",
+      "pause": false
+    },
+    {
+      "marketingId": 565,
+      "marketingName": "科颜氏单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:30:13",
+      "pause": false
+    },
+    {
+      "marketingId": 566,
+      "marketingName": "MAC 指定商品两件75折，三件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:30:48",
+      "pause": false
+    },
+    {
+      "marketingId": 567,
+      "marketingName": "CPB 指定商品两件九折，三件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:31:25",
+      "pause": false
+    },
+    {
+      "marketingId": 568,
+      "marketingName": "MAC 指定商品两件75折，三件及以上5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:31:55",
+      "pause": false
+    },
+    {
+      "marketingId": 569,
+      "marketingName": "兰蔻两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:31:56",
+      "pause": false
+    },
+    {
+      "marketingId": 570,
+      "marketingName": "兰蔻两件95折，三件9折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:33:27",
+      "pause": false
+    },
+    {
+      "marketingId": 571,
+      "marketingName": "E.LAUDER 指定商品两件9折，三件及三件以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-26 23:59:00",
+      "createTime": "2020-06-23 01:34:42",
+      "pause": false
+    },
+    {
+      "marketingId": 572,
+      "marketingName": "E.LAUDER 指定商品两件8折，三件及三件以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:36:00",
+      "pause": false
+    },
+    {
+      "marketingId": 573,
+      "marketingName": "BOBBI BROWN 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:36:24",
+      "pause": false
+    },
+    {
+      "marketingId": 574,
+      "marketingName": "兰蔻两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:37:26",
+      "pause": false
+    },
+    {
+      "marketingId": 575,
+      "marketingName": "BURBERRY 指定产品一件75折，两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:37:29",
+      "pause": false
+    },
+    {
+      "marketingId": 576,
+      "marketingName": "E.LAUDER 指定商品三件75折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:37:33",
+      "pause": false
+    },
+    {
+      "marketingId": 577,
+      "marketingName": "BURBERRY 指定产品两件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:38:08",
+      "pause": false
+    },
+    {
+      "marketingId": 578,
+      "marketingName": "兰蔻两件95折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:38:34",
+      "pause": false
+    },
+    {
+      "marketingId": 579,
+      "marketingName": "BURBERRY 指定产品单件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:38:50",
+      "pause": false
+    },
+    {
+      "marketingId": 580,
+      "marketingName": "E.LAUDER 指定商品三件75折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:38:55",
+      "pause": false
+    },
+    {
+      "marketingId": 581,
+      "marketingName": "兰蔻两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:39:44",
+      "pause": false
+    },
+    {
+      "marketingId": 582,
+      "marketingName": "E.LAUDER 指定商品三件75折，五件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:40:23",
+      "pause": false
+    },
+    {
+      "marketingId": 583,
+      "marketingName": "兰蔻指定单件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:40:41",
+      "pause": false
+    },
+    {
+      "marketingId": 584,
+      "marketingName": "MAC 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:41:33",
+      "pause": false
+    },
+    {
+      "marketingId": 585,
+      "marketingName": "欧舒丹单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:41:39",
+      "pause": false
+    },
+    {
+      "marketingId": 586,
+      "marketingName": "BURBERRY 指定产品单件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:42:02",
+      "pause": false
+    },
+    {
+      "marketingId": 587,
+      "marketingName": "E.LAUDER 指定商品三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:42:20",
+      "pause": false
+    },
+    {
+      "marketingId": 588,
+      "marketingName": "ORIGINS 指定商品两件75折，三件 7折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:42:37",
+      "pause": false
+    },
+    {
+      "marketingId": 589,
+      "marketingName": "雪花秀单件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:42:41",
+      "pause": false
+    },
+    {
+      "marketingId": 590,
+      "marketingName": "Tiffany指定产品单件8折，两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:43:29",
+      "pause": false
+    },
+    {
+      "marketingId": 591,
+      "marketingName": "ORIGINS 指定商品两件75折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:43:39",
+      "pause": false
+    },
+    {
+      "marketingId": 592,
+      "marketingName": "Fresh 指定产品两件9折，三件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:43:42",
+      "pause": false
+    },
+    {
+      "marketingId": 593,
+      "marketingName": "ORIGINS 指定商品两件75折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:44:46",
+      "pause": false
+    },
+    {
+      "marketingId": 594,
+      "marketingName": "圣罗兰两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 01:45:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:44:52",
+      "pause": false
+    },
+    {
+      "marketingId": 595,
+      "marketingName": "Fresh 指定产品三件75折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:45:46",
+      "pause": false
+    },
+    {
+      "marketingId": 596,
+      "marketingName": "圣罗兰两件75折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:45:47",
+      "pause": false
+    },
+    {
+      "marketingId": 597,
+      "marketingName": "ORIGINS 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:46:30",
+      "pause": false
+    },
+    {
+      "marketingId": 598,
+      "marketingName": "BURBERRY 指定产品单件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:46:58",
+      "pause": false
+    },
+    {
+      "marketingId": 599,
+      "marketingName": "Tom Ford Beauty 指定商品两件75折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:47:15",
+      "pause": false
+    },
+    {
+      "marketingId": 600,
+      "marketingName": "圣罗兰两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:48:21",
+      "pause": false
+    },
+    {
+      "marketingId": 601,
+      "marketingName": "CLINIQUE 指定商品两件75折，三件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:48:28",
+      "pause": false
+    },
+    {
+      "marketingId": 602,
+      "marketingName": "CLINIQUE 指定商品两件75折，三件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:49:26",
+      "pause": false
+    },
+    {
+      "marketingId": 603,
+      "marketingName": "Tom Ford Beauty 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:49:48",
+      "pause": false
+    },
+    {
+      "marketingId": 604,
+      "marketingName": "圣罗兰两件75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:50:10",
+      "pause": false
+    },
+    {
+      "marketingId": 605,
+      "marketingName": "Dior品牌指定商品单件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:50:54",
+      "pause": false
+    },
+    {
+      "marketingId": 606,
+      "marketingName": "DKNY  指定商品两件及两件以上75折优惠",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:51:37",
+      "pause": false
+    },
+    {
+      "marketingId": 607,
+      "marketingName": "Dior品牌指定商品单件95折，两件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:52:00",
+      "pause": false
+    },
+    {
+      "marketingId": 608,
+      "marketingName": "Jurlique 指定商品两件9折，三件及以上8折优惠",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:52:25",
+      "pause": false
+    },
+    {
+      "marketingId": 609,
+      "marketingName": "Dior品牌指定商品单件95折，两件8折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:52:56",
+      "pause": false
+    },
+    {
+      "marketingId": 610,
+      "marketingName": "Fresh 品牌任意产品三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:53:02",
+      "pause": false
+    },
+    {
+      "marketingId": 611,
+      "marketingName": "CLINIQUE 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:53:32",
+      "pause": false
+    },
+    {
+      "marketingId": 612,
+      "marketingName": "Jurlique 指定商品三件及以上8折优惠",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:53:38",
+      "pause": false
+    },
+    {
+      "marketingId": 613,
+      "marketingName": "GlAM GlOW 指定商品两件75折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:54:23",
+      "pause": false
+    },
+    {
+      "marketingId": 614,
+      "marketingName": "海蓝之谜指定商品两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:54:51",
+      "pause": false
+    },
+    {
+      "marketingId": 615,
+      "marketingName": "Dior品牌指定商品单件95折，两件7折，三件6折，四件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:54:59",
+      "pause": false
+    },
+    {
+      "marketingId": 616,
+      "marketingName": "GlAM GlOW 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:55:16",
+      "pause": false
+    },
+    {
+      "marketingId": 617,
+      "marketingName": "Giorgio Armani 购买指定商品单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:56:05",
+      "pause": false
+    },
+    {
+      "marketingId": 618,
+      "marketingName": "海蓝之谜指定商品三件8折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:56:13",
+      "pause": false
+    },
+    {
+      "marketingId": 619,
+      "marketingName": "Darphin 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:56:31",
+      "pause": false
+    },
+    {
+      "marketingId": 620,
+      "marketingName": "Dior品牌指定商品单件95折，两件9折，三件8.5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 01:55:00",
+      "createTime": "2020-06-23 01:56:37",
+      "pause": false
+    },
+    {
+      "marketingId": 621,
+      "marketingName": "Giorgio Armani 购买指定商品单件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:57:16",
+      "pause": false
+    },
+    {
+      "marketingId": 622,
+      "marketingName": "Gucci 指定产品单件85折，两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:57:17",
+      "pause": false
+    },
+    {
+      "marketingId": 623,
+      "marketingName": "欧莱雅两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:57:56",
+      "pause": false
+    },
+    {
+      "marketingId": 624,
+      "marketingName": "Dior品牌指定商品单件95折，两件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:57:57",
+      "pause": false
+    },
+    {
+      "marketingId": 625,
+      "marketingName": "Gucci 指定产品单件85折，两件7折，三件5折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:58:28",
+      "pause": false
+    },
+    {
+      "marketingId": 626,
+      "marketingName": "娇韵诗两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:58:52",
+      "pause": false
+    },
+    {
+      "marketingId": 627,
+      "marketingName": "Gucci 指定产品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:59:21",
+      "pause": false
+    },
+    {
+      "marketingId": 628,
+      "marketingName": "Dior品牌指定商品单件95折，两件85折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:59:34",
+      "pause": false
+    },
+    {
+      "marketingId": 629,
+      "marketingName": "LA MER 指定商品三件及三件以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:59:46",
+      "pause": false
+    },
+    {
+      "marketingId": 630,
+      "marketingName": "Gucci 指定产品两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 01:59:52",
+      "pause": false
+    },
+    {
+      "marketingId": 631,
+      "marketingName": "娇韵诗两件9折，三件85折，四件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:00:09",
+      "pause": false
+    },
+    {
+      "marketingId": 632,
+      "marketingName": "Dior品牌指定商品单件95折，两件7折，三件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:00:28",
+      "pause": false
+    },
+    {
+      "marketingId": 633,
+      "marketingName": "Gucci 指定产品两件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:00:46",
+      "pause": false
+    },
+    {
+      "marketingId": 634,
+      "marketingName": "娇韵诗两件9折，三件85折，四件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:00:57",
+      "pause": false
+    },
+    {
+      "marketingId": 635,
+      "marketingName": "NARS 指定产品单件7折，两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:01:17",
+      "pause": false
+    },
+    {
+      "marketingId": 636,
+      "marketingName": "NARS 指定产品单件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:02:21",
+      "pause": false
+    },
+    {
+      "marketingId": 637,
+      "marketingName": "Gucci 指定产品两件85折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:02:40",
+      "pause": false
+    },
+    {
+      "marketingId": 638,
+      "marketingName": "娇韵诗两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:02:53",
+      "pause": false
+    },
+    {
+      "marketingId": 639,
+      "marketingName": "NARS 指定产品两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:03:28",
+      "pause": false
+    },
+    {
+      "marketingId": 640,
+      "marketingName": "Gucci 指定产品一件8折，两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:03:31",
+      "pause": false
+    },
+    {
+      "marketingId": 641,
+      "marketingName": "NARS 指定产品两件9折，三件85折，四件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:05:00",
+      "pause": false
+    },
+    {
+      "marketingId": 642,
+      "marketingName": "菲拉格慕单件9折，两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:05:13",
+      "pause": false
+    },
+    {
+      "marketingId": 643,
+      "marketingName": "Dior品牌指定商品单件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:05:38",
+      "pause": false
+    },
+    {
+      "marketingId": 644,
+      "marketingName": "NARS 指定产品两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:06:20",
+      "pause": false
+    },
+    {
+      "marketingId": 645,
+      "marketingName": "Gucci 指定产品两件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:07:03",
+      "pause": false
+    },
+    {
+      "marketingId": 646,
+      "marketingName": "Dior品牌指定商品单件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:07:10",
+      "pause": false
+    },
+    {
+      "marketingId": 647,
+      "marketingName": "NARS 指定产品两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:07:13",
+      "pause": false
+    },
+    {
+      "marketingId": 648,
+      "marketingName": "玫珂菲单件9折，两件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:08:05",
+      "pause": false
+    },
+    {
+      "marketingId": 649,
+      "marketingName": "雅顿指定商品两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:08:06",
+      "pause": false
+    },
+    {
+      "marketingId": 650,
+      "marketingName": "Gucci 指定单件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:08:40",
+      "pause": false
+    },
+    {
+      "marketingId": 651,
+      "marketingName": "雅顿指定商品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:08:49",
+      "pause": false
+    },
+    {
+      "marketingId": 652,
+      "marketingName": "SKII两件95折，三件9折，四件85折，五件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:09:46",
+      "pause": false
+    },
+    {
+      "marketingId": 653,
+      "marketingName": "雅顿指定商品单件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:09:59",
+      "pause": false
+    },
+    {
+      "marketingId": 654,
+      "marketingName": "NARS 指定产品两件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:10:04",
+      "pause": false
+    },
+    {
+      "marketingId": 655,
+      "marketingName": "TOMMY两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:10:24",
+      "pause": false
+    },
+    {
+      "marketingId": 656,
+      "marketingName": "娇兰两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 02:10:00",
+      "createTime": "2020-06-23 02:10:50",
+      "pause": false
+    },
+    {
+      "marketingId": 657,
+      "marketingName": "SKII两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:11:08",
+      "pause": false
+    },
+    {
+      "marketingId": 658,
+      "marketingName": "万宝龙两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:11:13",
+      "pause": false
+    },
+    {
+      "marketingId": 659,
+      "marketingName": "NARS 指定产品两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:11:26",
+      "pause": false
+    },
+    {
+      "marketingId": 660,
+      "marketingName": "娇兰两件95折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:11:41",
+      "pause": false
+    },
+    {
+      "marketingId": 661,
+      "marketingName": "SKII两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:11:52",
+      "pause": false
+    },
+    {
+      "marketingId": 662,
+      "marketingName": "雅漾两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:12:06",
+      "pause": false
+    },
+    {
+      "marketingId": 663,
+      "marketingName": "娇兰两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:12:25",
+      "pause": false
+    },
+    {
+      "marketingId": 664,
+      "marketingName": "黛珂两件95折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:12:49",
+      "pause": false
+    },
+    {
+      "marketingId": 665,
+      "marketingName": "后两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:12:50",
+      "pause": false
+    },
+    {
+      "marketingId": 666,
+      "marketingName": "NARS 指定产品三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:13:18",
+      "pause": false
+    },
+    {
+      "marketingId": 667,
+      "marketingName": "娇兰两件8折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:13:32",
+      "pause": false
+    },
+    {
+      "marketingId": 668,
+      "marketingName": "THREE两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:13:48",
+      "pause": false
+    },
+    {
+      "marketingId": 669,
+      "marketingName": "希思黎两件95折，三件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:14:52",
+      "pause": false
+    },
+    {
+      "marketingId": 670,
+      "marketingName": "ARAMIS 指定商品两件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:16:28",
+      "pause": false
+    },
+    {
+      "marketingId": 671,
+      "marketingName": "范思哲两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:17:08",
+      "pause": false
+    },
+    {
+      "marketingId": 672,
+      "marketingName": "Biotherm 指定商品两件75折，三件及以上7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:17:38",
+      "pause": false
+    },
+    {
+      "marketingId": 673,
+      "marketingName": "NARS 指定产品三件及以上85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:20:10",
+      "pause": false
+    },
+    {
+      "marketingId": 674,
+      "marketingName": "Shiseido 指定商品两件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:20:41",
+      "pause": false
+    },
+    {
+      "marketingId": 675,
+      "marketingName": "Shiseido 指定商品两件9折，三件85折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:23:22",
+      "pause": false
+    },
+    {
+      "marketingId": 676,
+      "marketingName": "娇兰两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:23:56",
+      "pause": false
+    },
+    {
+      "marketingId": 677,
+      "marketingName": "娇兰两件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:25:15",
+      "pause": false
+    },
+    {
+      "marketingId": 678,
+      "marketingName": "娇兰两件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:25:46",
+      "pause": false
+    },
+    {
+      "marketingId": 679,
+      "marketingName": "娇兰单价7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:26:06",
+      "pause": false
+    },
+    {
+      "marketingId": 680,
+      "marketingName": "科颜氏两件95折，三件9折，四件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:26:59",
+      "pause": false
+    },
+    {
+      "marketingId": 681,
+      "marketingName": "科颜氏两件9折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:27:50",
+      "pause": false
+    },
+    {
+      "marketingId": 682,
+      "marketingName": "科颜氏两件95折，三件8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:28:39",
+      "pause": false
+    },
+    {
+      "marketingId": 683,
+      "marketingName": "Shiseido 指定商品两件95折，三件9折，三件85折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:46:09",
+      "pause": false
+    },
+    {
+      "marketingId": 684,
+      "marketingName": "CPB 指定商品一件95折，两件九折，三件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:47:17",
+      "pause": false
+    },
+    {
+      "marketingId": 685,
+      "marketingName": "E.LAUDER 指定商品一件9折，两件85折，三件及三件以上71折",
+      "marketingType": 3,
+      "beginTime": "2020-06-23 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-23 02:48:23",
+      "pause": false
+    },
+    {
+      "marketingId": 686,
+      "marketingName": "三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-24 01:07:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-24 01:08:53",
+      "pause": false
+    },
+    {
+      "marketingId": 687,
+      "marketingName": "三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-24 12:48:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-24 12:49:31",
+      "pause": false
+    },
+    {
+      "marketingId": 688,
+      "marketingName": "10302080255\t三件及以上73折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 03:29:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 03:32:47",
+      "pause": false
+    },
+    {
+      "marketingId": 689,
+      "marketingName": "10302085228 三件及以上8折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 03:33:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 03:34:59",
+      "pause": false
+    },
+    {
+      "marketingId": 690,
+      "marketingName": "10302031304，两件85折，三件75折，四件及以上6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 09:21:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 09:24:31",
+      "pause": false
+    },
+    {
+      "marketingId": 691,
+      "marketingName": "10302082957，一件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 09:35:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 09:36:33",
+      "pause": false
+    },
+    {
+      "marketingId": 692,
+      "marketingName": "103030910781，两件9折，三件8折，六件6折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 09:48:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 09:50:45",
+      "pause": false
+    },
+    {
+      "marketingId": 693,
+      "marketingName": "10302010487，两件9折",
+      "marketingType": 3,
+      "beginTime": "2020-06-25 09:54:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 09:55:12",
+      "pause": false
+    },
+    {
+      "marketingId": 694,
+      "marketingName": "10302070644，买两件9折，买四件8折，六件7折",
+      "marketingType": 3,
+      "beginTime": "2020-06-26 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-25 12:59:48",
+      "pause": false
+    },
+    {
+      "marketingId": 695,
+      "marketingName": "两件9折，三件及以上75折",
+      "marketingType": 3,
+      "beginTime": "2020-06-27 00:01:00",
+      "endTime": "2020-06-30 23:59:00",
+      "createTime": "2020-06-26 18:48:22",
+      "pause": false
+    }
+  ]
+}

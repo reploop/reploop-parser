@@ -101,17 +101,8 @@ public class Json2Bean {
         Map<QualifiedName, Message> nameMessageMap = merge(context);
         // Try to aggregate class hierarchy, less duplicate code.
         classHierarchy.infer(nameMessageMap);
-        Set<QualifiedName> names = new HashSet<>();
-        for (Map.Entry<QualifiedName, Message> entry : nameMessageMap.entrySet()) {
-            JsonMessageContext ctx0 = new JsonMessageContext();
-            dependencyResolver.visitMessage(entry.getValue(), ctx0);
-            Set<QualifiedName> deps = ctx0.getDependencies();
-            if (0 == deps.size()) {
-                break;
-            }
-            names.addAll(deps);
-        }
-        System.out.println(names);
+
+        // Type ..
         JsonMessageContext ctx1 = new JsonMessageContext();
         nameMessageMap.forEach((name, message) -> {
             JsonBeanContext ctx = new JsonBeanContext(name);

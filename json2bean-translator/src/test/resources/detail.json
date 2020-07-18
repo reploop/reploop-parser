@@ -1,0 +1,6907 @@
+{
+  "success": true,
+  "resultCode": "R6-0-0000",
+  "reason": null,
+  "result": [
+    {
+      "marketingDetailId": "1",
+      "marketingId": 1,
+      "full": 1.0,
+      "discount": 0.94
+    },
+    {
+      "marketingDetailId": "2",
+      "marketingId": 2,
+      "full": 1.0,
+      "discount": 0.94
+    },
+    {
+      "marketingDetailId": "3",
+      "marketingId": 3,
+      "full": 1.0,
+      "discount": 0.94
+    },
+    {
+      "marketingDetailId": "4",
+      "marketingId": 4,
+      "full": 1.0,
+      "discount": 0.94
+    },
+    {
+      "marketingDetailId": "5",
+      "marketingId": 5,
+      "full": 1.0,
+      "discount": 0.94
+    },
+    {
+      "marketingDetailId": "7",
+      "marketingId": 7,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "8",
+      "marketingId": 6,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "9",
+      "marketingId": 8,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "10",
+      "marketingId": 9,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "12",
+      "marketingId": 10,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "13",
+      "marketingId": 10,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "14",
+      "marketingId": 11,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "15",
+      "marketingId": 11,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "16",
+      "marketingId": 12,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "17",
+      "marketingId": 12,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "18",
+      "marketingId": 13,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "19",
+      "marketingId": 13,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "20",
+      "marketingId": 14,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "22",
+      "marketingId": 16,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "23",
+      "marketingId": 17,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "24",
+      "marketingId": 18,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "27",
+      "marketingId": 20,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "28",
+      "marketingId": 19,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "29",
+      "marketingId": 15,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "30",
+      "marketingId": 21,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "31",
+      "marketingId": 22,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "32",
+      "marketingId": 23,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "33",
+      "marketingId": 24,
+      "full": 3.0,
+      "discount": 0.88
+    },
+    {
+      "marketingDetailId": "34",
+      "marketingId": 25,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "35",
+      "marketingId": 26,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "36",
+      "marketingId": 27,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "38",
+      "marketingId": 28,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "39",
+      "marketingId": 29,
+      "full": 4.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "40",
+      "marketingId": 30,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "41",
+      "marketingId": 31,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "42",
+      "marketingId": 31,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "43",
+      "marketingId": 32,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "44",
+      "marketingId": 32,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "46",
+      "marketingId": 33,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "48",
+      "marketingId": 35,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "49",
+      "marketingId": 34,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "50",
+      "marketingId": 36,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "51",
+      "marketingId": 37,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "52",
+      "marketingId": 38,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "53",
+      "marketingId": 39,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "54",
+      "marketingId": 40,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "55",
+      "marketingId": 40,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "56",
+      "marketingId": 41,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "57",
+      "marketingId": 42,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "58",
+      "marketingId": 43,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "59",
+      "marketingId": 44,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "60",
+      "marketingId": 45,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "61",
+      "marketingId": 46,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "62",
+      "marketingId": 47,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "63",
+      "marketingId": 48,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "64",
+      "marketingId": 49,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "65",
+      "marketingId": 49,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "66",
+      "marketingId": 50,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "67",
+      "marketingId": 51,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "68",
+      "marketingId": 52,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "69",
+      "marketingId": 53,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "70",
+      "marketingId": 54,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "71",
+      "marketingId": 54,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "72",
+      "marketingId": 55,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "73",
+      "marketingId": 56,
+      "full": 1.0,
+      "discount": 0.91
+    },
+    {
+      "marketingDetailId": "74",
+      "marketingId": 57,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "75",
+      "marketingId": 58,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "76",
+      "marketingId": 59,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "77",
+      "marketingId": 59,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "78",
+      "marketingId": 60,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "79",
+      "marketingId": 60,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "80",
+      "marketingId": 61,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "81",
+      "marketingId": 62,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "82",
+      "marketingId": 63,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "83",
+      "marketingId": 64,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "84",
+      "marketingId": 65,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "85",
+      "marketingId": 66,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "86",
+      "marketingId": 67,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "87",
+      "marketingId": 68,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "88",
+      "marketingId": 69,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "89",
+      "marketingId": 70,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "90",
+      "marketingId": 70,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "91",
+      "marketingId": 71,
+      "full": 1.0,
+      "discount": 0.96
+    },
+    {
+      "marketingDetailId": "92",
+      "marketingId": 71,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "93",
+      "marketingId": 72,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "94",
+      "marketingId": 73,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "95",
+      "marketingId": 74,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "96",
+      "marketingId": 75,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "97",
+      "marketingId": 76,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "98",
+      "marketingId": 77,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "99",
+      "marketingId": 78,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "100",
+      "marketingId": 79,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "101",
+      "marketingId": 80,
+      "full": 1.0,
+      "discount": 0.98
+    },
+    {
+      "marketingDetailId": "102",
+      "marketingId": 80,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "103",
+      "marketingId": 81,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "104",
+      "marketingId": 82,
+      "full": 3.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "105",
+      "marketingId": 83,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "106",
+      "marketingId": 84,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "107",
+      "marketingId": 85,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "108",
+      "marketingId": 86,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "109",
+      "marketingId": 87,
+      "full": 3.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "110",
+      "marketingId": 88,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "111",
+      "marketingId": 89,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "112",
+      "marketingId": 90,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "113",
+      "marketingId": 91,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "114",
+      "marketingId": 92,
+      "full": 1.0,
+      "discount": 0.97
+    },
+    {
+      "marketingDetailId": "115",
+      "marketingId": 93,
+      "full": 3.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "116",
+      "marketingId": 94,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "448",
+      "marketingId": 304,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "514",
+      "marketingId": 359,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "515",
+      "marketingId": 358,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "516",
+      "marketingId": 357,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "517",
+      "marketingId": 356,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "518",
+      "marketingId": 355,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "519",
+      "marketingId": 354,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "520",
+      "marketingId": 353,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "521",
+      "marketingId": 352,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "522",
+      "marketingId": 351,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "523",
+      "marketingId": 350,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "524",
+      "marketingId": 349,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "525",
+      "marketingId": 348,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "526",
+      "marketingId": 347,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "527",
+      "marketingId": 346,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "528",
+      "marketingId": 345,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "529",
+      "marketingId": 344,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "530",
+      "marketingId": 343,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "531",
+      "marketingId": 342,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "532",
+      "marketingId": 341,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "533",
+      "marketingId": 340,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "534",
+      "marketingId": 339,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "535",
+      "marketingId": 338,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "536",
+      "marketingId": 337,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "537",
+      "marketingId": 336,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "538",
+      "marketingId": 335,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "539",
+      "marketingId": 334,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "540",
+      "marketingId": 333,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "541",
+      "marketingId": 332,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "542",
+      "marketingId": 331,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "543",
+      "marketingId": 330,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "544",
+      "marketingId": 329,
+      "full": 1.0,
+      "discount": 0.63
+    },
+    {
+      "marketingDetailId": "545",
+      "marketingId": 95,
+      "full": 1.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "546",
+      "marketingId": 319,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "547",
+      "marketingId": 328,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "548",
+      "marketingId": 327,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "549",
+      "marketingId": 326,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "550",
+      "marketingId": 96,
+      "full": 1.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "551",
+      "marketingId": 325,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "552",
+      "marketingId": 318,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "553",
+      "marketingId": 324,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "554",
+      "marketingId": 97,
+      "full": 1.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "555",
+      "marketingId": 317,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "556",
+      "marketingId": 323,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "557",
+      "marketingId": 316,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "558",
+      "marketingId": 322,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "559",
+      "marketingId": 98,
+      "full": 1.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "560",
+      "marketingId": 321,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "561",
+      "marketingId": 320,
+      "full": 2.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "562",
+      "marketingId": 99,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "563",
+      "marketingId": 315,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "564",
+      "marketingId": 309,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "565",
+      "marketingId": 314,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "566",
+      "marketingId": 100,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "567",
+      "marketingId": 100,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "568",
+      "marketingId": 100,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "569",
+      "marketingId": 313,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "570",
+      "marketingId": 308,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "571",
+      "marketingId": 101,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "572",
+      "marketingId": 101,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "573",
+      "marketingId": 101,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "574",
+      "marketingId": 312,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "575",
+      "marketingId": 307,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "576",
+      "marketingId": 102,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "577",
+      "marketingId": 102,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "578",
+      "marketingId": 102,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "579",
+      "marketingId": 311,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "580",
+      "marketingId": 306,
+      "full": 2.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "581",
+      "marketingId": 310,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "582",
+      "marketingId": 103,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "583",
+      "marketingId": 103,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "584",
+      "marketingId": 103,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "585",
+      "marketingId": 305,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "586",
+      "marketingId": 303,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "587",
+      "marketingId": 298,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "588",
+      "marketingId": 298,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "589",
+      "marketingId": 104,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "590",
+      "marketingId": 302,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "591",
+      "marketingId": 105,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "592",
+      "marketingId": 105,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "593",
+      "marketingId": 105,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "594",
+      "marketingId": 297,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "595",
+      "marketingId": 301,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "596",
+      "marketingId": 301,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "597",
+      "marketingId": 106,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "598",
+      "marketingId": 106,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "599",
+      "marketingId": 106,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "600",
+      "marketingId": 300,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "601",
+      "marketingId": 300,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "602",
+      "marketingId": 296,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "603",
+      "marketingId": 299,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "604",
+      "marketingId": 107,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "605",
+      "marketingId": 107,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "606",
+      "marketingId": 107,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "607",
+      "marketingId": 295,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "608",
+      "marketingId": 294,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "609",
+      "marketingId": 108,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "610",
+      "marketingId": 108,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "611",
+      "marketingId": 108,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "612",
+      "marketingId": 109,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "613",
+      "marketingId": 109,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "614",
+      "marketingId": 109,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "615",
+      "marketingId": 293,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "616",
+      "marketingId": 292,
+      "full": 2.0,
+      "discount": 0.62
+    },
+    {
+      "marketingDetailId": "617",
+      "marketingId": 110,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "618",
+      "marketingId": 110,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "619",
+      "marketingId": 110,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "620",
+      "marketingId": 119,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "621",
+      "marketingId": 119,
+      "full": 6.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "622",
+      "marketingId": 291,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "623",
+      "marketingId": 111,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "624",
+      "marketingId": 111,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "625",
+      "marketingId": 111,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "626",
+      "marketingId": 120,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "627",
+      "marketingId": 120,
+      "full": 6.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "628",
+      "marketingId": 290,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "629",
+      "marketingId": 112,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "630",
+      "marketingId": 112,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "631",
+      "marketingId": 112,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "632",
+      "marketingId": 121,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "633",
+      "marketingId": 121,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "634",
+      "marketingId": 289,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "635",
+      "marketingId": 113,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "636",
+      "marketingId": 113,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "637",
+      "marketingId": 113,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "638",
+      "marketingId": 122,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "639",
+      "marketingId": 122,
+      "full": 6.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "640",
+      "marketingId": 288,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "641",
+      "marketingId": 114,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "642",
+      "marketingId": 114,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "643",
+      "marketingId": 114,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "644",
+      "marketingId": 123,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "645",
+      "marketingId": 123,
+      "full": 5.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "646",
+      "marketingId": 123,
+      "full": 6.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "647",
+      "marketingId": 287,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "648",
+      "marketingId": 287,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "649",
+      "marketingId": 115,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "650",
+      "marketingId": 115,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "651",
+      "marketingId": 115,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "652",
+      "marketingId": 124,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "653",
+      "marketingId": 124,
+      "full": 5.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "654",
+      "marketingId": 124,
+      "full": 6.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "655",
+      "marketingId": 286,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "656",
+      "marketingId": 286,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "657",
+      "marketingId": 116,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "658",
+      "marketingId": 116,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "659",
+      "marketingId": 116,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "660",
+      "marketingId": 125,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "661",
+      "marketingId": 125,
+      "full": 6.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "662",
+      "marketingId": 285,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "663",
+      "marketingId": 117,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "664",
+      "marketingId": 117,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "665",
+      "marketingId": 117,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "666",
+      "marketingId": 126,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "667",
+      "marketingId": 126,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "668",
+      "marketingId": 126,
+      "full": 5.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "669",
+      "marketingId": 126,
+      "full": 6.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "670",
+      "marketingId": 284,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "671",
+      "marketingId": 284,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "672",
+      "marketingId": 284,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "673",
+      "marketingId": 118,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "674",
+      "marketingId": 118,
+      "full": 6.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "675",
+      "marketingId": 127,
+      "full": 6.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "676",
+      "marketingId": 283,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "677",
+      "marketingId": 283,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "678",
+      "marketingId": 283,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "679",
+      "marketingId": 128,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "680",
+      "marketingId": 128,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "681",
+      "marketingId": 128,
+      "full": 6.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "682",
+      "marketingId": 129,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "683",
+      "marketingId": 129,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "684",
+      "marketingId": 129,
+      "full": 6.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "685",
+      "marketingId": 282,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "686",
+      "marketingId": 282,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "687",
+      "marketingId": 282,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "688",
+      "marketingId": 130,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "689",
+      "marketingId": 130,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "690",
+      "marketingId": 130,
+      "full": 6.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "691",
+      "marketingId": 281,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "692",
+      "marketingId": 281,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "693",
+      "marketingId": 281,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "694",
+      "marketingId": 131,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "695",
+      "marketingId": 131,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "696",
+      "marketingId": 131,
+      "full": 5.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "697",
+      "marketingId": 132,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "698",
+      "marketingId": 132,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "699",
+      "marketingId": 132,
+      "full": 5.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "700",
+      "marketingId": 280,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "701",
+      "marketingId": 149,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "702",
+      "marketingId": 149,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "703",
+      "marketingId": 133,
+      "full": 4.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "704",
+      "marketingId": 133,
+      "full": 5.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "705",
+      "marketingId": 279,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "706",
+      "marketingId": 139,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "707",
+      "marketingId": 139,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "708",
+      "marketingId": 139,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "709",
+      "marketingId": 134,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "710",
+      "marketingId": 134,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "711",
+      "marketingId": 134,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "712",
+      "marketingId": 278,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "713",
+      "marketingId": 140,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "714",
+      "marketingId": 140,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "715",
+      "marketingId": 140,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "716",
+      "marketingId": 135,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "717",
+      "marketingId": 277,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "718",
+      "marketingId": 136,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "719",
+      "marketingId": 141,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "720",
+      "marketingId": 141,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "721",
+      "marketingId": 141,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "722",
+      "marketingId": 276,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "723",
+      "marketingId": 137,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "724",
+      "marketingId": 137,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "725",
+      "marketingId": 137,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "726",
+      "marketingId": 142,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "727",
+      "marketingId": 142,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "728",
+      "marketingId": 138,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "729",
+      "marketingId": 138,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "730",
+      "marketingId": 138,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "731",
+      "marketingId": 275,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "732",
+      "marketingId": 143,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "733",
+      "marketingId": 143,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "734",
+      "marketingId": 143,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "735",
+      "marketingId": 274,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "736",
+      "marketingId": 150,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "737",
+      "marketingId": 150,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "738",
+      "marketingId": 150,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "739",
+      "marketingId": 144,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "740",
+      "marketingId": 144,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "741",
+      "marketingId": 144,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "742",
+      "marketingId": 273,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "743",
+      "marketingId": 145,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "744",
+      "marketingId": 145,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "745",
+      "marketingId": 145,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "746",
+      "marketingId": 151,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "747",
+      "marketingId": 151,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "748",
+      "marketingId": 151,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "749",
+      "marketingId": 152,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "750",
+      "marketingId": 152,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "751",
+      "marketingId": 271,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "752",
+      "marketingId": 146,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "753",
+      "marketingId": 146,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "754",
+      "marketingId": 146,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "755",
+      "marketingId": 153,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "756",
+      "marketingId": 153,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "757",
+      "marketingId": 270,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "758",
+      "marketingId": 147,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "759",
+      "marketingId": 147,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "760",
+      "marketingId": 147,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "761",
+      "marketingId": 148,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "762",
+      "marketingId": 148,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "763",
+      "marketingId": 148,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "764",
+      "marketingId": 154,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "765",
+      "marketingId": 154,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "766",
+      "marketingId": 269,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "767",
+      "marketingId": 155,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "768",
+      "marketingId": 155,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "769",
+      "marketingId": 156,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "770",
+      "marketingId": 156,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "771",
+      "marketingId": 272,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "772",
+      "marketingId": 159,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "773",
+      "marketingId": 159,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "774",
+      "marketingId": 157,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "775",
+      "marketingId": 157,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "776",
+      "marketingId": 268,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "777",
+      "marketingId": 160,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "778",
+      "marketingId": 160,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "779",
+      "marketingId": 158,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "780",
+      "marketingId": 158,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "781",
+      "marketingId": 267,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "782",
+      "marketingId": 161,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "783",
+      "marketingId": 161,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "784",
+      "marketingId": 169,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "785",
+      "marketingId": 266,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "786",
+      "marketingId": 162,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "787",
+      "marketingId": 162,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "788",
+      "marketingId": 170,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "789",
+      "marketingId": 249,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "790",
+      "marketingId": 265,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "791",
+      "marketingId": 163,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "792",
+      "marketingId": 163,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "793",
+      "marketingId": 171,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "794",
+      "marketingId": 250,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "795",
+      "marketingId": 172,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "796",
+      "marketingId": 164,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "797",
+      "marketingId": 164,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "798",
+      "marketingId": 264,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "799",
+      "marketingId": 251,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "800",
+      "marketingId": 173,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "801",
+      "marketingId": 165,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "802",
+      "marketingId": 165,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "803",
+      "marketingId": 263,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "804",
+      "marketingId": 174,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "806",
+      "marketingId": 166,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "807",
+      "marketingId": 262,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "808",
+      "marketingId": 175,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "810",
+      "marketingId": 167,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "811",
+      "marketingId": 176,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "812",
+      "marketingId": 261,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "814",
+      "marketingId": 177,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "815",
+      "marketingId": 168,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "816",
+      "marketingId": 178,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "817",
+      "marketingId": 260,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "819",
+      "marketingId": 179,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "820",
+      "marketingId": 259,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "821",
+      "marketingId": 180,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "822",
+      "marketingId": 181,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "823",
+      "marketingId": 182,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "825",
+      "marketingId": 183,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "826",
+      "marketingId": 258,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "827",
+      "marketingId": 184,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "828",
+      "marketingId": 252,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "829",
+      "marketingId": 185,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "830",
+      "marketingId": 257,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "831",
+      "marketingId": 186,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "832",
+      "marketingId": 253,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "833",
+      "marketingId": 256,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "834",
+      "marketingId": 187,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "835",
+      "marketingId": 254,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "836",
+      "marketingId": 255,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "837",
+      "marketingId": 188,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "838",
+      "marketingId": 189,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "839",
+      "marketingId": 248,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "840",
+      "marketingId": 190,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "841",
+      "marketingId": 199,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "842",
+      "marketingId": 191,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "843",
+      "marketingId": 247,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "844",
+      "marketingId": 200,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "845",
+      "marketingId": 192,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "846",
+      "marketingId": 246,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "847",
+      "marketingId": 193,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "848",
+      "marketingId": 201,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "849",
+      "marketingId": 245,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "850",
+      "marketingId": 194,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "851",
+      "marketingId": 202,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "852",
+      "marketingId": 195,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "853",
+      "marketingId": 244,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "854",
+      "marketingId": 196,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "855",
+      "marketingId": 203,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "856",
+      "marketingId": 243,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "857",
+      "marketingId": 197,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "858",
+      "marketingId": 204,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "859",
+      "marketingId": 242,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "860",
+      "marketingId": 205,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "861",
+      "marketingId": 198,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "862",
+      "marketingId": 241,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "863",
+      "marketingId": 206,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "864",
+      "marketingId": 207,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "865",
+      "marketingId": 240,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "866",
+      "marketingId": 209,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "867",
+      "marketingId": 208,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "868",
+      "marketingId": 239,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "869",
+      "marketingId": 210,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "870",
+      "marketingId": 211,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "871",
+      "marketingId": 218,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "872",
+      "marketingId": 212,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "873",
+      "marketingId": 238,
+      "full": null,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "874",
+      "marketingId": 213,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "875",
+      "marketingId": 217,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "876",
+      "marketingId": 214,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "877",
+      "marketingId": 216,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "878",
+      "marketingId": 237,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "879",
+      "marketingId": 215,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "880",
+      "marketingId": 236,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "881",
+      "marketingId": 228,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "882",
+      "marketingId": 219,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "883",
+      "marketingId": 220,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "884",
+      "marketingId": 235,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "885",
+      "marketingId": 227,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "886",
+      "marketingId": 221,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "887",
+      "marketingId": 226,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "888",
+      "marketingId": 222,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "889",
+      "marketingId": 234,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "890",
+      "marketingId": 225,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "891",
+      "marketingId": 223,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "892",
+      "marketingId": 233,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "893",
+      "marketingId": 224,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "894",
+      "marketingId": 232,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "895",
+      "marketingId": 229,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "896",
+      "marketingId": 231,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "897",
+      "marketingId": 230,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "898",
+      "marketingId": 360,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "899",
+      "marketingId": 361,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "900",
+      "marketingId": 362,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "901",
+      "marketingId": 363,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "902",
+      "marketingId": 363,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "903",
+      "marketingId": 363,
+      "full": 3.0,
+      "discount": 0.79
+    },
+    {
+      "marketingDetailId": "904",
+      "marketingId": 364,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "905",
+      "marketingId": 365,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "906",
+      "marketingId": 366,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "907",
+      "marketingId": 367,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "908",
+      "marketingId": 368,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "909",
+      "marketingId": 369,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "910",
+      "marketingId": 370,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "911",
+      "marketingId": 371,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "912",
+      "marketingId": 372,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "913",
+      "marketingId": 373,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "914",
+      "marketingId": 373,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "915",
+      "marketingId": 374,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "916",
+      "marketingId": 375,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "917",
+      "marketingId": 376,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "918",
+      "marketingId": 377,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "919",
+      "marketingId": 378,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "920",
+      "marketingId": 379,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "921",
+      "marketingId": 380,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "922",
+      "marketingId": 381,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "923",
+      "marketingId": 381,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "924",
+      "marketingId": 382,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "925",
+      "marketingId": 383,
+      "full": null,
+      "discount": 0.1
+    },
+    {
+      "marketingDetailId": "926",
+      "marketingId": 384,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "927",
+      "marketingId": 385,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "928",
+      "marketingId": 386,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "929",
+      "marketingId": 387,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "931",
+      "marketingId": 388,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "933",
+      "marketingId": 389,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "935",
+      "marketingId": 390,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "936",
+      "marketingId": 391,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "937",
+      "marketingId": 392,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "938",
+      "marketingId": 393,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "939",
+      "marketingId": 393,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "940",
+      "marketingId": 393,
+      "full": 3.0,
+      "discount": 0.79
+    },
+    {
+      "marketingDetailId": "941",
+      "marketingId": 394,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "942",
+      "marketingId": 395,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "943",
+      "marketingId": 395,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "944",
+      "marketingId": 396,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "945",
+      "marketingId": 397,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "946",
+      "marketingId": 398,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "947",
+      "marketingId": 398,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "948",
+      "marketingId": 399,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "949",
+      "marketingId": 400,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "950",
+      "marketingId": 400,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "951",
+      "marketingId": 401,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "952",
+      "marketingId": 401,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "953",
+      "marketingId": 401,
+      "full": 3.0,
+      "discount": 0.56
+    },
+    {
+      "marketingDetailId": "954",
+      "marketingId": 402,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "955",
+      "marketingId": 402,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "959",
+      "marketingId": 404,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "960",
+      "marketingId": 405,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "961",
+      "marketingId": 405,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "962",
+      "marketingId": 405,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "963",
+      "marketingId": 403,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "964",
+      "marketingId": 403,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "965",
+      "marketingId": 403,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "966",
+      "marketingId": 406,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "967",
+      "marketingId": 406,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "968",
+      "marketingId": 406,
+      "full": 6.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "969",
+      "marketingId": 407,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "970",
+      "marketingId": 407,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "971",
+      "marketingId": 407,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "972",
+      "marketingId": 408,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "973",
+      "marketingId": 409,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "974",
+      "marketingId": 410,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "975",
+      "marketingId": 410,
+      "full": 2.0,
+      "discount": 0.63
+    },
+    {
+      "marketingDetailId": "976",
+      "marketingId": 411,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "977",
+      "marketingId": 411,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "978",
+      "marketingId": 411,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "979",
+      "marketingId": 411,
+      "full": 5.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "980",
+      "marketingId": 412,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "981",
+      "marketingId": 413,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "982",
+      "marketingId": 413,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "983",
+      "marketingId": 413,
+      "full": 5.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "984",
+      "marketingId": 414,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "985",
+      "marketingId": 414,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "986",
+      "marketingId": 414,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "987",
+      "marketingId": 415,
+      "full": 3.0,
+      "discount": 0.77
+    },
+    {
+      "marketingDetailId": "988",
+      "marketingId": 415,
+      "full": 4.0,
+      "discount": 0.67
+    },
+    {
+      "marketingDetailId": "989",
+      "marketingId": 416,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "990",
+      "marketingId": 416,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "991",
+      "marketingId": 416,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "992",
+      "marketingId": 416,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "993",
+      "marketingId": 417,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "994",
+      "marketingId": 417,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "995",
+      "marketingId": 417,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "996",
+      "marketingId": 418,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "997",
+      "marketingId": 419,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "998",
+      "marketingId": 419,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "999",
+      "marketingId": 420,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1000",
+      "marketingId": 420,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1001",
+      "marketingId": 420,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1002",
+      "marketingId": 421,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1003",
+      "marketingId": 421,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1004",
+      "marketingId": 422,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1005",
+      "marketingId": 422,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1006",
+      "marketingId": 422,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1007",
+      "marketingId": 423,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1008",
+      "marketingId": 423,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1009",
+      "marketingId": 423,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1010",
+      "marketingId": 424,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1011",
+      "marketingId": 425,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1012",
+      "marketingId": 426,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1013",
+      "marketingId": 426,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1014",
+      "marketingId": 426,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1015",
+      "marketingId": 427,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1016",
+      "marketingId": 428,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1017",
+      "marketingId": 428,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1018",
+      "marketingId": 429,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1019",
+      "marketingId": 429,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1020",
+      "marketingId": 430,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1021",
+      "marketingId": 431,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1022",
+      "marketingId": 431,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1023",
+      "marketingId": 431,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1024",
+      "marketingId": 432,
+      "full": 2.0,
+      "discount": 0.66
+    },
+    {
+      "marketingDetailId": "1025",
+      "marketingId": 433,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1026",
+      "marketingId": 434,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1027",
+      "marketingId": 434,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1028",
+      "marketingId": 434,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1029",
+      "marketingId": 435,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1030",
+      "marketingId": 436,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1031",
+      "marketingId": 436,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1032",
+      "marketingId": 437,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1033",
+      "marketingId": 437,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1034",
+      "marketingId": 437,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1035",
+      "marketingId": 438,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1036",
+      "marketingId": 438,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1037",
+      "marketingId": 439,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1038",
+      "marketingId": 439,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1041",
+      "marketingId": 441,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1042",
+      "marketingId": 441,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1043",
+      "marketingId": 441,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1044",
+      "marketingId": 442,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1045",
+      "marketingId": 442,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1046",
+      "marketingId": 443,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1047",
+      "marketingId": 443,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1048",
+      "marketingId": 444,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1049",
+      "marketingId": 444,
+      "full": 3.0,
+      "discount": 0.88
+    },
+    {
+      "marketingDetailId": "1050",
+      "marketingId": 445,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1051",
+      "marketingId": 445,
+      "full": 4.0,
+      "discount": 0.84
+    },
+    {
+      "marketingDetailId": "1052",
+      "marketingId": 446,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1053",
+      "marketingId": 447,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1054",
+      "marketingId": 447,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1055",
+      "marketingId": 448,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1056",
+      "marketingId": 448,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1057",
+      "marketingId": 449,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1058",
+      "marketingId": 449,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1059",
+      "marketingId": 449,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1060",
+      "marketingId": 450,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1061",
+      "marketingId": 450,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1062",
+      "marketingId": 451,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1063",
+      "marketingId": 451,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1064",
+      "marketingId": 452,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1065",
+      "marketingId": 452,
+      "full": 5.0,
+      "discount": 0.67
+    },
+    {
+      "marketingDetailId": "1066",
+      "marketingId": 453,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1067",
+      "marketingId": 453,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1068",
+      "marketingId": 453,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1069",
+      "marketingId": 453,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1070",
+      "marketingId": 454,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1071",
+      "marketingId": 455,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1072",
+      "marketingId": 455,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1073",
+      "marketingId": 455,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1074",
+      "marketingId": 456,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1075",
+      "marketingId": 456,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1076",
+      "marketingId": 457,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1077",
+      "marketingId": 457,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1078",
+      "marketingId": 457,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1079",
+      "marketingId": 458,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1080",
+      "marketingId": 458,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1081",
+      "marketingId": 459,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1082",
+      "marketingId": 459,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1083",
+      "marketingId": 459,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1087",
+      "marketingId": 461,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1088",
+      "marketingId": 462,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1089",
+      "marketingId": 462,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1090",
+      "marketingId": 462,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1091",
+      "marketingId": 463,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1092",
+      "marketingId": 463,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1093",
+      "marketingId": 464,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1094",
+      "marketingId": 464,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1095",
+      "marketingId": 465,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1096",
+      "marketingId": 466,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1097",
+      "marketingId": 467,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1098",
+      "marketingId": 468,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1099",
+      "marketingId": 469,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1100",
+      "marketingId": 470,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1101",
+      "marketingId": 470,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1102",
+      "marketingId": 471,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1103",
+      "marketingId": 471,
+      "full": 3.0,
+      "discount": 0.58
+    },
+    {
+      "marketingDetailId": "1104",
+      "marketingId": 472,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1105",
+      "marketingId": 473,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1106",
+      "marketingId": 474,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1107",
+      "marketingId": 474,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1108",
+      "marketingId": 474,
+      "full": 5.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1109",
+      "marketingId": 475,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1110",
+      "marketingId": 475,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1111",
+      "marketingId": 476,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1112",
+      "marketingId": 476,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1113",
+      "marketingId": 476,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1114",
+      "marketingId": 477,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1115",
+      "marketingId": 477,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1116",
+      "marketingId": 478,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1117",
+      "marketingId": 478,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1118",
+      "marketingId": 479,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1119",
+      "marketingId": 479,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1120",
+      "marketingId": 480,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1121",
+      "marketingId": 480,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1122",
+      "marketingId": 480,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1123",
+      "marketingId": 481,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1124",
+      "marketingId": 481,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1128",
+      "marketingId": 483,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1129",
+      "marketingId": 483,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1130",
+      "marketingId": 484,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1131",
+      "marketingId": 484,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1132",
+      "marketingId": 484,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1133",
+      "marketingId": 485,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1134",
+      "marketingId": 485,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1135",
+      "marketingId": 486,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1136",
+      "marketingId": 486,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1137",
+      "marketingId": 487,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1138",
+      "marketingId": 487,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1139",
+      "marketingId": 488,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1140",
+      "marketingId": 488,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1141",
+      "marketingId": 488,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1142",
+      "marketingId": 489,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1143",
+      "marketingId": 489,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1144",
+      "marketingId": 489,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1145",
+      "marketingId": 490,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1146",
+      "marketingId": 490,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1147",
+      "marketingId": 491,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1148",
+      "marketingId": 491,
+      "full": 3.0,
+      "discount": 0.64
+    },
+    {
+      "marketingDetailId": "1149",
+      "marketingId": 492,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1150",
+      "marketingId": 492,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1151",
+      "marketingId": 492,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1152",
+      "marketingId": 493,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1153",
+      "marketingId": 493,
+      "full": 3.0,
+      "discount": 0.53
+    },
+    {
+      "marketingDetailId": "1154",
+      "marketingId": 494,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1155",
+      "marketingId": 494,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1156",
+      "marketingId": 494,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1157",
+      "marketingId": 495,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1158",
+      "marketingId": 495,
+      "full": 4.0,
+      "discount": 0.73
+    },
+    {
+      "marketingDetailId": "1159",
+      "marketingId": 496,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1160",
+      "marketingId": 496,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1161",
+      "marketingId": 496,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1162",
+      "marketingId": 497,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1163",
+      "marketingId": 497,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1164",
+      "marketingId": 498,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1165",
+      "marketingId": 498,
+      "full": 2.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "1166",
+      "marketingId": 498,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1167",
+      "marketingId": 498,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1168",
+      "marketingId": 499,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1169",
+      "marketingId": 499,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1170",
+      "marketingId": 500,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1171",
+      "marketingId": 500,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1172",
+      "marketingId": 501,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1173",
+      "marketingId": 501,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1176",
+      "marketingId": 503,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1179",
+      "marketingId": 505,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1180",
+      "marketingId": 505,
+      "full": 2.0,
+      "discount": 0.59
+    },
+    {
+      "marketingDetailId": "1181",
+      "marketingId": 506,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1182",
+      "marketingId": 506,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1183",
+      "marketingId": 507,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1184",
+      "marketingId": 507,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1185",
+      "marketingId": 507,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1188",
+      "marketingId": 509,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1189",
+      "marketingId": 509,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1190",
+      "marketingId": 509,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1191",
+      "marketingId": 510,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1192",
+      "marketingId": 510,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1193",
+      "marketingId": 510,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1194",
+      "marketingId": 510,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1198",
+      "marketingId": 512,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1199",
+      "marketingId": 512,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1200",
+      "marketingId": 512,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1201",
+      "marketingId": 513,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1202",
+      "marketingId": 513,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1203",
+      "marketingId": 513,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1205",
+      "marketingId": 515,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1206",
+      "marketingId": 515,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1207",
+      "marketingId": 515,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1208",
+      "marketingId": 516,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1209",
+      "marketingId": 516,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1210",
+      "marketingId": 517,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1211",
+      "marketingId": 517,
+      "full": 2.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1212",
+      "marketingId": 518,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1213",
+      "marketingId": 518,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1214",
+      "marketingId": 519,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1215",
+      "marketingId": 519,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1216",
+      "marketingId": 520,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1217",
+      "marketingId": 520,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1218",
+      "marketingId": 520,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1219",
+      "marketingId": 521,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1220",
+      "marketingId": 521,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1221",
+      "marketingId": 521,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1222",
+      "marketingId": 521,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1223",
+      "marketingId": 522,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1224",
+      "marketingId": 522,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1225",
+      "marketingId": 522,
+      "full": 4.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "1226",
+      "marketingId": 523,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1227",
+      "marketingId": 523,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1228",
+      "marketingId": 524,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1229",
+      "marketingId": 524,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1230",
+      "marketingId": 524,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1234",
+      "marketingId": 526,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1235",
+      "marketingId": 526,
+      "full": 2.0,
+      "discount": 0.62
+    },
+    {
+      "marketingDetailId": "1236",
+      "marketingId": 527,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1237",
+      "marketingId": 527,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1238",
+      "marketingId": 528,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1239",
+      "marketingId": 528,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1240",
+      "marketingId": 528,
+      "full": 3.0,
+      "discount": 0.82
+    },
+    {
+      "marketingDetailId": "1241",
+      "marketingId": 529,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1242",
+      "marketingId": 529,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1243",
+      "marketingId": 529,
+      "full": 4.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "1244",
+      "marketingId": 530,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1245",
+      "marketingId": 530,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1246",
+      "marketingId": 531,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1247",
+      "marketingId": 531,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1248",
+      "marketingId": 531,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1249",
+      "marketingId": 532,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1250",
+      "marketingId": 532,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1251",
+      "marketingId": 532,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1252",
+      "marketingId": 533,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1253",
+      "marketingId": 533,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1254",
+      "marketingId": 533,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1255",
+      "marketingId": 533,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1256",
+      "marketingId": 534,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1257",
+      "marketingId": 534,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1258",
+      "marketingId": 535,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1259",
+      "marketingId": 535,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1260",
+      "marketingId": 536,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1261",
+      "marketingId": 536,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1262",
+      "marketingId": 536,
+      "full": 5.0,
+      "discount": 0.65
+    },
+    {
+      "marketingDetailId": "1263",
+      "marketingId": 537,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1264",
+      "marketingId": 537,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1265",
+      "marketingId": 538,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1266",
+      "marketingId": 539,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1267",
+      "marketingId": 539,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1268",
+      "marketingId": 540,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1269",
+      "marketingId": 540,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1270",
+      "marketingId": 541,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1271",
+      "marketingId": 541,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1272",
+      "marketingId": 541,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1273",
+      "marketingId": 542,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1274",
+      "marketingId": 542,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1275",
+      "marketingId": 542,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1276",
+      "marketingId": 543,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1277",
+      "marketingId": 543,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1278",
+      "marketingId": 544,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1279",
+      "marketingId": 544,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1280",
+      "marketingId": 544,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1281",
+      "marketingId": 545,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1282",
+      "marketingId": 545,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1283",
+      "marketingId": 545,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1284",
+      "marketingId": 546,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1285",
+      "marketingId": 546,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1286",
+      "marketingId": 547,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1287",
+      "marketingId": 548,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1288",
+      "marketingId": 548,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1289",
+      "marketingId": 548,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1290",
+      "marketingId": 549,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1291",
+      "marketingId": 550,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1292",
+      "marketingId": 550,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1293",
+      "marketingId": 551,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1294",
+      "marketingId": 551,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1295",
+      "marketingId": 552,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1296",
+      "marketingId": 552,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1297",
+      "marketingId": 552,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1298",
+      "marketingId": 553,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1299",
+      "marketingId": 553,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1300",
+      "marketingId": 554,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1301",
+      "marketingId": 554,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1302",
+      "marketingId": 554,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1303",
+      "marketingId": 508,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1304",
+      "marketingId": 508,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1305",
+      "marketingId": 514,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1306",
+      "marketingId": 525,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1307",
+      "marketingId": 525,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1308",
+      "marketingId": 525,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1309",
+      "marketingId": 555,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1310",
+      "marketingId": 555,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1311",
+      "marketingId": 556,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1312",
+      "marketingId": 556,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1313",
+      "marketingId": 556,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1314",
+      "marketingId": 557,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1315",
+      "marketingId": 557,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1316",
+      "marketingId": 557,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1317",
+      "marketingId": 557,
+      "full": 4.0,
+      "discount": 0.79
+    },
+    {
+      "marketingDetailId": "1318",
+      "marketingId": 558,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1319",
+      "marketingId": 558,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1320",
+      "marketingId": 558,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1321",
+      "marketingId": 558,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1322",
+      "marketingId": 559,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1323",
+      "marketingId": 560,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1324",
+      "marketingId": 561,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1325",
+      "marketingId": 561,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1326",
+      "marketingId": 562,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1327",
+      "marketingId": 562,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1328",
+      "marketingId": 562,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1329",
+      "marketingId": 562,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1330",
+      "marketingId": 563,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1331",
+      "marketingId": 563,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1332",
+      "marketingId": 563,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1333",
+      "marketingId": 564,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1334",
+      "marketingId": 564,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1335",
+      "marketingId": 565,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1336",
+      "marketingId": 566,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1337",
+      "marketingId": 566,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1338",
+      "marketingId": 567,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1339",
+      "marketingId": 567,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1340",
+      "marketingId": 568,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1341",
+      "marketingId": 568,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1342",
+      "marketingId": 569,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1343",
+      "marketingId": 569,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1344",
+      "marketingId": 569,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1345",
+      "marketingId": 570,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1346",
+      "marketingId": 570,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1347",
+      "marketingId": 570,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1348",
+      "marketingId": 571,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1349",
+      "marketingId": 571,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1350",
+      "marketingId": 572,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1351",
+      "marketingId": 572,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1352",
+      "marketingId": 573,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1353",
+      "marketingId": 574,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1354",
+      "marketingId": 574,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1355",
+      "marketingId": 575,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1356",
+      "marketingId": 575,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1357",
+      "marketingId": 576,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1358",
+      "marketingId": 576,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1359",
+      "marketingId": 577,
+      "full": 2.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1360",
+      "marketingId": 578,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1361",
+      "marketingId": 578,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1362",
+      "marketingId": 579,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1363",
+      "marketingId": 580,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1364",
+      "marketingId": 580,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1365",
+      "marketingId": 581,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1366",
+      "marketingId": 581,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1369",
+      "marketingId": 583,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1370",
+      "marketingId": 584,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1371",
+      "marketingId": 585,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1372",
+      "marketingId": 586,
+      "full": 1.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1373",
+      "marketingId": 587,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1374",
+      "marketingId": 588,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1375",
+      "marketingId": 588,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1376",
+      "marketingId": 588,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1377",
+      "marketingId": 589,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1378",
+      "marketingId": 590,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1379",
+      "marketingId": 590,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1380",
+      "marketingId": 590,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1381",
+      "marketingId": 591,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1382",
+      "marketingId": 591,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1383",
+      "marketingId": 592,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1384",
+      "marketingId": 592,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1385",
+      "marketingId": 593,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1386",
+      "marketingId": 593,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1387",
+      "marketingId": 594,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1388",
+      "marketingId": 594,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1389",
+      "marketingId": 595,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1390",
+      "marketingId": 595,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1391",
+      "marketingId": 596,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1392",
+      "marketingId": 596,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1393",
+      "marketingId": 597,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1394",
+      "marketingId": 598,
+      "full": 1.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1395",
+      "marketingId": 599,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1396",
+      "marketingId": 599,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1397",
+      "marketingId": 600,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1398",
+      "marketingId": 601,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1399",
+      "marketingId": 601,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1400",
+      "marketingId": 602,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1401",
+      "marketingId": 602,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1402",
+      "marketingId": 603,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1403",
+      "marketingId": 604,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1404",
+      "marketingId": 605,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1405",
+      "marketingId": 605,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1406",
+      "marketingId": 605,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1407",
+      "marketingId": 606,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1408",
+      "marketingId": 607,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1409",
+      "marketingId": 607,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1410",
+      "marketingId": 607,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1411",
+      "marketingId": 608,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1412",
+      "marketingId": 608,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1413",
+      "marketingId": 609,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1414",
+      "marketingId": 609,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1415",
+      "marketingId": 609,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1416",
+      "marketingId": 609,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1417",
+      "marketingId": 610,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1418",
+      "marketingId": 611,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1419",
+      "marketingId": 612,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1420",
+      "marketingId": 613,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1421",
+      "marketingId": 613,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1422",
+      "marketingId": 614,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1423",
+      "marketingId": 614,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1424",
+      "marketingId": 615,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1425",
+      "marketingId": 615,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1426",
+      "marketingId": 615,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1427",
+      "marketingId": 615,
+      "full": 4.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1428",
+      "marketingId": 616,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1429",
+      "marketingId": 617,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1430",
+      "marketingId": 618,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1431",
+      "marketingId": 618,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1432",
+      "marketingId": 619,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1433",
+      "marketingId": 620,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1434",
+      "marketingId": 620,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1435",
+      "marketingId": 620,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1436",
+      "marketingId": 621,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1437",
+      "marketingId": 622,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1438",
+      "marketingId": 622,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1439",
+      "marketingId": 622,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1440",
+      "marketingId": 623,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1441",
+      "marketingId": 623,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1442",
+      "marketingId": 624,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1443",
+      "marketingId": 624,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1444",
+      "marketingId": 624,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1445",
+      "marketingId": 625,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1446",
+      "marketingId": 625,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1447",
+      "marketingId": 625,
+      "full": 3.0,
+      "discount": 0.5
+    },
+    {
+      "marketingDetailId": "1448",
+      "marketingId": 626,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1449",
+      "marketingId": 626,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1450",
+      "marketingId": 626,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1451",
+      "marketingId": 627,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1452",
+      "marketingId": 628,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1453",
+      "marketingId": 628,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1454",
+      "marketingId": 628,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1455",
+      "marketingId": 629,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1456",
+      "marketingId": 630,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1457",
+      "marketingId": 631,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1458",
+      "marketingId": 631,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1459",
+      "marketingId": 631,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1460",
+      "marketingId": 632,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1461",
+      "marketingId": 632,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1462",
+      "marketingId": 632,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1463",
+      "marketingId": 633,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1464",
+      "marketingId": 633,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1465",
+      "marketingId": 634,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1466",
+      "marketingId": 634,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1467",
+      "marketingId": 634,
+      "full": 4.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1468",
+      "marketingId": 635,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1469",
+      "marketingId": 635,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1470",
+      "marketingId": 636,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1471",
+      "marketingId": 637,
+      "full": 1.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1472",
+      "marketingId": 637,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1473",
+      "marketingId": 638,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1474",
+      "marketingId": 639,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1475",
+      "marketingId": 640,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1476",
+      "marketingId": 640,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1477",
+      "marketingId": 641,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1478",
+      "marketingId": 641,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1479",
+      "marketingId": 641,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1480",
+      "marketingId": 642,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1481",
+      "marketingId": 642,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1482",
+      "marketingId": 643,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1483",
+      "marketingId": 644,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1484",
+      "marketingId": 644,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1485",
+      "marketingId": 645,
+      "full": 2.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1486",
+      "marketingId": 646,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1487",
+      "marketingId": 647,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1488",
+      "marketingId": 648,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1489",
+      "marketingId": 648,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1490",
+      "marketingId": 648,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1491",
+      "marketingId": 649,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1492",
+      "marketingId": 650,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1493",
+      "marketingId": 651,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1494",
+      "marketingId": 652,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1495",
+      "marketingId": 652,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1496",
+      "marketingId": 652,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1497",
+      "marketingId": 652,
+      "full": 5.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1498",
+      "marketingId": 653,
+      "full": 1.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1499",
+      "marketingId": 654,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1500",
+      "marketingId": 655,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1501",
+      "marketingId": 656,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1502",
+      "marketingId": 656,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1503",
+      "marketingId": 657,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1504",
+      "marketingId": 657,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1505",
+      "marketingId": 657,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1506",
+      "marketingId": 658,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1507",
+      "marketingId": 659,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1508",
+      "marketingId": 660,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1509",
+      "marketingId": 660,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1510",
+      "marketingId": 661,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1511",
+      "marketingId": 661,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1512",
+      "marketingId": 662,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1513",
+      "marketingId": 663,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1514",
+      "marketingId": 663,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1515",
+      "marketingId": 664,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1516",
+      "marketingId": 665,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1517",
+      "marketingId": 665,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1518",
+      "marketingId": 665,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1519",
+      "marketingId": 666,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1520",
+      "marketingId": 667,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1521",
+      "marketingId": 667,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1522",
+      "marketingId": 668,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1523",
+      "marketingId": 669,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1524",
+      "marketingId": 669,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1525",
+      "marketingId": 670,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1526",
+      "marketingId": 671,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1527",
+      "marketingId": 672,
+      "full": 2.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1528",
+      "marketingId": 672,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1529",
+      "marketingId": 673,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1530",
+      "marketingId": 674,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1531",
+      "marketingId": 674,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1532",
+      "marketingId": 675,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1533",
+      "marketingId": 675,
+      "full": 3.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1534",
+      "marketingId": 675,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1535",
+      "marketingId": 676,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1536",
+      "marketingId": 677,
+      "full": 2.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1537",
+      "marketingId": 678,
+      "full": 2.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1538",
+      "marketingId": 679,
+      "full": 1.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1539",
+      "marketingId": 680,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1540",
+      "marketingId": 680,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1541",
+      "marketingId": 680,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1542",
+      "marketingId": 681,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1543",
+      "marketingId": 681,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1544",
+      "marketingId": 682,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1545",
+      "marketingId": 682,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1546",
+      "marketingId": 502,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1547",
+      "marketingId": 502,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1548",
+      "marketingId": 504,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1549",
+      "marketingId": 504,
+      "full": 3.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1550",
+      "marketingId": 511,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1551",
+      "marketingId": 511,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1552",
+      "marketingId": 511,
+      "full": 3.0,
+      "discount": 0.79
+    },
+    {
+      "marketingDetailId": "1553",
+      "marketingId": 440,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1554",
+      "marketingId": 440,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1555",
+      "marketingId": 460,
+      "full": 1.0,
+      "discount": 0.92
+    },
+    {
+      "marketingDetailId": "1556",
+      "marketingId": 460,
+      "full": 2.0,
+      "discount": 0.88
+    },
+    {
+      "marketingDetailId": "1557",
+      "marketingId": 460,
+      "full": 3.0,
+      "discount": 0.78
+    },
+    {
+      "marketingDetailId": "1558",
+      "marketingId": 482,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1559",
+      "marketingId": 482,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1560",
+      "marketingId": 482,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1561",
+      "marketingId": 582,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1562",
+      "marketingId": 582,
+      "full": 5.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1563",
+      "marketingId": 683,
+      "full": 2.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1564",
+      "marketingId": 683,
+      "full": 3.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1565",
+      "marketingId": 683,
+      "full": 4.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1566",
+      "marketingId": 684,
+      "full": 1.0,
+      "discount": 0.95
+    },
+    {
+      "marketingDetailId": "1567",
+      "marketingId": 684,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1568",
+      "marketingId": 684,
+      "full": 3.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1569",
+      "marketingId": 685,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1570",
+      "marketingId": 685,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1571",
+      "marketingId": 685,
+      "full": 3.0,
+      "discount": 0.71
+    },
+    {
+      "marketingDetailId": "1572",
+      "marketingId": 686,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1573",
+      "marketingId": 687,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1574",
+      "marketingId": 688,
+      "full": 3.0,
+      "discount": 0.73
+    },
+    {
+      "marketingDetailId": "1575",
+      "marketingId": 689,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1576",
+      "marketingId": 690,
+      "full": 2.0,
+      "discount": 0.85
+    },
+    {
+      "marketingDetailId": "1577",
+      "marketingId": 690,
+      "full": 3.0,
+      "discount": 0.75
+    },
+    {
+      "marketingDetailId": "1578",
+      "marketingId": 690,
+      "full": 4.0,
+      "discount": 0.6
+    },
+    {
+      "marketingDetailId": "1579",
+      "marketingId": 691,
+      "full": 1.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1580",
+      "marketingId": 692,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1581",
+      "marketingId": 692,
+      "full": 3.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1582",
+      "marketingId": 692,
+      "full": 6.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1583",
+      "marketingId": 693,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1584",
+      "marketingId": 694,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1585",
+      "marketingId": 694,
+      "full": 4.0,
+      "discount": 0.8
+    },
+    {
+      "marketingDetailId": "1586",
+      "marketingId": 694,
+      "full": 6.0,
+      "discount": 0.7
+    },
+    {
+      "marketingDetailId": "1587",
+      "marketingId": 695,
+      "full": 2.0,
+      "discount": 0.9
+    },
+    {
+      "marketingDetailId": "1588",
+      "marketingId": 695,
+      "full": 3.0,
+      "discount": 0.75
+    }
+  ]
+}

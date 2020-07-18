@@ -12,6 +12,7 @@ import org.reploop.translator.json.bean.JsonMessageContext;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 import static org.reploop.translator.json.bean.Support.customTypeName;
@@ -167,8 +168,9 @@ public class ClassHierarchy {
     }
 
     private void reduce(Message parent, List<Message> subClasses, Map<QualifiedName, Message> messageMap, Map<QualifiedName, List<QualifiedName>> sameMap) {
-        List<Message> messages = subClasses.stream().sorted((o1, o2) -> o2.getName().size() - o1.getName().size()).collect(Collectors.toList());
+        List<Message> messages = subClasses.stream().sorted((o1, o2) -> o2.getName().compareTo(o1.getName())).collect(Collectors.toList());
         JsonMessageContext ctx = new JsonMessageContext();
+        sameMap.forEach((name, names) -> names.forEach(s -> ctx.addIdentityName(name, s)));
         for (Message message : messages) {
             Message msg = fieldTypeResolver.visitMessage(message, ctx);
             Optional<Message> om = reduce(parent, msg, messageMap, ctx);
