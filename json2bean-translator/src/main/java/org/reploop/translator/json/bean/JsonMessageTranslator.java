@@ -22,6 +22,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
+import static java.util.Collections.emptyList;
+import static java.util.Optional.empty;
 import static org.apache.commons.lang3.math.NumberUtils.isParsable;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
 import static org.reploop.translator.json.bean.Support.isLegalIdentifier;
@@ -32,7 +34,9 @@ import static org.reploop.translator.json.bean.Support.typeNumberSpec;
  */
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonMessageTranslator.class);
-    private static final StructType OBJECT = new StructType("Object");
+    private static final String OS = "Object";
+    private static final StructType OBJECT = new StructType(OS);
+    private static final int DEFAULT_INDEX = 0;
     private final JsonNumberTypeAdaptor jsonNumberTypeAdaptor;
     private final FieldTypeComparator fieldTypeComparator;
     private final JsonParser jsonParser;
@@ -41,7 +45,9 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         this(new JsonNumberTypeAdaptor(), new FieldTypeComparator(), new JsonParser());
     }
 
-    public JsonMessageTranslator(JsonNumberTypeAdaptor jsonNumberTypeAdaptor, FieldTypeComparator fieldTypeComparator, JsonParser jsonParser) {
+    public JsonMessageTranslator(JsonNumberTypeAdaptor jsonNumberTypeAdaptor,
+                                 FieldTypeComparator fieldTypeComparator,
+                                 JsonParser jsonParser) {
         this.jsonNumberTypeAdaptor = jsonNumberTypeAdaptor;
         this.fieldTypeComparator = fieldTypeComparator;
         this.jsonParser = jsonParser;
@@ -97,7 +103,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
                 LOGGER.error("Cannot parse {} to value", l, e);
             }
         }
-        return Optional.empty();
+        return empty();
     }
 
     @Override
@@ -109,7 +115,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         List<FieldType> keyTypes = new ArrayList<>();
         List<FieldType> valueTypes = new ArrayList<>();
 
-        // In case illegal key, then use Map instead of object
+        // In case of illegal key, use Map instead of object
         boolean anyIllegalIdentifier = pairs.stream()
             .filter(Objects::nonNull)
             .map(Pair::getKey)
@@ -151,7 +157,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             return new MapType(keyType, valueType);
         } else {
             QualifiedName fqn = context.getName();
-            Message m = new Message(fqn, fields, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+            Message m = new Message(fqn, fields, emptyList(), emptyList(), emptyList());
             context.addNamedMessage(fqn, m);
             return new StructType(fqn);
         }
@@ -175,7 +181,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     @Override
     public Field visitPair(Pair pair, JsonMessageContext context) {
         FieldType fieldType = visitValue(pair.getValue(), context);
-        return new Field(FieldModifier.required, 0, pair.getKey(), fieldType, Optional.empty(), Collections.emptyList());
+        return new Field(FieldModifier.required, DEFAULT_INDEX, pair.getKey(), fieldType, empty(), emptyList());
     }
 
     @Override
@@ -222,7 +228,7 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             }
             return Optional.of(fieldType);
         }
-        return Optional.empty();
+        return empty();
     }
 
     /**

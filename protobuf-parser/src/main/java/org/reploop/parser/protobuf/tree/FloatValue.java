@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 00
  */
 public class FloatValue extends Value {

@@ -40,25 +40,20 @@ public class JsonMessageTranslator extends AstVisitor<org.reploop.parser.protobu
     private Pattern pattern = Pattern.compile("[-_]+");
     private Splitter splitter = Splitter.on(pattern).trimResults().omitEmptyStrings();
 
-    private static final Map<String, String> replaces;
-
-    static {
-        Map<String, String> replace = new HashMap<>();
-        replace.put("dowloadPort", "downloadPort");
-        replace.put("threedflag", "threedFlag");
-        replace.put("hdrtype", "hdrType");
-        replace.put("colorspace", "colorSpace");
-        replace.put("autocrop", "autoCrop");
-        replace.put("mediainfo_v", "mediaInfo_v");
-        replace.put("fanxian-version", "fanXianVersion");
-        replace.put("IP", "ip");
-        replace.put("httpBackurl", "httpBackUrl");
-        replace.put("audioSamplerate", "audioSampleRate");
-        replace.put("audioBitdepth", "audioBitDepth");
-        replace.put("streamid", "streamId");
-        replace.put("filesize", "fileSize");
-        replaces = Collections.unmodifiableMap(replace);
-    }
+    private static final Map<String, String> replaces = Map.ofEntries(
+        Map.entry("dowloadPort", "downloadPort"),
+        Map.entry("threedflag", "threedFlag"),
+        Map.entry("hdrtype", "hdrType"),
+        Map.entry("colorspace", "colorSpace"),
+        Map.entry("autocrop", "autoCrop"),
+        Map.entry("mediainfo_v", "mediaInfo_v"),
+        Map.entry("fanxian-version", "fanXianVersion"),
+        Map.entry("IP", "ip"),
+        Map.entry("httpBackurl", "httpBackUrl"),
+        Map.entry("audioSamplerate", "audioSampleRate"),
+        Map.entry("audioBitdepth", "audioBitDepth"),
+        Map.entry("streamid", "streamId"),
+        Map.entry("filesize", "fileSize"));
 
     private String convert(String key) {
         String val = replaces.getOrDefault(key, key);

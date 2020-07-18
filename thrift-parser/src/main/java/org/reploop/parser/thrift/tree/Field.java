@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class Field extends Node {
@@ -84,13 +84,12 @@ public class Field extends Node {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Field{");
-        sb.append("filedId=").append(filedId);
-        sb.append(", required=").append(required);
-        sb.append(", comments=").append(comments);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", fieldType=").append(fieldType);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Field{" + "filedId=" + filedId +
+            ", required=" + required +
+            ", comments=" + comments +
+            ", name='" + name + '\'' +
+            ", fieldType=" + fieldType +
+            '}';
+        return sb;
     }
 }

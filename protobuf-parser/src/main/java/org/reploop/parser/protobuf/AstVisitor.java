@@ -8,7 +8,7 @@ import org.reploop.parser.protobuf.type.*;
 /**
  * Protobuf AST visitor.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public abstract class AstVisitor<R, C> extends AbstractAstVisitor<R, Node, C> {

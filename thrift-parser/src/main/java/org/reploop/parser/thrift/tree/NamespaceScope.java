@@ -8,7 +8,7 @@ import java.util.EnumSet;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 16
  */
 public class NamespaceScope extends Node {
@@ -43,9 +43,8 @@ public class NamespaceScope extends Node {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("NamespaceScope{");
-        sb.append("scopes=").append(scopes);
-        sb.append('}');
-        return sb.toString();
+        String sb = "NamespaceScope{" + "scopes=" + scopes +
+            '}';
+        return sb;
     }
 }

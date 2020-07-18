@@ -2,7 +2,10 @@ package org.reploop.translator.json.util;
 
 import org.reploop.translator.json.NameFormat;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,13 +22,12 @@ public class WordTree {
     private TreeNode tree;
 
     private void load(String resource) {
-        Set<String> ws;
         TreeNode root;
         try {
             URL u = NameFormat.class.getResource(resource);
-            ws = Files.lines(Path.of(u.toURI()))
+            Set<String> ws = Files.lines(Path.of(u.toURI()))
                 .map(String::toLowerCase)
-                .filter(s -> s.length() > 1)
+                .filter(s -> s.length() > 1) // Skip single char
                 .collect(Collectors.toUnmodifiableSet());
             root = buildTree(ws);
         } catch (Exception ignored) {
@@ -35,7 +37,7 @@ public class WordTree {
     }
 
     public WordTree() {
-        load(WORD_FILE);
+        this(WORD_FILE);
     }
 
     public WordTree(String resource) {
@@ -145,9 +147,6 @@ public class WordTree {
         StringWriter sw = new StringWriter();
         print(tree, sw);
         System.out.println(sw);
-    }
-
-    public void print(TreeNode tree, OutputStream out) throws IOException {
     }
 
     public void print(TreeNode tree, Writer out) throws IOException {

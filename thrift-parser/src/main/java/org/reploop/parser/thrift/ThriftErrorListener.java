@@ -12,7 +12,7 @@ import java.util.BitSet;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 14
  */
 public class ThriftErrorListener

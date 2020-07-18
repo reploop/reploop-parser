@@ -23,7 +23,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-05-18 14
  */
 public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoProgram>> {
@@ -56,7 +56,7 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
         List<Header> headers = program.getHeaders();
         Optional<QualifiedName> oqn = headers.stream()
             .filter(header -> header instanceof Namespace)
-            .map(header -> QualifiedName.of(Namespace.class.cast(header).getName()))
+            .map(header -> QualifiedName.of(((Namespace) header).getName()))
             .findFirst();
         if (oqn.isPresent()) {
             QualifiedName n = oqn.get();

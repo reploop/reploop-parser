@@ -3,11 +3,8 @@ package org.reploop.parser.java.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class JavaParser extends Parser {
@@ -17,87 +14,87 @@ public class JavaParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		ABSTRACT=1, ASSERT=2, BOOLEAN=3, BREAK=4, BYTE=5, CASE=6, CATCH=7, CHAR=8, 
-		CLASS=9, CONST=10, CONTINUE=11, DEFAULT=12, DO=13, DOUBLE=14, ELSE=15, 
-		ENUM=16, EXTENDS=17, FINAL=18, FINALLY=19, FLOAT=20, FOR=21, IF=22, GOTO=23, 
-		IMPLEMENTS=24, IMPORT=25, INSTANCEOF=26, INT=27, INTERFACE=28, LONG=29, 
-		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36, 
-		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42, 
-		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49, 
-		WHILE=50, DECIMAL_LITERAL=51, HEX_LITERAL=52, OCT_LITERAL=53, BINARY_LITERAL=54, 
-		FLOAT_LITERAL=55, HEX_FLOAT_LITERAL=56, BOOL_LITERAL=57, CHAR_LITERAL=58, 
-		STRING_LITERAL=59, NULL_LITERAL=60, LPAREN=61, RPAREN=62, LBRACE=63, RBRACE=64, 
-		LBRACK=65, RBRACK=66, SEMI=67, COMMA=68, DOT=69, ASSIGN=70, GT=71, LT=72, 
-		BANG=73, TILDE=74, QUESTION=75, COLON=76, EQUAL=77, LE=78, GE=79, NOTEQUAL=80, 
-		AND=81, OR=82, INC=83, DEC=84, ADD=85, SUB=86, MUL=87, DIV=88, BITAND=89, 
-		BITOR=90, CARET=91, MOD=92, ADD_ASSIGN=93, SUB_ASSIGN=94, MUL_ASSIGN=95, 
-		DIV_ASSIGN=96, AND_ASSIGN=97, OR_ASSIGN=98, XOR_ASSIGN=99, MOD_ASSIGN=100, 
-		LSHIFT_ASSIGN=101, RSHIFT_ASSIGN=102, URSHIFT_ASSIGN=103, ARROW=104, COLONCOLON=105, 
+		ABSTRACT=1, ASSERT=2, BOOLEAN=3, BREAK=4, BYTE=5, CASE=6, CATCH=7, CHAR=8,
+		CLASS=9, CONST=10, CONTINUE=11, DEFAULT=12, DO=13, DOUBLE=14, ELSE=15,
+		ENUM=16, EXTENDS=17, FINAL=18, FINALLY=19, FLOAT=20, FOR=21, IF=22, GOTO=23,
+		IMPLEMENTS=24, IMPORT=25, INSTANCEOF=26, INT=27, INTERFACE=28, LONG=29,
+		NATIVE=30, NEW=31, PACKAGE=32, PRIVATE=33, PROTECTED=34, PUBLIC=35, RETURN=36,
+		SHORT=37, STATIC=38, STRICTFP=39, SUPER=40, SWITCH=41, SYNCHRONIZED=42,
+		THIS=43, THROW=44, THROWS=45, TRANSIENT=46, TRY=47, VOID=48, VOLATILE=49,
+		WHILE=50, DECIMAL_LITERAL=51, HEX_LITERAL=52, OCT_LITERAL=53, BINARY_LITERAL=54,
+		FLOAT_LITERAL=55, HEX_FLOAT_LITERAL=56, BOOL_LITERAL=57, CHAR_LITERAL=58,
+		STRING_LITERAL=59, NULL_LITERAL=60, LPAREN=61, RPAREN=62, LBRACE=63, RBRACE=64,
+		LBRACK=65, RBRACK=66, SEMI=67, COMMA=68, DOT=69, ASSIGN=70, GT=71, LT=72,
+		BANG=73, TILDE=74, QUESTION=75, COLON=76, EQUAL=77, LE=78, GE=79, NOTEQUAL=80,
+		AND=81, OR=82, INC=83, DEC=84, ADD=85, SUB=86, MUL=87, DIV=88, BITAND=89,
+		BITOR=90, CARET=91, MOD=92, ADD_ASSIGN=93, SUB_ASSIGN=94, MUL_ASSIGN=95,
+		DIV_ASSIGN=96, AND_ASSIGN=97, OR_ASSIGN=98, XOR_ASSIGN=99, MOD_ASSIGN=100,
+		LSHIFT_ASSIGN=101, RSHIFT_ASSIGN=102, URSHIFT_ASSIGN=103, ARROW=104, COLONCOLON=105,
 		AT=106, ELLIPSIS=107, WS=108, COMMENT=109, LINE_COMMENT=110, IDENTIFIER=111;
 	public static final int
-		RULE_compilationUnit = 0, RULE_packageDeclaration = 1, RULE_importDeclaration = 2, 
-		RULE_typeDeclaration = 3, RULE_modifier = 4, RULE_classOrInterfaceModifier = 5, 
-		RULE_variableModifier = 6, RULE_classDeclaration = 7, RULE_typeParameters = 8, 
-		RULE_typeParameter = 9, RULE_typeBound = 10, RULE_enumDeclaration = 11, 
-		RULE_enumConstants = 12, RULE_enumConstant = 13, RULE_enumBodyDeclarations = 14, 
-		RULE_interfaceDeclaration = 15, RULE_classBody = 16, RULE_interfaceBody = 17, 
-		RULE_classBodyDeclaration = 18, RULE_memberDeclaration = 19, RULE_methodDeclaration = 20, 
-		RULE_methodBody = 21, RULE_typeTypeOrVoid = 22, RULE_genericMethodDeclaration = 23, 
-		RULE_genericConstructorDeclaration = 24, RULE_constructorDeclaration = 25, 
-		RULE_fieldDeclaration = 26, RULE_interfaceBodyDeclaration = 27, RULE_interfaceMemberDeclaration = 28, 
-		RULE_constDeclaration = 29, RULE_constantDeclarator = 30, RULE_interfaceMethodDeclaration = 31, 
-		RULE_interfaceMethodModifier = 32, RULE_genericInterfaceMethodDeclaration = 33, 
-		RULE_variableDeclarators = 34, RULE_variableDeclarator = 35, RULE_variableDeclaratorId = 36, 
-		RULE_variableInitializer = 37, RULE_arrayInitializer = 38, RULE_classOrInterfaceType = 39, 
-		RULE_typeArgument = 40, RULE_qualifiedNameList = 41, RULE_formalParameters = 42, 
-		RULE_formalParameterList = 43, RULE_formalParameter = 44, RULE_lastFormalParameter = 45, 
-		RULE_qualifiedName = 46, RULE_literal = 47, RULE_integerLiteral = 48, 
-		RULE_floatLiteral = 49, RULE_annotation = 50, RULE_elementValuePairs = 51, 
-		RULE_elementValuePair = 52, RULE_elementValue = 53, RULE_elementValueArrayInitializer = 54, 
-		RULE_annotationTypeDeclaration = 55, RULE_annotationTypeBody = 56, RULE_annotationTypeElementDeclaration = 57, 
-		RULE_annotationTypeElementRest = 58, RULE_annotationMethodOrConstantRest = 59, 
-		RULE_annotationMethodRest = 60, RULE_annotationConstantRest = 61, RULE_defaultValue = 62, 
-		RULE_block = 63, RULE_blockStatement = 64, RULE_localVariableDeclaration = 65, 
-		RULE_localTypeDeclaration = 66, RULE_statement = 67, RULE_catchClause = 68, 
-		RULE_catchType = 69, RULE_finallyBlock = 70, RULE_resourceSpecification = 71, 
-		RULE_resources = 72, RULE_resource = 73, RULE_switchBlockStatementGroup = 74, 
-		RULE_switchLabel = 75, RULE_forControl = 76, RULE_forInit = 77, RULE_enhancedForControl = 78, 
-		RULE_parExpression = 79, RULE_expressionList = 80, RULE_expression = 81, 
-		RULE_lambdaExpression = 82, RULE_lambdaParameters = 83, RULE_lambdaBody = 84, 
-		RULE_primary = 85, RULE_classType = 86, RULE_creator = 87, RULE_createdName = 88, 
-		RULE_innerCreator = 89, RULE_arrayCreatorRest = 90, RULE_classCreatorRest = 91, 
-		RULE_explicitGenericInvocation = 92, RULE_typeArgumentsOrDiamond = 93, 
-		RULE_nonWildcardTypeArgumentsOrDiamond = 94, RULE_nonWildcardTypeArguments = 95, 
-		RULE_typeList = 96, RULE_typeType = 97, RULE_primitiveType = 98, RULE_typeArguments = 99, 
+		RULE_compilationUnit = 0, RULE_packageDeclaration = 1, RULE_importDeclaration = 2,
+		RULE_typeDeclaration = 3, RULE_modifier = 4, RULE_classOrInterfaceModifier = 5,
+		RULE_variableModifier = 6, RULE_classDeclaration = 7, RULE_typeParameters = 8,
+		RULE_typeParameter = 9, RULE_typeBound = 10, RULE_enumDeclaration = 11,
+		RULE_enumConstants = 12, RULE_enumConstant = 13, RULE_enumBodyDeclarations = 14,
+		RULE_interfaceDeclaration = 15, RULE_classBody = 16, RULE_interfaceBody = 17,
+		RULE_classBodyDeclaration = 18, RULE_memberDeclaration = 19, RULE_methodDeclaration = 20,
+		RULE_methodBody = 21, RULE_typeTypeOrVoid = 22, RULE_genericMethodDeclaration = 23,
+		RULE_genericConstructorDeclaration = 24, RULE_constructorDeclaration = 25,
+		RULE_fieldDeclaration = 26, RULE_interfaceBodyDeclaration = 27, RULE_interfaceMemberDeclaration = 28,
+		RULE_constDeclaration = 29, RULE_constantDeclarator = 30, RULE_interfaceMethodDeclaration = 31,
+		RULE_interfaceMethodModifier = 32, RULE_genericInterfaceMethodDeclaration = 33,
+		RULE_variableDeclarators = 34, RULE_variableDeclarator = 35, RULE_variableDeclaratorId = 36,
+		RULE_variableInitializer = 37, RULE_arrayInitializer = 38, RULE_classOrInterfaceType = 39,
+		RULE_typeArgument = 40, RULE_qualifiedNameList = 41, RULE_formalParameters = 42,
+		RULE_formalParameterList = 43, RULE_formalParameter = 44, RULE_lastFormalParameter = 45,
+		RULE_qualifiedName = 46, RULE_literal = 47, RULE_integerLiteral = 48,
+		RULE_floatLiteral = 49, RULE_annotation = 50, RULE_elementValuePairs = 51,
+		RULE_elementValuePair = 52, RULE_elementValue = 53, RULE_elementValueArrayInitializer = 54,
+		RULE_annotationTypeDeclaration = 55, RULE_annotationTypeBody = 56, RULE_annotationTypeElementDeclaration = 57,
+		RULE_annotationTypeElementRest = 58, RULE_annotationMethodOrConstantRest = 59,
+		RULE_annotationMethodRest = 60, RULE_annotationConstantRest = 61, RULE_defaultValue = 62,
+		RULE_block = 63, RULE_blockStatement = 64, RULE_localVariableDeclaration = 65,
+		RULE_localTypeDeclaration = 66, RULE_statement = 67, RULE_catchClause = 68,
+		RULE_catchType = 69, RULE_finallyBlock = 70, RULE_resourceSpecification = 71,
+		RULE_resources = 72, RULE_resource = 73, RULE_switchBlockStatementGroup = 74,
+		RULE_switchLabel = 75, RULE_forControl = 76, RULE_forInit = 77, RULE_enhancedForControl = 78,
+		RULE_parExpression = 79, RULE_expressionList = 80, RULE_expression = 81,
+		RULE_lambdaExpression = 82, RULE_lambdaParameters = 83, RULE_lambdaBody = 84,
+		RULE_primary = 85, RULE_classType = 86, RULE_creator = 87, RULE_createdName = 88,
+		RULE_innerCreator = 89, RULE_arrayCreatorRest = 90, RULE_classCreatorRest = 91,
+		RULE_explicitGenericInvocation = 92, RULE_typeArgumentsOrDiamond = 93,
+		RULE_nonWildcardTypeArgumentsOrDiamond = 94, RULE_nonWildcardTypeArguments = 95,
+		RULE_typeList = 96, RULE_typeType = 97, RULE_primitiveType = 98, RULE_typeArguments = 99,
 		RULE_superSuffix = 100, RULE_explicitGenericInvocationSuffix = 101, RULE_arguments = 102;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"compilationUnit", "packageDeclaration", "importDeclaration", "typeDeclaration", 
-			"modifier", "classOrInterfaceModifier", "variableModifier", "classDeclaration", 
-			"typeParameters", "typeParameter", "typeBound", "enumDeclaration", "enumConstants", 
-			"enumConstant", "enumBodyDeclarations", "interfaceDeclaration", "classBody", 
-			"interfaceBody", "classBodyDeclaration", "memberDeclaration", "methodDeclaration", 
-			"methodBody", "typeTypeOrVoid", "genericMethodDeclaration", "genericConstructorDeclaration", 
-			"constructorDeclaration", "fieldDeclaration", "interfaceBodyDeclaration", 
-			"interfaceMemberDeclaration", "constDeclaration", "constantDeclarator", 
-			"interfaceMethodDeclaration", "interfaceMethodModifier", "genericInterfaceMethodDeclaration", 
-			"variableDeclarators", "variableDeclarator", "variableDeclaratorId", 
-			"variableInitializer", "arrayInitializer", "classOrInterfaceType", "typeArgument", 
-			"qualifiedNameList", "formalParameters", "formalParameterList", "formalParameter", 
-			"lastFormalParameter", "qualifiedName", "literal", "integerLiteral", 
-			"floatLiteral", "annotation", "elementValuePairs", "elementValuePair", 
-			"elementValue", "elementValueArrayInitializer", "annotationTypeDeclaration", 
-			"annotationTypeBody", "annotationTypeElementDeclaration", "annotationTypeElementRest", 
-			"annotationMethodOrConstantRest", "annotationMethodRest", "annotationConstantRest", 
-			"defaultValue", "block", "blockStatement", "localVariableDeclaration", 
-			"localTypeDeclaration", "statement", "catchClause", "catchType", "finallyBlock", 
-			"resourceSpecification", "resources", "resource", "switchBlockStatementGroup", 
-			"switchLabel", "forControl", "forInit", "enhancedForControl", "parExpression", 
-			"expressionList", "expression", "lambdaExpression", "lambdaParameters", 
-			"lambdaBody", "primary", "classType", "creator", "createdName", "innerCreator", 
-			"arrayCreatorRest", "classCreatorRest", "explicitGenericInvocation", 
-			"typeArgumentsOrDiamond", "nonWildcardTypeArgumentsOrDiamond", "nonWildcardTypeArguments", 
-			"typeList", "typeType", "primitiveType", "typeArguments", "superSuffix", 
+			"compilationUnit", "packageDeclaration", "importDeclaration", "typeDeclaration",
+			"modifier", "classOrInterfaceModifier", "variableModifier", "classDeclaration",
+			"typeParameters", "typeParameter", "typeBound", "enumDeclaration", "enumConstants",
+			"enumConstant", "enumBodyDeclarations", "interfaceDeclaration", "classBody",
+			"interfaceBody", "classBodyDeclaration", "memberDeclaration", "methodDeclaration",
+			"methodBody", "typeTypeOrVoid", "genericMethodDeclaration", "genericConstructorDeclaration",
+			"constructorDeclaration", "fieldDeclaration", "interfaceBodyDeclaration",
+			"interfaceMemberDeclaration", "constDeclaration", "constantDeclarator",
+			"interfaceMethodDeclaration", "interfaceMethodModifier", "genericInterfaceMethodDeclaration",
+			"variableDeclarators", "variableDeclarator", "variableDeclaratorId",
+			"variableInitializer", "arrayInitializer", "classOrInterfaceType", "typeArgument",
+			"qualifiedNameList", "formalParameters", "formalParameterList", "formalParameter",
+			"lastFormalParameter", "qualifiedName", "literal", "integerLiteral",
+			"floatLiteral", "annotation", "elementValuePairs", "elementValuePair",
+			"elementValue", "elementValueArrayInitializer", "annotationTypeDeclaration",
+			"annotationTypeBody", "annotationTypeElementDeclaration", "annotationTypeElementRest",
+			"annotationMethodOrConstantRest", "annotationMethodRest", "annotationConstantRest",
+			"defaultValue", "block", "blockStatement", "localVariableDeclaration",
+			"localTypeDeclaration", "statement", "catchClause", "catchType", "finallyBlock",
+			"resourceSpecification", "resources", "resource", "switchBlockStatementGroup",
+			"switchLabel", "forControl", "forInit", "enhancedForControl", "parExpression",
+			"expressionList", "expression", "lambdaExpression", "lambdaParameters",
+			"lambdaBody", "primary", "classType", "creator", "createdName", "innerCreator",
+			"arrayCreatorRest", "classCreatorRest", "explicitGenericInvocation",
+			"typeArgumentsOrDiamond", "nonWildcardTypeArgumentsOrDiamond", "nonWildcardTypeArguments",
+			"typeList", "typeType", "primitiveType", "typeArguments", "superSuffix",
 			"explicitGenericInvocationSuffix", "arguments"
 		};
 	}
@@ -105,40 +102,40 @@ public class JavaParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'abstract'", "'assert'", "'boolean'", "'break'", "'byte'", "'case'", 
-			"'catch'", "'char'", "'class'", "'const'", "'continue'", "'default'", 
-			"'do'", "'double'", "'else'", "'enum'", "'extends'", "'final'", "'finally'", 
-			"'float'", "'for'", "'if'", "'goto'", "'implements'", "'import'", "'instanceof'", 
-			"'int'", "'interface'", "'long'", "'native'", "'new'", "'package'", "'private'", 
-			"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'", 
-			"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'", 
-			"'transient'", "'try'", "'void'", "'volatile'", "'while'", null, null, 
-			null, null, null, null, null, null, null, "'null'", "'('", "')'", "'{'", 
-			"'}'", "'['", "']'", "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'", 
-			"'~'", "'?'", "':'", "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'", 
-			"'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'", 
-			"'+='", "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='", 
+			null, "'abstract'", "'assert'", "'boolean'", "'break'", "'byte'", "'case'",
+			"'catch'", "'char'", "'class'", "'const'", "'continue'", "'default'",
+			"'do'", "'double'", "'else'", "'enum'", "'extends'", "'final'", "'finally'",
+			"'float'", "'for'", "'if'", "'goto'", "'implements'", "'import'", "'instanceof'",
+			"'int'", "'interface'", "'long'", "'native'", "'new'", "'package'", "'private'",
+			"'protected'", "'public'", "'return'", "'short'", "'static'", "'strictfp'",
+			"'super'", "'switch'", "'synchronized'", "'this'", "'throw'", "'throws'",
+			"'transient'", "'try'", "'void'", "'volatile'", "'while'", null, null,
+			null, null, null, null, null, null, null, "'null'", "'('", "')'", "'{'",
+			"'}'", "'['", "']'", "';'", "','", "'.'", "'='", "'>'", "'<'", "'!'",
+			"'~'", "'?'", "':'", "'=='", "'<='", "'>='", "'!='", "'&&'", "'||'",
+			"'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'&'", "'|'", "'^'", "'%'",
+			"'+='", "'-='", "'*='", "'/='", "'&='", "'|='", "'^='", "'%='", "'<<='",
 			"'>>='", "'>>>='", "'->'", "'::'", "'@'", "'...'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", "CASE", "CATCH", 
-			"CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE", 
-			"ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", "IF", "GOTO", 
-			"IMPLEMENTS", "IMPORT", "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE", 
-			"NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT", 
-			"STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW", 
-			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "DECIMAL_LITERAL", 
-			"HEX_LITERAL", "OCT_LITERAL", "BINARY_LITERAL", "FLOAT_LITERAL", "HEX_FLOAT_LITERAL", 
-			"BOOL_LITERAL", "CHAR_LITERAL", "STRING_LITERAL", "NULL_LITERAL", "LPAREN", 
-			"RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT", 
-			"ASSIGN", "GT", "LT", "BANG", "TILDE", "QUESTION", "COLON", "EQUAL", 
-			"LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL", 
-			"DIV", "BITAND", "BITOR", "CARET", "MOD", "ADD_ASSIGN", "SUB_ASSIGN", 
-			"MUL_ASSIGN", "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN", 
-			"MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "ARROW", 
+			null, "ABSTRACT", "ASSERT", "BOOLEAN", "BREAK", "BYTE", "CASE", "CATCH",
+			"CHAR", "CLASS", "CONST", "CONTINUE", "DEFAULT", "DO", "DOUBLE", "ELSE",
+			"ENUM", "EXTENDS", "FINAL", "FINALLY", "FLOAT", "FOR", "IF", "GOTO",
+			"IMPLEMENTS", "IMPORT", "INSTANCEOF", "INT", "INTERFACE", "LONG", "NATIVE",
+			"NEW", "PACKAGE", "PRIVATE", "PROTECTED", "PUBLIC", "RETURN", "SHORT",
+			"STATIC", "STRICTFP", "SUPER", "SWITCH", "SYNCHRONIZED", "THIS", "THROW",
+			"THROWS", "TRANSIENT", "TRY", "VOID", "VOLATILE", "WHILE", "DECIMAL_LITERAL",
+			"HEX_LITERAL", "OCT_LITERAL", "BINARY_LITERAL", "FLOAT_LITERAL", "HEX_FLOAT_LITERAL",
+			"BOOL_LITERAL", "CHAR_LITERAL", "STRING_LITERAL", "NULL_LITERAL", "LPAREN",
+			"RPAREN", "LBRACE", "RBRACE", "LBRACK", "RBRACK", "SEMI", "COMMA", "DOT",
+			"ASSIGN", "GT", "LT", "BANG", "TILDE", "QUESTION", "COLON", "EQUAL",
+			"LE", "GE", "NOTEQUAL", "AND", "OR", "INC", "DEC", "ADD", "SUB", "MUL",
+			"DIV", "BITAND", "BITOR", "CARET", "MOD", "ADD_ASSIGN", "SUB_ASSIGN",
+			"MUL_ASSIGN", "DIV_ASSIGN", "AND_ASSIGN", "OR_ASSIGN", "XOR_ASSIGN",
+			"MOD_ASSIGN", "LSHIFT_ASSIGN", "RSHIFT_ASSIGN", "URSHIFT_ASSIGN", "ARROW",
 			"COLONCOLON", "AT", "ELLIPSIS", "WS", "COMMENT", "LINE_COMMENT", "IDENTIFIER"
 		};
 	}
@@ -506,7 +503,7 @@ public class JavaParser extends Parser {
 						setState(244);
 						classOrInterfaceModifier();
 						}
-						} 
+						}
 					}
 					setState(249);
 					_errHandler.sync(this);
@@ -1298,7 +1295,7 @@ public class JavaParser extends Parser {
 					setState(345);
 					enumConstant();
 					}
-					} 
+					}
 				}
 				setState(350);
 				_errHandler.sync(this);
@@ -1761,7 +1758,7 @@ public class JavaParser extends Parser {
 						setState(405);
 						modifier();
 						}
-						} 
+						}
 					}
 					setState(410);
 					_errHandler.sync(this);
@@ -2438,7 +2435,7 @@ public class JavaParser extends Parser {
 						setState(467);
 						modifier();
 						}
-						} 
+						}
 					}
 					setState(472);
 					_errHandler.sync(this);
@@ -2806,7 +2803,7 @@ public class JavaParser extends Parser {
 					setState(508);
 					interfaceMethodModifier();
 					}
-					} 
+					}
 				}
 				setState(513);
 				_errHandler.sync(this);
@@ -2845,7 +2842,7 @@ public class JavaParser extends Parser {
 						setState(516);
 						annotation();
 						}
-						} 
+						}
 					}
 					setState(521);
 					_errHandler.sync(this);
@@ -3396,7 +3393,7 @@ public class JavaParser extends Parser {
 						setState(580);
 						variableInitializer();
 						}
-						} 
+						}
 					}
 					setState(585);
 					_errHandler.sync(this);
@@ -3505,7 +3502,7 @@ public class JavaParser extends Parser {
 						break;
 					}
 					}
-					} 
+					}
 				}
 				setState(606);
 				_errHandler.sync(this);
@@ -3802,7 +3799,7 @@ public class JavaParser extends Parser {
 						setState(631);
 						formalParameter();
 						}
-						} 
+						}
 					}
 					setState(636);
 					_errHandler.sync(this);
@@ -3891,7 +3888,7 @@ public class JavaParser extends Parser {
 					setState(644);
 					variableModifier();
 					}
-					} 
+					}
 				}
 				setState(649);
 				_errHandler.sync(this);
@@ -3964,7 +3961,7 @@ public class JavaParser extends Parser {
 					setState(653);
 					variableModifier();
 					}
-					} 
+					}
 				}
 				setState(658);
 				_errHandler.sync(this);
@@ -4038,7 +4035,7 @@ public class JavaParser extends Parser {
 					setState(665);
 					match(IDENTIFIER);
 					}
-					} 
+					}
 				}
 				setState(670);
 				_errHandler.sync(this);
@@ -4594,7 +4591,7 @@ public class JavaParser extends Parser {
 						setState(713);
 						elementValue();
 						}
-						} 
+						}
 					}
 					setState(718);
 					_errHandler.sync(this);
@@ -4821,7 +4818,7 @@ public class JavaParser extends Parser {
 						setState(740);
 						modifier();
 						}
-						} 
+						}
 					}
 					setState(745);
 					_errHandler.sync(this);
@@ -5392,7 +5389,7 @@ public class JavaParser extends Parser {
 					setState(803);
 					variableModifier();
 					}
-					} 
+					}
 				}
 				setState(808);
 				_errHandler.sync(this);
@@ -5727,7 +5724,7 @@ public class JavaParser extends Parser {
 				switch (_input.LA(1)) {
 				case CATCH:
 					{
-					setState(860); 
+					setState(860);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 					do {
@@ -5737,7 +5734,7 @@ public class JavaParser extends Parser {
 						catchClause();
 						}
 						}
-						setState(862); 
+						setState(862);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
 					} while ( _la==CATCH );
@@ -5818,7 +5815,7 @@ public class JavaParser extends Parser {
 						setState(885);
 						switchBlockStatementGroup();
 						}
-						} 
+						}
 					}
 					setState(890);
 					_errHandler.sync(this);
@@ -6271,7 +6268,7 @@ public class JavaParser extends Parser {
 					setState(964);
 					resource();
 					}
-					} 
+					}
 				}
 				setState(969);
 				_errHandler.sync(this);
@@ -6407,7 +6404,7 @@ public class JavaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(982); 
+			setState(982);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -6417,11 +6414,11 @@ public class JavaParser extends Parser {
 				switchLabel();
 				}
 				}
-				setState(984); 
+				setState(984);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==CASE || _la==DEFAULT );
-			setState(987); 
+			setState(987);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -6431,7 +6428,7 @@ public class JavaParser extends Parser {
 				blockStatement();
 				}
 				}
-				setState(989); 
+				setState(989);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ABSTRACT) | (1L << ASSERT) | (1L << BOOLEAN) | (1L << BREAK) | (1L << BYTE) | (1L << CHAR) | (1L << CLASS) | (1L << CONTINUE) | (1L << DO) | (1L << DOUBLE) | (1L << FINAL) | (1L << FLOAT) | (1L << FOR) | (1L << IF) | (1L << INT) | (1L << INTERFACE) | (1L << LONG) | (1L << NEW) | (1L << PRIVATE) | (1L << PROTECTED) | (1L << PUBLIC) | (1L << RETURN) | (1L << SHORT) | (1L << STATIC) | (1L << STRICTFP) | (1L << SUPER) | (1L << SWITCH) | (1L << SYNCHRONIZED) | (1L << THIS) | (1L << THROW) | (1L << TRY) | (1L << VOID) | (1L << WHILE) | (1L << DECIMAL_LITERAL) | (1L << HEX_LITERAL) | (1L << OCT_LITERAL) | (1L << BINARY_LITERAL) | (1L << FLOAT_LITERAL) | (1L << HEX_FLOAT_LITERAL) | (1L << BOOL_LITERAL) | (1L << CHAR_LITERAL) | (1L << STRING_LITERAL) | (1L << NULL_LITERAL) | (1L << LPAREN) | (1L << LBRACE))) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & ((1L << (SEMI - 67)) | (1L << (LT - 67)) | (1L << (BANG - 67)) | (1L << (TILDE - 67)) | (1L << (INC - 67)) | (1L << (DEC - 67)) | (1L << (ADD - 67)) | (1L << (SUB - 67)) | (1L << (AT - 67)) | (1L << (IDENTIFIER - 67)))) != 0) );
@@ -6750,7 +6747,7 @@ public class JavaParser extends Parser {
 					setState(1019);
 					variableModifier();
 					}
-					} 
+					}
 				}
 				setState(1024);
 				_errHandler.sync(this);
@@ -7534,7 +7531,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1161);
 				_errHandler.sync(this);
@@ -8441,7 +8438,7 @@ public class JavaParser extends Parser {
 						setState(1271);
 						match(RBRACK);
 						}
-						} 
+						}
 					}
 					setState(1277);
 					_errHandler.sync(this);
@@ -8459,7 +8456,7 @@ public class JavaParser extends Parser {
 						setState(1279);
 						match(RBRACK);
 						}
-						} 
+						}
 					}
 					setState(1284);
 					_errHandler.sync(this);
@@ -8921,7 +8918,7 @@ public class JavaParser extends Parser {
 					setState(1324);
 					match(RBRACK);
 					}
-					} 
+					}
 				}
 				setState(1329);
 				_errHandler.sync(this);

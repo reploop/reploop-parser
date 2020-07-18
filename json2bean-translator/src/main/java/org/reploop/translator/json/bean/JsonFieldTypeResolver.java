@@ -64,8 +64,10 @@ public class JsonFieldTypeResolver extends AstVisitor<Node, JsonMessageContext> 
 
     @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
+        QualifiedName fqn = replaceIfPresent(node.getName(), context);
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
-        return new Message(node.getName(), node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());
+
+        return new Message(fqn, node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());
     }
 }

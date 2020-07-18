@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class Function extends Node implements Comparable<Function> {
@@ -96,14 +96,13 @@ public class Function extends Node implements Comparable<Function> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Function{");
-        sb.append("oneWay=").append(oneWay);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", returnType=").append(returnType);
-        sb.append(", parameters=").append(parameters);
-        sb.append(", exceptions=").append(exceptions);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Function{" + "oneWay=" + oneWay +
+            ", name='" + name + '\'' +
+            ", returnType=" + returnType +
+            ", parameters=" + parameters +
+            ", exceptions=" + exceptions +
+            '}';
+        return sb;
     }
 
     @Override

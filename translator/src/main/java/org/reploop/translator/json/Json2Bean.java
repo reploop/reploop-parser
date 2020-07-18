@@ -124,12 +124,10 @@ public class Json2Bean {
 
     private void dup(JsonMessageContext context) {
         context.getDup().clear();
-        context.getMessages().forEach(((name, message) -> {
-            name.prefix()
-                .map(qn -> qn.toString().toLowerCase())
-                .map(QualifiedName::of)
-                .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
-        }));
+        context.getMessages().forEach(((name, message) -> name.prefix()
+            .map(qn -> qn.toString().toLowerCase())
+            .map(QualifiedName::of)
+            .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())))));
         reduce(context);
         direct(context);
     }

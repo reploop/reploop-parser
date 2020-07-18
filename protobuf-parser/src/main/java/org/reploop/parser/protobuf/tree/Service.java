@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 10
  */
 public class Service extends Node {
@@ -56,11 +56,10 @@ public class Service extends Node {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Service{");
-        sb.append("name=").append(name);
-        sb.append(", options=").append(options);
-        sb.append(", functions=").append(functions);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Service{" + "name=" + name +
+            ", options=" + options +
+            ", functions=" + functions +
+            '}';
+        return sb;
     }
 }

@@ -1,8 +1,8 @@
 package org.reploop.translator.json.bean;
 
-import org.reploop.parser.ast.AbstractAstVisitor;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.Enumeration;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.*;
@@ -19,6 +19,12 @@ public class JsonMessageDependencyResolver extends AstVisitor<Node, JsonMessageC
     public StructType visitStructType(StructType structType, JsonMessageContext context) {
         context.addDependency(structType.getName());
         return structType;
+    }
+
+    @Override
+    public Enumeration visitEnumeration(Enumeration node, JsonMessageContext context) {
+        context.addDependency(node.getName());
+        return node;
     }
 
     @Override
@@ -58,6 +64,7 @@ public class JsonMessageDependencyResolver extends AstVisitor<Node, JsonMessageC
     public Message visitMessage(Message node, JsonMessageContext context) {
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), m -> visitMessage(m, context));
-        return new Message(node.getName(), node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());
+        List<Enumeration> enums = visitIfPresent(node.getEnumerations(), e -> visitEnumeration(e, context));
+        return new Message(node.getName(), node.getComments(), fields, messages, enums, node.getOptions());
     }
 }

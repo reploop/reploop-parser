@@ -3,7 +3,7 @@ package org.reploop.translator.json.type;
 import java.util.Objects;
 
 public class JsonType {
-    private String fqn;
+    private final String fqn;
 
     public JsonType(String fqn) {
         this.fqn = fqn;

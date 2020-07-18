@@ -1,7 +1,5 @@
 package org.reploop.parser.mysql.tree;
 
-import java.util.List;
-
 public abstract class CreateTable extends DdlStatement {
     String tableName;
     boolean temporary;

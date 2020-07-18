@@ -84,12 +84,22 @@ public class JsonMessageContext {
         this.namedMessages = namedMessages;
     }
 
+    public Map<QualifiedName, QualifiedName> getIdentityNames() {
+        return identityNames;
+    }
+
     public Optional<QualifiedName> getIdentityName(QualifiedName qn) {
         return Optional.ofNullable(identityNames.get(qn));
     }
 
     public void addIdentityName(QualifiedName a, QualifiedName b) {
         identityNames.put(a, b);
+    }
+
+    public void addIdentityNames(Map<QualifiedName, QualifiedName> identityNames) {
+        if (null != identityNames) {
+            this.identityNames.putAll(identityNames);
+        }
     }
 
     public boolean isJsonRawValue(QualifiedName name) {

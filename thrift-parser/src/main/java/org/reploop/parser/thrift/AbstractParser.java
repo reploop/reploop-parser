@@ -15,7 +15,7 @@ import java.util.function.Function;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 09
  */
 public abstract class AbstractParser {

@@ -8,7 +8,7 @@ import java.util.Objects;
  * Included files are looked up in the current directory and by searching relative to any paths
  * specified with the -I compiler flag.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class Include extends Header {

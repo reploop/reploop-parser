@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class Namespace extends Header {
@@ -34,11 +34,10 @@ public class Namespace extends Header {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Namespace{");
-        sb.append("scope=").append(scope);
-        sb.append(", namespace='").append(namespace).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "Namespace{" + "scope=" + scope +
+            ", namespace='" + namespace + '\'' +
+            '}';
+        return sb;
     }
 
 

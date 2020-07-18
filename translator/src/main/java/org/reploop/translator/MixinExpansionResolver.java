@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-09-30 14
  */
 public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftProgram>> {
@@ -48,8 +48,7 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
         return node;
     }
 
-    private Optional<Entity> search(List<Entity> entities,
-                                    QualifiedName name) {
+    private Optional<Entity> search(List<Entity> entities, QualifiedName name) {
         if (null != entities) {
             for (Entity entity : entities) {
                 if (null == entity) {
@@ -359,9 +358,7 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
     }
 
     private StringBuilder indent(StringBuilder content, int indent) {
-        for (int i = 0; i < indent; i++) {
-            content.append(' ');
-        }
+        content.append(" ".repeat(Math.max(0, indent)));
         return content;
     }
 
@@ -387,7 +384,7 @@ public class MixinExpansionResolver extends AstVisitor<Node, Classpath<ThriftPro
             } else if (type instanceof StructType || type instanceof WrapperType) {
                 Optional<Value> value = last.getValue();
                 if (value.isPresent()) {
-                    code.append(type.getName()).append("").append(value.get());
+                    code.append(type.getName()).append(value.get());
                 } else {
                     code.append("null");
                 }

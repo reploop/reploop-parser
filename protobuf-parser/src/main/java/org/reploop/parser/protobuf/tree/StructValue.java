@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Struct value.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 12
  */
 public class StructValue extends Value {

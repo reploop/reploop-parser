@@ -12,7 +12,6 @@ import org.reploop.translator.json.bean.JsonMessageContext;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 import static org.reploop.translator.json.bean.Support.customTypeName;

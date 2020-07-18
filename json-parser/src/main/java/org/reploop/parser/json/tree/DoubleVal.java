@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18
  */
 public class DoubleVal extends Number {

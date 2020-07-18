@@ -9,9 +9,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.max;
+
+/**
+ * Prefer float-point number first. then choose type of largest bits.
+ */
 public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
 
     private static final Map<Integer, FieldType> integerTypeMap;
+    private static final Map<Integer, FieldType> floatingTypeMap;
 
     static {
         Map<Integer, FieldType> map = new HashMap<>();
@@ -23,8 +29,25 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         map.put(intType.bits(), intType);
         LongType longType = new LongType();
         map.put(longType.bits(), longType);
-
         integerTypeMap = Collections.unmodifiableMap(map);
+
+        Map<Integer, FieldType> mf = new HashMap<>();
+        FloatType floatType = new FloatType();
+        mf.put(floatType.bits(), floatType);
+        DoubleType doubleType = new DoubleType();
+        mf.put(doubleType.bits(), doubleType);
+        floatingTypeMap = Collections.unmodifiableMap(mf);
+    }
+
+    private final int minBits;
+    private final static int MIN_BITS = 32;
+
+    public JsonNumberTypeAdaptor(int minBits) {
+        this.minBits = minBits;
+    }
+
+    public JsonNumberTypeAdaptor() {
+        this(MIN_BITS);
     }
 
     @Override
@@ -55,7 +78,24 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return integerTypeMap.get(context.getBits());
+        return integerType(context);
+    }
+
+    private FieldType integerType(NumberSpec context) {
+        return type(integerTypeMap, context);
+    }
+
+    private FieldType floatingType(NumberSpec context) {
+        return type(floatingTypeMap, context);
+    }
+
+    private FieldType type(Map<Integer, FieldType> bitsTypeMap, NumberSpec context) {
+        int bits = max(minBits, context.getBits());
+        FieldType type = bitsTypeMap.get(bits);
+        if (null == type) {
+            throw new IllegalStateException("Type with bits " + bits + " does not exists. Current spec is " + context.toString());
+        }
+        return type;
     }
 
     @Override
@@ -63,7 +103,7 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return integerTypeMap.get(context.getBits());
+        return integerType(context);
     }
 
     @Override
@@ -71,7 +111,7 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitFloatType(new FloatType(), context);
         }
-        return integerTypeMap.get(context.getBits());
+        return integerType(context);
     }
 
     @Override
@@ -79,24 +119,16 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         if (context.isFloating()) {
             return visitDoubleType(new DoubleType(), context);
         }
-        return integerTypeMap.get(context.getBits());
+        return integerType(context);
     }
 
     @Override
     public FieldType visitFloatType(FloatType floatType, NumberSpec context) {
-        int bits = floatType.bits();
-        if (context.getBits() == bits) {
-            return floatType;
-        }
-        return visitDoubleType(new DoubleType(), context);
+        return floatingType(context);
     }
 
     @Override
     public FieldType visitDoubleType(DoubleType doubleType, NumberSpec context) {
-        int bits = doubleType.bits();
-        if (context.getBits() == bits) {
-            return doubleType;
-        }
-        throw new IllegalStateException(context.toString());
+        return floatingType(context);
     }
 }

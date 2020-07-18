@@ -24,7 +24,7 @@ import static com.google.common.collect.Iterables.getFirst;
  * Thrift communicates with protobuf by {@link java.nio.ByteBuffer} and vice-verse. Here we try to
  * resolve the original protobuf message type which generates the binary data.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-09 21
  */
 public class ThriftBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftProgram>> {
@@ -391,7 +391,7 @@ public class ThriftBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftP
         } else if (cn.endsWith("query_rpc_service.thrift")) {
             fields.add(new Field(Collections.emptyList(), new StructType("QueryResponse"), 0, "queryResponse", false));
         }
-        Collections.sort(fields, (o1, o2) -> {
+        fields.sort((o1, o2) -> {
             FieldType ft1 = o1.getFieldType();
             FieldType ft2 = o2.getFieldType();
             return ft1.getName().size() - ft2.getName().size();

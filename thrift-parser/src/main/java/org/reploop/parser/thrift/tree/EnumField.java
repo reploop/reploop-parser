@@ -1,16 +1,18 @@
 package org.reploop.parser.thrift.tree;
 
+import com.google.common.base.MoreObjects;
 import org.reploop.parser.thrift.AstVisitor;
 import org.reploop.parser.thrift.Node;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 10
  */
 public class EnumField extends Node {
@@ -49,27 +51,22 @@ public class EnumField extends Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         EnumField enumField = (EnumField) o;
-
-        if (index != null ? !index.equals(enumField.index) : enumField.index != null) return false;
-        if (!name.equals(enumField.name)) return false;
-
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "EnumField{" +
-                "name='" + name + '\'' +
-                ", index=" + index +
-                '}';
+        return Objects.equals(name, enumField.name) &&
+            Objects.equals(index, enumField.index);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (index != null ? index.hashCode() : 0);
-        return result;
+        return Objects.hash(name, index);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("name", name)
+            .add("index", index)
+            .add("comments", comments)
+            .toString();
     }
 }

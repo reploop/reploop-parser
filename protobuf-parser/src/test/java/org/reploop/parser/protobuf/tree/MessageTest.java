@@ -9,11 +9,6 @@ public class MessageTest {
     @Test
     public void testGetFields() {
 
-        Comparator<Message> messageComparator = new Comparator<Message>() {
-            @Override
-            public int compare(Message o1, Message o2) {
-                return 0;
-            }
-        };
+        Comparator<Message> messageComparator = (o1, o2) -> 0;
     }
 }

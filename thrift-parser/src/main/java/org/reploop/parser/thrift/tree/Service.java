@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class Service extends Entity {
@@ -69,11 +69,10 @@ public class Service extends Entity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Service{");
-        sb.append(super.toString());
-        sb.append("parent=").append(parent);
-        sb.append(", functions=").append(functions);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Service{" + super.toString() +
+            "parent=" + parent +
+            ", functions=" + functions +
+            '}';
+        return sb;
     }
 }

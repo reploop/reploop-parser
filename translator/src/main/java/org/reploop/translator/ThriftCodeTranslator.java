@@ -27,7 +27,7 @@ import java.util.*;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-05-17 10
  */
 public class ThriftCodeTranslator {
@@ -58,7 +58,7 @@ public class ThriftCodeTranslator {
         ThriftParser tp = new ThriftParser();
         Map<Path, ThriftProgram> tpm = new HashMap<>();
 
-        Files.walkFileTree(baseDir, new SimpleFileVisitor<Path>() {
+        Files.walkFileTree(baseDir, new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileName = file.getFileName().toString();

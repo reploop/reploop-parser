@@ -14,7 +14,7 @@ import static com.google.common.collect.Iterables.concat;
 /**
  * Java Qualified Name.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-12 09
  */
 public class QualifiedName implements Comparable<QualifiedName> {

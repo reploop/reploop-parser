@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-10-24 22
  */
 public abstract class Option extends Node {

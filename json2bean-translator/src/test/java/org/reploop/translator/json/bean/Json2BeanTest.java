@@ -31,8 +31,8 @@ public class Json2BeanTest {
     @Test
     public void execute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/array.json");
-        QualifiedName root = QualifiedName.of("$");
-        JsonMessageContext context = new JsonMessageContext("$");
+        QualifiedName root = QualifiedName.of("array");
+        JsonMessageContext context = new JsonMessageContext("array");
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
@@ -49,7 +49,7 @@ public class Json2BeanTest {
     @Test
     public void testMapType() throws Exception {
         URL url = Json2BeanTest.class.getResource("/map-type.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("mt");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -60,7 +60,7 @@ public class Json2BeanTest {
     @Test
     public void testArray() throws Exception {
         URL url = Json2BeanTest.class.getResource("/type.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("tj");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -70,7 +70,7 @@ public class Json2BeanTest {
     @Test
     public void testDouble() throws Exception {
         URL url = Json2BeanTest.class.getResource("/double.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("dojo");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -80,7 +80,7 @@ public class Json2BeanTest {
     @Test
     public void testFloat() throws Exception {
         URL url = Json2BeanTest.class.getResource("/float.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("fo");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -94,7 +94,7 @@ public class Json2BeanTest {
     @Test
     public void testExecute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/object.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("vo");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -104,7 +104,7 @@ public class Json2BeanTest {
     @Test
     public void testEmptyValue() throws Exception {
         String json = "{}";
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("value");
         JsonMessageContext context = new JsonMessageContext(root);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(new StringReader(json), context);
         System.out.println(messageMap);
@@ -118,7 +118,7 @@ public class Json2BeanTest {
     @Test
     public void testHAR() throws Exception {
         URL url = Json2BeanTest.class.getResource("/har.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("har");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -128,7 +128,7 @@ public class Json2BeanTest {
     @Test
     public void testText() throws Exception {
         URL url = Json2BeanTest.class.getResource("/text.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("text");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -138,7 +138,7 @@ public class Json2BeanTest {
     @Test
     public void testSimple() throws Exception {
         URL url = Json2BeanTest.class.getResource("/simple.json");
-        QualifiedName root = QualifiedName.of("root");
+        QualifiedName root = QualifiedName.of("simple");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -158,7 +158,7 @@ public class Json2BeanTest {
     @Test
     public void testReq1() throws Exception {
         URL url = Json2BeanTest.class.getResource("/req1.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("req1");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -168,7 +168,7 @@ public class Json2BeanTest {
     @Test
     public void testRes1() throws Exception {
         URL url = Json2BeanTest.class.getResource("/res1.json");
-        QualifiedName root = QualifiedName.of("$");
+        QualifiedName root = QualifiedName.of("res1");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -179,6 +179,16 @@ public class Json2BeanTest {
     public void testMarketing() throws Exception {
         URL url = Json2BeanTest.class.getResource("/spu.json");
         QualifiedName root = QualifiedName.of("spu");
+        JsonMessageContext context = new JsonMessageContext(root);
+        CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
+        Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
+        System.out.print(messageMap);
+    }
+
+    @Test
+    public void testSku() throws Exception {
+        URL url = Json2BeanTest.class.getResource("/sku.json");
+        QualifiedName root = QualifiedName.of("sku");
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);

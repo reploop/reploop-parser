@@ -3,7 +3,7 @@ package org.reploop.parser.protobuf;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public abstract class Node {

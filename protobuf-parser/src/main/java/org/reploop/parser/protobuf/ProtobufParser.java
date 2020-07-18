@@ -24,7 +24,7 @@ import java.util.function.Function;
 /**
  * Protobuf Schema Parser.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 09
  */
 public class ProtobufParser extends ParserDriver<Node, ProtobufBaseLexer, ProtobufBaseParser> {

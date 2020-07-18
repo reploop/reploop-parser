@@ -25,7 +25,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 /**
  * Collect all message and it's type.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-08-29 03
  */
 public class ProtobufClasspathResolver extends AstVisitor<Node, Classpath<ProtoProgram>> {

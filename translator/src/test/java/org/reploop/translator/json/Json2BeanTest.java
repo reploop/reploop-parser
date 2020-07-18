@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.StringReader;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,7 +74,7 @@ public class Json2BeanTest {
             .reduce((s, s2) -> s + s2).orElse("").trim();
         // Files.write(path, body.getBytes());
         System.out.println(body);
-        String s = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+        String s = Files.readString(path);
         QualifiedName name = QualifiedName.of("ShipArchiveResponse");
         QualifiedName qn = Optional.ofNullable(jb.getPkg())
             .map(QualifiedName::of)

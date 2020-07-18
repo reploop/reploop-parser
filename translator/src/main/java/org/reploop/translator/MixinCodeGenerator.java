@@ -21,7 +21,7 @@ import static org.reploop.parser.thrift.generator.GeneratorContext.ZERO_INDENT_C
 /**
  * Code Generator.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-09 11
  */
 public class MixinCodeGenerator extends AstVisitor<StringBuilder, GeneratorContext> {
@@ -44,9 +44,7 @@ public class MixinCodeGenerator extends AstVisitor<StringBuilder, GeneratorConte
     }
 
     private StringBuilder indent(int indent) {
-        for (int i = 0; i < indent; i++) {
-            content.append(WHITE_SPACE);
-        }
+        content.append(String.valueOf(WHITE_SPACE).repeat(Math.max(0, indent)));
         return content;
     }
 

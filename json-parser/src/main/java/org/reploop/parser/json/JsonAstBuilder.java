@@ -19,7 +19,7 @@ import static org.apache.commons.lang3.StringUtils.strip;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
 public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {

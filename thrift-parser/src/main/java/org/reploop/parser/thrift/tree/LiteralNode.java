@@ -4,7 +4,7 @@ import org.reploop.parser.thrift.AstVisitor;
 import org.reploop.parser.thrift.Node;
 
 /**
- * Created by caozhangzhi on 2015/6/6.
+ * Created by George Cao on 2015/6/6.
  */
 public class LiteralNode extends Node {
     String value;

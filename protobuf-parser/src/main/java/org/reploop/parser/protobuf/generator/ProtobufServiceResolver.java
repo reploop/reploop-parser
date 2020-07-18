@@ -11,7 +11,6 @@ import org.reploop.parser.protobuf.AstVisitor;
 
 import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.ProtoProgram;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
 
@@ -26,7 +25,7 @@ import java.util.Set;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-09-28 20
  */
 public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoProgram>> {

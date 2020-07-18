@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-09-28 19
  */
 public class Function extends Node {
@@ -65,11 +65,10 @@ public class Function extends Node {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Function{");
-        sb.append("name=").append(name);
-        sb.append(", requestType=").append(requestType);
-        sb.append(", responseType=").append(responseType);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Function{" + "name=" + name +
+            ", requestType=" + requestType +
+            ", responseType=" + responseType +
+            '}';
+        return sb;
     }
 }

@@ -20,7 +20,7 @@ import java.util.jar.JarFile;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-10-23 23
  */
 public class SchemaJarExtractor {
@@ -67,7 +67,7 @@ public class SchemaJarExtractor {
         if (Files.isRegularFile(dir)) {
             return Files.deleteIfExists(dir);
         }
-        Files.walkFileTree(dir, new SimpleFileVisitor<Path>() {
+        Files.walkFileTree(dir, new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 Files.delete(file);

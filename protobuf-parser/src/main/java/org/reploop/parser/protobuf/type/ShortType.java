@@ -5,7 +5,7 @@ import org.reploop.parser.protobuf.AstVisitor;
 /**
  * Say something?
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 5/9/13 4:19 PM
  */
 public class ShortType extends FieldType implements IntegerType {

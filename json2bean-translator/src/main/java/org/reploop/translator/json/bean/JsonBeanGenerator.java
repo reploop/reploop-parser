@@ -126,7 +126,8 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         context.append("public static class Builder").whitespace().openBrace();
         // start class body
         context.indent().newLine();
-        context.append("private").whitespace().append(name).whitespace().append("data = new ").append(name).append("();").newLine();
+        String attr = "data";
+        context.append("private final").whitespace().append(name).whitespace().append(attr).append(" = new ").append(name).append("();").newLine();
 
         // build method for each field.
         for (Field field : fields) {
@@ -135,7 +136,11 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
             visitFieldType(field.getType(), context);
             context.whitespace().append(field.getName()).closeParen().whitespace().openBrace();
             context.indent().newLine();
-            context.append("data.").append("set").append(LC_UC.convert(field.getName())).openParen().append(field.getName()).closeParen().comma().newLine();
+            String fieldName = field.getName();
+            if (attr.equals(fieldName)) {
+                context.append("this.");
+            }
+            context.append("data.").append("set").append(LC_UC.convert(fieldName)).openParen().append(fieldName).closeParen().comma().newLine();
             context.append("return this;");
             context.dedent().newLine().closeBrace().newLine();
         }
@@ -157,9 +162,6 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         // Options
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         context.append("import com.fasterxml.jackson.annotation.JsonIgnoreProperties;").newLine();
-        context.append("import com.fasterxml.jackson.annotation.JsonProperty;").newLine();
-        context.append("import java.util.List;").newLine();
-        context.append("import java.util.Map;").newLine();
         context.append("import java.io.Serializable;").newLine();
         context.append("import com.google.common.base.MoreObjects;").newLine().newLine();
         comments(node.getComments(), context);

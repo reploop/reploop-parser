@@ -24,7 +24,7 @@ import java.util.function.Function;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 00
  */
 public class ThriftParser extends ParserDriver<Node, ThriftBaseLexer, ThriftBaseParser> {

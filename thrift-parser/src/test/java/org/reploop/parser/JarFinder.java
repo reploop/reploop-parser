@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-03-06 09
  */
 public class JarFinder {
@@ -36,7 +36,7 @@ public class JarFinder {
     public List<JarFile> getJarFiles(String resource) throws IOException {
         ClassLoader cl = ClassLoader.getSystemClassLoader();
         Enumeration<URL> enumeration = cl.getResources(resource);
-        List<JarFile> files = new ArrayList<JarFile>();
+        List<JarFile> files = new ArrayList<>();
         while (enumeration.hasMoreElements()) {
             URL url = enumeration.nextElement();
             if ("jar".equals(url.getProtocol())) {

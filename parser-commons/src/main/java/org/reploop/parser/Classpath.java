@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * Both thrift and protobuf dependencies.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-10 10
  */
 public class Classpath<E> {
@@ -150,7 +150,7 @@ public class Classpath<E> {
 
 
     public Classpath<E> copy() {
-        Classpath<E> classpath = new Classpath<E>();
+        Classpath<E> classpath = new Classpath<>();
         classpath.current(current());
         classpath.path(path());
         classpath.namespace(namespace());
@@ -174,13 +174,12 @@ public class Classpath<E> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Classpath{");
-        sb.append("namespace=").append(namespace);
-        sb.append(", path=").append(path);
-        sb.append(", current=").append(current);
-        sb.append(", entities=").append(entities);
-        sb.append(", files=").append(files);
-        sb.append('}');
-        return sb.toString();
+        String sb = "Classpath{" + "namespace=" + namespace +
+            ", path=" + path +
+            ", current=" + current +
+            ", entities=" + entities +
+            ", files=" + files +
+            '}';
+        return sb;
     }
 }

@@ -6,13 +6,12 @@ import org.reploop.parser.json.Node;
 
 
 import java.lang.*;
-import java.lang.Object;
 import java.util.Objects;
 
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
 public class Json extends Node {

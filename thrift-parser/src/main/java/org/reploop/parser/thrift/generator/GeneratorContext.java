@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Code Generator Context.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-05-16 17
  */
 public class GeneratorContext implements Serializable {

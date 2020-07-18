@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-03-06 09
  */
 public class FileExtensionFilter implements FilenameFilter {

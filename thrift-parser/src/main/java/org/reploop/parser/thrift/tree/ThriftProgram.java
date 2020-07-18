@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * The Thrift program.  A thrift file will finally be parsed to this program.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 14
  */
 public class ThriftProgram extends Node {
@@ -35,7 +35,7 @@ public class ThriftProgram extends Node {
     }
 
     public ThriftProgram(List<Header> headers, List<Entity> entities) {
-        this(Collections.<String>emptyList(), headers, entities);
+        this(Collections.emptyList(), headers, entities);
     }
 
     public ThriftProgram(List<String> comments,

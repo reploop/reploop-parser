@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 /**
  * Protobuf AST visitor.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 09
  */
 public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
@@ -49,7 +49,7 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
         return super.visitExtend(ctx);
     }
 
-    private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<Token, Integer, List<Token>>() {
+    private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
         @Override
         public List<Token> apply(Token token, Integer channel) {
             if (null != tokens) {

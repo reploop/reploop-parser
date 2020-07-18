@@ -10,7 +10,7 @@ import java.util.Objects;
  * the directory in which the compiler was invoked. In general you should set the --proto_path flag
  * to the root of your project and use fully qualified names for all imports.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 11
  */
 public class Include extends Header {

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 17
  */
 public class Raise extends Node {
@@ -29,10 +29,7 @@ public class Raise extends Node {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Raise{");
-        sb.append("fields=").append(fields);
-        sb.append('}');
-        return sb.toString();
+        return "Raise{" + "fields=" + fields + '}';
     }
 
     @Override

@@ -112,12 +112,10 @@ public class JsonBeanTranslatorTest {
     }
 
     private void dup(JsonMessageContext context) {
-        context.messages.forEach(((name, message) -> {
-            name.prefix()
-                .map(qn -> qn.toString().toLowerCase())
-                .map(QualifiedName::of)
-                .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())));
-        }));
+        context.messages.forEach(((name, message) -> name.prefix()
+            .map(qn -> qn.toString().toLowerCase())
+            .map(QualifiedName::of)
+            .ifPresent(qn -> context.dup(name, QualifiedName.of(qn, name.suffix())))));
     }
 
     private void output(Path dir, QualifiedName namespace, Message message, JsonMessageContext context) throws IOException {

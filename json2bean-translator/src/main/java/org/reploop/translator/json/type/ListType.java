@@ -3,7 +3,7 @@ package org.reploop.translator.json.type;
 import java.util.Objects;
 
 public class ListType extends JsonType {
-    private JsonType elementType;
+    private final JsonType elementType;
 
     public ListType(JsonType elementType) {
         this("List", elementType);

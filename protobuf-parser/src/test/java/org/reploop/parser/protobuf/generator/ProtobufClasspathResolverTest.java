@@ -3,7 +3,6 @@ package org.reploop.parser.protobuf.generator;
 
 import org.reploop.parser.Classpath;
 import org.reploop.parser.protobuf.ProtobufParser;
-import org.reploop.parser.protobuf.type.*;
 import org.reploop.parser.protobuf.tree.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,7 +14,7 @@ import java.nio.file.Paths;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-05-17 19
  */
 public class ProtobufClasspathResolverTest {

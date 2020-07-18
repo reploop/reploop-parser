@@ -25,7 +25,7 @@ import static com.google.common.collect.Iterables.getFirst;
  * Thrift communicates with protobuf by {@link java.nio.ByteBuffer} and vice-verse. Here we try to
  * resolve the original protobuf message type which generates the binary data.
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-09 21
  */
 public class MixinBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftProgram>> {

@@ -3,7 +3,7 @@ package org.reploop.parser.commons;
 /**
  * Levenshtein Distance .
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-12 14
  */
 public class LevenshteinDistance {

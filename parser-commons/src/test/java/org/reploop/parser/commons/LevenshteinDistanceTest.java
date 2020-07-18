@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi@iqiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2016-05-16 23
  */
 public class LevenshteinDistanceTest {

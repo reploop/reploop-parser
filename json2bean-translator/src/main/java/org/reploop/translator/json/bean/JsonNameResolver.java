@@ -10,10 +10,17 @@ import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.NameFormat;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     private static final String ANNOTATION = "@JsonProperty(\"%s\")";
+    private static final QualifiedName IMPORT_JSON_PROPERTY = QualifiedName.of("com.fasterxml.jackson.annotation.JsonProperty");
+    private static final QualifiedName IMPORT_LIST = QualifiedName.of("java.util.List");
+    private static final QualifiedName IMPORT_SET = QualifiedName.of("java.util.Set");
+    private static final QualifiedName IMPORT_MAP = QualifiedName.of("java.util.Map");
+    private static final List<QualifiedName> AUTO_IMPORTS = List.of(IMPORT_LIST, IMPORT_JSON_PROPERTY, IMPORT_MAP, IMPORT_SET);
     private final NameFormat format = new NameFormat();
 
     @Override
@@ -23,18 +30,21 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     @Override
     public ListType visitListType(ListType listType, JsonMessageContext context) {
+        context.addDependency(IMPORT_LIST);
         FieldType eleType = visitFieldType(listType.getElementType(), context);
         return new ListType(eleType);
     }
 
     @Override
     public SetType visitSetType(SetType setType, JsonMessageContext context) {
+        context.addDependency(IMPORT_SET);
         FieldType eleType = visitFieldType(setType.getElementType(), context);
         return new SetType(eleType);
     }
 
     @Override
     public MapType visitMapType(MapType mapType, JsonMessageContext context) {
+        context.addDependency(IMPORT_MAP);
         FieldType keyType = visitFieldType(mapType.getKeyType(), context);
         FieldType valType = visitFieldType(mapType.getValueType(), context);
         return new MapType(keyType, valType);
@@ -42,8 +52,32 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     @Override
     public StructType visitStructType(StructType structType, JsonMessageContext context) {
-        QualifiedName qn = structType.getName();
-        return new StructType(toUpperCamel(qn));
+        QualifiedName qn = toUpperCamel(structType.getName());
+        Optional<QualifiedName> oqn = qn.prefix();
+        if (oqn.isPresent()) {
+            String suffix = qn.suffix();
+            QualifiedName sqn = QualifiedName.of(suffix);
+            boolean conflict = false;
+            for (QualifiedName name : AUTO_IMPORTS) {
+                if (name.endsWith(sqn)) {
+                    conflict = true;
+                    break;
+                }
+            }
+            QualifiedName fqn = qn;
+            if (conflict) {
+                QualifiedName prefix = oqn.get();
+                // When conflicts, add prefix's last name to the full name.
+                suffix = prefix.suffix() + "_" + qn.suffix();
+                // The new full qualified name
+                fqn = toUpperCamel(QualifiedName.of(prefix, suffix));
+                context.addIdentityName(qn, fqn);
+            }
+            // Add fqn to dependencies
+            context.addDependency(fqn);
+            qn = QualifiedName.of(fqn.suffix());
+        }
+        return new StructType(qn);
     }
 
     @Override
@@ -57,6 +91,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         String name = toLowerCamel(node.getName());
         List<String> comments = node.getComments();
         if (!name.equals(node.getName())) {
+            context.addDependency(IMPORT_JSON_PROPERTY);
             String annotation = String.format(ANNOTATION, node.getName());
             comments = ImmutableList.<String>builder().addAll(comments).add(annotation).build();
         }
@@ -84,14 +119,22 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
+        QualifiedName name = toUpperCamel(node.getName());
         List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context), Option.class);
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         List<Enumeration> enumerations = visitIfPresent(node.getEnumerations(), enumeration -> visitEnumeration(enumeration, context));
+        List<String> deps = context.getDependencies().stream()
+            .sorted()
+            .filter(qn -> !qn.equals(name))
+            .map(QualifiedName::toString)
+            .map(s -> "import " + s + ";")
+            .collect(Collectors.toList());
         List<String> comments = ImmutableList.<String>builder()
             .addAll(node.getComments())
+            .addAll(deps)
             .add("@JsonIgnoreProperties(ignoreUnknown = true)")
             .build();
-        return new Message(toUpperCamel(node.getName()), comments, fields, messages, enumerations, options);
+        return new Message(name, comments, fields, messages, enumerations, options);
     }
 }

@@ -15,10 +15,7 @@ import org.reploop.parser.thrift.tree.Exception;
 import org.reploop.parser.thrift.tree.*;
 import org.reploop.parser.thrift.type.*;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
@@ -28,7 +25,7 @@ import static org.reploop.parser.thrift.base.ThriftBaseParser.*;
 /**
  * Thrift AST visitor.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 12
  */
 public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
@@ -43,7 +40,7 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
         return CommentHelper.comments(token, ThriftBaseLexer.HIDDEN, leftComment);
     }
 
-    private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<Token, Integer, List<Token>>() {
+    private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
         @Override
         public List<Token> apply(Token token, Integer channel) {
             if (null != tokens) {
@@ -211,7 +208,7 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
     private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
         return Optional.ofNullable(context)
             .map(this::visit)
-            .filter(node -> null != node)
+            .filter(Objects::nonNull)
             .map(clazz::cast);
     }
 
@@ -283,7 +280,7 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
         if (null != contexts) {
             return contexts.stream()
                 .map(this::visit)
-                .filter(node -> null != node)
+                .filter(Objects::nonNull)
                 .map(clazz::cast)
                 .collect(Collectors.toList());
         }

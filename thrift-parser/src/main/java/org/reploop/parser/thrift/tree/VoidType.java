@@ -5,7 +5,7 @@ import org.reploop.parser.thrift.AstVisitor;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-05 17
  */
 public class VoidType extends FunctionType {

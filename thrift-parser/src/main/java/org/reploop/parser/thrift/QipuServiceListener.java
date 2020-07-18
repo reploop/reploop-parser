@@ -14,13 +14,13 @@ import java.util.Map;
 /**
  * What's this about?
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-03-06 10
  */
 public class QipuServiceListener extends ThriftBaseBaseListener {
     private static final Logger LOG = LoggerFactory.getLogger(QipuServiceListener.class);
 
-    Map<String, StringBuilder> serviceImplMap = new HashMap<String, StringBuilder>();
+    Map<String, StringBuilder> serviceImplMap = new HashMap<>();
     StringBuilder current = new StringBuilder();
 
     @Override

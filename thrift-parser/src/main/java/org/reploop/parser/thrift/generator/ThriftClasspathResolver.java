@@ -22,7 +22,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
  *
  * Some thrift byte buffer is some protobuf message, we try to find out the real message here too.
  *
- * @author George Cao(caozhangzhi at qiyi.com)
+ * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-12 15
  */
 public class ThriftClasspathResolver extends AstVisitor<Node, Classpath<ThriftProgram>> {
@@ -191,9 +191,9 @@ public class ThriftClasspathResolver extends AstVisitor<Node, Classpath<ThriftPr
                                                            Class<R> clazz) {
         if (null != nodes) {
             return nodes.stream()
-                    .filter(node -> null != node)
+                    .filter(Objects::nonNull)
                     .map(node -> process(node, context))
-                    .filter(node -> null != node)
+                    .filter(Objects::nonNull)
                     .map(clazz::cast)
                     .collect(Collectors.toList());
         }
