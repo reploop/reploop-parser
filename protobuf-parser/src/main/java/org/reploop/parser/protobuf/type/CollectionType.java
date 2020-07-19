@@ -1,5 +1,7 @@
 package org.reploop.parser.protobuf.type;
 
+import java.util.Objects;
+
 /**
  * What's this about?
  *
@@ -27,5 +29,19 @@ public abstract class CollectionType extends FieldType {
     @Override
     public String toString() {
         return getName() + "<" + getElementType() + ">";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CollectionType that = (CollectionType) o;
+        return elementType.equals(that.elementType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), elementType);
     }
 }

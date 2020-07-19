@@ -3,9 +3,9 @@ package org.reploop.translator.json.bean;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.Field;
-import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.translator.json.support.Constants;
 
 import java.util.List;
 import java.util.Optional;
@@ -63,11 +63,40 @@ public class JsonFieldTypeResolver extends AstVisitor<Node, JsonMessageContext> 
     }
 
     @Override
+    public CommonPair visitCommonPair(CommonPair node, JsonMessageContext context) {
+        String key = node.getKey();
+        if (Constants.EXTENDS_ATTR.equals(key)) {
+            Value value = node.getValue();
+            if (value instanceof StringValue) {
+                QualifiedName qn = QualifiedName.of(((StringValue) value).getValue());
+                QualifiedName fqn = replaceIfPresent(qn, context);
+                return new CommonPair(Constants.EXTENDS_ATTR, new StringValue(fqn.toString()));
+            }
+        }
+        return node;
+    }
+
+    @Override
+    public DefaultPair visitDefaultPair(DefaultPair node, JsonMessageContext context) {
+        return node;
+    }
+
+    @Override
+    public OptionPair visitOptionPair(OptionPair node, JsonMessageContext context) {
+        return node;
+    }
+
+    @Override
+    public Option visitOption(Option option, JsonMessageContext context) {
+        return (Option) process(option, context);
+    }
+
+    @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
         QualifiedName fqn = replaceIfPresent(node.getName(), context);
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
-
-        return new Message(fqn, node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());
+        List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+        return new Message(fqn, node.getComments(), fields, messages, node.getEnumerations(), options);
     }
 }

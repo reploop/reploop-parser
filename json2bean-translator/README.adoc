@@ -1,0 +1,10 @@
+= JSON 2 Java Bean
+
+== Seq
+1. JSON Parser
+2. Translate
+3. Class Inherite
+4. Rewrite Same Class
+5. Find used Classes
+6. Rewrite Class Name to Upper Camel Format
+7. Generate Java Source Code

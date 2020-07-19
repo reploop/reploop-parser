@@ -148,8 +148,6 @@ public class Json2Bean {
             fixed.put(msg.getName(), msg);
         });
 
-        nameResolver.visitFieldType(fieldType, ctx);
-        FieldType ft = fieldTypeResolver.visitFieldType(fieldType, ctx);
         // used
         URL url = Json2Bean.class.getResource("/");
         System.out.println(url);

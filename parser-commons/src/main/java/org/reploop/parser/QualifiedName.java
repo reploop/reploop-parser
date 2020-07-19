@@ -55,6 +55,7 @@ public class QualifiedName implements Comparable<QualifiedName> {
 
     public static QualifiedName of(String suffix) {
         Preconditions.checkNotNull(suffix);
+        Preconditions.checkArgument(!suffix.isBlank(), "Name cannot be blank.");
         return new QualifiedName(SPLITTER.split(suffix));
     }
 
@@ -82,11 +83,11 @@ public class QualifiedName implements Comparable<QualifiedName> {
     }
 
     public boolean endsWith(String name) {
-        return toString().endsWith(name);
+        return endsWith(QualifiedName.of(name));
     }
 
     public boolean startsWith(String name) {
-        return toString().startsWith(name);
+        return startsWith(QualifiedName.of(name));
     }
 
     public boolean startsWith(QualifiedName name) {
@@ -128,6 +129,14 @@ public class QualifiedName implements Comparable<QualifiedName> {
             return true;
         }
         return false;
+    }
+
+    public Optional<QualifiedName> tail() {
+        int size = parts.size();
+        if (size > 1) {
+            return Optional.of(QualifiedName.of(parts.subList(1, size)));
+        }
+        return Optional.empty();
     }
 
     public Optional<QualifiedName> prefix() {

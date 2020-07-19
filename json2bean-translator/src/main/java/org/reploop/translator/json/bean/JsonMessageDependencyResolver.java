@@ -1,11 +1,11 @@
 package org.reploop.translator.json.bean;
 
+import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.Enumeration;
-import org.reploop.parser.protobuf.tree.Field;
-import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.translator.json.support.Constants;
 
 import java.util.List;
 
@@ -61,10 +61,29 @@ public class JsonMessageDependencyResolver extends AstVisitor<Node, JsonMessageC
     }
 
     @Override
+    public CommonPair visitCommonPair(CommonPair node, JsonMessageContext context) {
+        String key = node.getKey();
+        if (Constants.EXTENDS_ATTR.equals(key)) {
+            Value value = node.getValue();
+            if (value instanceof StringValue) {
+                QualifiedName val = QualifiedName.of(((StringValue) value).getValue());
+                context.addDependency(val);
+            }
+        }
+        return node;
+    }
+
+    @Override
+    public Option visitOption(Option option, JsonMessageContext context) {
+        return (Option) process(option, context);
+    }
+
+    @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), m -> visitMessage(m, context));
         List<Enumeration> enums = visitIfPresent(node.getEnumerations(), e -> visitEnumeration(e, context));
-        return new Message(node.getName(), node.getComments(), fields, messages, enums, node.getOptions());
+        List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+        return new Message(node.getName(), node.getComments(), fields, messages, enums, options);
     }
 }

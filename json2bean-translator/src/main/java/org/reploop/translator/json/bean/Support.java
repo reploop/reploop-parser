@@ -8,7 +8,6 @@ import org.reploop.translator.json.type.NumberSpec;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -18,6 +17,12 @@ public class Support {
     public static final String pattern = "[%d]";
     public static final Pattern LEGAL_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
 
+    /**
+     * Find the most concrete field type. Usually it's primitive types or user defined class.
+     *
+     * @param fieldType the type to probe
+     * @return the concrete type
+     */
     public static FieldType expandValueType(FieldType fieldType) {
         if (fieldType instanceof CollectionType) {
             return expandValueType(((CollectionType) fieldType).getElementType());
@@ -28,6 +33,12 @@ public class Support {
         return fieldType;
     }
 
+    /**
+     * If this filed type is user defined class
+     *
+     * @param type field type
+     * @return class qualified name if yes.
+     */
     public static Optional<QualifiedName> customTypeName(FieldType type) {
         if (type instanceof StructType) {
             return Optional.of(type.getName());
@@ -79,26 +90,5 @@ public class Support {
 
     public static String itemName(int i) {
         return String.format(pattern, i);
-    }
-
-    public static String reduce(Set<String> values, String defVal) {
-        for (String val : values) {
-            if (val.contains(Double.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Long.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Float.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Integer.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Short.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Byte.class.getSimpleName())) {
-                return val;
-            } else if (val.contains(Boolean.class.getSimpleName())) {
-                return val;
-            }
-        }
-        return defVal;
     }
 }

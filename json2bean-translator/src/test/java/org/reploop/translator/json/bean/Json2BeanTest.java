@@ -54,7 +54,7 @@ public class Json2BeanTest {
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.print(messageMap);
-        assertThat(messageMap.get(root)).isNull();
+        assertThat(messageMap.get(root)).isNotNull();
     }
 
     @Test
@@ -190,6 +190,9 @@ public class Json2BeanTest {
         URL url = Json2BeanTest.class.getResource("/sku.json");
         QualifiedName root = QualifiedName.of("sku");
         JsonMessageContext context = new JsonMessageContext(root);
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        String path = "$.result.createTime";
+        context.configureDateFormat(path, pattern);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.print(messageMap);

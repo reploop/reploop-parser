@@ -102,9 +102,39 @@ public class JsonMessageContext {
         }
     }
 
+    private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
+
     public boolean isJsonRawValue(QualifiedName name) {
-        String expected = "$.log.entries.response.content.text";
-        return name.toString().equals(expected);
+        if (null == name) {
+            return false;
+        }
+        return name.tail().map(JSON_RAW_VALUE_PATH::contains).orElse(false);
+    }
+
+    public Optional<String> hasDateFormat() {
+        return hasDateFormat(name);
+    }
+
+    public Optional<String> hasDateFormat(QualifiedName fqn) {
+        return fqn.tail().map(DATE_FORMAT::get);
+    }
+
+    private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
+
+    public void configureDateFormat(String fqn, String pattern) {
+        configureDateFormat(QualifiedName.of(fqn), pattern);
+    }
+
+    public void configureDateFormat(QualifiedName fqn, String pattern) {
+        fqn.tail().ifPresent(name -> DATE_FORMAT.put(name, pattern));
+    }
+
+    public void configureJsonRawValue(String xpath) {
+        configureJsonRawValue(QualifiedName.of(xpath));
+    }
+
+    public void configureJsonRawValue(QualifiedName fqn) {
+        fqn.tail().ifPresent(JSON_RAW_VALUE_PATH::add);
     }
 
     public JsonMessageContext addDependency(QualifiedName fqn) {
