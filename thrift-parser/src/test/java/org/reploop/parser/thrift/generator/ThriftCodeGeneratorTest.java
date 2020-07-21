@@ -1,7 +1,7 @@
 package org.reploop.parser.thrift.generator;
 
-import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.Classpath;
+import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.thrift.tree.ThriftProgram;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -35,6 +35,7 @@ public class ThriftCodeGeneratorTest {
         Path path = Paths.get(uri.toURI());
         ThriftProgram ThriftProgram = parser.program(path);
         Classpath<ThriftProgram> classpath = new Classpath<>();
+        classpath.current(path);
         classpath.file(path);
         System.out.println(classpath);
         ThriftBinaryNameResolver resolver = new ThriftBinaryNameResolver(new HashMap<>());

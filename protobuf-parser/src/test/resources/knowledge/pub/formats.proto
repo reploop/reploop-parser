@@ -1,0 +1,409 @@
+// Author: Chuanqian Wang (wangchuanqian@qiyi.com)
+// Author: Lin Liu (lynnliu@qiyi.com)
+// Author: Yin Zeng (zengyin@qiyi.com)
+//
+// Proto definitions for video format according to
+// Chinese National Standard GY/T 202.1--2004
+import "knowledge/pub/common.proto";
+
+package knowledge.pub;
+/**
+ *@brief 码流
+ *@details  定义视频的码流。
+ *
+ * Next field id is: 41
+ **/
+message Format {
+  // Unique identifier for this format. e.g: 8e262db681a0441899ba71ef81aa34d9
+  // 也称码流id.
+  required string uuid = 1;
+  //音频数据速率
+  optional string audio_data_rate = 2;
+  //音频编码格式
+  optional string audio_coding_format = 3;
+
+  /**
+   * @brief 视频数据速率。
+   * @details 目前支持的码流类型有：<ol>
+   * <li>普通码流:jisu、300、600、1000、720P、1080P、5M、8M、4K</li>
+   * <li>Intertrust码流：300_drm、600_drm、jisu_drm、720P_drm、1080P_drm</li>
+   * <li>杜比码流:600_dolby、1000_dolby、720P_dolby、1080P_dolby、4K_dolby</li>
+   * <li>H265码流:720P_h265、1080P_h265、4K_h265</li>
+   * <li>移动端试看码流:300preview、600preview</li>
+   * <ol>
+   **/
+  optional string video_bitrate = 4;
+  //视频编码格式
+  optional string video_coding_format = 5;
+
+  //持续时长
+  optional int32 duration = 6;
+  //起始点
+  optional int32 starting_point = 7;
+  //终止点
+  optional int32 ending_point = 8;
+  //颜色
+  optional string color = 9;
+  //字幕形式
+  optional string subtitle_form = 10;
+
+  // Foreign languages, compatible VRS's old field.
+  //外语语种
+  optional int32 language_type = 11;
+  //声道格式
+  optional string audio_channel_format = 12;
+  //音质
+  optional string audio_quality = 13;
+  //画质
+  optional string video_quality = 14;
+  //屏幕宽高比
+  optional string aspect_ratio = 15;
+  //物理媒介类型
+  optional string physical_media_type = 16;
+  //系统
+  optional string system = 17;
+  //音频采样频率
+  optional string audio_sampling_frequency = 18;
+  //音频位深
+  optional int32 audio_bit_depth = 19;
+  //视频采样类型
+  optional string video_sampling_type = 20;
+  //文件格式
+  optional string file_format = 21;
+
+  optional string m3u8_url = 22;
+  optional string mp4_url = 31;
+  //mp4_url 美剧版权保护
+  optional string meta_url = 23;
+  //平台
+  optional string platform = 24;
+  // 屏幕大小，E.g: 1280*1280
+  optional string screen_size = 25;
+
+  // 视频分区信息
+  message Split {
+    //索引
+    required int32 index = 1;
+    //大小
+    required int64 size = 2;
+    required string url = 3;
+    //持续时长
+    required int64 duration = 4;
+    required string md5 = 5;
+    //头
+    required string header = 6;
+    //分段的绝对起始时间，用于音画同步
+    optional int64 offset=7 [default = -1];
+    //是否加密
+    optional bool is_encrypt = 8 [default = false];
+  }
+
+  // Record flv episode's all sections information
+  repeated Split flv_splits = 26;
+
+  // Record mp4 episode's all sections information
+  repeated Split mp4_splits = 27;
+  //是否3D格式，默认是false
+  optional bool is_3d = 28 [default = false];
+  //是否drm保护
+  optional bool is_drm = 29 [default = false];
+  enum DrmType {
+    UNKNOWN_DRM_TYPE = -1;
+    NONE_DRM = 1;
+    FMS_DRM = 2;
+    INTER_TRUST_DRM = 3;
+    VCINEMA_DRM = 4;
+    IQIYI_CHINA_DRM = 5;
+    IRDETO_DRM = 6;
+    //谷歌研发的一种用于chrome浏览器的网页端DRM
+    WIDEVINE_DRM = 7;
+    //微软研发的一种用于IE的网页端DRM
+    PLAYREADY_DRM = 8;
+  }
+  optional DrmType drm_type = 38 [default = NONE_DRM];
+
+  // Size(bytes) of one video file in one format.
+  optional int64 video_size = 30;
+
+  // Common format information files definition.
+  //格式信息文件
+  optional FormatInfoFile format_info_file = 32;
+
+  // The pps code stream descriptor.
+  optional string fid = 33;
+
+  // The meta size description string for pps.
+  //PPS meta大小描述
+  optional string meta_size_list = 34;
+
+  // Indicate whether this format is usable for pps.
+  optional bool is_available_for_pps = 35 [default = false];
+
+  // Indicate whether this format is produced by pps.
+  optional bool is_produced_by_pps = 36 [default = false];
+
+  // The p2p source url for pps.
+  optional string p2p_url_pps = 37;
+
+  // 与编解码相关的sequence header.
+  optional string audio_tag = 39;
+  optional string video_tag = 40;
+
+  //标示视频码流是否硬压了字幕
+  optional bool has_subtitle = 41 [default = false];
+
+  //记录码流的水印信息
+  optional string watermark = 42;
+
+  // Intertrust加密使用的水印字符串
+  optional string intertrust_watermark = 43;
+
+  // 未加密码流时长
+  optional int32 unencrypted_duration = 44;
+
+  // 试看码流
+  optional bool is_preview = 45 [default = false];
+
+  optional ChinaDrmKey iqiyi_china_drm_key = 46;
+
+  // 码流动态范围枚举
+  enum DynamicRange {
+    UNKNOWN_DYNAMIC_RANGE = -1;
+    // 码流动态范围采用Dolby Vision标准
+    DOLBY_VISION = 1;
+    // 码流动态范围采用HDR 10标准
+    HDR_10 = 2;
+    //码流动态范围采用SDR_PLUS标准
+    SDR_PLUS = 3;
+  }
+
+  // 码流动态范围
+  optional DynamicRange dynamic_range = 47;
+
+  // 码流编码方案枚举
+  enum Code {
+    UNKNOWN_CODE = -1;
+    HVC = 1; // 采用HVC编码方案
+    H264 = 2;// 采用H264编码方案
+    H265 = 3;// 采用H265编码方案
+  }
+
+  // 码流编码方案
+  optional Code code = 48;
+  //视频format信息增加杜比标示
+  optional bool is_dolby = 49 [default = false];
+  //码流水印类型
+  optional StreamLogoType stream_logo_type = 50 [default = STREAM_LOGO_TYPE_NONE];
+}
+
+// Define the format info file for PPS client and IQIYI.
+message FormatInfoFile {
+  // Format id.
+  optional string format_id = 1;
+
+  // Define the information of the format info file.
+  repeated FileInfo file_info = 2;
+
+  // MD5 signature.
+  optional string sign_md5 = 3;
+
+  // Sha1 signature.
+  optional string sign_sha1 = 4;
+}
+
+// Define the file info for format info file.
+message FileInfo {
+  enum FileType {
+    M3U8 = 1;
+    META = 2;
+    MP4_DRM = 3;
+    // BIF is group wise initial file.
+    PPS_BIF = 4;
+    PPS_META = 5;
+    PPS_META_SET = 6;
+    PPS_MP4_HEADER = 7;
+    // PFV is one video file format defined by PPS.
+    PPS_PFV = 8;
+    // BIP is file format for 3D.
+    PPS_BIP = 9;
+  }
+  optional FileType file_type = 1;
+
+  optional string file_url = 2;
+
+  optional int64 file_size = 3;
+
+  // Who uses file above file url.
+  enum User {
+    COMMON = 1;
+    PPS = 2;
+    IQIYI = 3;
+  }
+  optional User user = 4;
+
+  // 原始地址（仅内部使用）
+  optional string file_uri = 5;
+}
+
+message ImageFormat {
+  required string uuid = 1;
+
+  optional int32 resolution = 2;
+  optional string format = 3;
+  optional int32 height = 4;
+  optional int32 width = 5;
+  optional string url = 6;
+  optional int64 order = 7;//封面图的序号
+  optional string url_hq = 8;//高清图片地址
+  optional string url_webp55 = 9;//	webp55图片地址
+  optional string url_webp85 = 10;//webp85图片地址
+  //人脸识别结果
+  optional FaceRecognitionResult face_recognition_result = 11;
+  optional float score = 12 [default = 1.0];//封面图权重
+  //webp动图地址
+  optional string dynamic_image_url_webp = 13;
+  //gif动图地址
+  optional string dynamic_image_url_gif = 14;
+}
+
+// 移动端杜比码流格式；由乐高媒资写入。
+message AudioFormat{
+  optional string uuid = 1;
+  optional string audio_coding_format = 2;
+  optional string audio_bitrate = 3;
+  optional int64 duration = 4;
+  optional int32 language_type = 5;
+  message Amp4Splits{
+    optional int32 index = 1;
+    optional int64 duration = 2;
+    optional string url = 3;
+    optional int64 size = 4;
+  }
+  repeated Amp4Splits amp4_splits = 6;
+  // 声道类型
+  optional AudioChannelType audio_channel_type = 7;
+}
+
+message PanoFormat{
+  enum VideoType{
+    //普通视频
+    COMMON_VIDEO = 1;
+    //360度全景视频
+    PANO_VIDEO_360 = 2;
+    //180度全景视频
+    PANO_VIDEO_180 = 3;
+    //广角视频
+    WIDE_ANGLE_VIDEO = 4;
+  }
+  //视频类型（普通、360全景、180全景、广角视频）
+  optional VideoType video_type = 1 [default = COMMON_VIDEO];
+  //指定观看的默认视角 ,视线是个矢量
+  optional float view_angle_x = 2 [default = 0];
+  optional float view_angle_y = 3 [default = 0];
+  //指定观看的默认缩放系数
+  optional float zoom_rate  = 4 [default = 1.0];
+  // 渲染类型
+  optional RenderingType rendering_type = 5;
+}
+
+//图书格式
+message BookFormat {
+  /**
+   * 图书文件类型
+   *
+  **/
+  enum FileType {
+    UNKNOWN_FILE_TYPE = -1;
+    PDF = 1;
+    EPUB= 2;
+    TXT = 3;
+  };
+  //文件类型；
+  optional FileType file_type = 1;
+  //是否默认类型
+  optional bool is_default = 2[default = false];
+  //图书地址
+  optional string book_url = 3;
+}
+
+message ComicBookFormat{
+  /**
+   * 漫画格式
+   *
+  **/
+  enum FileType {
+    UNKNOWN_FILE_TYPE = -1;
+    JPG = 1;
+    PNG = 2;
+    //webp格式
+    WEBP = 3;
+  };
+  //漫画格式
+  optional FileType file_type = 1;
+  //是否默认
+  optional bool is_default = 2 [default = false];
+  //漫画地址
+  optional string book_url = 3;
+}
+
+message ComicImageFormat{
+  // 标记图片的唯一ID
+  optional string uuid = 1;
+  /**
+   * 图片格式类型
+   *
+  **/
+  enum ImageQuality {
+    UNKNOWN_IMAGE_QUALITY = -1;
+    ORIGINAL = 1; // 原画
+    //定宽
+    FIXED_WIDTH = 2;
+  };
+  // 图片清晰度
+  optional ImageQuality image_quality = 2;
+
+  /**
+   * 图片格式类型
+   *
+  **/
+  enum ImageType {
+    UNKNOWN_IMAGE_TYPE = -1;
+    JPG = 1;
+    PNG = 2;
+    //WEBP格式
+    WEBP = 3;
+  };
+  //图片格式类型
+  optional ImageType image_type = 3;
+
+  // 图片宽度
+  optional int32 width = 4;
+  // 图片高度
+  optional int32 height = 5;
+  // 图片地址
+  optional string image_url = 6;
+  // 图片排序
+  optional int32 page_order = 7;
+  // 图片大小，单位为Byte
+  optional int64 image_size_byte = 8;
+
+  //图片清晰度
+  optional ImageResolution image_resolution = 9 [default = UNKNOWN_IMAGE_RESOLUTION];
+}
+
+message ChinaDrmKey {
+  required string content_id =1;
+  optional string content_version =2;
+}
+
+// 新增关联的format 同步
+message FormatSummary {
+  optional int64 id = 1;
+  optional VideoInfo video_info = 2;
+  optional string version = 3;
+}
+
+message ThreeDFormat {
+  // 3d类型
+  optional ThreeDType three_d_type = 1 [default = TYPE_THREE_DIMEN_COMMON];
+}
