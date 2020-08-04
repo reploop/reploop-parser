@@ -1,4 +1,4 @@
-package org.reploop.translator.json;
+package org.reploop.translator.json.support;
 
 public class Point {
     int x;

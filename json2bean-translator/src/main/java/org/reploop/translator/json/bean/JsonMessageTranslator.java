@@ -26,8 +26,8 @@ import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.apache.commons.lang3.math.NumberUtils.isParsable;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
-import static org.reploop.translator.json.bean.Support.isLegalIdentifier;
-import static org.reploop.translator.json.bean.Support.typeNumberSpec;
+import static org.reploop.translator.json.support.TypeSupport.isLegalIdentifier;
+import static org.reploop.translator.json.support.TypeSupport.typeNumberSpec;
 
 /**
  * Translate JSON AST to protobuf message and it's type.

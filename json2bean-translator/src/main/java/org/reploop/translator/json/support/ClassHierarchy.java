@@ -1,4 +1,4 @@
-package org.reploop.translator.json;
+package org.reploop.translator.json.support;
 
 import com.google.common.collect.ImmutableList;
 import org.reploop.parser.QualifiedName;
@@ -10,10 +10,13 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.stream.Collectors.toList;
-import static org.reploop.translator.json.bean.Support.customTypeName;
+import static org.reploop.translator.json.support.TypeSupport.customTypeName;
 import static org.reploop.translator.json.support.Constants.ABSTRACT_ATTR;
 import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
 
+/**
+ * Try to analyze class hierarchy to avoid duplicated classes.
+ */
 public class ClassHierarchy {
 
     private final JsonFieldTypeResolver fieldTypeResolver;

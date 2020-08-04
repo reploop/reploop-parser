@@ -9,7 +9,7 @@ import java.util.Stack;
 
 public class JsonBeanContext {
     private QualifiedName root;
-    private StringBuilder impl;
+    private final StringBuilder impl;
 
     private int indent = 0;
 
@@ -23,7 +23,7 @@ public class JsonBeanContext {
         push(root);
     }
 
-    private Stack<QualifiedName> current = new Stack<>();
+    private final Stack<QualifiedName> current = new Stack<>();
 
     public QualifiedName fqn() {
         List<String> parts = new ArrayList<>();

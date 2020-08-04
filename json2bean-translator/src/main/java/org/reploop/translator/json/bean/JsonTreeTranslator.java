@@ -8,7 +8,7 @@ import org.reploop.parser.json.tree.*;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.strip;
-import static org.reploop.translator.json.bean.Support.itemName;
+import static org.reploop.translator.json.support.TypeSupport.itemName;
 
 public class JsonTreeTranslator extends AstVisitor<TreeNode, NodeBuilder> {
 

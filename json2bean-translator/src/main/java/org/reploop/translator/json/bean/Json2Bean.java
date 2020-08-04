@@ -9,7 +9,7 @@ import org.reploop.parser.json.tree.Json;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
-import org.reploop.translator.json.ClassHierarchy;
+import org.reploop.translator.json.support.ClassHierarchy;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
 
@@ -25,8 +25,17 @@ import java.util.stream.Collectors;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.nio.file.StandardOpenOption.*;
-import static org.reploop.translator.json.bean.Support.fieldNumberSpec;
+import static org.reploop.translator.json.support.TypeSupport.fieldNumberSpec;
 
+/**
+ * #1 we parse JSON and generate a AST.
+ * #2 Try to analyze the root type of the JSON, along this, translate all Object into Protobuf Message for later user.
+ * #3 Because JSON really is a tree structure and at each level, every node is same as each other. So we merge them to
+ * get a whole pairs.
+ * #4 Now we analyze these messages, try to find same ones. and if they are like each other, we generate abstract class. The reason doing this is to avoid duplicated classes.
+ * #5 Resolve message and type names. e.g. camel style names.
+ * #6 Now we can generate Java Class source code.
+ */
 public class Json2Bean {
     private final JsonNumberTypeAdaptor numberTypeAdaptor;
     private final JsonParser parser;

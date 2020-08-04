@@ -2,6 +2,7 @@ package org.reploop.translator.json;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.reploop.translator.json.support.NameFormat;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;

@@ -1,4 +1,4 @@
-package org.reploop.translator.json;
+package org.reploop.translator.json.support;
 
 import com.google.common.base.CaseFormat;
 import org.reploop.translator.json.util.WordTree;

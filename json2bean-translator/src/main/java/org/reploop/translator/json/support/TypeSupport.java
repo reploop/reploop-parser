@@ -1,4 +1,4 @@
-package org.reploop.translator.json.bean;
+package org.reploop.translator.json.support;
 
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Field;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.Integer.max;
 
-public class Support {
+public class TypeSupport {
     public static final String pattern = "[%d]";
     public static final Pattern LEGAL_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
 

@@ -40,12 +40,18 @@ public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
     }
 
     private final int minBits;
+    /**
+     * 32 bits integer or floating-point number
+     */
     private final static int MIN_BITS = 32;
 
     public JsonNumberTypeAdaptor(int minBits) {
         this.minBits = minBits;
     }
 
+    /**
+     * We use Integer or Float as a start.
+     */
     public JsonNumberTypeAdaptor() {
         this(MIN_BITS);
     }

@@ -7,7 +7,7 @@ import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
-import org.reploop.translator.json.NameFormat;
+import org.reploop.translator.json.support.NameFormat;
 
 import java.util.List;
 import java.util.Optional;

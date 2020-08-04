@@ -7,10 +7,10 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class TreeNode {
-    private TreeNode parent;
-    private String name;
-    private JsonType type;
-    private List<TreeNode> children;
+    private final TreeNode parent;
+    private final String name;
+    private final JsonType type;
+    private final List<TreeNode> children;
 
     public TreeNode(TreeNode parent, String name, JsonType type, List<TreeNode> children) {
         this.parent = parent;

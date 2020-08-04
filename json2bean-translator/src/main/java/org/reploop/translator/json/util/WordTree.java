@@ -1,6 +1,6 @@
 package org.reploop.translator.json.util;
 
-import org.reploop.translator.json.NameFormat;
+import org.reploop.translator.json.support.NameFormat;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
