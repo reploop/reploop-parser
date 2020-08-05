@@ -14,11 +14,11 @@
         <thrift.version>0.9.3</thrift.version>
         <guava.version>29.0-jre</guava.version>
         <jdk.version>11</jdk.version>
-        <testng.version>7.1.0</testng.version>
+        <testng.version>7.3.0</testng.version>
         <commons.lang3.version>3.11</commons.lang3.version>
         <commons.text.version>1.8</commons.text.version>
         <commons.codec.version>1.14</commons.codec.version>
-        <jackson.version>2.11.1</jackson.version>
+        <jackson.version>2.11.2</jackson.version>
         <httpclient5.version>5.0.1</httpclient5.version>
         <libthrift.version>0.13.0</libthrift.version>
         <protobuf.version>3.12.2</protobuf.version>
@@ -215,6 +215,7 @@
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
+                    <release>${jdk.version}</release>
                 </configuration>
             </plugin>
             <plugin>
