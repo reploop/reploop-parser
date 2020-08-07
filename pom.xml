@@ -7,6 +7,8 @@
     <version>0.15-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <assertj.version>3.16.1</assertj.version>
         <mockito.version>3.4.6</mockito.version>
         <easymock.version>4.2</easymock.version>
@@ -32,6 +34,7 @@
         <httpclient5.version>5.0</httpclient5.version>
         <stringtemplate.version>4.0.2</stringtemplate.version>
         <json.path.version>2.4.0</json.path.version>
+        <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
     </properties>
     <modules>
         <module>thrift-parser</module>
@@ -260,6 +263,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${enforcer.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>enforce-versions</id>
