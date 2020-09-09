@@ -22,20 +22,20 @@ public class Json2BeanTest {
 
     @BeforeMethod
     public void setUp() {
-        File file = new File("/Users/george/source/walle/walle-parser/walle-translator/src/test/java");
-        jb = new Json2Bean(file, "com.iqiyi.cloud.oven.workshop.model.parse");
+        File file = new File("/Users/george/open-source/reploop-parser/walle-translator/src/test/java");
+        jb = new Json2Bean(file, "org.reploop.cloud.oven.workshop.model.parse");
     }
 
     @Test
     public void testExecute() {
-        String body = " {\"taskEndTime\": \"2018-10-12 13:00:16\", \"extend\": \"e4be88fe58664894b65de33f4d3290c0\", \"taskProgress\": 100, \"taskStatus\": 2, \"taskId\": 2000046140722833501, \"taskStartTime\": \"2018-10-12 13:00:14\", \"taskData\": {\"outFiles\": [{\"origin\": \"swift://bjyunlou5.oss.qiyi.storage:8080|bjyunlou5.oss.qiyi.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-00/_acb8bcaaeedf410c878a0a24aba5ff0c.jpg\", \"128_80\": \"swift://bjyunlou5.oss.qiyi.storage:8080|bjyunlou5.oss.qiyi.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-02/_432f9883e4884ced8532de0aa1447ff2.jpg\", \"200_150\": \"swift://bjyunlou5.oss.qiyi.storage:8080|bjyunlou5.oss.qiyi.storage:8080/v1/AUTH_afaaffa9919b4828a15a8cb42fdb4a0f/20181012-00/_6d933b8e43984559b6240f5e0c1413ac.jpg\", \"480_360\": \"swift://bjyunlou5.oss.qiyi.storage:8080|bjyunlou5.oss.qiyi.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-02/_f8763f54e194400ebf876653e70d9dcb.jpg\"}]}, \"taskProgressDesc\": \"\"}";
+        String body = " {\"taskEndTime\": \"2018-10-12 13:00:16\", \"extend\": \"e4be88fe58664894b65de33f4d3290c0\", \"taskProgress\": 100, \"taskStatus\": 2, \"taskId\": 2000046140722833501, \"taskStartTime\": \"2018-10-12 13:00:14\", \"taskData\": {\"outFiles\": [{\"origin\": \"swift://bjyunlou5.oss.reploop.storage:8080|bjyunlou5.oss.reploop.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-00/_acb8bcaaeedf410c878a0a24aba5ff0c.jpg\", \"128_80\": \"swift://bjyunlou5.oss.reploop.storage:8080|bjyunlou5.oss.reploop.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-02/_432f9883e4884ced8532de0aa1447ff2.jpg\", \"200_150\": \"swift://bjyunlou5.oss.reploop.storage:8080|bjyunlou5.oss.reploop.storage:8080/v1/AUTH_afaaffa9919b4828a15a8cb42fdb4a0f/20181012-00/_6d933b8e43984559b6240f5e0c1413ac.jpg\", \"480_360\": \"swift://bjyunlou5.oss.reploop.storage:8080|bjyunlou5.oss.reploop.storage:8080/v1/AUTH_d57616c48a2140b393ca2f787567ddb5/20181012-02/_f8763f54e194400ebf876653e70d9dcb.jpg\"}]}, \"taskProgressDesc\": \"\"}";
         jb.execute(QualifiedName.of("DistInfo"), new StringReader(body));
     }
 
 
     @Test
     public void testExecuteUrl() {
-        String url = "http://storageuri.qiyi.domain/cloudstorage/uri?bizid=jy_storage_dev_test&location=jy&production=storage_dev&type=test&role=storage_dev&filename=MP3.mp4";
+        String url = "http://storageuri.com/cloudstorage/uri?bizid=jy_storage_dev_test&location=jy&production=storage_dev&type=test&role=storage_dev&filename=MP3.mp4";
         jb.execute(url);
     }
 

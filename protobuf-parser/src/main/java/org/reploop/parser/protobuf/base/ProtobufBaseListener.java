@@ -1,4 +1,4 @@
-// Generated from com/qiyi/walle/parser/protobuf/base/ProtobufBase.g4 by ANTLR 4.8
+// Generated from com/reploop/walle/parser/protobuf/base/ProtobufBase.g4 by ANTLR 4.8
 package org.reploop.parser.protobuf.base;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 

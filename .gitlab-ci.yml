@@ -1,4 +1,4 @@
-image: docker-registry.qiyi.virtual/walle/maven:jdk8-mvn3
+image: docker-registry.reploop.virtual/walle/maven:jdk8-mvn3
 
 cache:
   paths:

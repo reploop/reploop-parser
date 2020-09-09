@@ -1,4 +1,4 @@
-// Author: Yin Zeng(zengyin@qiyi.com)
+// Author: Yin Zeng(zengyin@reploop.com)
 //
 // This file defines the interface of writing service of qipu.
 

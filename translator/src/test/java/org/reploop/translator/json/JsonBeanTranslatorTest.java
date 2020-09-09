@@ -34,7 +34,7 @@ public class JsonBeanTranslatorTest {
 
     private JsonParser parser;
     private org.reploop.translator.json.JsonMessageTranslator translator;
-    private String url = "http://lijiehui-monitor-online020-jylt.qiyi.virtual/cloudstorage/uri?bizid=bj_ppc_prod&location=bj&production=ppc&type=prod&role=qichuan&usage=normal&app=ppconswift";
+    private String url = "http://lijiehui-monitor-online020-jylt.reploop.virtual/cloudstorage/uri?bizid=bj_ppc_prod&location=bj&production=ppc&type=prod&role=qichuan&usage=normal&app=ppconswift";
     private HttpClient client = HttpClientBuilder.create().build();
 
     StringReader reader() throws IllegalStateException {
@@ -61,7 +61,7 @@ public class JsonBeanTranslatorTest {
     public void setUp() {
         parser = new JsonParser();
         translator = new org.reploop.translator.json.JsonMessageTranslator();
-        // url = "http://mixer.video.iqiyi.com/mixin/videos/avlist?albumId=203194401&size=2&page=1";
+        // url = "http://mixer.video.ireploop.com/mixin/videos/avlist?albumId=203194401&size=2&page=1";
     }
 
     @Test

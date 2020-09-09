@@ -185,10 +185,10 @@ public class ThriftCodeGenerator extends AstVisitor<StringBuilder, GeneratorCont
         content = context.code(node).append(header);
 
         indent(context).append("import com.google.protobuf.InvalidProtocolBufferException;").append(NEW_LINE);
-        indent(context).append("import com.qiyi.cloud.net.pool.Connection;").append(NEW_LINE);
-        indent(context).append("import com.qiyi.vrs.vis.hbase.config.RpcConfig;").append(NEW_LINE);
-        indent(context).append("import com.qiyi.vrs.vis.hbase.service.QipuServiceAdapter;").append(NEW_LINE);
-        indent(context).append("import com.qiyi.vrs.vis.hbase.util.CloudZkConfig;").append(NEW_LINE);
+        indent(context).append("import com.reploop.cloud.net.pool.Connection;").append(NEW_LINE);
+        indent(context).append("import com.reploop.hbase.config.RpcConfig;").append(NEW_LINE);
+        indent(context).append("import com.reploop.hbase.service.QipuServiceAdapter;").append(NEW_LINE);
+        indent(context).append("import com.reploop.hbase.util.CloudZkConfig;").append(NEW_LINE);
         indent(context).append("import org.apache.thrift.TException;").append(NEW_LINE);
         indent(context).append("import org.apache.thrift.transport.TTransport;").append(NEW_LINE);
         indent(context).append("import java.net.InetSocketAddress;").append(NEW_LINE);

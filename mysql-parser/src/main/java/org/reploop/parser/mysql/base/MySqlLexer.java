@@ -1,4 +1,4 @@
-// Generated from com/qiyi/walle/parser/mysql/base/MySqlLexer.g4 by ANTLR 4.8
+// Generated from com/reploop/walle/parser/mysql/base/MySqlLexer.g4 by ANTLR 4.8
 package org.reploop.parser.mysql.base;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;

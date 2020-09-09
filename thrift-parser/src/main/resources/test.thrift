@@ -2,7 +2,7 @@
  * simple_source.thrift
  * Simple Source Definition.
  */
-namespace java com.qiyi.vrs.vis.ugc.model
+namespace java com.reploop.ugc.model
 
 include "ugc_common.thrift"
 include "mixin_video.thrift"

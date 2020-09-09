@@ -22,7 +22,7 @@
         </layout>
     </appender>
 
-    <logger name="com.qiyi.vrs">
+    <logger name="com.reploop.vrs">
         <level value="INFO"/>
     </logger>
 

@@ -33,8 +33,8 @@ public class LogAnalyser {
     }
 
     public static void main(String... args) throws IOException {
-        File file = new File("D:\\source\\walle\\walle-parser\\walle-translator\\src\\test\\java");
-        Json2Bean jb = new Json2Bean(file, "com.iqiyi.cloud.oven.workshop.model.parse");
+        File file = Paths.get("/tmp").toFile();
+        Json2Bean jb = new Json2Bean(file, "org.reploop.cloud.oven.workshop.model.parse");
         Map<String, List<Map<String, Object>>> groupByNames = new HashMap<>();
         Pattern p = Pattern.compile("recieve(.*)?callback(.*)?data=\\[(.*?)](\\s*sign=\\[.*])?$");
         Files.lines(Paths.get("d:\\pipelineproxy.log"))
