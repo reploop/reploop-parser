@@ -1,9 +1,0 @@
-// Author: ZengYin(zengyin@qiyi.com)
-
-package knowledge.graph.computation.realtime;
-
-message U2VNotification {
-  optional bool is_valid = 1;
-  optional int64 previous_uploader = 2;
-}
-

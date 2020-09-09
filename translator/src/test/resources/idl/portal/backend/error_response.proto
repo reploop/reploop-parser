@@ -1,6 +1,0 @@
-option java_package = "com.qiyi.qiyu.portal.model.proto";
-option java_outer_classname="ErrorResponseProtos";
-
-message ErrorResponse {
-  optional string code = 1 [ default = "A00001" ];
-}
