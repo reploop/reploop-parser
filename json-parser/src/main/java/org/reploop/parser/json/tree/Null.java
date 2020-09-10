@@ -3,7 +3,7 @@ package org.reploop.parser.json.tree;
 import org.reploop.parser.json.AstVisitor;
 
 /**
- * What's this about?
+ * Null value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 16

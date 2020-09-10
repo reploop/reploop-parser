@@ -6,14 +6,14 @@ import org.reploop.parser.json.Node;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Key-value pair.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
 public class Pair extends Node implements Comparable<Pair> {
-    private String key;
-    private Value value;
+    private final String key;
+    private final Value value;
 
     public Pair(String key, Value value) {
         this.key = key;

@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2017-01-23 19
  */
 public class JsonThriftTranslator extends AstVisitor<Node, Classpath<ThriftProgram>> {
-    private Path path;
+    private final Path path;
 
     public JsonThriftTranslator(Path path) {
         this.path = path;

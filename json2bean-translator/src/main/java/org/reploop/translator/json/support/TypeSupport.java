@@ -15,7 +15,7 @@ import static java.lang.Integer.max;
 
 public class TypeSupport {
     public static final String pattern = "[%d]";
-    public static final Pattern LEGAL_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
+    public static final Pattern LEGAL_JAVA_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
 
     /**
      * Find the most concrete field type. Usually it's primitive types or user defined class.
@@ -57,7 +57,7 @@ public class TypeSupport {
     }
 
     public static boolean isLegalIdentifier(String s) {
-        return s != null && LEGAL_IDENTIFIER.matcher(s).matches();
+        return s != null && LEGAL_JAVA_IDENTIFIER.matcher(s).matches();
     }
 
     public static Optional<NumberSpec> fieldNumberSpec(Collection<Field> fields) {

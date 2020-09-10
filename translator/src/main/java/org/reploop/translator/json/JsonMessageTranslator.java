@@ -37,8 +37,8 @@ public class JsonMessageTranslator extends AstVisitor<org.reploop.parser.protobu
     private static final Converter<String, String> UC = CaseFormat.UPPER_CAMEL.converterTo(CaseFormat.LOWER_CAMEL);
     private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
-    private Pattern pattern = Pattern.compile("[-_]+");
-    private Splitter splitter = Splitter.on(pattern).trimResults().omitEmptyStrings();
+    private final Pattern pattern = Pattern.compile("[-_]+");
+    private final Splitter splitter = Splitter.on(pattern).trimResults().omitEmptyStrings();
 
     private static final Map<String, String> replaces = Map.ofEntries(
         Map.entry("dowloadPort", "downloadPort"),

@@ -5,7 +5,7 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * String value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18

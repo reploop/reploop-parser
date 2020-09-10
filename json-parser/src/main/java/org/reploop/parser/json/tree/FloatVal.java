@@ -6,7 +6,7 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 public class FloatVal extends Number {
-    private float value;
+    private final float value;
 
     public FloatVal(float value) {
         this.value = value;

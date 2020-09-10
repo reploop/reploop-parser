@@ -12,6 +12,8 @@ import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.support.ClassHierarchy;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -37,6 +39,7 @@ import static org.reploop.translator.json.support.TypeSupport.fieldNumberSpec;
  * #6 Now we can generate Java Class source code.
  */
 public class Json2Bean {
+    private static final Logger LOG = LoggerFactory.getLogger(Json2Bean.class);
     private final JsonNumberTypeAdaptor numberTypeAdaptor;
     private final JsonParser parser;
     private final JsonMessageTranslator translator;
@@ -157,6 +160,8 @@ public class Json2Bean {
             fixed.put(msg.getName(), msg);
         });
 
+        FieldType type = fieldTypeResolver.visitFieldType(fieldType, ctx);
+
         // used
         URL url = Json2Bean.class.getResource("/");
         System.out.println(url);
@@ -173,7 +178,7 @@ public class Json2Bean {
                 System.out.println(dir);
                 Files.writeString(path, beanContext.toString(), TRUNCATE_EXISTING, CREATE, WRITE);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.error("Cannot write source code to file {}", path, e);
             }
             System.out.println(beanContext.toString());
         });

@@ -3,7 +3,7 @@ package org.reploop.parser.json.tree;
 import org.reploop.parser.json.AstVisitor;
 
 public class IntVal extends Number {
-    private int value;
+    private final int value;
 
     public IntVal(int value) {
         this.value = value;

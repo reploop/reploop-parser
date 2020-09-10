@@ -1,7 +1,7 @@
 package org.reploop.parser.json.tree;
 
 /**
- * What's this about?
+ * All number value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18

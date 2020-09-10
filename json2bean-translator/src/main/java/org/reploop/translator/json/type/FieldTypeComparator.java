@@ -23,7 +23,7 @@ public class FieldTypeComparator implements Comparator<FieldType> {
         if (type instanceof NumberType) {
             return ((NumberType) type).bits();
         }
-        if (type instanceof StructType && type.getName().endsWith("Object")) {
+        if (type instanceof StructType && type.getName().suffix().equals("Object")) {
             return Integer.MIN_VALUE;
         }
         return 0;

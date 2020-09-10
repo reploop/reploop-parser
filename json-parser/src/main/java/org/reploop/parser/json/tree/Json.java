@@ -4,18 +4,16 @@ import com.google.common.base.MoreObjects;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
 
-
-import java.lang.*;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * A json.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
 public class Json extends Node {
-    private Value value;
+    private final Value value;
 
     public Json(Value value) {
         this.value = value;

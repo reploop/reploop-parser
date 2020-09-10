@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * A object entity contains multiple key-value pairs.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
 public class Entity extends Value {
-    private List<Pair> pairs;
+    private final List<Pair> pairs;
 
     public Entity(List<Pair> pairs) {
         this.pairs = pairs;

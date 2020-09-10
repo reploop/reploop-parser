@@ -168,6 +168,9 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
         return new LongType();
     }
 
+    /**
+     * Infer null value's type as Object.
+     */
     @Override
     public StructType visitNull(Null value, JsonMessageContext context) {
         return OBJECT;
@@ -208,8 +211,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
 
     @Override
     public ListType visitArray(Array array, JsonMessageContext context) {
-        List<org.reploop.parser.json.tree.Value> values = array.getValues();
-        List<FieldType> types = Stream.ofNullable(values)
+        List<FieldType> types = Stream.ofNullable(array.getValues())
+            .filter(Objects::nonNull)
             .flatMap(Collection::stream)
             .map(value -> visitValue(value, context))
             .collect(Collectors.toList());

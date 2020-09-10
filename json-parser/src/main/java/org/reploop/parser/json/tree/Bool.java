@@ -5,13 +5,13 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Boolean value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18
  */
 public class Bool extends Value {
-    boolean val;
+    private final boolean val;
 
     public Bool(boolean val) {
         this.val = val;

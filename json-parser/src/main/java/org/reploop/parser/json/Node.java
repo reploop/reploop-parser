@@ -1,7 +1,7 @@
 package org.reploop.parser.json;
 
 /**
- * What's this about?
+ * Root json element node.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20

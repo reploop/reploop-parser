@@ -5,7 +5,7 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 public class ShortVal extends Number {
-    private short value;
+    private final short value;
 
     public ShortVal(short value) {
         this.value = value;

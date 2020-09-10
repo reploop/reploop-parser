@@ -5,7 +5,7 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 public class ByteVal extends Number {
-    private byte value;
+    private final byte value;
 
     public ByteVal(byte value) {
         this.value = value;

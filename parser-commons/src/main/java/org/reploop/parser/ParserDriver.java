@@ -53,6 +53,7 @@ public abstract class ParserDriver<Node, L extends Lexer, P extends Parser> {
 
         ParserRuleContext context;
         try {
+            // Try the fastest prediction mode first.
             parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
             context = func.apply(parser);
         } catch (ParseCancellationException e) {

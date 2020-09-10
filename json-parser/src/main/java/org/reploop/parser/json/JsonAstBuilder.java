@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import static org.apache.commons.lang3.StringUtils.strip;
 
 /**
- * What's this about?
+ * Json AST builder.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
@@ -80,9 +80,11 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
     public Number visitNumberValue(JsonBaseParser.NumberValueContext ctx) {
         String val = ctx.NUMBER().getText();
         try {
+            // Try integer first
             return toNumber(val);
         } catch (NumberFormatException e) {
             try {
+                // Then it's must be floating-point number.
                 return toFloat(val);
             } catch (NumberFormatException ex) {
                 throw new IllegalStateException(val, e);
@@ -90,6 +92,12 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         }
     }
 
+    /**
+     * Test number value by it's legal range to tell it's type.
+     *
+     * @param val value literal
+     * @return the type of the number
+     */
     private Number toNumber(String val) {
         Long value = Long.valueOf(val);
         Optional<ByteVal> ob = castIf(value, Byte.MIN_VALUE, Byte.MAX_VALUE, Byte::longValue, vb -> new ByteVal(vb.byteValue()));
@@ -128,12 +136,12 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
 
     @Override
     public Bool visitTrueValue(JsonBaseParser.TrueValueContext ctx) {
-        return new Bool(true);
+        return new Bool(Boolean.TRUE);
     }
 
     @Override
     public Bool visitFalseValue(JsonBaseParser.FalseValueContext ctx) {
-        return new Bool(false);
+        return new Bool(Boolean.FALSE);
     }
 
     @Override
@@ -144,13 +152,6 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
     private <R> R visit(ParserRuleContext context, Class<R> clazz) {
         return clazz.cast(visit(context));
     }
-
-    private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
-        return Optional.ofNullable(context)
-            .map(this::visit)
-            .map(clazz::cast);
-    }
-
 
     private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
         if (null != contexts) {

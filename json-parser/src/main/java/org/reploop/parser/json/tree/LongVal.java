@@ -5,13 +5,13 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Long value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18
  */
 public class LongVal extends Number {
-    private long val;
+    private final long val;
 
     public LongVal(long val) {
         this.val = val;

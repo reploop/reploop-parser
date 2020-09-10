@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Json Array Value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20

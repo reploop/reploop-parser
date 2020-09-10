@@ -1,7 +1,8 @@
 package org.reploop.parser.json;
 
-import org.reploop.parser.json.tree.*;
+import org.reploop.parser.ast.AbstractAstVisitor;
 import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.*;
 
 /**
  * What's this about?
@@ -9,7 +10,7 @@ import org.reploop.parser.json.tree.Number;
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20
  */
-public abstract class AstVisitor<R, C> {
+public abstract class AstVisitor<R, C> extends AbstractAstVisitor<R, Node, C> {
     public abstract R visitNode(Node node, C context);
 
     public R process(Node node, C context) {

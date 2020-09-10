@@ -6,13 +6,13 @@ import org.reploop.parser.json.AstVisitor;
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Double value.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 18
  */
 public class DoubleVal extends Number {
-    private double val;
+    private final double val;
 
     public DoubleVal(double val) {
         this.val = val;

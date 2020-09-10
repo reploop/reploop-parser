@@ -9,7 +9,7 @@ import org.reploop.parser.json.base.JsonBaseLexer;
 import org.reploop.parser.json.base.JsonBaseParser;
 
 /**
- * What's this about?
+ * JSON parser.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2017-01-23 14

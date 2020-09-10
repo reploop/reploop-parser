@@ -17,7 +17,8 @@ import java.util.Set;
 public class FileExtensionFilter implements FilenameFilter {
     private static final Logger LOG = LoggerFactory.getLogger(FileExtensionFilter.class);
 
-    private Set<String> extensions = new HashSet<>();
+    private final Set<String> extensions = new HashSet<>();
+    private static final String DOT = ".";
 
     public FileExtensionFilter(String... extensions) {
         for (String ext : extensions) {
@@ -34,7 +35,7 @@ public class FileExtensionFilter implements FilenameFilter {
         if (null == name) {
             return false;
         }
-        int idx = name.lastIndexOf(".");
+        int idx = name.lastIndexOf(DOT);
         if (-1 == idx) {
             return false;
         }
