@@ -47,7 +47,7 @@ public class Json2Bean {
     private final ClassHierarchy classHierarchy = new ClassHierarchy();
     private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
     private final JsonNameResolver nameResolver = new JsonNameResolver();
-    private final JsonFieldTypeResolver fieldTypeResolver = new JsonFieldTypeResolver();
+    private final JsonTypeResolver typeResolver = new JsonTypeResolver();
     JsonMessageDependencyResolver dependencyResolver = new JsonMessageDependencyResolver();
 
     public Json2Bean() {
@@ -80,12 +80,14 @@ public class Json2Bean {
         Map<QualifiedName, Message> messageMap = new TreeMap<>();
         if (null != namedMessages) {
             for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
+                // Grouped by field name
                 Map<String, Set<Field>> groups = entry.getValue().stream()
                     .map(Message::getFields)
                     .filter(Objects::nonNull)
                     .flatMap(Collection::stream)
                     .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
 
+                // Merge fields with same name and analyze it's type
                 List<Field> uniqueFields = groups.values().stream()
                     .map(this::merge)
                     .filter(Objects::nonNull)
@@ -106,9 +108,16 @@ public class Json2Bean {
         return execute(CharStreams.fromReader(reader), context);
     }
 
-    private void resolveNameIfUsed(Map<QualifiedName, Message> nameMessageMap,
-                                   Set<QualifiedName> all,
-                                   Set<QualifiedName> deps) {
+    /**
+     * Collect all messages that reachable from parent message.
+     *
+     * @param nameMessageMap all messages
+     * @param all            used message set
+     * @param deps           current message's dependencies
+     */
+    private void resolveMessageIfUsed(Map<QualifiedName, Message> nameMessageMap,
+                                      Set<QualifiedName> all,
+                                      Set<QualifiedName> deps) {
         if (null != deps && deps.size() > 0) {
             for (QualifiedName dep : deps) {
                 // Message exists and did not processed
@@ -119,7 +128,7 @@ public class Json2Bean {
                     Message message = nameMessageMap.get(dep);
                     dependencyResolver.visitMessage(message, ctx);
                     // Process deps of this message
-                    resolveNameIfUsed(nameMessageMap, all, ctx.getDependencies());
+                    resolveMessageIfUsed(nameMessageMap, all, ctx.getDependencies());
                 }
             }
         }
@@ -131,6 +140,7 @@ public class Json2Bean {
         context.setFieldType(fieldType);
 
         Map<QualifiedName, Message> nameMessageMap = merge(context);
+
         // Try to aggregate class hierarchy, less duplicate code.
         classHierarchy.infer(nameMessageMap);
 
@@ -139,7 +149,7 @@ public class Json2Bean {
         // The first message is the root and definitely will be needed somewhere.
         Set<QualifiedName> deps = new HashSet<>();
         nameMessageMap.keySet().stream().findFirst().ifPresent(deps::add);
-        resolveNameIfUsed(nameMessageMap, used, deps);
+        resolveMessageIfUsed(nameMessageMap, used, deps);
 
         // Collect messages
         Map<QualifiedName, Message> renamed = new HashMap<>();
@@ -156,16 +166,16 @@ public class Json2Bean {
         // Final messages
         Map<QualifiedName, Message> fixed = new HashMap<>();
         renamed.forEach((name, message) -> {
-            Message msg = fieldTypeResolver.visitMessage(message, ctx);
+            Message msg = typeResolver.visitMessage(message, ctx);
             fixed.put(msg.getName(), msg);
         });
 
-        FieldType type = fieldTypeResolver.visitFieldType(fieldType, ctx);
+        FieldType type = typeResolver.visitFieldType(fieldType, ctx);
 
         // used
         URL url = Json2Bean.class.getResource("/");
         System.out.println(url);
-        Path root = Paths.get(url.toURI()).getParent().getParent().resolve("src/test/java");
+        Path root = Paths.get(url.toURI()).getParent().getParent().resolve("target/generated-sources");
         fixed.forEach((name, message) -> {
             JsonBeanContext beanContext = new JsonBeanContext(name);
             beanGenerator.visitMessage(message, beanContext);

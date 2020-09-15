@@ -16,6 +16,9 @@ import java.util.stream.Stream;
 
 import static java.text.CharacterIterator.DONE;
 
+/**
+ * Given a string, find most number of words.
+ */
 public class WordTree {
     public static final char DOLLAR = '$';
     private static final String WORD_FILE = "/words.txt";

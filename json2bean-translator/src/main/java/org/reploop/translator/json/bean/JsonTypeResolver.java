@@ -10,7 +10,7 @@ import org.reploop.translator.json.support.Constants;
 import java.util.List;
 import java.util.Optional;
 
-public class JsonFieldTypeResolver extends AstVisitor<Node, JsonMessageContext> {
+public class JsonTypeResolver extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Node visitNode(Node node, JsonMessageContext context) {
         return node;
