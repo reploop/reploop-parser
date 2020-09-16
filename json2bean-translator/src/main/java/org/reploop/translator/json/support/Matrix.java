@@ -89,6 +89,47 @@ public class Matrix {
                 }
             }
         }
+
+        // rows with same score
+        for (int r = 0; r < scoreRowIndex - 1; r++) {
+            int s = matrix[r][scoreColumnIndex];
+            int rn = r + 1;
+            int sn = matrix[rn][scoreColumnIndex];
+            if (s == sn) {
+                boolean swap = false;
+                for (int c = 0; c < scoreColumnIndex; c++) {
+                    if (matrix[r][c] < matrix[rn][c]) {
+                        swap = true;
+                        break;
+                    }
+                }
+                if (swap) {
+                    swapRow(r, rn);
+                    rowSwapListener.swap(r, rn);
+                }
+            }
+        }
+
+        // columns with same score
+        for (int c = 0; c < scoreColumnIndex - 1; c++) {
+            int s = matrix[scoreRowIndex][c];
+            int cn = c + 1;
+            int sn = matrix[scoreRowIndex][cn];
+            if (s == sn) {
+                boolean swap = false;
+                for (int r = 0; r < scoreRowIndex - 1; r++) {
+                    if (matrix[r][c] < matrix[r][cn]) {
+                        swap = true;
+                        break;
+                    }
+                }
+                if (swap) {
+                    swapColumn(c, cn);
+                    columnSwapListener.swap(c, cn);
+                }
+            }
+        }
+
     }
 
     public Point maxArea(int fs, int ms, int f, int m) {
