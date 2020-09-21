@@ -171,11 +171,11 @@ public class Json2Bean {
         });
 
         FieldType type = typeResolver.visitFieldType(fieldType, ctx);
-
+        System.out.println(type);
         // used
         URL url = Json2Bean.class.getResource("/");
         System.out.println(url);
-        Path root = Paths.get(url.toURI()).getParent().getParent().resolve("target/generated-sources");
+        Path root = Paths.get(url.toURI()).getParent().getParent().resolve("src/test/java");
         fixed.forEach((name, message) -> {
             JsonBeanContext beanContext = new JsonBeanContext(name);
             beanGenerator.visitMessage(message, beanContext);

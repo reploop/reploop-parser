@@ -13,6 +13,9 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
+import static org.reploop.translator.json.support.Constants.IMPORT;
+
 public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
@@ -59,10 +62,20 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
     @Override
     public CommonPair visitCommonPair(CommonPair node, JsonBeanContext context) {
         String key = node.getKey();
-        if (key.equals("import")) {
+        Value value = node.getValue();
+        if (key.equals(IMPORT)) {
             context.append(key).whitespace();
-            visitValue(node.getValue(), context);
+            visitValue(value, context);
             context.comma().newLine();
+        } else if (key.equals(EXTENDS_ATTR)) {
+            if (value instanceof StringValue) {
+                String val = ((StringValue) value).getValue();
+                QualifiedName qn = QualifiedName.of(val);
+
+                context.append(IMPORT).whitespace();
+                visitValue(value, context);
+                context.comma().newLine();
+            }
         }
         return node;
     }

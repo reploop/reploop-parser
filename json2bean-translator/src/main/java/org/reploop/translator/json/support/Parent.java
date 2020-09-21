@@ -6,21 +6,21 @@ import org.reploop.parser.protobuf.tree.Message;
 import java.util.List;
 import java.util.Set;
 
-public class SuperInfo {
-    private List<Message> messages;
-    private Set<Field> fields;
+public class Parent {
+    private final List<Message> messages;
+    private final Set<Field> fields;
 
-    public SuperInfo(List<Message> messages, Set<Field> fields) {
+    public Parent(List<Message> messages, Set<Field> fields) {
         this.messages = messages;
         this.fields = fields;
     }
 
-    public SuperInfo addMessage(Message message) {
+    public Parent addMessage(Message message) {
         messages.add(message);
         return this;
     }
 
-    public SuperInfo addField(Field field) {
+    public Parent addField(Field field) {
         fields.add(field);
         return this;
     }

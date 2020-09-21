@@ -7,6 +7,7 @@ import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.translator.json.support.Constants;
 import org.reploop.translator.json.support.NameFormat;
 
 import java.util.List;
@@ -68,7 +69,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             if (conflict) {
                 QualifiedName prefix = oqn.get();
                 // When conflicts, add prefix's last name to the full name.
-                suffix = prefix.suffix() + "_" + qn.suffix();
+                suffix = prefix.suffix() + Constants.UNDERSCORE + qn.suffix();
                 // The new full qualified name
                 fqn = toUpperCamel(QualifiedName.of(prefix, suffix));
                 context.addIdentityName(qn, fqn);
@@ -128,7 +129,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             .sorted()
             .filter(qn -> !qn.equals(name))
             .map(QualifiedName::toString)
-            .map(s -> "import " + s + ";")
+            .map(s -> Constants.IMPORT + s + "; ")
             .collect(Collectors.toList());
         List<String> comments = ImmutableList.<String>builder()
             .addAll(node.getComments())

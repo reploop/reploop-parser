@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
-import static org.reploop.translator.json.support.Constants.ABSTRACT_ATTR;
-import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
+import static org.reploop.translator.json.support.Constants.*;
 import static org.reploop.translator.json.support.TypeSupport.customTypeName;
 
 /**
@@ -30,29 +29,40 @@ public class ClassHierarchy {
         this.fieldTypeResolver = fieldTypeResolver;
     }
 
+    /**
+     * From bottom up
+     */
     private final Comparator<Message> messageComparator = (o1, o2) -> o2.getName().compareTo(o1.getName());
 
     public void infer(Map<QualifiedName, Message> messageMap) {
+        // All names
         Set<QualifiedName> keys = new HashSet<>(messageMap.keySet());
-        Optional<SuperInfo> osi = infer0(messageMap);
-        if (osi.isPresent()) {
-            SuperInfo si = osi.get();
-            Set<QualifiedName> names = si.getMessages().stream().map(Entity::getName).collect(toSet());
-            messageMap = keys.stream().filter(qn -> !names.contains(qn)).collect(toMap(qn -> qn, messageMap::get));
-            infer(messageMap);
+        Optional<Parent> op = infer0(messageMap);
+        if (op.isPresent()) {
+            Parent parent = op.get();
+            // Merged names, should exclude from original collection.
+            Set<QualifiedName> names = parent.getMessages().stream().map(Entity::getName).collect(toSet());
+
+            Map<QualifiedName, Message> freshMap = keys.stream()
+                .filter(qn -> !names.contains(qn))
+                .collect(toMap(qn -> qn, messageMap::get));
+            // Exclude messages, infer messages again.
+            infer(freshMap);
+            // Merge abstract messages
+            messageMap.putAll(freshMap);
         }
     }
 
-    public Optional<SuperInfo> infer0(Map<QualifiedName, Message> messageMap) {
+    private Optional<Parent> infer0(Map<QualifiedName, Message> messageMap) {
         MessageInfer infer = new MessageInfer();
-        Optional<SuperInfo> si = infer.analyze(messageMap);
+        Optional<Parent> op = infer.analyze(messageMap);
         Map<QualifiedName, QualifiedName> same = new HashMap<>();
-        if (si.isPresent()) {
-            SuperInfo info = si.get();
+        if (op.isPresent()) {
+            Parent p = op.get();
             // Fields may be in parent class
-            Set<Field> fields = info.getFields();
+            Set<Field> fields = p.getFields();
             // Messages may be have common parent class
-            List<Message> messages = info.getMessages();
+            List<Message> messages = p.getMessages();
             // Handle deepest level message first.
             messages.sort(messageComparator);
             // Message will extend the parent
@@ -81,7 +91,7 @@ public class ClassHierarchy {
                 }
             }
             if (null == parent) {
-                name = parentName(info);
+                name = parentName(p);
                 // Add options
                 List<Option> ops = ImmutableList.of(new CommonPair(ABSTRACT_ATTR, new BoolValue(true)));
                 parent = new Message(name, new ArrayList<>(fields), Collections.emptyList(), Collections.emptyList(), ops);
@@ -111,10 +121,10 @@ public class ClassHierarchy {
             }
             messageMap.put(name, parent);
         }
-        return si;
+        return op;
     }
 
-    private QualifiedName parentName(SuperInfo info) {
+    private QualifiedName parentName(Parent info) {
         List<Message> messages = info.getMessages();
         // Message name space.
         QualifiedName qn = Stream.of(messages)
@@ -130,7 +140,7 @@ public class ClassHierarchy {
             String name0 = Stream.of(fields)
                 .flatMap(Collection::stream)
                 .map(Field::getName)
-                .collect(Collectors.joining("_"));
+                .collect(Collectors.joining(UNDERSCORE));
             return QualifiedName.of(qn.prefix(), name0);
         }
         // Try to generate parent class name from message names
@@ -140,7 +150,7 @@ public class ClassHierarchy {
             .map(QualifiedName::suffix)
             .limit(2)
             .sorted()
-            .collect(Collectors.joining("_"));
+            .collect(Collectors.joining(UNDERSCORE));
         return QualifiedName.of(qn.prefix(), name);
     }
 
@@ -173,7 +183,7 @@ public class ClassHierarchy {
         ctx.addIdentityNames(sameMap);
         for (Message message : messages) {
             Message msg = fieldTypeResolver.visitMessage(message, ctx);
-            Optional<Message> om = reduce(parent, msg, messageMap, ctx);
+            Optional<Message> om = reduce(parent, msg, messageMap);
             if (om.isPresent()) {
                 parent = om.get();
             }
@@ -181,7 +191,7 @@ public class ClassHierarchy {
     }
 
     private Optional<Message> reduce(Message parent, Message sub,
-                                     Map<QualifiedName, Message> messageMap, JsonMessageContext context) {
+                                     Map<QualifiedName, Message> messageMap) {
         List<Field> fields = sub.getFields();
         if (null == fields || fields.size() != 1) {
             return Optional.empty();

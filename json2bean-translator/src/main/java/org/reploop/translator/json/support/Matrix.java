@@ -2,6 +2,9 @@ package org.reploop.translator.json.support;
 
 import java.util.Optional;
 
+/**
+ * A matrix mapping field and message relations.
+ */
 public class Matrix {
     private final int rows;
     private final int columns;
@@ -14,18 +17,41 @@ public class Matrix {
         init();
     }
 
+    /**
+     * Create a matrix and initialize all cells' value as zero.
+     *
+     * @param rows    actually rows.
+     * @param columns actually columns
+     * @return the matrix
+     */
     public static Matrix create(int rows, int columns) {
         return new Matrix(rows, columns);
     }
 
+    /**
+     * Test if a cell's value is 1.
+     *
+     * @param row    row index
+     * @param column column index
+     * @return true if it's value is 1.
+     */
     private boolean isSet(int row, int column) {
         return matrix[row][column] == 1;
     }
 
+    /**
+     * Set a cell value as 1.
+     *
+     * @param row    row index
+     * @param column column index
+     */
     public void set(int row, int column) {
         matrix[row][column] = 1;
     }
 
+    /**
+     * Counts 1's
+     */
     public void computeScore() {
         // score column index
         int scoreColumnIndex = columns - 1;
@@ -90,15 +116,19 @@ public class Matrix {
             }
         }
 
+        int rp = -1;
         // rows with same score
-        for (int r = 0; r < scoreRowIndex - 1; r++) {
+        for (int r = 0; r < scoreRowIndex - 1; rp = r, r++) {
             int s = matrix[r][scoreColumnIndex];
             int rn = r + 1;
             int sn = matrix[rn][scoreColumnIndex];
             if (s == sn) {
                 boolean swap = false;
                 for (int c = 0; c < scoreColumnIndex; c++) {
-                    if (matrix[r][c] < matrix[rn][c]) {
+                    // increase 1's density
+                    boolean hl = rp == -1 || matrix[rp][c] > matrix[r][c];
+                    boolean lh = matrix[r][c] < matrix[rn][c];
+                    if (hl && lh) {
                         swap = true;
                         break;
                     }
@@ -110,15 +140,19 @@ public class Matrix {
             }
         }
 
+        int cp = -1;
         // columns with same score
-        for (int c = 0; c < scoreColumnIndex - 1; c++) {
+        for (int c = 0; c < scoreColumnIndex - 1; cp = c, c++) {
             int s = matrix[scoreRowIndex][c];
             int cn = c + 1;
             int sn = matrix[scoreRowIndex][cn];
             if (s == sn) {
                 boolean swap = false;
                 for (int r = 0; r < scoreRowIndex - 1; r++) {
-                    if (matrix[r][c] < matrix[r][cn]) {
+                    // increase 1's density
+                    boolean hl = (cp == -1 || matrix[r][cp] > matrix[r][c]);
+                    boolean lh = matrix[r][c] < matrix[r][cn];
+                    if (hl && lh) {
                         swap = true;
                         break;
                     }
@@ -129,17 +163,25 @@ public class Matrix {
                 }
             }
         }
-
     }
 
+    /**
+     * Compute max area rect from a given point.
+     *
+     * @param fs row count
+     * @param ms column count
+     * @param f  row index of the given point
+     * @param m  column index of the given point
+     * @return another point, let the given point (f,m) as the left top point, then this point right bottom point of a rect.
+     */
     public Point maxArea(int fs, int ms, int f, int m) {
         int maxArea = 0;
         int mf = 0;
         int mm = 0;
         for (int f1 = f; f1 < fs; f1++) {
             for (int m1 = m; m1 < ms; m1++) {
-                if (maxRect(f, m, f1, m1)) {
-                    int area = (f1 - f + 1) * (m1 - m + 1);
+                if (isRect(f, m, f1, m1)) {
+                    int area = area(f, m, f1, m1);
                     if (area > maxArea) {
                         maxArea = area;
                         mf = f1;
@@ -159,6 +201,40 @@ public class Matrix {
         return maxArea(fs, ms);
     }
 
+    /**
+     * Test if this rect cross at least 2 rows or 2 columns.
+     *
+     * @param p1 left top point
+     * @param p2 right bottom point
+     * @return true if this rect crosses at least 2 rows or 2 columns.
+     */
+    private boolean isNotLine(Point p1, Point p2) {
+        return isNotLine(p1.x, p1.y, p2);
+    }
+
+    private boolean isNotLine(int x, int y, Point p2) {
+        return y - p2.y != 0 && x - p2.x != 0;
+    }
+
+    private int area(int f1, int m1, int f2, int m2) {
+        return (f2 - f1 + 1) * (m2 - m1 + 1);
+    }
+
+    private int area(int f, int m, Point p2) {
+        return area(f, m, p2.x, p2.y);
+    }
+
+    private int area(Point p1, Point p2) {
+        return area(p1.x, p1.y, p2);
+    }
+
+    /**
+     * Compute max area.
+     *
+     * @param fs row count
+     * @param ms column count
+     * @return max area rect if any
+     */
     public Optional<Rect> maxArea(int fs, int ms) {
         int maxArea = 0;
         Point lt = new Point();
@@ -166,9 +242,10 @@ public class Matrix {
         for (int f = 0; f < fs; f++) {
             for (int m = 0; m < ms; m++) {
                 Point p = maxArea(fs, ms, f, m);
+                // Find a match
                 if (p.x > 0 && p.y > 0) {
-                    int area = (p.x - f + 1) * (p.y - m + 1);
-                    if (area > maxArea) {
+                    int area = area(f, m, p);
+                    if (area > maxArea && isNotLine(f, m, p)) {
                         maxArea = area;
                         lt.x = f;
                         lt.y = m;
@@ -185,7 +262,16 @@ public class Matrix {
         return Optional.empty();
     }
 
-    private boolean maxRect(int f1, int m1, int f2, int m2) {
+    /**
+     * Left top point (f1,m1), right bottom point (f2,m2). Test if all cells in this rect are set.
+     *
+     * @param f1 row index of left top point
+     * @param m1 column index of left top point
+     * @param f2 row index of right bottom point
+     * @param m2 column index of right bottom point
+     * @return true if all cells are set.
+     */
+    private boolean isRect(int f1, int m1, int f2, int m2) {
         int f = f1;
         for (; f <= f2; f++) {
             int m = m1;
@@ -213,6 +299,7 @@ public class Matrix {
     }
 
     public void print() {
+        System.out.println("-------------------");
         System.out.printf("%3d", 0);
         for (int j = 0; j < columns; j++) {
             System.out.printf("%3d", j);

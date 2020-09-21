@@ -22,6 +22,12 @@ public class MessageInfer {
         return matrix.maxArea();
     }
 
+    /**
+     * Try to index the message and it's fields.
+     * Matrix's row are fields indexed as zero based index, and each column a message indexed as zero bsed index.
+     *
+     * @param messageMap the messages.
+     */
     private void index(Map<QualifiedName, Message> messageMap) {
         AtomicInteger mi = new AtomicInteger(0);
         AtomicInteger fi = new AtomicInteger(0);
@@ -38,23 +44,21 @@ public class MessageInfer {
         }
     }
 
-    private boolean hasCommon(Point p1, Point p2) {
-        return p1.y - p2.y != 0 && p1.x - p2.x != 0;
-    }
-
-    private boolean hasCommon(Rect rect) {
-        return hasCommon(rect.lt, rect.rb);
-    }
-
-    public Optional<SuperInfo> analyze(Map<QualifiedName, Message> messageMap) {
+    /**
+     * Analyze fields.
+     *
+     * @param messageMap messages
+     * @return parent info
+     */
+    public Optional<Parent> analyze(Map<QualifiedName, Message> messageMap) {
         // message and field name to index
         index(messageMap);
         Matrix matrix = init(messageMap);
         matrix.print();
         // calculate max rect
         Optional<Rect> or = matrix.maxArea();
-        Rect rect;
-        if (or.isPresent() && hasCommon(rect = or.get())) {
+        if (or.isPresent()) {
+            Rect rect = or.get();
             // Fields may be in parent class
             Set<Field> fields = new HashSet<>();
             for (int f = rect.lt.x; f <= rect.rb.x; f++) {
@@ -68,7 +72,7 @@ public class MessageInfer {
                 Message message = messageMap.get(qn);
                 messages.add(message);
             }
-            return Optional.of(new SuperInfo(messages, fields));
+            return Optional.of(new Parent(messages, fields));
         }
         return Optional.empty();
     }
@@ -97,6 +101,11 @@ public class MessageInfer {
         return matrix;
     }
 
+    /**
+     * Sort the matrix and swap fields and messages if needed to maintain index to field or message mapping.
+     *
+     * @param matrix the matrix.
+     */
     private void sort(Matrix matrix) {
         matrix.sort((j, jn) -> {
             Field fj = indexFieldMap.remove(j);

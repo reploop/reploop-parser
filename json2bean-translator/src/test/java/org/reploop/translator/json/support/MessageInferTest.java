@@ -47,7 +47,7 @@ public class MessageInferTest {
         assertThat(or.isPresent()).isTrue();
         Rect rect = or.get();
 
-        Optional<SuperInfo> superInfo = infer.analyze(nameMessageMap);
+        Optional<Parent> superInfo = infer.analyze(nameMessageMap);
         assertThat(superInfo.isPresent()).isTrue();
     }
 }
