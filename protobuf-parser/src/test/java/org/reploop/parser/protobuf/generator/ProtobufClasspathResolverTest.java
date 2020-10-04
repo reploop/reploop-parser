@@ -31,7 +31,7 @@ public class ProtobufClasspathResolverTest {
 
     @Test
     public void testVisitProtobufProgram1() throws Exception {
-        URL uri = ClassLoader.getSystemClassLoader().getResource("knowledge/pub/metadatas.proto");
+        URL uri = ClassLoader.getSystemClassLoader().getResource("proto/acl.proto");
         Path path = Paths.get(uri.toURI());
         ProtoProgram program = parser.program(path);
         Classpath<ProtoProgram> classpath = new Classpath<>();
@@ -47,7 +47,7 @@ public class ProtobufClasspathResolverTest {
 
     @Test
     public void testVisitProtobufProgram() throws Exception {
-        URL uri = ClassLoader.getSystemClassLoader().getResource("knowledge/pub/formats.proto");
+        URL uri = ClassLoader.getSystemClassLoader().getResource("proto/hdfs.proto");
         Path path = Paths.get(uri.toURI());
         ProtoProgram program = parser.program(path);
         Classpath<ProtoProgram> classpath = new Classpath<>();
