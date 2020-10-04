@@ -3,13 +3,12 @@ package org.reploop.translator.json.bean;
 
 import org.reploop.parser.QualifiedName;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class JsonBeanContext {
     private QualifiedName root;
     private final StringBuilder impl;
+    private String expectedKey;
 
     private int indent = 0;
 
@@ -24,14 +23,6 @@ public class JsonBeanContext {
     }
 
     private final Stack<QualifiedName> current = new Stack<>();
-
-    public QualifiedName fqn() {
-        List<String> parts = new ArrayList<>();
-        for (QualifiedName qn : current) {
-            parts.addAll(qn.allParts());
-        }
-        return QualifiedName.of(parts);
-    }
 
     public JsonBeanContext push(QualifiedName name) {
         current.push(name);
@@ -111,6 +102,14 @@ public class JsonBeanContext {
     public JsonBeanContext closeBrace() {
         impl.append("}");
         return this;
+    }
+
+    public String getExpectedKey() {
+        return expectedKey;
+    }
+
+    public void setExpectedKey(String expectedKey) {
+        this.expectedKey = expectedKey;
     }
 
     @Override

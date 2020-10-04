@@ -4,6 +4,7 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
 
+import java.nio.file.Path;
 import java.util.*;
 
 public class JsonMessageContext {
@@ -12,14 +13,22 @@ public class JsonMessageContext {
     private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
     private final Set<QualifiedName> dependencies = new HashSet<>();
     private FieldType fieldType;
+    /**
+     * Root directory path of the output source files
+     */
+    private Path directory;
 
-    public JsonMessageContext(QualifiedName name, TreeMap<QualifiedName, List<Message>> namedMessages) {
+    public JsonMessageContext(QualifiedName name, Path directory) {
         this.name = name;
-        this.namedMessages = namedMessages;
+        this.directory = directory;
     }
 
     public JsonMessageContext(QualifiedName name) {
         this.name = name;
+    }
+
+    public JsonMessageContext(String name, Path directory) {
+        this(QualifiedName.of(name), directory);
     }
 
     public JsonMessageContext(String name) {
@@ -27,6 +36,14 @@ public class JsonMessageContext {
     }
 
     public JsonMessageContext() {
+    }
+
+    public Path getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(Path directory) {
+        this.directory = directory;
     }
 
     public FieldType getFieldType() {

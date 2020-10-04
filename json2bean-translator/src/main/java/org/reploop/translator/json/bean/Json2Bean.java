@@ -18,10 +18,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -137,7 +135,6 @@ public class Json2Bean {
     public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) throws URISyntaxException {
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
-        context.setFieldType(fieldType);
 
         Map<QualifiedName, Message> nameMessageMap = merge(context);
 
@@ -170,16 +167,14 @@ public class Json2Bean {
             fixed.put(msg.getName(), msg);
         });
 
-        FieldType type = typeResolver.visitFieldType(fieldType, ctx);
-        System.out.println(type);
-        // used
-        URL url = Json2Bean.class.getResource("/");
-        System.out.println(url);
-        Path root = Paths.get(url.toURI()).getParent().getParent().resolve("src/test/java");
+        fieldType = nameResolver.visitFieldType(fieldType, ctx);
+        fieldType = typeResolver.visitFieldType(fieldType, ctx);
+        context.setFieldType(fieldType);
+
         fixed.forEach((name, message) -> {
             JsonBeanContext beanContext = new JsonBeanContext(name);
             beanGenerator.visitMessage(message, beanContext);
-            Path path = packageToPath(root, message);
+            Path path = packageToPath(context.getDirectory(), message);
             System.out.println("------>");
             System.out.println(path);
             System.out.println("------>");

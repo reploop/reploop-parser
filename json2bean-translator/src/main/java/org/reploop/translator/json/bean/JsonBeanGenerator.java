@@ -13,8 +13,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
-import static org.reploop.translator.json.support.Constants.IMPORT;
+import static org.reploop.translator.json.support.Constants.*;
 
 public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
 
@@ -63,21 +62,38 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
     public CommonPair visitCommonPair(CommonPair node, JsonBeanContext context) {
         String key = node.getKey();
         Value value = node.getValue();
-        if (key.equals(IMPORT)) {
-            context.append(key).whitespace();
-            visitValue(value, context);
-            context.comma().newLine();
-        } else if (key.equals(EXTENDS_ATTR)) {
-            if (value instanceof StringValue) {
-                String val = ((StringValue) value).getValue();
-                QualifiedName qn = QualifiedName.of(val);
-
-                context.append(IMPORT).whitespace();
-                visitValue(value, context);
-                context.comma().newLine();
-            }
+        String expected = context.getExpectedKey();
+        if (key.equals(IMPORT) && IMPORT.equals(expected)) {
+            visitImport(context, key, value);
+        } else if (key.equals(EXTENDS_ATTR) && EXTENDS_ATTR.equals(expected)) {
+            visitExtendsAttr(context, value);
+        } else if (key.equals(ABSTRACT_ATTR) && ABSTRACT_ATTR.equals(expected)) {
+            visitAbstractAttr(context, value);
         }
         return node;
+    }
+
+    private void visitImport(JsonBeanContext context, String key, Value value) {
+        context.append(key).whitespace();
+        visitValue(value, context);
+        context.comma().newLine();
+    }
+
+    private void visitAbstractAttr(JsonBeanContext context, Value value) {
+        if (value instanceof BoolValue) {
+            Boolean isAbstract = ((BoolValue) value).getValue();
+            if (isAbstract) {
+                context.append(ABSTRACT_ATTR).whitespace();
+            }
+        }
+    }
+
+    private void visitExtendsAttr(JsonBeanContext context, Value value) {
+        if (value instanceof StringValue) {
+            context.append(EXTENDS_ATTR).whitespace();
+            visitValue(value, context);
+            context.whitespace();
+        }
     }
 
     private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
@@ -173,12 +189,19 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         QualifiedName name = node.getName();
         name.prefix().ifPresent(ns -> context.append("package").whitespace().append(ns).comma().newLine().newLine());
         // Options
+        context.setExpectedKey(IMPORT);
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         context.append("import com.fasterxml.jackson.annotation.JsonIgnoreProperties;").newLine();
         context.append("import java.io.Serializable;").newLine();
         context.append("import com.google.common.base.MoreObjects;").newLine().newLine();
         comments(node.getComments(), context);
-        context.append("public").whitespace().append("class").whitespace().append(name.suffix()).whitespace().append("implements Serializable").whitespace().openBrace().indent().newLine();
+        context.append("public").whitespace();
+        context.setExpectedKey(ABSTRACT_ATTR);
+        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+        context.append("class").whitespace().append(name.suffix()).whitespace();
+        context.setExpectedKey(EXTENDS_ATTR);
+        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+        context.append("implements Serializable").whitespace().openBrace().indent().newLine();
         context.append("private static final long serialVersionUID = 1L;").newLine();
 
         List<Message> messages = visit(node.getMessages(), m -> visitMessage(m, context));
@@ -186,7 +209,7 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         accessor(fields, context);
         toString(fields, context);
 
-        builder(node, fields, context);
+        //builder(node, fields, context);
 
         context.dedent().newLine().closeBrace().newLine();
         return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());

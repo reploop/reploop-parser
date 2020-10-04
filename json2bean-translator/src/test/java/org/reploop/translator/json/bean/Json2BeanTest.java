@@ -1,5 +1,8 @@
 package org.reploop.translator.json.bean;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.junit.Before;
@@ -7,10 +10,12 @@ import org.junit.Test;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Field;
 import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.type.FieldType;
 
 import java.io.StringReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
@@ -22,17 +27,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Json2BeanTest {
 
     private Json2Bean json2Bean;
+    private Path directory;
 
     @Before
     public void setUp() throws Exception {
         json2Bean = new Json2Bean();
+        // used
+        URL url = Json2BeanTest.class.getResource("/");
+        System.out.println(url);
+        directory = Paths.get(url.toURI()).getParent().getParent().resolve("src/test/java");
+        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
     }
 
     @Test
     public void execute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/array.json");
         QualifiedName root = QualifiedName.of("array");
-        JsonMessageContext context = new JsonMessageContext("array");
+        JsonMessageContext context = new JsonMessageContext("array", directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
@@ -44,17 +55,27 @@ public class Json2BeanTest {
             List<Field> fields = m.getFields();
             assertThat(fields).isNotEmpty().hasSize(9);
         });
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testMapType() throws Exception {
         URL url = Json2BeanTest.class.getResource("/map-type.json");
         QualifiedName root = QualifiedName.of("mt");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
         assertThat(messageMap.get(root)).isNotNull();
+        System.out.println(context.getFieldType());
+        Object object = objectMapper.readValue(url, new TypeReference<Map<Integer, Object>>() {
+        });
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
@@ -64,7 +85,12 @@ public class Json2BeanTest {
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Object object = objectMapper.readValue(url, new TypeReference<List<Long>>() {
+        });
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
@@ -74,7 +100,12 @@ public class Json2BeanTest {
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Object object = objectMapper.readValue(url, new TypeReference<List<Double>>() {
+        });
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
@@ -84,28 +115,34 @@ public class Json2BeanTest {
         JsonMessageContext context = new JsonMessageContext(root);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
-    }
-
-    @Test
-    public void testMerge() {
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Object object = objectMapper.readValue(url, new TypeReference<List<Double>>() {
+        });
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testExecute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/object.json");
         QualifiedName root = QualifiedName.of("vo");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testEmptyValue() throws Exception {
         String json = "{}";
         QualifiedName root = QualifiedName.of("value");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(new StringReader(json), context);
         System.out.println(messageMap);
 
@@ -113,36 +150,54 @@ public class Json2BeanTest {
         context = new JsonMessageContext(root);
         messageMap = json2Bean.execute(new StringReader(json), context);
         System.out.println(messageMap);
+        System.out.println(context.getFieldType());
     }
 
     @Test
     public void testHAR() throws Exception {
         URL url = Json2BeanTest.class.getResource("/har.json");
         QualifiedName root = QualifiedName.of("har");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        FieldType fieldType = context.getFieldType();
+        System.out.println(fieldType.toString());
+        Class<?> clazz = Class.forName(fieldType.toString());
+        Object o = objectMapper.readValue(url, clazz);
+        System.out.println(o);
+        System.out.println(objectMapper.writeValueAsString(o));
     }
+
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
     public void testText() throws Exception {
         URL url = Json2BeanTest.class.getResource("/text.json");
         QualifiedName root = QualifiedName.of("text");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testSimple() throws Exception {
         URL url = Json2BeanTest.class.getResource("/simple.json");
         QualifiedName root = QualifiedName.of("simple");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
@@ -159,42 +214,62 @@ public class Json2BeanTest {
     public void testReq1() throws Exception {
         URL url = Json2BeanTest.class.getResource("/req1.json");
         QualifiedName root = QualifiedName.of("req1");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testRes1() throws Exception {
         URL url = Json2BeanTest.class.getResource("/res1.json");
         QualifiedName root = QualifiedName.of("res1");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testMarketing() throws Exception {
         URL url = Json2BeanTest.class.getResource("/spu.json");
         QualifiedName root = QualifiedName.of("spu");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 
     @Test
     public void testSku() throws Exception {
         URL url = Json2BeanTest.class.getResource("/sku.json");
         QualifiedName root = QualifiedName.of("sku");
-        JsonMessageContext context = new JsonMessageContext(root);
+        JsonMessageContext context = new JsonMessageContext(root, directory);
         String pattern = "yyyy-MM-dd HH:mm:ss";
         String path = "$.result.createTime";
         context.configureDateFormat(path, pattern);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        System.out.print(messageMap);
+        System.out.println(messageMap);
+        System.out.println(context.getFieldType());
+        Class<?> clazz = Class.forName(context.getFieldType().toString());
+        Object object = objectMapper.readValue(url, clazz);
+        assertThat(object).isNotNull();
+        System.out.println(objectMapper.writeValueAsString(object));
     }
 }

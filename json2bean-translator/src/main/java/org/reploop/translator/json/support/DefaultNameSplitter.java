@@ -28,16 +28,16 @@ public class DefaultNameSplitter implements NameSplitter {
                 sb.append(DOLLAR);
             }
 
-            boolean pc = isUpperCase(prev);
+            boolean pc = isLowerCase(prev);
             boolean cc = isUpperCase(curr);
             boolean nc = cc;
             int nextIndex = i + 1;
             if (nextIndex < len) {
                 char next = org.charAt(nextIndex);
-                nc = isUpperCase(next);
+                nc = isLowerCase(next);
             }
             // Before or after char has different case, consider as a new word. e.g. serverIPAddress
-            if (!pc && cc || cc && !nc) {
+            if (pc && cc || cc && nc) {
                 newWordThenReset(words, sb);
             }
             sb.append(curr);

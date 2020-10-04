@@ -4,6 +4,9 @@ import org.reploop.parser.protobuf.type.*;
 
 import java.util.Comparator;
 
+/**
+ * String > number > Object
+ */
 public class FieldTypeComparator implements Comparator<FieldType> {
     @Override
     public int compare(FieldType f0, FieldType f1) {
@@ -19,10 +22,15 @@ public class FieldTypeComparator implements Comparator<FieldType> {
         if (type instanceof MapType) {
             return valueTypeOrder(((MapType) type).getValueType());
         }
+        // String > Number
+        if (type instanceof StringType) {
+            return 128;
+        }
         // bits range from 8 to 64
         if (type instanceof NumberType) {
             return ((NumberType) type).bits();
         }
+        // Number
         if (type instanceof StructType && type.getName().suffix().equals("Object")) {
             return Integer.MIN_VALUE;
         }

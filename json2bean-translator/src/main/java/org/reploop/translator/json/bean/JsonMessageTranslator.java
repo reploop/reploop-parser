@@ -225,9 +225,11 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     private Optional<FieldType> typeOf(List<FieldType> types) {
         if (null != types && types.size() > 0) {
             FieldType fieldType = types.stream().max(fieldTypeComparator).get();
-            Optional<NumberSpec> ons = typeNumberSpec(types);
-            if (ons.isPresent()) {
-                fieldType = jsonNumberTypeAdaptor.visitFieldType(fieldType, ons.get());
+            if (fieldType instanceof NumberType) {
+                Optional<NumberSpec> ons = typeNumberSpec(types);
+                if (ons.isPresent()) {
+                    fieldType = jsonNumberTypeAdaptor.visitFieldType(fieldType, ons.get());
+                }
             }
             return Optional.of(fieldType);
         }

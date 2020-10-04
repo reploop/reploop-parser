@@ -24,6 +24,10 @@ public interface NameSplitter {
         return isAlphabetic(c) && Character.isUpperCase(c);
     }
 
+    default boolean isLowerCase(char c) {
+        return isAlphabetic(c) && Character.isLowerCase(c);
+    }
+
     default boolean isNonNumberAndAlphabetic(char c) {
         return !isAlphabetic(c) && !isDigit(c);
     }

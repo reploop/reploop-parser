@@ -61,6 +61,6 @@ public class NameFormatTest {
     public void testDollar() {
         String text = "$";
         String f = format.format(text);
-        assertThat(f).isEqualTo(text);
+        assertThat(f).isEmpty();
     }
 }

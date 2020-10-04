@@ -10,6 +10,9 @@ import org.reploop.translator.json.support.Constants;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Resolve type. Replace same types.
+ */
 public class JsonTypeResolver extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Node visitNode(Node node, JsonMessageContext context) {

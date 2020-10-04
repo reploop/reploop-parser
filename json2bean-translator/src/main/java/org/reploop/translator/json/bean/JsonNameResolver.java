@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Rename all packages and classes names.
+ */
 public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     private static final String ANNOTATION = "@JsonProperty(\"%s\")";
@@ -27,6 +30,25 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Node visitNode(Node node, JsonMessageContext context) {
         return node;
+    }
+
+    @Override
+    public CommonPair visitCommonPair(CommonPair node, JsonMessageContext context) {
+        String key = node.getKey();
+        Value value = node.getValue();
+        if (key.equals(Constants.EXTENDS_ATTR)) {
+            if (value instanceof StringValue) {
+                String fqn = ((StringValue) value).getValue();
+                QualifiedName qn = rewriteQualifiedName(QualifiedName.of(fqn), context);
+                return new CommonPair(key, new StringValue(qn.toString()));
+            }
+        }
+        return node;
+    }
+
+    @Override
+    public Option visitOption(Option option, JsonMessageContext context) {
+        return (Option) process(option, context);
     }
 
     @Override
@@ -53,7 +75,12 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     @Override
     public StructType visitStructType(StructType structType, JsonMessageContext context) {
-        QualifiedName qn = toUpperCamel(structType.getName());
+        QualifiedName qn = rewriteQualifiedName(structType.getName(), context);
+        return new StructType(qn);
+    }
+
+    private QualifiedName rewriteQualifiedName(QualifiedName qualifiedName, JsonMessageContext context) {
+        QualifiedName qn = toUpperCamel(qualifiedName);
         Optional<QualifiedName> oqn = qn.prefix();
         if (oqn.isPresent()) {
             String suffix = qn.suffix();
@@ -78,7 +105,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             context.addDependency(fqn);
             qn = QualifiedName.of(fqn.suffix());
         }
-        return new StructType(qn);
+        return qn;
     }
 
     @Override
@@ -129,7 +156,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             .sorted()
             .filter(qn -> !qn.equals(name))
             .map(QualifiedName::toString)
-            .map(s -> Constants.IMPORT + s + "; ")
+            .map(s -> Constants.IMPORT + " " + s + "; ")
             .collect(Collectors.toList());
         List<String> comments = ImmutableList.<String>builder()
             .addAll(node.getComments())

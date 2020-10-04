@@ -97,8 +97,15 @@ public class ClassHierarchy {
                 parent = new Message(name, new ArrayList<>(fields), Collections.emptyList(), Collections.emptyList(), ops);
             } else {
                 name = parent.getName();
+                // Only 2 Fields
+                if (subClasses.isEmpty() && fields.size() < 3) {
+                    QualifiedName parentName = parentName(p);
+                    parent = new Message(parentName, parent.getComments(), parent.getFields(), parent.getMessages(), parent.getEnumerations(), parent.getOptions());
+                    same.put(name, parentName);
+                    messageMap.put(parentName, parent);
+                }
             }
-            if (subClasses.size() > 0) {
+            if (!subClasses.isEmpty()) {
                 // Add options
                 for (Message sub : subClasses) {
                     ImmutableList.Builder<Option> lb = ImmutableList.<Option>builder()
@@ -124,14 +131,45 @@ public class ClassHierarchy {
         return op;
     }
 
+    private QualifiedName commonParent(List<Message> messages) {
+        List<QualifiedName> names = Stream.of(messages)
+            .flatMap(Collection::stream)
+            .map(Entity::getName)
+            .collect(Collectors.toList());
+
+        List<String> parts = new ArrayList<>();
+        for (int i = 0; ; i++) {
+            String part = null;
+            boolean samePrefix = true;
+            for (QualifiedName qn : names) {
+                int size = qn.size();
+                if (i >= size) {
+                    break;
+                }
+                if (null == part) {
+                    part = qn.partAt(i);
+                    continue;
+                }
+                if (!part.equals(qn.partAt(i))) {
+                    samePrefix = false;
+                    break;
+                }
+            }
+            if (!samePrefix) {
+                break;
+            }
+            if (null != part) {
+                parts.add(part);
+            }
+
+        }
+        return QualifiedName.of(parts);
+    }
+
     private QualifiedName parentName(Parent info) {
         List<Message> messages = info.getMessages();
         // Message name space.
-        QualifiedName qn = Stream.of(messages)
-            .flatMap(Collection::stream)
-            .max(messageComparator)
-            .map(Entity::getName)
-            .orElseThrow();
+        QualifiedName qn = commonParent(messages);
 
         Set<Field> fields = info.getFields();
         // If parent class has less than 3 fields, try to generate a class name from fields.
@@ -141,7 +179,7 @@ public class ClassHierarchy {
                 .flatMap(Collection::stream)
                 .map(Field::getName)
                 .collect(Collectors.joining(UNDERSCORE));
-            return QualifiedName.of(qn.prefix(), name0);
+            return QualifiedName.of(qn, name0);
         }
         // Try to generate parent class name from message names
         String name = Stream.of(messages)
@@ -151,7 +189,7 @@ public class ClassHierarchy {
             .limit(2)
             .sorted()
             .collect(Collectors.joining(UNDERSCORE));
-        return QualifiedName.of(qn.prefix(), name);
+        return QualifiedName.of(qn, name);
     }
 
     private void rewrite(Map<QualifiedName, Message> messageMap, Map<QualifiedName, QualifiedName> identityNames) {
