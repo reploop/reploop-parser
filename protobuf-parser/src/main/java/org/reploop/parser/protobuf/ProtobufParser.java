@@ -7,9 +7,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.reploop.parser.ParserDriver;
-import org.reploop.parser.protobuf.base.ProtobufBaseLexer;
-import org.reploop.parser.protobuf.base.ProtobufBaseParser;
 import org.reploop.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.protobuf.v2.Protobuf2Lexer;
+import org.reploop.parser.protobuf.v2.Protobuf2Parser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,25 +27,25 @@ import java.util.function.Function;
  * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 09
  */
-public class ProtobufParser extends ParserDriver<Node, ProtobufBaseLexer, ProtobufBaseParser> {
+public class ProtobufParser extends ParserDriver<Node, Protobuf2Lexer, Protobuf2Parser> {
     private static final Logger LOG = LoggerFactory.getLogger(ProtobufParser.class);
 
     public ProtoProgram program(Path file) {
-        return (ProtoProgram) parse(file, ProtobufBaseParser::program);
+        return (ProtoProgram) parse(file, Protobuf2Parser::program);
     }
 
     public ProtoProgram program(Reader file) {
         try {
-            return (ProtoProgram) parse(file, ProtobufBaseParser::program);
+            return (ProtoProgram) parse(file, Protobuf2Parser::program);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public Node parse(Path file, Function<ProtobufBaseParser, ParserRuleContext> func) {
+    public Node parse(Path file, Function<Protobuf2Parser, ParserRuleContext> func) {
         try (Reader reader
-                     = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
+                 = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
             return parse(reader, func);
         } catch (IOException e) {
             LOG.error("Cannot read protobuf file {}", file, e);
@@ -56,13 +56,13 @@ public class ProtobufParser extends ParserDriver<Node, ProtobufBaseLexer, Protob
     }
 
     @Override
-    protected ProtobufBaseParser parser(CommonTokenStream tokenStream) {
-        return new ProtobufBaseParser(tokenStream);
+    protected Protobuf2Parser parser(CommonTokenStream tokenStream) {
+        return new Protobuf2Parser(tokenStream);
     }
 
     @Override
-    protected ProtobufBaseLexer lexer(CharStream charStream) {
-        return new ProtobufBaseLexer(charStream);
+    protected Protobuf2Lexer lexer(CharStream charStream) {
+        return new Protobuf2Lexer(charStream);
     }
 
     @Override

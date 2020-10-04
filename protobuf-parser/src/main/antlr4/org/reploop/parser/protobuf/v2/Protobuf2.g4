@@ -1,4 +1,4 @@
-grammar ProtobufBase;
+grammar Protobuf2;
 
 program
     : (option | header)* (message | enumeration | service | extend)+
