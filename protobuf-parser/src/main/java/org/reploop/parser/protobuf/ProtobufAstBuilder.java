@@ -6,11 +6,11 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.TerminalNode;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.commons.CommentHelper;
-import org.reploop.parser.protobuf.base.ProtobufBaseBaseVisitor;
-import org.reploop.parser.protobuf.base.ProtobufBaseLexer;
-import org.reploop.parser.protobuf.base.ProtobufBaseParser;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
+import org.reploop.parser.protobuf.v2.Protobuf2BaseVisitor;
+import org.reploop.parser.protobuf.v2.Protobuf2Lexer;
+import org.reploop.parser.protobuf.v2.Protobuf2Parser;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * @author George Cao(georgecao@outlook.com)
  * @since 2015-06-07 09
  */
-public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
+public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
 
     CommonTokenStream tokens;
 
@@ -34,17 +34,17 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     private List<String> comments(Token token) {
-        return CommentHelper.comments(token, ProtobufBaseLexer.HIDDEN, leftComment);
+        return CommentHelper.comments(token, Protobuf2Lexer.HIDDEN, leftComment);
     }
 
     @Override
-    public Node visitExtensions(ProtobufBaseParser.ExtensionsContext ctx) {
+    public Node visitExtensions(Protobuf2Parser.ExtensionsContext ctx) {
         // TODO
         return super.visitExtensions(ctx);
     }
 
     @Override
-    public Node visitExtend(ProtobufBaseParser.ExtendContext ctx) {
+    public Node visitExtend(Protobuf2Parser.ExtendContext ctx) {
         // TODO
         return super.visitExtend(ctx);
     }
@@ -83,11 +83,11 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public Option visitOption(ProtobufBaseParser.OptionContext ctx) {
+    public Option visitOption(Protobuf2Parser.OptionContext ctx) {
         return visit(ctx.pair(), Pair.class);
     }
 
-    public Message visitMessage(ProtobufBaseParser.MessageContext ctx) {
+    public Message visitMessage(Protobuf2Parser.MessageContext ctx) {
         String name = ctx.ID().getText();
         List<Option> options = visit(ctx.option(), Option.class);
         List<Field> fields = visit(ctx.field(), Field.class);
@@ -97,20 +97,20 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public EnumField visitNameIndex(ProtobufBaseParser.NameIndexContext ctx) {
+    public EnumField visitNameIndex(Protobuf2Parser.NameIndexContext ctx) {
         Integer index = Integer.valueOf(ctx.INT().getText());
         return new EnumField(comments(ctx.getStart()), ctx.ID().getText(), index);
     }
 
     @Override
-    public Enumeration visitEnumeration(ProtobufBaseParser.EnumerationContext ctx) {
+    public Enumeration visitEnumeration(Protobuf2Parser.EnumerationContext ctx) {
         String name = ctx.ID().getText();
         List<EnumField> fields = visit(ctx.nameIndex(), EnumField.class);
         return new Enumeration(QualifiedName.of(name), comments(ctx.getStart()), fields);
     }
 
     @Override
-    public Service visitService(ProtobufBaseParser.ServiceContext ctx) {
+    public Service visitService(Protobuf2Parser.ServiceContext ctx) {
         String name = ctx.ID().getText();
         List<Option> options = visit(ctx.option(), Option.class);
         List<Function> functions = visit(ctx.function(), Function.class);
@@ -118,7 +118,7 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public Function visitFunction(ProtobufBaseParser.FunctionContext ctx) {
+    public Function visitFunction(Protobuf2Parser.FunctionContext ctx) {
         String name = ctx.ID().getText();
         FieldType requestType = visitFieldType(ctx.requestType);
         FieldType responseType = visitFieldType(ctx.responseType);
@@ -127,22 +127,22 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public Namespace visitNamespaceDefinition(ProtobufBaseParser.NamespaceDefinitionContext ctx) {
+    public Namespace visitNamespaceDefinition(Protobuf2Parser.NamespaceDefinitionContext ctx) {
         return visitNamespace(ctx.namespace());
     }
 
     @Override
-    public Namespace visitNamespace(ProtobufBaseParser.NamespaceContext ctx) {
+    public Namespace visitNamespace(Protobuf2Parser.NamespaceContext ctx) {
         return new Namespace(ctx.ID().getText());
     }
 
     @Override
-    public Include visitIncludeDefinition(ProtobufBaseParser.IncludeDefinitionContext ctx) {
+    public Include visitIncludeDefinition(Protobuf2Parser.IncludeDefinitionContext ctx) {
         return visitInclude(ctx.include());
     }
 
     @Override
-    public Include visitInclude(ProtobufBaseParser.IncludeContext ctx) {
+    public Include visitInclude(Protobuf2Parser.IncludeContext ctx) {
         return new Include(ctx.STRING().getText());
     }
 
@@ -186,52 +186,52 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public FieldType visitPrimitiveType(ProtobufBaseParser.PrimitiveTypeContext ctx) {
+    public FieldType visitPrimitiveType(Protobuf2Parser.PrimitiveTypeContext ctx) {
         return scalarType(ctx.ScalarType());
     }
 
     @Override
-    public FieldType visitMessageOrEnumType(ProtobufBaseParser.MessageOrEnumTypeContext ctx) {
+    public FieldType visitMessageOrEnumType(Protobuf2Parser.MessageOrEnumTypeContext ctx) {
         return new StructType(ctx.ID().getText());
     }
 
     @Override
-    public IntValue visitIntValue(ProtobufBaseParser.IntValueContext ctx) {
+    public IntValue visitIntValue(Protobuf2Parser.IntValueContext ctx) {
         return new IntValue(getInt(ctx.INT()));
     }
 
     @Override
-    public FloatValue visitFloatValue(ProtobufBaseParser.FloatValueContext ctx) {
+    public FloatValue visitFloatValue(Protobuf2Parser.FloatValueContext ctx) {
         return new FloatValue(getFloat(ctx.FLOAT()));
     }
 
     @Override
-    public BoolValue visitBoolValue(ProtobufBaseParser.BoolValueContext ctx) {
+    public BoolValue visitBoolValue(Protobuf2Parser.BoolValueContext ctx) {
         return new BoolValue(Boolean.valueOf(ctx.BOOL_LITERAL().getText()));
     }
 
     @Override
-    public StringValue visitStringValue(ProtobufBaseParser.StringValueContext ctx) {
+    public StringValue visitStringValue(Protobuf2Parser.StringValueContext ctx) {
         return new StringValue(ctx.STRING().getText());
     }
 
     @Override
-    public StructValue visitStructValue(ProtobufBaseParser.StructValueContext ctx) {
+    public StructValue visitStructValue(Protobuf2Parser.StructValueContext ctx) {
         return new StructValue(ctx.ID().getText());
     }
 
     @Override
-    public CommonPair visitCommonPair(ProtobufBaseParser.CommonPairContext ctx) {
+    public CommonPair visitCommonPair(Protobuf2Parser.CommonPairContext ctx) {
         return new CommonPair(ctx.ID().getText(), visit(ctx.value(), Value.class));
     }
 
     @Override
-    public DefaultPair visitDefaultPair(ProtobufBaseParser.DefaultPairContext ctx) {
+    public DefaultPair visitDefaultPair(Protobuf2Parser.DefaultPairContext ctx) {
         return new DefaultPair(visit(ctx.value(), Value.class));
     }
 
     @Override
-    public OptionPair visitOptionPair(ProtobufBaseParser.OptionPairContext ctx) {
+    public OptionPair visitOptionPair(Protobuf2Parser.OptionPairContext ctx) {
         Token attr = ctx.attr;
         if (null != attr) {
             return new OptionPair(ctx.name.getText(), ctx.attr.getText(), visit(ctx.value(), Value.class));
@@ -241,36 +241,36 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public Options visitMultiOptions(ProtobufBaseParser.MultiOptionsContext ctx) {
+    public Options visitMultiOptions(Protobuf2Parser.MultiOptionsContext ctx) {
         return new Options(visit(ctx.pair(), Pair.class));
     }
 
-    public FieldType visitFieldType(ProtobufBaseParser.FieldTypeContext ctx) {
+    public FieldType visitFieldType(Protobuf2Parser.FieldTypeContext ctx) {
         return visit(ctx, FieldType.class);
     }
 
     @Override
-    public StringValue visitSyntaxName(ProtobufBaseParser.SyntaxNameContext ctx) {
+    public StringValue visitSyntaxName(Protobuf2Parser.SyntaxNameContext ctx) {
         return new StringValue(ctx.getText());
     }
 
     @Override
-    public StringValue visitPackageName(ProtobufBaseParser.PackageNameContext ctx) {
+    public StringValue visitPackageName(Protobuf2Parser.PackageNameContext ctx) {
         return new StringValue(ctx.getText());
     }
 
     @Override
-    public StringValue visitMessageName(ProtobufBaseParser.MessageNameContext ctx) {
+    public StringValue visitMessageName(Protobuf2Parser.MessageNameContext ctx) {
         return new StringValue(ctx.getText());
     }
 
     @Override
-    public StringValue visitIdName(ProtobufBaseParser.IdNameContext ctx) {
+    public StringValue visitIdName(Protobuf2Parser.IdNameContext ctx) {
         return new StringValue(ctx.ID().getText());
     }
 
     @Override
-    public Field visitField(ProtobufBaseParser.FieldContext ctx) {
+    public Field visitField(Protobuf2Parser.FieldContext ctx) {
         TerminalNode node = ctx.FieldModifier();
         FieldModifier modifier = FieldModifier.valueOf(node.getText());
         Optional<Options> options = visitIfPresent(ctx.multiOptions(), Options.class);
@@ -294,7 +294,7 @@ public class ProtobufAstBuilder extends ProtobufBaseBaseVisitor<Node> {
     }
 
     @Override
-    public ProtoProgram visitProgram(ProtobufBaseParser.ProgramContext ctx) {
+    public ProtoProgram visitProgram(Protobuf2Parser.ProgramContext ctx) {
         return new ProtoProgram(
             comments(ctx.getStart()),
             visit(ctx.option(), Option.class),

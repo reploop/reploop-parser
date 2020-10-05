@@ -39,6 +39,10 @@ public abstract class AstVisitor<R, C> extends AbstractAstVisitor<R, Node, C> {
         return visitNode(node, context);
     }
 
+    public R visitSyntaxPair(SyntaxPair node, C context) {
+        return visitNode(node, context);
+    }
+
     public R visitEnumeration(Enumeration node, C context) {
         return visitNode(node, context);
     }
