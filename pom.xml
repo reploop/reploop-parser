@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.reploop</groupId>
     <artifactId>reploop-parser</artifactId>
-    <version>0.16</version>
+    <version>0.17-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,7 +70,7 @@
         <url>https://github.com/georgecao/reploop-parser</url>
         <connection>scm:git:https://github.com/georgecao/reploop-parser.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/georgecao/reploop-parser.git</developerConnection>
-        <tag>reploop-parser-0.16</tag>
+        <tag>reploop-parser-0.15</tag>
     </scm>
     <dependencies>
         <dependency>
