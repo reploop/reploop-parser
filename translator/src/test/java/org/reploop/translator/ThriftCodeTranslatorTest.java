@@ -1,17 +1,14 @@
 package org.reploop.translator;
 
-import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.protobuf.ProtobufParser;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.tree.ProtoProgram;
+import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.thrift.generator.GeneratorContext;
 import org.reploop.parser.thrift.generator.ThriftBinaryNameResolver;
 import org.reploop.parser.thrift.generator.ThriftCodeGenerator;
 import org.reploop.parser.thrift.tree.ThriftProgram;
-import org.reploop.translator.ThriftCodeTranslator;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -32,7 +29,6 @@ public class ThriftCodeTranslatorTest {
 
     ThriftCodeTranslator translator;
 
-    @BeforeMethod
     public void setUp() throws Exception {
         parser = new ThriftParser();
         protobufParser = new ProtobufParser();
@@ -40,7 +36,6 @@ public class ThriftCodeTranslatorTest {
         translator = new ThriftCodeTranslator();
     }
 
-    @Test
     public void testGenerate() throws Exception {
         URL url = ClassLoader.getSystemClassLoader().getResource("idl");
         assert null != url;
@@ -50,22 +45,18 @@ public class ThriftCodeTranslatorTest {
         translator.execute(dest, to);
     }
 
-    @Test
     public void testCategoryService() throws Exception {
         testService("category_rpc_service.thrift", "categories.proto");
     }
 
-    @Test
     public void testIdService() throws Exception {
         testService("idl/knowledge/pub/id_rpc_service.thrift", "idl/knowledge/pub/id_service.proto");
     }
 
-    @Test
     public void testReadService() throws Exception {
         testService("read_rpc_service.thrift", "read_service.proto");
     }
 
-    @Test
     public void testWriteService() throws Exception {
         testService("write_rpc_service.thrift", "write_service.proto");
     }

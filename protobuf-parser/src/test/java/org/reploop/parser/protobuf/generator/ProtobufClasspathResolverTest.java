@@ -3,9 +3,8 @@ package org.reploop.parser.protobuf.generator;
 
 import org.reploop.parser.Classpath;
 import org.reploop.parser.protobuf.ProtobufParser;
-import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.tree.ProtoProgram;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -29,7 +28,6 @@ public class ProtobufClasspathResolverTest {
 
     }
 
-    @Test
     public void testVisitProtobufProgram1() throws Exception {
         URL uri = ClassLoader.getSystemClassLoader().getResource("proto/acl.proto");
         Path path = Paths.get(uri.toURI());
@@ -45,7 +43,6 @@ public class ProtobufClasspathResolverTest {
         System.out.println(pp);
     }
 
-    @Test
     public void testVisitProtobufProgram() throws Exception {
         URL uri = ClassLoader.getSystemClassLoader().getResource("proto/hdfs.proto");
         Path path = Paths.get(uri.toURI());

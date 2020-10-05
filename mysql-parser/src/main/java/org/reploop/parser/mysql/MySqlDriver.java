@@ -12,14 +12,9 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.nio.file.Path;
 import java.util.function.Function;
 
 public class MySqlDriver extends ParserDriver<Node, MySqlLexer, MySqlParser> {
-
-    public Node parse(Path sql, Function<MySqlParser, ParserRuleContext> func) throws IOException, StackOverflowError {
-        return parse(CharStreams.fromPath(sql), func);
-    }
 
     public Node parse(String sql, Function<MySqlParser, ParserRuleContext> func) throws IOException, StackOverflowError {
         return parse(new StringReader(sql), func);

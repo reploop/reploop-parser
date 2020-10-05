@@ -76,7 +76,6 @@ public class JsonBeanTranslatorTest {
     public void testVisitValue() {
     }
 
-    @Test
     public void testVisitObject() {
         RestTemplate template = new RestTemplate();
         Uri uri = template.getForObject(url, Uri.class);
@@ -88,7 +87,6 @@ public class JsonBeanTranslatorTest {
 
     }
 
-    @Test
     public void testVisitJson() throws Exception {
         testVisitJson(url);
     }
