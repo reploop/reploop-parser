@@ -11,7 +11,7 @@ header
     ;
 
 syntax
-    : STRING ';'
+    :   'syntax' '=' ('"proto2"' | '\'proto2\'' ) ';'
     ;
 
 namespace
@@ -23,7 +23,7 @@ include
     ;
 
 message
-    : 'message' ID '{' (option | message | enumeration | field | extend | extensions)+ '}'
+    : 'message' ID '{' (option | message | enumeration | field | extend | extensions)* '}'
     ;
 
 option
