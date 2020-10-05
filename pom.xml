@@ -67,6 +67,12 @@
             </properties>
         </profile>
     </profiles>
+    <scm>
+        <url>https://github.com/georgecao/reploop-parser</url>
+        <connection>scm:git:git@github.com:georgecao/reploop-parser.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:georgecao/reploop-parser.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
