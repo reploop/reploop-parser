@@ -36,3 +36,4 @@ log.path*
 
 # Maven
 release.properties
+*.releaseBackup
