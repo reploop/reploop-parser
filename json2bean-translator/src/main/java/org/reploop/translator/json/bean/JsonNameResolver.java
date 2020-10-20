@@ -39,10 +39,21 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         if (key.equals(Constants.EXTENDS_ATTR)) {
             if (value instanceof StringValue) {
                 String fqn = ((StringValue) value).getValue();
-                QualifiedName qn = rewriteQualifiedName(QualifiedName.of(fqn), context);
+                QualifiedName qualified = QualifiedName.of(fqn);
+                List<Message> messages = context.getMessages(qualified);
+                QualifiedName qn = rewriteQualifiedName(qualified, context);
                 return new CommonPair(key, new StringValue(qn.toString()));
             }
+        } else if (key.equals(Constants.ABSTRACT_ATTR)) {
+            if (value instanceof BoolValue) {
+                boolean isAbstract = ((BoolValue) value).getValue();
+                context.setAbstractClass(isAbstract);
+                QualifiedName qn = context.getName();
+                // QualifiedName qnb = QualifiedName.of(qn, Constants.BUILDER);
+                // Message mb = new Message(qnb, context.getFieldType());
+            }
         }
+
         return node;
     }
 
@@ -145,6 +156,30 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         return to(qn, CaseFormat.UPPER_CAMEL);
     }
 
+
+    private boolean shouldExplicitImport(QualifiedName qn1, QualifiedName qn2) {
+        // #1 First of all, make sure they are not same
+        if (qn1.equals(qn2)) {
+            return false;
+        }
+        int c = Integer.compare(qn1.size(), qn2.size());
+        // #2 They are of same size.
+        if (0 == c) {
+            int s = qn1.size() - 1;
+            for (int i = 0; i < s; i++) {
+                String p1 = qn1.partAt(i);
+                String p2 = qn2.partAt(i);
+                if (!p1.equals(p2)) {
+                    // #3 They are in different packages, so need import explicitly.
+                    return true;
+                }
+            }
+            // #4 Now we can tell the two in the same package, so do not need import explicitly.
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
         QualifiedName name = toUpperCamel(node.getName());
@@ -154,7 +189,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         List<Enumeration> enumerations = visitIfPresent(node.getEnumerations(), enumeration -> visitEnumeration(enumeration, context));
         List<String> deps = context.getDependencies().stream()
             .sorted()
-            .filter(qn -> !qn.equals(name))
+            .filter(qn -> shouldExplicitImport(qn, name))
             .map(QualifiedName::toString)
             .map(s -> Constants.IMPORT + " " + s + "; ")
             .collect(Collectors.toList());
