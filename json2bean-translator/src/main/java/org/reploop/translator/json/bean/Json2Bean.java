@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.nio.file.StandardOpenOption.*;
+import static org.reploop.translator.json.support.Constants.DOT;
+import static org.reploop.translator.json.support.Constants.JAVA;
 import static org.reploop.translator.json.support.TypeSupport.fieldNumberSpec;
 
 /**
@@ -191,9 +193,13 @@ public class Json2Bean {
         return nameMessageMap;
     }
 
+    private String toFilename(QualifiedName qn) {
+        return qn.suffix() + DOT + JAVA;
+    }
+
     private Path packageToPath(Path root, Message msg) {
         QualifiedName qn = msg.getName();
-        String filename = qn.suffix() + ".java";
+        String filename = toFilename(qn);
         Optional<QualifiedName> oqn = qn.prefix();
         Path path = null;
         if (oqn.isPresent()) {

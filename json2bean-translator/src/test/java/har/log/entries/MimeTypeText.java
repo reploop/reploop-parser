@@ -5,18 +5,10 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class TextMimeType implements Serializable {
+public abstract class MimeTypeText implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String text;
     private String mimeType;
-    
-    public String getText() {
-        return text;
-    }
-    
-    public void setText(String text) {
-        this.text = text;
-    }
+    private String text;
     
     public String getMimeType() {
         return mimeType;
@@ -26,11 +18,19 @@ public abstract class TextMimeType implements Serializable {
         this.mimeType = mimeType;
     }
     
+    public String getText() {
+        return text;
+    }
+    
+    public void setText(String text) {
+        this.text = text;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("text", text)
                 .add("mimeType", mimeType)
+                .add("text", text)
                 .toString();
     }
     

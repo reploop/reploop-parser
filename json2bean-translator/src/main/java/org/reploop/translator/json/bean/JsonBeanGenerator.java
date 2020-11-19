@@ -2,20 +2,26 @@ package org.reploop.translator.json.bean;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
+import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.FieldType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.reploop.translator.json.support.Constants.*;
 
 public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
+    private static Logger LOG = LoggerFactory.getLogger(JsonBeanGenerator.class);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
@@ -63,12 +69,18 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         String key = node.getKey();
         Value value = node.getValue();
         String expected = context.getExpectedKey();
-        if (key.equals(IMPORT) && IMPORT.equals(expected)) {
-            visitImport(context, key, value);
-        } else if (key.equals(EXTENDS_ATTR) && EXTENDS_ATTR.equals(expected)) {
-            visitExtendsAttr(context, value);
-        } else if (key.equals(ABSTRACT_ATTR) && ABSTRACT_ATTR.equals(expected)) {
-            visitAbstractAttr(context, value);
+        if (key.equals(expected)) {
+            switch (key) {
+                case IMPORT:
+                    visitImport(context, key, value);
+                    break;
+                case EXTENDS_ATTR:
+                    visitExtendsAttr(context, value);
+                    break;
+                case ABSTRACT_ATTR:
+                    visitAbstractAttr(context, value);
+                    break;
+            }
         }
         return node;
     }
@@ -207,11 +219,49 @@ public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
         List<Message> messages = visit(node.getMessages(), m -> visitMessage(m, context));
         List<Field> fields = visit(node.getFields(), n -> visitField(n, context));
         accessor(fields, context);
-        toString(fields, context);
 
+        boolean isAbstract = isAbstract(node);
+        QualifiedName pqn = getParentInfo(node);
+
+        toString(fields, context);
         //builder(node, fields, context);
 
         context.dedent().newLine().closeBrace().newLine();
         return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), node.getOptions());
+    }
+
+    private String strip(String value) {
+        String v = StringUtils.stripStart(value, IMPORT);
+        return StringUtils.stripEnd(v.trim(), COMMA);
+    }
+
+    private QualifiedName getParentInfo(Message node) {
+        JsonBeanContext extendContext = new JsonBeanContext(node.getName());
+        extendContext.setExpectedKey(EXTENDS_ATTR);
+        visitIfPresent(node.getOptions(), option -> visitOption(option, extendContext));
+        String parentInfo = extendContext.toString();
+        int i;
+        if ((i = parentInfo.indexOf(EXTENDS_ATTR)) >= 0) {
+            String qn = parentInfo.substring(i + EXTENDS_ATTR.length()).trim();
+            List<String> deps = Stream.ofNullable(node.getComments())
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .map(this::strip)
+                .filter(dep -> dep.endsWith(qn))
+                .collect(Collectors.toList());
+            if (deps.size() == 1) {
+                return QualifiedName.of(deps.get(0));
+            }
+            LOG.warn("Maybe imports conflict: {}", qn);
+            return QualifiedName.of(qn);
+        }
+        return null;
+    }
+
+    private boolean isAbstract(Message node) {
+        JsonBeanContext abstractContext = new JsonBeanContext(node.getName());
+        abstractContext.setExpectedKey(ABSTRACT_ATTR);
+        visitIfPresent(node.getOptions(), option -> visitOption(option, abstractContext));
+        return ABSTRACT_ATTR.length() <= abstractContext.toString().length();
     }
 }

@@ -9,6 +9,8 @@ import java.util.*;
 
 public class JsonMessageContext {
     private QualifiedName name;
+    private boolean abstractClass;
+    private QualifiedName superClass;
     private TreeMap<QualifiedName, List<Message>> namedMessages;
     private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
     private final Set<QualifiedName> dependencies = new HashSet<>();
@@ -44,6 +46,22 @@ public class JsonMessageContext {
 
     public void setDirectory(Path directory) {
         this.directory = directory;
+    }
+
+    public QualifiedName getSuperClass() {
+        return superClass;
+    }
+
+    public void setSuperClass(QualifiedName superClass) {
+        this.superClass = superClass;
+    }
+
+    public boolean isAbstractClass() {
+        return abstractClass;
+    }
+
+    public void setAbstractClass(boolean abstractClass) {
+        this.abstractClass = abstractClass;
     }
 
     public FieldType getFieldType() {
@@ -107,6 +125,13 @@ public class JsonMessageContext {
 
     public Optional<QualifiedName> getIdentityName(QualifiedName qn) {
         return Optional.ofNullable(identityNames.get(qn));
+    }
+
+    public List<Message> getMessages(QualifiedName name) {
+        if (null == namedMessages) {
+            return Collections.emptyList();
+        }
+        return namedMessages.get(name);
     }
 
     public void addIdentityName(QualifiedName a, QualifiedName b) {

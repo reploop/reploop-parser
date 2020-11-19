@@ -1,13 +1,13 @@
 package har;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.io.Serializable;
 import com.google.common.base.MoreObjects;
+import har.log.Entries;
+import har.log.NameVersion;
+import har.log.Pages;
 
-import har.log.Entries; 
-import har.log.NameVersion; 
-import har.log.Pages; 
-import java.util.List; 
+import java.io.Serializable;
+import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Log implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,47 +16,47 @@ public class Log implements Serializable {
     private List<Entries> entries;
     private List<Pages> pages;
     private String version;
-    
+
     public NameVersion getBrowser() {
         return browser;
     }
-    
+
     public void setBrowser(NameVersion browser) {
         this.browser = browser;
     }
-    
+
     public NameVersion getCreator() {
         return creator;
     }
-    
+
     public void setCreator(NameVersion creator) {
         this.creator = creator;
     }
-    
+
     public List<Entries> getEntries() {
         return entries;
     }
-    
+
     public void setEntries(List<Entries> entries) {
         this.entries = entries;
     }
-    
+
     public List<Pages> getPages() {
         return pages;
     }
-    
+
     public void setPages(List<Pages> pages) {
         this.pages = pages;
     }
-    
+
     public String getVersion() {
         return version;
     }
-    
+
     public void setVersion(String version) {
         this.version = version;
     }
-    
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
@@ -67,5 +67,5 @@ public class Log implements Serializable {
                 .add("version", version)
                 .toString();
     }
-    
+
 }

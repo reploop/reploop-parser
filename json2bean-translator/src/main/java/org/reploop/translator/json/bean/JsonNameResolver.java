@@ -12,7 +12,10 @@ import org.reploop.translator.json.support.NameFormat;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import static org.reploop.translator.json.support.Constants.*;
 
 /**
  * Rename all packages and classes names.
@@ -24,7 +27,6 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
     private static final QualifiedName IMPORT_LIST = QualifiedName.of("java.util.List");
     private static final QualifiedName IMPORT_SET = QualifiedName.of("java.util.Set");
     private static final QualifiedName IMPORT_MAP = QualifiedName.of("java.util.Map");
-    private static final List<QualifiedName> AUTO_IMPORTS = List.of(IMPORT_LIST, IMPORT_JSON_PROPERTY, IMPORT_MAP, IMPORT_SET);
     private final NameFormat format = new NameFormat();
 
     @Override
@@ -40,20 +42,16 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             if (value instanceof StringValue) {
                 String fqn = ((StringValue) value).getValue();
                 QualifiedName qualified = QualifiedName.of(fqn);
-                List<Message> messages = context.getMessages(qualified);
                 QualifiedName qn = rewriteQualifiedName(qualified, context);
+                context.setSuperClass(qn);
                 return new CommonPair(key, new StringValue(qn.toString()));
             }
         } else if (key.equals(Constants.ABSTRACT_ATTR)) {
             if (value instanceof BoolValue) {
                 boolean isAbstract = ((BoolValue) value).getValue();
                 context.setAbstractClass(isAbstract);
-                QualifiedName qn = context.getName();
-                // QualifiedName qnb = QualifiedName.of(qn, Constants.BUILDER);
-                // Message mb = new Message(qnb, context.getFieldType());
             }
         }
-
         return node;
     }
 
@@ -97,7 +95,9 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             String suffix = qn.suffix();
             QualifiedName sqn = QualifiedName.of(suffix);
             boolean conflict = false;
-            for (QualifiedName name : AUTO_IMPORTS) {
+            // Current deps
+            Set<QualifiedName> deps = context.getDependencies();
+            for (QualifiedName name : deps) {
                 if (name.endsWith(sqn)) {
                     conflict = true;
                     break;
@@ -110,6 +110,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
                 suffix = prefix.suffix() + Constants.UNDERSCORE + qn.suffix();
                 // The new full qualified name
                 fqn = toUpperCamel(QualifiedName.of(prefix, suffix));
+                // Rewrite fqn later.
                 context.addIdentityName(qn, fqn);
             }
             // Add fqn to dependencies
@@ -191,7 +192,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
             .sorted()
             .filter(qn -> shouldExplicitImport(qn, name))
             .map(QualifiedName::toString)
-            .map(s -> Constants.IMPORT + " " + s + "; ")
+            .map(s -> IMPORT + WHITESPACE + s + COMMA + WHITESPACE)
             .collect(Collectors.toList());
         List<String> comments = ImmutableList.<String>builder()
             .addAll(node.getComments())

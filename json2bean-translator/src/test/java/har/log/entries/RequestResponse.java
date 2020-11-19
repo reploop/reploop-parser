@@ -5,46 +5,21 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 import java.util.List; 
-import har.log.entries.ValueName; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<ValueName> headers;
-    private Integer bodySize;
-    private String httpVersion;
-    private List<ValueName> cookies;
+    private List<NameValue> headers;
     private Integer headersSize;
+    private Integer bodySize;
+    private List<NameValue> cookies;
+    private String httpVersion;
     
-    public List<ValueName> getHeaders() {
+    public List<NameValue> getHeaders() {
         return headers;
     }
     
-    public void setHeaders(List<ValueName> headers) {
+    public void setHeaders(List<NameValue> headers) {
         this.headers = headers;
-    }
-    
-    public Integer getBodySize() {
-        return bodySize;
-    }
-    
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-    }
-    
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-    
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
-    
-    public List<ValueName> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<ValueName> cookies) {
-        this.cookies = cookies;
     }
     
     public Integer getHeadersSize() {
@@ -55,14 +30,38 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
+    public Integer getBodySize() {
+        return bodySize;
+    }
+    
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
+    
+    public String getHttpVersion() {
+        return httpVersion;
+    }
+    
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("headers", headers)
-                .add("bodySize", bodySize)
-                .add("httpVersion", httpVersion)
-                .add("cookies", cookies)
                 .add("headersSize", headersSize)
+                .add("bodySize", bodySize)
+                .add("cookies", cookies)
+                .add("httpVersion", httpVersion)
                 .toString();
     }
     
