@@ -3,10 +3,10 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 import req1.CityList; 
-import req1.PlanPrefer; 
+import com.fasterxml.jackson.annotation.JsonProperty; 
 import req1.Room; 
 import java.util.List; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
+import req1.PlanPrefer; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Req1 implements Serializable {
     private static final long serialVersionUID = 1L;

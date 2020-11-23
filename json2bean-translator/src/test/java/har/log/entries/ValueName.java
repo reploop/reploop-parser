@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NameValue implements Serializable {
+public class ValueName implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private String value;

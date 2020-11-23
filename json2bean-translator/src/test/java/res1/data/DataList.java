@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
+import com.fasterxml.jackson.annotation.JsonProperty; 
 import java.util.List; 
 import res1.data.list.Hotels; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DataList implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -145,6 +145,7 @@ public class Json2BeanTest {
         JsonMessageContext context = new JsonMessageContext(root, directory);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(new StringReader(json), context);
         System.out.println(messageMap);
+        System.out.println(context.getFieldType());
 
         json = "[]";
         context = new JsonMessageContext(root);

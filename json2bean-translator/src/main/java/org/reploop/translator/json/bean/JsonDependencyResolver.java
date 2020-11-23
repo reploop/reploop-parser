@@ -9,7 +9,11 @@ import org.reploop.translator.json.support.Constants;
 
 import java.util.List;
 
-public class JsonMessageDependencyResolver extends AstVisitor<Node, JsonMessageContext> {
+/**
+ * Collect all deps this class needs including parent class info.
+ * Java classes is not counted.
+ */
+public class JsonDependencyResolver extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Node visitNode(Node node, JsonMessageContext context) {
         return node;

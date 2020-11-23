@@ -2,8 +2,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import sku.Result; 
 import java.util.List; 
+import sku.Result; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sku implements Serializable {
     private static final long serialVersionUID = 1L;

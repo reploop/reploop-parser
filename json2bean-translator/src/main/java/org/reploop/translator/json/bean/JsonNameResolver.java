@@ -90,34 +90,37 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
     private QualifiedName rewriteQualifiedName(QualifiedName qualifiedName, JsonMessageContext context) {
         QualifiedName qn = toUpperCamel(qualifiedName);
+        QualifiedName fqn = qn;
         Optional<QualifiedName> oqn = qn.prefix();
         if (oqn.isPresent()) {
-            String suffix = qn.suffix();
-            QualifiedName sqn = QualifiedName.of(suffix);
-            boolean conflict = false;
-            // Current deps
-            Set<QualifiedName> deps = context.getDependencies();
-            for (QualifiedName name : deps) {
-                if (name.endsWith(sqn)) {
-                    conflict = true;
-                    break;
-                }
-            }
-            QualifiedName fqn = qn;
-            if (conflict) {
+            if (hasNameConflict(qn, context)) {
                 QualifiedName prefix = oqn.get();
                 // When conflicts, add prefix's last name to the full name.
-                suffix = prefix.suffix() + Constants.UNDERSCORE + qn.suffix();
+                String suffix = prefix.suffix() + Constants.UNDERSCORE + qn.suffix();
                 // The new full qualified name
                 fqn = toUpperCamel(QualifiedName.of(prefix, suffix));
                 // Rewrite fqn later.
                 context.addIdentityName(qn, fqn);
             }
-            // Add fqn to dependencies
-            context.addDependency(fqn);
             qn = QualifiedName.of(fqn.suffix());
         }
+        // Add fqn to dependencies
+        context.addDependency(fqn);
         return qn;
+    }
+
+    private boolean hasNameConflict(QualifiedName qn, JsonMessageContext context) {
+        QualifiedName sqn = QualifiedName.of(qn.suffix());
+        boolean conflict = false;
+        // Current deps
+        Set<QualifiedName> deps = context.getDependencies();
+        for (QualifiedName name : deps) {
+            if (!name.equals(qn) && name.endsWith(sqn)) {
+                conflict = true;
+                break;
+            }
+        }
+        return conflict;
     }
 
     @Override
@@ -189,7 +192,6 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         List<Enumeration> enumerations = visitIfPresent(node.getEnumerations(), enumeration -> visitEnumeration(enumeration, context));
         List<String> deps = context.getDependencies().stream()
-            .sorted()
             .filter(qn -> shouldExplicitImport(qn, name))
             .map(QualifiedName::toString)
             .map(s -> IMPORT + WHITESPACE + s + COMMA + WHITESPACE)

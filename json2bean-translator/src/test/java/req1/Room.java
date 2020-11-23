@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import java.util.List; 
 import req1.room.RoomList; 
+import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import java.util.List; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import res1.data.list.hotels.additional_info.CityList; 
-import res1.data.list.hotels.additional_info.PlanPrefer; 
 import res1.data.list.hotels.additional_info.Room; 
+import com.fasterxml.jackson.annotation.JsonProperty; 
+import java.util.List; 
+import res1.data.list.hotels.additional_info.PlanPrefer; 
+import res1.data.list.hotels.additional_info.CityList; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdditionalInfo implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -2,8 +2,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import res1.Data; 
 import res1.Error; 
+import res1.Data; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Res1 implements Serializable {
     private static final long serialVersionUID = 1L;

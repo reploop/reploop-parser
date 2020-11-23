@@ -2,8 +2,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import spu.Result; 
 import java.util.List; 
+import spu.Result; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Spu implements Serializable {
     private static final long serialVersionUID = 1L;

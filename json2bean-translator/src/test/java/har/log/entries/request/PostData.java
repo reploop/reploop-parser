@@ -5,18 +5,18 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 import java.util.List; 
-import har.log.entries.MimeTypeText; 
-import har.log.entries.NameValue; 
+import har.log.entries.ValueName; 
+import har.log.entries.TextMimeType; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PostData extends MimeTypeText implements Serializable {
+public class PostData extends TextMimeType implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> params;
+    private List<ValueName> params;
     
-    public List<NameValue> getParams() {
+    public List<ValueName> getParams() {
         return params;
     }
     
-    public void setParams(List<NameValue> params) {
+    public void setParams(List<ValueName> params) {
         this.params = params;
     }
     

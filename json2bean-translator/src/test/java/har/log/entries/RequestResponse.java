@@ -8,42 +8,26 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> headers;
-    private Integer headersSize;
-    private Integer bodySize;
-    private List<NameValue> cookies;
+    private List<ValueName> cookies;
+    private List<ValueName> headers;
     private String httpVersion;
+    private Integer bodySize;
+    private Integer headersSize;
     
-    public List<NameValue> getHeaders() {
-        return headers;
-    }
-    
-    public void setHeaders(List<NameValue> headers) {
-        this.headers = headers;
-    }
-    
-    public Integer getHeadersSize() {
-        return headersSize;
-    }
-    
-    public void setHeadersSize(Integer headersSize) {
-        this.headersSize = headersSize;
-    }
-    
-    public Integer getBodySize() {
-        return bodySize;
-    }
-    
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-    }
-    
-    public List<NameValue> getCookies() {
+    public List<ValueName> getCookies() {
         return cookies;
     }
     
-    public void setCookies(List<NameValue> cookies) {
+    public void setCookies(List<ValueName> cookies) {
         this.cookies = cookies;
+    }
+    
+    public List<ValueName> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<ValueName> headers) {
+        this.headers = headers;
     }
     
     public String getHttpVersion() {
@@ -54,14 +38,30 @@ public abstract class RequestResponse implements Serializable {
         this.httpVersion = httpVersion;
     }
     
+    public Integer getBodySize() {
+        return bodySize;
+    }
+    
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+    
+    public Integer getHeadersSize() {
+        return headersSize;
+    }
+    
+    public void setHeadersSize(Integer headersSize) {
+        this.headersSize = headersSize;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("headers", headers)
-                .add("headersSize", headersSize)
-                .add("bodySize", bodySize)
                 .add("cookies", cookies)
+                .add("headers", headers)
                 .add("httpVersion", httpVersion)
+                .add("bodySize", bodySize)
+                .add("headersSize", headersSize)
                 .toString();
     }
     

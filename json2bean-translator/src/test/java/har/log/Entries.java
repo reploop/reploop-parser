@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.entries.Cache; 
+import com.fasterxml.jackson.annotation.JsonProperty; 
 import har.log.entries.Request; 
 import har.log.entries.Response; 
 import har.log.entries.Timings; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
+import har.log.entries.Cache; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Entries implements Serializable {
     private static final long serialVersionUID = 1L;

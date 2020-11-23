@@ -7,6 +7,8 @@ import java.util.Stack;
 
 public class JsonBeanContext {
     private QualifiedName root;
+    private boolean abstractClass;
+    private QualifiedName superClass;
     private final StringBuilder impl;
     private String expectedKey;
 
@@ -34,7 +36,7 @@ public class JsonBeanContext {
     }
 
     public JsonBeanContext newLine() {
-        impl.append("\r\n");
+        impl.append(System.lineSeparator());
         for (int i = 0; i < indent; i++) {
             whitespace();
         }

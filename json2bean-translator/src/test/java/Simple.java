@@ -2,8 +2,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import simple.Area; 
 import java.util.Map; 
+import simple.Area; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Simple implements Serializable {
     private static final long serialVersionUID = 1L;

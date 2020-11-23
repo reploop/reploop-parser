@@ -48,7 +48,7 @@ public class Json2Bean {
     private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
     private final JsonNameResolver nameResolver = new JsonNameResolver();
     private final JsonTypeResolver typeResolver = new JsonTypeResolver();
-    JsonMessageDependencyResolver dependencyResolver = new JsonMessageDependencyResolver();
+    JsonDependencyResolver dependencyResolver = new JsonDependencyResolver();
 
     public Json2Bean() {
         this(new JsonNumberTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
@@ -135,12 +135,13 @@ public class Json2Bean {
     }
 
     public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) throws URISyntaxException {
+        // #1 Parse JSON to Protobuf Schema.
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
 
         Map<QualifiedName, Message> nameMessageMap = merge(context);
 
-        // Try to aggregate class hierarchy, less duplicate code.
+        // #2 Try to aggregate class hierarchy, less duplicate code.
         classHierarchy.infer(nameMessageMap);
 
         // After aggregating, some messages may be useless, find used ones here.
@@ -169,6 +170,7 @@ public class Json2Bean {
             fixed.put(msg.getName(), msg);
         });
 
+        // The outer field type. Useful for code gen.
         fieldType = nameResolver.visitFieldType(fieldType, ctx);
         fieldType = typeResolver.visitFieldType(fieldType, ctx);
         context.setFieldType(fieldType);
