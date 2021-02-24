@@ -1,0 +1,11 @@
+{
+  "canShippedOrderParcelList": [
+    {
+      "parcelId": "",
+      "parcelName": ""
+    }
+  ],
+  "canShippedParcelNum": 0,
+  "expiredParcelNum": 0,
+  "notExpiredParcelNum": 0
+}

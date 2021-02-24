@@ -1,14 +1,14 @@
-package har.log.entries;
+package har.log;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ValueName implements Serializable {
+public class VersionName implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
-    private String value;
+    private String version;
     
     public String getName() {
         return name;
@@ -18,19 +18,19 @@ public class ValueName implements Serializable {
         this.name = name;
     }
     
-    public String getValue() {
-        return value;
+    public String getVersion() {
+        return version;
     }
     
-    public void setValue(String value) {
-        this.value = value;
+    public void setVersion(String version) {
+        this.version = version;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("name", name)
-                .add("value", value)
+                .add("version", version)
                 .toString();
     }
     

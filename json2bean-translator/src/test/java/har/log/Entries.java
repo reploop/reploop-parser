@@ -17,7 +17,7 @@ public class Entries implements Serializable {
     private Cache cache;
     private String connection;
     @JsonProperty("pageref")
-    private String pagerEf;
+    private String pageRef;
     private Request request;
     private Response response;
     @JsonProperty("serverIPAddress")
@@ -50,12 +50,12 @@ public class Entries implements Serializable {
         this.connection = connection;
     }
     
-    public String getPagerEf() {
-        return pagerEf;
+    public String getPageRef() {
+        return pageRef;
     }
     
-    public void setPagerEf(String pagerEf) {
-        this.pagerEf = pagerEf;
+    public void setPageRef(String pageRef) {
+        this.pageRef = pageRef;
     }
     
     public Request getRequest() {
@@ -112,7 +112,7 @@ public class Entries implements Serializable {
                 .add("securityState", securityState)
                 .add("cache", cache)
                 .add("connection", connection)
-                .add("pagerEf", pagerEf)
+                .add("pageRef", pageRef)
                 .add("request", request)
                 .add("response", response)
                 .add("serverIpAddress", serverIpAddress)

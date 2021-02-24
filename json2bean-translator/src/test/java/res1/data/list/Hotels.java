@@ -16,7 +16,7 @@ public class Hotels implements Serializable {
     private String checkIn;
     private String checkout;
     @JsonProperty("coord")
-    private String cooRd;
+    private String cOord;
     @JsonProperty("hotel_id")
     private String hotelId;
     private String name;
@@ -50,12 +50,12 @@ public class Hotels implements Serializable {
         this.checkout = checkout;
     }
     
-    public String getCooRd() {
-        return cooRd;
+    public String getCOord() {
+        return cOord;
     }
     
-    public void setCooRd(String cooRd) {
-        this.cooRd = cooRd;
+    public void setCOord(String cOord) {
+        this.cOord = cOord;
     }
     
     public String getHotelId() {
@@ -112,7 +112,7 @@ public class Hotels implements Serializable {
                 .add("additionalInfo", additionalInfo)
                 .add("checkIn", checkIn)
                 .add("checkout", checkout)
-                .add("cooRd", cooRd)
+                .add("cOord", cOord)
                 .add("hotelId", hotelId)
                 .add("name", name)
                 .add("nameEn", nameEn)

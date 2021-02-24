@@ -19,7 +19,7 @@ import static java.text.CharacterIterator.DONE;
 /**
  * Given a string, find most number of words.
  */
-public class WordTree {
+public class WordTree implements WordSplit {
     public static final char DOLLAR = '$';
     private static final String WORD_FILE = "/words.txt";
     private TreeNode tree;
@@ -105,10 +105,12 @@ public class WordTree {
         return Stream.of(words).map(this::parseWords).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
+    @Override
     public List<String> parseWords(List<String> words) {
         return words.stream().map(this::parseWords).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
+    @Override
     public List<String> parseWords(String org) {
         return parseWords(tree, org);
     }

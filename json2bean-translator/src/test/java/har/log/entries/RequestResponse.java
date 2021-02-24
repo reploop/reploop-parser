@@ -8,27 +8,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<ValueName> cookies;
-    private List<ValueName> headers;
     private String httpVersion;
     private Integer bodySize;
     private Integer headersSize;
-    
-    public List<ValueName> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<ValueName> cookies) {
-        this.cookies = cookies;
-    }
-    
-    public List<ValueName> getHeaders() {
-        return headers;
-    }
-    
-    public void setHeaders(List<ValueName> headers) {
-        this.headers = headers;
-    }
+    private List<NameValue> headers;
+    private List<NameValue> cookies;
     
     public String getHttpVersion() {
         return httpVersion;
@@ -54,14 +38,30 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
+    public List<NameValue> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
+    }
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cookies", cookies)
-                .add("headers", headers)
                 .add("httpVersion", httpVersion)
                 .add("bodySize", bodySize)
                 .add("headersSize", headersSize)
+                .add("headers", headers)
+                .add("cookies", cookies)
                 .toString();
     }
     
