@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import MessageVo.messages.mv.items.m.M; 
+import MessageVo.messages.mv.items.m.MM; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private M m;
+    private MM m;
     
-    public M getM() {
+    public MM getM() {
         return m;
     }
     
-    public void setM(M m) {
+    public void setM(MM m) {
         this.m = m;
     }
     

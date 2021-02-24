@@ -8,19 +8,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String httpVersion;
     private Integer bodySize;
+    private List<ValueName> headers;
+    private List<ValueName> cookies;
     private Integer headersSize;
-    private List<NameValue> headers;
-    private List<NameValue> cookies;
-    
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-    
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
+    private String httpVersion;
     
     public Integer getBodySize() {
         return bodySize;
@@ -28,6 +20,22 @@ public abstract class RequestResponse implements Serializable {
     
     public void setBodySize(Integer bodySize) {
         this.bodySize = bodySize;
+    }
+    
+    public List<ValueName> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<ValueName> headers) {
+        this.headers = headers;
+    }
+    
+    public List<ValueName> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<ValueName> cookies) {
+        this.cookies = cookies;
     }
     
     public Integer getHeadersSize() {
@@ -38,30 +46,22 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
-    public List<NameValue> getHeaders() {
-        return headers;
+    public String getHttpVersion() {
+        return httpVersion;
     }
     
-    public void setHeaders(List<NameValue> headers) {
-        this.headers = headers;
-    }
-    
-    public List<NameValue> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("httpVersion", httpVersion)
                 .add("bodySize", bodySize)
-                .add("headersSize", headersSize)
                 .add("headers", headers)
                 .add("cookies", cookies)
+                .add("headersSize", headersSize)
+                .add("httpVersion", httpVersion)
                 .toString();
     }
     

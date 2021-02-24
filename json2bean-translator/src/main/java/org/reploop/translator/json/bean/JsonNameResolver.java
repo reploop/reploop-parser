@@ -93,7 +93,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         QualifiedName fqn = qn;
         Optional<QualifiedName> oqn = qn.prefix();
         if (oqn.isPresent()) {
-            if (hasNameConflict(qn, context)) {
+            if (hasNameConflict(qn, context) || hasNameConflict(qn, context.getName())) {
                 QualifiedName prefix = oqn.get();
                 // When conflicts, add prefix's last name to the full name.
                 String suffix = prefix.suffix() + Constants.UNDERSCORE + qn.suffix();
@@ -109,13 +109,19 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         return qn;
     }
 
+    private boolean hasNameConflict(QualifiedName qn1, QualifiedName qn2) {
+        if (null == qn1 || null == qn2) {
+            return false;
+        }
+        return !qn1.equals(qn2) && qn1.endsWith(qn2.suffix());
+    }
+
     private boolean hasNameConflict(QualifiedName qn, JsonMessageContext context) {
-        QualifiedName sqn = QualifiedName.of(qn.suffix());
         boolean conflict = false;
         // Current deps
         Set<QualifiedName> deps = context.getDependencies();
         for (QualifiedName name : deps) {
-            if (!name.equals(qn) && name.endsWith(sqn)) {
+            if (hasNameConflict(name, qn)) {
                 conflict = true;
                 break;
             }
@@ -166,19 +172,24 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
         if (qn1.equals(qn2)) {
             return false;
         }
+        // #2 they have same class names
+        if (qn1.endsWith(qn2.suffix())) {
+            return false;
+        }
+
         int c = Integer.compare(qn1.size(), qn2.size());
-        // #2 They are of same size.
+        // #3 They are of same size.
         if (0 == c) {
             int s = qn1.size() - 1;
             for (int i = 0; i < s; i++) {
                 String p1 = qn1.partAt(i);
                 String p2 = qn2.partAt(i);
                 if (!p1.equals(p2)) {
-                    // #3 They are in different packages, so need import explicitly.
+                    // #4 They are in different packages, so need import explicitly.
                     return true;
                 }
             }
-            // #4 Now we can tell the two in the same package, so do not need import explicitly.
+            // #5 Now we can tell the two in the same package, so do not need import explicitly.
             return false;
         }
         return true;
@@ -187,6 +198,7 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
     @Override
     public Message visitMessage(Message node, JsonMessageContext context) {
         QualifiedName name = toUpperCamel(node.getName());
+        context.setName(name);
         List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context), Option.class);
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));

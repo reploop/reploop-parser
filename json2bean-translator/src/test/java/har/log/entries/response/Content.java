@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.entries.MimeTypeText; 
+import har.log.entries.TextMimeType; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Content extends MimeTypeText implements Serializable {
+public class Content extends TextMimeType implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer size;
     
