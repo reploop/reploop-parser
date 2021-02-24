@@ -1,3 +1,6 @@
+/**
+ * Thrift IDL.
+ */
 grammar ThriftBase;
 
 program
@@ -135,7 +138,7 @@ fieldType
     | primitives                                                            #primitiveType
     | ID                                                                    #structType
     ;
-    
+
 commaOrSemicolon
     : ','
     | ';'

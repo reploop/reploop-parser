@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.9.1
 package org.reploop.parser.thrift.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ThriftBaseParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =

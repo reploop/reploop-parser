@@ -1,24 +1,26 @@
-// Generated from org/reploop/parser/protobuf/v2/Protobuf2.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/protobuf/v2/Protobuf2.g4 by ANTLR 4.9.1
 package org.reploop.parser.protobuf.v2;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Protobuf2Lexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9,
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17,
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24,
-		T__24=25, FieldModifier=26, ScalarType=27, BOOL_LITERAL=28, FLOAT=29,
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, FieldModifier=26, ScalarType=27, BOOL_LITERAL=28, FLOAT=29, 
 		ID=30, INT=31, STRING=32, LINE_COMMENT=33, COMMENT=34, WS=35;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -30,11 +32,11 @@ public class Protobuf2Lexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8",
-			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16",
-			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24",
-			"FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID", "INT",
-			"STRING", "LINE_COMMENT", "COMMENT", "WS", "EXP", "ZERO", "ID_LETTER",
+			"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8", 
+			"T__9", "T__10", "T__11", "T__12", "T__13", "T__14", "T__15", "T__16", 
+			"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
+			"FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID", "INT", 
+			"STRING", "LINE_COMMENT", "COMMENT", "WS", "EXP", "ZERO", "ID_LETTER", 
 			"POSITIVE_DIGIT", "DIGIT", "SIGN", "ESC"
 		};
 	}
@@ -42,18 +44,18 @@ public class Protobuf2Lexer extends Lexer {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'syntax'", "'='", "'\"proto2\"'", "''proto2''", "';'", "'package'",
-			"'import'", "'message'", "'{'", "'}'", "'option'", "'('", "')'", "'.'",
-			"'default'", "'enum'", "'['", "','", "']'", "'extensions'", "'to'", "'extend'",
+			null, "'syntax'", "'='", "'\"proto2\"'", "''proto2''", "';'", "'package'", 
+			"'import'", "'message'", "'{'", "'}'", "'option'", "'('", "')'", "'.'", 
+			"'default'", "'enum'", "'['", "','", "']'", "'extensions'", "'to'", "'extend'", 
 			"'service'", "'rpc'", "'returns'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, "FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID",
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, "FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID", 
 			"INT", "STRING", "LINE_COMMENT", "COMMENT", "WS"
 		};
 	}

@@ -1,40 +1,37 @@
-// Generated from org/reploop/parser/protobuf/v2/Protobuf2.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/protobuf/v2/Protobuf2.g4 by ANTLR 4.9.1
 package org.reploop.parser.protobuf.v2;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Protobuf2Parser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9,
-		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17,
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24,
-		T__24=25, FieldModifier=26, ScalarType=27, BOOL_LITERAL=28, FLOAT=29,
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
+		T__24=25, FieldModifier=26, ScalarType=27, BOOL_LITERAL=28, FLOAT=29, 
 		ID=30, INT=31, STRING=32, LINE_COMMENT=33, COMMENT=34, WS=35;
 	public static final int
-		RULE_program = 0, RULE_header = 1, RULE_syntax = 2, RULE_namespace = 3,
-		RULE_include = 4, RULE_message = 5, RULE_option = 6, RULE_pair = 7, RULE_enumeration = 8,
-		RULE_nameIndex = 9, RULE_field = 10, RULE_fieldName = 11, RULE_multiOptions = 12,
-		RULE_value = 13, RULE_fieldType = 14, RULE_extensions = 15, RULE_extend = 16,
+		RULE_program = 0, RULE_header = 1, RULE_syntax = 2, RULE_namespace = 3, 
+		RULE_include = 4, RULE_message = 5, RULE_option = 6, RULE_pair = 7, RULE_enumeration = 8, 
+		RULE_nameIndex = 9, RULE_field = 10, RULE_fieldName = 11, RULE_multiOptions = 12, 
+		RULE_value = 13, RULE_fieldType = 14, RULE_extensions = 15, RULE_extend = 16, 
 		RULE_service = 17, RULE_function = 18;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "header", "syntax", "namespace", "include", "message", "option",
-			"pair", "enumeration", "nameIndex", "field", "fieldName", "multiOptions",
+			"program", "header", "syntax", "namespace", "include", "message", "option", 
+			"pair", "enumeration", "nameIndex", "field", "fieldName", "multiOptions", 
 			"value", "fieldType", "extensions", "extend", "service", "function"
 		};
 	}
@@ -42,18 +39,18 @@ public class Protobuf2Parser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'syntax'", "'='", "'\"proto2\"'", "''proto2''", "';'", "'package'",
-			"'import'", "'message'", "'{'", "'}'", "'option'", "'('", "')'", "'.'",
-			"'default'", "'enum'", "'['", "','", "']'", "'extensions'", "'to'", "'extend'",
+			null, "'syntax'", "'='", "'\"proto2\"'", "''proto2''", "';'", "'package'", 
+			"'import'", "'message'", "'{'", "'}'", "'option'", "'('", "')'", "'.'", 
+			"'default'", "'enum'", "'['", "','", "']'", "'extensions'", "'to'", "'extend'", 
 			"'service'", "'rpc'", "'returns'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null, null,
-			null, null, "FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID",
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, null, null, null, null, null, null, null, null, null, null, 
+			null, null, "FieldModifier", "ScalarType", "BOOL_LITERAL", "FLOAT", "ID", 
 			"INT", "STRING", "LINE_COMMENT", "COMMENT", "WS"
 		};
 	}
@@ -201,7 +198,7 @@ public class Protobuf2Parser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(49);
+			setState(49); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -237,7 +234,7 @@ public class Protobuf2Parser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(51);
+				setState(51); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << T__15) | (1L << T__21) | (1L << T__22))) != 0) );
@@ -259,7 +256,7 @@ public class Protobuf2Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_header; }
-
+	 
 		public HeaderContext() { }
 		public void copyFrom(HeaderContext ctx) {
 			super.copyFrom(ctx);
@@ -710,7 +707,7 @@ public class Protobuf2Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_pair; }
-
+	 
 		public PairContext() { }
 		public void copyFrom(PairContext ctx) {
 			super.copyFrom(ctx);
@@ -896,7 +893,7 @@ public class Protobuf2Parser extends Parser {
 			match(ID);
 			setState(110);
 			match(T__8);
-			setState(112);
+			setState(112); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -906,7 +903,7 @@ public class Protobuf2Parser extends Parser {
 				nameIndex();
 				}
 				}
-				setState(114);
+				setState(114); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==ID );
@@ -1074,7 +1071,7 @@ public class Protobuf2Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldName; }
-
+	 
 		public FieldNameContext() { }
 		public void copyFrom(FieldNameContext ctx) {
 			super.copyFrom(ctx);
@@ -1273,7 +1270,7 @@ public class Protobuf2Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_value; }
-
+	 
 		public ValueContext() { }
 		public void copyFrom(ValueContext ctx) {
 			super.copyFrom(ctx);
@@ -1432,7 +1429,7 @@ public class Protobuf2Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldType; }
-
+	 
 		public FieldTypeContext() { }
 		public void copyFrom(FieldTypeContext ctx) {
 			super.copyFrom(ctx);
@@ -1616,7 +1613,7 @@ public class Protobuf2Parser extends Parser {
 			match(ID);
 			setState(177);
 			match(T__8);
-			setState(179);
+			setState(179); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -1626,7 +1623,7 @@ public class Protobuf2Parser extends Parser {
 				field();
 				}
 				}
-				setState(181);
+				setState(181); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << FieldModifier) | (1L << ScalarType) | (1L << ID))) != 0) );
@@ -1691,7 +1688,7 @@ public class Protobuf2Parser extends Parser {
 			match(ID);
 			setState(187);
 			match(T__8);
-			setState(190);
+			setState(190); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -1715,7 +1712,7 @@ public class Protobuf2Parser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(192);
+				setState(192); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==T__10 || _la==T__23 );

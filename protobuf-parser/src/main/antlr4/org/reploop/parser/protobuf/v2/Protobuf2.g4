@@ -1,3 +1,7 @@
+/**
+ * A Protocol Buffers 2 grammar for ANTLR v4.
+ */
+
 grammar Protobuf2;
 
 program
