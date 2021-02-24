@@ -9,30 +9,30 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <assertj.version>3.17.2</assertj.version>
-        <mockito.version>3.5.15</mockito.version>
+        <assertj.version>3.19.0</assertj.version>
+        <mockito.version>3.8.0</mockito.version>
         <easymock.version>4.2</easymock.version>
-        <spring.version>5.2.9.RELEASE</spring.version>
+        <spring.version>5.3.4</spring.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <antlr.version>4.8-1</antlr.version>
+        <antlr.version>4.9.1</antlr.version>
         <thrift.version>0.9.3</thrift.version>
-        <guava.version>30.0-jre</guava.version>
+        <guava.version>30.1-jre</guava.version>
         <jdk.version>11</jdk.version>
         <testng.version>7.3.0</testng.version>
         <commons.lang3.version>3.11</commons.lang3.version>
         <commons.text.version>1.9</commons.text.version>
         <commons.codec.version>1.15</commons.codec.version>
-        <jackson.version>2.11.3</jackson.version>
+        <jackson.version>2.12.1</jackson.version>
         <httpclient5.version>5.0.3</httpclient5.version>
         <libthrift.version>0.13.0</libthrift.version>
-        <protobuf.version>3.13.0</protobuf.version>
-        <junit.version>4.13.1</junit.version>
+        <protobuf.version>3.15.1</protobuf.version>
+        <junit.version>4.13.2</junit.version>
         <exec.plugin.version>1.2.1</exec.plugin.version>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
         <versions.plugin.version>2.8.1</versions.plugin.version>
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
         <stringtemplate.version>4.0.2</stringtemplate.version>
-        <json.path.version>2.4.0</json.path.version>
+        <json.path.version>2.5.0</json.path.version>
         <enforcer.plugin.version>3.0.0-M3</enforcer.plugin.version>
     </properties>
     <modules>
