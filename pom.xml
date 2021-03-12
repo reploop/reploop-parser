@@ -24,7 +24,7 @@
         <commons.codec.version>1.15</commons.codec.version>
         <jackson.version>2.12.1</jackson.version>
         <httpclient5.version>5.0.3</httpclient5.version>
-        <libthrift.version>0.13.0</libthrift.version>
+        <libthrift.version>0.14.0</libthrift.version>
         <protobuf.version>3.15.1</protobuf.version>
         <junit.version>4.13.2</junit.version>
         <exec.plugin.version>1.2.1</exec.plugin.version>
