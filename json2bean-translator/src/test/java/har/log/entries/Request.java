@@ -11,7 +11,7 @@ public class Request extends RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private String method;
     private PostData postData;
-    private List<ValueName> queryString;
+    private List<NameValue> queryString;
     private String url;
     
     public String getMethod() {
@@ -30,11 +30,11 @@ public class Request extends RequestResponse implements Serializable {
         this.postData = postData;
     }
     
-    public List<ValueName> getQueryString() {
+    public List<NameValue> getQueryString() {
         return queryString;
     }
     
-    public void setQueryString(List<ValueName> queryString) {
+    public void setQueryString(List<NameValue> queryString) {
         this.queryString = queryString;
     }
     

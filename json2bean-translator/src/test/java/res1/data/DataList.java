@@ -5,7 +5,6 @@ import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
 import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
 import res1.data.list.Hotels; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DataList implements Serializable {

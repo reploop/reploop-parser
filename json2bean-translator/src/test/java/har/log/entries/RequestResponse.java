@@ -8,33 +8,25 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer bodySize;
-    private List<ValueName> headers;
-    private List<ValueName> cookies;
-    private Integer headersSize;
     private String httpVersion;
+    private List<NameValue> cookies;
+    private Integer headersSize;
+    private Integer bodySize;
+    private List<NameValue> headers;
     
-    public Integer getBodySize() {
-        return bodySize;
+    public String getHttpVersion() {
+        return httpVersion;
     }
     
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
     }
     
-    public List<ValueName> getHeaders() {
-        return headers;
-    }
-    
-    public void setHeaders(List<ValueName> headers) {
-        this.headers = headers;
-    }
-    
-    public List<ValueName> getCookies() {
+    public List<NameValue> getCookies() {
         return cookies;
     }
     
-    public void setCookies(List<ValueName> cookies) {
+    public void setCookies(List<NameValue> cookies) {
         this.cookies = cookies;
     }
     
@@ -46,22 +38,30 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
-    public String getHttpVersion() {
-        return httpVersion;
+    public Integer getBodySize() {
+        return bodySize;
     }
     
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+    
+    public List<NameValue> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("bodySize", bodySize)
-                .add("headers", headers)
+                .add("httpVersion", httpVersion)
                 .add("cookies", cookies)
                 .add("headersSize", headersSize)
-                .add("httpVersion", httpVersion)
+                .add("bodySize", bodySize)
+                .add("headers", headers)
                 .toString();
     }
     

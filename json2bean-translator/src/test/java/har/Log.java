@@ -4,32 +4,32 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.VersionName; 
+import har.log.NameVersion; 
 import har.log.Entries; 
 import java.util.List; 
 import har.log.Pages; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Log implements Serializable {
     private static final long serialVersionUID = 1L;
-    private VersionName browser;
-    private VersionName creator;
+    private NameVersion browser;
+    private NameVersion creator;
     private List<Entries> entries;
     private List<Pages> pages;
     private String version;
     
-    public VersionName getBrowser() {
+    public NameVersion getBrowser() {
         return browser;
     }
     
-    public void setBrowser(VersionName browser) {
+    public void setBrowser(NameVersion browser) {
         this.browser = browser;
     }
     
-    public VersionName getCreator() {
+    public NameVersion getCreator() {
         return creator;
     }
     
-    public void setCreator(VersionName creator) {
+    public void setCreator(NameVersion creator) {
         this.creator = creator;
     }
     
