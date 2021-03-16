@@ -175,6 +175,12 @@ public class DefaultWordSplit implements WordSplit {
 
     private final Comparator<List<String>> cmp = countComparator.thenComparing(sizeComparator);
 
+    /**
+     * Find all prefixes consists of match words.
+     *
+     * @param org the original string
+     * @return longest prefix match the input string
+     */
     private List<String> split(String org) {
         List<String> splits = getPrefix(org);
         if (splits.isEmpty()) {
@@ -196,6 +202,12 @@ public class DefaultWordSplit implements WordSplit {
         return words;
     }
 
+    /**
+     * Find match prefixes.
+     *
+     * @param org the original string
+     * @return all match prefixes.
+     */
     private List<String> getPrefix(String org) {
         CharacterIterator it = new StringCharacterIterator(org);
         State curr = START;

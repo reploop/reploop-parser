@@ -24,7 +24,7 @@ public class MessageInfer {
 
     /**
      * Try to index the message and it's fields.
-     * Matrix's row are fields indexed as zero based index, and each column a message indexed as zero bsed index.
+     * Matrix's row are fields indexed as zero based index, and each column a message indexed as zero based index.
      *
      * @param messageMap the messages.
      */
