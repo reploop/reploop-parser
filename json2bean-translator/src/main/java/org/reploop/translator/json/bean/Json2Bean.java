@@ -17,16 +17,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static java.nio.file.StandardOpenOption.*;
-import static org.reploop.translator.json.support.Constants.DOT;
-import static org.reploop.translator.json.support.Constants.JAVA;
 import static org.reploop.translator.json.support.TypeSupport.fieldNumberSpec;
 
 /**
@@ -45,7 +38,6 @@ public class Json2Bean {
     private final JsonMessageTranslator translator;
     private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
     private final ClassHierarchy classHierarchy = new ClassHierarchy();
-    private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
     private final JsonNameResolver nameResolver = new JsonNameResolver();
     private final JsonTypeResolver typeResolver = new JsonTypeResolver();
     JsonDependencyResolver dependencyResolver = new JsonDependencyResolver();
@@ -100,11 +92,11 @@ public class Json2Bean {
         return messageMap;
     }
 
-    public Map<QualifiedName, Message> execute(String json, JsonMessageContext context) throws IOException, URISyntaxException {
+    public Map<QualifiedName, Message> execute(String json, JsonMessageContext context) throws IOException {
         return execute(new StringReader(json), context);
     }
 
-    public Map<QualifiedName, Message> execute(StringReader reader, JsonMessageContext context) throws IOException, URISyntaxException {
+    public Map<QualifiedName, Message> execute(StringReader reader, JsonMessageContext context) throws IOException {
         return execute(CharStreams.fromReader(reader), context);
     }
 
@@ -134,7 +126,7 @@ public class Json2Bean {
         }
     }
 
-    public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) throws URISyntaxException {
+    public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) {
         // #1 Parse JSON to Protobuf Schema.
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
@@ -174,54 +166,6 @@ public class Json2Bean {
         fieldType = nameResolver.visitFieldType(fieldType, ctx);
         fieldType = typeResolver.visitFieldType(fieldType, ctx);
         context.setFieldType(fieldType);
-
-        fixed.forEach((name, message) -> {
-            JsonBeanContext beanContext = new JsonBeanContext(name);
-            beanGenerator.visitMessage(message, beanContext);
-            Path path = packageToPath(context.getDirectory(), message);
-            System.out.println("------>");
-            System.out.println(path);
-            System.out.println("------>");
-            try {
-                Path dir = Files.createDirectories(path.getParent());
-                System.out.println(dir);
-                Files.writeString(path, beanContext.toString(), TRUNCATE_EXISTING, CREATE, WRITE);
-            } catch (IOException e) {
-                LOG.error("Cannot write source code to file {}", path, e);
-            }
-            System.out.println(beanContext.toString());
-        });
-
-        return nameMessageMap;
-    }
-
-    private String toFilename(QualifiedName qn) {
-        return qn.suffix() + DOT + JAVA;
-    }
-
-    private Path packageToPath(Path root, Message msg) {
-        QualifiedName qn = msg.getName();
-        String filename = toFilename(qn);
-        Optional<QualifiedName> oqn = qn.prefix();
-        Path path = null;
-        if (oqn.isPresent()) {
-            List<String> parts = oqn.get().allParts();
-            for (String part : parts) {
-                if (isNullOrEmpty(part)) {
-                    continue;
-                }
-                if (null == path) {
-                    path = Path.of(part);
-                    continue;
-                }
-                path = path.resolve(part);
-            }
-        }
-        if (null == path) {
-            path = Path.of(filename);
-        } else {
-            path = path.resolve(filename);
-        }
-        return root.resolve(path);
+        return fixed;
     }
 }
