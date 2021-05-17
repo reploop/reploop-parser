@@ -1,5 +1,8 @@
 package org.reploop.translator.json.bean;
 
+import com.github.rvesse.airline.SingleCommand;
+import com.github.rvesse.airline.annotations.Command;
+import com.github.rvesse.airline.annotations.Option;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -10,18 +13,19 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.translator.json.support.NameFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -35,27 +39,80 @@ import static org.reploop.translator.json.support.Constants.JAVA;
  * #1 URL resource
  * #2 file resource
  */
+@Command(description = "", name = "json2bean")
 public class Json2BeanApp {
     private static final Logger LOG = LoggerFactory.getLogger(Json2BeanApp.class);
     private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
     private static final Json2Bean json2Bean = new Json2Bean();
-    private final Path directory;
-    private CloseableHttpClient client = HttpClientBuilder.create()
+    @Option(name = {"--output", "-o"})
+    Path directory;
+    @Option(name = {"--json"})
+    String json;
+    @Option(name = {"--uri"})
+    String uri;
+    @Option(name = {"--enable-root-guess"})
+    Boolean enableRootGuess;
+
+    private final CloseableHttpClient client = HttpClientBuilder.create()
         .build();
 
-    public Json2BeanApp(Path directory) {
-        this.directory = directory;
+    public Json2BeanApp() {
     }
 
-    public static void main(String... args) {
-        Json2BeanApp app = new Json2BeanApp(Paths.get("/"));
+    public static void main(String... args) throws IOException {
+        SingleCommand<Json2BeanApp> command = SingleCommand.singleCommand(Json2BeanApp.class);
+        Json2BeanApp app = command.parse(args);
+        if (null != app.uri) {
+            app.execute(URI.create(app.uri));
+        }
+        if (null != app.json) {
+            app.execute(Paths.get(app.json));
+        }
     }
 
-    private void execute(URL url, String root) throws IOException, URISyntaxException {
-        CloseableHttpResponse response = client.execute(new HttpGet(url.toURI()));
+    private final NameFormat nameFormat = new NameFormat();
+    private static final char SEP = '/';
+    private static final String DOLLAR = "$";
+
+    public String guessRoot(Path path) {
+        return guessRoot(path.normalize().toString());
+    }
+
+    public String guessRoot(URI uri) {
+        return guessRoot(uri.getPath());
+    }
+
+
+    private String guessRoot(String path) {
+        if (enableRootGuess) {
+            int idx = path.lastIndexOf(SEP);
+            if (idx > 0) {
+                String suffix = path.substring(idx + 1).trim();
+                CharacterIterator it = new StringCharacterIterator(suffix);
+                boolean valid = true;
+                for (char c = it.first(); c != CharacterIterator.DONE; c = it.next()) {
+                    if (!Character.isJavaIdentifierPart(c)) {
+                        valid = false;
+                        break;
+                    }
+                }
+                if (valid) {
+                    return nameFormat.format(suffix);
+                }
+            }
+        }
+        return DOLLAR;
+    }
+
+    public void execute(URI uri) throws IOException {
+        execute(uri, guessRoot(uri));
+    }
+
+    public void execute(URI uri, String root) throws IOException {
+        CloseableHttpResponse response = client.execute(new HttpGet(uri));
         int code = response.getCode();
         if (200 != code) {
-            throw new IllegalArgumentException("Send request to " + url + " get error code " + code);
+            throw new IllegalArgumentException("Send request to " + uri + " get error code " + code);
         }
         HttpEntity entity = response.getEntity();
         ContentType contentType = ContentType.parse(entity.getContentType());
@@ -67,8 +124,12 @@ public class Json2BeanApp {
         execute(stream, root);
     }
 
-    private void execute(URI uri, String root) throws IOException {
-        execute(CharStreams.fromPath(Paths.get(uri)), root);
+    public void execute(Path path) throws IOException {
+        execute(path, guessRoot(path));
+    }
+
+    public void execute(Path path, String root) throws IOException {
+        execute(CharStreams.fromPath(path), root);
     }
 
     private void execute(CharStream stream, String root) {

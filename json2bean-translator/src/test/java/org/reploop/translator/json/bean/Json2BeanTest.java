@@ -50,6 +50,16 @@ public class Json2BeanTest {
     }
 
     @Test
+    public void store() throws Exception {
+        URL url = Json2BeanTest.class.getResource("/store.json");
+        QualifiedName root = QualifiedName.of("store");
+        JsonMessageContext context = new JsonMessageContext(root, directory);
+        CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
+        Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
+        System.out.println(messageMap);
+    }
+
+    @Test
     public void execute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/array.json");
         QualifiedName root = QualifiedName.of("array");

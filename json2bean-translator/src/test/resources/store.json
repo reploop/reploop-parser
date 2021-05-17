@@ -1,0 +1,21 @@
+{
+  "msg": "数据获取成功",
+  "success": true,
+  "list": [
+    {
+      "id": 91,
+      "city": "460000,460200,460203",
+      "company": "张三",
+      "descri": "<p><a href=\"http://www.zentravel.cn/hotel/108/2?rid=2057\"></a></p><h3><br/></h3><h3>总统别墅（Presidential Villa）</h3><p><br/></p><p><img src=\"http://cxsj.hnygst.com/prod-api/profile/upload/2021/04/13/454c2378-7c77-4ea0-87d2-869d6ce2dab1.jpg\" style=\"max-width:100%;\" width=\"100%\"/><br/></p><p><a href=\"http://www.zentravel.cn/hotel/108/2?rid=2057\"></a></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为整间度假村内的极致之居，三亚亚龙湾瑞吉酒店的总统别墅向旅行者展现了“瑞吉”式的奢侈之享。这处占地千平的居所被葱郁热带花园所环绕，平静无波的无边泳池环绕着建筑而建，无声诉说着别墅与生俱来的华丽气息。</p><h3><b><br/></b></h3><h3><b id=\"4204q\">皇家别墅（Royal Villa）</b></h3><div><b><br/></b></div><div><img src=\"http://cxsj.hnygst.com/prod-api/profile/upload/2021/04/13/ad088275-df1a-47c1-adff-fe1959c5250d.jpg\" style=\"max-width:100%;\" width=\"100%\"/><b><br/></b></div><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为三亚亚龙湾瑞吉度假酒店奢华风情的展现，位于私密海岸的皇家别墅有着浓郁中式风格的建筑。在卧室设计上，皇家别墅所拥有的2处睡眠空间各有优势，主卧设有高挑天花板，可将迷人海景一览无余；次卧拥有特色瑞吉睡床及且可直接通往花园。<br/></p>",
+      "imgurl": "/profile/upload/2021/04/13/e5f542aa-07f9-4900-b3bf-e6fed1be373a.jpg",
+      "longitude": null,
+      "name": "三亚亚龙湾瑞吉度假酒店",
+      "phonenumber": "18888888888",
+      "sheng": "460000",
+      "sort": 99999,
+      "summary": "三亚亚龙湾瑞吉度假酒店是喜达屋集团继喜来登、艾美、威斯汀后第六家品牌酒店。项目投资总额为25亿元人民币，建筑面...",
+      "typeName": "酒店",
+      "createTime": "2021-04-13T10:53:04.000+0800"
+    }
+  ]
+}
