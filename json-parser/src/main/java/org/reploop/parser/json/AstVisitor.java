@@ -5,7 +5,7 @@ import org.reploop.parser.json.tree.Number;
 import org.reploop.parser.json.tree.*;
 
 /**
- * What's this about?
+ * JSON AST visitor.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2016-10-14 20

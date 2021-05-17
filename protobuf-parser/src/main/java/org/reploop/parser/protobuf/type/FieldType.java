@@ -1,14 +1,13 @@
 package org.reploop.parser.protobuf.type;
 
 
-
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.Node;
 
 import java.util.Objects;
 
 /**
- * What's this about?
+ * Protobuf field type.
  *
  * @author George Cao(georgecao@outlook.com)
  * @since 2015-07-03 10
