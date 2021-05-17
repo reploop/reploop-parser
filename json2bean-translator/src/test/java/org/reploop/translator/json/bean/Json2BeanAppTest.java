@@ -36,8 +36,8 @@ public class Json2BeanAppTest {
                     app.directory = directory;
                     if (path.toString().contains("store.json")) {
                         System.out.println(path);
-                        app.execute(path);
                     }
+                    app.execute(path);
                 } catch (Exception e) {
                     System.err.println(path);
                     e.printStackTrace();
