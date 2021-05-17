@@ -3,6 +3,7 @@ package org.reploop.translator.json.bean;
 import com.github.rvesse.airline.SingleCommand;
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
+import com.google.common.base.CaseFormat;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -24,15 +25,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.nio.file.StandardOpenOption.*;
-import static org.reploop.translator.json.support.Constants.DOT;
 import static org.reploop.translator.json.support.Constants.JAVA;
 
 /**
@@ -72,6 +70,7 @@ public class Json2BeanApp {
 
     private final NameFormat nameFormat = new NameFormat();
     private static final char SEP = '/';
+    private static final char DOT = '.';
     private static final String DOLLAR = "$";
 
     public String guessRoot(Path path) {
@@ -85,20 +84,16 @@ public class Json2BeanApp {
 
     private String guessRoot(String path) {
         if (enableRootGuess) {
+            // #1 Get last path name
             int idx = path.lastIndexOf(SEP);
             if (idx > 0) {
                 String suffix = path.substring(idx + 1).trim();
-                CharacterIterator it = new StringCharacterIterator(suffix);
-                boolean valid = true;
-                for (char c = it.first(); c != CharacterIterator.DONE; c = it.next()) {
-                    if (!Character.isJavaIdentifierPart(c)) {
-                        valid = false;
-                        break;
-                    }
+                // #2 Remove file extension if necessary.
+                idx = suffix.indexOf(DOT);
+                if (idx > 0) {
+                    suffix = suffix.substring(0, idx);
                 }
-                if (valid) {
-                    return nameFormat.format(suffix);
-                }
+                return nameFormat.format(suffix, CaseFormat.LOWER_CAMEL);
             }
         }
         return DOLLAR;

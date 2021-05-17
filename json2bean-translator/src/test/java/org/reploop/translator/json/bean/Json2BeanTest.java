@@ -161,7 +161,7 @@ public class Json2BeanTest {
     @Test
     public void testBody() throws Exception {
         URL url = Json2BeanTest.class.getResource("/body.json");
-        QualifiedName root = QualifiedName.of("Body");
+        QualifiedName root = QualifiedName.of("body");
         JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
@@ -175,7 +175,7 @@ public class Json2BeanTest {
 
     @Test
     public void testExecute() throws Exception {
-        URL url = Json2BeanTest.class.getResource("/object.json");
+        URL url = Json2BeanTest.class.getResource("/json-object.json");
         QualifiedName root = QualifiedName.of("vo");
         JsonMessageContext context = new JsonMessageContext(root, directory);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
