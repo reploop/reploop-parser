@@ -27,6 +27,8 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
     private static final QualifiedName IMPORT_LIST = QualifiedName.of("java.util.List");
     private static final QualifiedName IMPORT_SET = QualifiedName.of("java.util.Set");
     private static final QualifiedName IMPORT_MAP = QualifiedName.of("java.util.Map");
+    private static final QualifiedName JAVA_OBJECT = QualifiedName.of("Object");
+    private static final QualifiedName JAVA_OBJECT_FQN = QualifiedName.of("java.lang.Object");
     private final NameFormat format = new NameFormat();
 
     @Override
@@ -168,15 +170,15 @@ public class JsonNameResolver extends AstVisitor<Node, JsonMessageContext> {
 
 
     private boolean shouldExplicitImport(QualifiedName qn1, QualifiedName qn2) {
-        // #1 First of all, make sure they are not same
+        // #0 First of all, java.lang.object can ignore safely
+        if (qn1.equals(JAVA_OBJECT) || qn1.equals(JAVA_OBJECT_FQN)) {
+            return false;
+        }
+        // #1 Then make sure they are not same
         if (qn1.equals(qn2)) {
             return false;
         }
-        // #2 they have same class names
-        if (qn1.endsWith(qn2.suffix())) {
-            return false;
-        }
-
+        // #2 Test if same package but different class name
         int c = Integer.compare(qn1.size(), qn2.size());
         // #3 They are of same size.
         if (0 == c) {

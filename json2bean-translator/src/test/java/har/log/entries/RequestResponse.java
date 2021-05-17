@@ -8,27 +8,11 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer headersSize;
-    private List<ValueName> cookies;
     private Integer bodySize;
-    private List<ValueName> headers;
     private String httpVersion;
-    
-    public Integer getHeadersSize() {
-        return headersSize;
-    }
-    
-    public void setHeadersSize(Integer headersSize) {
-        this.headersSize = headersSize;
-    }
-    
-    public List<ValueName> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<ValueName> cookies) {
-        this.cookies = cookies;
-    }
+    private List<NameValue> headers;
+    private Integer headersSize;
+    private List<NameValue> cookies;
     
     public Integer getBodySize() {
         return bodySize;
@@ -36,14 +20,6 @@ public abstract class RequestResponse implements Serializable {
     
     public void setBodySize(Integer bodySize) {
         this.bodySize = bodySize;
-    }
-    
-    public List<ValueName> getHeaders() {
-        return headers;
-    }
-    
-    public void setHeaders(List<ValueName> headers) {
-        this.headers = headers;
     }
     
     public String getHttpVersion() {
@@ -54,14 +30,38 @@ public abstract class RequestResponse implements Serializable {
         this.httpVersion = httpVersion;
     }
     
+    public List<NameValue> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
+    }
+    
+    public Integer getHeadersSize() {
+        return headersSize;
+    }
+    
+    public void setHeadersSize(Integer headersSize) {
+        this.headersSize = headersSize;
+    }
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+                .add("bodySize", bodySize)
+                .add("httpVersion", httpVersion)
+                .add("headers", headers)
                 .add("headersSize", headersSize)
                 .add("cookies", cookies)
-                .add("bodySize", bodySize)
-                .add("headers", headers)
-                .add("httpVersion", httpVersion)
                 .toString();
     }
     

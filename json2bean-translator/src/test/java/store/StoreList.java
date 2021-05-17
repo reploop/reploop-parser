@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StoreList implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -133,20 +132,20 @@ public class StoreList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("city", city)
-            .add("company", company)
-            .add("createTime", createTime)
-            .add("desCri", desCri)
-            .add("id", id)
-            .add("imgUrl", imgUrl)
-            .add("longitude", longitude)
-            .add("name", name)
-            .add("phoneNumber", phoneNumber)
-            .add("sheng", sheng)
-            .add("sort", sort)
-            .add("summary", summary)
-            .add("typeName", typeName)
-            .toString();
+                .add("city", city)
+                .add("company", company)
+                .add("createTime", createTime)
+                .add("desCri", desCri)
+                .add("id", id)
+                .add("imgUrl", imgUrl)
+                .add("longitude", longitude)
+                .add("name", name)
+                .add("phoneNumber", phoneNumber)
+                .add("sheng", sheng)
+                .add("sort", sort)
+                .add("summary", summary)
+                .add("typeName", typeName)
+                .toString();
     }
 
 }
