@@ -23,16 +23,17 @@ public class Json2BeanAppTest {
 
     @Test
     public void all() throws Exception {
-        Json2BeanApp app = new Json2BeanApp();
-        app.enableRootGuess = true;
         URL url = Json2BeanAppTest.class.getResource("/");
         assertThat(url).isNotNull();
         Path dir = Paths.get(url.toURI());
-        app.directory = dir.getParent().getParent().resolve("src/test/java");
+        Path directory = dir.getParent().getParent().resolve("src/test/java");
         Files.list(dir)
             .filter(path -> path.toString().toLowerCase().endsWith(".json"))
             .forEach(path -> {
                 try {
+                    Json2BeanApp app = new Json2BeanApp();
+                    app.enableRootGuess = true;
+                    app.directory = directory;
                     if (path.toString().contains("map-type.json")) {
                         System.out.println(path);
                     }
