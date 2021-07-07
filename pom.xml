@@ -97,7 +97,7 @@
             <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
-                <version>${antlr.version}</version>
+                <version>${antlr4.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -123,16 +123,6 @@
                 <version>${versions.plugin.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                    <release>${jdk.version}</release>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>${enforcer.plugin.version}</version>
                 <executions>
@@ -147,7 +137,7 @@
                                     <version>3.6.3</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>${jdk.version}</version>
+                                    <version>${java.version}</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
