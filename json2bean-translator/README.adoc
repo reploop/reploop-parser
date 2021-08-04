@@ -1,10 +1,73 @@
-= JSON 2 Java Bean
+= JSON解析与对象生成
 
-== Seq
-1. JSON Parser
-2. Translate
-3. Class Inherite
-4. Rewrite Same Class
-5. Find used Classes
-6. Rewrite Class Name to Upper Camel Format
-7. Generate Java Source Code
+== JSON
+
+JSON本身表达的就是一个树形结构，和Java的对象层次结构一样的。
+
+JSON是一个数据，也就是值(Value)，弱类型的。它的基本数据类型是数据本身描述的，并不是通过语言提供的类型系统来申明的。而强类型语言如Java在声明变量的时候必须知道他的数据类型，所以从JSON数据解析为POJO的过程就涉及一个类型推导。
+
+=== 类型推导
+
+JSON是一个数据，从 https://www.json.org/json-en.html[JSON.org] 能知道它只有以下数据：
+
+* 数组
+* 对象(Key-Value)
+* 数字
+* 字符串
+* 常量("true","false","null")
+
+基于这个数据构成，以及JSON的特点，可以按照如下规则做类型推导：
+
+. JSON是一个树形层次结构
+** 树的中间某个节点的所有子节点都是同样类型的
+** 叶子节点是最基本的数据，也就是简单基本的数据
+. 同构容器
+** 数组(或者列表)的元素是相同类型的
+** Map类型所有的key是相同类型的，所有的value也是相同类型的
+. 递归深度, Antlr 4.8
+** 受Stack空间的限制，递归不能够层次太深。
+. Map和Object在JSON中可以是等价的，从易用性角度酌情使用不同的类型
+** key是数字或者以数字打头的都对应到Map类型
+** key符合Java语言命名规范的都对应到Object类型
+. 空字符串或者 `null` 值，如果以上步骤不能确定类型，则对应到Object类型
+
+=== 继承结构
+
+由于
+
+1. 相同的Object可以在不同的子树中使用
+2. 相同的Object可以在不同的层次中使用
+
+我们应该尽量避免重复定义对象，尽可能的少定义对象。
+
+继承关系，可以理解为包含关系，也就是子类包含了父类的属性。这个过程可以看作是寻找公共属性的过程，用树的语言来讲，就是寻找最大公共子树。
+
+==== 自包含
+
+[code,java]
+----
+class Code {
+    private Code child;
+    private Integer id;
+}
+----
+
+一个类的属性的类型是类本身，体现在JSON数据就是数据可以递归嵌套。
+
+=== 可配置点
+
+1. 数值类型是否使用 `byte` 或者 `short`， 可以仅仅使用 `Integer`，`Long` 或者 `Float`，`Double`。
+2. Raw JSON解析。也就是String的值其实是一个JSON字符串，可以进一步的解析对象
+3. 支持Jackson注解
+4. 生成Jackson反序列化代码
+5. Lombok支持，builder模式
+6. 驼峰变量名重写
+7. 代码路径版本化，不会覆盖上次生成的代码
+
+=== 实现方案
+
+具体到实现的时候，采用先讲JSON解析为Protobuf的方式，然后再将Protobuf转为Java。这样就是选择Protobuf为一种中间表达(IR)，就像Java的bytecode一样，这样方便利用Protobuf的多语言支持，将JSON转化为更多目标语言。
+
+== 参考
+
+* https://github.com/m-zajac/json2go.git
