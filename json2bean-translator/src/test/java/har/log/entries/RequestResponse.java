@@ -9,10 +9,10 @@ import java.util.List;
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer bodySize;
-    private String httpVersion;
+    private List<NameValue> cookies;
     private List<NameValue> headers;
     private Integer headersSize;
-    private List<NameValue> cookies;
+    private String httpVersion;
     
     public Integer getBodySize() {
         return bodySize;
@@ -22,12 +22,12 @@ public abstract class RequestResponse implements Serializable {
         this.bodySize = bodySize;
     }
     
-    public String getHttpVersion() {
-        return httpVersion;
+    public List<NameValue> getCookies() {
+        return cookies;
     }
     
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
     }
     
     public List<NameValue> getHeaders() {
@@ -46,22 +46,22 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
-    public List<NameValue> getCookies() {
-        return cookies;
+    public String getHttpVersion() {
+        return httpVersion;
     }
     
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("bodySize", bodySize)
-                .add("httpVersion", httpVersion)
+                .add("cookies", cookies)
                 .add("headers", headers)
                 .add("headersSize", headersSize)
-                .add("cookies", cookies)
+                .add("httpVersion", httpVersion)
                 .toString();
     }
     

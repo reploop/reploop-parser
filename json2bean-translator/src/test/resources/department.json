@@ -1,0 +1,45 @@
+{
+  "code": 0,
+  "data": {
+    "has_more": false,
+    "items": [
+      {
+        "open_department_id": "od-a5d6ed8af89e33ec1fdf9c2ae3317768"
+      },
+      {
+        "open_department_id": "od-258da5e76c77cde8c7c6a25cfda35fa8"
+      },
+      {
+        "open_department_id": "od-10375d2fb39f0c2bbc6ccd22b886b45e"
+      },
+      {
+        "open_department_id": "od-d936284ba867aa09e0e410d62d686fda"
+      },
+      {
+        "open_department_id": "od-1f1968588de66a4d2338e70a08668cd8"
+      },
+      {
+        "open_department_id": "od-f79e697727aa9c0d991c2b60bdec1cc0"
+      },
+      {
+        "open_department_id": "od-28dd03a8f263c92f856231db159903dc"
+      },
+      {
+        "open_department_id": "od-9718109be332147ac75d41b4acbcf0a0"
+      },
+      {
+        "open_department_id": "od-db083bf556d661d862fa66499efdd586"
+      },
+      {
+        "open_department_id": "od-9a9a48f990ae7cfc188b0db524225325"
+      },
+      {
+        "open_department_id": "od-6e19e99342ca0484d6fe2f69900106d7"
+      },
+      {
+        "open_department_id": "od-411c52d66bcd848358f75ffc5ca19093"
+      }
+    ]
+  },
+  "msg": "success"
+}

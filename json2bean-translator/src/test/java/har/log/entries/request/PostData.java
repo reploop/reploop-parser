@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.entries.MimeTypeText; 
 import java.util.List; 
 import har.log.entries.NameValue; 
+import har.log.entries.TextMimeType; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PostData extends MimeTypeText implements Serializable {
+public class PostData extends TextMimeType implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<NameValue> params;
     

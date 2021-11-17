@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.9.1
+// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.9.3
 package org.reploop.parser.thrift.base;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
