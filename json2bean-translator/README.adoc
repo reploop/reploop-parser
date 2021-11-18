@@ -66,7 +66,7 @@ class Code {
 
 === 实现方案
 
-具体到实现的时候，采用先讲JSON解析为Protobuf的方式，然后再将Protobuf转为Java。这样就是选择Protobuf为一种中间表达(IR)，就像Java的bytecode一样，这样方便利用Protobuf的多语言支持，将JSON转化为更多目标语言。
+具体到实现的时候，采用先将JSON解析为Protobuf的方式，然后再将Protobuf转为Java。这样就是选择Protobuf为一种中间表达(IR)，就像Java的bytecode一样，这样方便利用Protobuf的多语言支持，将JSON转化为更多目标语言。
 
 == 参考
 

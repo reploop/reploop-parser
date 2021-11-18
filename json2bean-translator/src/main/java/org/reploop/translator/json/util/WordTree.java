@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import static java.text.CharacterIterator.DONE;
 
 /**
- * Given a string, find most number of words.
+ * Given a string, find number of words.
  */
 public class WordTree implements WordSplit {
     public static final char DOLLAR = '$';
@@ -28,6 +28,7 @@ public class WordTree implements WordSplit {
         TreeNode root;
         try {
             URL u = NameFormat.class.getResource(resource);
+            assert u != null;
             Set<String> ws = Files.lines(Path.of(u.toURI()))
                 .map(String::toLowerCase)
                 .filter(s -> s.length() > 1) // Skip single char

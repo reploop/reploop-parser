@@ -17,7 +17,7 @@ public class SimpleNameSplitter implements NameSplitter {
         StringCharacterIterator sci = new StringCharacterIterator(text);
         char prev = MIN_VALUE;
         for (char c = sci.first(); c != DONE; prev = c, c = sci.next()) {
-            // discard the sep like under score, and add the word
+            // discard the sep like underscore, and add the word
             if (isNonNumberAndAlphabetic(c)) {
                 newWordThenReset(words, sb);
                 continue;

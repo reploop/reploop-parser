@@ -18,7 +18,7 @@ public class DefaultNameSplitter implements NameSplitter {
         char prev = MIN_VALUE;
         for (int i = 0; i < len; prev = curr, i++) {
             curr = org.charAt(i);
-            // discard the sep like under score, and add the word
+            // discard the sep like underscore, and add the word
             if (isNonNumberAndAlphabetic(curr)) {
                 newWordThenReset(words, sb);
                 continue;
