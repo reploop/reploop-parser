@@ -1,0 +1,314 @@
+{
+  "code": 0,
+  "data": {
+    "properties": {
+      "ownerUser": 6997662011647639555,
+      "revision": 1107,
+      "sheetCount": 1,
+      "title": "销售产品SKU表"
+    },
+    "sheets": [
+      {
+        "columnCount": 18,
+        "frozenColCount": 0,
+        "frozenRowCount": 2,
+        "index": 0,
+        "merges": [
+          {
+            "columnCount": 11,
+            "rowCount": 1,
+            "startColumnIndex": 0,
+            "startRowIndex": 0
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 13,
+            "startColumnIndex": 0,
+            "startRowIndex": 81
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 0,
+            "startRowIndex": 94
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 0,
+            "startRowIndex": 70
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 7,
+            "startColumnIndex": 0,
+            "startRowIndex": 74
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 10,
+            "startColumnIndex": 0,
+            "startRowIndex": 39
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 49
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 10,
+            "startColumnIndex": 0,
+            "startRowIndex": 52
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 0,
+            "startRowIndex": 62
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 0,
+            "startRowIndex": 66
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 36
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 11,
+            "startColumnIndex": 0,
+            "startRowIndex": 25
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 22
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 11,
+            "startColumnIndex": 0,
+            "startRowIndex": 11
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 9,
+            "startColumnIndex": 0,
+            "startRowIndex": 2
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 99
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 0,
+            "startRowIndex": 110
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 0,
+            "startRowIndex": 108
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 105
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 0,
+            "startRowIndex": 102
+          },
+          {
+            "columnCount": 11,
+            "rowCount": 1,
+            "startColumnIndex": 0,
+            "startRowIndex": 104
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 7,
+            "startColumnIndex": 10,
+            "startRowIndex": 105
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 96
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 22,
+            "startColumnIndex": 0,
+            "startRowIndex": 114
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 136
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 0,
+            "startRowIndex": 139
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 10,
+            "startRowIndex": 136
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 3,
+            "startColumnIndex": 10,
+            "startRowIndex": 139
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 114
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 116
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 118
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 120
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 122
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 124
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 126
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 128
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 130
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 132
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 10,
+            "startRowIndex": 134
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 8,
+            "startColumnIndex": 0,
+            "startRowIndex": 173
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 10,
+            "startRowIndex": 169
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 10,
+            "startRowIndex": 165
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 11,
+            "startColumnIndex": 10,
+            "startRowIndex": 144
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 0,
+            "startRowIndex": 169
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 4,
+            "startColumnIndex": 0,
+            "startRowIndex": 165
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 10,
+            "startColumnIndex": 0,
+            "startRowIndex": 155
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 11,
+            "startColumnIndex": 0,
+            "startRowIndex": 144
+          },
+          {
+            "columnCount": 1,
+            "rowCount": 2,
+            "startColumnIndex": 0,
+            "startRowIndex": 142
+          }
+        ],
+        "rowCount": 209,
+        "sheetId": "8f48a3",
+        "title": "Sheet1"
+      }
+    ],
+    "spreadsheetToken": "shtcn1iRFaGHg1Ox9j5c4VxF7vf"
+  },
+  "msg": "success"
+}

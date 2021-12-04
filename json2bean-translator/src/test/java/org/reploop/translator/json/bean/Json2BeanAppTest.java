@@ -34,10 +34,10 @@ public class Json2BeanAppTest {
                     Json2BeanApp app = new Json2BeanApp();
                     app.enableRootGuess = true;
                     app.directory = directory;
-                    if (path.toString().contains("store.json")) {
+                    if (path.toString().contains("category.json")) {
+                        app.execute(path);
                         System.out.println(path);
                     }
-                    app.execute(path);
                 } catch (Exception e) {
                     System.err.println(path);
                     e.printStackTrace();

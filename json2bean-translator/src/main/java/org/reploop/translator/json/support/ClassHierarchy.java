@@ -138,12 +138,13 @@ public class ClassHierarchy {
             .collect(Collectors.toList());
 
         List<String> parts = new ArrayList<>();
-        for (int i = 0; ; i++) {
+        for (int i = 0; names.size() > 0; i++) {
             String part = null;
             boolean samePrefix = true;
             for (QualifiedName qn : names) {
                 int size = qn.size();
                 if (i >= size) {
+                    samePrefix = false;
                     break;
                 }
                 if (null == part) {
@@ -161,7 +162,6 @@ public class ClassHierarchy {
             if (null != part) {
                 parts.add(part);
             }
-
         }
         return QualifiedName.of(parts);
     }
