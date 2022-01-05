@@ -34,7 +34,7 @@ public class Json2BeanAppTest {
                     Json2BeanApp app = new Json2BeanApp();
                     app.enableRootGuess = true;
                     app.directory = directory;
-                    if (path.toString().contains("category.json")) {
+                    if (path.toString().contains("car_response.json")) {
                         app.execute(path);
                         System.out.println(path);
                     }

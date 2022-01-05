@@ -23,6 +23,7 @@
         <module>mysql-parser</module>
         <module>json2bean-translator</module>
         <module>go-parser</module>
+        <module>json2bean-maven-plugin</module>
     </modules>
 
     <profiles>
