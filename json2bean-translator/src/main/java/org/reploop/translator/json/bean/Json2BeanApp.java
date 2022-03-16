@@ -37,7 +37,7 @@ import static org.reploop.translator.json.support.Constants.JAVA;
  * #1 URL resource
  * #2 file resource
  */
-@Command(description = "", name = "json2bean")
+@Command(description = "JSON 2 Bean", name = "json2bean")
 public class Json2BeanApp {
     private static final Logger LOG = LoggerFactory.getLogger(Json2BeanApp.class);
     private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();

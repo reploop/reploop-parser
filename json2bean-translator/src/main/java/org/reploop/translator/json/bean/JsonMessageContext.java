@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class JsonMessageContext {
+    /**
+     * Base namespace
+     */
     private QualifiedName name;
     private boolean abstractClass;
     private QualifiedName superClass;

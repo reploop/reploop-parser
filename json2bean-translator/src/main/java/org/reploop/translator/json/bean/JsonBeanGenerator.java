@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 import static org.reploop.translator.json.support.Constants.*;
 
 public class JsonBeanGenerator extends AstVisitor<Node, JsonBeanContext> {
-    private static Logger LOG = LoggerFactory.getLogger(JsonBeanGenerator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JsonBeanGenerator.class);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
