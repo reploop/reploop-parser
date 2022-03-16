@@ -152,13 +152,15 @@ API返回的JSON基本上都是API开发者定义好的，给啥就是啥。 所
 
 == 可配置点
 
-. 数值类型是否使用 `byte` 或者 `short`， 可以仅仅使用 `Integer`，`Long` 或者 `Float`，`Double`。
-. Raw JSON解析。也就是String的值其实是一个JSON字符串，可以进一步的解析对象
-. 支持Jackson注解
-. 生成Jackson反序列化代码
-. Lombok支持，builder模式
-. 驼峰变量名重写
-. 代码路径版本化，不会覆盖上次生成的代码
+* [ ] 数值类型是否使用 `byte` 或者 `short`， 可以仅仅使用 `Integer`，`Long` 或者 `Float`，`Double`。
+* [*] Raw JSON解析。也就是String的值其实是一个JSON字符串，可以进一步的解析对象
+* [*] 支持Jackson注解
+* [ ] 生成Jackson反序列化代码
+* [ ] Lombok支持，builder模式
+* [*] 驼峰变量名重写
+* [ ] 代码路径版本化，不会覆盖上次生成的代码
+* [ ] 字符串与boolean值的转换，比如``"true|yes|1"=>true``或者``"false|no|0" => false``
+* [ ] 整数与boolean值的转换，比如``1=>true``或者``0=>false``
 
 == 实现方案
 
