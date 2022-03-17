@@ -30,7 +30,7 @@ import static org.reploop.translator.json.support.TypeSupport.isLegalIdentifier;
 import static org.reploop.translator.json.support.TypeSupport.typeNumberSpec;
 
 /**
- * Translate JSON AST to protobuf message and it's type.
+ * Translate JSON AST to protobuf message, and it's type.
  */
 public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonMessageTranslator.class);

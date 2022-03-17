@@ -2,32 +2,37 @@ package org.reploop.translator.json.util;
 
 import org.reploop.translator.json.support.NameFormat;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class WordDict {
     public static final char DOLLAR = '$';
     private static final String WORD_FILE = "/words.txt";
 
     public static Set<String> load(String resource) throws IOException, URISyntaxException {
-        return words(resource)
+        return words(resource).stream()
             .map(String::toLowerCase)
             .filter(s -> s.length() > 2) // Skip single char
             .collect(Collectors.toUnmodifiableSet());
     }
 
-    public static Stream<String> words(String resource) throws URISyntaxException, IOException {
-        URL u = NameFormat.class.getResource(resource);
-        return Files.lines(Path.of(u.toURI()));
+    public static Set<String> words(String resource) throws URISyntaxException, IOException {
+        // Read file as stream, so we can read it from any classpath location including file system, jar etc.
+        InputStream input = NameFormat.class.getResourceAsStream(resource);
+        if (null == input) {
+            throw new IOException("Cannot load resource " + resource);
+        }
+        try (InputStreamReader isr = new InputStreamReader(input); BufferedReader reader = new BufferedReader(isr)) {
+            return reader.lines().collect(Collectors.toSet());
+        }
     }
 
-    public static Stream<String> defaultWords() throws URISyntaxException, IOException {
+    public static Set<String> defaultWords() throws URISyntaxException, IOException {
         return words(WORD_FILE);
     }
 

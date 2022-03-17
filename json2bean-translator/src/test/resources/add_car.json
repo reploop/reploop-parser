@@ -1,0 +1,68 @@
+{
+  "id": "",
+  "driverUberId": 1640655031212,
+  "colour": "白色",
+  "files": [],
+  "officeId": "康顺达",
+  "plate": "琼BAX172",
+  "plateColour": "2",
+  "trafficCarType": "52",
+  "remarks": "0",
+  "seating": 5,
+  "type": "1",
+  "settlementPrice": 1,
+  "vehicleDesc": "0",
+  "vehicleNature": "2",
+  "brand": "威马"
+}
+{
+  "id": "",
+  "driverUberId": 1640655031212,
+  "colour": "白色",
+  "files": [],
+  "officeId": "康顺达",
+  "plate": "琼BAX172",
+  "plateColour": "2",
+  "trafficCarType": "52",
+  "remarks": "0",
+  "seating": 5,
+  "type": "2",
+  "settlementPrice": 1,
+  "vehicleDesc": "0",
+  "vehicleNature": "2",
+  "brand": "威马"
+}
+{
+  "id": "",
+  "driverUberId": 1640655031212,
+  "colour": "白色",
+  "files": [],
+  "officeId": "康顺达",
+  "plate": "琼BAX172",
+  "plateColour": "2",
+  "trafficCarType": "52",
+  "remarks": "0",
+  "seating": 5,
+  "type": "1",
+  "settlementPrice": 1,
+  "vehicleDesc": "0",
+  "vehicleNature": "1",
+  "brand": "威马"
+}
+{
+  "id": "",
+  "driverUberId": 1640655031212,
+  "colour": "白色",
+  "files": [],
+  "officeId": "康顺达",
+  "plate": "琼BAX172",
+  "plateColour": "1",
+  "trafficCarType": "02",
+  "remarks": "0",
+  "seating": 5,
+  "type": "1",
+  "settlementPrice": 1,
+  "vehicleDesc": "0",
+  "vehicleNature": "1",
+  "brand": "威马"
+}

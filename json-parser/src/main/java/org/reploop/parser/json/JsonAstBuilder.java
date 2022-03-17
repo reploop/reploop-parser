@@ -93,7 +93,7 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
     }
 
     /**
-     * Test number value by it's legal range to tell it's type.
+     * Test number value by its legal range to tell its type.
      *
      * @param val value literal
      * @return the type of the number

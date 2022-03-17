@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/protobuf/v3/Protobuf3.g4 by ANTLR 4.9.1
+// Generated from org/reploop/parser/protobuf/v3/Protobuf3.g4 by ANTLR 4.9.3
 package org.reploop.parser.protobuf.v3;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -48,15 +48,15 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 */
 	void exitPackageStatement(Protobuf3Parser.PackageStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#option}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#optionStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterOption(Protobuf3Parser.OptionContext ctx);
+	void enterOptionStatement(Protobuf3Parser.OptionStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#option}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#optionStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitOption(Protobuf3Parser.OptionContext ctx);
+	void exitOptionStatement(Protobuf3Parser.OptionStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#optionName}.
 	 * @param ctx the parse tree
@@ -67,186 +67,6 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOptionName(Protobuf3Parser.OptionNameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#optionBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterOptionBody(Protobuf3Parser.OptionBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#optionBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitOptionBody(Protobuf3Parser.OptionBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#optionBodyVariable}.
-	 * @param ctx the parse tree
-	 */
-	void enterOptionBodyVariable(Protobuf3Parser.OptionBodyVariableContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#optionBodyVariable}.
-	 * @param ctx the parse tree
-	 */
-	void exitOptionBodyVariable(Protobuf3Parser.OptionBodyVariableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#topLevelDef}.
-	 * @param ctx the parse tree
-	 */
-	void enterTopLevelDef(Protobuf3Parser.TopLevelDefContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#topLevelDef}.
-	 * @param ctx the parse tree
-	 */
-	void exitTopLevelDef(Protobuf3Parser.TopLevelDefContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#message}.
-	 * @param ctx the parse tree
-	 */
-	void enterMessage(Protobuf3Parser.MessageContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#message}.
-	 * @param ctx the parse tree
-	 */
-	void exitMessage(Protobuf3Parser.MessageContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#messageBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterMessageBody(Protobuf3Parser.MessageBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#messageBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitMessageBody(Protobuf3Parser.MessageBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#enumDefinition}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumDefinition(Protobuf3Parser.EnumDefinitionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#enumDefinition}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumDefinition(Protobuf3Parser.EnumDefinitionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#enumBody}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumBody(Protobuf3Parser.EnumBodyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#enumBody}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumBody(Protobuf3Parser.EnumBodyContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#enumField}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumField(Protobuf3Parser.EnumFieldContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#enumField}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumField(Protobuf3Parser.EnumFieldContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#enumValueOption}.
-	 * @param ctx the parse tree
-	 */
-	void enterEnumValueOption(Protobuf3Parser.EnumValueOptionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#enumValueOption}.
-	 * @param ctx the parse tree
-	 */
-	void exitEnumValueOption(Protobuf3Parser.EnumValueOptionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#extend}.
-	 * @param ctx the parse tree
-	 */
-	void enterExtend(Protobuf3Parser.ExtendContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#extend}.
-	 * @param ctx the parse tree
-	 */
-	void exitExtend(Protobuf3Parser.ExtendContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#service}.
-	 * @param ctx the parse tree
-	 */
-	void enterService(Protobuf3Parser.ServiceContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#service}.
-	 * @param ctx the parse tree
-	 */
-	void exitService(Protobuf3Parser.ServiceContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#rpc}.
-	 * @param ctx the parse tree
-	 */
-	void enterRpc(Protobuf3Parser.RpcContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#rpc}.
-	 * @param ctx the parse tree
-	 */
-	void exitRpc(Protobuf3Parser.RpcContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#reserved}.
-	 * @param ctx the parse tree
-	 */
-	void enterReserved(Protobuf3Parser.ReservedContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#reserved}.
-	 * @param ctx the parse tree
-	 */
-	void exitReserved(Protobuf3Parser.ReservedContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#ranges}.
-	 * @param ctx the parse tree
-	 */
-	void enterRanges(Protobuf3Parser.RangesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#ranges}.
-	 * @param ctx the parse tree
-	 */
-	void exitRanges(Protobuf3Parser.RangesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#rangeRule}.
-	 * @param ctx the parse tree
-	 */
-	void enterRangeRule(Protobuf3Parser.RangeRuleContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#rangeRule}.
-	 * @param ctx the parse tree
-	 */
-	void exitRangeRule(Protobuf3Parser.RangeRuleContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#fieldNames}.
-	 * @param ctx the parse tree
-	 */
-	void enterFieldNames(Protobuf3Parser.FieldNamesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#fieldNames}.
-	 * @param ctx the parse tree
-	 */
-	void exitFieldNames(Protobuf3Parser.FieldNamesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#typeRule}.
-	 * @param ctx the parse tree
-	 */
-	void enterTypeRule(Protobuf3Parser.TypeRuleContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#typeRule}.
-	 * @param ctx the parse tree
-	 */
-	void exitTypeRule(Protobuf3Parser.TypeRuleContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#fieldNumber}.
-	 * @param ctx the parse tree
-	 */
-	void enterFieldNumber(Protobuf3Parser.FieldNumberContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#fieldNumber}.
-	 * @param ctx the parse tree
-	 */
-	void exitFieldNumber(Protobuf3Parser.FieldNumberContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#field}.
 	 * @param ctx the parse tree
@@ -277,6 +97,16 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFieldOption(Protobuf3Parser.FieldOptionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#fieldNumber}.
+	 * @param ctx the parse tree
+	 */
+	void enterFieldNumber(Protobuf3Parser.FieldNumberContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#fieldNumber}.
+	 * @param ctx the parse tree
+	 */
+	void exitFieldNumber(Protobuf3Parser.FieldNumberContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#oneof}.
 	 * @param ctx the parse tree
@@ -318,15 +148,225 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 */
 	void exitKeyType(Protobuf3Parser.KeyTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#reservedWord}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#type_}.
 	 * @param ctx the parse tree
 	 */
-	void enterReservedWord(Protobuf3Parser.ReservedWordContext ctx);
+	void enterType_(Protobuf3Parser.Type_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#reservedWord}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#type_}.
 	 * @param ctx the parse tree
 	 */
-	void exitReservedWord(Protobuf3Parser.ReservedWordContext ctx);
+	void exitType_(Protobuf3Parser.Type_Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#reserved}.
+	 * @param ctx the parse tree
+	 */
+	void enterReserved(Protobuf3Parser.ReservedContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#reserved}.
+	 * @param ctx the parse tree
+	 */
+	void exitReserved(Protobuf3Parser.ReservedContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#ranges}.
+	 * @param ctx the parse tree
+	 */
+	void enterRanges(Protobuf3Parser.RangesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#ranges}.
+	 * @param ctx the parse tree
+	 */
+	void exitRanges(Protobuf3Parser.RangesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#range_}.
+	 * @param ctx the parse tree
+	 */
+	void enterRange_(Protobuf3Parser.Range_Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#range_}.
+	 * @param ctx the parse tree
+	 */
+	void exitRange_(Protobuf3Parser.Range_Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#reservedFieldNames}.
+	 * @param ctx the parse tree
+	 */
+	void enterReservedFieldNames(Protobuf3Parser.ReservedFieldNamesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#reservedFieldNames}.
+	 * @param ctx the parse tree
+	 */
+	void exitReservedFieldNames(Protobuf3Parser.ReservedFieldNamesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#topLevelDef}.
+	 * @param ctx the parse tree
+	 */
+	void enterTopLevelDef(Protobuf3Parser.TopLevelDefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#topLevelDef}.
+	 * @param ctx the parse tree
+	 */
+	void exitTopLevelDef(Protobuf3Parser.TopLevelDefContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumDef}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumDef(Protobuf3Parser.EnumDefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumDef}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumDef(Protobuf3Parser.EnumDefContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumBody(Protobuf3Parser.EnumBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumBody(Protobuf3Parser.EnumBodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumElement(Protobuf3Parser.EnumElementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumElement(Protobuf3Parser.EnumElementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumField}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumField(Protobuf3Parser.EnumFieldContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumField}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumField(Protobuf3Parser.EnumFieldContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumValueOptions}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumValueOptions(Protobuf3Parser.EnumValueOptionsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumValueOptions}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumValueOptions(Protobuf3Parser.EnumValueOptionsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumValueOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnumValueOption(Protobuf3Parser.EnumValueOptionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumValueOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnumValueOption(Protobuf3Parser.EnumValueOptionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#messageDef}.
+	 * @param ctx the parse tree
+	 */
+	void enterMessageDef(Protobuf3Parser.MessageDefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#messageDef}.
+	 * @param ctx the parse tree
+	 */
+	void exitMessageDef(Protobuf3Parser.MessageDefContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#messageBody}.
+	 * @param ctx the parse tree
+	 */
+	void enterMessageBody(Protobuf3Parser.MessageBodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#messageBody}.
+	 * @param ctx the parse tree
+	 */
+	void exitMessageBody(Protobuf3Parser.MessageBodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#messageElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterMessageElement(Protobuf3Parser.MessageElementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#messageElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitMessageElement(Protobuf3Parser.MessageElementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#serviceDef}.
+	 * @param ctx the parse tree
+	 */
+	void enterServiceDef(Protobuf3Parser.ServiceDefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#serviceDef}.
+	 * @param ctx the parse tree
+	 */
+	void exitServiceDef(Protobuf3Parser.ServiceDefContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#serviceElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterServiceElement(Protobuf3Parser.ServiceElementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#serviceElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitServiceElement(Protobuf3Parser.ServiceElementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#rpc}.
+	 * @param ctx the parse tree
+	 */
+	void enterRpc(Protobuf3Parser.RpcContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#rpc}.
+	 * @param ctx the parse tree
+	 */
+	void exitRpc(Protobuf3Parser.RpcContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(Protobuf3Parser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(Protobuf3Parser.ConstantContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#blockLit}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlockLit(Protobuf3Parser.BlockLitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#blockLit}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlockLit(Protobuf3Parser.BlockLitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#emptyStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmptyStatement(Protobuf3Parser.EmptyStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#emptyStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmptyStatement(Protobuf3Parser.EmptyStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#ident}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdent(Protobuf3Parser.IdentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#ident}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdent(Protobuf3Parser.IdentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#fullIdent}.
 	 * @param ctx the parse tree
@@ -357,16 +397,6 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEnumName(Protobuf3Parser.EnumNameContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#messageOrEnumName}.
-	 * @param ctx the parse tree
-	 */
-	void enterMessageOrEnumName(Protobuf3Parser.MessageOrEnumNameContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#messageOrEnumName}.
-	 * @param ctx the parse tree
-	 */
-	void exitMessageOrEnumName(Protobuf3Parser.MessageOrEnumNameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#fieldName}.
 	 * @param ctx the parse tree
@@ -428,33 +458,63 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 */
 	void exitMessageType(Protobuf3Parser.MessageTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#messageOrEnumType}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#enumType}.
 	 * @param ctx the parse tree
 	 */
-	void enterMessageOrEnumType(Protobuf3Parser.MessageOrEnumTypeContext ctx);
+	void enterEnumType(Protobuf3Parser.EnumTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#messageOrEnumType}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#enumType}.
 	 * @param ctx the parse tree
 	 */
-	void exitMessageOrEnumType(Protobuf3Parser.MessageOrEnumTypeContext ctx);
+	void exitEnumType(Protobuf3Parser.EnumTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#emptyStatement}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#intLit}.
 	 * @param ctx the parse tree
 	 */
-	void enterEmptyStatement(Protobuf3Parser.EmptyStatementContext ctx);
+	void enterIntLit(Protobuf3Parser.IntLitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#emptyStatement}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#intLit}.
 	 * @param ctx the parse tree
 	 */
-	void exitEmptyStatement(Protobuf3Parser.EmptyStatementContext ctx);
+	void exitIntLit(Protobuf3Parser.IntLitContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#constant}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#strLit}.
 	 * @param ctx the parse tree
 	 */
-	void enterConstant(Protobuf3Parser.ConstantContext ctx);
+	void enterStrLit(Protobuf3Parser.StrLitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#constant}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#strLit}.
 	 * @param ctx the parse tree
 	 */
-	void exitConstant(Protobuf3Parser.ConstantContext ctx);
+	void exitStrLit(Protobuf3Parser.StrLitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#boolLit}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolLit(Protobuf3Parser.BoolLitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#boolLit}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolLit(Protobuf3Parser.BoolLitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#floatLit}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloatLit(Protobuf3Parser.FloatLitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#floatLit}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloatLit(Protobuf3Parser.FloatLitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link Protobuf3Parser#keywords}.
+	 * @param ctx the parse tree
+	 */
+	void enterKeywords(Protobuf3Parser.KeywordsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Protobuf3Parser#keywords}.
+	 * @param ctx the parse tree
+	 */
+	void exitKeywords(Protobuf3Parser.KeywordsContext ctx);
 }

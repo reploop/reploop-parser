@@ -61,9 +61,9 @@ public class ClassHierarchy {
             Parent p = op.get();
             // Fields may be in parent class
             Set<Field> fields = p.getFields();
-            // Messages may be have common parent class
+            // Messages may have common parent class
             List<Message> messages = p.getMessages();
-            // Handle deepest level message first.
+            // Handle the deepest level message first.
             messages.sort(messageComparator);
             // Message will extend the parent
             Message parent = null;
@@ -75,7 +75,7 @@ public class ClassHierarchy {
                 List<Field> sub = message.getFields().stream()
                     .filter(field -> !fields.contains(field))
                     .collect(toList());
-                // Same as parent, we make this message as parent  without modifying it's name.
+                // Same as parent, we make this message as parent  without modifying its name.
                 if (sub.isEmpty()) {
                     if (null == parent) {
                         parent = message;
@@ -138,12 +138,13 @@ public class ClassHierarchy {
             .collect(Collectors.toList());
 
         List<String> parts = new ArrayList<>();
-        for (int i = 0; ; i++) {
+        for (int i = 0; names.size() > 0; i++) {
             String part = null;
             boolean samePrefix = true;
             for (QualifiedName qn : names) {
                 int size = qn.size();
                 if (i >= size) {
+                    samePrefix = false;
                     break;
                 }
                 if (null == part) {
@@ -161,7 +162,6 @@ public class ClassHierarchy {
             if (null != part) {
                 parts.add(part);
             }
-
         }
         return QualifiedName.of(parts);
     }

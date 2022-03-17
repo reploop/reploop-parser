@@ -1,0 +1,46 @@
+{
+  "errno": 0,
+  "errmsg": "SUCCESS",
+  "trace_id": "0a56343761cc6ad56e58800d04d71f02",
+  "data": {
+    "driver_data": {
+      "name": "纪新松",
+      "sex": "男",
+      "contact_phone": "18976294505",
+      "id_no": "460006199209202354",
+      "id_card_location": 0,
+      "address": "",
+      "channel": "74",
+      "city_name": "三亚市",
+      "idno_front_url": "http:\/\/img-ys01.didistatic.com\/static\/doorgod_image\/do1_iW3pYuLsn4dn9jevp3AZ?expire=1641391445&signiture=l_jTk4k3S-2ufhZw-JmmWMJ8z2ict7MRcUIE4Bwo90s=",
+      "idno_back_url": "http:\/\/img-ys01.didistatic.com\/static\/doorgod_image\/do1_sfCH5X68lItyz2VbQRqm?expire=1641391446&signiture=WwpVjEBOzVm5MHgK4nGHaUZldQilNszomka19f6Zfbw=",
+      "licence_back_url": "",
+      "licence_front_url": "http:\/\/img-ys01.didistatic.com\/static\/doorgod_image\/do1_atJibhXZ6pMrepHqPfEE?expire=1641391446&signiture=j6kJ7EGYBPEYAhaqz5CY8SDsagRrMDE1bed3f0pwvq0=",
+      "qualification_url": "",
+      "online_gvid": "792633534418395944",
+      "ban_status": 0,
+      "reg_time": "2021-11-25 09:21:34",
+      "agent_id": 0,
+      "supplier_id": 0
+    },
+    "car_data": {
+      "plate_no": "琼CD22971",
+      "owner": "纪新松",
+      "brand_desc": "威马汽车",
+      "model": "EX5",
+      "color": "白",
+      "seat_num": 5,
+      "reg_date": "2021-11-03",
+      "owner_address": "",
+      "ins_valid_date": "0000-00-00",
+      "annual_check_date": "0000-00-00",
+      "fuel_id": "未知",
+      "init_style_price": 0,
+      "car_licence_front_url": "http:\/\/img-ys01.didistatic.com\/static\/doorgod_image\/do1_Ts1UvuAU1uwesJl7Da84?expire=1641391446&signiture=x9lItGJ6r06l20Y9GnuSPUHEWOFWQdbFAj3Z0-vldL0=",
+      "length": 0,
+      "width": 0,
+      "height": 0,
+      "wheelbases": 0
+    }
+  }
+}
