@@ -16,14 +16,33 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.function.Function;
 
-public abstract class ParserDriver<Node, L extends Lexer, P extends Parser> {
+public abstract class ParserDriver<NODE, L extends Lexer, P extends Parser> {
     private static final Logger LOG = LoggerFactory.getLogger(ParserDriver.class);
 
+    /**
+     * Initialize a {@link Parser}.
+     *
+     * @param tokenStream source token stream to parse
+     * @return concrete instance of the {@link Parser}
+     * @see #lexer(CharStream)
+     */
     protected abstract P parser(CommonTokenStream tokenStream);
 
+    /**
+     * Initialize a {@link  Lexer}.
+     *
+     * @param charStream source token stream provided
+     * @return concrete instance of {@link  Lexer}
+     */
     protected abstract L lexer(CharStream charStream);
 
-    protected abstract AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream);
+    /**
+     * Initialize a {@link AbstractParseTreeVisitor}.
+     *
+     * @param tokenStream the source token stream.
+     * @return the visitor
+     */
+    protected abstract AbstractParseTreeVisitor<NODE> visitor(CommonTokenStream tokenStream);
 
     protected ParseTreeListener parseListener() {
         return null;
@@ -33,23 +52,30 @@ public abstract class ParserDriver<Node, L extends Lexer, P extends Parser> {
         return null;
     }
 
-    public Node parse(Path file, Function<P, ParserRuleContext> func) {
+    /**
+     * Parse the source to build AST.
+     *
+     * @param file the JSON source file
+     * @param func the entry point which must matches the source
+     * @return AST
+     */
+    public NODE parse(Path file, Function<P, ParserRuleContext> func) {
         try (Reader reader
                  = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
             return parse(reader, func);
         } catch (IOException e) {
-            LOG.error("Cannot read protobuf file {}", file, e);
+            LOG.error("Cannot read source file {}", file, e);
         } catch (StackOverflowError e) {
             LOG.error("File {} is too large to parse.", file, e);
         }
         return null;
     }
 
-    public Node parse(Reader reader, Function<P, ParserRuleContext> func) throws IOException, StackOverflowError {
+    public NODE parse(Reader reader, Function<P, ParserRuleContext> func) throws IOException, StackOverflowError {
         return parse(CharStreams.fromReader(reader), func);
     }
 
-    public Node parse(CharStream charStream, Function<P, ParserRuleContext> func) throws StackOverflowError {
+    public NODE parse(CharStream charStream, Function<P, ParserRuleContext> func) throws StackOverflowError {
         L lexer = lexer(charStream);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         P parser = parser(tokenStream);

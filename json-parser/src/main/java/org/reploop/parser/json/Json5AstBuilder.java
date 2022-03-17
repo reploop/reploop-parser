@@ -2,7 +2,9 @@ package org.reploop.parser.json;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.reploop.parser.json.base.JsonBaseBaseVisitor;
+import org.antlr.v4.runtime.tree.TerminalNode;
+import org.reploop.parser.json.base.JSON5BaseVisitor;
+import org.reploop.parser.json.base.JSON5Parser;
 import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Number;
 import org.reploop.parser.json.tree.*;
@@ -17,28 +19,74 @@ import java.util.stream.Collectors;
 import static org.apache.commons.lang3.StringUtils.strip;
 
 /**
- * Json AST builder.
- *
- * @author George Cao(georgecao@outlook.com)
- * @since 2016-10-14 20
+ * JSON5 AST builder.
  */
-public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
+public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
     private CommonTokenStream tokens;
 
-    public JsonAstBuilder() {
+    public Json5AstBuilder() {
     }
 
-    public JsonAstBuilder(CommonTokenStream tokens) {
+    public Json5AstBuilder(CommonTokenStream tokens) {
         this.tokens = tokens;
     }
 
     @Override
+    public Json visitJson5(JSON5Parser.Json5Context ctx) {
+        return new Json((Value) visit(ctx.value()));
+    }
+
+    @Override
+    public Entity visitObj(JSON5Parser.ObjContext ctx) {
+        return new Entity(visit(ctx.pair(), Pair.class));
+    }
+
+    @Override
+    public Pair visitPair(JSON5Parser.PairContext ctx) {
+        return super.visitPair(ctx);
+    }
+
+    @Override
+    public Key visitKey(JSON5Parser.KeyContext ctx) {
+        ctx.STRING();
+        Optional<String> os = terminalNode(ctx.STRING(), this::stripQuotationMark);
+        text = ctx.STRING().getText();
+        text = ctx.IDENTIFIER().getText();
+        text = ctx.NUMERIC_LITERAL().getText();
+        text = ctx.LITERAL().getSymbol().getText();
+    }
+
+    private Optional<String> terminalNode(TerminalNode node, Function<String, String> handler) {
+        if (null != node) {
+            String value = node.getText();
+            if (null != handler) {
+                value = handler.apply(value);
+            }
+            return Optional.of(value);
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Value visitValue(JSON5Parser.ValueContext ctx) {
+        return super.visitValue(ctx);
+    }
+
+    @Override
+    public Array visitArr(JSON5Parser.ArrContext ctx) {
+        return super.visitArr(ctx);
+    }
+
+    @Override
+    public Number visitNumber(JSON5Parser.NumberContext ctx) {
+        return super.visitNumber(ctx);
+    }
+
     public Json visitJson(JsonBaseParser.JsonContext ctx) {
         Value value = (Value) visit(ctx.value());
         return new Json(value);
     }
 
-    @Override
     public Entity visitObj(JsonBaseParser.ObjContext ctx) {
         return new Entity(visit(ctx.pair(), Pair.class));
     }
@@ -51,7 +99,6 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         return text.replaceAll("\\s+", "");
     }
 
-    @Override
     public Pair visitPair(JsonBaseParser.PairContext ctx) {
         // The key in the Key-Value pair should not have any whitespace.
         String text = removeAllWhitespace(stripQuotationMark(ctx.STRING().getText()));
@@ -59,12 +106,10 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         return new Pair(text, value);
     }
 
-    @Override
     public Array visitArr(JsonBaseParser.ArrContext ctx) {
         return new Array(visit(ctx.value(), Value.class));
     }
 
-    @Override
     public Text visitStringValue(JsonBaseParser.StringValueContext ctx) {
         return new Text(stripQuotationMark(ctx.STRING().getText()));
     }
@@ -78,7 +123,6 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         return Optional.empty();
     }
 
-    @Override
     public Number visitNumberValue(JsonBaseParser.NumberValueContext ctx) {
         String val = ctx.NUMBER().getText();
         try {
@@ -126,27 +170,22 @@ public class JsonAstBuilder extends JsonBaseBaseVisitor<Node> {
         return new DoubleVal(value);
     }
 
-    @Override
     public Entity visitObjValue(JsonBaseParser.ObjValueContext ctx) {
         return visitObj(ctx.obj());
     }
 
-    @Override
     public Array visitArrValue(JsonBaseParser.ArrValueContext ctx) {
         return visitArr(ctx.arr());
     }
 
-    @Override
     public Bool visitTrueValue(JsonBaseParser.TrueValueContext ctx) {
         return new Bool(Boolean.TRUE);
     }
 
-    @Override
     public Bool visitFalseValue(JsonBaseParser.FalseValueContext ctx) {
         return new Bool(Boolean.FALSE);
     }
 
-    @Override
     public Null visitNullValue(JsonBaseParser.NullValueContext ctx) {
         return new Null();
     }
