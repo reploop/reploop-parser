@@ -1,21 +1,25 @@
 package org.reploop.plugin.maven;
 
-import com.google.common.base.Strings;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
-import org.reploop.translator.json.bean.Json2BeanApp;
+import org.reploop.translator.json.bean.Json2Bean;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Stream;
 
-@Mojo(name = "bean")
+@Mojo(name = "bean",
+    defaultPhase = LifecyclePhase.GENERATE_SOURCES,
+    requiresDependencyResolution = ResolutionScope.COMPILE,
+    requiresProject = true,
+    threadSafe = true)
 public class Json2BeanMojo extends AbstractMojo {
     @Parameter(defaultValue = "${project}", required = true)
     private MavenProject project;
@@ -36,20 +40,8 @@ public class Json2BeanMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        Json2BeanApp app = new Json2BeanApp();
+        Json2Bean app = new Json2Bean();
         Stream<Path> all = listJsonFiles(files);
-        all.forEach(path -> {
-            try {
-                if (Strings.isNullOrEmpty(namespace)) {
-                    app.execute(path);
-                } else {
-                    app.execute(path, namespace);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
     }
 
     public Stream<Path> listJsonFiles(List<Path> files) {

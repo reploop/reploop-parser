@@ -40,7 +40,7 @@ public class Json2Bean {
     private final ClassHierarchy classHierarchy = new ClassHierarchy();
     private final JsonNameResolver nameResolver = new JsonNameResolver();
     private final JsonTypeResolver typeResolver = new JsonTypeResolver();
-    JsonDependencyResolver dependencyResolver = new JsonDependencyResolver();
+    private final JsonDependencyResolver dependencyResolver = new JsonDependencyResolver();
 
     public Json2Bean() {
         this(new JsonNumberTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());

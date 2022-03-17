@@ -18,6 +18,7 @@
     </properties>
 
     <modules>
+        <module>json2bean-standalone</module>
         <module>thrift-parser</module>
         <module>protobuf-parser</module>
         <module>parser-commons</module>
