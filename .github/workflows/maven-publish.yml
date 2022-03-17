@@ -21,6 +21,6 @@ jobs:
           java-version: 11
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn -U clean deploy -s ${GITHUB_WORKSPACE}/.github/workflows/settings.xml
+        run: mvn -U clean deploy
         env:
           GITHUB_TOKEN: ${{ github.token }}
