@@ -43,7 +43,7 @@ import static java.nio.file.StandardOpenOption.*;
  * #2 file resource
  * #2 file resource in directory
  */
-@Command(name = "bean")
+@Command(name = "bean", description = "Convert JSON to POJO.")
 public class Json2BeanCommand implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Json2BeanCommand.class);
     private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();

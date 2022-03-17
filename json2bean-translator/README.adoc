@@ -1,5 +1,6 @@
 = JSON解析与对象生成
 :toc:
+:icons: font
 
 现如今，基于HTTP/HTTPS的RESTful API的广泛应用，而JSON则是其传输数据的默认格式。 一些公司针对内部团队的API也都用HTTP/HTTPS协议，作为API的调用方，就需要大量的处理JSON解析的工作。除了Javascript之外的语言，都或多或少的要做这个工作。[.underline]##https://github.com/reploop/reploop-parser[reploop-parser]##项目一来想实践一下编译原理中从词法，语法，解析器到中间代码生成等等的东西，另外也能自动化处理JSON到对象的映射，减少手动敲机械键盘写代码带来的噪音。
 
@@ -165,6 +166,48 @@ API返回的JSON基本上都是API开发者定义好的，给啥就是啥。 所
 == 实现方案
 
 具体到实现的时候，采用先将JSON解析为Protobuf的方式，然后再将Protobuf转为Java。这样就是选择Protobuf为一种中间表达(IR)，就像Java的bytecode一样，这样方便利用Protobuf的多语言支持，将JSON转化为更多目标语言。
+
+== 使用方式
+
+打算通过3种方式来使用，分别是：
+
+=== 命令行
+
+参见项目``json2bean-standalone``，用Maven打包生成一个可执行的jar包，然后通过命令行传输参数执行。
+
+直接运行：
+
+[source,bash]
+----
+java -jar json2bean-standalone-0.17-SNAPSHOT.jar
+----
+
+输出帮助信息：
+
+[source,bash]
+----
+usage: json2 <command> [ <args> ]                   //<1>
+
+Commands are:
+    bean    Convert JSON to POJO.                   //<2>
+    help    Display help information                //<3>
+    proto   Translate JSON to Protobuf Schema. TBD. //<4>
+
+See 'json2 help <command>' for more information on a specific command.
+----
+
+<1> json2 可以在命令行设置一个``alias json2="java -jar json2bean-standalone-0.17-SNAPSHOT.jar"``。 这里面的Java环境和Jar包的路径需要根据自身情况修改一下。
+<2> bean命令，生成POJO。
+<3> help命令，默认打印帮助信息。
+<4> proto命令，生成Protobuf Schema。筹划中。。。
+
+=== Maven插件
+
+筹划中。。。
+
+=== Intellij IDEA插件
+
+筹划中。。。
 
 == 参考
 
