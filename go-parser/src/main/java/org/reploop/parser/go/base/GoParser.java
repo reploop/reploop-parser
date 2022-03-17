@@ -1,78 +1,81 @@
-// Generated from org/reploop/parser/go/base/GoParser.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/go/base/GoParser.g4 by ANTLR 4.9.3
 package org.reploop.parser.go.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GoParser extends GoParserBase {
-	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.9.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		BREAK=1, DEFAULT=2, FUNC=3, INTERFACE=4, SELECT=5, CASE=6, DEFER=7, GO=8,
-		MAP=9, STRUCT=10, CHAN=11, ELSE=12, GOTO=13, PACKAGE=14, SWITCH=15, CONST=16,
-		FALLTHROUGH=17, IF=18, RANGE=19, TYPE=20, CONTINUE=21, FOR=22, IMPORT=23,
-		RETURN=24, VAR=25, NIL_LIT=26, IDENTIFIER=27, L_PAREN=28, R_PAREN=29,
-		L_CURLY=30, R_CURLY=31, L_BRACKET=32, R_BRACKET=33, ASSIGN=34, COMMA=35,
-		SEMI=36, COLON=37, DOT=38, PLUS_PLUS=39, MINUS_MINUS=40, DECLARE_ASSIGN=41,
-		ELLIPSIS=42, LOGICAL_OR=43, LOGICAL_AND=44, EQUALS=45, NOT_EQUALS=46,
-		LESS=47, LESS_OR_EQUALS=48, GREATER=49, GREATER_OR_EQUALS=50, OR=51, DIV=52,
-		MOD=53, LSHIFT=54, RSHIFT=55, BIT_CLEAR=56, EXCLAMATION=57, PLUS=58, MINUS=59,
-		CARET=60, STAR=61, AMPERSAND=62, RECEIVE=63, DECIMAL_LIT=64, OCTAL_LIT=65,
-		HEX_LIT=66, FLOAT_LIT=67, IMAGINARY_LIT=68, RUNE_LIT=69, RAW_STRING_LIT=70,
+		BREAK=1, DEFAULT=2, FUNC=3, INTERFACE=4, SELECT=5, CASE=6, DEFER=7, GO=8, 
+		MAP=9, STRUCT=10, CHAN=11, ELSE=12, GOTO=13, PACKAGE=14, SWITCH=15, CONST=16, 
+		FALLTHROUGH=17, IF=18, RANGE=19, TYPE=20, CONTINUE=21, FOR=22, IMPORT=23, 
+		RETURN=24, VAR=25, NIL_LIT=26, IDENTIFIER=27, L_PAREN=28, R_PAREN=29, 
+		L_CURLY=30, R_CURLY=31, L_BRACKET=32, R_BRACKET=33, ASSIGN=34, COMMA=35, 
+		SEMI=36, COLON=37, DOT=38, PLUS_PLUS=39, MINUS_MINUS=40, DECLARE_ASSIGN=41, 
+		ELLIPSIS=42, LOGICAL_OR=43, LOGICAL_AND=44, EQUALS=45, NOT_EQUALS=46, 
+		LESS=47, LESS_OR_EQUALS=48, GREATER=49, GREATER_OR_EQUALS=50, OR=51, DIV=52, 
+		MOD=53, LSHIFT=54, RSHIFT=55, BIT_CLEAR=56, EXCLAMATION=57, PLUS=58, MINUS=59, 
+		CARET=60, STAR=61, AMPERSAND=62, RECEIVE=63, DECIMAL_LIT=64, OCTAL_LIT=65, 
+		HEX_LIT=66, FLOAT_LIT=67, IMAGINARY_LIT=68, RUNE_LIT=69, RAW_STRING_LIT=70, 
 		INTERPRETED_STRING_LIT=71, WS=72, COMMENT=73, TERMINATOR=74, LINE_COMMENT=75;
 	public static final int
-		RULE_sourceFile = 0, RULE_packageClause = 1, RULE_importDecl = 2, RULE_importSpec = 3,
-		RULE_importPath = 4, RULE_declaration = 5, RULE_constDecl = 6, RULE_constSpec = 7,
-		RULE_identifierList = 8, RULE_expressionList = 9, RULE_typeDecl = 10,
-		RULE_typeSpec = 11, RULE_functionDecl = 12, RULE_methodDecl = 13, RULE_receiver = 14,
-		RULE_varDecl = 15, RULE_varSpec = 16, RULE_block = 17, RULE_statementList = 18,
-		RULE_statement = 19, RULE_simpleStmt = 20, RULE_expressionStmt = 21, RULE_sendStmt = 22,
-		RULE_incDecStmt = 23, RULE_assignment = 24, RULE_assign_op = 25, RULE_shortVarDecl = 26,
-		RULE_emptyStmt = 27, RULE_labeledStmt = 28, RULE_returnStmt = 29, RULE_breakStmt = 30,
-		RULE_continueStmt = 31, RULE_gotoStmt = 32, RULE_fallthroughStmt = 33,
-		RULE_deferStmt = 34, RULE_ifStmt = 35, RULE_switchStmt = 36, RULE_exprSwitchStmt = 37,
-		RULE_exprCaseClause = 38, RULE_exprSwitchCase = 39, RULE_typeSwitchStmt = 40,
-		RULE_typeSwitchGuard = 41, RULE_typeCaseClause = 42, RULE_typeSwitchCase = 43,
-		RULE_typeList = 44, RULE_selectStmt = 45, RULE_commClause = 46, RULE_commCase = 47,
-		RULE_recvStmt = 48, RULE_forStmt = 49, RULE_forClause = 50, RULE_rangeClause = 51,
-		RULE_goStmt = 52, RULE_type_ = 53, RULE_typeName = 54, RULE_typeLit = 55,
-		RULE_arrayType = 56, RULE_arrayLength = 57, RULE_elementType = 58, RULE_pointerType = 59,
-		RULE_interfaceType = 60, RULE_sliceType = 61, RULE_mapType = 62, RULE_channelType = 63,
-		RULE_methodSpec = 64, RULE_functionType = 65, RULE_signature = 66, RULE_result = 67,
-		RULE_parameters = 68, RULE_parameterDecl = 69, RULE_expression = 70, RULE_primaryExpr = 71,
-		RULE_unaryExpr = 72, RULE_conversion = 73, RULE_operand = 74, RULE_literal = 75,
-		RULE_basicLit = 76, RULE_integer = 77, RULE_operandName = 78, RULE_qualifiedIdent = 79,
-		RULE_compositeLit = 80, RULE_literalType = 81, RULE_literalValue = 82,
-		RULE_elementList = 83, RULE_keyedElement = 84, RULE_key = 85, RULE_element = 86,
-		RULE_structType = 87, RULE_fieldDecl = 88, RULE_string_ = 89, RULE_anonymousField = 90,
-		RULE_functionLit = 91, RULE_index = 92, RULE_slice = 93, RULE_typeAssertion = 94,
+		RULE_sourceFile = 0, RULE_packageClause = 1, RULE_importDecl = 2, RULE_importSpec = 3, 
+		RULE_importPath = 4, RULE_declaration = 5, RULE_constDecl = 6, RULE_constSpec = 7, 
+		RULE_identifierList = 8, RULE_expressionList = 9, RULE_typeDecl = 10, 
+		RULE_typeSpec = 11, RULE_functionDecl = 12, RULE_methodDecl = 13, RULE_receiver = 14, 
+		RULE_varDecl = 15, RULE_varSpec = 16, RULE_block = 17, RULE_statementList = 18, 
+		RULE_statement = 19, RULE_simpleStmt = 20, RULE_expressionStmt = 21, RULE_sendStmt = 22, 
+		RULE_incDecStmt = 23, RULE_assignment = 24, RULE_assign_op = 25, RULE_shortVarDecl = 26, 
+		RULE_emptyStmt = 27, RULE_labeledStmt = 28, RULE_returnStmt = 29, RULE_breakStmt = 30, 
+		RULE_continueStmt = 31, RULE_gotoStmt = 32, RULE_fallthroughStmt = 33, 
+		RULE_deferStmt = 34, RULE_ifStmt = 35, RULE_switchStmt = 36, RULE_exprSwitchStmt = 37, 
+		RULE_exprCaseClause = 38, RULE_exprSwitchCase = 39, RULE_typeSwitchStmt = 40, 
+		RULE_typeSwitchGuard = 41, RULE_typeCaseClause = 42, RULE_typeSwitchCase = 43, 
+		RULE_typeList = 44, RULE_selectStmt = 45, RULE_commClause = 46, RULE_commCase = 47, 
+		RULE_recvStmt = 48, RULE_forStmt = 49, RULE_forClause = 50, RULE_rangeClause = 51, 
+		RULE_goStmt = 52, RULE_type_ = 53, RULE_typeName = 54, RULE_typeLit = 55, 
+		RULE_arrayType = 56, RULE_arrayLength = 57, RULE_elementType = 58, RULE_pointerType = 59, 
+		RULE_interfaceType = 60, RULE_sliceType = 61, RULE_mapType = 62, RULE_channelType = 63, 
+		RULE_methodSpec = 64, RULE_functionType = 65, RULE_signature = 66, RULE_result = 67, 
+		RULE_parameters = 68, RULE_parameterDecl = 69, RULE_expression = 70, RULE_primaryExpr = 71, 
+		RULE_unaryExpr = 72, RULE_conversion = 73, RULE_operand = 74, RULE_literal = 75, 
+		RULE_basicLit = 76, RULE_integer = 77, RULE_operandName = 78, RULE_qualifiedIdent = 79, 
+		RULE_compositeLit = 80, RULE_literalType = 81, RULE_literalValue = 82, 
+		RULE_elementList = 83, RULE_keyedElement = 84, RULE_key = 85, RULE_element = 86, 
+		RULE_structType = 87, RULE_fieldDecl = 88, RULE_string_ = 89, RULE_anonymousField = 90, 
+		RULE_functionLit = 91, RULE_index = 92, RULE_slice = 93, RULE_typeAssertion = 94, 
 		RULE_arguments = 95, RULE_methodExpr = 96, RULE_receiverType = 97, RULE_eos = 98;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"sourceFile", "packageClause", "importDecl", "importSpec", "importPath",
-			"declaration", "constDecl", "constSpec", "identifierList", "expressionList",
-			"typeDecl", "typeSpec", "functionDecl", "methodDecl", "receiver", "varDecl",
-			"varSpec", "block", "statementList", "statement", "simpleStmt", "expressionStmt",
-			"sendStmt", "incDecStmt", "assignment", "assign_op", "shortVarDecl",
-			"emptyStmt", "labeledStmt", "returnStmt", "breakStmt", "continueStmt",
-			"gotoStmt", "fallthroughStmt", "deferStmt", "ifStmt", "switchStmt", "exprSwitchStmt",
-			"exprCaseClause", "exprSwitchCase", "typeSwitchStmt", "typeSwitchGuard",
-			"typeCaseClause", "typeSwitchCase", "typeList", "selectStmt", "commClause",
-			"commCase", "recvStmt", "forStmt", "forClause", "rangeClause", "goStmt",
-			"type_", "typeName", "typeLit", "arrayType", "arrayLength", "elementType",
-			"pointerType", "interfaceType", "sliceType", "mapType", "channelType",
-			"methodSpec", "functionType", "signature", "result", "parameters", "parameterDecl",
-			"expression", "primaryExpr", "unaryExpr", "conversion", "operand", "literal",
-			"basicLit", "integer", "operandName", "qualifiedIdent", "compositeLit",
-			"literalType", "literalValue", "elementList", "keyedElement", "key",
-			"element", "structType", "fieldDecl", "string_", "anonymousField", "functionLit",
-			"index", "slice", "typeAssertion", "arguments", "methodExpr", "receiverType",
+			"sourceFile", "packageClause", "importDecl", "importSpec", "importPath", 
+			"declaration", "constDecl", "constSpec", "identifierList", "expressionList", 
+			"typeDecl", "typeSpec", "functionDecl", "methodDecl", "receiver", "varDecl", 
+			"varSpec", "block", "statementList", "statement", "simpleStmt", "expressionStmt", 
+			"sendStmt", "incDecStmt", "assignment", "assign_op", "shortVarDecl", 
+			"emptyStmt", "labeledStmt", "returnStmt", "breakStmt", "continueStmt", 
+			"gotoStmt", "fallthroughStmt", "deferStmt", "ifStmt", "switchStmt", "exprSwitchStmt", 
+			"exprCaseClause", "exprSwitchCase", "typeSwitchStmt", "typeSwitchGuard", 
+			"typeCaseClause", "typeSwitchCase", "typeList", "selectStmt", "commClause", 
+			"commCase", "recvStmt", "forStmt", "forClause", "rangeClause", "goStmt", 
+			"type_", "typeName", "typeLit", "arrayType", "arrayLength", "elementType", 
+			"pointerType", "interfaceType", "sliceType", "mapType", "channelType", 
+			"methodSpec", "functionType", "signature", "result", "parameters", "parameterDecl", 
+			"expression", "primaryExpr", "unaryExpr", "conversion", "operand", "literal", 
+			"basicLit", "integer", "operandName", "qualifiedIdent", "compositeLit", 
+			"literalType", "literalValue", "elementList", "keyedElement", "key", 
+			"element", "structType", "fieldDecl", "string_", "anonymousField", "functionLit", 
+			"index", "slice", "typeAssertion", "arguments", "methodExpr", "receiverType", 
 			"eos"
 		};
 	}
@@ -80,30 +83,30 @@ public class GoParser extends GoParserBase {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'break'", "'default'", "'func'", "'interface'", "'select'", "'case'",
-			"'defer'", "'go'", "'map'", "'struct'", "'chan'", "'else'", "'goto'",
-			"'package'", "'switch'", "'const'", "'fallthrough'", "'if'", "'range'",
-			"'type'", "'continue'", "'for'", "'import'", "'return'", "'var'", "'nil'",
-			null, "'('", "')'", "'{'", "'}'", "'['", "']'", "'='", "','", "';'",
-			"':'", "'.'", "'++'", "'--'", "':='", "'...'", "'||'", "'&&'", "'=='",
-			"'!='", "'<'", "'<='", "'>'", "'>='", "'|'", "'/'", "'%'", "'<<'", "'>>'",
+			null, "'break'", "'default'", "'func'", "'interface'", "'select'", "'case'", 
+			"'defer'", "'go'", "'map'", "'struct'", "'chan'", "'else'", "'goto'", 
+			"'package'", "'switch'", "'const'", "'fallthrough'", "'if'", "'range'", 
+			"'type'", "'continue'", "'for'", "'import'", "'return'", "'var'", "'nil'", 
+			null, "'('", "')'", "'{'", "'}'", "'['", "']'", "'='", "','", "';'", 
+			"':'", "'.'", "'++'", "'--'", "':='", "'...'", "'||'", "'&&'", "'=='", 
+			"'!='", "'<'", "'<='", "'>'", "'>='", "'|'", "'/'", "'%'", "'<<'", "'>>'", 
 			"'&^'", "'!'", "'+'", "'-'", "'^'", "'*'", "'&'", "'<-'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "BREAK", "DEFAULT", "FUNC", "INTERFACE", "SELECT", "CASE", "DEFER",
-			"GO", "MAP", "STRUCT", "CHAN", "ELSE", "GOTO", "PACKAGE", "SWITCH", "CONST",
-			"FALLTHROUGH", "IF", "RANGE", "TYPE", "CONTINUE", "FOR", "IMPORT", "RETURN",
-			"VAR", "NIL_LIT", "IDENTIFIER", "L_PAREN", "R_PAREN", "L_CURLY", "R_CURLY",
-			"L_BRACKET", "R_BRACKET", "ASSIGN", "COMMA", "SEMI", "COLON", "DOT",
-			"PLUS_PLUS", "MINUS_MINUS", "DECLARE_ASSIGN", "ELLIPSIS", "LOGICAL_OR",
-			"LOGICAL_AND", "EQUALS", "NOT_EQUALS", "LESS", "LESS_OR_EQUALS", "GREATER",
-			"GREATER_OR_EQUALS", "OR", "DIV", "MOD", "LSHIFT", "RSHIFT", "BIT_CLEAR",
-			"EXCLAMATION", "PLUS", "MINUS", "CARET", "STAR", "AMPERSAND", "RECEIVE",
-			"DECIMAL_LIT", "OCTAL_LIT", "HEX_LIT", "FLOAT_LIT", "IMAGINARY_LIT",
-			"RUNE_LIT", "RAW_STRING_LIT", "INTERPRETED_STRING_LIT", "WS", "COMMENT",
+			null, "BREAK", "DEFAULT", "FUNC", "INTERFACE", "SELECT", "CASE", "DEFER", 
+			"GO", "MAP", "STRUCT", "CHAN", "ELSE", "GOTO", "PACKAGE", "SWITCH", "CONST", 
+			"FALLTHROUGH", "IF", "RANGE", "TYPE", "CONTINUE", "FOR", "IMPORT", "RETURN", 
+			"VAR", "NIL_LIT", "IDENTIFIER", "L_PAREN", "R_PAREN", "L_CURLY", "R_CURLY", 
+			"L_BRACKET", "R_BRACKET", "ASSIGN", "COMMA", "SEMI", "COLON", "DOT", 
+			"PLUS_PLUS", "MINUS_MINUS", "DECLARE_ASSIGN", "ELLIPSIS", "LOGICAL_OR", 
+			"LOGICAL_AND", "EQUALS", "NOT_EQUALS", "LESS", "LESS_OR_EQUALS", "GREATER", 
+			"GREATER_OR_EQUALS", "OR", "DIV", "MOD", "LSHIFT", "RSHIFT", "BIT_CLEAR", 
+			"EXCLAMATION", "PLUS", "MINUS", "CARET", "STAR", "AMPERSAND", "RECEIVE", 
+			"DECIMAL_LIT", "OCTAL_LIT", "HEX_LIT", "FLOAT_LIT", "IMAGINARY_LIT", 
+			"RUNE_LIT", "RAW_STRING_LIT", "INTERPRETED_STRING_LIT", "WS", "COMMENT", 
 			"TERMINATOR", "LINE_COMMENT"
 		};
 	}
@@ -825,7 +828,7 @@ public class GoParser extends GoParserBase {
 					setState(273);
 					match(IDENTIFIER);
 					}
-					}
+					} 
 				}
 				setState(278);
 				_errHandler.sync(this);
@@ -895,7 +898,7 @@ public class GoParser extends GoParserBase {
 					setState(281);
 					expression(0);
 					}
-					}
+					} 
 				}
 				setState(286);
 				_errHandler.sync(this);
@@ -1528,7 +1531,7 @@ public class GoParser extends GoParserBase {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(355);
+			setState(355); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -1540,7 +1543,7 @@ public class GoParser extends GoParserBase {
 				eos();
 				}
 				}
-				setState(357);
+				setState(357); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BREAK) | (1L << FUNC) | (1L << INTERFACE) | (1L << SELECT) | (1L << DEFER) | (1L << GO) | (1L << MAP) | (1L << STRUCT) | (1L << CHAN) | (1L << GOTO) | (1L << SWITCH) | (1L << CONST) | (1L << FALLTHROUGH) | (1L << IF) | (1L << TYPE) | (1L << CONTINUE) | (1L << FOR) | (1L << RETURN) | (1L << VAR) | (1L << NIL_LIT) | (1L << IDENTIFIER) | (1L << L_PAREN) | (1L << L_CURLY) | (1L << L_BRACKET) | (1L << SEMI) | (1L << EXCLAMATION) | (1L << PLUS) | (1L << MINUS) | (1L << CARET) | (1L << STAR) | (1L << AMPERSAND) | (1L << RECEIVE))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (DECIMAL_LIT - 64)) | (1L << (OCTAL_LIT - 64)) | (1L << (HEX_LIT - 64)) | (1L << (FLOAT_LIT - 64)) | (1L << (IMAGINARY_LIT - 64)) | (1L << (RUNE_LIT - 64)) | (1L << (RAW_STRING_LIT - 64)) | (1L << (INTERPRETED_STRING_LIT - 64)))) != 0) );
@@ -4436,7 +4439,7 @@ public class GoParser extends GoParserBase {
 					setState(632);
 					eos();
 					}
-					}
+					} 
 				}
 				setState(638);
 				_errHandler.sync(this);
@@ -4948,7 +4951,7 @@ public class GoParser extends GoParserBase {
 						setState(687);
 						parameterDecl();
 						}
-						}
+						} 
 					}
 					setState(692);
 					_errHandler.sync(this);
@@ -5231,7 +5234,7 @@ public class GoParser extends GoParserBase {
 						}
 						break;
 					}
-					}
+					} 
 				}
 				setState(732);
 				_errHandler.sync(this);
@@ -5375,7 +5378,7 @@ public class GoParser extends GoParserBase {
 						break;
 					}
 					}
-					}
+					} 
 				}
 				setState(751);
 				_errHandler.sync(this);
@@ -6242,7 +6245,7 @@ public class GoParser extends GoParserBase {
 					setState(822);
 					keyedElement();
 					}
-					}
+					} 
 				}
 				setState(827);
 				_errHandler.sync(this);
@@ -6532,7 +6535,7 @@ public class GoParser extends GoParserBase {
 					setState(847);
 					eos();
 					}
-					}
+					} 
 				}
 				setState(853);
 				_errHandler.sync(this);

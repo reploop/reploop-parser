@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.8
+// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.9.3
 package org.reploop.parser.mysql.base;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
