@@ -29,6 +29,7 @@ jobs:
               "username": "${{ secrets.OSSRH_USERNAME }}",
               "password": "${{ secrets.OSSRH_PASSWORD }}"
             }]
+          sonatypeSnapshots: true
       - name: Build with Maven
         run: |
           cat ~/.m2/settings.xml
