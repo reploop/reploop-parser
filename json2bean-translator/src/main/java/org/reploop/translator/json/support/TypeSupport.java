@@ -18,7 +18,7 @@ public class TypeSupport {
     public static final Pattern LEGAL_JAVA_IDENTIFIER = Pattern.compile("[_$a-zA-Z][_$A-Za-z0-9]*");
 
     /**
-     * Find the most concrete field type. Usually it's primitive types or user defined class.
+     * Find the most concrete field type. Usually its primitive types or user defined class.
      *
      * @param fieldType the type to probe
      * @return the concrete type

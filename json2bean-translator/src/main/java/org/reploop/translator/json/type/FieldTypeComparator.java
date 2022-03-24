@@ -15,6 +15,19 @@ public class FieldTypeComparator implements Comparator<FieldType> {
         return o0.compareTo(o1);
     }
 
+    /**
+     * It's only number, string and object need to compare.
+     * StructType should not be different from each other, so they are same.
+     *
+     * <p>
+     * String > Number
+     * String > Object
+     * Number > Object
+     * </p>
+     *
+     * @param type The file type.
+     * @return compare result.
+     */
     private Integer valueTypeOrder(FieldType type) {
         if (type instanceof CollectionType) {
             return valueTypeOrder(((CollectionType) type).getElementType());
@@ -24,17 +37,19 @@ public class FieldTypeComparator implements Comparator<FieldType> {
         }
         // String > Number
         if (type instanceof StringType) {
+            // Longest bits of number type is 64, so string is larger than number type.
             return 128;
         }
         // bits range from 8 to 64
         if (type instanceof NumberType) {
             return ((NumberType) type).bits();
         }
-        // Number
+        // The minimal one is Object type.
         if (type instanceof StructType && type.getName().suffix().equals("Object")) {
             return Integer.MIN_VALUE;
         }
-        return 0;
+        // Between the number and the object.
+        return Integer.MIN_VALUE + 1;
     }
 
 }

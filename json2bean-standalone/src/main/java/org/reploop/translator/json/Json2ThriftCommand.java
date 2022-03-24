@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * #2 file resource
  * #2 file resource in directory
  */
-@Command(name = "proto", description = "Translate JSON to Protobuf Schema.")
-public class Json2ProtoCommand extends Json2Command {
-    private static final Logger LOG = LoggerFactory.getLogger(Json2ProtoCommand.class);
+@Command(name = "thrift", description = "Translate JSON to Protobuf Schema.")
+public class Json2ThriftCommand extends Json2Command {
+    private static final Logger LOG = LoggerFactory.getLogger(Json2ThriftCommand.class);
 }

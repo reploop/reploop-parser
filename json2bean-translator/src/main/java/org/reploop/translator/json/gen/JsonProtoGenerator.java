@@ -1,4 +1,4 @@
-package org.reploop.translator.json.bean;
+package org.reploop.translator.json.gen;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
@@ -8,6 +8,7 @@ import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.translator.json.bean.JsonBeanContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

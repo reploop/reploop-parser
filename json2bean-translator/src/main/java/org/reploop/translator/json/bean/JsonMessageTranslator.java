@@ -117,10 +117,10 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
 
         // In case of illegal key, use Map instead of object
         boolean anyIllegalIdentifier = pairs.stream()
-            .filter(Objects::nonNull)
-            .map(Pair::getKey)
-            .filter(Objects::nonNull)
-            .anyMatch(key -> !isLegalIdentifier(key));
+                .filter(Objects::nonNull)
+                .map(Pair::getKey)
+                .filter(Objects::nonNull)
+                .anyMatch(key -> !isLegalIdentifier(key));
 
         for (Pair pair : pairs) {
             JsonMessageContext ctx;
@@ -184,7 +184,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     @Override
     public Field visitPair(Pair pair, JsonMessageContext context) {
         FieldType fieldType = visitValue(pair.getValue(), context);
-        return new Field(FieldModifier.required, DEFAULT_INDEX, pair.getKey(), fieldType, empty(), emptyList());
+        // Use a default index, in order to compare different fields.
+        return new Field(FieldModifier.optional, DEFAULT_INDEX, pair.getKey(), fieldType, empty(), emptyList());
     }
 
     @Override
@@ -198,7 +199,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
             try {
                 Json json = (Json) jsonParser.parse(new StringReader(text), JsonBaseParser::json);
                 return visitJson(json, context);
-            } catch (Exception ignored) {
+            } catch (Exception e) {
+                LOGGER.warn("Cannot process raw json {}", val, e);
             }
         }
         return new StringType();
@@ -212,10 +214,10 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     @Override
     public ListType visitArray(Array array, JsonMessageContext context) {
         List<FieldType> types = Stream.ofNullable(array.getValues())
-            .filter(Objects::nonNull)
-            .flatMap(Collection::stream)
-            .map(value -> visitValue(value, context))
-            .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .map(value -> visitValue(value, context))
+                .collect(Collectors.toList());
         Optional<FieldType> oft = typeOf(types);
         // Empty array, we cannot infer element type, so Object it is.
         FieldType fieldType = oft.orElse(OBJECT);

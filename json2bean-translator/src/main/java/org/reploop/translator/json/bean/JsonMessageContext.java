@@ -9,7 +9,7 @@ import java.util.*;
 
 public class JsonMessageContext {
     /**
-     * Base namespace
+     * Current message's full qualified name
      */
     private QualifiedName name;
     private boolean abstractClass;

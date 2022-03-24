@@ -9,8 +9,8 @@ import org.reploop.parser.protobuf.AstVisitor;
  * @since 2015-06-05 18
  */
 public class MapType extends FieldType {
-    private FieldType keyType;
-    private FieldType valueType;
+    private final FieldType keyType;
+    private final FieldType valueType;
 
     public MapType(FieldType keyType, FieldType valueType) {
         super("Map");

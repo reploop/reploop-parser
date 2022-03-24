@@ -74,17 +74,17 @@ public class Json2Bean {
             for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
                 // Grouped by field name
                 Map<String, Set<Field>> groups = entry.getValue().stream()
-                    .map(Message::getFields)
-                    .filter(Objects::nonNull)
-                    .flatMap(Collection::stream)
-                    .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
+                        .map(Message::getFields)
+                        .filter(Objects::nonNull)
+                        .flatMap(Collection::stream)
+                        .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
 
-                // Merge fields with same name and analyze it's type
+                // Merge fields with same name and analyze its type
                 List<Field> uniqueFields = groups.values().stream()
-                    .map(this::merge)
-                    .filter(Objects::nonNull)
-                    .sorted(Comparator.comparing(Field::getName))
-                    .collect(Collectors.toList());
+                        .map(this::merge)
+                        .filter(Objects::nonNull)
+                        .sorted(Comparator.comparing(Field::getName))
+                        .collect(Collectors.toList());
                 Message message = new Message(entry.getKey(), uniqueFields);
                 messageMap.put(entry.getKey(), message);
             }
@@ -112,7 +112,7 @@ public class Json2Bean {
                                       Set<QualifiedName> deps) {
         if (null != deps && deps.size() > 0) {
             for (QualifiedName dep : deps) {
-                // Message exists and did not processed
+                // Message exists and did not process
                 // One class can have itself as property types.
                 if (nameMessageMap.containsKey(dep) && !all.contains(dep)) {
                     all.add(dep);
@@ -127,7 +127,7 @@ public class Json2Bean {
     }
 
     public Map<QualifiedName, Message> execute(CharStream stream, JsonMessageContext context) {
-        // #1 Parse JSON to Protobuf Schema.
+        // #1 Parse JSON to JSON AST, then to protobuf message
         Json json = (Json) parser.parse(stream, JsonBaseParser::json);
         FieldType fieldType = translator.visitJson(json, context);
 

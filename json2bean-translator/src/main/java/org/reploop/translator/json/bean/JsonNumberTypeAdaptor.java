@@ -12,7 +12,7 @@ import java.util.Map;
 import static java.lang.Math.max;
 
 /**
- * Prefer float-point number first. then choose type of largest bits.
+ * Prefer float-point number first. then choose type of the largest bits.
  */
 public class JsonNumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
 
