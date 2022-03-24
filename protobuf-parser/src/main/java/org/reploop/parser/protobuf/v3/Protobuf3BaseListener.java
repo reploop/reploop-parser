@@ -184,13 +184,13 @@ public class Protobuf3BaseListener implements Protobuf3Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType_(Protobuf3Parser.Type_Context ctx) { }
+	@Override public void enterFieldType(Protobuf3Parser.FieldTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType_(Protobuf3Parser.Type_Context ctx) { }
+	@Override public void exitFieldType(Protobuf3Parser.FieldTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

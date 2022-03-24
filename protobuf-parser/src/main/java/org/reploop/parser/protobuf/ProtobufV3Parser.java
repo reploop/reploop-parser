@@ -50,7 +50,7 @@ public class ProtobufV3Parser extends ParserDriver<Node, Protobuf3Lexer, Protobu
 
     @Override
     protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-        return new ProtobufAstBuilder(tokenStream);
+        return new ProtobufV3AstBuilder(tokenStream);
     }
 
     @Override

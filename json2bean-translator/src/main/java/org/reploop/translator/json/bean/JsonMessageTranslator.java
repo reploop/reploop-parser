@@ -1,15 +1,17 @@
 package org.reploop.translator.json.bean;
 
+import com.google.common.collect.ImmutableList;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.JsonParser;
 import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.tree.Entity;
 import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.Value;
 import org.reploop.parser.json.tree.*;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.Field;
-import org.reploop.parser.protobuf.tree.FieldModifier;
-import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
@@ -18,6 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.StringReader;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -184,8 +187,16 @@ public class JsonMessageTranslator extends AstVisitor<Node, JsonMessageContext> 
     @Override
     public Field visitPair(Pair pair, JsonMessageContext context) {
         FieldType fieldType = visitValue(pair.getValue(), context);
+        var od = context.hasDateFormat();
+        var obs = ImmutableList.<Option>builder();
+        od.ifPresent(new Consumer<String>() {
+            @Override
+            public void accept(String format) {
+                obs.add(new CommonPair("dateformat", new StringValue(format)));
+            }
+        });
         // Use a default index, in order to compare different fields.
-        return new Field(FieldModifier.optional, DEFAULT_INDEX, pair.getKey(), fieldType, empty(), emptyList());
+        return new Field(FieldModifier.optional, DEFAULT_INDEX, pair.getKey(), fieldType, Optional.empty(), Collections.emptyList(), obs.build());
     }
 
     @Override

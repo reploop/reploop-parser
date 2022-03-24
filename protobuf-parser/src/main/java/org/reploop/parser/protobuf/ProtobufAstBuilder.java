@@ -1,5 +1,6 @@
 package org.reploop.parser.protobuf;
 
+import com.google.common.collect.ImmutableList;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
@@ -65,19 +66,19 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
 
     private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
         return Optional.ofNullable(context)
-            .map(this::visit)
-            .filter(Objects::nonNull)
-            .map(clazz::cast);
+                .map(this::visit)
+                .filter(Objects::nonNull)
+                .map(clazz::cast);
     }
 
 
     private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
         if (null != contexts) {
             return contexts.stream()
-                .map(this::visit)
-                .filter(Objects::nonNull)
-                .map(clazz::cast)
-                .collect(Collectors.toList());
+                    .map(this::visit)
+                    .filter(Objects::nonNull)
+                    .map(clazz::cast)
+                    .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }
@@ -273,34 +274,36 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
     public Field visitField(Protobuf2Parser.FieldContext ctx) {
         TerminalNode node = ctx.FieldModifier();
         FieldModifier modifier = FieldModifier.valueOf(node.getText());
-        Optional<Options> options = visitIfPresent(ctx.multiOptions(), Options.class);
+        Optional<Options> oop = visitIfPresent(ctx.multiOptions(), Options.class);
+        var obs = ImmutableList.<Option>builder();
         Optional<Value> value = Optional.empty();
-        if (options.isPresent()) {
-            List<Pair> pairs = options.get().getPairs();
+        if (oop.isPresent()) {
+            List<Pair> pairs = oop.get().getPairs();
             for (Pair pair : pairs) {
+                obs.add(pair);
                 if (pair instanceof DefaultPair) {
                     value = Optional.ofNullable(pair.getValue());
-                    break;
                 }
             }
         }
         StringValue name = (StringValue) visit(ctx.fieldName());
         return new Field(modifier,
-            getInt(ctx.INT()),
-            name.getValue(),
-            visitFieldType(ctx.fieldType()),
-            value,
-            comments(ctx.getStart()));
+                getInt(ctx.INT()),
+                name.getValue(),
+                visitFieldType(ctx.fieldType()),
+                value,
+                comments(ctx.getStart()),
+                obs.build());
     }
 
     @Override
     public ProtoProgram visitProgram(Protobuf2Parser.ProgramContext ctx) {
         return new ProtoProgram(
-            comments(ctx.getStart()),
-            visit(ctx.option(), Option.class),
-            visit(ctx.header(), Header.class),
-            visit(ctx.message(), Message.class),
-            visit(ctx.enumeration(), Enumeration.class),
-            visit(ctx.service(), Service.class));
+                comments(ctx.getStart()),
+                visit(ctx.option(), Option.class),
+                visit(ctx.header(), Header.class),
+                visit(ctx.message(), Message.class),
+                visit(ctx.enumeration(), Enumeration.class),
+                visit(ctx.service(), Service.class));
     }
 }

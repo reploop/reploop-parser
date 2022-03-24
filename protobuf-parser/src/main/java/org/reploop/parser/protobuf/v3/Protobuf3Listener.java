@@ -148,15 +148,15 @@ public interface Protobuf3Listener extends ParseTreeListener {
 	 */
 	void exitKeyType(Protobuf3Parser.KeyTypeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link Protobuf3Parser#type_}.
+	 * Enter a parse tree produced by {@link Protobuf3Parser#fieldType}.
 	 * @param ctx the parse tree
 	 */
-	void enterType_(Protobuf3Parser.Type_Context ctx);
+	void enterFieldType(Protobuf3Parser.FieldTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link Protobuf3Parser#type_}.
+	 * Exit a parse tree produced by {@link Protobuf3Parser#fieldType}.
 	 * @param ctx the parse tree
 	 */
-	void exitType_(Protobuf3Parser.Type_Context ctx);
+	void exitFieldType(Protobuf3Parser.FieldTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link Protobuf3Parser#reserved}.
 	 * @param ctx the parse tree
