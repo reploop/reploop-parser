@@ -21,7 +21,7 @@ import java.util.stream.Stream;
     requiresProject = true,
     threadSafe = true)
 public class Json2BeanMojo extends AbstractMojo {
-    @Parameter(defaultValue = "${project}", required = true)
+    @Parameter(defaultValue = "${project}", required = true, readonly = true)
     private MavenProject project;
     /**
      * JSON files.
@@ -31,8 +31,8 @@ public class Json2BeanMojo extends AbstractMojo {
     /**
      * Output directory.
      */
-    @Parameter(readonly = true, defaultValue = "${project.maven-gen}")
-    private Path output;
+    @Parameter(readonly = true, defaultValue = "${project.build.outputDirectory}</version>")
+    private Path outputDirectory;
     @Parameter(defaultValue = "true")
     private Boolean enableRootGuess;
     @Parameter
