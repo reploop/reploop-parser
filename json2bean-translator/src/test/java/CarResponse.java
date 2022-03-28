@@ -54,4 +54,37 @@ public class CarResponse implements Serializable {
                 .toString();
     }
     
+    public static Builder newCarResponseBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CarResponse data = new CarResponse();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Builder rows(List<Rows> rows) {
+            data.setRows(rows);
+            return this;
+        }
+        
+        public Builder total(Integer total) {
+            data.setTotal(total);
+            return this;
+        }
+        
+        public CarResponse build() {
+            return data;
+        }
+        
+    }
+    
 }

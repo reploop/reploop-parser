@@ -2,12 +2,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import department.Data; 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Department implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
-    private Data data;
+    private department.Data data;
     private String msg;
     
     public Integer getCode() {
@@ -18,11 +16,11 @@ public class Department implements Serializable {
         this.code = code;
     }
     
-    public Data getData() {
+    public department.Data getData() {
         return data;
     }
     
-    public void setData(Data data) {
+    public void setData(department.Data data) {
         this.data = data;
     }
     
@@ -41,6 +39,34 @@ public class Department implements Serializable {
                 .add("data", data)
                 .add("msg", msg)
                 .toString();
+    }
+    
+    public static Builder newDepartmentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Department data = new Department();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(department.Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Department build() {
+            return data;
+        }
+        
     }
     
 }

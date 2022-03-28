@@ -24,4 +24,22 @@ public class TotalPrice implements Serializable {
                 .toString();
     }
     
+    public static Builder newTotalPriceBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final TotalPrice data = new TotalPrice();
+        
+        public Builder n(String n) {
+            data.setN(n);
+            return this;
+        }
+        
+        public TotalPrice build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -26,4 +26,22 @@ public class Items implements Serializable {
                 .toString();
     }
     
+    public static Builder newItemsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Items data = new Items();
+        
+        public Builder m(Map<Integer, M> m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public Items build() {
+            return data;
+        }
+        
+    }
+    
 }

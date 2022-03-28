@@ -25,4 +25,22 @@ public class Order implements Serializable {
                 .toString();
     }
     
+    public static Builder newOrderBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Order data = new Order();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public Order build() {
+            return data;
+        }
+        
+    }
+    
 }

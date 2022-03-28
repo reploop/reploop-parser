@@ -224,4 +224,122 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
                 .toString();
     }
     
+    public static Builder newUserOrderAdditionalBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final UserOrderAdditional data = new UserOrderAdditional();
+        
+        public Builder adultNum(Object adultNum) {
+            data.setAdultNum(adultNum);
+            return this;
+        }
+        
+        public Builder beginSiteName(Object beginSiteName) {
+            data.setBeginSiteName(beginSiteName);
+            return this;
+        }
+        
+        public Builder createUser(Object createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(Object delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder driverId(Object driverId) {
+            data.setDriverId(driverId);
+            return this;
+        }
+        
+        public Builder driverIdNo(Object driverIdNo) {
+            data.setDriverIdNo(driverIdNo);
+            return this;
+        }
+        
+        public Builder driverName(String driverName) {
+            data.setDriverName(driverName);
+            return this;
+        }
+        
+        public Builder endSiteName(Object endSiteName) {
+            data.setEndSiteName(endSiteName);
+            return this;
+        }
+        
+        public Builder flightNumber(Object flightNumber) {
+            data.setFlightNumber(flightNumber);
+            return this;
+        }
+        
+        public Builder id(Object id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder newDriverOrderId(Object newDriverOrderId) {
+            data.setNewDriverOrderId(newDriverOrderId);
+            return this;
+        }
+        
+        public Builder orderRemark(Object orderRemark) {
+            data.setOrderRemark(orderRemark);
+            return this;
+        }
+        
+        public Builder remarks(Object remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder scheduleDate(Object scheduleDate) {
+            data.setScheduleDate(scheduleDate);
+            return this;
+        }
+        
+        public Builder status(Object status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder updateTime(Object updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(Object updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder vehicleColour(Object vehicleColour) {
+            data.setVehicleColour(vehicleColour);
+            return this;
+        }
+        
+        public Builder vehicleId(Integer vehicleId) {
+            data.setVehicleId(vehicleId);
+            return this;
+        }
+        
+        public Builder vehiclePlate(String vehiclePlate) {
+            data.setVehiclePlate(vehiclePlate);
+            return this;
+        }
+        
+        public Builder vehicleType(String vehicleType) {
+            data.setVehicleType(vehicleType);
+            return this;
+        }
+        
+        public UserOrderAdditional build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -209,4 +209,107 @@ public class DriverData implements Serializable {
                 .toString();
     }
     
+    public static Builder newDriverDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final DriverData data = new DriverData();
+        
+        public Builder address(String address) {
+            data.setAddress(address);
+            return this;
+        }
+        
+        public Builder agentId(Integer agentId) {
+            data.setAgentId(agentId);
+            return this;
+        }
+        
+        public Builder banStatus(Integer banStatus) {
+            data.setBanStatus(banStatus);
+            return this;
+        }
+        
+        public Builder channel(String channel) {
+            data.setChannel(channel);
+            return this;
+        }
+        
+        public Builder cityName(String cityName) {
+            data.setCityName(cityName);
+            return this;
+        }
+        
+        public Builder contactPhone(String contactPhone) {
+            data.setContactPhone(contactPhone);
+            return this;
+        }
+        
+        public Builder idCardLocation(Integer idCardLocation) {
+            data.setIdCardLocation(idCardLocation);
+            return this;
+        }
+        
+        public Builder idNo(String idNo) {
+            data.setIdNo(idNo);
+            return this;
+        }
+        
+        public Builder idnOBackUrl(String idnOBackUrl) {
+            data.setIdnOBackUrl(idnOBackUrl);
+            return this;
+        }
+        
+        public Builder idnOFrontUrl(String idnOFrontUrl) {
+            data.setIdnOFrontUrl(idnOFrontUrl);
+            return this;
+        }
+        
+        public Builder licenceBackUrl(String licenceBackUrl) {
+            data.setLicenceBackUrl(licenceBackUrl);
+            return this;
+        }
+        
+        public Builder licenceFrontUrl(String licenceFrontUrl) {
+            data.setLicenceFrontUrl(licenceFrontUrl);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder onlineGvid(String onlineGvid) {
+            data.setOnlineGvid(onlineGvid);
+            return this;
+        }
+        
+        public Builder qualificationUrl(String qualificationUrl) {
+            data.setQualificationUrl(qualificationUrl);
+            return this;
+        }
+        
+        public Builder regTime(String regTime) {
+            data.setRegTime(regTime);
+            return this;
+        }
+        
+        public Builder sex(String sex) {
+            data.setSex(sex);
+            return this;
+        }
+        
+        public Builder supplierId(Integer supplierId) {
+            data.setSupplierId(supplierId);
+            return this;
+        }
+        
+        public DriverData build() {
+            return data;
+        }
+        
+    }
+    
 }

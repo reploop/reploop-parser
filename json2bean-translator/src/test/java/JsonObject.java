@@ -35,4 +35,27 @@ public class JsonObject implements Serializable {
                 .toString();
     }
     
+    public static Builder newJsonObjectBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final JsonObject data = new JsonObject();
+        
+        public Builder array(List<Array> array) {
+            data.setArray(array);
+            return this;
+        }
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public JsonObject build() {
+            return data;
+        }
+        
+    }
+    
 }

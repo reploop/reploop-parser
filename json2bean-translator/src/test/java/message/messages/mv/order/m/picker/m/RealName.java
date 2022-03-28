@@ -24,4 +24,22 @@ public class RealName implements Serializable {
                 .toString();
     }
     
+    public static Builder newRealNameBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final RealName data = new RealName();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public RealName build() {
+            return data;
+        }
+        
+    }
+    
 }

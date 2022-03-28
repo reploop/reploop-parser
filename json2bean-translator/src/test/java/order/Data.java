@@ -136,4 +136,77 @@ public class Data implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder countId(Object countId) {
+            data.setCountId(countId);
+            return this;
+        }
+        
+        public Builder current(Integer current) {
+            data.setCurrent(current);
+            return this;
+        }
+        
+        public Builder entity(Object entity) {
+            data.setEntity(entity);
+            return this;
+        }
+        
+        public Builder hitCount(Boolean hitCount) {
+            data.setHitCount(hitCount);
+            return this;
+        }
+        
+        public Builder maxLimit(Object maxLimit) {
+            data.setMaxLimit(maxLimit);
+            return this;
+        }
+        
+        public Builder optimizeCountSql(Boolean optimizeCountSql) {
+            data.setOptimizeCountSql(optimizeCountSql);
+            return this;
+        }
+        
+        public Builder orders(List<Object> orders) {
+            data.setOrders(orders);
+            return this;
+        }
+        
+        public Builder pages(Integer pages) {
+            data.setPages(pages);
+            return this;
+        }
+        
+        public Builder records(List<Records> records) {
+            data.setRecords(records);
+            return this;
+        }
+        
+        public Builder searchCount(Boolean searchCount) {
+            data.setSearchCount(searchCount);
+            return this;
+        }
+        
+        public Builder size(Integer size) {
+            data.setSize(size);
+            return this;
+        }
+        
+        public Builder total(Integer total) {
+            data.setTotal(total);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
+    }
+    
 }

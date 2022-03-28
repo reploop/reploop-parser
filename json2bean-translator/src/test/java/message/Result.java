@@ -24,4 +24,22 @@ public class Result implements Serializable {
                 .toString();
     }
     
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder success(Boolean success) {
+            data.setSuccess(success);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
+    }
+    
 }

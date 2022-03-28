@@ -573,4 +573,347 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
                 .toString();
     }
     
+    public static Builder newRecordsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Records data = new Records();
+        
+        public Builder adultNum(Integer adultNum) {
+            data.setAdultNum(adultNum);
+            return this;
+        }
+        
+        public Builder beginGpsLat(String beginGpsLat) {
+            data.setBeginGpsLat(beginGpsLat);
+            return this;
+        }
+        
+        public Builder beginGpsLong(String beginGpsLong) {
+            data.setBeginGpsLong(beginGpsLong);
+            return this;
+        }
+        
+        public Builder beginSiteCode(String beginSiteCode) {
+            data.setBeginSiteCode(beginSiteCode);
+            return this;
+        }
+        
+        public Builder beginSiteName(String beginSiteName) {
+            data.setBeginSiteName(beginSiteName);
+            return this;
+        }
+        
+        public Builder boardingTime(Object boardingTime) {
+            data.setBoardingTime(boardingTime);
+            return this;
+        }
+        
+        public Builder bookInAdvance(Boolean bookInAdvance) {
+            data.setBookInAdvance(bookInAdvance);
+            return this;
+        }
+        
+        public Builder busTicketReqList(Object busTicketReqList) {
+            data.setBusTicketReqList(busTicketReqList);
+            return this;
+        }
+        
+        public Builder cancelDuration(Object cancelDuration) {
+            data.setCancelDuration(cancelDuration);
+            return this;
+        }
+        
+        public Builder cancelType(Object cancelType) {
+            data.setCancelType(cancelType);
+            return this;
+        }
+        
+        public Builder childNum(Object childNum) {
+            data.setChildNum(childNum);
+            return this;
+        }
+        
+        public Builder contactName(String contactName) {
+            data.setContactName(contactName);
+            return this;
+        }
+        
+        public Builder contactPhone(String contactPhone) {
+            data.setContactPhone(contactPhone);
+            return this;
+        }
+        
+        public Builder contactSex(String contactSex) {
+            data.setContactSex(contactSex);
+            return this;
+        }
+        
+        public Builder createUser(String createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(String delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder dName(String dName) {
+            data.setDName(dName);
+            return this;
+        }
+        
+        public Builder driverArrivedTime(String driverArrivedTime) {
+            data.setDriverArrivedTime(driverArrivedTime);
+            return this;
+        }
+        
+        public Builder driverId(Long driverId) {
+            data.setDriverId(driverId);
+            return this;
+        }
+        
+        public Builder driverName(Object driverName) {
+            data.setDriverName(driverName);
+            return this;
+        }
+        
+        public Builder driverOrderStatus(String driverOrderStatus) {
+            data.setDriverOrderStatus(driverOrderStatus);
+            return this;
+        }
+        
+        public Builder driverOrderUpdateTime(Object driverOrderUpdateTime) {
+            data.setDriverOrderUpdateTime(driverOrderUpdateTime);
+            return this;
+        }
+        
+        public Builder endGpsLat(String endGpsLat) {
+            data.setEndGpsLat(endGpsLat);
+            return this;
+        }
+        
+        public Builder endGpsLong(String endGpsLong) {
+            data.setEndGpsLong(endGpsLong);
+            return this;
+        }
+        
+        public Builder endSiteCode(String endSiteCode) {
+            data.setEndSiteCode(endSiteCode);
+            return this;
+        }
+        
+        public Builder endSiteName(String endSiteName) {
+            data.setEndSiteName(endSiteName);
+            return this;
+        }
+        
+        public Builder evaluation(Object evaluation) {
+            data.setEvaluation(evaluation);
+            return this;
+        }
+        
+        public Builder flightNumber(String flightNumber) {
+            data.setFlightNumber(flightNumber);
+            return this;
+        }
+        
+        public Builder id(Integer id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder lineType(String lineType) {
+            data.setLineType(lineType);
+            return this;
+        }
+        
+        public Builder nextOrderNotifyType(Object nextOrderNotifyType) {
+            data.setNextOrderNotifyType(nextOrderNotifyType);
+            return this;
+        }
+        
+        public Builder no(String no) {
+            data.setNo(no);
+            return this;
+        }
+        
+        public Builder notifyType(Object notifyType) {
+            data.setNotifyType(notifyType);
+            return this;
+        }
+        
+        public Builder offTime(Object offTime) {
+            data.setOffTime(offTime);
+            return this;
+        }
+        
+        public Builder openId(Object openId) {
+            data.setOpenId(openId);
+            return this;
+        }
+        
+        public Builder orderPeriodValid(Boolean orderPeriodValid) {
+            data.setOrderPeriodValid(orderPeriodValid);
+            return this;
+        }
+        
+        public Builder orderRemark(String orderRemark) {
+            data.setOrderRemark(orderRemark);
+            return this;
+        }
+        
+        public Builder orderSource(String orderSource) {
+            data.setOrderSource(orderSource);
+            return this;
+        }
+        
+        public Builder orderTime(String orderTime) {
+            data.setOrderTime(orderTime);
+            return this;
+        }
+        
+        public Builder points(Object points) {
+            data.setPoints(points);
+            return this;
+        }
+        
+        public Builder remarks(String remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder scheduleDate(String scheduleDate) {
+            data.setScheduleDate(scheduleDate);
+            return this;
+        }
+        
+        public Builder score(Object score) {
+            data.setScore(score);
+            return this;
+        }
+        
+        public Builder status(String status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder ticketStatus(Object ticketStatus) {
+            data.setTicketStatus(ticketStatus);
+            return this;
+        }
+        
+        public Builder updateTime(String updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(String updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder useUpType(String useUpType) {
+            data.setUseUpType(useUpType);
+            return this;
+        }
+        
+        public Builder userAct(Object userAct) {
+            data.setUserAct(userAct);
+            return this;
+        }
+        
+        public Builder userNotifyType(Object userNotifyType) {
+            data.setUserNotifyType(userNotifyType);
+            return this;
+        }
+        
+        public Builder userOrderAdditional(List<UserOrderAdditional> userOrderAdditional) {
+            data.setUserOrderAdditional(userOrderAdditional);
+            return this;
+        }
+        
+        public Builder vehiclePlate(Object vehiclePlate) {
+            data.setVehiclePlate(vehiclePlate);
+            return this;
+        }
+        
+        public Builder vPlate(String vPlate) {
+            data.setVPlate(vPlate);
+            return this;
+        }
+        
+        public Builder vType(String vType) {
+            data.setVType(vType);
+            return this;
+        }
+        
+        public Builder vVehicleId(Integer vVehicleId) {
+            data.setVVehicleId(vVehicleId);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Records build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -34,4 +34,27 @@ public class Merges extends ColumnCountRowCount implements Serializable {
                 .toString();
     }
     
+    public static Builder newMergesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Merges data = new Merges();
+        
+        public Builder startColumnIndex(Integer startColumnIndex) {
+            data.setStartColumnIndex(startColumnIndex);
+            return this;
+        }
+        
+        public Builder startRowIndex(Integer startRowIndex) {
+            data.setStartRowIndex(startRowIndex);
+            return this;
+        }
+        
+        public Merges build() {
+            return data;
+        }
+        
+    }
+    
 }

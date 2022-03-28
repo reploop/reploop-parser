@@ -6,8 +6,12 @@ public interface Constants {
     String UNDERSCORE = "_";
     String IMPORT = "import";
     String WHITESPACE = " ";
-    String COMMA = ";";
+    String SEMICOLON = ";";
+    String COMMA = ",";
     String BUILDER = "Builder";
     String JAVA = "java";
     String DOT = ".";
+    String DATE_PATTERN = "DATE_PATTERN";
+    String DATE_TIMEZONE = "DATE_TIMEZONE";
+    String ORIGINAL_NAME = "ORIGINAL_NAME";
 }

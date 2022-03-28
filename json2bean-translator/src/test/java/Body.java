@@ -54,4 +54,37 @@ public class Body implements Serializable {
                 .toString();
     }
     
+    public static Builder newBodyBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Body data = new Body();
+        
+        public Builder canShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
+            data.setCanShippedOrderParcelList(canShippedOrderParcelList);
+            return this;
+        }
+        
+        public Builder canShippedParcelNum(Integer canShippedParcelNum) {
+            data.setCanShippedParcelNum(canShippedParcelNum);
+            return this;
+        }
+        
+        public Builder expiredParcelNum(Integer expiredParcelNum) {
+            data.setExpiredParcelNum(expiredParcelNum);
+            return this;
+        }
+        
+        public Builder notExpiredParcelNum(Integer notExpiredParcelNum) {
+            data.setNotExpiredParcelNum(notExpiredParcelNum);
+            return this;
+        }
+        
+        public Body build() {
+            return data;
+        }
+        
+    }
+    
 }

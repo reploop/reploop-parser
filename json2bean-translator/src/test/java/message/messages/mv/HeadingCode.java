@@ -24,4 +24,22 @@ public class HeadingCode implements Serializable {
                 .toString();
     }
     
+    public static Builder newHeadingCodeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final HeadingCode data = new HeadingCode();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public HeadingCode build() {
+            return data;
+        }
+        
+    }
+    
 }

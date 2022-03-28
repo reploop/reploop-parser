@@ -24,4 +24,22 @@ public class Time implements Serializable {
                 .toString();
     }
     
+    public static Builder newTimeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Time data = new Time();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Time build() {
+            return data;
+        }
+        
+    }
+    
 }

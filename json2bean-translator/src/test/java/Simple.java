@@ -74,4 +74,47 @@ public class Simple implements Serializable {
                 .toString();
     }
     
+    public static Builder newSimpleBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Simple data = new Simple();
+        
+        public Builder area(Map<Integer, Area> area) {
+            data.setArea(area);
+            return this;
+        }
+        
+        public Builder city(Map<String, String> city) {
+            data.setCity(city);
+            return this;
+        }
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder date(String date) {
+            data.setDate(date);
+            return this;
+        }
+        
+        public Builder error(String error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Builder result(String result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Simple build() {
+            return data;
+        }
+        
+    }
+    
 }

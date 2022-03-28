@@ -43,4 +43,32 @@ public class Order implements Serializable {
                 .toString();
     }
     
+    public static Builder newOrderBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Order data = new Order();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Order build() {
+            return data;
+        }
+        
+    }
+    
 }

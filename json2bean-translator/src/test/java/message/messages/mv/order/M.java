@@ -91,4 +91,52 @@ public class M implements Serializable {
                 .toString();
     }
     
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder code(Code code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder created(Created created) {
+            data.setCreated(created);
+            return this;
+        }
+        
+        public Builder flight(Flight flight) {
+            data.setFlight(flight);
+            return this;
+        }
+        
+        public Builder items(Items items) {
+            data.setItems(items);
+            return this;
+        }
+        
+        public Builder pickPoint(PickPoint pickPoint) {
+            data.setPickPoint(pickPoint);
+            return this;
+        }
+        
+        public Builder picker(Picker picker) {
+            data.setPicker(picker);
+            return this;
+        }
+        
+        public Builder states(States states) {
+            data.setStates(states);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -39,4 +39,27 @@ public class Data implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder carData(CarData carData) {
+            data.setCarData(carData);
+            return this;
+        }
+        
+        public Builder driverData(DriverData driverData) {
+            data.setDriverData(driverData);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
+    }
+    
 }

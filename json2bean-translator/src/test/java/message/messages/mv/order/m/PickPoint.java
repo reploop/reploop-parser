@@ -25,4 +25,22 @@ public class PickPoint implements Serializable {
                 .toString();
     }
     
+    public static Builder newPickPointBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final PickPoint data = new PickPoint();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public PickPoint build() {
+            return data;
+        }
+        
+    }
+    
 }

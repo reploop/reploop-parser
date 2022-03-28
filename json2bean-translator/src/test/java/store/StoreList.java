@@ -148,4 +148,82 @@ public class StoreList implements Serializable {
                 .toString();
     }
     
+    public static Builder newStoreListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final StoreList data = new StoreList();
+        
+        public Builder city(String city) {
+            data.setCity(city);
+            return this;
+        }
+        
+        public Builder company(String company) {
+            data.setCompany(company);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder desCri(String desCri) {
+            data.setDesCri(desCri);
+            return this;
+        }
+        
+        public Builder id(Integer id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder imgUrl(String imgUrl) {
+            data.setImgUrl(imgUrl);
+            return this;
+        }
+        
+        public Builder longitude(Object longitude) {
+            data.setLongitude(longitude);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder phoneNumber(String phoneNumber) {
+            data.setPhoneNumber(phoneNumber);
+            return this;
+        }
+        
+        public Builder sheng(String sheng) {
+            data.setSheng(sheng);
+            return this;
+        }
+        
+        public Builder sort(Integer sort) {
+            data.setSort(sort);
+            return this;
+        }
+        
+        public Builder summary(String summary) {
+            data.setSummary(summary);
+            return this;
+        }
+        
+        public Builder typeName(String typeName) {
+            data.setTypeName(typeName);
+            return this;
+        }
+        
+        public StoreList build() {
+            return data;
+        }
+        
+    }
+    
 }

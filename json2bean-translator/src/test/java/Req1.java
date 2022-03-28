@@ -49,4 +49,32 @@ public class Req1 implements Serializable {
                 .toString();
     }
     
+    public static Builder newReq1Builder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Req1 data = new Req1();
+        
+        public Builder cityList(List<CityList> cityList) {
+            data.setCityList(cityList);
+            return this;
+        }
+        
+        public Builder planPrefer(PlanPrefer planPrefer) {
+            data.setPlanPrefer(planPrefer);
+            return this;
+        }
+        
+        public Builder room(List<Room> room) {
+            data.setRoom(room);
+            return this;
+        }
+        
+        public Req1 build() {
+            return data;
+        }
+        
+    }
+    
 }

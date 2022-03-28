@@ -24,4 +24,22 @@ public class Type implements Serializable {
                 .toString();
     }
     
+    public static Builder newTypeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Type data = new Type();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Type build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -44,4 +44,32 @@ public class Error implements Serializable {
                 .toString();
     }
     
+    public static Builder newErrorBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Error data = new Error();
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder reason(String reason) {
+            data.setReason(reason);
+            return this;
+        }
+        
+        public Builder show(String show) {
+            data.setShow(show);
+            return this;
+        }
+        
+        public Error build() {
+            return data;
+        }
+        
+    }
+    
 }

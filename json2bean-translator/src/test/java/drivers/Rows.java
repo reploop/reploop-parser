@@ -264,4 +264,142 @@ public class Rows implements Serializable {
                 .toString();
     }
     
+    public static Builder newRowsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Rows data = new Rows();
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder createUser(Object createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(String delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder driverLicenseExpiredTime(Object driverLicenseExpiredTime) {
+            data.setDriverLicenseExpiredTime(driverLicenseExpiredTime);
+            return this;
+        }
+        
+        public Builder driverLicenseNo(String driverLicenseNo) {
+            data.setDriverLicenseNo(driverLicenseNo);
+            return this;
+        }
+        
+        public Builder driverLicenseType(Object driverLicenseType) {
+            data.setDriverLicenseType(driverLicenseType);
+            return this;
+        }
+        
+        public Builder endTime(Object endTime) {
+            data.setEndTime(endTime);
+            return this;
+        }
+        
+        public Builder files(Object files) {
+            data.setFiles(files);
+            return this;
+        }
+        
+        public Builder id(Long id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder idNo(String idNo) {
+            data.setIdNo(idNo);
+            return this;
+        }
+        
+        public Builder inServiceStatus(String inServiceStatus) {
+            data.setInServiceStatus(inServiceStatus);
+            return this;
+        }
+        
+        public Builder jobNo(Object jobNo) {
+            data.setJobNo(jobNo);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder numOrders(Integer numOrders) {
+            data.setNumOrders(numOrders);
+            return this;
+        }
+        
+        public Builder officeId(String officeId) {
+            data.setOfficeId(officeId);
+            return this;
+        }
+        
+        public Builder passWord(String passWord) {
+            data.setPassWord(passWord);
+            return this;
+        }
+        
+        public Builder phone(String phone) {
+            data.setPhone(phone);
+            return this;
+        }
+        
+        public Builder remarks(Object remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder sex(String sex) {
+            data.setSex(sex);
+            return this;
+        }
+        
+        public Builder startTime(Object startTime) {
+            data.setStartTime(startTime);
+            return this;
+        }
+        
+        public Builder totalAmount(Integer totalAmount) {
+            data.setTotalAmount(totalAmount);
+            return this;
+        }
+        
+        public Builder updateTime(String updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(Object updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder userId(Object userId) {
+            data.setUserId(userId);
+            return this;
+        }
+        
+        public Builder workStatus(String workStatus) {
+            data.setWorkStatus(workStatus);
+            return this;
+        }
+        
+        public Rows build() {
+            return data;
+        }
+        
+    }
+    
 }

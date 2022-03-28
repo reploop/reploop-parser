@@ -24,4 +24,22 @@ public class LifeCycle implements Serializable {
                 .toString();
     }
     
+    public static Builder newLifeCycleBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final LifeCycle data = new LifeCycle();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public LifeCycle build() {
+            return data;
+        }
+        
+    }
+    
 }

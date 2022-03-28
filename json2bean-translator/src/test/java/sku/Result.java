@@ -84,4 +84,52 @@ public class Result implements Serializable {
                 .toString();
     }
     
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder addedFlag(Boolean addedFlag) {
+            data.setAddedFlag(addedFlag);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder goodsInfoId(String goodsInfoId) {
+            data.setGoodsInfoId(goodsInfoId);
+            return this;
+        }
+        
+        public Builder inStock(Boolean inStock) {
+            data.setInStock(inStock);
+            return this;
+        }
+        
+        public Builder marketPrice(Float marketPrice) {
+            data.setMarketPrice(marketPrice);
+            return this;
+        }
+        
+        public Builder sku(String sku) {
+            data.setSku(sku);
+            return this;
+        }
+        
+        public Builder unitValue(Float unitValue) {
+            data.setUnitValue(unitValue);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
+    }
+    
 }

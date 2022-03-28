@@ -25,4 +25,22 @@ public class Identity implements Serializable {
                 .toString();
     }
     
+    public static Builder newIdentityBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Identity data = new Identity();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public Identity build() {
+            return data;
+        }
+        
+    }
+    
 }

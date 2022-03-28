@@ -59,4 +59,37 @@ public class Data extends Array implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder countHistory(Integer countHistory) {
+            data.setCountHistory(countHistory);
+            return this;
+        }
+        
+        public Builder countLastWeek(Integer countLastWeek) {
+            data.setCountLastWeek(countLastWeek);
+            return this;
+        }
+        
+        public Builder playUrl(String playUrl) {
+            data.setPlayUrl(playUrl);
+            return this;
+        }
+        
+        public Builder rankTrend(Integer rankTrend) {
+            data.setRankTrend(rankTrend);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -12,7 +12,7 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
-import org.reploop.translator.json.gen.JsonBeanGenerator;
+import org.reploop.translator.json.gen.BeanGenerator;
 import org.reploop.translator.json.support.Constants;
 import org.reploop.translator.json.support.NameFormat;
 import org.slf4j.Logger;
@@ -36,8 +36,8 @@ import static java.nio.file.StandardOpenOption.*;
 
 public class Json2Driver implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Json2Driver.class);
-    private final JsonBeanGenerator beanGenerator = new JsonBeanGenerator();
-    private static final Json2Bean json2Bean = new Json2Bean();
+    private final BeanGenerator beanGenerator = new BeanGenerator();
+    private static final Json2Message json2Bean = new Json2Message();
     private final String outputDirectory;
     private final List<String> inputDirectories;
     private final List<String> uris;
@@ -143,7 +143,7 @@ public class Json2Driver implements Runnable {
         if (!Strings.isNullOrEmpty(namespace)) {
             qn = QualifiedName.of(namespace, qn);
         }
-        JsonMessageContext ctx = new JsonMessageContext(qn, Paths.get(outputDirectory));
+        MessageContext ctx = new MessageContext(qn, Paths.get(outputDirectory));
         Map<QualifiedName, Message> all = json2Bean.execute(stream, ctx);
         generate(all, ctx);
     }
@@ -179,10 +179,10 @@ public class Json2Driver implements Runnable {
     }
 
 
-    private void generate(Map<QualifiedName, Message> fixed, JsonMessageContext context) {
+    private void generate(Map<QualifiedName, Message> fixed, MessageContext context) {
         fixed.forEach((name, message) -> {
             Path path = packageToPath(context.getDirectory(), message).normalize();
-            JsonBeanContext beanContext = new JsonBeanContext(name);
+            BeanContext beanContext = new BeanContext(name, fixed);
             beanGenerator.visitMessage(message, beanContext);
             try {
                 Path dir = Files.createDirectories(path.getParent());

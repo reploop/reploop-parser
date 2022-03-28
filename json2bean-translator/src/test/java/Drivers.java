@@ -54,4 +54,37 @@ public class Drivers implements Serializable {
                 .toString();
     }
     
+    public static Builder newDriversBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Drivers data = new Drivers();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Builder rows(List<Rows> rows) {
+            data.setRows(rows);
+            return this;
+        }
+        
+        public Builder total(Integer total) {
+            data.setTotal(total);
+            return this;
+        }
+        
+        public Drivers build() {
+            return data;
+        }
+        
+    }
+    
 }

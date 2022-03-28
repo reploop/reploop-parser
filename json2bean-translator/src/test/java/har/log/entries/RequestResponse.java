@@ -1,68 +1,67 @@
 package har.log.entries;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import java.util.List; 
-@JsonIgnoreProperties(ignoreUnknown = true)
+import java.io.Serializable;
+import java.util.List;
+
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer bodySize;
-    private List<NameValue> cookies;
     private List<NameValue> headers;
-    private Integer headersSize;
     private String httpVersion;
-    
+    private List<har.log.entries.NameValue> cookies;
+    private Integer headersSize;
+
     public Integer getBodySize() {
         return bodySize;
     }
-    
+
     public void setBodySize(Integer bodySize) {
         this.bodySize = bodySize;
     }
-    
-    public List<NameValue> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
-    }
-    
-    public List<NameValue> getHeaders() {
+
+    public List<har.log.entries.NameValue> getHeaders() {
         return headers;
     }
-    
-    public void setHeaders(List<NameValue> headers) {
+
+    public void setHeaders(List<har.log.entries.NameValue> headers) {
         this.headers = headers;
     }
-    
-    public Integer getHeadersSize() {
-        return headersSize;
-    }
-    
-    public void setHeadersSize(Integer headersSize) {
-        this.headersSize = headersSize;
-    }
-    
+
     public String getHttpVersion() {
         return httpVersion;
     }
-    
+
     public void setHttpVersion(String httpVersion) {
         this.httpVersion = httpVersion;
     }
-    
+
+    public List<har.log.entries.NameValue> getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(List<har.log.entries.NameValue> cookies) {
+        this.cookies = cookies;
+    }
+
+    public Integer getHeadersSize() {
+        return headersSize;
+    }
+
+    public void setHeadersSize(Integer headersSize) {
+        this.headersSize = headersSize;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("bodySize", bodySize)
-                .add("cookies", cookies)
                 .add("headers", headers)
-                .add("headersSize", headersSize)
                 .add("httpVersion", httpVersion)
+                .add("cookies", cookies)
+                .add("headersSize", headersSize)
                 .toString();
     }
-    
+
 }

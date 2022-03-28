@@ -14,4 +14,17 @@ public class UploadInfo implements Serializable {
                 .toString();
     }
     
+    public static Builder newUploadInfoBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final UploadInfo data = new UploadInfo();
+        
+        public UploadInfo build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -54,4 +54,37 @@ public class Result implements Serializable {
                 .toString();
     }
     
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder discount(Float discount) {
+            data.setDiscount(discount);
+            return this;
+        }
+        
+        public Builder full(Float full) {
+            data.setFull(full);
+            return this;
+        }
+        
+        public Builder marketingDetailId(String marketingDetailId) {
+            data.setMarketingDetailId(marketingDetailId);
+            return this;
+        }
+        
+        public Builder marketingId(Integer marketingId) {
+            data.setMarketingId(marketingId);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
+    }
+    
 }

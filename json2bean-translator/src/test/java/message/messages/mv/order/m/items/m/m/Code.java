@@ -24,4 +24,22 @@ public class Code implements Serializable {
                 .toString();
     }
     
+    public static Builder newCodeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Code data = new Code();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Code build() {
+            return data;
+        }
+        
+    }
+    
 }

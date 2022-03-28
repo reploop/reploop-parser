@@ -44,4 +44,32 @@ public class Store implements Serializable {
                 .toString();
     }
     
+    public static Builder newStoreBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Store data = new Store();
+        
+        public Builder list(List<StoreList> list) {
+            data.setList(list);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Builder success(Boolean success) {
+            data.setSuccess(success);
+            return this;
+        }
+        
+        public Store build() {
+            return data;
+        }
+        
+    }
+    
 }

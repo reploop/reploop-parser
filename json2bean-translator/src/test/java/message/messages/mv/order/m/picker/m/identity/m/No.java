@@ -24,4 +24,22 @@ public class No implements Serializable {
                 .toString();
     }
     
+    public static Builder newNoBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final No data = new No();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public No build() {
+            return data;
+        }
+        
+    }
+    
 }

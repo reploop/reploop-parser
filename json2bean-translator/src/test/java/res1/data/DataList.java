@@ -60,4 +60,37 @@ public class DataList implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final DataList data = new DataList();
+        
+        public Builder cityId(String cityId) {
+            data.setCityId(cityId);
+            return this;
+        }
+        
+        public Builder hotels(List<Hotels> hotels) {
+            data.setHotels(hotels);
+            return this;
+        }
+        
+        public Builder maxPrice(Integer maxPrice) {
+            data.setMaxPrice(maxPrice);
+            return this;
+        }
+        
+        public Builder minPrice(Integer minPrice) {
+            data.setMinPrice(minPrice);
+            return this;
+        }
+        
+        public DataList build() {
+            return data;
+        }
+        
+    }
+    
 }

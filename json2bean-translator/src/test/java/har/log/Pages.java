@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.pages.PageTimings; 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pages implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
-    private PageTimings pageTimings;
+    private har.log.pages.PageTimings pageTimings;
     private String startedDateTime;
     
     public String getId() {
@@ -20,11 +18,11 @@ public class Pages implements Serializable {
         this.id = id;
     }
     
-    public PageTimings getPageTimings() {
+    public har.log.pages.PageTimings getPageTimings() {
         return pageTimings;
     }
     
-    public void setPageTimings(PageTimings pageTimings) {
+    public void setPageTimings(har.log.pages.PageTimings pageTimings) {
         this.pageTimings = pageTimings;
     }
     
@@ -43,6 +41,34 @@ public class Pages implements Serializable {
                 .add("pageTimings", pageTimings)
                 .add("startedDateTime", startedDateTime)
                 .toString();
+    }
+    
+    public static Builder newPagesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Pages data = new Pages();
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder pageTimings(har.log.pages.PageTimings pageTimings) {
+            data.setPageTimings(pageTimings);
+            return this;
+        }
+        
+        public Builder startedDateTime(String startedDateTime) {
+            data.setStartedDateTime(startedDateTime);
+            return this;
+        }
+        
+        public Pages build() {
+            return data;
+        }
+        
     }
     
 }

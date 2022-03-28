@@ -102,4 +102,57 @@ public class Mv implements Serializable {
                 .toString();
     }
     
+    public static Builder newMvBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Mv data = new Mv();
+        
+        public Builder code(Code code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder headingCode(HeadingCode headingCode) {
+            data.setHeadingCode(headingCode);
+            return this;
+        }
+        
+        public Builder items(Items items) {
+            data.setItems(items);
+            return this;
+        }
+        
+        public Builder lifeCycle(LifeCycle lifeCycle) {
+            data.setLifeCycle(lifeCycle);
+            return this;
+        }
+        
+        public Builder order(Order order) {
+            data.setOrder(order);
+            return this;
+        }
+        
+        public Builder pickInfo(PickInfo pickInfo) {
+            data.setPickInfo(pickInfo);
+            return this;
+        }
+        
+        public Builder states(States states) {
+            data.setStates(states);
+            return this;
+        }
+        
+        public Builder uploadInfo(UploadInfo uploadInfo) {
+            data.setUploadInfo(uploadInfo);
+            return this;
+        }
+        
+        public Mv build() {
+            return data;
+        }
+        
+    }
+    
 }

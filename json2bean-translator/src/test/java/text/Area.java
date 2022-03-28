@@ -180,4 +180,92 @@ public class Area implements Serializable {
                 .toString();
     }
     
+    public static Builder newAreaBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Area data = new Area();
+        
+        public Builder child(List<Area> child) {
+            data.setChild(child);
+            return this;
+        }
+        
+        public Builder areaCurrency(String areaCurrency) {
+            data.setAreaCurrency(areaCurrency);
+            return this;
+        }
+        
+        public Builder areaEn(String areaEn) {
+            data.setAreaEn(areaEn);
+            return this;
+        }
+        
+        public Builder areaFid(String areaFid) {
+            data.setAreaFid(areaFid);
+            return this;
+        }
+        
+        public Builder areaId(String areaId) {
+            data.setAreaId(areaId);
+            return this;
+        }
+        
+        public Builder areaImage(String areaImage) {
+            data.setAreaImage(areaImage);
+            return this;
+        }
+        
+        public Builder areaIndex(String areaIndex) {
+            data.setAreaIndex(areaIndex);
+            return this;
+        }
+        
+        public Builder areaLevel(String areaLevel) {
+            data.setAreaLevel(areaLevel);
+            return this;
+        }
+        
+        public Builder areaName(String areaName) {
+            data.setAreaName(areaName);
+            return this;
+        }
+        
+        public Builder areaNote(String areaNote) {
+            data.setAreaNote(areaNote);
+            return this;
+        }
+        
+        public Builder areaPin(String areaPin) {
+            data.setAreaPin(areaPin);
+            return this;
+        }
+        
+        public Builder areaPx(String areaPx) {
+            data.setAreaPx(areaPx);
+            return this;
+        }
+        
+        public Builder areaPy(String areaPy) {
+            data.setAreaPy(areaPy);
+            return this;
+        }
+        
+        public Builder areaShow(String areaShow) {
+            data.setAreaShow(areaShow);
+            return this;
+        }
+        
+        public Builder areaTimeZone(String areaTimeZone) {
+            data.setAreaTimeZone(areaTimeZone);
+            return this;
+        }
+        
+        public Area build() {
+            return data;
+        }
+        
+    }
+    
 }

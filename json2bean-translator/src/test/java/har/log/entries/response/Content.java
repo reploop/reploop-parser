@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import har.log.entries.TextMimeType; 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Content extends TextMimeType implements Serializable {
+public class Content extends har.log.entries.MimeTypeText implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer size;
     
@@ -23,6 +21,34 @@ public class Content extends TextMimeType implements Serializable {
         return MoreObjects.toStringHelper(this)
                 .add("size", size)
                 .toString();
+    }
+    
+    public static Builder newContentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Content data = new Content();
+        
+        public Builder size(Integer size) {
+            data.setSize(size);
+            return this;
+        }
+        
+        public Builder mimeType(String mimeType) {
+            data.setMimeType(mimeType);
+            return this;
+        }
+        
+        public Builder text(String text) {
+            data.setText(text);
+            return this;
+        }
+        
+        public Content build() {
+            return data;
+        }
+        
     }
     
 }

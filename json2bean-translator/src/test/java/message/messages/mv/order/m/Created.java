@@ -24,4 +24,22 @@ public class Created implements Serializable {
                 .toString();
     }
     
+    public static Builder newCreatedBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Created data = new Created();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Created build() {
+            return data;
+        }
+        
+    }
+    
 }

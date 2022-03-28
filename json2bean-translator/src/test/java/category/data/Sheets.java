@@ -77,4 +77,57 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
                 .toString();
     }
     
+    public static Builder newSheetsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Sheets data = new Sheets();
+        
+        public Builder frozenColCount(Integer frozenColCount) {
+            data.setFrozenColCount(frozenColCount);
+            return this;
+        }
+        
+        public Builder frozenRowCount(Integer frozenRowCount) {
+            data.setFrozenRowCount(frozenRowCount);
+            return this;
+        }
+        
+        public Builder index(Integer index) {
+            data.setIndex(index);
+            return this;
+        }
+        
+        public Builder merges(List<Merges> merges) {
+            data.setMerges(merges);
+            return this;
+        }
+        
+        public Builder sheetId(String sheetId) {
+            data.setSheetId(sheetId);
+            return this;
+        }
+        
+        public Builder title(String title) {
+            data.setTitle(title);
+            return this;
+        }
+        
+        public Builder columnCount(Integer columnCount) {
+            data.setColumnCount(columnCount);
+            return this;
+        }
+        
+        public Builder rowCount(Integer rowCount) {
+            data.setRowCount(rowCount);
+            return this;
+        }
+        
+        public Sheets build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -86,4 +86,52 @@ public class Messages implements Serializable {
                 .toString();
     }
     
+    public static Builder newMessagesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Messages data = new Messages();
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder labels(Map<String, String> labels) {
+            data.setLabels(labels);
+            return this;
+        }
+        
+        public Builder mv(Mv mv) {
+            data.setMv(mv);
+            return this;
+        }
+        
+        public Builder roomID(String roomID) {
+            data.setRoomID(roomID);
+            return this;
+        }
+        
+        public Builder sender(String sender) {
+            data.setSender(sender);
+            return this;
+        }
+        
+        public Builder sequenceNO(Integer sequenceNO) {
+            data.setSequenceNO(sequenceNO);
+            return this;
+        }
+        
+        public Builder timestamp(String timestamp) {
+            data.setTimestamp(timestamp);
+            return this;
+        }
+        
+        public Messages build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -47,4 +47,32 @@ public class M implements Serializable {
                 .toString();
     }
     
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder airport(Airport airport) {
+            data.setAirport(airport);
+            return this;
+        }
+        
+        public Builder name(Name name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder terminal(Terminal terminal) {
+            data.setTerminal(terminal);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
+    }
+    
 }

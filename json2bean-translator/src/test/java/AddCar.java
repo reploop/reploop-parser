@@ -2,15 +2,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-import com.fasterxml.jackson.annotation.JsonProperty; 
 import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AddCar implements Serializable {
     private static final long serialVersionUID = 1L;
     private String brand;
     private String colour;
-    @JsonProperty("driverUberId")
-    private Long driverUbeRId;
+    private Long driverUberId;
     private List<Object> files;
     private String id;
     private String officeId;
@@ -40,12 +38,12 @@ public class AddCar implements Serializable {
         this.colour = colour;
     }
     
-    public Long getDriverUbeRId() {
-        return driverUbeRId;
+    public Long getDriverUberId() {
+        return driverUberId;
     }
     
-    public void setDriverUbeRId(Long driverUbeRId) {
-        this.driverUbeRId = driverUbeRId;
+    public void setDriverUberId(Long driverUberId) {
+        this.driverUberId = driverUberId;
     }
     
     public List<Object> getFiles() {
@@ -149,7 +147,7 @@ public class AddCar implements Serializable {
         return MoreObjects.toStringHelper(this)
                 .add("brand", brand)
                 .add("colour", colour)
-                .add("driverUbeRId", driverUbeRId)
+                .add("driverUberId", driverUberId)
                 .add("files", files)
                 .add("id", id)
                 .add("officeId", officeId)
@@ -163,6 +161,94 @@ public class AddCar implements Serializable {
                 .add("vehicleDesc", vehicleDesc)
                 .add("vehicleNature", vehicleNature)
                 .toString();
+    }
+    
+    public static Builder newAddCarBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final AddCar data = new AddCar();
+        
+        public Builder brand(String brand) {
+            data.setBrand(brand);
+            return this;
+        }
+        
+        public Builder colour(String colour) {
+            data.setColour(colour);
+            return this;
+        }
+        
+        public Builder driverUberId(Long driverUberId) {
+            data.setDriverUberId(driverUberId);
+            return this;
+        }
+        
+        public Builder files(List<Object> files) {
+            data.setFiles(files);
+            return this;
+        }
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder officeId(String officeId) {
+            data.setOfficeId(officeId);
+            return this;
+        }
+        
+        public Builder plate(String plate) {
+            data.setPlate(plate);
+            return this;
+        }
+        
+        public Builder plateColour(String plateColour) {
+            data.setPlateColour(plateColour);
+            return this;
+        }
+        
+        public Builder remarks(String remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder seating(Integer seating) {
+            data.setSeating(seating);
+            return this;
+        }
+        
+        public Builder settlementPrice(Integer settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder trafficCarType(String trafficCarType) {
+            data.setTrafficCarType(trafficCarType);
+            return this;
+        }
+        
+        public Builder type(String type) {
+            data.setType(type);
+            return this;
+        }
+        
+        public Builder vehicleDesc(String vehicleDesc) {
+            data.setVehicleDesc(vehicleDesc);
+            return this;
+        }
+        
+        public Builder vehicleNature(String vehicleNature) {
+            data.setVehicleNature(vehicleNature);
+            return this;
+        }
+        
+        public AddCar build() {
+            return data;
+        }
+        
     }
     
 }

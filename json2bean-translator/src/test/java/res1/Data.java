@@ -26,4 +26,22 @@ public class Data implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder list(List<DataList> list) {
+            data.setList(list);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -24,4 +24,22 @@ public class Terminal implements Serializable {
                 .toString();
     }
     
+    public static Builder newTerminalBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Terminal data = new Terminal();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Terminal build() {
+            return data;
+        }
+        
+    }
+    
 }

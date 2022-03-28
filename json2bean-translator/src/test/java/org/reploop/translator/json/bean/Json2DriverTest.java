@@ -33,7 +33,7 @@ public class Json2DriverTest {
                     try {
                         Json2Conf conf = new Json2Conf().enableRootGuess(true).outputDirectory(directory.toString());
                         Json2Driver app = new Json2Driver(conf);
-                        if (path.toString().contains("car_response.json")) {
+                        if (path.toString().contains("department.json")) {
                             app.execute(path);
                             System.out.println(path);
                         }

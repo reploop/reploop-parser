@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Timings implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer blocked;
@@ -82,6 +81,54 @@ public class Timings implements Serializable {
                 .add("ssl", ssl)
                 .add("wait", wait)
                 .toString();
+    }
+    
+    public static Builder newTimingsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Timings data = new Timings();
+        
+        public Builder blocked(Integer blocked) {
+            data.setBlocked(blocked);
+            return this;
+        }
+        
+        public Builder connect(Integer connect) {
+            data.setConnect(connect);
+            return this;
+        }
+        
+        public Builder dns(Integer dns) {
+            data.setDns(dns);
+            return this;
+        }
+        
+        public Builder receive(Integer receive) {
+            data.setReceive(receive);
+            return this;
+        }
+        
+        public Builder send(Integer send) {
+            data.setSend(send);
+            return this;
+        }
+        
+        public Builder ssl(Integer ssl) {
+            data.setSsl(ssl);
+            return this;
+        }
+        
+        public Builder wait(Integer wait) {
+            data.setWait(wait);
+            return this;
+        }
+        
+        public Timings build() {
+            return data;
+        }
+        
     }
     
 }

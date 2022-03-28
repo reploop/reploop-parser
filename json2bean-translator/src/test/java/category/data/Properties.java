@@ -54,4 +54,37 @@ public class Properties implements Serializable {
                 .toString();
     }
     
+    public static Builder newPropertiesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Properties data = new Properties();
+        
+        public Builder ownerUser(Long ownerUser) {
+            data.setOwnerUser(ownerUser);
+            return this;
+        }
+        
+        public Builder revision(Integer revision) {
+            data.setRevision(revision);
+            return this;
+        }
+        
+        public Builder sheetCount(Integer sheetCount) {
+            data.setSheetCount(sheetCount);
+            return this;
+        }
+        
+        public Builder title(String title) {
+            data.setTitle(title);
+            return this;
+        }
+        
+        public Properties build() {
+            return data;
+        }
+        
+    }
+    
 }

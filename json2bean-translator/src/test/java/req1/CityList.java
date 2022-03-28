@@ -46,4 +46,32 @@ public class CityList implements Serializable {
                 .toString();
     }
     
+    public static Builder newCityListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CityList data = new CityList();
+        
+        public Builder checkIn(String checkIn) {
+            data.setCheckIn(checkIn);
+            return this;
+        }
+        
+        public Builder checkout(String checkout) {
+            data.setCheckout(checkout);
+            return this;
+        }
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public CityList build() {
+            return data;
+        }
+        
+    }
+    
 }

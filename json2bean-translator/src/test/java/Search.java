@@ -74,4 +74,47 @@ public class Search implements Serializable {
                 .toString();
     }
     
+    public static Builder newSearchBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Search data = new Search();
+        
+        public Builder area(Map<String, Area> area) {
+            data.setArea(area);
+            return this;
+        }
+        
+        public Builder city(Map<String, String> city) {
+            data.setCity(city);
+            return this;
+        }
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder date(String date) {
+            data.setDate(date);
+            return this;
+        }
+        
+        public Builder error(String error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Builder result(String result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Search build() {
+            return data;
+        }
+        
+    }
+    
 }

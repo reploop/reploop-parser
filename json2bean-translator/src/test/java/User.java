@@ -64,4 +64,42 @@ public class User implements Serializable {
                 .toString();
     }
     
+    public static Builder newUserBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final User data = new User();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder count(Integer count) {
+            data.setCount(count);
+            return this;
+        }
+        
+        public Builder date(String date) {
+            data.setDate(date);
+            return this;
+        }
+        
+        public Builder error(String error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Builder result(List<Result> result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public User build() {
+            return data;
+        }
+        
+    }
+    
 }

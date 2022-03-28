@@ -34,4 +34,27 @@ public class CanShippedOrderParcelList implements Serializable {
                 .toString();
     }
     
+    public static Builder newCanShippedOrderParcelListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CanShippedOrderParcelList data = new CanShippedOrderParcelList();
+        
+        public Builder parcelId(String parcelId) {
+            data.setParcelId(parcelId);
+            return this;
+        }
+        
+        public Builder parcelName(String parcelName) {
+            data.setParcelName(parcelName);
+            return this;
+        }
+        
+        public CanShippedOrderParcelList build() {
+            return data;
+        }
+        
+    }
+    
 }

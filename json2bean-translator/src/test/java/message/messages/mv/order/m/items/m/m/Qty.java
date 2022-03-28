@@ -24,4 +24,22 @@ public class Qty implements Serializable {
                 .toString();
     }
     
+    public static Builder newQtyBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Qty data = new Qty();
+        
+        public Builder n(String n) {
+            data.setN(n);
+            return this;
+        }
+        
+        public Qty build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -35,4 +35,27 @@ public class Message implements Serializable {
                 .toString();
     }
     
+    public static Builder newMessageBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Message data = new Message();
+        
+        public Builder messages(List<Messages> messages) {
+            data.setMessages(messages);
+            return this;
+        }
+        
+        public Builder result(Result result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Message build() {
+            return data;
+        }
+        
+    }
+    
 }

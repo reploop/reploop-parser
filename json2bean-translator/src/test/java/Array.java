@@ -44,4 +44,32 @@ public class Array implements Serializable {
                 .toString();
     }
     
+    public static Builder newArrayBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Array data = new Array();
+        
+        public Builder code(String code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(List<Data> data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder empty(List<Object> empty) {
+            data.setEmpty(empty);
+            return this;
+        }
+        
+        public Array build() {
+            return data;
+        }
+        
+    }
+    
 }

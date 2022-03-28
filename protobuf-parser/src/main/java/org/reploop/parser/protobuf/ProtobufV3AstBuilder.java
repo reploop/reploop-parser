@@ -200,7 +200,7 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
             // empty statement
             x.emptyStatement();
         }
-        return new Message(qn, comments, fields, messages, enumerations, options);
+        return new Message(qn, comments, fields, messages, enumerations, services, options);
     }
 
     @Override

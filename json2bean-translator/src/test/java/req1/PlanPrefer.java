@@ -46,4 +46,32 @@ public class PlanPrefer implements Serializable {
                 .toString();
     }
     
+    public static Builder newPlanPreferBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final PlanPrefer data = new PlanPrefer();
+        
+        public Builder price(Price price) {
+            data.setPrice(price);
+            return this;
+        }
+        
+        public Builder star(List<Integer> star) {
+            data.setStar(star);
+            return this;
+        }
+        
+        public Builder tags(List<String> tags) {
+            data.setTags(tags);
+            return this;
+        }
+        
+        public PlanPrefer build() {
+            return data;
+        }
+        
+    }
+    
 }

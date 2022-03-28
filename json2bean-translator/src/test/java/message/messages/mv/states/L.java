@@ -25,4 +25,22 @@ public class L implements Serializable {
                 .toString();
     }
     
+    public static Builder newLBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final L data = new L();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public L build() {
+            return data;
+        }
+        
+    }
+    
 }

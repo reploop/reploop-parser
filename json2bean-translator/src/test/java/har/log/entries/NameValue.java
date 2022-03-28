@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import com.google.common.base.MoreObjects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class NameValue implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
@@ -32,6 +31,29 @@ public class NameValue implements Serializable {
                 .add("name", name)
                 .add("value", value)
                 .toString();
+    }
+    
+    public static Builder newNameValueBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final NameValue data = new NameValue();
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder value(String value) {
+            data.setValue(value);
+            return this;
+        }
+        
+        public NameValue build() {
+            return data;
+        }
+        
     }
     
 }

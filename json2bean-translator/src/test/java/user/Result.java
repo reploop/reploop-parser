@@ -44,7 +44,7 @@ public class Result implements Serializable {
     private String serUTime;
     @JsonProperty("service_face")
     private String serviceFace;
-    private Map<Integer, String> tag;
+    private List<String> tag;
     @JsonProperty("user_avatar")
     private String userAvatar;
     @JsonProperty("user_gender")
@@ -198,11 +198,11 @@ public class Result implements Serializable {
         this.serviceFace = serviceFace;
     }
     
-    public Map<Integer, String> getTag() {
+    public List<String> getTag() {
         return tag;
     }
     
-    public void setTag(Map<Integer, String> tag) {
+    public void setTag(List<String> tag) {
         this.tag = tag;
     }
     
@@ -265,6 +265,134 @@ public class Result implements Serializable {
                 .add("userId", userId)
                 .add("userName", userName)
                 .toString();
+    }
+    
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder areaId(String areaId) {
+            data.setAreaId(areaId);
+            return this;
+        }
+        
+        public Builder areaName(String areaName) {
+            data.setAreaName(areaName);
+            return this;
+        }
+        
+        public Builder gdEdu(String gdEdu) {
+            data.setGdEdu(gdEdu);
+            return this;
+        }
+        
+        public Builder gdJob(String gdJob) {
+            data.setGdJob(gdJob);
+            return this;
+        }
+        
+        public Builder gdMajor(String gdMajor) {
+            data.setGdMajor(gdMajor);
+            return this;
+        }
+        
+        public Builder gdSchool(String gdSchool) {
+            data.setGdSchool(gdSchool);
+            return this;
+        }
+        
+        public Builder guidePrice(Map<Integer, Integer> guidePrice) {
+            data.setGuidePrice(guidePrice);
+            return this;
+        }
+        
+        public Builder price(Integer price) {
+            data.setPrice(price);
+            return this;
+        }
+        
+        public Builder remark(List<String> remark) {
+            data.setRemark(remark);
+            return this;
+        }
+        
+        public Builder serFace(String serFace) {
+            data.setSerFace(serFace);
+            return this;
+        }
+        
+        public Builder serHot(String serHot) {
+            data.setSerHot(serHot);
+            return this;
+        }
+        
+        public Builder serRmkc(String serRmkc) {
+            data.setSerRmkc(serRmkc);
+            return this;
+        }
+        
+        public Builder serSort(String serSort) {
+            data.setSerSort(serSort);
+            return this;
+        }
+        
+        public Builder serStarC(String serStarC) {
+            data.setSerStarC(serStarC);
+            return this;
+        }
+        
+        public Builder serStatus(String serStatus) {
+            data.setSerStatus(serStatus);
+            return this;
+        }
+        
+        public Builder serTitle(String serTitle) {
+            data.setSerTitle(serTitle);
+            return this;
+        }
+        
+        public Builder serUTime(String serUTime) {
+            data.setSerUTime(serUTime);
+            return this;
+        }
+        
+        public Builder serviceFace(String serviceFace) {
+            data.setServiceFace(serviceFace);
+            return this;
+        }
+        
+        public Builder tag(List<String> tag) {
+            data.setTag(tag);
+            return this;
+        }
+        
+        public Builder userAvatar(String userAvatar) {
+            data.setUserAvatar(userAvatar);
+            return this;
+        }
+        
+        public Builder userGender(String userGender) {
+            data.setUserGender(userGender);
+            return this;
+        }
+        
+        public Builder userId(String userId) {
+            data.setUserId(userId);
+            return this;
+        }
+        
+        public Builder userName(String userName) {
+            data.setUserName(userName);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
     }
     
 }

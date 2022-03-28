@@ -47,4 +47,32 @@ public class Data implements Serializable {
                 .toString();
     }
     
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder properties(Properties properties) {
+            data.setProperties(properties);
+            return this;
+        }
+        
+        public Builder sheets(List<Sheets> sheets) {
+            data.setSheets(sheets);
+            return this;
+        }
+        
+        public Builder spreadsheetToken(String spreadsheetToken) {
+            data.setSpreadsheetToken(spreadsheetToken);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
+    }
+    
 }

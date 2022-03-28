@@ -54,4 +54,37 @@ public class Detail implements Serializable {
                 .toString();
     }
     
+    public static Builder newDetailBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Detail data = new Detail();
+        
+        public Builder reason(Object reason) {
+            data.setReason(reason);
+            return this;
+        }
+        
+        public Builder result(List<Result> result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Builder resultCode(String resultCode) {
+            data.setResultCode(resultCode);
+            return this;
+        }
+        
+        public Builder success(Boolean success) {
+            data.setSuccess(success);
+            return this;
+        }
+        
+        public Detail build() {
+            return data;
+        }
+        
+    }
+    
 }

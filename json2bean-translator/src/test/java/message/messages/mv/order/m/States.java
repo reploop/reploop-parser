@@ -26,4 +26,22 @@ public class States implements Serializable {
                 .toString();
     }
     
+    public static Builder newStatesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final States data = new States();
+        
+        public Builder l(List<L> l) {
+            data.setL(l);
+            return this;
+        }
+        
+        public States build() {
+            return data;
+        }
+        
+    }
+    
 }

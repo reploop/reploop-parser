@@ -122,4 +122,67 @@ public class Hotels implements Serializable {
                 .toString();
     }
     
+    public static Builder newHotelsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Hotels data = new Hotels();
+        
+        public Builder additionalInfo(AdditionalInfo additionalInfo) {
+            data.setAdditionalInfo(additionalInfo);
+            return this;
+        }
+        
+        public Builder checkIn(String checkIn) {
+            data.setCheckIn(checkIn);
+            return this;
+        }
+        
+        public Builder checkout(String checkout) {
+            data.setCheckout(checkout);
+            return this;
+        }
+        
+        public Builder cOord(String cOord) {
+            data.setCOord(cOord);
+            return this;
+        }
+        
+        public Builder hotelId(String hotelId) {
+            data.setHotelId(hotelId);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder nameEn(String nameEn) {
+            data.setNameEn(nameEn);
+            return this;
+        }
+        
+        public Builder price(Integer price) {
+            data.setPrice(price);
+            return this;
+        }
+        
+        public Builder star(Integer star) {
+            data.setStar(star);
+            return this;
+        }
+        
+        public Builder tags(List<String> tags) {
+            data.setTags(tags);
+            return this;
+        }
+        
+        public Hotels build() {
+            return data;
+        }
+        
+    }
+    
 }

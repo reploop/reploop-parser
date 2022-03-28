@@ -47,4 +47,32 @@ public class M implements Serializable {
                 .toString();
     }
     
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder identity(Identity identity) {
+            data.setIdentity(identity);
+            return this;
+        }
+        
+        public Builder phone(Phone phone) {
+            data.setPhone(phone);
+            return this;
+        }
+        
+        public Builder realName(RealName realName) {
+            data.setRealName(realName);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
+    }
+    
 }

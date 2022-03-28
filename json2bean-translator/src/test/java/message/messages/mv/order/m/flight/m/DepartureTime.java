@@ -24,4 +24,22 @@ public class DepartureTime implements Serializable {
                 .toString();
     }
     
+    public static Builder newDepartureTimeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final DepartureTime data = new DepartureTime();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public DepartureTime build() {
+            return data;
+        }
+        
+    }
+    
 }

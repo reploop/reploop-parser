@@ -43,4 +43,32 @@ public class Category implements Serializable {
                 .toString();
     }
     
+    public static Builder newCategoryBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Category data = new Category();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Category build() {
+            return data;
+        }
+        
+    }
+    
 }

@@ -59,4 +59,37 @@ public class Array implements Serializable {
                 .toString();
     }
     
+    public static Builder newArrayBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Array data = new Array();
+        
+        public Builder countYesterday(Integer countYesterday) {
+            data.setCountYesterday(countYesterday);
+            return this;
+        }
+        
+        public Builder tvId(Long tvId) {
+            data.setTvId(tvId);
+            return this;
+        }
+        
+        public Builder tvName(String tvName) {
+            data.setTvName(tvName);
+            return this;
+        }
+        
+        public Builder vvWeek(Integer vvWeek) {
+            data.setVvWeek(vvWeek);
+            return this;
+        }
+        
+        public Array build() {
+            return data;
+        }
+        
+    }
+    
 }

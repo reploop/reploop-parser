@@ -58,4 +58,37 @@ public class MM implements Serializable {
                 .toString();
     }
     
+    public static Builder newMMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final MM data = new MM();
+        
+        public Builder code(Code code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder name(Name name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder qty(Qty qty) {
+            data.setQty(qty);
+            return this;
+        }
+        
+        public Builder totalPrice(TotalPrice totalPrice) {
+            data.setTotalPrice(totalPrice);
+            return this;
+        }
+        
+        public MM build() {
+            return data;
+        }
+        
+    }
+    
 }

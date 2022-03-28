@@ -25,4 +25,22 @@ public class Picker implements Serializable {
                 .toString();
     }
     
+    public static Builder newPickerBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Picker data = new Picker();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public Picker build() {
+            return data;
+        }
+        
+    }
+    
 }

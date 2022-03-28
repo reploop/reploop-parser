@@ -24,4 +24,22 @@ public class Airport implements Serializable {
                 .toString();
     }
     
+    public static Builder newAirportBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Airport data = new Airport();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Airport build() {
+            return data;
+        }
+        
+    }
+    
 }

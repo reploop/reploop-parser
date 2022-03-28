@@ -24,4 +24,22 @@ public class Phone implements Serializable {
                 .toString();
     }
     
+    public static Builder newPhoneBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Phone data = new Phone();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Phone build() {
+            return data;
+        }
+        
+    }
+    
 }

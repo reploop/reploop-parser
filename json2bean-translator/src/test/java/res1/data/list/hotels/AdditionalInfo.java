@@ -51,4 +51,32 @@ public class AdditionalInfo implements Serializable {
                 .toString();
     }
     
+    public static Builder newAdditionalInfoBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final AdditionalInfo data = new AdditionalInfo();
+        
+        public Builder cityList(List<CityList> cityList) {
+            data.setCityList(cityList);
+            return this;
+        }
+        
+        public Builder planPrefer(PlanPrefer planPrefer) {
+            data.setPlanPrefer(planPrefer);
+            return this;
+        }
+        
+        public Builder room(List<Room> room) {
+            data.setRoom(room);
+            return this;
+        }
+        
+        public AdditionalInfo build() {
+            return data;
+        }
+        
+    }
+    
 }

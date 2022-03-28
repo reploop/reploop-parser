@@ -34,4 +34,27 @@ public class BoilingPoint implements Serializable {
                 .toString();
     }
     
+    public static Builder newBoilingPointBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final BoilingPoint data = new BoilingPoint();
+        
+        public Builder units(String units) {
+            data.setUnits(units);
+            return this;
+        }
+        
+        public Builder value(Double value) {
+            data.setValue(value);
+            return this;
+        }
+        
+        public BoilingPoint build() {
+            return data;
+        }
+        
+    }
+    
 }

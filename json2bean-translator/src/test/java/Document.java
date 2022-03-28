@@ -66,4 +66,42 @@ public class Document implements Serializable {
                 .toString();
     }
     
+    public static Builder newDocumentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Document data = new Document();
+        
+        public Builder boilingPoint(BoilingPoint boilingPoint) {
+            data.setBoilingPoint(boilingPoint);
+            return this;
+        }
+        
+        public Builder dangerous(Boolean dangerous) {
+            data.setDangerous(dangerous);
+            return this;
+        }
+        
+        public Builder density(Density density) {
+            data.setDensity(density);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder type(String type) {
+            data.setType(type);
+            return this;
+        }
+        
+        public Document build() {
+            return data;
+        }
+        
+    }
+    
 }

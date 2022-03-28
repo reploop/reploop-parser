@@ -36,4 +36,27 @@ public class M implements Serializable {
                 .toString();
     }
     
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder status(Status status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder time(Time time) {
+            data.setTime(time);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
+    }
+    
 }

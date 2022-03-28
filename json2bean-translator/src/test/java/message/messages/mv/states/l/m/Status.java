@@ -24,4 +24,22 @@ public class Status implements Serializable {
                 .toString();
     }
     
+    public static Builder newStatusBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Status data = new Status();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Status build() {
+            return data;
+        }
+        
+    }
+    
 }

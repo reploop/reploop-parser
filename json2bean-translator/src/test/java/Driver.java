@@ -57,4 +57,37 @@ public class Driver implements Serializable {
                 .toString();
     }
     
+    public static Builder newDriverBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Driver data = new Driver();
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder errMsg(String errMsg) {
+            data.setErrMsg(errMsg);
+            return this;
+        }
+        
+        public Builder errNo(Integer errNo) {
+            data.setErrNo(errNo);
+            return this;
+        }
+        
+        public Builder traceId(String traceId) {
+            data.setTraceId(traceId);
+            return this;
+        }
+        
+        public Driver build() {
+            return data;
+        }
+        
+    }
+    
 }

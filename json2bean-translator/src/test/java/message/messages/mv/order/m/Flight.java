@@ -25,4 +25,22 @@ public class Flight implements Serializable {
                 .toString();
     }
     
+    public static Builder newFlightBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Flight data = new Flight();
+        
+        public Builder m(M m) {
+            data.setM(m);
+            return this;
+        }
+        
+        public Flight build() {
+            return data;
+        }
+        
+    }
+    
 }

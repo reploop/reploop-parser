@@ -34,4 +34,27 @@ public class Res1 implements Serializable {
                 .toString();
     }
     
+    public static Builder newRes1Builder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Res1 data = new Res1();
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder error(Error error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Res1 build() {
+            return data;
+        }
+        
+    }
+    
 }

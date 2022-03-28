@@ -24,4 +24,22 @@ public class RoomList implements Serializable {
                 .toString();
     }
     
+    public static Builder newRoomListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final RoomList data = new RoomList();
+        
+        public Builder age(Integer age) {
+            data.setAge(age);
+            return this;
+        }
+        
+        public RoomList build() {
+            return data;
+        }
+        
+    }
+    
 }

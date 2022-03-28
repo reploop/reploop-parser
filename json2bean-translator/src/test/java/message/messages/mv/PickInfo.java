@@ -14,4 +14,17 @@ public class PickInfo implements Serializable {
                 .toString();
     }
     
+    public static Builder newPickInfoBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final PickInfo data = new PickInfo();
+        
+        public PickInfo build() {
+            return data;
+        }
+        
+    }
+    
 }

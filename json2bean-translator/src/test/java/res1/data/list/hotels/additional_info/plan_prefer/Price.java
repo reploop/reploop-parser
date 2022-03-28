@@ -34,4 +34,27 @@ public class Price implements Serializable {
                 .toString();
     }
     
+    public static Builder newPriceBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Price data = new Price();
+        
+        public Builder lower(Float lower) {
+            data.setLower(lower);
+            return this;
+        }
+        
+        public Builder upper(Float upper) {
+            data.setUpper(upper);
+            return this;
+        }
+        
+        public Price build() {
+            return data;
+        }
+        
+    }
+    
 }

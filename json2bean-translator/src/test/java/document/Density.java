@@ -34,4 +34,27 @@ public class Density implements Serializable {
                 .toString();
     }
     
+    public static Builder newDensityBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Density data = new Density();
+        
+        public Builder units(String units) {
+            data.setUnits(units);
+            return this;
+        }
+        
+        public Builder value(Float value) {
+            data.setValue(value);
+            return this;
+        }
+        
+        public Density build() {
+            return data;
+        }
+        
+    }
+    
 }

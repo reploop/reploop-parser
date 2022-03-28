@@ -62,4 +62,42 @@ public class MapType implements Serializable {
                 .toString();
     }
     
+    public static Builder newMapTypeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final MapType data = new MapType();
+        
+        public Builder a(String a) {
+            data.setA(a);
+            return this;
+        }
+        
+        public Builder b(Integer b) {
+            data.setB(b);
+            return this;
+        }
+        
+        public Builder c(String c) {
+            data.setC(c);
+            return this;
+        }
+        
+        public Builder d(Integer d) {
+            data.setD(d);
+            return this;
+        }
+        
+        public Builder e(String e) {
+            data.setE(e);
+            return this;
+        }
+        
+        public MapType build() {
+            return data;
+        }
+        
+    }
+    
 }
