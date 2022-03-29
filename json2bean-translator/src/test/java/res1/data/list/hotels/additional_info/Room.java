@@ -8,13 +8,13 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Room implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<res1.data.list.hotels.additional_info.room.ListRoom> list;
+    private List<ListRoom> list;
     
-    public List<res1.data.list.hotels.additional_info.room.ListRoom> getList() {
+    public List<ListRoom> getList() {
         return list;
     }
     
-    public void setList(List<res1.data.list.hotels.additional_info.room.ListRoom> list) {
+    public void setList(List<ListRoom> list) {
         this.list = list;
     }
     
@@ -32,7 +32,7 @@ public class Room implements Serializable {
     public static class Builder {
         private final Room data = new Room();
         
-        public Builder list(List<res1.data.list.hotels.additional_info.room.ListRoom> list) {
+        public Builder list(List<ListRoom> list) {
             data.setList(list);
             return this;
         }

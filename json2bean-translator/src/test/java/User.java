@@ -10,7 +10,7 @@ public class User implements Serializable {
     private Integer count;
     private String date;
     private String error;
-    private List<user.Result> result;
+    private List<Result> result;
     
     public Integer getCode() {
         return code;
@@ -44,11 +44,11 @@ public class User implements Serializable {
         this.error = error;
     }
     
-    public List<user.Result> getResult() {
+    public List<Result> getResult() {
         return result;
     }
     
-    public void setResult(List<user.Result> result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
     
@@ -90,7 +90,7 @@ public class User implements Serializable {
             return this;
         }
         
-        public Builder result(List<user.Result> result) {
+        public Builder result(List<Result> result) {
             data.setResult(result);
             return this;
         }

@@ -7,13 +7,13 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Picker implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.picker.M m;
+    private M m;
     
-    public message.messages.mv.order.m.picker.M getM() {
+    public M getM() {
         return m;
     }
     
-    public void setM(message.messages.mv.order.m.picker.M m) {
+    public void setM(M m) {
         this.m = m;
     }
     
@@ -31,7 +31,7 @@ public class Picker implements Serializable {
     public static class Builder {
         private final Picker data = new Picker();
         
-        public Builder m(message.messages.mv.order.m.picker.M m) {
+        public Builder m(M m) {
             data.setM(m);
             return this;
         }

@@ -6,16 +6,13 @@ import java.util.List;
 import category.data.sheets.Merges;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Sheets extends category.data.sheets.ColumnCountRowCount implements Serializable {
+public class Sheets extends ColumnCountRowCount implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer frozenColCount;
     private Integer frozenRowCount;
     private Integer index;
-    private List<category.data.sheets.Merges> merges;
+    private List<Merges> merges;
     private String sheetId;
     private String title;
     
@@ -43,11 +40,11 @@ public class Sheets extends category.data.sheets.ColumnCountRowCount implements 
         this.index = index;
     }
     
-    public List<category.data.sheets.Merges> getMerges() {
+    public List<Merges> getMerges() {
         return merges;
     }
     
-    public void setMerges(List<category.data.sheets.Merges> merges) {
+    public void setMerges(List<Merges> merges) {
         this.merges = merges;
     }
     
@@ -76,8 +73,8 @@ public class Sheets extends category.data.sheets.ColumnCountRowCount implements 
                 .add("merges", getMerges())
                 .add("sheetId", getSheetId())
                 .add("title", getTitle())
-                .add("columnCount", getColumnCount())
                 .add("rowCount", getRowCount())
+                .add("columnCount", getColumnCount())
                 .toString();
     }
     
@@ -103,7 +100,7 @@ public class Sheets extends category.data.sheets.ColumnCountRowCount implements 
             return this;
         }
         
-        public Builder merges(List<category.data.sheets.Merges> merges) {
+        public Builder merges(List<Merges> merges) {
             data.setMerges(merges);
             return this;
         }
@@ -118,13 +115,13 @@ public class Sheets extends category.data.sheets.ColumnCountRowCount implements 
             return this;
         }
         
-        public Builder columnCount(Integer columnCount) {
-            data.setColumnCount(columnCount);
+        public Builder rowCount(Integer rowCount) {
+            data.setRowCount(rowCount);
             return this;
         }
         
-        public Builder rowCount(Integer rowCount) {
-            data.setRowCount(rowCount);
+        public Builder columnCount(Integer columnCount) {
+            data.setColumnCount(columnCount);
             return this;
         }
         

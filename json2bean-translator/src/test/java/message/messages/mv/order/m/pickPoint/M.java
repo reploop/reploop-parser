@@ -9,31 +9,31 @@ import message.messages.mv.order.m.pickPoint.m.Name;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.pickPoint.m.Airport airport;
-    private message.messages.mv.order.m.pickPoint.m.Name name;
-    private message.messages.mv.order.m.pickPoint.m.Terminal terminal;
+    private Airport airport;
+    private Name name;
+    private Terminal terminal;
     
-    public message.messages.mv.order.m.pickPoint.m.Airport getAirport() {
+    public Airport getAirport() {
         return airport;
     }
     
-    public void setAirport(message.messages.mv.order.m.pickPoint.m.Airport airport) {
+    public void setAirport(Airport airport) {
         this.airport = airport;
     }
     
-    public message.messages.mv.order.m.pickPoint.m.Name getName() {
+    public Name getName() {
         return name;
     }
     
-    public void setName(message.messages.mv.order.m.pickPoint.m.Name name) {
+    public void setName(Name name) {
         this.name = name;
     }
     
-    public message.messages.mv.order.m.pickPoint.m.Terminal getTerminal() {
+    public Terminal getTerminal() {
         return terminal;
     }
     
-    public void setTerminal(message.messages.mv.order.m.pickPoint.m.Terminal terminal) {
+    public void setTerminal(Terminal terminal) {
         this.terminal = terminal;
     }
     
@@ -53,17 +53,17 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder airport(message.messages.mv.order.m.pickPoint.m.Airport airport) {
+        public Builder airport(Airport airport) {
             data.setAirport(airport);
             return this;
         }
         
-        public Builder name(message.messages.mv.order.m.pickPoint.m.Name name) {
+        public Builder name(Name name) {
             data.setName(name);
             return this;
         }
         
-        public Builder terminal(message.messages.mv.order.m.pickPoint.m.Terminal terminal) {
+        public Builder terminal(Terminal terminal) {
             data.setTerminal(terminal);
             return this;
         }

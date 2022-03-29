@@ -1,122 +1,121 @@
 package har.log.entries;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.google.common.base.MoreObjects;
-
 import java.io.Serializable;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.common.base.MoreObjects;
+import har.log.entries.request.PostData;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Request extends har.log.entries.RequestResponse implements Serializable {
+public class Request extends RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private String method;
-    private har.log.entries.request.PostData postData;
-    private List<har.log.entries.NameValue> queryString;
+    private PostData postData;
+    private List<NameValue> queryString;
     private String url;
-
+    
     public String getMethod() {
         return method;
     }
-
+    
     public void setMethod(String method) {
         this.method = method;
     }
-
-    public har.log.entries.request.PostData getPostData() {
+    
+    public PostData getPostData() {
         return postData;
     }
-
-    public void setPostData(har.log.entries.request.PostData postData) {
+    
+    public void setPostData(PostData postData) {
         this.postData = postData;
     }
-
-    public List<har.log.entries.NameValue> getQueryString() {
+    
+    public List<NameValue> getQueryString() {
         return queryString;
     }
-
-    public void setQueryString(List<har.log.entries.NameValue> queryString) {
+    
+    public void setQueryString(List<NameValue> queryString) {
         this.queryString = queryString;
     }
-
+    
     public String getUrl() {
         return url;
     }
-
+    
     public void setUrl(String url) {
         this.url = url;
     }
-
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-            .add("method", getMethod())
-            .add("postData", getPostData())
-            .add("queryString", getQueryString())
-            .add("url", getUrl())
-            .add("bodySize", getBodySize())
-            .add("headersSize", getHeadersSize())
-            .add("httpVersion", getHttpVersion())
-            .add("headers", getHeaders())
-            .add("cookies", getCookies())
-            .toString();
+                .add("method", getMethod())
+                .add("postData", getPostData())
+                .add("queryString", getQueryString())
+                .add("url", getUrl())
+                .add("bodySize", getBodySize())
+                .add("cookies", getCookies())
+                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
+                .add("headers", getHeaders())
+                .toString();
     }
-
+    
     public static Builder newRequestBuilder() {
         return new Builder();
     }
-
+    
     public static class Builder {
         private final Request data = new Request();
-
+        
         public Builder method(String method) {
             data.setMethod(method);
             return this;
         }
-
-        public Builder postData(har.log.entries.request.PostData postData) {
+        
+        public Builder postData(PostData postData) {
             data.setPostData(postData);
             return this;
         }
-
-        public Builder queryString(List<har.log.entries.NameValue> queryString) {
+        
+        public Builder queryString(List<NameValue> queryString) {
             data.setQueryString(queryString);
             return this;
         }
-
+        
         public Builder url(String url) {
             data.setUrl(url);
             return this;
         }
-
+        
         public Builder bodySize(Integer bodySize) {
             data.setBodySize(bodySize);
             return this;
         }
-
+        
+        public Builder cookies(List<NameValue> cookies) {
+            data.setCookies(cookies);
+            return this;
+        }
+        
         public Builder headersSize(Integer headersSize) {
             data.setHeadersSize(headersSize);
             return this;
         }
-
+        
         public Builder httpVersion(String httpVersion) {
             data.setHttpVersion(httpVersion);
             return this;
         }
-
-        public Builder headers(List<har.log.entries.NameValue> headers) {
+        
+        public Builder headers(List<NameValue> headers) {
             data.setHeaders(headers);
             return this;
         }
-
-        public Builder cookies(List<har.log.entries.NameValue> cookies) {
-            data.setCookies(cookies);
-            return this;
-        }
-
+        
         public Request build() {
             return data;
         }
-
+        
     }
-
+    
 }

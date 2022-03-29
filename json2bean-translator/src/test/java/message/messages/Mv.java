@@ -14,76 +14,76 @@ import message.messages.mv.PickInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Mv implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.Code code;
-    private message.messages.mv.HeadingCode headingCode;
-    private message.messages.mv.Items items;
-    private message.messages.mv.LifeCycle lifeCycle;
-    private message.messages.mv.Order order;
-    private message.messages.mv.PickInfo pickInfo;
-    private message.messages.mv.States states;
-    private message.messages.mv.UploadInfo uploadInfo;
+    private Code code;
+    private HeadingCode headingCode;
+    private Items items;
+    private LifeCycle lifeCycle;
+    private Order order;
+    private PickInfo pickInfo;
+    private States states;
+    private UploadInfo uploadInfo;
     
-    public message.messages.mv.Code getCode() {
+    public Code getCode() {
         return code;
     }
     
-    public void setCode(message.messages.mv.Code code) {
+    public void setCode(Code code) {
         this.code = code;
     }
     
-    public message.messages.mv.HeadingCode getHeadingCode() {
+    public HeadingCode getHeadingCode() {
         return headingCode;
     }
     
-    public void setHeadingCode(message.messages.mv.HeadingCode headingCode) {
+    public void setHeadingCode(HeadingCode headingCode) {
         this.headingCode = headingCode;
     }
     
-    public message.messages.mv.Items getItems() {
+    public Items getItems() {
         return items;
     }
     
-    public void setItems(message.messages.mv.Items items) {
+    public void setItems(Items items) {
         this.items = items;
     }
     
-    public message.messages.mv.LifeCycle getLifeCycle() {
+    public LifeCycle getLifeCycle() {
         return lifeCycle;
     }
     
-    public void setLifeCycle(message.messages.mv.LifeCycle lifeCycle) {
+    public void setLifeCycle(LifeCycle lifeCycle) {
         this.lifeCycle = lifeCycle;
     }
     
-    public message.messages.mv.Order getOrder() {
+    public Order getOrder() {
         return order;
     }
     
-    public void setOrder(message.messages.mv.Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
     
-    public message.messages.mv.PickInfo getPickInfo() {
+    public PickInfo getPickInfo() {
         return pickInfo;
     }
     
-    public void setPickInfo(message.messages.mv.PickInfo pickInfo) {
+    public void setPickInfo(PickInfo pickInfo) {
         this.pickInfo = pickInfo;
     }
     
-    public message.messages.mv.States getStates() {
+    public States getStates() {
         return states;
     }
     
-    public void setStates(message.messages.mv.States states) {
+    public void setStates(States states) {
         this.states = states;
     }
     
-    public message.messages.mv.UploadInfo getUploadInfo() {
+    public UploadInfo getUploadInfo() {
         return uploadInfo;
     }
     
-    public void setUploadInfo(message.messages.mv.UploadInfo uploadInfo) {
+    public void setUploadInfo(UploadInfo uploadInfo) {
         this.uploadInfo = uploadInfo;
     }
     
@@ -108,42 +108,42 @@ public class Mv implements Serializable {
     public static class Builder {
         private final Mv data = new Mv();
         
-        public Builder code(message.messages.mv.Code code) {
+        public Builder code(Code code) {
             data.setCode(code);
             return this;
         }
         
-        public Builder headingCode(message.messages.mv.HeadingCode headingCode) {
+        public Builder headingCode(HeadingCode headingCode) {
             data.setHeadingCode(headingCode);
             return this;
         }
         
-        public Builder items(message.messages.mv.Items items) {
+        public Builder items(Items items) {
             data.setItems(items);
             return this;
         }
         
-        public Builder lifeCycle(message.messages.mv.LifeCycle lifeCycle) {
+        public Builder lifeCycle(LifeCycle lifeCycle) {
             data.setLifeCycle(lifeCycle);
             return this;
         }
         
-        public Builder order(message.messages.mv.Order order) {
+        public Builder order(Order order) {
             data.setOrder(order);
             return this;
         }
         
-        public Builder pickInfo(message.messages.mv.PickInfo pickInfo) {
+        public Builder pickInfo(PickInfo pickInfo) {
             data.setPickInfo(pickInfo);
             return this;
         }
         
-        public Builder states(message.messages.mv.States states) {
+        public Builder states(States states) {
             data.setStates(states);
             return this;
         }
         
-        public Builder uploadInfo(message.messages.mv.UploadInfo uploadInfo) {
+        public Builder uploadInfo(UploadInfo uploadInfo) {
             data.setUploadInfo(uploadInfo);
             return this;
         }

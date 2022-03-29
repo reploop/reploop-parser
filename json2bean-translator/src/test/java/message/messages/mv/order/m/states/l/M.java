@@ -8,22 +8,22 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.states.l.m.Status status;
-    private message.messages.mv.order.m.states.l.m.Time time;
+    private Status status;
+    private Time time;
     
-    public message.messages.mv.order.m.states.l.m.Status getStatus() {
+    public Status getStatus() {
         return status;
     }
     
-    public void setStatus(message.messages.mv.order.m.states.l.m.Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
     
-    public message.messages.mv.order.m.states.l.m.Time getTime() {
+    public Time getTime() {
         return time;
     }
     
-    public void setTime(message.messages.mv.order.m.states.l.m.Time time) {
+    public void setTime(Time time) {
         this.time = time;
     }
     
@@ -42,12 +42,12 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder status(message.messages.mv.order.m.states.l.m.Status status) {
+        public Builder status(Status status) {
             data.setStatus(status);
             return this;
         }
         
-        public Builder time(message.messages.mv.order.m.states.l.m.Time time) {
+        public Builder time(Time time) {
             data.setTime(time);
             return this;
         }

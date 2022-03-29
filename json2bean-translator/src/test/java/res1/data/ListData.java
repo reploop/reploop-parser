@@ -11,7 +11,7 @@ public class ListData implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("city_id")
     private String cityId;
-    private List<res1.data.list.Hotels> hotels;
+    private List<Hotels> hotels;
     @JsonProperty("max_price")
     private Integer maxPrice;
     @JsonProperty("min_price")
@@ -25,11 +25,11 @@ public class ListData implements Serializable {
         this.cityId = cityId;
     }
     
-    public List<res1.data.list.Hotels> getHotels() {
+    public List<Hotels> getHotels() {
         return hotels;
     }
     
-    public void setHotels(List<res1.data.list.Hotels> hotels) {
+    public void setHotels(List<Hotels> hotels) {
         this.hotels = hotels;
     }
     
@@ -71,7 +71,7 @@ public class ListData implements Serializable {
             return this;
         }
         
-        public Builder hotels(List<res1.data.list.Hotels> hotels) {
+        public Builder hotels(List<Hotels> hotels) {
             data.setHotels(hotels);
             return this;
         }

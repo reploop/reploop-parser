@@ -9,31 +9,31 @@ import message.messages.mv.order.m.picker.m.RealName;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.picker.m.Identity identity;
-    private message.messages.mv.order.m.picker.m.Phone phone;
-    private message.messages.mv.order.m.picker.m.RealName realName;
+    private Identity identity;
+    private Phone phone;
+    private RealName realName;
     
-    public message.messages.mv.order.m.picker.m.Identity getIdentity() {
+    public Identity getIdentity() {
         return identity;
     }
     
-    public void setIdentity(message.messages.mv.order.m.picker.m.Identity identity) {
+    public void setIdentity(Identity identity) {
         this.identity = identity;
     }
     
-    public message.messages.mv.order.m.picker.m.Phone getPhone() {
+    public Phone getPhone() {
         return phone;
     }
     
-    public void setPhone(message.messages.mv.order.m.picker.m.Phone phone) {
+    public void setPhone(Phone phone) {
         this.phone = phone;
     }
     
-    public message.messages.mv.order.m.picker.m.RealName getRealName() {
+    public RealName getRealName() {
         return realName;
     }
     
-    public void setRealName(message.messages.mv.order.m.picker.m.RealName realName) {
+    public void setRealName(RealName realName) {
         this.realName = realName;
     }
     
@@ -53,17 +53,17 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder identity(message.messages.mv.order.m.picker.m.Identity identity) {
+        public Builder identity(Identity identity) {
             data.setIdentity(identity);
             return this;
         }
         
-        public Builder phone(message.messages.mv.order.m.picker.m.Phone phone) {
+        public Builder phone(Phone phone) {
             data.setPhone(phone);
             return this;
         }
         
-        public Builder realName(message.messages.mv.order.m.picker.m.RealName realName) {
+        public Builder realName(RealName realName) {
             data.setRealName(realName);
             return this;
         }

@@ -6,16 +6,16 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Body implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<body.CanShippedOrderParcelList> canShippedOrderParcelList;
+    private List<CanShippedOrderParcelList> canShippedOrderParcelList;
     private Integer canShippedParcelNum;
     private Integer expiredParcelNum;
     private Integer notExpiredParcelNum;
     
-    public List<body.CanShippedOrderParcelList> getCanShippedOrderParcelList() {
+    public List<CanShippedOrderParcelList> getCanShippedOrderParcelList() {
         return canShippedOrderParcelList;
     }
     
-    public void setCanShippedOrderParcelList(List<body.CanShippedOrderParcelList> canShippedOrderParcelList) {
+    public void setCanShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
         this.canShippedOrderParcelList = canShippedOrderParcelList;
     }
     
@@ -60,7 +60,7 @@ public class Body implements Serializable {
     public static class Builder {
         private final Body data = new Body();
         
-        public Builder canShippedOrderParcelList(List<body.CanShippedOrderParcelList> canShippedOrderParcelList) {
+        public Builder canShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
             data.setCanShippedOrderParcelList(canShippedOrderParcelList);
             return this;
         }

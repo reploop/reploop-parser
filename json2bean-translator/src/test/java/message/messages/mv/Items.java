@@ -8,13 +8,13 @@ import message.messages.mv.items.M;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Items implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Map<Integer, message.messages.mv.items.M> m;
+    private Map<Integer, M> m;
     
-    public Map<Integer, message.messages.mv.items.M> getM() {
+    public Map<Integer, M> getM() {
         return m;
     }
     
-    public void setM(Map<Integer, message.messages.mv.items.M> m) {
+    public void setM(Map<Integer, M> m) {
         this.m = m;
     }
     
@@ -32,7 +32,7 @@ public class Items implements Serializable {
     public static class Builder {
         private final Items data = new Items();
         
-        public Builder m(Map<Integer, message.messages.mv.items.M> m) {
+        public Builder m(Map<Integer, M> m) {
             data.setM(m);
             return this;
         }

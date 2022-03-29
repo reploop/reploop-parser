@@ -8,15 +8,15 @@ import res1.data.list.hotels.additional_info.plan_prefer.Price;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlanPrefer implements Serializable {
     private static final long serialVersionUID = 1L;
-    private res1.data.list.hotels.additional_info.plan_prefer.Price price;
+    private Price price;
     private List<Integer> star;
     private List<String> tags;
     
-    public res1.data.list.hotels.additional_info.plan_prefer.Price getPrice() {
+    public Price getPrice() {
         return price;
     }
     
-    public void setPrice(res1.data.list.hotels.additional_info.plan_prefer.Price price) {
+    public void setPrice(Price price) {
         this.price = price;
     }
     
@@ -52,7 +52,7 @@ public class PlanPrefer implements Serializable {
     public static class Builder {
         private final PlanPrefer data = new PlanPrefer();
         
-        public Builder price(res1.data.list.hotels.additional_info.plan_prefer.Price price) {
+        public Builder price(Price price) {
             data.setPrice(price);
             return this;
         }

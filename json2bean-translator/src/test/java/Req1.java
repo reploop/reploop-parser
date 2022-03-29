@@ -10,32 +10,32 @@ import com.google.common.base.MoreObjects;
 public class Req1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("city_list")
-    private List<req1.CityList> cityList;
+    private List<CityList> cityList;
     @JsonProperty("plan_prefer")
-    private req1.PlanPrefer planPrefer;
-    private List<req1.Room> room;
+    private PlanPrefer planPrefer;
+    private List<Room> room;
     
-    public List<req1.CityList> getCityList() {
+    public List<CityList> getCityList() {
         return cityList;
     }
     
-    public void setCityList(List<req1.CityList> cityList) {
+    public void setCityList(List<CityList> cityList) {
         this.cityList = cityList;
     }
     
-    public req1.PlanPrefer getPlanPrefer() {
+    public PlanPrefer getPlanPrefer() {
         return planPrefer;
     }
     
-    public void setPlanPrefer(req1.PlanPrefer planPrefer) {
+    public void setPlanPrefer(PlanPrefer planPrefer) {
         this.planPrefer = planPrefer;
     }
     
-    public List<req1.Room> getRoom() {
+    public List<Room> getRoom() {
         return room;
     }
     
-    public void setRoom(List<req1.Room> room) {
+    public void setRoom(List<Room> room) {
         this.room = room;
     }
     
@@ -55,17 +55,17 @@ public class Req1 implements Serializable {
     public static class Builder {
         private final Req1 data = new Req1();
         
-        public Builder cityList(List<req1.CityList> cityList) {
+        public Builder cityList(List<CityList> cityList) {
             data.setCityList(cityList);
             return this;
         }
         
-        public Builder planPrefer(req1.PlanPrefer planPrefer) {
+        public Builder planPrefer(PlanPrefer planPrefer) {
             data.setPlanPrefer(planPrefer);
             return this;
         }
         
-        public Builder room(List<req1.Room> room) {
+        public Builder room(List<Room> room) {
             data.setRoom(room);
             return this;
         }

@@ -6,18 +6,18 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Simple implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Map<Integer, simple.Area> area;
+    private Map<Integer, Area> area;
     private Map<String, String> city;
     private Integer code;
     private String date;
     private String error;
     private String result;
     
-    public Map<Integer, simple.Area> getArea() {
+    public Map<Integer, Area> getArea() {
         return area;
     }
     
-    public void setArea(Map<Integer, simple.Area> area) {
+    public void setArea(Map<Integer, Area> area) {
         this.area = area;
     }
     
@@ -80,7 +80,7 @@ public class Simple implements Serializable {
     public static class Builder {
         private final Simple data = new Simple();
         
-        public Builder area(Map<Integer, simple.Area> area) {
+        public Builder area(Map<Integer, Area> area) {
             data.setArea(area);
             return this;
         }

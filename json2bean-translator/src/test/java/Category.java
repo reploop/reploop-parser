@@ -6,7 +6,7 @@ import category.Data;
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
-    private category.Data data;
+    private Data data;
     private String msg;
     
     public Integer getCode() {
@@ -17,11 +17,11 @@ public class Category implements Serializable {
         this.code = code;
     }
     
-    public category.Data getData() {
+    public Data getData() {
         return data;
     }
     
-    public void setData(category.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
     
@@ -54,7 +54,7 @@ public class Category implements Serializable {
             return this;
         }
         
-        public Builder data(category.Data data) {
+        public Builder data(Data data) {
             this.data.setData(data);
             return this;
         }

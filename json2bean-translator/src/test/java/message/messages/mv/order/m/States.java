@@ -8,13 +8,13 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class States implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<message.messages.mv.order.m.states.L> l;
+    private List<L> l;
     
-    public List<message.messages.mv.order.m.states.L> getL() {
+    public List<L> getL() {
         return l;
     }
     
-    public void setL(List<message.messages.mv.order.m.states.L> l) {
+    public void setL(List<L> l) {
         this.l = l;
     }
     
@@ -32,7 +32,7 @@ public class States implements Serializable {
     public static class Builder {
         private final States data = new States();
         
-        public Builder l(List<message.messages.mv.order.m.states.L> l) {
+        public Builder l(List<L> l) {
             data.setL(l);
             return this;
         }

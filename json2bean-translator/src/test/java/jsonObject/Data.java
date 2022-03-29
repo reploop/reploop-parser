@@ -1,16 +1,11 @@
 package jsonObject;
 
-import jsonObject.Array;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.google.common.base.MoreObjects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Data extends jsonObject.Array implements Serializable {
+public class Data extends Array implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("count_history")
     private Integer countHistory;

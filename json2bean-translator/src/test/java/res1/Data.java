@@ -8,13 +8,13 @@ import res1.data.ListData;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<res1.data.ListData> list;
+    private List<ListData> list;
     
-    public List<res1.data.ListData> getList() {
+    public List<ListData> getList() {
         return list;
     }
     
-    public void setList(List<res1.data.ListData> list) {
+    public void setList(List<ListData> list) {
         this.list = list;
     }
     
@@ -32,7 +32,7 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder list(List<res1.data.ListData> list) {
+        public Builder list(List<ListData> list) {
             data.setList(list);
             return this;
         }

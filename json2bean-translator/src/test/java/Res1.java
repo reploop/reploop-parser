@@ -6,22 +6,22 @@ import res1.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Res1 implements Serializable {
     private static final long serialVersionUID = 1L;
-    private res1.Data data;
-    private res1.Error error;
+    private Data data;
+    private Error error;
     
-    public res1.Data getData() {
+    public Data getData() {
         return data;
     }
     
-    public void setData(res1.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
     
-    public res1.Error getError() {
+    public Error getError() {
         return error;
     }
     
-    public void setError(res1.Error error) {
+    public void setError(Error error) {
         this.error = error;
     }
     
@@ -40,12 +40,12 @@ public class Res1 implements Serializable {
     public static class Builder {
         private final Res1 data = new Res1();
         
-        public Builder data(res1.Data data) {
+        public Builder data(Data data) {
             this.data.setData(data);
             return this;
         }
         
-        public Builder error(res1.Error error) {
+        public Builder error(Error error) {
             data.setError(error);
             return this;
         }

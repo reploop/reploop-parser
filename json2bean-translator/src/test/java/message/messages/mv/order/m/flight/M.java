@@ -10,40 +10,40 @@ import message.messages.mv.order.m.flight.m.Airport;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.flight.m.Airport airport;
-    private message.messages.mv.order.m.flight.m.DepartureTime departureTime;
-    private message.messages.mv.order.m.flight.m.No no;
-    private message.messages.mv.order.m.flight.m.Terminal terminal;
+    private Airport airport;
+    private DepartureTime departureTime;
+    private No no;
+    private Terminal terminal;
     
-    public message.messages.mv.order.m.flight.m.Airport getAirport() {
+    public Airport getAirport() {
         return airport;
     }
     
-    public void setAirport(message.messages.mv.order.m.flight.m.Airport airport) {
+    public void setAirport(Airport airport) {
         this.airport = airport;
     }
     
-    public message.messages.mv.order.m.flight.m.DepartureTime getDepartureTime() {
+    public DepartureTime getDepartureTime() {
         return departureTime;
     }
     
-    public void setDepartureTime(message.messages.mv.order.m.flight.m.DepartureTime departureTime) {
+    public void setDepartureTime(DepartureTime departureTime) {
         this.departureTime = departureTime;
     }
     
-    public message.messages.mv.order.m.flight.m.No getNo() {
+    public No getNo() {
         return no;
     }
     
-    public void setNo(message.messages.mv.order.m.flight.m.No no) {
+    public void setNo(No no) {
         this.no = no;
     }
     
-    public message.messages.mv.order.m.flight.m.Terminal getTerminal() {
+    public Terminal getTerminal() {
         return terminal;
     }
     
-    public void setTerminal(message.messages.mv.order.m.flight.m.Terminal terminal) {
+    public void setTerminal(Terminal terminal) {
         this.terminal = terminal;
     }
     
@@ -64,22 +64,22 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder airport(message.messages.mv.order.m.flight.m.Airport airport) {
+        public Builder airport(Airport airport) {
             data.setAirport(airport);
             return this;
         }
         
-        public Builder departureTime(message.messages.mv.order.m.flight.m.DepartureTime departureTime) {
+        public Builder departureTime(DepartureTime departureTime) {
             data.setDepartureTime(departureTime);
             return this;
         }
         
-        public Builder no(message.messages.mv.order.m.flight.m.No no) {
+        public Builder no(No no) {
             data.setNo(no);
             return this;
         }
         
-        public Builder terminal(message.messages.mv.order.m.flight.m.Terminal terminal) {
+        public Builder terminal(Terminal terminal) {
             data.setTerminal(terminal);
             return this;
         }

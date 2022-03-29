@@ -6,15 +6,15 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Store implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<store.ListStore> list;
+    private List<ListStore> list;
     private String msg;
     private Boolean success;
     
-    public List<store.ListStore> getList() {
+    public List<ListStore> getList() {
         return list;
     }
     
-    public void setList(List<store.ListStore> list) {
+    public void setList(List<ListStore> list) {
         this.list = list;
     }
     
@@ -50,7 +50,7 @@ public class Store implements Serializable {
     public static class Builder {
         private final Store data = new Store();
         
-        public Builder list(List<store.ListStore> list) {
+        public Builder list(List<ListStore> list) {
             data.setList(list);
             return this;
         }

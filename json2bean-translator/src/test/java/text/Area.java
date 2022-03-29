@@ -1,6 +1,5 @@
 package text;
 
-import text.Area;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
@@ -9,7 +8,7 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Area implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<text.Area> child;
+    private List<Area> child;
     @JsonProperty("area_currency")
     private String areaCurrency;
     @JsonProperty("area_en")
@@ -39,11 +38,11 @@ public class Area implements Serializable {
     @JsonProperty("area_timezone")
     private String areaTimeZone;
     
-    public List<text.Area> getChild() {
+    public List<Area> getChild() {
         return child;
     }
     
-    public void setChild(List<text.Area> child) {
+    public void setChild(List<Area> child) {
         this.child = child;
     }
     
@@ -187,7 +186,7 @@ public class Area implements Serializable {
     public static class Builder {
         private final Area data = new Area();
         
-        public Builder child(List<text.Area> child) {
+        public Builder child(List<Area> child) {
             data.setChild(child);
             return this;
         }

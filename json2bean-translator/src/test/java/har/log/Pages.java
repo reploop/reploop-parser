@@ -8,7 +8,7 @@ import com.google.common.base.MoreObjects;
 public class Pages implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
-    private har.log.pages.PageTimings pageTimings;
+    private PageTimings pageTimings;
     private String startedDateTime;
     
     public String getId() {
@@ -19,11 +19,11 @@ public class Pages implements Serializable {
         this.id = id;
     }
     
-    public har.log.pages.PageTimings getPageTimings() {
+    public PageTimings getPageTimings() {
         return pageTimings;
     }
     
-    public void setPageTimings(har.log.pages.PageTimings pageTimings) {
+    public void setPageTimings(PageTimings pageTimings) {
         this.pageTimings = pageTimings;
     }
     
@@ -56,7 +56,7 @@ public class Pages implements Serializable {
             return this;
         }
         
-        public Builder pageTimings(har.log.pages.PageTimings pageTimings) {
+        public Builder pageTimings(PageTimings pageTimings) {
             data.setPageTimings(pageTimings);
             return this;
         }

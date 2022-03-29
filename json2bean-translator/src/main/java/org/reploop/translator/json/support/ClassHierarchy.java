@@ -44,8 +44,8 @@ public class ClassHierarchy {
             Set<QualifiedName> names = parent.getMessages().stream().map(Entity::getName).collect(toSet());
 
             Map<QualifiedName, Message> freshMap = keys.stream()
-                    .filter(qn -> !names.contains(qn))
-                    .collect(toMap(qn -> qn, messageMap::get));
+                .filter(qn -> !names.contains(qn))
+                .collect(toMap(qn -> qn, messageMap::get));
             // Exclude messages, infer messages again.
             infer(freshMap);
             // Merge abstract messages
@@ -73,8 +73,8 @@ public class ClassHierarchy {
             for (Message message : messages) {
                 QualifiedName qn = message.getName();
                 List<Field> sub = message.getFields().stream()
-                        .filter(field -> !fields.contains(field))
-                        .collect(toList());
+                    .filter(field -> !fields.contains(field))
+                    .collect(toList());
                 // Same as parent, we make this message as parent  without modifying its name.
                 if (sub.isEmpty()) {
                     if (null == parent) {
@@ -109,7 +109,7 @@ public class ClassHierarchy {
                 // Add options
                 for (Message sub : subClasses) {
                     ImmutableList.Builder<Option> lb = ImmutableList.<Option>builder()
-                            .add(new CommonPair(EXTENDS_ATTR, new StringValue(name.toString())));
+                        .add(new CommonPair(EXTENDS_ATTR, new StringValue(name.toString())));
                     List<Option> options = sub.getOptions();
                     if (null != options) {
                         lb.addAll(options);
@@ -133,9 +133,9 @@ public class ClassHierarchy {
 
     private QualifiedName commonParent(List<Message> messages) {
         List<QualifiedName> names = Stream.of(messages)
-                .flatMap(Collection::stream)
-                .map(Entity::getName)
-                .collect(Collectors.toList());
+            .flatMap(Collection::stream)
+            .map(Entity::getName)
+            .collect(Collectors.toList());
 
         List<String> parts = new ArrayList<>();
         for (int i = 0; names.size() > 0; i++) {
@@ -176,19 +176,20 @@ public class ClassHierarchy {
         // like Key-Value, Name-ID
         if (fields.size() < 3) {
             String name0 = Stream.of(fields)
-                    .flatMap(Collection::stream)
-                    .map(Field::getName)
-                    .collect(Collectors.joining(UNDERSCORE));
+                .flatMap(Collection::stream)
+                .map(Field::getName)
+                .sorted()
+                .collect(Collectors.joining(UNDERSCORE));
             return QualifiedName.of(qn, name0);
         }
         // Try to generate parent class name from message names
         String name = Stream.of(messages)
-                .flatMap(Collection::stream)
-                .map(Entity::getName)
-                .map(QualifiedName::suffix)
-                .limit(2)
-                .sorted()
-                .collect(Collectors.joining(UNDERSCORE));
+            .flatMap(Collection::stream)
+            .map(Entity::getName)
+            .map(QualifiedName::suffix)
+            .sorted()
+            .limit(2)
+            .collect(Collectors.joining(UNDERSCORE));
         return QualifiedName.of(qn, name);
     }
 
@@ -215,8 +216,8 @@ public class ClassHierarchy {
                         Map<QualifiedName, QualifiedName> sameMap) {
         // From bottom up
         List<Message> messages = subClasses.stream()
-                .sorted(messageComparator)
-                .collect(toList());
+            .sorted(messageComparator)
+            .collect(toList());
         MessageContext ctx = new MessageContext();
         ctx.addIdentityNames(sameMap);
         for (Message message : messages) {
@@ -244,13 +245,13 @@ public class ClassHierarchy {
             // Parent is same as this message after fields merging.
             ctx.addIdentityName(parent.getName(), sub.getName());
             List<Field> merge = ImmutableList.<Field>builder()
-                    .add(field)
-                    .addAll(parent.getFields())
-                    .build();
+                .add(field)
+                .addAll(parent.getFields())
+                .build();
             List<Field> list = merge.stream()
-                    .map(f -> fieldTypeResolver.visitField(f, ctx))
-                    .distinct()
-                    .collect(toList());
+                .map(f -> fieldTypeResolver.visitField(f, ctx))
+                .distinct()
+                .collect(toList());
             Message msg = new Message(sub.getName(), sub.getComments(), list, sub.getMessages(), sub.getEnumerations(), sub.getServices(), sub.getOptions());
             messageMap.put(msg.getName(), msg);
             return Optional.of(msg);

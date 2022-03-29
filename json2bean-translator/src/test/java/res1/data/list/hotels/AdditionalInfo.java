@@ -12,32 +12,32 @@ import res1.data.list.hotels.additional_info.CityList;
 public class AdditionalInfo implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("city_list")
-    private List<res1.data.list.hotels.additional_info.CityList> cityList;
+    private List<CityList> cityList;
     @JsonProperty("plan_prefer")
-    private res1.data.list.hotels.additional_info.PlanPrefer planPrefer;
-    private List<res1.data.list.hotels.additional_info.Room> room;
+    private PlanPrefer planPrefer;
+    private List<Room> room;
     
-    public List<res1.data.list.hotels.additional_info.CityList> getCityList() {
+    public List<CityList> getCityList() {
         return cityList;
     }
     
-    public void setCityList(List<res1.data.list.hotels.additional_info.CityList> cityList) {
+    public void setCityList(List<CityList> cityList) {
         this.cityList = cityList;
     }
     
-    public res1.data.list.hotels.additional_info.PlanPrefer getPlanPrefer() {
+    public PlanPrefer getPlanPrefer() {
         return planPrefer;
     }
     
-    public void setPlanPrefer(res1.data.list.hotels.additional_info.PlanPrefer planPrefer) {
+    public void setPlanPrefer(PlanPrefer planPrefer) {
         this.planPrefer = planPrefer;
     }
     
-    public List<res1.data.list.hotels.additional_info.Room> getRoom() {
+    public List<Room> getRoom() {
         return room;
     }
     
-    public void setRoom(List<res1.data.list.hotels.additional_info.Room> room) {
+    public void setRoom(List<Room> room) {
         this.room = room;
     }
     
@@ -57,17 +57,17 @@ public class AdditionalInfo implements Serializable {
     public static class Builder {
         private final AdditionalInfo data = new AdditionalInfo();
         
-        public Builder cityList(List<res1.data.list.hotels.additional_info.CityList> cityList) {
+        public Builder cityList(List<CityList> cityList) {
             data.setCityList(cityList);
             return this;
         }
         
-        public Builder planPrefer(res1.data.list.hotels.additional_info.PlanPrefer planPrefer) {
+        public Builder planPrefer(PlanPrefer planPrefer) {
             data.setPlanPrefer(planPrefer);
             return this;
         }
         
-        public Builder room(List<res1.data.list.hotels.additional_info.Room> room) {
+        public Builder room(List<Room> room) {
             data.setRoom(room);
             return this;
         }

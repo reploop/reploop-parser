@@ -8,7 +8,7 @@ public class CarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
     private String msg;
-    private List<carResponse.Rows> rows;
+    private List<Rows> rows;
     private Integer total;
     
     public Integer getCode() {
@@ -27,11 +27,11 @@ public class CarResponse implements Serializable {
         this.msg = msg;
     }
     
-    public List<carResponse.Rows> getRows() {
+    public List<Rows> getRows() {
         return rows;
     }
     
-    public void setRows(List<carResponse.Rows> rows) {
+    public void setRows(List<Rows> rows) {
         this.rows = rows;
     }
     
@@ -70,7 +70,7 @@ public class CarResponse implements Serializable {
             return this;
         }
         
-        public Builder rows(List<carResponse.Rows> rows) {
+        public Builder rows(List<Rows> rows) {
             data.setRows(rows);
             return this;
         }

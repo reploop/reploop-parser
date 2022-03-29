@@ -7,13 +7,13 @@ import message.messages.mv.order.m.pickPoint.M;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PickPoint implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.pickPoint.M m;
+    private M m;
     
-    public message.messages.mv.order.m.pickPoint.M getM() {
+    public M getM() {
         return m;
     }
     
-    public void setM(message.messages.mv.order.m.pickPoint.M m) {
+    public void setM(M m) {
         this.m = m;
     }
     
@@ -31,7 +31,7 @@ public class PickPoint implements Serializable {
     public static class Builder {
         private final PickPoint data = new PickPoint();
         
-        public Builder m(message.messages.mv.order.m.pickPoint.M m) {
+        public Builder m(M m) {
             data.setM(m);
             return this;
         }

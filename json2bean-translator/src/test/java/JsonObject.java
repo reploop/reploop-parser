@@ -7,22 +7,22 @@ import jsonObject.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonObject implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<jsonObject.Array> array;
-    private jsonObject.Data data;
+    private List<Array> array;
+    private Data data;
     
-    public List<jsonObject.Array> getArray() {
+    public List<Array> getArray() {
         return array;
     }
     
-    public void setArray(List<jsonObject.Array> array) {
+    public void setArray(List<Array> array) {
         this.array = array;
     }
     
-    public jsonObject.Data getData() {
+    public Data getData() {
         return data;
     }
     
-    public void setData(jsonObject.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
     
@@ -41,12 +41,12 @@ public class JsonObject implements Serializable {
     public static class Builder {
         private final JsonObject data = new JsonObject();
         
-        public Builder array(List<jsonObject.Array> array) {
+        public Builder array(List<Array> array) {
             data.setArray(array);
             return this;
         }
         
-        public Builder data(jsonObject.Data data) {
+        public Builder data(Data data) {
             this.data.setData(data);
             return this;
         }

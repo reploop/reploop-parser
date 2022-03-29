@@ -10,40 +10,40 @@ import message.messages.mv.items.m.m.TotalPrice;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MM implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.items.m.m.Code code;
-    private message.messages.mv.items.m.m.Name name;
-    private message.messages.mv.items.m.m.Qty qty;
-    private message.messages.mv.items.m.m.TotalPrice totalPrice;
+    private Code code;
+    private Name name;
+    private Qty qty;
+    private TotalPrice totalPrice;
     
-    public message.messages.mv.items.m.m.Code getCode() {
+    public Code getCode() {
         return code;
     }
     
-    public void setCode(message.messages.mv.items.m.m.Code code) {
+    public void setCode(Code code) {
         this.code = code;
     }
     
-    public message.messages.mv.items.m.m.Name getName() {
+    public Name getName() {
         return name;
     }
     
-    public void setName(message.messages.mv.items.m.m.Name name) {
+    public void setName(Name name) {
         this.name = name;
     }
     
-    public message.messages.mv.items.m.m.Qty getQty() {
+    public Qty getQty() {
         return qty;
     }
     
-    public void setQty(message.messages.mv.items.m.m.Qty qty) {
+    public void setQty(Qty qty) {
         this.qty = qty;
     }
     
-    public message.messages.mv.items.m.m.TotalPrice getTotalPrice() {
+    public TotalPrice getTotalPrice() {
         return totalPrice;
     }
     
-    public void setTotalPrice(message.messages.mv.items.m.m.TotalPrice totalPrice) {
+    public void setTotalPrice(TotalPrice totalPrice) {
         this.totalPrice = totalPrice;
     }
     
@@ -64,22 +64,22 @@ public class MM implements Serializable {
     public static class Builder {
         private final MM data = new MM();
         
-        public Builder code(message.messages.mv.items.m.m.Code code) {
+        public Builder code(Code code) {
             data.setCode(code);
             return this;
         }
         
-        public Builder name(message.messages.mv.items.m.m.Name name) {
+        public Builder name(Name name) {
             data.setName(name);
             return this;
         }
         
-        public Builder qty(message.messages.mv.items.m.m.Qty qty) {
+        public Builder qty(Qty qty) {
             data.setQty(qty);
             return this;
         }
         
-        public Builder totalPrice(message.messages.mv.items.m.m.TotalPrice totalPrice) {
+        public Builder totalPrice(TotalPrice totalPrice) {
             data.setTotalPrice(totalPrice);
             return this;
         }

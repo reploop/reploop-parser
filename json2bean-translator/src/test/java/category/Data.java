@@ -9,23 +9,23 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
-    private category.data.Properties properties;
-    private List<category.data.Sheets> sheets;
+    private Properties properties;
+    private List<Sheets> sheets;
     private String spreadsheetToken;
     
-    public category.data.Properties getProperties() {
+    public Properties getProperties() {
         return properties;
     }
     
-    public void setProperties(category.data.Properties properties) {
+    public void setProperties(Properties properties) {
         this.properties = properties;
     }
     
-    public List<category.data.Sheets> getSheets() {
+    public List<Sheets> getSheets() {
         return sheets;
     }
     
-    public void setSheets(List<category.data.Sheets> sheets) {
+    public void setSheets(List<Sheets> sheets) {
         this.sheets = sheets;
     }
     
@@ -53,12 +53,12 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder properties(category.data.Properties properties) {
+        public Builder properties(Properties properties) {
             data.setProperties(properties);
             return this;
         }
         
-        public Builder sheets(List<category.data.Sheets> sheets) {
+        public Builder sheets(List<Sheets> sheets) {
             data.setSheets(sheets);
             return this;
         }

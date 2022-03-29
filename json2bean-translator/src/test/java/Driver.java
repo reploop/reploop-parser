@@ -6,7 +6,7 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Driver implements Serializable {
     private static final long serialVersionUID = 1L;
-    private driver.Data data;
+    private Data data;
     @JsonProperty("errmsg")
     private String errMsg;
     @JsonProperty("errno")
@@ -14,11 +14,11 @@ public class Driver implements Serializable {
     @JsonProperty("trace_id")
     private String traceId;
     
-    public driver.Data getData() {
+    public Data getData() {
         return data;
     }
     
-    public void setData(driver.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
     
@@ -63,7 +63,7 @@ public class Driver implements Serializable {
     public static class Builder {
         private final Driver data = new Driver();
         
-        public Builder data(driver.Data data) {
+        public Builder data(Data data) {
             this.data.setData(data);
             return this;
         }

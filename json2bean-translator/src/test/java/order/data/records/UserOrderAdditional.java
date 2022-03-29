@@ -1,14 +1,10 @@
 package order.data.records;
 
-import order.data.records.RecordsUserOrderAdditional;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.google.common.base.MoreObjects;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserOrderAdditional extends order.data.records.RecordsUserOrderAdditional implements Serializable {
+public class UserOrderAdditional extends RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
     private Object adultNum;
     private Object beginSiteName;
@@ -224,17 +220,17 @@ public class UserOrderAdditional extends order.data.records.RecordsUserOrderAddi
                 .add("vehicleId", getVehicleId())
                 .add("vehiclePlate", getVehiclePlate())
                 .add("vehicleType", getVehicleType())
-                .add("delay", getDelay())
-                .add("settlementPrice", getSettlementPrice())
-                .add("driverPhone", getDriverPhone())
-                .add("createTime", getCreateTime())
                 .add("driverOrderId", getDriverOrderId())
-                .add("operator", getOperator())
-                .add("preDriverId", getPreDriverId())
-                .add("actionSource", getActionSource())
                 .add("night", getNight())
-                .add("vehicleBrand", getVehicleBrand())
+                .add("delay", getDelay())
+                .add("preDriverId", getPreDriverId())
                 .add("orderId", getOrderId())
+                .add("operator", getOperator())
+                .add("settlementPrice", getSettlementPrice())
+                .add("vehicleBrand", getVehicleBrand())
+                .add("actionSource", getActionSource())
+                .add("createTime", getCreateTime())
+                .add("driverPhone", getDriverPhone())
                 .toString();
     }
     
@@ -350,43 +346,8 @@ public class UserOrderAdditional extends order.data.records.RecordsUserOrderAddi
             return this;
         }
         
-        public Builder delay(Object delay) {
-            data.setDelay(delay);
-            return this;
-        }
-        
-        public Builder settlementPrice(Object settlementPrice) {
-            data.setSettlementPrice(settlementPrice);
-            return this;
-        }
-        
-        public Builder driverPhone(Object driverPhone) {
-            data.setDriverPhone(driverPhone);
-            return this;
-        }
-        
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
-            return this;
-        }
-        
         public Builder driverOrderId(Object driverOrderId) {
             data.setDriverOrderId(driverOrderId);
-            return this;
-        }
-        
-        public Builder operator(Object operator) {
-            data.setOperator(operator);
-            return this;
-        }
-        
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
-            return this;
-        }
-        
-        public Builder actionSource(Object actionSource) {
-            data.setActionSource(actionSource);
             return this;
         }
         
@@ -395,13 +356,48 @@ public class UserOrderAdditional extends order.data.records.RecordsUserOrderAddi
             return this;
         }
         
-        public Builder vehicleBrand(Object vehicleBrand) {
-            data.setVehicleBrand(vehicleBrand);
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
             return this;
         }
         
         public Builder orderId(Object orderId) {
             data.setOrderId(orderId);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
             return this;
         }
         

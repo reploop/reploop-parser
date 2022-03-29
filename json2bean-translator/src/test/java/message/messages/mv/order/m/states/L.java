@@ -7,13 +7,13 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class L implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.states.l.M m;
+    private M m;
     
-    public message.messages.mv.order.m.states.l.M getM() {
+    public M getM() {
         return m;
     }
     
-    public void setM(message.messages.mv.order.m.states.l.M m) {
+    public void setM(M m) {
         this.m = m;
     }
     
@@ -31,7 +31,7 @@ public class L implements Serializable {
     public static class Builder {
         private final L data = new L();
         
-        public Builder m(message.messages.mv.order.m.states.l.M m) {
+        public Builder m(M m) {
             data.setM(m);
             return this;
         }

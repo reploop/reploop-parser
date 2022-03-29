@@ -10,7 +10,7 @@ public class Messages implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private Map<String, String> labels;
-    private message.messages.Mv mv;
+    private Mv mv;
     private String roomID;
     private String sender;
     private Integer sequenceNO;
@@ -32,11 +32,11 @@ public class Messages implements Serializable {
         this.labels = labels;
     }
     
-    public message.messages.Mv getMv() {
+    public Mv getMv() {
         return mv;
     }
     
-    public void setMv(message.messages.Mv mv) {
+    public void setMv(Mv mv) {
         this.mv = mv;
     }
     
@@ -102,7 +102,7 @@ public class Messages implements Serializable {
             return this;
         }
         
-        public Builder mv(message.messages.Mv mv) {
+        public Builder mv(Mv mv) {
             data.setMv(mv);
             return this;
         }

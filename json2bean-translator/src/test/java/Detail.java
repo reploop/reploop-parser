@@ -7,7 +7,7 @@ import com.google.common.base.MoreObjects;
 public class Detail implements Serializable {
     private static final long serialVersionUID = 1L;
     private Object reason;
-    private List<detail.Result> result;
+    private List<Result> result;
     private String resultCode;
     private Boolean success;
     
@@ -19,11 +19,11 @@ public class Detail implements Serializable {
         this.reason = reason;
     }
     
-    public List<detail.Result> getResult() {
+    public List<Result> getResult() {
         return result;
     }
     
-    public void setResult(List<detail.Result> result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
     
@@ -65,7 +65,7 @@ public class Detail implements Serializable {
             return this;
         }
         
-        public Builder result(List<detail.Result> result) {
+        public Builder result(List<Result> result) {
             data.setResult(result);
             return this;
         }

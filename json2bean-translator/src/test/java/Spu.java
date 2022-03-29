@@ -7,7 +7,7 @@ import spu.Result;
 public class Spu implements Serializable {
     private static final long serialVersionUID = 1L;
     private Object reason;
-    private List<spu.Result> result;
+    private List<Result> result;
     private String resultCode;
     private Boolean success;
     
@@ -19,11 +19,11 @@ public class Spu implements Serializable {
         this.reason = reason;
     }
     
-    public List<spu.Result> getResult() {
+    public List<Result> getResult() {
         return result;
     }
     
-    public void setResult(List<spu.Result> result) {
+    public void setResult(List<Result> result) {
         this.result = result;
     }
     
@@ -65,7 +65,7 @@ public class Spu implements Serializable {
             return this;
         }
         
-        public Builder result(List<spu.Result> result) {
+        public Builder result(List<Result> result) {
             data.setResult(result);
             return this;
         }

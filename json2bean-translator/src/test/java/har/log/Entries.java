@@ -13,17 +13,17 @@ public class Entries implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("_securityState")
     private String securityState;
-    private har.log.entries.Cache cache;
+    private Cache cache;
     private String connection;
     @JsonProperty("pageref")
     private String pageRef;
-    private har.log.entries.Request request;
-    private har.log.entries.Response response;
+    private Request request;
+    private Response response;
     @JsonProperty("serverIPAddress")
     private String serverIpAddress;
     private String startedDateTime;
     private Integer time;
-    private har.log.entries.Timings timings;
+    private Timings timings;
     
     public String getSecurityState() {
         return securityState;
@@ -33,11 +33,11 @@ public class Entries implements Serializable {
         this.securityState = securityState;
     }
     
-    public har.log.entries.Cache getCache() {
+    public Cache getCache() {
         return cache;
     }
     
-    public void setCache(har.log.entries.Cache cache) {
+    public void setCache(Cache cache) {
         this.cache = cache;
     }
     
@@ -57,19 +57,19 @@ public class Entries implements Serializable {
         this.pageRef = pageRef;
     }
     
-    public har.log.entries.Request getRequest() {
+    public Request getRequest() {
         return request;
     }
     
-    public void setRequest(har.log.entries.Request request) {
+    public void setRequest(Request request) {
         this.request = request;
     }
     
-    public har.log.entries.Response getResponse() {
+    public Response getResponse() {
         return response;
     }
     
-    public void setResponse(har.log.entries.Response response) {
+    public void setResponse(Response response) {
         this.response = response;
     }
     
@@ -97,11 +97,11 @@ public class Entries implements Serializable {
         this.time = time;
     }
     
-    public har.log.entries.Timings getTimings() {
+    public Timings getTimings() {
         return timings;
     }
     
-    public void setTimings(har.log.entries.Timings timings) {
+    public void setTimings(Timings timings) {
         this.timings = timings;
     }
     
@@ -133,7 +133,7 @@ public class Entries implements Serializable {
             return this;
         }
         
-        public Builder cache(har.log.entries.Cache cache) {
+        public Builder cache(Cache cache) {
             data.setCache(cache);
             return this;
         }
@@ -148,12 +148,12 @@ public class Entries implements Serializable {
             return this;
         }
         
-        public Builder request(har.log.entries.Request request) {
+        public Builder request(Request request) {
             data.setRequest(request);
             return this;
         }
         
-        public Builder response(har.log.entries.Response response) {
+        public Builder response(Response response) {
             data.setResponse(response);
             return this;
         }
@@ -173,7 +173,7 @@ public class Entries implements Serializable {
             return this;
         }
         
-        public Builder timings(har.log.entries.Timings timings) {
+        public Builder timings(Timings timings) {
             data.setTimings(timings);
             return this;
         }

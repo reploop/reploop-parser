@@ -13,67 +13,67 @@ import message.messages.mv.order.m.Picker;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.Code code;
-    private message.messages.mv.order.m.Created created;
-    private message.messages.mv.order.m.Flight flight;
-    private message.messages.mv.order.m.Items items;
-    private message.messages.mv.order.m.PickPoint pickPoint;
-    private message.messages.mv.order.m.Picker picker;
-    private message.messages.mv.order.m.States states;
+    private Code code;
+    private Created created;
+    private Flight flight;
+    private Items items;
+    private PickPoint pickPoint;
+    private Picker picker;
+    private States states;
     
-    public message.messages.mv.order.m.Code getCode() {
+    public Code getCode() {
         return code;
     }
     
-    public void setCode(message.messages.mv.order.m.Code code) {
+    public void setCode(Code code) {
         this.code = code;
     }
     
-    public message.messages.mv.order.m.Created getCreated() {
+    public Created getCreated() {
         return created;
     }
     
-    public void setCreated(message.messages.mv.order.m.Created created) {
+    public void setCreated(Created created) {
         this.created = created;
     }
     
-    public message.messages.mv.order.m.Flight getFlight() {
+    public Flight getFlight() {
         return flight;
     }
     
-    public void setFlight(message.messages.mv.order.m.Flight flight) {
+    public void setFlight(Flight flight) {
         this.flight = flight;
     }
     
-    public message.messages.mv.order.m.Items getItems() {
+    public Items getItems() {
         return items;
     }
     
-    public void setItems(message.messages.mv.order.m.Items items) {
+    public void setItems(Items items) {
         this.items = items;
     }
     
-    public message.messages.mv.order.m.PickPoint getPickPoint() {
+    public PickPoint getPickPoint() {
         return pickPoint;
     }
     
-    public void setPickPoint(message.messages.mv.order.m.PickPoint pickPoint) {
+    public void setPickPoint(PickPoint pickPoint) {
         this.pickPoint = pickPoint;
     }
     
-    public message.messages.mv.order.m.Picker getPicker() {
+    public Picker getPicker() {
         return picker;
     }
     
-    public void setPicker(message.messages.mv.order.m.Picker picker) {
+    public void setPicker(Picker picker) {
         this.picker = picker;
     }
     
-    public message.messages.mv.order.m.States getStates() {
+    public States getStates() {
         return states;
     }
     
-    public void setStates(message.messages.mv.order.m.States states) {
+    public void setStates(States states) {
         this.states = states;
     }
     
@@ -97,37 +97,37 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder code(message.messages.mv.order.m.Code code) {
+        public Builder code(Code code) {
             data.setCode(code);
             return this;
         }
         
-        public Builder created(message.messages.mv.order.m.Created created) {
+        public Builder created(Created created) {
             data.setCreated(created);
             return this;
         }
         
-        public Builder flight(message.messages.mv.order.m.Flight flight) {
+        public Builder flight(Flight flight) {
             data.setFlight(flight);
             return this;
         }
         
-        public Builder items(message.messages.mv.order.m.Items items) {
+        public Builder items(Items items) {
             data.setItems(items);
             return this;
         }
         
-        public Builder pickPoint(message.messages.mv.order.m.PickPoint pickPoint) {
+        public Builder pickPoint(PickPoint pickPoint) {
             data.setPickPoint(pickPoint);
             return this;
         }
         
-        public Builder picker(message.messages.mv.order.m.Picker picker) {
+        public Builder picker(Picker picker) {
             data.setPicker(picker);
             return this;
         }
         
-        public Builder states(message.messages.mv.order.m.States states) {
+        public Builder states(States states) {
             data.setStates(states);
             return this;
         }

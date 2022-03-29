@@ -11,7 +11,7 @@ public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("has_more")
     private Boolean hasMore;
-    private List<department.data.Items> items;
+    private List<Items> items;
     
     public Boolean getHasMore() {
         return hasMore;
@@ -21,11 +21,11 @@ public class Data implements Serializable {
         this.hasMore = hasMore;
     }
     
-    public List<department.data.Items> getItems() {
+    public List<Items> getItems() {
         return items;
     }
     
-    public void setItems(List<department.data.Items> items) {
+    public void setItems(List<Items> items) {
         this.items = items;
     }
     
@@ -49,7 +49,7 @@ public class Data implements Serializable {
             return this;
         }
         
-        public Builder items(List<department.data.Items> items) {
+        public Builder items(List<Items> items) {
             data.setItems(items);
             return this;
         }

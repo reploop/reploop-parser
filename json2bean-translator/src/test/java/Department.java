@@ -6,7 +6,7 @@ import com.google.common.base.MoreObjects;
 public class Department implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
-    private department.Data data;
+    private Data data;
     private String msg;
     
     public Integer getCode() {
@@ -17,11 +17,11 @@ public class Department implements Serializable {
         this.code = code;
     }
     
-    public department.Data getData() {
+    public Data getData() {
         return data;
     }
     
-    public void setData(department.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
     
@@ -54,7 +54,7 @@ public class Department implements Serializable {
             return this;
         }
         
-        public Builder data(department.Data data) {
+        public Builder data(Data data) {
             this.data.setData(data);
             return this;
         }

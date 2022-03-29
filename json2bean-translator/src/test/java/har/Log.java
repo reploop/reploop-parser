@@ -10,41 +10,41 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Log implements Serializable {
     private static final long serialVersionUID = 1L;
-    private har.log.NameVersion browser;
-    private har.log.NameVersion creator;
-    private List<har.log.Entries> entries;
-    private List<har.log.Pages> pages;
+    private NameVersion browser;
+    private NameVersion creator;
+    private List<Entries> entries;
+    private List<Pages> pages;
     private String version;
     
-    public har.log.NameVersion getBrowser() {
+    public NameVersion getBrowser() {
         return browser;
     }
     
-    public void setBrowser(har.log.NameVersion browser) {
+    public void setBrowser(NameVersion browser) {
         this.browser = browser;
     }
     
-    public har.log.NameVersion getCreator() {
+    public NameVersion getCreator() {
         return creator;
     }
     
-    public void setCreator(har.log.NameVersion creator) {
+    public void setCreator(NameVersion creator) {
         this.creator = creator;
     }
     
-    public List<har.log.Entries> getEntries() {
+    public List<Entries> getEntries() {
         return entries;
     }
     
-    public void setEntries(List<har.log.Entries> entries) {
+    public void setEntries(List<Entries> entries) {
         this.entries = entries;
     }
     
-    public List<har.log.Pages> getPages() {
+    public List<Pages> getPages() {
         return pages;
     }
     
-    public void setPages(List<har.log.Pages> pages) {
+    public void setPages(List<Pages> pages) {
         this.pages = pages;
     }
     
@@ -74,22 +74,22 @@ public class Log implements Serializable {
     public static class Builder {
         private final Log data = new Log();
         
-        public Builder browser(har.log.NameVersion browser) {
+        public Builder browser(NameVersion browser) {
             data.setBrowser(browser);
             return this;
         }
         
-        public Builder creator(har.log.NameVersion creator) {
+        public Builder creator(NameVersion creator) {
             data.setCreator(creator);
             return this;
         }
         
-        public Builder entries(List<har.log.Entries> entries) {
+        public Builder entries(List<Entries> entries) {
             data.setEntries(entries);
             return this;
         }
         
-        public Builder pages(List<har.log.Pages> pages) {
+        public Builder pages(List<Pages> pages) {
             data.setPages(pages);
             return this;
         }

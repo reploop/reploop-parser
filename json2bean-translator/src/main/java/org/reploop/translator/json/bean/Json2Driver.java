@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.nio.file.StandardOpenOption.*;
@@ -186,9 +187,9 @@ public class Json2Driver implements Runnable {
         fixed.forEach((name, message) -> {
             Path path = packageToPath(context.getDirectory(), message).normalize();
             BeanContext beanContext = new BeanContext(name, fixed);
-            Message node = fieldPushDown.visitMessage(message, beanContext);
-            node = typeSimplifier.visitMessage(node, context);
-            beanGenerator.visitMessage(node, beanContext);
+            Message merged = fieldPushDown.visitMessage(message, beanContext);
+            Message simplified = typeSimplifier.visitMessage(merged, new MessageContext());
+            beanGenerator.visitMessage(simplified, beanContext);
             try {
                 Path dir = Files.createDirectories(path.getParent());
                 System.out.println(dir);
@@ -226,9 +227,8 @@ public class Json2Driver implements Runnable {
 
     private List<Path> list(Path dir) {
         if (Files.isDirectory(dir)) {
-            try {
-                return Files.walk(dir)
-                    .filter(p -> !Files.isDirectory(p))
+            try (Stream<Path> sp = Files.walk(dir)) {
+                return sp.filter(p -> !Files.isDirectory(p))
                     .collect(Collectors.toList());
             } catch (IOException e) {
                 LOG.error("Cannot list files in directory {}", dir, e);

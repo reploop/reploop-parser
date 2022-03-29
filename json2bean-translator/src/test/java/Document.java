@@ -8,17 +8,17 @@ import document.Density;
 public class Document implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("boiling_point")
-    private document.BoilingPoint boilingPoint;
+    private BoilingPoint boilingPoint;
     private Boolean dangerous;
-    private document.Density density;
+    private Density density;
     private String name;
     private String type;
     
-    public document.BoilingPoint getBoilingPoint() {
+    public BoilingPoint getBoilingPoint() {
         return boilingPoint;
     }
     
-    public void setBoilingPoint(document.BoilingPoint boilingPoint) {
+    public void setBoilingPoint(BoilingPoint boilingPoint) {
         this.boilingPoint = boilingPoint;
     }
     
@@ -30,11 +30,11 @@ public class Document implements Serializable {
         this.dangerous = dangerous;
     }
     
-    public document.Density getDensity() {
+    public Density getDensity() {
         return density;
     }
     
-    public void setDensity(document.Density density) {
+    public void setDensity(Density density) {
         this.density = density;
     }
     
@@ -72,7 +72,7 @@ public class Document implements Serializable {
     public static class Builder {
         private final Document data = new Document();
         
-        public Builder boilingPoint(document.BoilingPoint boilingPoint) {
+        public Builder boilingPoint(BoilingPoint boilingPoint) {
             data.setBoilingPoint(boilingPoint);
             return this;
         }
@@ -82,7 +82,7 @@ public class Document implements Serializable {
             return this;
         }
         
-        public Builder density(document.Density density) {
+        public Builder density(Density density) {
             data.setDensity(density);
             return this;
         }

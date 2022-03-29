@@ -7,22 +7,22 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<message.Messages> messages;
-    private message.Result result;
+    private List<Messages> messages;
+    private Result result;
     
-    public List<message.Messages> getMessages() {
+    public List<Messages> getMessages() {
         return messages;
     }
     
-    public void setMessages(List<message.Messages> messages) {
+    public void setMessages(List<Messages> messages) {
         this.messages = messages;
     }
     
-    public message.Result getResult() {
+    public Result getResult() {
         return result;
     }
     
-    public void setResult(message.Result result) {
+    public void setResult(Result result) {
         this.result = result;
     }
     
@@ -41,12 +41,12 @@ public class Message implements Serializable {
     public static class Builder {
         private final Message data = new Message();
         
-        public Builder messages(List<message.Messages> messages) {
+        public Builder messages(List<Messages> messages) {
             data.setMessages(messages);
             return this;
         }
         
-        public Builder result(message.Result result) {
+        public Builder result(Result result) {
             data.setResult(result);
             return this;
         }

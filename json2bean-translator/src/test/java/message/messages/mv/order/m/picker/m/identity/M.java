@@ -8,22 +8,22 @@ import message.messages.mv.order.m.picker.m.identity.m.Type;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private message.messages.mv.order.m.picker.m.identity.m.No no;
-    private message.messages.mv.order.m.picker.m.identity.m.Type type;
+    private No no;
+    private Type type;
     
-    public message.messages.mv.order.m.picker.m.identity.m.No getNo() {
+    public No getNo() {
         return no;
     }
     
-    public void setNo(message.messages.mv.order.m.picker.m.identity.m.No no) {
+    public void setNo(No no) {
         this.no = no;
     }
     
-    public message.messages.mv.order.m.picker.m.identity.m.Type getType() {
+    public Type getType() {
         return type;
     }
     
-    public void setType(message.messages.mv.order.m.picker.m.identity.m.Type type) {
+    public void setType(Type type) {
         this.type = type;
     }
     
@@ -42,12 +42,12 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder no(message.messages.mv.order.m.picker.m.identity.m.No no) {
+        public Builder no(No no) {
             data.setNo(no);
             return this;
         }
         
-        public Builder type(message.messages.mv.order.m.picker.m.identity.m.Type type) {
+        public Builder type(Type type) {
             data.setType(type);
             return this;
         }

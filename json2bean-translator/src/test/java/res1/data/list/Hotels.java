@@ -10,7 +10,7 @@ import res1.data.list.hotels.AdditionalInfo;
 public class Hotels implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("additional_info")
-    private res1.data.list.hotels.AdditionalInfo additionalInfo;
+    private AdditionalInfo additionalInfo;
     @JsonProperty("checkin")
     private String checkIn;
     private String checkout;
@@ -25,11 +25,11 @@ public class Hotels implements Serializable {
     private Integer star;
     private List<String> tags;
     
-    public res1.data.list.hotels.AdditionalInfo getAdditionalInfo() {
+    public AdditionalInfo getAdditionalInfo() {
         return additionalInfo;
     }
     
-    public void setAdditionalInfo(res1.data.list.hotels.AdditionalInfo additionalInfo) {
+    public void setAdditionalInfo(AdditionalInfo additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
     
@@ -128,7 +128,7 @@ public class Hotels implements Serializable {
     public static class Builder {
         private final Hotels data = new Hotels();
         
-        public Builder additionalInfo(res1.data.list.hotels.AdditionalInfo additionalInfo) {
+        public Builder additionalInfo(AdditionalInfo additionalInfo) {
             data.setAdditionalInfo(additionalInfo);
             return this;
         }

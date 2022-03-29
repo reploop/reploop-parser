@@ -16,7 +16,7 @@ public class Data implements Serializable {
     private Boolean optimizeCountSql;
     private List<Object> orders;
     private Integer pages;
-    private List<order.data.Records> records;
+    private List<Records> records;
     private Boolean searchCount;
     private Integer size;
     private Integer total;
@@ -85,11 +85,11 @@ public class Data implements Serializable {
         this.pages = pages;
     }
     
-    public List<order.data.Records> getRecords() {
+    public List<Records> getRecords() {
         return records;
     }
     
-    public void setRecords(List<order.data.Records> records) {
+    public void setRecords(List<Records> records) {
         this.records = records;
     }
     
@@ -182,7 +182,7 @@ public class Data implements Serializable {
             return this;
         }
         
-        public Builder records(List<order.data.Records> records) {
+        public Builder records(List<Records> records) {
             data.setRecords(records);
             return this;
         }

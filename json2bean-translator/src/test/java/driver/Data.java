@@ -10,23 +10,23 @@ import driver.data.CarData;
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("car_data")
-    private driver.data.CarData carData;
+    private CarData carData;
     @JsonProperty("driver_data")
-    private driver.data.DriverData driverData;
+    private DriverData driverData;
     
-    public driver.data.CarData getCarData() {
+    public CarData getCarData() {
         return carData;
     }
     
-    public void setCarData(driver.data.CarData carData) {
+    public void setCarData(CarData carData) {
         this.carData = carData;
     }
     
-    public driver.data.DriverData getDriverData() {
+    public DriverData getDriverData() {
         return driverData;
     }
     
-    public void setDriverData(driver.data.DriverData driverData) {
+    public void setDriverData(DriverData driverData) {
         this.driverData = driverData;
     }
     
@@ -45,12 +45,12 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder carData(driver.data.CarData carData) {
+        public Builder carData(CarData carData) {
             data.setCarData(carData);
             return this;
         }
         
-        public Builder driverData(driver.data.DriverData driverData) {
+        public Builder driverData(DriverData driverData) {
             data.setDriverData(driverData);
             return this;
         }
