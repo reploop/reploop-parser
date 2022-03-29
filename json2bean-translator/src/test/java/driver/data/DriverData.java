@@ -1,10 +1,9 @@
 package driver.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DriverData implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -188,24 +187,24 @@ public class DriverData implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("address", address)
-                .add("agentId", agentId)
-                .add("banStatus", banStatus)
-                .add("channel", channel)
-                .add("cityName", cityName)
-                .add("contactPhone", contactPhone)
-                .add("idCardLocation", idCardLocation)
-                .add("idNo", idNo)
-                .add("idnOBackUrl", idnOBackUrl)
-                .add("idnOFrontUrl", idnOFrontUrl)
-                .add("licenceBackUrl", licenceBackUrl)
-                .add("licenceFrontUrl", licenceFrontUrl)
-                .add("name", name)
-                .add("onlineGvid", onlineGvid)
-                .add("qualificationUrl", qualificationUrl)
-                .add("regTime", regTime)
-                .add("sex", sex)
-                .add("supplierId", supplierId)
+                .add("address", getAddress())
+                .add("agentId", getAgentId())
+                .add("banStatus", getBanStatus())
+                .add("channel", getChannel())
+                .add("cityName", getCityName())
+                .add("contactPhone", getContactPhone())
+                .add("idCardLocation", getIdCardLocation())
+                .add("idNo", getIdNo())
+                .add("idnOBackUrl", getIdnOBackUrl())
+                .add("idnOFrontUrl", getIdnOFrontUrl())
+                .add("licenceBackUrl", getLicenceBackUrl())
+                .add("licenceFrontUrl", getLicenceFrontUrl())
+                .add("name", getName())
+                .add("onlineGvid", getOnlineGvid())
+                .add("qualificationUrl", getQualificationUrl())
+                .add("regTime", getRegTime())
+                .add("sex", getSex())
+                .add("supplierId", getSupplierId())
                 .toString();
     }
     

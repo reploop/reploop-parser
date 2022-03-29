@@ -1,8 +1,7 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AddCar implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -145,21 +144,21 @@ public class AddCar implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("brand", brand)
-                .add("colour", colour)
-                .add("driverUberId", driverUberId)
-                .add("files", files)
-                .add("id", id)
-                .add("officeId", officeId)
-                .add("plate", plate)
-                .add("plateColour", plateColour)
-                .add("remarks", remarks)
-                .add("seating", seating)
-                .add("settlementPrice", settlementPrice)
-                .add("trafficCarType", trafficCarType)
-                .add("type", type)
-                .add("vehicleDesc", vehicleDesc)
-                .add("vehicleNature", vehicleNature)
+                .add("brand", getBrand())
+                .add("colour", getColour())
+                .add("driverUberId", getDriverUberId())
+                .add("files", getFiles())
+                .add("id", getId())
+                .add("officeId", getOfficeId())
+                .add("plate", getPlate())
+                .add("plateColour", getPlateColour())
+                .add("remarks", getRemarks())
+                .add("seating", getSeating())
+                .add("settlementPrice", getSettlementPrice())
+                .add("trafficCarType", getTrafficCarType())
+                .add("type", getType())
+                .add("vehicleDesc", getVehicleDesc())
+                .add("vehicleNature", getVehicleNature())
                 .toString();
     }
     

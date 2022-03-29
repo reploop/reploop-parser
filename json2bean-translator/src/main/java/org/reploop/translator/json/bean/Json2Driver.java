@@ -178,12 +178,17 @@ public class Json2Driver implements Runnable {
         return qn.suffix() + DOT + Constants.JAVA;
     }
 
+    private static final FieldPushDown fieldPushDown = new FieldPushDown();
+    // Simplifier
+    private static final TypeSimplifier typeSimplifier = new TypeSimplifier();
 
     private void generate(Map<QualifiedName, Message> fixed, MessageContext context) {
         fixed.forEach((name, message) -> {
             Path path = packageToPath(context.getDirectory(), message).normalize();
             BeanContext beanContext = new BeanContext(name, fixed);
-            beanGenerator.visitMessage(message, beanContext);
+            Message node = fieldPushDown.visitMessage(message, beanContext);
+            node = typeSimplifier.visitMessage(node, context);
+            beanGenerator.visitMessage(node, beanContext);
             try {
                 Path dir = Files.createDirectories(path.getParent());
                 System.out.println(dir);
@@ -223,8 +228,8 @@ public class Json2Driver implements Runnable {
         if (Files.isDirectory(dir)) {
             try {
                 return Files.walk(dir)
-                        .filter(p -> !Files.isDirectory(p))
-                        .collect(Collectors.toList());
+                    .filter(p -> !Files.isDirectory(p))
+                    .collect(Collectors.toList());
             } catch (IOException e) {
                 LOG.error("Cannot list files in directory {}", dir, e);
             }

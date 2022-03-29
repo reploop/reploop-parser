@@ -1,28 +1,27 @@
 package res1;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import res1.data.DataList; 
+import res1.data.ListData;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<DataList> list;
+    private List<res1.data.ListData> list;
     
-    public List<DataList> getList() {
+    public List<res1.data.ListData> getList() {
         return list;
     }
     
-    public void setList(List<DataList> list) {
+    public void setList(List<res1.data.ListData> list) {
         this.list = list;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("list", list)
+                .add("list", getList())
                 .toString();
     }
     
@@ -33,7 +32,7 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder list(List<DataList> list) {
+        public Builder list(List<res1.data.ListData> list) {
             data.setList(list);
             return this;
         }

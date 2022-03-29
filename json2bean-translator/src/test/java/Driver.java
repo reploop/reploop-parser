@@ -1,13 +1,12 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import driver.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import driver.Data; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Driver implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Data data;
+    private driver.Data data;
     @JsonProperty("errmsg")
     private String errMsg;
     @JsonProperty("errno")
@@ -15,11 +14,11 @@ public class Driver implements Serializable {
     @JsonProperty("trace_id")
     private String traceId;
     
-    public Data getData() {
+    public driver.Data getData() {
         return data;
     }
     
-    public void setData(Data data) {
+    public void setData(driver.Data data) {
         this.data = data;
     }
     
@@ -50,10 +49,10 @@ public class Driver implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("data", data)
-                .add("errMsg", errMsg)
-                .add("errNo", errNo)
-                .add("traceId", traceId)
+                .add("data", getData())
+                .add("errMsg", getErrMsg())
+                .add("errNo", getErrNo())
+                .add("traceId", getTraceId())
                 .toString();
     }
     
@@ -64,7 +63,7 @@ public class Driver implements Serializable {
     public static class Builder {
         private final Driver data = new Driver();
         
-        public Builder data(Data data) {
+        public Builder data(driver.Data data) {
             this.data.setData(data);
             return this;
         }

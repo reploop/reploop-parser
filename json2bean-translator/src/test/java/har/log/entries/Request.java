@@ -1,15 +1,17 @@
 package har.log.entries;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Request extends har.log.entries.RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private String method;
     private har.log.entries.request.PostData postData;
-    private List<NameValue> queryString;
+    private List<har.log.entries.NameValue> queryString;
     private String url;
 
     public String getMethod() {
@@ -47,11 +49,16 @@ public class Request extends har.log.entries.RequestResponse implements Serializ
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("method", method)
-                .add("postData", postData)
-                .add("queryString", queryString)
-                .add("url", url)
-                .toString();
+            .add("method", getMethod())
+            .add("postData", getPostData())
+            .add("queryString", getQueryString())
+            .add("url", getUrl())
+            .add("bodySize", getBodySize())
+            .add("headersSize", getHeadersSize())
+            .add("httpVersion", getHttpVersion())
+            .add("headers", getHeaders())
+            .add("cookies", getCookies())
+            .toString();
     }
 
     public static Builder newRequestBuilder() {
@@ -86,8 +93,8 @@ public class Request extends har.log.entries.RequestResponse implements Serializ
             return this;
         }
 
-        public Builder headers(List<har.log.entries.NameValue> headers) {
-            data.setHeaders(headers);
+        public Builder headersSize(Integer headersSize) {
+            data.setHeadersSize(headersSize);
             return this;
         }
 
@@ -96,13 +103,13 @@ public class Request extends har.log.entries.RequestResponse implements Serializ
             return this;
         }
 
-        public Builder cookies(List<har.log.entries.NameValue> cookies) {
-            data.setCookies(cookies);
+        public Builder headers(List<har.log.entries.NameValue> headers) {
+            data.setHeaders(headers);
             return this;
         }
 
-        public Builder headersSize(Integer headersSize) {
-            data.setHeadersSize(headersSize);
+        public Builder cookies(List<har.log.entries.NameValue> cookies) {
+            data.setCookies(cookies);
             return this;
         }
 

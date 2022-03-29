@@ -1,9 +1,9 @@
 package har.log.entries;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Timings implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer blocked;
@@ -73,13 +73,13 @@ public class Timings implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("blocked", blocked)
-                .add("connect", connect)
-                .add("dns", dns)
-                .add("receive", receive)
-                .add("send", send)
-                .add("ssl", ssl)
-                .add("wait", wait)
+                .add("blocked", getBlocked())
+                .add("connect", getConnect())
+                .add("dns", getDns())
+                .add("receive", getReceive())
+                .add("send", getSend())
+                .add("ssl", getSsl())
+                .add("wait", getWait())
                 .toString();
     }
     

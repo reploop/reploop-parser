@@ -1,21 +1,20 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import store.ListStore;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import store.StoreList; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Store implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<StoreList> list;
+    private List<store.ListStore> list;
     private String msg;
     private Boolean success;
     
-    public List<StoreList> getList() {
+    public List<store.ListStore> getList() {
         return list;
     }
     
-    public void setList(List<StoreList> list) {
+    public void setList(List<store.ListStore> list) {
         this.list = list;
     }
     
@@ -38,9 +37,9 @@ public class Store implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("list", list)
-                .add("msg", msg)
-                .add("success", success)
+                .add("list", getList())
+                .add("msg", getMsg())
+                .add("success", getSuccess())
                 .toString();
     }
     
@@ -51,7 +50,7 @@ public class Store implements Serializable {
     public static class Builder {
         private final Store data = new Store();
         
-        public Builder list(List<StoreList> list) {
+        public Builder list(List<store.ListStore> list) {
             data.setList(list);
             return this;
         }

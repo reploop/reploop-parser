@@ -1,10 +1,9 @@
 package jsonObject;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Array implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -52,10 +51,10 @@ public class Array implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("countYesterday", countYesterday)
-                .add("tvId", tvId)
-                .add("tvName", tvName)
-                .add("vvWeek", vvWeek)
+                .add("countYesterday", getCountYesterday())
+                .add("tvId", getTvId())
+                .add("tvName", getTvName())
+                .add("vvWeek", getVvWeek())
                 .toString();
     }
     

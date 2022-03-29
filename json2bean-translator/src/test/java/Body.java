@@ -1,22 +1,21 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import body.CanShippedOrderParcelList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import body.CanShippedOrderParcelList; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Body implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<CanShippedOrderParcelList> canShippedOrderParcelList;
+    private List<body.CanShippedOrderParcelList> canShippedOrderParcelList;
     private Integer canShippedParcelNum;
     private Integer expiredParcelNum;
     private Integer notExpiredParcelNum;
     
-    public List<CanShippedOrderParcelList> getCanShippedOrderParcelList() {
+    public List<body.CanShippedOrderParcelList> getCanShippedOrderParcelList() {
         return canShippedOrderParcelList;
     }
     
-    public void setCanShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
+    public void setCanShippedOrderParcelList(List<body.CanShippedOrderParcelList> canShippedOrderParcelList) {
         this.canShippedOrderParcelList = canShippedOrderParcelList;
     }
     
@@ -47,10 +46,10 @@ public class Body implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("canShippedOrderParcelList", canShippedOrderParcelList)
-                .add("canShippedParcelNum", canShippedParcelNum)
-                .add("expiredParcelNum", expiredParcelNum)
-                .add("notExpiredParcelNum", notExpiredParcelNum)
+                .add("canShippedOrderParcelList", getCanShippedOrderParcelList())
+                .add("canShippedParcelNum", getCanShippedParcelNum())
+                .add("expiredParcelNum", getExpiredParcelNum())
+                .add("notExpiredParcelNum", getNotExpiredParcelNum())
                 .toString();
     }
     
@@ -61,7 +60,7 @@ public class Body implements Serializable {
     public static class Builder {
         private final Body data = new Body();
         
-        public Builder canShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
+        public Builder canShippedOrderParcelList(List<body.CanShippedOrderParcelList> canShippedOrderParcelList) {
             data.setCanShippedOrderParcelList(canShippedOrderParcelList);
             return this;
         }

@@ -2,14 +2,12 @@ package org.reploop.translator.json.gen;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
-import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.bean.BeanContext;
-import org.reploop.translator.json.bean.DependencyResolver;
 import org.reploop.translator.json.bean.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.reploop.translator.json.support.Constants.*;
 
@@ -117,9 +114,30 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
 
     private void accessor(List<Field> fields, BeanContext context) {
         for (Field field : fields) {
+            if (fromParent(field)) {
+                LOG.info("Do NOT generate getter and setter for a field from it's parent class {}.", context.getName());
+                continue;
+            }
             getter(field, context);
             setter(field, context);
         }
+    }
+
+    private boolean fromParent(Field field) {
+        boolean parent = false;
+        var options = field.getOptions();
+        for (Option option : options) {
+            if (option instanceof CommonPair && PARENT_TAG.equals(((CommonPair) option).getKey())) {
+                Value value = ((CommonPair) option).getValue();
+                if (value instanceof BoolValue) {
+                    parent = ((BoolValue) value).getValue();
+                    if (parent) {
+                        break;
+                    }
+                }
+            }
+        }
+        return parent;
     }
 
     private void getter(Field node, BeanContext context) {
@@ -143,7 +161,7 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         context.append("public").whitespace().append("String").whitespace().append("toString").openParen().closeParen().whitespace().openBrace().indent().newLine();
         context.append("return").whitespace().append("MoreObjects.toStringHelper(this)").indent().indent().newLine();
         for (Field field : fields) {
-            context.append(".add").openParen().quote().append(field.getName()).quote().append(",").whitespace().append(field.getName()).closeParen().newLine();
+            context.append(".add").openParen().quote().append(field.getName()).quote().append(",").whitespace().append("get").append(LC_UC.convert(field.getName())).openParen().closeParen().closeParen().newLine();
         }
         context.append(".toString()").semicolon().dedent().dedent().dedent().newLine();
         context.closeBrace().newLine();
@@ -154,6 +172,9 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
 
     @Override
     public Field visitField(Field node, BeanContext context) {
+        if (fromParent(node)) {
+            return node;
+        }
         comments(node.getComments(), context);
         var options = node.getOptions();
         Map<String, String> keyMap = new LinkedHashMap<>();
@@ -202,24 +223,12 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         return node;
     }
 
-    private List<Field> parentFields(Message message, BeanContext context) {
-        List<Field> fields = new ArrayList<>();
-        QualifiedName pqn = getParentInfo(message);
-        Optional<Message> parent = context.dep(pqn);
-        parent.ifPresent(sup -> {
-            List<Field> sfs = sup.getFields();
-            if (null != sfs) {
-                fields.addAll(sfs);
-            }
-            fields.addAll(parentFields(sup, context));
-        });
-        return fields;
-    }
-
     public void builder(Message message, List<Field> fields, BeanContext context) {
         String name = message.getName().suffix();
         String builderName = name + "Builder";
-        // static builder method
+        // static builder method.
+        // We allow a class inherits  from the other class which is either concrete or abstract class.
+        // So we just generate a different build method name in case of method signature conflicts.
         context.newLine();
         context.append("public static Builder new").append(builderName).append("()").whitespace().openBrace();
         context.indent().newLine();
@@ -234,10 +243,9 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         String attr = "data";
         context.append("private final").whitespace().append(name).whitespace().append(attr).append(" = new ").append(name).append("();").newLine();
 
-        List<Field> allFields = new ArrayList<>(fields);
-        allFields.addAll(parentFields(message, context));
         // build method for each field.
-        for (Field field : allFields) {
+        // Include parent class's fields by default.
+        for (Field field : fields) {
             context.newLine();
             context.append("public Builder ").append(field.getName()).openParen();
             visitFieldType(field.getType(), context);
@@ -262,12 +270,9 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         context.dedent().newLine().closeBrace().newLine();
     }
 
-    private final DependencyResolver dependencyResolver = new DependencyResolver();
-
     @Override
     public Message visitMessage(Message node, BeanContext context) {
         MessageContext ctx = new MessageContext();
-        dependencyResolver.visitMessage(node, ctx);
         QualifiedName name = node.getName();
         name.prefix().ifPresent(ns -> context.append("package").whitespace().append(ns).semicolon().newLine().newLine());
         // Options
@@ -275,9 +280,6 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         context.clearExpectedKey();
 
-        context.append("import com.fasterxml.jackson.annotation.JsonIgnoreProperties;").newLine();
-        context.append("import java.io.Serializable;").newLine();
-        context.append("import com.google.common.base.MoreObjects;").newLine().newLine();
         comments(node.getComments(), context);
         context.append("public").whitespace();
         context.setExpectedKey(ABSTRACT_ATTR);
@@ -306,42 +308,5 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         }
         context.dedent().newLine().closeBrace().newLine();
         return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), null, node.getOptions());
-    }
-
-    private String strip(String value) {
-        String v = StringUtils.stripStart(value, IMPORT);
-        return StringUtils.stripEnd(v.trim(), SEMICOLON);
-    }
-
-    private QualifiedName getParentInfo(Message node) {
-        BeanContext extendContext = new BeanContext(node.getName());
-        extendContext.setExpectedKey(EXTENDS_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, extendContext));
-        extendContext.clearExpectedKey();
-        String parentInfo = extendContext.toString();
-        int i;
-        if ((i = parentInfo.indexOf(EXTENDS_ATTR)) >= 0) {
-            String qn = parentInfo.substring(i + EXTENDS_ATTR.length()).trim();
-            List<String> deps = Stream.ofNullable(node.getComments())
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .map(this::strip)
-                .filter(dep -> dep.endsWith(qn))
-                .collect(Collectors.toList());
-            if (deps.size() == 1) {
-                return QualifiedName.of(deps.get(0));
-            }
-            LOG.warn("Maybe imports conflict: {}", qn);
-            return QualifiedName.of(qn);
-        }
-        return null;
-    }
-
-    private boolean isAbstract(Message node) {
-        BeanContext abstractContext = new BeanContext(node.getName());
-        abstractContext.setExpectedKey(ABSTRACT_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, abstractContext));
-        abstractContext.clearExpectedKey();
-        return ABSTRACT_ATTR.length() <= abstractContext.toString().length();
     }
 }

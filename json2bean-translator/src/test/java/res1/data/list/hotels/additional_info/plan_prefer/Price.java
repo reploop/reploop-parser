@@ -1,9 +1,8 @@
 package res1.data.list.hotels.additional_info.plan_prefer;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Price implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,8 +28,8 @@ public class Price implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("lower", lower)
-                .add("upper", upper)
+                .add("lower", getLower())
+                .add("upper", getUpper())
                 .toString();
     }
     

@@ -1,38 +1,37 @@
 package message.messages.mv.order.m.picker.m.identity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import message.messages.mv.order.m.picker.m.identity.m.No;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.picker.m.identity.m.No; 
-import message.messages.mv.order.m.picker.m.identity.m.Type; 
+import message.messages.mv.order.m.picker.m.identity.m.Type;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private No no;
-    private Type type;
+    private message.messages.mv.order.m.picker.m.identity.m.No no;
+    private message.messages.mv.order.m.picker.m.identity.m.Type type;
     
-    public No getNo() {
+    public message.messages.mv.order.m.picker.m.identity.m.No getNo() {
         return no;
     }
     
-    public void setNo(No no) {
+    public void setNo(message.messages.mv.order.m.picker.m.identity.m.No no) {
         this.no = no;
     }
     
-    public Type getType() {
+    public message.messages.mv.order.m.picker.m.identity.m.Type getType() {
         return type;
     }
     
-    public void setType(Type type) {
+    public void setType(message.messages.mv.order.m.picker.m.identity.m.Type type) {
         this.type = type;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("no", no)
-                .add("type", type)
+                .add("no", getNo())
+                .add("type", getType())
                 .toString();
     }
     
@@ -43,12 +42,12 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder no(No no) {
+        public Builder no(message.messages.mv.order.m.picker.m.identity.m.No no) {
             data.setNo(no);
             return this;
         }
         
-        public Builder type(Type type) {
+        public Builder type(message.messages.mv.order.m.picker.m.identity.m.Type type) {
             data.setType(type);
             return this;
         }

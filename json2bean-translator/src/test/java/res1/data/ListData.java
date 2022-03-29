@@ -1,18 +1,17 @@
 package res1.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import res1.data.list.Hotels;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
-import res1.data.list.Hotels; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DataList implements Serializable {
+public class ListData implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("city_id")
     private String cityId;
-    private List<Hotels> hotels;
+    private List<res1.data.list.Hotels> hotels;
     @JsonProperty("max_price")
     private Integer maxPrice;
     @JsonProperty("min_price")
@@ -26,11 +25,11 @@ public class DataList implements Serializable {
         this.cityId = cityId;
     }
     
-    public List<Hotels> getHotels() {
+    public List<res1.data.list.Hotels> getHotels() {
         return hotels;
     }
     
-    public void setHotels(List<Hotels> hotels) {
+    public void setHotels(List<res1.data.list.Hotels> hotels) {
         this.hotels = hotels;
     }
     
@@ -53,26 +52,26 @@ public class DataList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cityId", cityId)
-                .add("hotels", hotels)
-                .add("maxPrice", maxPrice)
-                .add("minPrice", minPrice)
+                .add("cityId", getCityId())
+                .add("hotels", getHotels())
+                .add("maxPrice", getMaxPrice())
+                .add("minPrice", getMinPrice())
                 .toString();
     }
     
-    public static Builder newDataListBuilder() {
+    public static Builder newListDataBuilder() {
         return new Builder();
     }
     
     public static class Builder {
-        private final DataList data = new DataList();
+        private final ListData data = new ListData();
         
         public Builder cityId(String cityId) {
             data.setCityId(cityId);
             return this;
         }
         
-        public Builder hotels(List<Hotels> hotels) {
+        public Builder hotels(List<res1.data.list.Hotels> hotels) {
             data.setHotels(hotels);
             return this;
         }
@@ -87,7 +86,7 @@ public class DataList implements Serializable {
             return this;
         }
         
-        public DataList build() {
+        public ListData build() {
             return data;
         }
         

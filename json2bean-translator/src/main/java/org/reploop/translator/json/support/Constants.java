@@ -3,6 +3,7 @@ package org.reploop.translator.json.support;
 public interface Constants {
     String ABSTRACT_ATTR = "abstract";
     String EXTENDS_ATTR = "extends";
+    String PARENT_TAG = "parent";
     String UNDERSCORE = "_";
     String IMPORT = "import";
     String WHITESPACE = " ";

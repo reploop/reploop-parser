@@ -1,41 +1,40 @@
 package driver;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import driver.data.DriverData;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import driver.data.DriverData; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import driver.data.CarData; 
+import driver.data.CarData;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("car_data")
-    private CarData carData;
+    private driver.data.CarData carData;
     @JsonProperty("driver_data")
-    private DriverData driverData;
+    private driver.data.DriverData driverData;
     
-    public CarData getCarData() {
+    public driver.data.CarData getCarData() {
         return carData;
     }
     
-    public void setCarData(CarData carData) {
+    public void setCarData(driver.data.CarData carData) {
         this.carData = carData;
     }
     
-    public DriverData getDriverData() {
+    public driver.data.DriverData getDriverData() {
         return driverData;
     }
     
-    public void setDriverData(DriverData driverData) {
+    public void setDriverData(driver.data.DriverData driverData) {
         this.driverData = driverData;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("carData", carData)
-                .add("driverData", driverData)
+                .add("carData", getCarData())
+                .add("driverData", getDriverData())
                 .toString();
     }
     
@@ -46,12 +45,12 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder carData(CarData carData) {
+        public Builder carData(driver.data.CarData carData) {
             data.setCarData(carData);
             return this;
         }
         
-        public Builder driverData(DriverData driverData) {
+        public Builder driverData(driver.data.DriverData driverData) {
             data.setDriverData(driverData);
             return this;
         }

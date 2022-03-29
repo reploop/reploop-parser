@@ -1,9 +1,8 @@
 package drivers;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Rows implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -236,31 +235,31 @@ public class Rows implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("createTime", createTime)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("driverLicenseExpiredTime", driverLicenseExpiredTime)
-                .add("driverLicenseNo", driverLicenseNo)
-                .add("driverLicenseType", driverLicenseType)
-                .add("endTime", endTime)
-                .add("files", files)
-                .add("id", id)
-                .add("idNo", idNo)
-                .add("inServiceStatus", inServiceStatus)
-                .add("jobNo", jobNo)
-                .add("name", name)
-                .add("numOrders", numOrders)
-                .add("officeId", officeId)
-                .add("passWord", passWord)
-                .add("phone", phone)
-                .add("remarks", remarks)
-                .add("sex", sex)
-                .add("startTime", startTime)
-                .add("totalAmount", totalAmount)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("userId", userId)
-                .add("workStatus", workStatus)
+                .add("createTime", getCreateTime())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("driverLicenseExpiredTime", getDriverLicenseExpiredTime())
+                .add("driverLicenseNo", getDriverLicenseNo())
+                .add("driverLicenseType", getDriverLicenseType())
+                .add("endTime", getEndTime())
+                .add("files", getFiles())
+                .add("id", getId())
+                .add("idNo", getIdNo())
+                .add("inServiceStatus", getInServiceStatus())
+                .add("jobNo", getJobNo())
+                .add("name", getName())
+                .add("numOrders", getNumOrders())
+                .add("officeId", getOfficeId())
+                .add("passWord", getPassWord())
+                .add("phone", getPhone())
+                .add("remarks", getRemarks())
+                .add("sex", getSex())
+                .add("startTime", getStartTime())
+                .add("totalAmount", getTotalAmount())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("userId", getUserId())
+                .add("workStatus", getWorkStatus())
                 .toString();
     }
     

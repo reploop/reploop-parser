@@ -1,28 +1,27 @@
 package message.messages.mv.order.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.states.L;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.states.L; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class States implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<L> l;
+    private List<message.messages.mv.order.m.states.L> l;
     
-    public List<L> getL() {
+    public List<message.messages.mv.order.m.states.L> getL() {
         return l;
     }
     
-    public void setL(List<L> l) {
+    public void setL(List<message.messages.mv.order.m.states.L> l) {
         this.l = l;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("l", l)
+                .add("l", getL())
                 .toString();
     }
     
@@ -33,7 +32,7 @@ public class States implements Serializable {
     public static class Builder {
         private final States data = new States();
         
-        public Builder l(List<L> l) {
+        public Builder l(List<message.messages.mv.order.m.states.L> l) {
             data.setL(l);
             return this;
         }

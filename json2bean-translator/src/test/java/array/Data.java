@@ -1,10 +1,9 @@
 package array;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -102,15 +101,15 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("commentRate", commentRate)
-                .add("countHistory", countHistory)
-                .add("countLastWeek", countLastWeek)
-                .add("countYesterday", countYesterday)
-                .add("playUrl", playUrl)
-                .add("rankTrend", rankTrend)
-                .add("tvId", tvId)
-                .add("tvName", tvName)
-                .add("vvWeek", vvWeek)
+                .add("commentRate", getCommentRate())
+                .add("countHistory", getCountHistory())
+                .add("countLastWeek", getCountLastWeek())
+                .add("countYesterday", getCountYesterday())
+                .add("playUrl", getPlayUrl())
+                .add("rankTrend", getRankTrend())
+                .add("tvId", getTvId())
+                .add("tvName", getTvName())
+                .add("vvWeek", getVvWeek())
                 .toString();
     }
     

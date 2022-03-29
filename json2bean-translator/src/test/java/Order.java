@@ -1,13 +1,12 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import order.Data;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import order.Data; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
-    private Data data;
+    private order.Data data;
     private String msg;
     
     public Integer getCode() {
@@ -18,11 +17,11 @@ public class Order implements Serializable {
         this.code = code;
     }
     
-    public Data getData() {
+    public order.Data getData() {
         return data;
     }
     
-    public void setData(Data data) {
+    public void setData(order.Data data) {
         this.data = data;
     }
     
@@ -37,9 +36,9 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("data", data)
-                .add("msg", msg)
+                .add("code", getCode())
+                .add("data", getData())
+                .add("msg", getMsg())
                 .toString();
     }
     
@@ -55,7 +54,7 @@ public class Order implements Serializable {
             return this;
         }
         
-        public Builder data(Data data) {
+        public Builder data(order.Data data) {
             this.data.setData(data);
             return this;
         }

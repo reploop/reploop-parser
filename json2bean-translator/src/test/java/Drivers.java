@@ -1,15 +1,14 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import drivers.Rows;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import drivers.Rows; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Drivers implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer code;
     private String msg;
-    private List<Rows> rows;
+    private List<drivers.Rows> rows;
     private Integer total;
     
     public Integer getCode() {
@@ -28,11 +27,11 @@ public class Drivers implements Serializable {
         this.msg = msg;
     }
     
-    public List<Rows> getRows() {
+    public List<drivers.Rows> getRows() {
         return rows;
     }
     
-    public void setRows(List<Rows> rows) {
+    public void setRows(List<drivers.Rows> rows) {
         this.rows = rows;
     }
     
@@ -47,10 +46,10 @@ public class Drivers implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("msg", msg)
-                .add("rows", rows)
-                .add("total", total)
+                .add("code", getCode())
+                .add("msg", getMsg())
+                .add("rows", getRows())
+                .add("total", getTotal())
                 .toString();
     }
     
@@ -71,7 +70,7 @@ public class Drivers implements Serializable {
             return this;
         }
         
-        public Builder rows(List<Rows> rows) {
+        public Builder rows(List<drivers.Rows> rows) {
             data.setRows(rows);
             return this;
         }

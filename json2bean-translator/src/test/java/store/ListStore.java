@@ -1,12 +1,11 @@
 package store;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StoreList implements Serializable {
+public class ListStore implements Serializable {
     private static final long serialVersionUID = 1L;
     private String city;
     private String company;
@@ -132,28 +131,28 @@ public class StoreList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("city", city)
-                .add("company", company)
-                .add("createTime", createTime)
-                .add("desCri", desCri)
-                .add("id", id)
-                .add("imgUrl", imgUrl)
-                .add("longitude", longitude)
-                .add("name", name)
-                .add("phoneNumber", phoneNumber)
-                .add("sheng", sheng)
-                .add("sort", sort)
-                .add("summary", summary)
-                .add("typeName", typeName)
+                .add("city", getCity())
+                .add("company", getCompany())
+                .add("createTime", getCreateTime())
+                .add("desCri", getDesCri())
+                .add("id", getId())
+                .add("imgUrl", getImgUrl())
+                .add("longitude", getLongitude())
+                .add("name", getName())
+                .add("phoneNumber", getPhoneNumber())
+                .add("sheng", getSheng())
+                .add("sort", getSort())
+                .add("summary", getSummary())
+                .add("typeName", getTypeName())
                 .toString();
     }
     
-    public static Builder newStoreListBuilder() {
+    public static Builder newListStoreBuilder() {
         return new Builder();
     }
     
     public static class Builder {
-        private final StoreList data = new StoreList();
+        private final ListStore data = new ListStore();
         
         public Builder city(String city) {
             data.setCity(city);
@@ -220,7 +219,7 @@ public class StoreList implements Serializable {
             return this;
         }
         
-        public StoreList build() {
+        public ListStore build() {
             return data;
         }
         

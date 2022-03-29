@@ -1,17 +1,16 @@
 package res1.data.list;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
-import res1.data.list.hotels.AdditionalInfo; 
+import res1.data.list.hotels.AdditionalInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hotels implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("additional_info")
-    private AdditionalInfo additionalInfo;
+    private res1.data.list.hotels.AdditionalInfo additionalInfo;
     @JsonProperty("checkin")
     private String checkIn;
     private String checkout;
@@ -26,11 +25,11 @@ public class Hotels implements Serializable {
     private Integer star;
     private List<String> tags;
     
-    public AdditionalInfo getAdditionalInfo() {
+    public res1.data.list.hotels.AdditionalInfo getAdditionalInfo() {
         return additionalInfo;
     }
     
-    public void setAdditionalInfo(AdditionalInfo additionalInfo) {
+    public void setAdditionalInfo(res1.data.list.hotels.AdditionalInfo additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
     
@@ -109,16 +108,16 @@ public class Hotels implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("additionalInfo", additionalInfo)
-                .add("checkIn", checkIn)
-                .add("checkout", checkout)
-                .add("cOord", cOord)
-                .add("hotelId", hotelId)
-                .add("name", name)
-                .add("nameEn", nameEn)
-                .add("price", price)
-                .add("star", star)
-                .add("tags", tags)
+                .add("additionalInfo", getAdditionalInfo())
+                .add("checkIn", getCheckIn())
+                .add("checkout", getCheckout())
+                .add("cOord", getCOord())
+                .add("hotelId", getHotelId())
+                .add("name", getName())
+                .add("nameEn", getNameEn())
+                .add("price", getPrice())
+                .add("star", getStar())
+                .add("tags", getTags())
                 .toString();
     }
     
@@ -129,7 +128,7 @@ public class Hotels implements Serializable {
     public static class Builder {
         private final Hotels data = new Hotels();
         
-        public Builder additionalInfo(AdditionalInfo additionalInfo) {
+        public Builder additionalInfo(res1.data.list.hotels.AdditionalInfo additionalInfo) {
             data.setAdditionalInfo(additionalInfo);
             return this;
         }

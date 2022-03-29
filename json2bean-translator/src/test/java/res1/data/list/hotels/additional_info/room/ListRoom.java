@@ -1,11 +1,10 @@
-package req1.room;
+package res1.data.list.hotels.additional_info.room;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RoomList implements Serializable {
+public class ListRoom implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer age;
     
@@ -20,23 +19,23 @@ public class RoomList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("age", age)
+                .add("age", getAge())
                 .toString();
     }
     
-    public static Builder newRoomListBuilder() {
+    public static Builder newListRoomBuilder() {
         return new Builder();
     }
     
     public static class Builder {
-        private final RoomList data = new RoomList();
+        private final ListRoom data = new ListRoom();
         
         public Builder age(Integer age) {
             data.setAge(age);
             return this;
         }
         
-        public RoomList build() {
+        public ListRoom build() {
             return data;
         }
         

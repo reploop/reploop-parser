@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import user.Result; 
+import user.Result;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -11,7 +10,7 @@ public class User implements Serializable {
     private Integer count;
     private String date;
     private String error;
-    private List<Result> result;
+    private List<user.Result> result;
     
     public Integer getCode() {
         return code;
@@ -45,22 +44,22 @@ public class User implements Serializable {
         this.error = error;
     }
     
-    public List<Result> getResult() {
+    public List<user.Result> getResult() {
         return result;
     }
     
-    public void setResult(List<Result> result) {
+    public void setResult(List<user.Result> result) {
         this.result = result;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("count", count)
-                .add("date", date)
-                .add("error", error)
-                .add("result", result)
+                .add("code", getCode())
+                .add("count", getCount())
+                .add("date", getDate())
+                .add("error", getError())
+                .add("result", getResult())
                 .toString();
     }
     
@@ -91,7 +90,7 @@ public class User implements Serializable {
             return this;
         }
         
-        public Builder result(List<Result> result) {
+        public Builder result(List<user.Result> result) {
             data.setResult(result);
             return this;
         }

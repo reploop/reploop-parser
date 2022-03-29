@@ -28,20 +28,20 @@ public class Json2DriverTest {
         Path dir = Paths.get(url.toURI());
         Path directory = dir.getParent().getParent().resolve("src/test/java");
         Files.list(dir)
-                .filter(path -> path.toString().toLowerCase().endsWith(".json"))
-                .forEach(path -> {
-                    try {
-                        Json2Conf conf = new Json2Conf().enableRootGuess(true).outputDirectory(directory.toString());
-                        Json2Driver app = new Json2Driver(conf);
-                        if (path.toString().contains("department.json")) {
-                            app.execute(path);
-                            System.out.println(path);
-                        }
-                    } catch (Exception e) {
-                        System.err.println(path);
-                        e.printStackTrace();
+            .filter(path -> path.toString().toLowerCase().endsWith(".json"))
+            .forEach(path -> {
+                try {
+                    Json2Conf conf = new Json2Conf().enableRootGuess(true).outputDirectory(directory.toString());
+                    Json2Driver app = new Json2Driver(conf);
+                    if (!path.toString().contains("00.json")) {
+                        app.execute(path);
+                        System.out.println(path);
                     }
-                });
+                } catch (Exception e) {
+                    System.err.println(path);
+                    e.printStackTrace();
+                }
+            });
     }
 
     @Test

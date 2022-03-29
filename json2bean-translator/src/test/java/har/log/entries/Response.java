@@ -1,11 +1,12 @@
 package har.log.entries;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
 import java.util.List;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Response extends har.log.entries.RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
     private har.log.entries.response.Content content;
@@ -49,10 +50,15 @@ public class Response extends har.log.entries.RequestResponse implements Seriali
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("content", content)
-                .add("redirectUrL", redirectUrL)
-                .add("status", status)
-                .add("statusText", statusText)
+                .add("content", getContent())
+                .add("redirectUrL", getRedirectUrL())
+                .add("status", getStatus())
+                .add("statusText", getStatusText())
+                .add("bodySize", getBodySize())
+                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
+                .add("headers", getHeaders())
+                .add("cookies", getCookies())
                 .toString();
     }
 
@@ -88,8 +94,8 @@ public class Response extends har.log.entries.RequestResponse implements Seriali
             return this;
         }
 
-        public Builder headers(List<NameValue> headers) {
-            data.setHeaders(headers);
+        public Builder headersSize(Integer headersSize) {
+            data.setHeadersSize(headersSize);
             return this;
         }
 
@@ -98,13 +104,13 @@ public class Response extends har.log.entries.RequestResponse implements Seriali
             return this;
         }
 
-        public Builder cookies(List<har.log.entries.NameValue> cookies) {
-            data.setCookies(cookies);
+        public Builder headers(List<har.log.entries.NameValue> headers) {
+            data.setHeaders(headers);
             return this;
         }
 
-        public Builder headersSize(Integer headersSize) {
-            data.setHeadersSize(headersSize);
+        public Builder cookies(List<har.log.entries.NameValue> cookies) {
+            data.setCookies(cookies);
             return this;
         }
 

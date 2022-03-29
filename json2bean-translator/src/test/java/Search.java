@@ -1,24 +1,23 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import search.Area;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import search.Area; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Search implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Map<String, Area> area;
+    private Map<String, search.Area> area;
     private Map<String, String> city;
     private Integer code;
     private String date;
     private String error;
     private String result;
     
-    public Map<String, Area> getArea() {
+    public Map<String, search.Area> getArea() {
         return area;
     }
     
-    public void setArea(Map<String, Area> area) {
+    public void setArea(Map<String, search.Area> area) {
         this.area = area;
     }
     
@@ -65,12 +64,12 @@ public class Search implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("area", area)
-                .add("city", city)
-                .add("code", code)
-                .add("date", date)
-                .add("error", error)
-                .add("result", result)
+                .add("area", getArea())
+                .add("city", getCity())
+                .add("code", getCode())
+                .add("date", getDate())
+                .add("error", getError())
+                .add("result", getResult())
                 .toString();
     }
     
@@ -81,7 +80,7 @@ public class Search implements Serializable {
     public static class Builder {
         private final Search data = new Search();
         
-        public Builder area(Map<String, Area> area) {
+        public Builder area(Map<String, search.Area> area) {
             data.setArea(area);
             return this;
         }

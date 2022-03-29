@@ -1,9 +1,8 @@
 package category.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Properties implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,10 +46,10 @@ public class Properties implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("ownerUser", ownerUser)
-                .add("revision", revision)
-                .add("sheetCount", sheetCount)
-                .add("title", title)
+                .add("ownerUser", getOwnerUser())
+                .add("revision", getRevision())
+                .add("sheetCount", getSheetCount())
+                .add("title", getTitle())
                 .toString();
     }
     

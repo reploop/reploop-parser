@@ -38,8 +38,8 @@ public class Json2Message {
     private final JsonMessageTranslator translator;
     private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
     private final ClassHierarchy classHierarchy = new ClassHierarchy();
-    private final NameResolver nameResolver = new NameResolver();
-    private final DupTypeResolver typeResolver = new DupTypeResolver();
+    private final RenameResolver renameResolver = new RenameResolver();
+    private final DupTypeResolver dupTypeResolver = new DupTypeResolver();
     private final DependencyResolver dependencyResolver = new DependencyResolver();
 
     public Json2Message() {
@@ -74,17 +74,17 @@ public class Json2Message {
             for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
                 // Grouped by field name
                 Map<String, Set<Field>> groups = entry.getValue().stream()
-                        .map(Message::getFields)
-                        .filter(Objects::nonNull)
-                        .flatMap(Collection::stream)
-                        .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
+                    .map(Message::getFields)
+                    .filter(Objects::nonNull)
+                    .flatMap(Collection::stream)
+                    .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
 
                 // Merge fields with same name and analyze its type
                 List<Field> uniqueFields = groups.values().stream()
-                        .map(this::merge)
-                        .filter(Objects::nonNull)
-                        .sorted(Comparator.comparing(Field::getName))
-                        .collect(Collectors.toList());
+                    .map(this::merge)
+                    .filter(Objects::nonNull)
+                    .sorted(Comparator.comparing(Field::getName))
+                    .collect(Collectors.toList());
                 Message message = new Message(entry.getKey(), uniqueFields);
                 messageMap.put(entry.getKey(), message);
             }
@@ -150,7 +150,7 @@ public class Json2Message {
         for (QualifiedName name : used) {
             Message message = nameMessageMap.get(name);
             MessageContext messageContext = new MessageContext();
-            Message msg = nameResolver.visitMessage(message, messageContext);
+            Message msg = renameResolver.visitMessage(message, messageContext);
             ctx.addIdentityNames(messageContext.getIdentityNames());
             renamed.put(msg.getName(), msg);
         }
@@ -158,13 +158,13 @@ public class Json2Message {
         // Final messages
         Map<QualifiedName, Message> fixed = new HashMap<>();
         renamed.forEach((name, message) -> {
-            Message msg = typeResolver.visitMessage(message, ctx);
+            Message msg = dupTypeResolver.visitMessage(message, ctx);
             fixed.put(msg.getName(), msg);
         });
 
         // The outer field type. Useful for code gen.
-        fieldType = nameResolver.visitFieldType(fieldType, ctx);
-        fieldType = typeResolver.visitFieldType(fieldType, ctx);
+        fieldType = renameResolver.visitFieldType(fieldType, ctx);
+        fieldType = dupTypeResolver.visitFieldType(fieldType, ctx);
         context.setFieldType(fieldType);
         return fixed;
     }

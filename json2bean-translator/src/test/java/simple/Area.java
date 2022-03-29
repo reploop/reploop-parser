@@ -1,15 +1,15 @@
 package simple;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import simple.Area;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Area implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<Area> child;
+    private List<simple.Area> child;
     @JsonProperty("area_currency")
     private String areaCurrency;
     @JsonProperty("area_en")
@@ -39,11 +39,11 @@ public class Area implements Serializable {
     @JsonProperty("area_timezone")
     private String areaTimeZone;
     
-    public List<Area> getChild() {
+    public List<simple.Area> getChild() {
         return child;
     }
     
-    public void setChild(List<Area> child) {
+    public void setChild(List<simple.Area> child) {
         this.child = child;
     }
     
@@ -162,21 +162,21 @@ public class Area implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("child", child)
-                .add("areaCurrency", areaCurrency)
-                .add("areaEn", areaEn)
-                .add("areaFid", areaFid)
-                .add("areaId", areaId)
-                .add("areaImage", areaImage)
-                .add("areaIndex", areaIndex)
-                .add("areaLevel", areaLevel)
-                .add("areaName", areaName)
-                .add("areaNote", areaNote)
-                .add("areaPin", areaPin)
-                .add("areaPx", areaPx)
-                .add("areaPy", areaPy)
-                .add("areaShow", areaShow)
-                .add("areaTimeZone", areaTimeZone)
+                .add("child", getChild())
+                .add("areaCurrency", getAreaCurrency())
+                .add("areaEn", getAreaEn())
+                .add("areaFid", getAreaFid())
+                .add("areaId", getAreaId())
+                .add("areaImage", getAreaImage())
+                .add("areaIndex", getAreaIndex())
+                .add("areaLevel", getAreaLevel())
+                .add("areaName", getAreaName())
+                .add("areaNote", getAreaNote())
+                .add("areaPin", getAreaPin())
+                .add("areaPx", getAreaPx())
+                .add("areaPy", getAreaPy())
+                .add("areaShow", getAreaShow())
+                .add("areaTimeZone", getAreaTimeZone())
                 .toString();
     }
     
@@ -187,7 +187,7 @@ public class Area implements Serializable {
     public static class Builder {
         private final Area data = new Area();
         
-        public Builder child(List<Area> child) {
+        public Builder child(List<simple.Area> child) {
             data.setChild(child);
             return this;
         }

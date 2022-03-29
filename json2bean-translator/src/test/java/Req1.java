@@ -1,51 +1,50 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import req1.CityList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import req1.Room;
 import java.io.Serializable;
+import java.util.List;
+import req1.PlanPrefer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import req1.CityList; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import req1.Room; 
-import java.util.List; 
-import req1.PlanPrefer; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Req1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("city_list")
-    private List<CityList> cityList;
+    private List<req1.CityList> cityList;
     @JsonProperty("plan_prefer")
-    private PlanPrefer planPrefer;
-    private List<Room> room;
+    private req1.PlanPrefer planPrefer;
+    private List<req1.Room> room;
     
-    public List<CityList> getCityList() {
+    public List<req1.CityList> getCityList() {
         return cityList;
     }
     
-    public void setCityList(List<CityList> cityList) {
+    public void setCityList(List<req1.CityList> cityList) {
         this.cityList = cityList;
     }
     
-    public PlanPrefer getPlanPrefer() {
+    public req1.PlanPrefer getPlanPrefer() {
         return planPrefer;
     }
     
-    public void setPlanPrefer(PlanPrefer planPrefer) {
+    public void setPlanPrefer(req1.PlanPrefer planPrefer) {
         this.planPrefer = planPrefer;
     }
     
-    public List<Room> getRoom() {
+    public List<req1.Room> getRoom() {
         return room;
     }
     
-    public void setRoom(List<Room> room) {
+    public void setRoom(List<req1.Room> room) {
         this.room = room;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cityList", cityList)
-                .add("planPrefer", planPrefer)
-                .add("room", room)
+                .add("cityList", getCityList())
+                .add("planPrefer", getPlanPrefer())
+                .add("room", getRoom())
                 .toString();
     }
     
@@ -56,17 +55,17 @@ public class Req1 implements Serializable {
     public static class Builder {
         private final Req1 data = new Req1();
         
-        public Builder cityList(List<CityList> cityList) {
+        public Builder cityList(List<req1.CityList> cityList) {
             data.setCityList(cityList);
             return this;
         }
         
-        public Builder planPrefer(PlanPrefer planPrefer) {
+        public Builder planPrefer(req1.PlanPrefer planPrefer) {
             data.setPlanPrefer(planPrefer);
             return this;
         }
         
-        public Builder room(List<Room> room) {
+        public Builder room(List<req1.Room> room) {
             data.setRoom(room);
             return this;
         }

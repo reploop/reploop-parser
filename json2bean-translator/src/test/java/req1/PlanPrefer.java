@@ -1,23 +1,22 @@
 package req1;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import req1.plan_prefer.Price; 
+import req1.plan_prefer.Price;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlanPrefer implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Price price;
+    private req1.plan_prefer.Price price;
     private List<Integer> star;
     private List<String> tags;
     
-    public Price getPrice() {
+    public req1.plan_prefer.Price getPrice() {
         return price;
     }
     
-    public void setPrice(Price price) {
+    public void setPrice(req1.plan_prefer.Price price) {
         this.price = price;
     }
     
@@ -40,9 +39,9 @@ public class PlanPrefer implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("price", price)
-                .add("star", star)
-                .add("tags", tags)
+                .add("price", getPrice())
+                .add("star", getStar())
+                .add("tags", getTags())
                 .toString();
     }
     
@@ -53,7 +52,7 @@ public class PlanPrefer implements Serializable {
     public static class Builder {
         private final PlanPrefer data = new PlanPrefer();
         
-        public Builder price(Price price) {
+        public Builder price(req1.plan_prefer.Price price) {
             data.setPrice(price);
             return this;
         }

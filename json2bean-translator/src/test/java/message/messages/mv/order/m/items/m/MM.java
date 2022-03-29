@@ -1,60 +1,59 @@
 package message.messages.mv.order.m.items.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.items.m.m.Qty;
 import java.io.Serializable;
+import message.messages.mv.order.m.items.m.m.Name;
+import message.messages.mv.order.m.items.m.m.Code;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.items.m.m.Qty; 
-import message.messages.mv.order.m.items.m.m.Name; 
-import message.messages.mv.order.m.items.m.m.Code; 
-import message.messages.mv.order.m.items.m.m.TotalPrice; 
+import message.messages.mv.order.m.items.m.m.TotalPrice;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MM implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Code code;
-    private Name name;
-    private Qty qty;
-    private TotalPrice totalPrice;
+    private message.messages.mv.order.m.items.m.m.Code code;
+    private message.messages.mv.order.m.items.m.m.Name name;
+    private message.messages.mv.order.m.items.m.m.Qty qty;
+    private message.messages.mv.order.m.items.m.m.TotalPrice totalPrice;
     
-    public Code getCode() {
+    public message.messages.mv.order.m.items.m.m.Code getCode() {
         return code;
     }
     
-    public void setCode(Code code) {
+    public void setCode(message.messages.mv.order.m.items.m.m.Code code) {
         this.code = code;
     }
     
-    public Name getName() {
+    public message.messages.mv.order.m.items.m.m.Name getName() {
         return name;
     }
     
-    public void setName(Name name) {
+    public void setName(message.messages.mv.order.m.items.m.m.Name name) {
         this.name = name;
     }
     
-    public Qty getQty() {
+    public message.messages.mv.order.m.items.m.m.Qty getQty() {
         return qty;
     }
     
-    public void setQty(Qty qty) {
+    public void setQty(message.messages.mv.order.m.items.m.m.Qty qty) {
         this.qty = qty;
     }
     
-    public TotalPrice getTotalPrice() {
+    public message.messages.mv.order.m.items.m.m.TotalPrice getTotalPrice() {
         return totalPrice;
     }
     
-    public void setTotalPrice(TotalPrice totalPrice) {
+    public void setTotalPrice(message.messages.mv.order.m.items.m.m.TotalPrice totalPrice) {
         this.totalPrice = totalPrice;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("name", name)
-                .add("qty", qty)
-                .add("totalPrice", totalPrice)
+                .add("code", getCode())
+                .add("name", getName())
+                .add("qty", getQty())
+                .add("totalPrice", getTotalPrice())
                 .toString();
     }
     
@@ -65,22 +64,22 @@ public class MM implements Serializable {
     public static class Builder {
         private final MM data = new MM();
         
-        public Builder code(Code code) {
+        public Builder code(message.messages.mv.order.m.items.m.m.Code code) {
             data.setCode(code);
             return this;
         }
         
-        public Builder name(Name name) {
+        public Builder name(message.messages.mv.order.m.items.m.m.Name name) {
             data.setName(name);
             return this;
         }
         
-        public Builder qty(Qty qty) {
+        public Builder qty(message.messages.mv.order.m.items.m.m.Qty qty) {
             data.setQty(qty);
             return this;
         }
         
-        public Builder totalPrice(TotalPrice totalPrice) {
+        public Builder totalPrice(message.messages.mv.order.m.items.m.m.TotalPrice totalPrice) {
             data.setTotalPrice(totalPrice);
             return this;
         }

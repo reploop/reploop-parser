@@ -1,27 +1,26 @@
 package message.messages.mv.order.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.flight.M;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.flight.M; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Flight implements Serializable {
     private static final long serialVersionUID = 1L;
-    private M m;
+    private message.messages.mv.order.m.flight.M m;
     
-    public M getM() {
+    public message.messages.mv.order.m.flight.M getM() {
         return m;
     }
     
-    public void setM(M m) {
+    public void setM(message.messages.mv.order.m.flight.M m) {
         this.m = m;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("m", m)
+                .add("m", getM())
                 .toString();
     }
     
@@ -32,7 +31,7 @@ public class Flight implements Serializable {
     public static class Builder {
         private final Flight data = new Flight();
         
-        public Builder m(M m) {
+        public Builder m(message.messages.mv.order.m.flight.M m) {
             data.setM(m);
             return this;
         }

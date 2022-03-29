@@ -1,12 +1,11 @@
 package user;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -44,7 +43,7 @@ public class Result implements Serializable {
     private String serUTime;
     @JsonProperty("service_face")
     private String serviceFace;
-    private List<String> tag;
+    private Map<Integer, String> tag;
     @JsonProperty("user_avatar")
     private String userAvatar;
     @JsonProperty("user_gender")
@@ -198,11 +197,11 @@ public class Result implements Serializable {
         this.serviceFace = serviceFace;
     }
     
-    public List<String> getTag() {
+    public Map<Integer, String> getTag() {
         return tag;
     }
     
-    public void setTag(List<String> tag) {
+    public void setTag(Map<Integer, String> tag) {
         this.tag = tag;
     }
     
@@ -241,29 +240,29 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("areaId", areaId)
-                .add("areaName", areaName)
-                .add("gdEdu", gdEdu)
-                .add("gdJob", gdJob)
-                .add("gdMajor", gdMajor)
-                .add("gdSchool", gdSchool)
-                .add("guidePrice", guidePrice)
-                .add("price", price)
-                .add("remark", remark)
-                .add("serFace", serFace)
-                .add("serHot", serHot)
-                .add("serRmkc", serRmkc)
-                .add("serSort", serSort)
-                .add("serStarC", serStarC)
-                .add("serStatus", serStatus)
-                .add("serTitle", serTitle)
-                .add("serUTime", serUTime)
-                .add("serviceFace", serviceFace)
-                .add("tag", tag)
-                .add("userAvatar", userAvatar)
-                .add("userGender", userGender)
-                .add("userId", userId)
-                .add("userName", userName)
+                .add("areaId", getAreaId())
+                .add("areaName", getAreaName())
+                .add("gdEdu", getGdEdu())
+                .add("gdJob", getGdJob())
+                .add("gdMajor", getGdMajor())
+                .add("gdSchool", getGdSchool())
+                .add("guidePrice", getGuidePrice())
+                .add("price", getPrice())
+                .add("remark", getRemark())
+                .add("serFace", getSerFace())
+                .add("serHot", getSerHot())
+                .add("serRmkc", getSerRmkc())
+                .add("serSort", getSerSort())
+                .add("serStarC", getSerStarC())
+                .add("serStatus", getSerStatus())
+                .add("serTitle", getSerTitle())
+                .add("serUTime", getSerUTime())
+                .add("serviceFace", getServiceFace())
+                .add("tag", getTag())
+                .add("userAvatar", getUserAvatar())
+                .add("userGender", getUserGender())
+                .add("userId", getUserId())
+                .add("userName", getUserName())
                 .toString();
     }
     
@@ -364,7 +363,7 @@ public class Result implements Serializable {
             return this;
         }
         
-        public Builder tag(List<String> tag) {
+        public Builder tag(Map<Integer, String> tag) {
             data.setTag(tag);
             return this;
         }

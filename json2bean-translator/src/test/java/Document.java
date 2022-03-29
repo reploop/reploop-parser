@@ -1,25 +1,24 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import document.BoilingPoint; 
-import document.Density; 
+import document.BoilingPoint;
+import document.Density;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Document implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("boiling_point")
-    private BoilingPoint boilingPoint;
+    private document.BoilingPoint boilingPoint;
     private Boolean dangerous;
-    private Density density;
+    private document.Density density;
     private String name;
     private String type;
     
-    public BoilingPoint getBoilingPoint() {
+    public document.BoilingPoint getBoilingPoint() {
         return boilingPoint;
     }
     
-    public void setBoilingPoint(BoilingPoint boilingPoint) {
+    public void setBoilingPoint(document.BoilingPoint boilingPoint) {
         this.boilingPoint = boilingPoint;
     }
     
@@ -31,11 +30,11 @@ public class Document implements Serializable {
         this.dangerous = dangerous;
     }
     
-    public Density getDensity() {
+    public document.Density getDensity() {
         return density;
     }
     
-    public void setDensity(Density density) {
+    public void setDensity(document.Density density) {
         this.density = density;
     }
     
@@ -58,11 +57,11 @@ public class Document implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("boilingPoint", boilingPoint)
-                .add("dangerous", dangerous)
-                .add("density", density)
-                .add("name", name)
-                .add("type", type)
+                .add("boilingPoint", getBoilingPoint())
+                .add("dangerous", getDangerous())
+                .add("density", getDensity())
+                .add("name", getName())
+                .add("type", getType())
                 .toString();
     }
     
@@ -73,7 +72,7 @@ public class Document implements Serializable {
     public static class Builder {
         private final Document data = new Document();
         
-        public Builder boilingPoint(BoilingPoint boilingPoint) {
+        public Builder boilingPoint(document.BoilingPoint boilingPoint) {
             data.setBoilingPoint(boilingPoint);
             return this;
         }
@@ -83,7 +82,7 @@ public class Document implements Serializable {
             return this;
         }
         
-        public Builder density(Density density) {
+        public Builder density(document.Density density) {
             data.setDensity(density);
             return this;
         }

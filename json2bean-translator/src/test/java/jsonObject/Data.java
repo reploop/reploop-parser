@@ -1,12 +1,16 @@
 package jsonObject;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jsonObject.Array;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Data extends Array implements Serializable {
+public class Data extends jsonObject.Array implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("count_history")
     private Integer countHistory;
@@ -52,10 +56,14 @@ public class Data extends Array implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("countHistory", countHistory)
-                .add("countLastWeek", countLastWeek)
-                .add("playUrl", playUrl)
-                .add("rankTrend", rankTrend)
+                .add("countHistory", getCountHistory())
+                .add("countLastWeek", getCountLastWeek())
+                .add("playUrl", getPlayUrl())
+                .add("rankTrend", getRankTrend())
+                .add("countYesterday", getCountYesterday())
+                .add("tvId", getTvId())
+                .add("tvName", getTvName())
+                .add("vvWeek", getVvWeek())
                 .toString();
     }
     
@@ -83,6 +91,26 @@ public class Data extends Array implements Serializable {
         
         public Builder rankTrend(Integer rankTrend) {
             data.setRankTrend(rankTrend);
+            return this;
+        }
+        
+        public Builder countYesterday(Integer countYesterday) {
+            data.setCountYesterday(countYesterday);
+            return this;
+        }
+        
+        public Builder tvId(Long tvId) {
+            data.setTvId(tvId);
+            return this;
+        }
+        
+        public Builder tvName(String tvName) {
+            data.setTvName(tvName);
+            return this;
+        }
+        
+        public Builder vvWeek(Integer vvWeek) {
+            data.setVvWeek(vvWeek);
             return this;
         }
         

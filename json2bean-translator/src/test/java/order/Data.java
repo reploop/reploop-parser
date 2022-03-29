@@ -1,11 +1,10 @@
 package order;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import order.data.Records;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import order.data.Records; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -17,7 +16,7 @@ public class Data implements Serializable {
     private Boolean optimizeCountSql;
     private List<Object> orders;
     private Integer pages;
-    private List<Records> records;
+    private List<order.data.Records> records;
     private Boolean searchCount;
     private Integer size;
     private Integer total;
@@ -86,11 +85,11 @@ public class Data implements Serializable {
         this.pages = pages;
     }
     
-    public List<Records> getRecords() {
+    public List<order.data.Records> getRecords() {
         return records;
     }
     
-    public void setRecords(List<Records> records) {
+    public void setRecords(List<order.data.Records> records) {
         this.records = records;
     }
     
@@ -121,18 +120,18 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("countId", countId)
-                .add("current", current)
-                .add("entity", entity)
-                .add("hitCount", hitCount)
-                .add("maxLimit", maxLimit)
-                .add("optimizeCountSql", optimizeCountSql)
-                .add("orders", orders)
-                .add("pages", pages)
-                .add("records", records)
-                .add("searchCount", searchCount)
-                .add("size", size)
-                .add("total", total)
+                .add("countId", getCountId())
+                .add("current", getCurrent())
+                .add("entity", getEntity())
+                .add("hitCount", getHitCount())
+                .add("maxLimit", getMaxLimit())
+                .add("optimizeCountSql", getOptimizeCountSql())
+                .add("orders", getOrders())
+                .add("pages", getPages())
+                .add("records", getRecords())
+                .add("searchCount", getSearchCount())
+                .add("size", getSize())
+                .add("total", getTotal())
                 .toString();
     }
     
@@ -183,7 +182,7 @@ public class Data implements Serializable {
             return this;
         }
         
-        public Builder records(List<Records> records) {
+        public Builder records(List<order.data.Records> records) {
             data.setRecords(records);
             return this;
         }

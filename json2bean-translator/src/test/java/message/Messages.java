@@ -1,17 +1,16 @@
 package message;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import message.messages.Mv;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import message.messages.Mv; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Messages implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private Map<String, String> labels;
-    private Mv mv;
+    private message.messages.Mv mv;
     private String roomID;
     private String sender;
     private Integer sequenceNO;
@@ -33,11 +32,11 @@ public class Messages implements Serializable {
         this.labels = labels;
     }
     
-    public Mv getMv() {
+    public message.messages.Mv getMv() {
         return mv;
     }
     
-    public void setMv(Mv mv) {
+    public void setMv(message.messages.Mv mv) {
         this.mv = mv;
     }
     
@@ -76,13 +75,13 @@ public class Messages implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("labels", labels)
-                .add("mv", mv)
-                .add("roomID", roomID)
-                .add("sender", sender)
-                .add("sequenceNO", sequenceNO)
-                .add("timestamp", timestamp)
+                .add("id", getId())
+                .add("labels", getLabels())
+                .add("mv", getMv())
+                .add("roomID", getRoomID())
+                .add("sender", getSender())
+                .add("sequenceNO", getSequenceNO())
+                .add("timestamp", getTimestamp())
                 .toString();
     }
     
@@ -103,7 +102,7 @@ public class Messages implements Serializable {
             return this;
         }
         
-        public Builder mv(Mv mv) {
+        public Builder mv(message.messages.Mv mv) {
             data.setMv(mv);
             return this;
         }

@@ -1,49 +1,48 @@
 package message.messages.mv.order.m.pickPoint;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.pickPoint.m.Airport;
 import java.io.Serializable;
+import message.messages.mv.order.m.pickPoint.m.Terminal;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.pickPoint.m.Airport; 
-import message.messages.mv.order.m.pickPoint.m.Terminal; 
-import message.messages.mv.order.m.pickPoint.m.Name; 
+import message.messages.mv.order.m.pickPoint.m.Name;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Airport airport;
-    private Name name;
-    private Terminal terminal;
+    private message.messages.mv.order.m.pickPoint.m.Airport airport;
+    private message.messages.mv.order.m.pickPoint.m.Name name;
+    private message.messages.mv.order.m.pickPoint.m.Terminal terminal;
     
-    public Airport getAirport() {
+    public message.messages.mv.order.m.pickPoint.m.Airport getAirport() {
         return airport;
     }
     
-    public void setAirport(Airport airport) {
+    public void setAirport(message.messages.mv.order.m.pickPoint.m.Airport airport) {
         this.airport = airport;
     }
     
-    public Name getName() {
+    public message.messages.mv.order.m.pickPoint.m.Name getName() {
         return name;
     }
     
-    public void setName(Name name) {
+    public void setName(message.messages.mv.order.m.pickPoint.m.Name name) {
         this.name = name;
     }
     
-    public Terminal getTerminal() {
+    public message.messages.mv.order.m.pickPoint.m.Terminal getTerminal() {
         return terminal;
     }
     
-    public void setTerminal(Terminal terminal) {
+    public void setTerminal(message.messages.mv.order.m.pickPoint.m.Terminal terminal) {
         this.terminal = terminal;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("airport", airport)
-                .add("name", name)
-                .add("terminal", terminal)
+                .add("airport", getAirport())
+                .add("name", getName())
+                .add("terminal", getTerminal())
                 .toString();
     }
     
@@ -54,17 +53,17 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder airport(Airport airport) {
+        public Builder airport(message.messages.mv.order.m.pickPoint.m.Airport airport) {
             data.setAirport(airport);
             return this;
         }
         
-        public Builder name(Name name) {
+        public Builder name(message.messages.mv.order.m.pickPoint.m.Name name) {
             data.setName(name);
             return this;
         }
         
-        public Builder terminal(Terminal terminal) {
+        public Builder terminal(message.messages.mv.order.m.pickPoint.m.Terminal terminal) {
             data.setTerminal(terminal);
             return this;
         }

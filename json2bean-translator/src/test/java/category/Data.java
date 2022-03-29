@@ -1,32 +1,31 @@
 package category;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import category.data.Properties;
+import category.data.Sheets;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import category.data.Properties; 
-import category.data.Sheets; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Properties properties;
-    private List<Sheets> sheets;
+    private category.data.Properties properties;
+    private List<category.data.Sheets> sheets;
     private String spreadsheetToken;
     
-    public Properties getProperties() {
+    public category.data.Properties getProperties() {
         return properties;
     }
     
-    public void setProperties(Properties properties) {
+    public void setProperties(category.data.Properties properties) {
         this.properties = properties;
     }
     
-    public List<Sheets> getSheets() {
+    public List<category.data.Sheets> getSheets() {
         return sheets;
     }
     
-    public void setSheets(List<Sheets> sheets) {
+    public void setSheets(List<category.data.Sheets> sheets) {
         this.sheets = sheets;
     }
     
@@ -41,9 +40,9 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("properties", properties)
-                .add("sheets", sheets)
-                .add("spreadsheetToken", spreadsheetToken)
+                .add("properties", getProperties())
+                .add("sheets", getSheets())
+                .add("spreadsheetToken", getSpreadsheetToken())
                 .toString();
     }
     
@@ -54,12 +53,12 @@ public class Data implements Serializable {
     public static class Builder {
         private final Data data = new Data();
         
-        public Builder properties(Properties properties) {
+        public Builder properties(category.data.Properties properties) {
             data.setProperties(properties);
             return this;
         }
         
-        public Builder sheets(List<Sheets> sheets) {
+        public Builder sheets(List<category.data.Sheets> sheets) {
             data.setSheets(sheets);
             return this;
         }

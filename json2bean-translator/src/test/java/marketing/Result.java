@@ -1,9 +1,8 @@
 package marketing;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -74,13 +73,13 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("beginTime", beginTime)
-                .add("createTime", createTime)
-                .add("endTime", endTime)
-                .add("marketingId", marketingId)
-                .add("marketingName", marketingName)
-                .add("marketingType", marketingType)
-                .add("pause", pause)
+                .add("beginTime", getBeginTime())
+                .add("createTime", getCreateTime())
+                .add("endTime", getEndTime())
+                .add("marketingId", getMarketingId())
+                .add("marketingName", getMarketingName())
+                .add("marketingType", getMarketingType())
+                .add("pause", getPause())
                 .toString();
     }
     

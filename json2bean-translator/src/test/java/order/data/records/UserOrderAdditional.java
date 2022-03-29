@@ -1,11 +1,14 @@
 package order.data.records;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import order.data.records.RecordsUserOrderAdditional;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserOrderAdditional extends RecordsUserOrderAdditional implements Serializable {
+public class UserOrderAdditional extends order.data.records.RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
     private Object adultNum;
     private Object beginSiteName;
@@ -200,27 +203,38 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("adultNum", adultNum)
-                .add("beginSiteName", beginSiteName)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("driverId", driverId)
-                .add("driverIdNo", driverIdNo)
-                .add("driverName", driverName)
-                .add("endSiteName", endSiteName)
-                .add("flightNumber", flightNumber)
-                .add("id", id)
-                .add("newDriverOrderId", newDriverOrderId)
-                .add("orderRemark", orderRemark)
-                .add("remarks", remarks)
-                .add("scheduleDate", scheduleDate)
-                .add("status", status)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("vehicleColour", vehicleColour)
-                .add("vehicleId", vehicleId)
-                .add("vehiclePlate", vehiclePlate)
-                .add("vehicleType", vehicleType)
+                .add("adultNum", getAdultNum())
+                .add("beginSiteName", getBeginSiteName())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("driverId", getDriverId())
+                .add("driverIdNo", getDriverIdNo())
+                .add("driverName", getDriverName())
+                .add("endSiteName", getEndSiteName())
+                .add("flightNumber", getFlightNumber())
+                .add("id", getId())
+                .add("newDriverOrderId", getNewDriverOrderId())
+                .add("orderRemark", getOrderRemark())
+                .add("remarks", getRemarks())
+                .add("scheduleDate", getScheduleDate())
+                .add("status", getStatus())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("vehicleColour", getVehicleColour())
+                .add("vehicleId", getVehicleId())
+                .add("vehiclePlate", getVehiclePlate())
+                .add("vehicleType", getVehicleType())
+                .add("delay", getDelay())
+                .add("settlementPrice", getSettlementPrice())
+                .add("driverPhone", getDriverPhone())
+                .add("createTime", getCreateTime())
+                .add("driverOrderId", getDriverOrderId())
+                .add("operator", getOperator())
+                .add("preDriverId", getPreDriverId())
+                .add("actionSource", getActionSource())
+                .add("night", getNight())
+                .add("vehicleBrand", getVehicleBrand())
+                .add("orderId", getOrderId())
                 .toString();
     }
     
@@ -333,6 +347,61 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
         
         public Builder vehicleType(String vehicleType) {
             data.setVehicleType(vehicleType);
+            return this;
+        }
+        
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
             return this;
         }
         

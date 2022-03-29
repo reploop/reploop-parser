@@ -1,24 +1,23 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
 import java.io.Serializable;
+import simple.Area;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import simple.Area; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Simple implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Map<Integer, Area> area;
+    private Map<Integer, simple.Area> area;
     private Map<String, String> city;
     private Integer code;
     private String date;
     private String error;
     private String result;
     
-    public Map<Integer, Area> getArea() {
+    public Map<Integer, simple.Area> getArea() {
         return area;
     }
     
-    public void setArea(Map<Integer, Area> area) {
+    public void setArea(Map<Integer, simple.Area> area) {
         this.area = area;
     }
     
@@ -65,12 +64,12 @@ public class Simple implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("area", area)
-                .add("city", city)
-                .add("code", code)
-                .add("date", date)
-                .add("error", error)
-                .add("result", result)
+                .add("area", getArea())
+                .add("city", getCity())
+                .add("code", getCode())
+                .add("date", getDate())
+                .add("error", getError())
+                .add("result", getResult())
                 .toString();
     }
     
@@ -81,7 +80,7 @@ public class Simple implements Serializable {
     public static class Builder {
         private final Simple data = new Simple();
         
-        public Builder area(Map<Integer, Area> area) {
+        public Builder area(Map<Integer, simple.Area> area) {
             data.setArea(area);
             return this;
         }

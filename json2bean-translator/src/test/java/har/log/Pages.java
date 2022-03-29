@@ -1,9 +1,10 @@
 package har.log;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import har.log.pages.PageTimings;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pages implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
@@ -37,9 +38,9 @@ public class Pages implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("pageTimings", pageTimings)
-                .add("startedDateTime", startedDateTime)
+                .add("id", getId())
+                .add("pageTimings", getPageTimings())
+                .add("startedDateTime", getStartedDateTime())
                 .toString();
     }
     

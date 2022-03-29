@@ -1,93 +1,92 @@
 package message.messages.mv.order;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.Code;
+import message.messages.mv.order.m.States;
 import java.io.Serializable;
+import message.messages.mv.order.m.Created;
+import message.messages.mv.order.m.PickPoint;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.Code; 
-import message.messages.mv.order.m.States; 
-import message.messages.mv.order.m.Created; 
-import message.messages.mv.order.m.PickPoint; 
-import message.messages.mv.order.m.Items; 
-import message.messages.mv.order.m.Flight; 
-import message.messages.mv.order.m.Picker; 
+import message.messages.mv.order.m.Items;
+import message.messages.mv.order.m.Flight;
+import message.messages.mv.order.m.Picker;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Code code;
-    private Created created;
-    private Flight flight;
-    private Items items;
-    private PickPoint pickPoint;
-    private Picker picker;
-    private States states;
+    private message.messages.mv.order.m.Code code;
+    private message.messages.mv.order.m.Created created;
+    private message.messages.mv.order.m.Flight flight;
+    private message.messages.mv.order.m.Items items;
+    private message.messages.mv.order.m.PickPoint pickPoint;
+    private message.messages.mv.order.m.Picker picker;
+    private message.messages.mv.order.m.States states;
     
-    public Code getCode() {
+    public message.messages.mv.order.m.Code getCode() {
         return code;
     }
     
-    public void setCode(Code code) {
+    public void setCode(message.messages.mv.order.m.Code code) {
         this.code = code;
     }
     
-    public Created getCreated() {
+    public message.messages.mv.order.m.Created getCreated() {
         return created;
     }
     
-    public void setCreated(Created created) {
+    public void setCreated(message.messages.mv.order.m.Created created) {
         this.created = created;
     }
     
-    public Flight getFlight() {
+    public message.messages.mv.order.m.Flight getFlight() {
         return flight;
     }
     
-    public void setFlight(Flight flight) {
+    public void setFlight(message.messages.mv.order.m.Flight flight) {
         this.flight = flight;
     }
     
-    public Items getItems() {
+    public message.messages.mv.order.m.Items getItems() {
         return items;
     }
     
-    public void setItems(Items items) {
+    public void setItems(message.messages.mv.order.m.Items items) {
         this.items = items;
     }
     
-    public PickPoint getPickPoint() {
+    public message.messages.mv.order.m.PickPoint getPickPoint() {
         return pickPoint;
     }
     
-    public void setPickPoint(PickPoint pickPoint) {
+    public void setPickPoint(message.messages.mv.order.m.PickPoint pickPoint) {
         this.pickPoint = pickPoint;
     }
     
-    public Picker getPicker() {
+    public message.messages.mv.order.m.Picker getPicker() {
         return picker;
     }
     
-    public void setPicker(Picker picker) {
+    public void setPicker(message.messages.mv.order.m.Picker picker) {
         this.picker = picker;
     }
     
-    public States getStates() {
+    public message.messages.mv.order.m.States getStates() {
         return states;
     }
     
-    public void setStates(States states) {
+    public void setStates(message.messages.mv.order.m.States states) {
         this.states = states;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("created", created)
-                .add("flight", flight)
-                .add("items", items)
-                .add("pickPoint", pickPoint)
-                .add("picker", picker)
-                .add("states", states)
+                .add("code", getCode())
+                .add("created", getCreated())
+                .add("flight", getFlight())
+                .add("items", getItems())
+                .add("pickPoint", getPickPoint())
+                .add("picker", getPicker())
+                .add("states", getStates())
                 .toString();
     }
     
@@ -98,37 +97,37 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder code(Code code) {
+        public Builder code(message.messages.mv.order.m.Code code) {
             data.setCode(code);
             return this;
         }
         
-        public Builder created(Created created) {
+        public Builder created(message.messages.mv.order.m.Created created) {
             data.setCreated(created);
             return this;
         }
         
-        public Builder flight(Flight flight) {
+        public Builder flight(message.messages.mv.order.m.Flight flight) {
             data.setFlight(flight);
             return this;
         }
         
-        public Builder items(Items items) {
+        public Builder items(message.messages.mv.order.m.Items items) {
             data.setItems(items);
             return this;
         }
         
-        public Builder pickPoint(PickPoint pickPoint) {
+        public Builder pickPoint(message.messages.mv.order.m.PickPoint pickPoint) {
             data.setPickPoint(pickPoint);
             return this;
         }
         
-        public Builder picker(Picker picker) {
+        public Builder picker(message.messages.mv.order.m.Picker picker) {
             data.setPicker(picker);
             return this;
         }
         
-        public Builder states(States states) {
+        public Builder states(message.messages.mv.order.m.States states) {
             data.setStates(states);
             return this;
         }

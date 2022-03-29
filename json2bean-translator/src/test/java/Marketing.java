@@ -1,14 +1,13 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import marketing.Result;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import marketing.Result; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Marketing implements Serializable {
     private static final long serialVersionUID = 1L;
     private Object reason;
-    private List<Result> result;
+    private List<marketing.Result> result;
     private String resultCode;
     private Boolean success;
     
@@ -20,11 +19,11 @@ public class Marketing implements Serializable {
         this.reason = reason;
     }
     
-    public List<Result> getResult() {
+    public List<marketing.Result> getResult() {
         return result;
     }
     
-    public void setResult(List<Result> result) {
+    public void setResult(List<marketing.Result> result) {
         this.result = result;
     }
     
@@ -47,10 +46,10 @@ public class Marketing implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("reason", reason)
-                .add("result", result)
-                .add("resultCode", resultCode)
-                .add("success", success)
+                .add("reason", getReason())
+                .add("result", getResult())
+                .add("resultCode", getResultCode())
+                .add("success", getSuccess())
                 .toString();
     }
     
@@ -66,7 +65,7 @@ public class Marketing implements Serializable {
             return this;
         }
         
-        public Builder result(List<Result> result) {
+        public Builder result(List<marketing.Result> result) {
             data.setResult(result);
             return this;
         }

@@ -1,9 +1,9 @@
 package har.log.entries;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class MimeTypeText implements Serializable {
     private static final long serialVersionUID = 1L;
     private String mimeType;
@@ -28,8 +28,8 @@ public abstract class MimeTypeText implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("mimeType", mimeType)
-                .add("text", text)
+                .add("mimeType", getMimeType())
+                .add("text", getText())
                 .toString();
     }
     

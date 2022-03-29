@@ -1,15 +1,17 @@
 package order.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import order.data.records.RecordsUserOrderAdditional;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import order.data.records.RecordsUserOrderAdditional; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
-import order.data.records.UserOrderAdditional; 
+import order.data.records.UserOrderAdditional;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Records extends RecordsUserOrderAdditional implements Serializable {
+public class Records extends order.data.records.RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer adultNum;
     private String beginGpsLat;
@@ -63,7 +65,7 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
     private String useUpType;
     private Object userAct;
     private Object userNotifyType;
-    private List<UserOrderAdditional> userOrderAdditional;
+    private List<order.data.records.UserOrderAdditional> userOrderAdditional;
     private Object vehiclePlate;
     @JsonProperty("vplate")
     private String vPlate;
@@ -472,11 +474,11 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
         this.userNotifyType = userNotifyType;
     }
     
-    public List<UserOrderAdditional> getUserOrderAdditional() {
+    public List<order.data.records.UserOrderAdditional> getUserOrderAdditional() {
         return userOrderAdditional;
     }
     
-    public void setUserOrderAdditional(List<UserOrderAdditional> userOrderAdditional) {
+    public void setUserOrderAdditional(List<order.data.records.UserOrderAdditional> userOrderAdditional) {
         this.userOrderAdditional = userOrderAdditional;
     }
     
@@ -515,61 +517,72 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("adultNum", adultNum)
-                .add("beginGpsLat", beginGpsLat)
-                .add("beginGpsLong", beginGpsLong)
-                .add("beginSiteCode", beginSiteCode)
-                .add("beginSiteName", beginSiteName)
-                .add("boardingTime", boardingTime)
-                .add("bookInAdvance", bookInAdvance)
-                .add("busTicketReqList", busTicketReqList)
-                .add("cancelDuration", cancelDuration)
-                .add("cancelType", cancelType)
-                .add("childNum", childNum)
-                .add("contactName", contactName)
-                .add("contactPhone", contactPhone)
-                .add("contactSex", contactSex)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("dName", dName)
-                .add("driverArrivedTime", driverArrivedTime)
-                .add("driverId", driverId)
-                .add("driverName", driverName)
-                .add("driverOrderStatus", driverOrderStatus)
-                .add("driverOrderUpdateTime", driverOrderUpdateTime)
-                .add("endGpsLat", endGpsLat)
-                .add("endGpsLong", endGpsLong)
-                .add("endSiteCode", endSiteCode)
-                .add("endSiteName", endSiteName)
-                .add("evaluation", evaluation)
-                .add("flightNumber", flightNumber)
-                .add("id", id)
-                .add("lineType", lineType)
-                .add("nextOrderNotifyType", nextOrderNotifyType)
-                .add("no", no)
-                .add("notifyType", notifyType)
-                .add("offTime", offTime)
-                .add("openId", openId)
-                .add("orderPeriodValid", orderPeriodValid)
-                .add("orderRemark", orderRemark)
-                .add("orderSource", orderSource)
-                .add("orderTime", orderTime)
-                .add("points", points)
-                .add("remarks", remarks)
-                .add("scheduleDate", scheduleDate)
-                .add("score", score)
-                .add("status", status)
-                .add("ticketStatus", ticketStatus)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("useUpType", useUpType)
-                .add("userAct", userAct)
-                .add("userNotifyType", userNotifyType)
-                .add("userOrderAdditional", userOrderAdditional)
-                .add("vehiclePlate", vehiclePlate)
-                .add("vPlate", vPlate)
-                .add("vType", vType)
-                .add("vVehicleId", vVehicleId)
+                .add("adultNum", getAdultNum())
+                .add("beginGpsLat", getBeginGpsLat())
+                .add("beginGpsLong", getBeginGpsLong())
+                .add("beginSiteCode", getBeginSiteCode())
+                .add("beginSiteName", getBeginSiteName())
+                .add("boardingTime", getBoardingTime())
+                .add("bookInAdvance", getBookInAdvance())
+                .add("busTicketReqList", getBusTicketReqList())
+                .add("cancelDuration", getCancelDuration())
+                .add("cancelType", getCancelType())
+                .add("childNum", getChildNum())
+                .add("contactName", getContactName())
+                .add("contactPhone", getContactPhone())
+                .add("contactSex", getContactSex())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("dName", getDName())
+                .add("driverArrivedTime", getDriverArrivedTime())
+                .add("driverId", getDriverId())
+                .add("driverName", getDriverName())
+                .add("driverOrderStatus", getDriverOrderStatus())
+                .add("driverOrderUpdateTime", getDriverOrderUpdateTime())
+                .add("endGpsLat", getEndGpsLat())
+                .add("endGpsLong", getEndGpsLong())
+                .add("endSiteCode", getEndSiteCode())
+                .add("endSiteName", getEndSiteName())
+                .add("evaluation", getEvaluation())
+                .add("flightNumber", getFlightNumber())
+                .add("id", getId())
+                .add("lineType", getLineType())
+                .add("nextOrderNotifyType", getNextOrderNotifyType())
+                .add("no", getNo())
+                .add("notifyType", getNotifyType())
+                .add("offTime", getOffTime())
+                .add("openId", getOpenId())
+                .add("orderPeriodValid", getOrderPeriodValid())
+                .add("orderRemark", getOrderRemark())
+                .add("orderSource", getOrderSource())
+                .add("orderTime", getOrderTime())
+                .add("points", getPoints())
+                .add("remarks", getRemarks())
+                .add("scheduleDate", getScheduleDate())
+                .add("score", getScore())
+                .add("status", getStatus())
+                .add("ticketStatus", getTicketStatus())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("useUpType", getUseUpType())
+                .add("userAct", getUserAct())
+                .add("userNotifyType", getUserNotifyType())
+                .add("userOrderAdditional", getUserOrderAdditional())
+                .add("vehiclePlate", getVehiclePlate())
+                .add("vPlate", getVPlate())
+                .add("vType", getVType())
+                .add("vVehicleId", getVVehicleId())
+                .add("delay", getDelay())
+                .add("settlementPrice", getSettlementPrice())
+                .add("driverPhone", getDriverPhone())
+                .add("createTime", getCreateTime())
+                .add("driverOrderId", getDriverOrderId())
+                .add("operator", getOperator())
+                .add("preDriverId", getPreDriverId())
+                .add("actionSource", getActionSource())
+                .add("night", getNight())
+                .add("vehicleBrand", getVehicleBrand())
+                .add("orderId", getOrderId())
                 .toString();
     }
     
@@ -830,7 +843,7 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder userOrderAdditional(List<UserOrderAdditional> userOrderAdditional) {
+        public Builder userOrderAdditional(List<order.data.records.UserOrderAdditional> userOrderAdditional) {
             data.setUserOrderAdditional(userOrderAdditional);
             return this;
         }
@@ -855,23 +868,13 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
         public Builder settlementPrice(Object settlementPrice) {
             data.setSettlementPrice(settlementPrice);
-            return this;
-        }
-        
-        public Builder night(Boolean night) {
-            data.setNight(night);
-            return this;
-        }
-        
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
-            return this;
-        }
-        
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
             return this;
         }
         
@@ -880,13 +883,23 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
         public Builder operator(Object operator) {
             data.setOperator(operator);
             return this;
         }
         
-        public Builder vehicleBrand(Object vehicleBrand) {
-            data.setVehicleBrand(vehicleBrand);
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
             return this;
         }
         
@@ -895,18 +908,18 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
         public Builder orderId(Object orderId) {
             data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder delay(Object delay) {
-            data.setDelay(delay);
-            return this;
-        }
-        
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
             return this;
         }
         

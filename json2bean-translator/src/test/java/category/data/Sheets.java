@@ -1,19 +1,21 @@
 package category.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import category.data.sheets.ColumnCountRowCount;
+import java.util.List;
+import category.data.sheets.Merges;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import category.data.sheets.ColumnCountRowCount; 
-import java.util.List; 
-import category.data.sheets.Merges; 
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Sheets extends ColumnCountRowCount implements Serializable {
+public class Sheets extends category.data.sheets.ColumnCountRowCount implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer frozenColCount;
     private Integer frozenRowCount;
     private Integer index;
-    private List<Merges> merges;
+    private List<category.data.sheets.Merges> merges;
     private String sheetId;
     private String title;
     
@@ -41,11 +43,11 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
         this.index = index;
     }
     
-    public List<Merges> getMerges() {
+    public List<category.data.sheets.Merges> getMerges() {
         return merges;
     }
     
-    public void setMerges(List<Merges> merges) {
+    public void setMerges(List<category.data.sheets.Merges> merges) {
         this.merges = merges;
     }
     
@@ -68,12 +70,14 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("frozenColCount", frozenColCount)
-                .add("frozenRowCount", frozenRowCount)
-                .add("index", index)
-                .add("merges", merges)
-                .add("sheetId", sheetId)
-                .add("title", title)
+                .add("frozenColCount", getFrozenColCount())
+                .add("frozenRowCount", getFrozenRowCount())
+                .add("index", getIndex())
+                .add("merges", getMerges())
+                .add("sheetId", getSheetId())
+                .add("title", getTitle())
+                .add("columnCount", getColumnCount())
+                .add("rowCount", getRowCount())
                 .toString();
     }
     
@@ -99,7 +103,7 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
             return this;
         }
         
-        public Builder merges(List<Merges> merges) {
+        public Builder merges(List<category.data.sheets.Merges> merges) {
             data.setMerges(merges);
             return this;
         }

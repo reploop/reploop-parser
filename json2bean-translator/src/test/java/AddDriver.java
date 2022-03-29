@@ -1,8 +1,7 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AddDriver implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -91,15 +90,15 @@ public class AddDriver implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("driverLicenseNo", driverLicenseNo)
-                .add("files", files)
-                .add("id", id)
-                .add("idNo", idNo)
-                .add("name", name)
-                .add("officeId", officeId)
-                .add("phone", phone)
-                .add("remarks", remarks)
-                .add("sex", sex)
+                .add("driverLicenseNo", getDriverLicenseNo())
+                .add("files", getFiles())
+                .add("id", getId())
+                .add("idNo", getIdNo())
+                .add("name", getName())
+                .add("officeId", getOfficeId())
+                .add("phone", getPhone())
+                .add("remarks", getRemarks())
+                .add("sex", getSex())
                 .toString();
     }
     

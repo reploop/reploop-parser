@@ -1,49 +1,48 @@
 package message.messages.mv.order.m.picker;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.picker.m.Phone;
+import message.messages.mv.order.m.picker.m.Identity;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.picker.m.Phone; 
-import message.messages.mv.order.m.picker.m.Identity; 
-import message.messages.mv.order.m.picker.m.RealName; 
+import message.messages.mv.order.m.picker.m.RealName;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Identity identity;
-    private Phone phone;
-    private RealName realName;
+    private message.messages.mv.order.m.picker.m.Identity identity;
+    private message.messages.mv.order.m.picker.m.Phone phone;
+    private message.messages.mv.order.m.picker.m.RealName realName;
     
-    public Identity getIdentity() {
+    public message.messages.mv.order.m.picker.m.Identity getIdentity() {
         return identity;
     }
     
-    public void setIdentity(Identity identity) {
+    public void setIdentity(message.messages.mv.order.m.picker.m.Identity identity) {
         this.identity = identity;
     }
     
-    public Phone getPhone() {
+    public message.messages.mv.order.m.picker.m.Phone getPhone() {
         return phone;
     }
     
-    public void setPhone(Phone phone) {
+    public void setPhone(message.messages.mv.order.m.picker.m.Phone phone) {
         this.phone = phone;
     }
     
-    public RealName getRealName() {
+    public message.messages.mv.order.m.picker.m.RealName getRealName() {
         return realName;
     }
     
-    public void setRealName(RealName realName) {
+    public void setRealName(message.messages.mv.order.m.picker.m.RealName realName) {
         this.realName = realName;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("identity", identity)
-                .add("phone", phone)
-                .add("realName", realName)
+                .add("identity", getIdentity())
+                .add("phone", getPhone())
+                .add("realName", getRealName())
                 .toString();
     }
     
@@ -54,17 +53,17 @@ public class M implements Serializable {
     public static class Builder {
         private final M data = new M();
         
-        public Builder identity(Identity identity) {
+        public Builder identity(message.messages.mv.order.m.picker.m.Identity identity) {
             data.setIdentity(identity);
             return this;
         }
         
-        public Builder phone(Phone phone) {
+        public Builder phone(message.messages.mv.order.m.picker.m.Phone phone) {
             data.setPhone(phone);
             return this;
         }
         
-        public Builder realName(RealName realName) {
+        public Builder realName(message.messages.mv.order.m.picker.m.RealName realName) {
             data.setRealName(realName);
             return this;
         }
