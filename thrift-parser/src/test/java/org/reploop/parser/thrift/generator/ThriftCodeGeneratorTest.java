@@ -1,10 +1,10 @@
 package org.reploop.parser.thrift.generator;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.thrift.tree.ThriftProgram;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -22,7 +22,7 @@ public class ThriftCodeGeneratorTest {
     ThriftParser parser;
     ThriftCodeGenerator generator;
 
-    @BeforeMethod
+    @Before
     public void setUp() throws Exception {
         parser = new ThriftParser();
         generator = new ThriftCodeGenerator();

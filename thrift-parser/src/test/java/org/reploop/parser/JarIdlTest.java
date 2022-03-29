@@ -1,9 +1,9 @@
 package org.reploop.parser;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.reploop.parser.thrift.ThriftParser;
 import org.reploop.parser.thrift.tree.ThriftProgram;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -27,7 +27,7 @@ public class JarIdlTest {
     JarFinder finder;
     ThriftParser thriftParser;
 
-    @BeforeMethod
+    @Before
     public void setUp() throws Exception {
         thriftParser = new ThriftParser();
         finder = new JarFinder();

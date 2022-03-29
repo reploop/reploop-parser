@@ -3,10 +3,9 @@ package org.reploop.parser.java;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenStream;
-import org.reploop.parser.java.JavaParserDriver;
+import org.junit.Test;
 import org.reploop.parser.java.base.JavaLexer;
 import org.reploop.parser.java.base.JavaParser;
-import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
 
