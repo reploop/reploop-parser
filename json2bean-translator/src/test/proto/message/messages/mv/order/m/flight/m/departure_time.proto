@@ -1,5 +1,0 @@
-package message.messages.mv.order.m.flight.m;
-message DepartureTime {
-    optional string s = 1;
-    
-}

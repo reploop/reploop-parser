@@ -1,8 +1,0 @@
-import "carResponse/rows.proto";
-message CarResponse {
-    optional int32 code = 1;
-    optional string msg = 2;
-    repeated carResponse.Rows rows = 3;
-    optional int32 total = 4;
-    
-}

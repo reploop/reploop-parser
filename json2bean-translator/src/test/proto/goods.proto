@@ -1,8 +1,0 @@
-import "goods/result.proto";
-message Goods {
-    optional string reason = 1;
-    repeated goods.Result result = 2;
-    optional string resultCode = 3;
-    optional bool success = 4;
-    
-}

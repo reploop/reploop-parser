@@ -1,8 +1,0 @@
-package message.messages.mv.states.l;
-import "message/messages/mv/states/l/m/time.proto";
-import "message/messages/mv/states/l/m/status.proto";
-message M {
-    optional message.messages.mv.states.l.m.Status status = 1;
-    optional message.messages.mv.states.l.m.Time time = 2;
-    
-}

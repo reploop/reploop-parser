@@ -209,4 +209,13 @@ public class MessageContext {
     public boolean isJsonRawValue() {
         return isJsonRawValue(name);
     }
+
+    public QualifiedName replaceIfPresent(QualifiedName name) {
+        Optional<QualifiedName> oq = getIdentityName(name);
+        if (oq.isEmpty()) {
+            return name;
+        } else {
+            return replaceIfPresent(oq.get());
+        }
+    }
 }

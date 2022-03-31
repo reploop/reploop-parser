@@ -12,7 +12,6 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
-import org.reploop.translator.json.bean.BeanContext;
 import org.reploop.translator.json.bean.FieldPushDown;
 import org.reploop.translator.json.bean.Json2Message;
 import org.reploop.translator.json.bean.MessageContext;
@@ -32,8 +31,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static java.nio.file.StandardOpenOption.*;
 import static org.reploop.translator.json.support.Constants.*;
 
 public class Json2Driver implements Runnable {
@@ -168,53 +165,10 @@ public class Json2Driver implements Runnable {
         generate(all, ctx);
     }
 
-    private Path packageToPath(Path root, Message msg, String ext) {
-        QualifiedName qn = msg.getName();
-        String filename = toFilename(qn, ext);
-        Optional<QualifiedName> oqn = qn.prefix();
-        Path path = null;
-        if (oqn.isPresent()) {
-            List<String> parts = oqn.get().allParts();
-            for (String part : parts) {
-                if (isNullOrEmpty(part)) {
-                    continue;
-                }
-                if (null == path) {
-                    path = Path.of(part);
-                    continue;
-                }
-                path = path.resolve(part);
-            }
-        }
-        if (null == path) {
-            path = Path.of(filename);
-        } else {
-            path = path.resolve(filename);
-        }
-        return root.resolve(path);
-    }
-
-    private String toFilename(QualifiedName qn, String ext) {
-        return qn.suffix() + DOT + ext;
-    }
-
     private void generate(Map<QualifiedName, Message> fixed, MessageContext context) {
-        fixed.forEach((name, message) -> {
-            Message merged = fieldPushDown.visitMessage(message, new BeanContext(name, fixed));
-            for (MessageGenerator generator : generators) {
-                BeanContext beanContext = new BeanContext(name, fixed);
-                generator.generate(merged, beanContext);
-
-                Path root = Paths.get(outputDirectory);
-                Path path = root.resolve(beanContext.getFile()).normalize();
-                try {
-                    Path dir = Files.createDirectories(path.getParent());
-                    Files.writeString(path, beanContext.toString(), TRUNCATE_EXISTING, CREATE, WRITE);
-                } catch (IOException e) {
-                    LOG.error("Cannot write source code to file {}", path, e);
-                }
-            }
-        });
+        for (MessageGenerator generator : generators) {
+            generator.generate(fixed, outputDirectory);
+        }
     }
 
     @Override

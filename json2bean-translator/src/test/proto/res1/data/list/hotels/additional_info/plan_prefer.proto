@@ -1,8 +1,0 @@
-package res1.data.list.hotels.additional_info;
-import "res1/data/list/hotels/additional_info/plan_prefer/price.proto";
-message PlanPrefer {
-    optional res1.data.list.hotels.additional_info.plan_prefer.Price price = 1;
-    repeated int32 star = 2;
-    repeated string tags = 3;
-    
-}

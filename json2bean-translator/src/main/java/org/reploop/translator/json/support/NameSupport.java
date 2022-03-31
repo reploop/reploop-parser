@@ -1,5 +1,6 @@
 package org.reploop.translator.json.support;
 
+import com.google.common.base.CaseFormat;
 import org.reploop.parser.QualifiedName;
 
 import java.util.Set;
@@ -17,6 +18,7 @@ public class NameSupport {
     public static final QualifiedName IMPORT_LOCAL_DATETIME = QualifiedName.of("java.time.LocalDateTime");
     public static final QualifiedName IMPORT_SET = QualifiedName.of("java.util.Set");
     public static final QualifiedName IMPORT_MAP = QualifiedName.of("java.util.Map");
+    private static final NameFormat format = new NameFormat();
 
     public static boolean isObject(QualifiedName qn) {
         return JAVA_OBJECT.equals(qn) || JAVA_LANG_OBJECT.equals(qn);
@@ -93,5 +95,18 @@ public class NameSupport {
             }
         }
         return conflict;
+    }
+
+    public static String toLowerCamel(String qn) {
+        return format.format(qn, CaseFormat.LOWER_CAMEL);
+    }
+
+    public static QualifiedName to(QualifiedName qn, CaseFormat cf) {
+        String clazz = format.format(qn.suffix(), cf);
+        return qn.prefix().map(q -> QualifiedName.of(q, clazz)).orElse(QualifiedName.of(clazz));
+    }
+
+    public static QualifiedName toUpperCamel(QualifiedName qn) {
+        return to(qn, CaseFormat.UPPER_CAMEL);
     }
 }

@@ -1,5 +1,0 @@
-package message.messages.mv.states.l.m;
-message Time {
-    optional string s = 1;
-    
-}

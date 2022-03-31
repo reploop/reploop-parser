@@ -1,7 +1,0 @@
-import "array/data.proto";
-message Array {
-    optional string code = 1;
-    repeated array.Data data = 2;
-    repeated string empty = 3;
-    
-}

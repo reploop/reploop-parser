@@ -1,6 +1,5 @@
 package org.reploop.translator.json.bean;
 
-import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.QualifiedName;
@@ -8,23 +7,16 @@ import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
-import org.reploop.translator.json.support.NameFormat;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.reploop.translator.json.support.Constants.*;
 import static org.reploop.translator.json.support.NameSupport.*;
 
 /**
- * Rename all packages and classes names to Upper Camel Style.
- * When finished, class names are unique in the message.
+ * Rename and format all classes names as Upper Camel Style.
  */
 public class RenameResolver extends AstVisitor<Node, MessageContext> {
-
-    private final NameFormat format = new NameFormat();
 
     @Override
     public Node visitNode(Node node, MessageContext context) {
@@ -82,22 +74,8 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
         return new StructType(qn);
     }
 
-    private QualifiedName rewriteQualifiedName(QualifiedName qualifiedName, MessageContext context) {
-        QualifiedName qn = toUpperCamel(qualifiedName);
-        QualifiedName fqn = qn;
-        Optional<QualifiedName> oqn = qn.prefix();
-        if (oqn.isPresent()) {
-            if (hasNameConflict(qn, context.getDependencies()) || hasNameConflict(qn, context.getName())) {
-                QualifiedName prefix = oqn.get();
-                // When conflicts, add prefix's last name to the full name.
-                // Sort first so the name are constant.
-                String suffix = Stream.of(prefix.suffix(), qn.suffix()).sorted().collect(Collectors.joining(UNDERSCORE));
-                // The new full qualified name
-                fqn = toUpperCamel(QualifiedName.of(prefix, suffix));
-                // Rewrite fqn later.
-                context.addIdentityName(qn, fqn);
-            }
-        }
+    private QualifiedName rewriteQualifiedName(QualifiedName name, MessageContext context) {
+        QualifiedName fqn = toUpperCamel(name);
         // Add fqn to dependencies
         context.addDependency(fqn);
         return fqn;
@@ -137,8 +115,8 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
 
     @Override
     public Function visitFunction(Function function, MessageContext context) {
-        var requestType = visitFieldType(function.getRequestType(), context);
-        var responseType = visitFieldType(function.getResponseType(), context);
+        FieldType requestType = visitFieldType(function.getRequestType(), context);
+        FieldType responseType = visitFieldType(function.getResponseType(), context);
         List<Option> options = visitIfPresent(function.getOptions(), option -> visitOption(option, context));
         return new Function(function.getName(), requestType, responseType, options);
     }
@@ -157,25 +135,11 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
         return new Enumeration(qn, node.getComments(), visitIfPresent(node.getFields(), f -> visitEnumField(f, context), EnumField.class));
     }
 
-    public String toLowerCamel(String qn) {
-        return format.format(qn, CaseFormat.LOWER_CAMEL);
-    }
-
-    public QualifiedName to(QualifiedName qn, CaseFormat cf) {
-        String clazz = format.format(qn.suffix(), cf);
-        return qn.prefix().map(q -> QualifiedName.of(q, clazz)).orElse(QualifiedName.of(clazz));
-    }
-
-    public QualifiedName toUpperCamel(QualifiedName qn) {
-        return to(qn, CaseFormat.UPPER_CAMEL);
-    }
-
-
     @Override
     public Message visitMessage(Message node, MessageContext context) {
         QualifiedName name = toUpperCamel(node.getName());
         context.setName(name);
-        List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context), Option.class);
+        List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         List<Enumeration> enumerations = visitIfPresent(node.getEnumerations(), enumeration -> visitEnumeration(enumeration, context));
@@ -186,10 +150,6 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
             .map(QualifiedName::toString)
             .map(dep -> new CommonPair(IMPORT, new StringValue(dep)))
             .forEach(options::add);
-        List<String> comments = ImmutableList.<String>builder()
-            .addAll(node.getComments())
-            .add("@JsonIgnoreProperties(ignoreUnknown = true)")
-            .build();
-        return new Message(name, comments, fields, messages, enumerations, services, options);
+        return new Message(name, node.getComments(), fields, messages, enumerations, services, options);
     }
 }

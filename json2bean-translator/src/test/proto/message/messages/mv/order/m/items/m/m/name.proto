@@ -1,5 +1,0 @@
-package message.messages.mv.order.m.items.m.m;
-message Name {
-    optional string s = 1;
-    
-}

@@ -1,7 +1,0 @@
-package req1;
-message CityList {
-    optional string checkin = 1;
-    optional string checkout = 2;
-    optional string id = 3;
-    
-}

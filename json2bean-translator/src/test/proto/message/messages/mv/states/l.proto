@@ -1,6 +1,0 @@
-package message.messages.mv.states;
-import "message/messages/mv/states/l/m.proto";
-message L {
-    optional message.messages.mv.states.l.M m = 1;
-    
-}

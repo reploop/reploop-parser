@@ -1,8 +1,0 @@
-package jsonObject;
-message Array {
-    optional int32 count_yesterday = 1;
-    optional int64 tv_id = 2;
-    optional string tv_name = 3;
-    optional int32 vv_week = 4;
-    
-}

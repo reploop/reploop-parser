@@ -1,6 +1,0 @@
-package res1.data.list.hotels.additional_info.plan_prefer;
-message Price {
-    optional float lower = 1;
-    optional float upper = 2;
-    
-}

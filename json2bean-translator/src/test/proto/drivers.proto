@@ -1,8 +1,0 @@
-import "drivers/rows.proto";
-message Drivers {
-    optional int32 code = 1;
-    optional string msg = 2;
-    repeated drivers.Rows rows = 3;
-    optional int32 total = 4;
-    
-}

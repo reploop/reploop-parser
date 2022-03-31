@@ -1,5 +1,0 @@
-package message.messages.mv.order.m.picker.m;
-message Phone {
-    optional string s = 1;
-    
-}

@@ -1,6 +1,0 @@
-package res1;
-import "res1/data/list.proto";
-message Data {
-    repeated res1.data.List list = 1;
-    
-}

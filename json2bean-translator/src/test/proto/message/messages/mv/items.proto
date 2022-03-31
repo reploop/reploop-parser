@@ -1,6 +1,0 @@
-package message.messages.mv;
-import "message/messages/mv/items/m.proto";
-message Items {
-    map<int32, message.messages.mv.items.M> m = 1;
-    
-}

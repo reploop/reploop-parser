@@ -1,8 +1,0 @@
-import "body/can_shipped_order_parcel_list.proto";
-message Body {
-    repeated body.CanShippedOrderParcelList canShippedOrderParcelList = 1;
-    optional int32 canShippedParcelNum = 2;
-    optional int32 expiredParcelNum = 3;
-    optional int32 notExpiredParcelNum = 4;
-    
-}

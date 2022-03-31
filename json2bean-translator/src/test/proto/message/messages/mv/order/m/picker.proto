@@ -1,6 +1,0 @@
-package message.messages.mv.order.m;
-import "message/messages/mv/order/m/picker/m.proto";
-message Picker {
-    optional message.messages.mv.order.m.picker.M m = 1;
-    
-}

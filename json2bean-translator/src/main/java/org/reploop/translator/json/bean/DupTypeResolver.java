@@ -9,7 +9,9 @@ import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.support.Constants;
 
 import java.util.List;
-import java.util.Optional;
+
+import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
+import static org.reploop.translator.json.support.Constants.IMPORT;
 
 /**
  * Resolve type. Replace same types.
@@ -40,12 +42,7 @@ public class DupTypeResolver extends AstVisitor<Node, MessageContext> {
     }
 
     private QualifiedName replaceIfPresent(QualifiedName name, MessageContext context) {
-        Optional<QualifiedName> oq = context.getIdentityName(name);
-        if (oq.isEmpty()) {
-            return name;
-        } else {
-            return replaceIfPresent(oq.get(), context);
-        }
+        return context.replaceIfPresent(name);
     }
 
     @Override
@@ -80,12 +77,12 @@ public class DupTypeResolver extends AstVisitor<Node, MessageContext> {
     @Override
     public CommonPair visitCommonPair(CommonPair node, MessageContext context) {
         String key = node.getKey();
-        if (Constants.EXTENDS_ATTR.equals(key)) {
+        if (EXTENDS_ATTR.equals(key) || IMPORT.equals(key)) {
             Value value = node.getValue();
             if (value instanceof StringValue) {
                 QualifiedName qn = QualifiedName.of(((StringValue) value).getValue());
                 QualifiedName fqn = replaceIfPresent(qn, context);
-                return new CommonPair(Constants.EXTENDS_ATTR, new StringValue(fqn.toString()));
+                return new CommonPair(key, new StringValue(fqn.toString()));
             }
         }
         return node;

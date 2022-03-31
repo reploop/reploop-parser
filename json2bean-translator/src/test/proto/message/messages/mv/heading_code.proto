@@ -1,5 +1,0 @@
-package message.messages.mv;
-message HeadingCode {
-    optional string s = 1;
-    
-}

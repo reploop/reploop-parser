@@ -1,6 +1,0 @@
-package har.log.entries;
-message MimeTypeText {
-    optional string mimeType = 1;
-    optional string text = 2;
-    
-}

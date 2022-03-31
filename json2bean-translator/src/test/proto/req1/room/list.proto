@@ -1,5 +1,0 @@
-package req1.room;
-message List {
-    optional int32 age = 1;
-    
-}

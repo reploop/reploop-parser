@@ -1,8 +1,0 @@
-package category.data;
-message Properties {
-    optional int64 ownerUser = 1;
-    optional int32 revision = 2;
-    optional int32 sheetCount = 3;
-    optional string title = 4;
-    
-}

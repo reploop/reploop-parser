@@ -1,5 +1,0 @@
-package message.messages.mv.items.m.m;
-message Code {
-    optional string s = 1;
-    
-}

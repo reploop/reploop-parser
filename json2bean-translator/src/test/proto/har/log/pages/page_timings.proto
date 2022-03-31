@@ -1,6 +1,0 @@
-package har.log.pages;
-message PageTimings {
-    optional int32 onContentLoad = 1;
-    optional int32 onLoad = 2;
-    
-}

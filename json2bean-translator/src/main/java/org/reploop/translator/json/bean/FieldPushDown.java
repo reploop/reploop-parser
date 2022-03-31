@@ -12,6 +12,7 @@ import static org.reploop.translator.json.support.Constants.*;
 
 /**
  * Add fields of the super class to the subclass. In order to generate a handy builder.
+ * It's also useful for thrift or protobuf that does NOT support inheritance.
  */
 public class FieldPushDown extends AstVisitor<Node, BeanContext> {
     @Override

@@ -1,9 +1,0 @@
-import "req1/city_list.proto";
-import "req1/room.proto";
-import "req1/plan_prefer.proto";
-message Req1 {
-    repeated req1.CityList city_list = 1;
-    optional req1.PlanPrefer plan_prefer = 2;
-    repeated req1.Room room = 3;
-    
-}

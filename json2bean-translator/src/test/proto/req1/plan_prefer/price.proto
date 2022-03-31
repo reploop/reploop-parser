@@ -1,6 +1,0 @@
-package req1.plan_prefer;
-message Price {
-    optional float lower = 1;
-    optional float upper = 2;
-    
-}

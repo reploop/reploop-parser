@@ -4,20 +4,19 @@ import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.translator.json.bean.BeanContext;
 import org.reploop.translator.json.support.Target;
 
-public class MessageAvroGenerator implements MessageGenerator {
-    private final Target target;
+public class MessageAvroGenerator extends AbstractMessageGenerator {
 
     public MessageAvroGenerator() {
-        this.target = Target.AVRO;
-    }
-
-    @Override
-    public Target getTarget() {
-        return target;
+        super(Target.AVRO);
     }
 
     @Override
     public void generate(Message message, BeanContext context) {
+
+    }
+
+    @Override
+    public void execute(Message message, BeanContext context) {
 
     }
 }

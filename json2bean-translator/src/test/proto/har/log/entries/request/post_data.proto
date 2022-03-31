@@ -1,9 +1,0 @@
-package har.log.entries.request;
-import "har/log/entries/mime_type_text.proto";
-import "har/log/entries/name_value.proto";
-message PostData {
-    optional string mimeType = 1;
-    repeated har.log.entries.NameValue params = 2;
-    optional string text = 3;
-    
-}

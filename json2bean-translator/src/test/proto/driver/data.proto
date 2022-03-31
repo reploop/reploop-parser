@@ -1,8 +1,0 @@
-package driver;
-import "driver/data/driver_data.proto";
-import "driver/data/car_data.proto";
-message Data {
-    optional driver.data.CarData car_data = 1;
-    optional driver.data.DriverData driver_data = 2;
-    
-}

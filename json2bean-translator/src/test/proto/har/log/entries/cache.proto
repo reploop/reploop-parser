@@ -1,4 +1,0 @@
-package har.log.entries;
-message Cache {
-    
-}

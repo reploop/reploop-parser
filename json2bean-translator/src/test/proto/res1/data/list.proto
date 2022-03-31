@@ -1,9 +1,0 @@
-package res1.data;
-import "res1/data/list/hotels.proto";
-message List {
-    optional string city_id = 1;
-    repeated res1.data.list.Hotels hotels = 2;
-    optional int32 max_price = 3;
-    optional int32 min_price = 4;
-    
-}

@@ -1,6 +1,0 @@
-package category.data.sheets;
-message ColumnCountRowCount {
-    optional int32 columnCount = 1;
-    optional int32 rowCount = 2;
-    
-}

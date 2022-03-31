@@ -1,6 +1,0 @@
-package message.messages.mv;
-import "message/messages/mv/states/l.proto";
-message States {
-    repeated message.messages.mv.states.L l = 1;
-    
-}

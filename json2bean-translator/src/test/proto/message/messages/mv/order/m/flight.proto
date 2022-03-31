@@ -1,6 +1,0 @@
-package message.messages.mv.order.m;
-import "message/messages/mv/order/m/flight/m.proto";
-message Flight {
-    optional message.messages.mv.order.m.flight.M m = 1;
-    
-}
