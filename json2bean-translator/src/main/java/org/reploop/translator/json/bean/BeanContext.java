@@ -4,19 +4,48 @@ package org.reploop.translator.json.bean;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Stack;
 
 public class BeanContext {
+    private Path file;
+    private String filename;
+    private final StringBuilder impl;
+    private final Stack<QualifiedName> current = new Stack<>();
     private QualifiedName root;
     private boolean abstractClass;
     private QualifiedName superClass;
-    private final StringBuilder impl;
     private String expectedKey;
     private Map<QualifiedName, Message> deps;
     private int indent = 0;
+    private int spaces = 4;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public Path getFile() {
+        return file;
+    }
+
+    public void setFile(Path file) {
+        this.file = file;
+    }
+
+    public int getSpaces() {
+        return spaces;
+    }
+
+    public void setSpaces(int spaces) {
+        this.spaces = spaces;
+    }
 
     public BeanContext(QualifiedName root) {
         this(root, Collections.emptyMap());
@@ -33,8 +62,13 @@ public class BeanContext {
         push(root);
     }
 
+
     public Map<QualifiedName, Message> getDeps() {
         return deps;
+    }
+
+    public void setDeps(Map<QualifiedName, Message> deps) {
+        this.deps = deps;
     }
 
     public Optional<Message> dep(QualifiedName name) {
@@ -43,12 +77,6 @@ public class BeanContext {
         }
         return Optional.empty();
     }
-
-    public void setDeps(Map<QualifiedName, Message> deps) {
-        this.deps = deps;
-    }
-
-    private final Stack<QualifiedName> current = new Stack<>();
 
     public BeanContext push(QualifiedName name) {
         current.push(name);
@@ -68,12 +96,12 @@ public class BeanContext {
     }
 
     public BeanContext indent() {
-        indent += 4;
+        indent += spaces;
         return this;
     }
 
     public BeanContext dedent() {
-        indent -= 4;
+        indent -= spaces;
         return this;
     }
 
@@ -97,6 +125,11 @@ public class BeanContext {
 
     public BeanContext semicolon() {
         impl.append(";");
+        return this;
+    }
+
+    public BeanContext colon() {
+        impl.append(":");
         return this;
     }
 
@@ -132,6 +165,27 @@ public class BeanContext {
 
     public BeanContext closeBrace() {
         impl.append("}");
+        return this;
+    }
+
+
+    public BeanContext openAngle() {
+        impl.append("<");
+        return this;
+    }
+
+    public BeanContext closeAngle() {
+        impl.append(">");
+        return this;
+    }
+
+    public BeanContext openSquare() {
+        impl.append("[");
+        return this;
+    }
+
+    public BeanContext closeSquare() {
+        impl.append("]");
         return this;
     }
 

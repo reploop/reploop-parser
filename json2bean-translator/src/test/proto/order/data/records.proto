@@ -1,0 +1,78 @@
+package order.data;
+import "order/data/records/records_user_order_additional.proto";
+import "order/data/records/user_order_additional.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional bool parent = 1;
+    optional string original_name = 2;
+    
+}
+message Records {
+    optional string actionSource = 1 [parent = true];
+    optional int32 adultNum = 2;
+    optional string beginGpsLat = 3;
+    optional string beginGpsLong = 4;
+    optional string beginSiteCode = 5;
+    optional string beginSiteName = 6;
+    optional string boardingTime = 7;
+    optional bool bookInAdvance = 8;
+    optional string busticketReqList = 9 [original_name = "busticketReqList"];
+    optional string cancelDuration = 10;
+    optional string cancelType = 11;
+    optional string childNum = 12;
+    optional string contactName = 13;
+    optional string contactPhone = 14;
+    optional string contactSex = 15;
+    optional string createTime = 16 [parent = true];
+    optional string createUser = 17;
+    optional string dname = 18 [original_name = "dname"];
+    optional string delFlag = 19;
+    optional string delay = 20 [parent = true];
+    optional string driverArrivedTime = 21;
+    optional int64 driverId = 22;
+    optional string driverName = 23;
+    optional string driverOrderId = 24 [parent = true];
+    optional string driverOrderStatus = 25;
+    optional string driverOrderUpdateTime = 26;
+    optional string driverPhone = 27 [parent = true];
+    optional string endGpsLat = 28;
+    optional string endGpsLong = 29;
+    optional string endSiteCode = 30;
+    optional string endSiteName = 31;
+    optional string evaluation = 32;
+    optional string flightNumber = 33;
+    optional int32 id = 34;
+    optional string lineType = 35;
+    optional string nextOrderNotifyType = 36;
+    optional bool night = 37 [parent = true];
+    optional string no = 38;
+    optional string notifyType = 39;
+    optional string offTime = 40;
+    optional string openId = 41;
+    optional string operator = 42 [parent = true];
+    optional string orderId = 43 [parent = true];
+    optional bool orderPeriodValid = 44;
+    optional string orderRemark = 45;
+    optional string orderSource = 46;
+    optional string orderTime = 47;
+    optional string points = 48;
+    optional string preDriverId = 49 [parent = true];
+    optional string remarks = 50;
+    optional string scheduleDate = 51;
+    optional string score = 52;
+    optional string settlementPrice = 53 [parent = true];
+    optional string status = 54;
+    optional string ticketStatus = 55;
+    optional string updateTime = 56;
+    optional string updateUser = 57;
+    optional string useUpType = 58;
+    optional string userAct = 59;
+    optional string userNotifyType = 60;
+    repeated order.data.records.UserOrderAdditional userOrderAdditional = 61;
+    optional string vplate = 62 [original_name = "vplate"];
+    optional string vtype = 63 [original_name = "vtype"];
+    optional int32 vvehicleId = 64 [original_name = "vvehicleId"];
+    optional string vehicleBrand = 65 [parent = true];
+    optional string vehiclePlate = 66;
+    
+}

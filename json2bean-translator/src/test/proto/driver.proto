@@ -1,0 +1,13 @@
+import "driver/data.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional string original_name = 1;
+    
+}
+message Driver {
+    optional driver.Data data = 1;
+    optional string errmsg = 2 [original_name = "errmsg"];
+    optional int32 errno = 3 [original_name = "errno"];
+    optional string trace_id = 4 [original_name = "trace_id"];
+    
+}

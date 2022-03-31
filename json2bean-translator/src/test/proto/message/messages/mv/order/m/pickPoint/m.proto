@@ -1,0 +1,10 @@
+package message.messages.mv.order.m.pickPoint;
+import "message/messages/mv/order/m/pickPoint/m/airport.proto";
+import "message/messages/mv/order/m/pickPoint/m/terminal.proto";
+import "message/messages/mv/order/m/pickPoint/m/name.proto";
+message M {
+    optional message.messages.mv.order.m.pickPoint.m.Airport airport = 1;
+    optional message.messages.mv.order.m.pickPoint.m.Name name = 2;
+    optional message.messages.mv.order.m.pickPoint.m.Terminal terminal = 3;
+    
+}

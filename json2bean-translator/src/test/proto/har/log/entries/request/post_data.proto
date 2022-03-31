@@ -1,0 +1,14 @@
+package har.log.entries.request;
+import "har/log/entries/mime_type_text.proto";
+import "har/log/entries/name_value.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional bool parent = 1;
+    
+}
+message PostData {
+    optional string mimeType = 1 [parent = true];
+    repeated har.log.entries.NameValue params = 2;
+    optional string text = 3 [parent = true];
+    
+}

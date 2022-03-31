@@ -1,0 +1,12 @@
+package department;
+import "department/data/items.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional string original_name = 1;
+    
+}
+message Data {
+    optional bool has_more = 1 [original_name = "has_more"];
+    repeated department.data.Items items = 2;
+    
+}

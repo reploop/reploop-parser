@@ -1,0 +1,6 @@
+package body;
+message CanShippedOrderParcelList {
+    optional string parcelId = 1;
+    optional string parcelName = 2;
+    
+}

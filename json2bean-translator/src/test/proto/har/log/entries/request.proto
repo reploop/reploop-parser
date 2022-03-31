@@ -1,0 +1,22 @@
+package har.log.entries;
+import "har/log/entries/request_response.proto";
+import "har/log/entries/request/post_data.proto";
+import "har/log/entries/name_value.proto";
+import "har/log/entries/name_value.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional bool parent = 1;
+    
+}
+message Request {
+    optional int32 bodySize = 1 [parent = true];
+    repeated har.log.entries.NameValue cookies = 2 [parent = true];
+    repeated har.log.entries.NameValue headers = 3 [parent = true];
+    optional int32 headersSize = 4 [parent = true];
+    optional string httpVersion = 5 [parent = true];
+    optional string method = 6;
+    optional har.log.entries.request.PostData postData = 7;
+    repeated har.log.entries.NameValue queryString = 8;
+    optional string url = 9;
+    
+}

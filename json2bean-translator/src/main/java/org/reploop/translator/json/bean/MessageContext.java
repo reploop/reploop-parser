@@ -1,5 +1,6 @@
 package org.reploop.translator.json.bean;
 
+import com.google.common.base.CaseFormat;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
@@ -8,6 +9,10 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class MessageContext {
+    private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
+    private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
+    private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
+    private final Set<QualifiedName> dependencies = new HashSet<>();
     /**
      * Current message's full qualified name
      */
@@ -15,9 +20,11 @@ public class MessageContext {
     private boolean abstractClass;
     private QualifiedName superClass;
     private TreeMap<QualifiedName, List<Message>> namedMessages;
-    private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
-    private final Set<QualifiedName> dependencies = new HashSet<>();
     private FieldType fieldType;
+    /**
+     * Filename format
+     */
+    private CaseFormat format;
     /**
      * Root directory path of the output source files
      */
@@ -41,6 +48,14 @@ public class MessageContext {
     }
 
     public MessageContext() {
+    }
+
+    public CaseFormat getFormat() {
+        return format;
+    }
+
+    public void setFormat(CaseFormat format) {
+        this.format = format;
     }
 
     public Path getDirectory() {
@@ -91,6 +106,10 @@ public class MessageContext {
         return namedMessages;
     }
 
+    public void setNamedMessages(TreeMap<QualifiedName, List<Message>> namedMessages) {
+        this.namedMessages = namedMessages;
+    }
+
     public MessageContext addNamedMessages(Map<QualifiedName, List<Message>> messageMap) {
         if (null != messageMap) {
             messageMap.forEach(this::addNamedMessage);
@@ -118,10 +137,6 @@ public class MessageContext {
         return this;
     }
 
-    public void setNamedMessages(TreeMap<QualifiedName, List<Message>> namedMessages) {
-        this.namedMessages = namedMessages;
-    }
-
     public Map<QualifiedName, QualifiedName> getIdentityNames() {
         return identityNames;
     }
@@ -147,13 +162,15 @@ public class MessageContext {
         }
     }
 
-    private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
-
     public boolean isJsonRawValue(QualifiedName name) {
         if (null == name) {
             return false;
         }
         return name.tail().map(JSON_RAW_VALUE_PATH::contains).orElse(false);
+    }
+
+    public Optional<String> hasTimeZone() {
+        return hasDateFormat(name);
     }
 
     public Optional<String> hasDateFormat() {
@@ -163,8 +180,6 @@ public class MessageContext {
     public Optional<String> hasDateFormat(QualifiedName fqn) {
         return fqn.tail().map(DATE_FORMAT::get);
     }
-
-    private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
 
     public void configureDateFormat(String fqn, String pattern) {
         configureDateFormat(QualifiedName.of(fqn), pattern);

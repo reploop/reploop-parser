@@ -1,6 +1,9 @@
 package org.reploop.translator.json.bean;
 
 import org.junit.Test;
+import org.reploop.translator.json.driver.Json2Conf;
+import org.reploop.translator.json.driver.Json2Driver;
+import org.reploop.translator.json.support.Target;
 
 import java.net.URI;
 import java.net.URL;
@@ -26,12 +29,15 @@ public class Json2DriverTest {
         URL url = Json2DriverTest.class.getResource("/");
         assertThat(url).isNotNull();
         Path dir = Paths.get(url.toURI());
-        Path directory = dir.getParent().getParent().resolve("src/test/java");
+        Path directory = dir.getParent().getParent().resolve("src/test/");
         Files.list(dir)
             .filter(path -> path.toString().toLowerCase().endsWith(".json"))
             .forEach(path -> {
                 try {
-                    Json2Conf conf = new Json2Conf().enableRootGuess(true).outputDirectory(directory.toString());
+                    Json2Conf conf = new Json2Conf().enableRootGuess(true)
+                        .target(Target.PROTO)
+                        .target(Target.THRIFT)
+                        .outputDirectory(directory.toString());
                     Json2Driver app = new Json2Driver(conf);
                     if (!path.toString().contains("00.json")) {
                         app.execute(path);

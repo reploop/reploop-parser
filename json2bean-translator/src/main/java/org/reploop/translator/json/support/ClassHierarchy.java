@@ -3,8 +3,8 @@ package org.reploop.translator.json.support;
 import com.google.common.collect.ImmutableList;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.translator.json.bean.MessageContext;
 import org.reploop.translator.json.bean.DupTypeResolver;
+import org.reploop.translator.json.bean.MessageContext;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,20 +19,19 @@ import static org.reploop.translator.json.support.TypeSupport.customTypeName;
  */
 public class ClassHierarchy {
 
-    private final DupTypeResolver fieldTypeResolver;
+    private final DupTypeResolver dupTypeResolver;
+    /**
+     * From bottom up
+     */
+    private final Comparator<Message> messageComparator = (o1, o2) -> o2.getName().compareTo(o1.getName());
 
     public ClassHierarchy() {
         this(new DupTypeResolver());
     }
 
     public ClassHierarchy(DupTypeResolver fieldTypeResolver) {
-        this.fieldTypeResolver = fieldTypeResolver;
+        this.dupTypeResolver = fieldTypeResolver;
     }
-
-    /**
-     * From bottom up
-     */
-    private final Comparator<Message> messageComparator = (o1, o2) -> o2.getName().compareTo(o1.getName());
 
     public void infer(Map<QualifiedName, Message> messageMap) {
         // All names
@@ -197,7 +196,7 @@ public class ClassHierarchy {
         MessageContext context = new MessageContext();
         context.addIdentityNames(identityNames);
         messageMap.forEach((name, message) -> {
-            Message msg = fieldTypeResolver.visitMessage(message, context);
+            Message msg = dupTypeResolver.visitMessage(message, context);
             messageMap.put(msg.getName(), msg);
         });
     }
@@ -221,7 +220,7 @@ public class ClassHierarchy {
         MessageContext ctx = new MessageContext();
         ctx.addIdentityNames(sameMap);
         for (Message message : messages) {
-            Message msg = fieldTypeResolver.visitMessage(message, ctx);
+            Message msg = dupTypeResolver.visitMessage(message, ctx);
             Optional<Message> om = reduce(parent, msg, messageMap);
             if (om.isPresent()) {
                 parent = om.get();
@@ -249,7 +248,7 @@ public class ClassHierarchy {
                 .addAll(parent.getFields())
                 .build();
             List<Field> list = merge.stream()
-                .map(f -> fieldTypeResolver.visitField(f, ctx))
+                .map(f -> dupTypeResolver.visitField(f, ctx))
                 .distinct()
                 .collect(toList());
             Message msg = new Message(sub.getName(), sub.getComments(), list, sub.getMessages(), sub.getEnumerations(), sub.getServices(), sub.getOptions());

@@ -18,6 +18,10 @@ public class NumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
 
     private static final Map<Integer, FieldType> integerTypeMap;
     private static final Map<Integer, FieldType> floatingTypeMap;
+    /**
+     * 32 bits integer or floating-point number
+     */
+    private final static int MIN_BITS = 32;
 
     static {
         Map<Integer, FieldType> map = new HashMap<>();
@@ -40,10 +44,6 @@ public class NumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
     }
 
     private final int minBits;
-    /**
-     * 32 bits integer or floating-point number
-     */
-    private final static int MIN_BITS = 32;
 
     public NumberTypeAdaptor(int minBits) {
         this.minBits = minBits;
@@ -99,7 +99,7 @@ public class NumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
         int bits = max(minBits, context.getBits());
         FieldType type = bitsTypeMap.get(bits);
         if (null == type) {
-            throw new IllegalStateException("Type with bits " + bits + " does not exists. Current spec is " + context.toString());
+            throw new IllegalStateException("Type with bits " + bits + " does not exists. Current spec is " + context);
         }
         return type;
     }

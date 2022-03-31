@@ -1,0 +1,10 @@
+import "text/area.proto";
+message Text {
+    map<string, text.Area> area = 1;
+    map<string, string> city = 2;
+    optional int32 code = 3;
+    optional string date = 4;
+    optional string error = 5;
+    optional string result = 6;
+    
+}

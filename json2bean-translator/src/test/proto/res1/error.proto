@@ -1,0 +1,7 @@
+package res1;
+message Error {
+    optional string id = 1;
+    optional string reason = 2;
+    optional string show = 3;
+    
+}

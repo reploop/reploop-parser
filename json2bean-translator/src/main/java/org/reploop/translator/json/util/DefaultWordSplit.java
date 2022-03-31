@@ -11,65 +11,24 @@ import java.util.function.ToIntFunction;
 
 public class DefaultWordSplit implements WordSplit {
 
+    private static final State START = new State(0);
+    private static final State END = new State(Integer.MAX_VALUE);
+    private final Map<State, Map<Character, State>> stateTransit = new HashMap<>();
+    private final Comparator<List<String>> sizeComparator = Comparator.comparingInt((ToIntFunction<List<String>>) List::size).reversed();
+    private final Comparator<List<String>> countComparator = Comparator.comparingInt(this::count);
+    private final Comparator<List<String>> cmp = countComparator.thenComparing(sizeComparator);
+    private int i = 0;
+
     public DefaultWordSplit() {
         init();
     }
 
-    private static class State {
-        private final int label;
-        private boolean finalState = false;
-
-        public State(int label) {
-            this.label = label;
-        }
-
-        public int getLabel() {
-            return label;
-        }
-
-        public boolean isFinalState() {
-            return finalState;
-        }
-
-        public void setFinalState(boolean finalState) {
-            this.finalState = finalState;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            State state = (State) o;
-            return Objects.equals(label, state.label);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(label);
-        }
-
-        @Override
-        public String toString() {
-            return "State{" +
-                "label=" + label +
-                ", finalState=" + finalState +
-                '}';
-        }
+    private static String name(State state) {
+        return "s" + state.label;
     }
-
-    private final Map<State, Map<Character, State>> stateTransit = new HashMap<>();
-
-    private static final State START = new State(0);
-    private static final State END = new State(Integer.MAX_VALUE);
-
-    private int i = 0;
 
     public void print() {
         dot();
-    }
-
-    private static String name(State state) {
-        return "s" + state.label;
     }
 
     public void dot() {
@@ -114,7 +73,6 @@ public class DefaultWordSplit implements WordSplit {
         }
         curr.setFinalState(true);
     }
-
 
     private void init() {
         try {
@@ -165,15 +123,9 @@ public class DefaultWordSplit implements WordSplit {
         return words;
     }
 
-
     private int count(List<String> l) {
         return l.stream().mapToInt(String::length).sum();
     }
-
-    private final Comparator<List<String>> sizeComparator = Comparator.comparingInt((ToIntFunction<List<String>>) List::size).reversed();
-    private final Comparator<List<String>> countComparator = Comparator.comparingInt(this::count);
-
-    private final Comparator<List<String>> cmp = countComparator.thenComparing(sizeComparator);
 
     /**
      * Find all prefixes consists of match words.
@@ -224,5 +176,47 @@ public class DefaultWordSplit implements WordSplit {
             curr = next;
         }
         return splits;
+    }
+
+    private static class State {
+        private final int label;
+        private boolean finalState = false;
+
+        public State(int label) {
+            this.label = label;
+        }
+
+        public int getLabel() {
+            return label;
+        }
+
+        public boolean isFinalState() {
+            return finalState;
+        }
+
+        public void setFinalState(boolean finalState) {
+            this.finalState = finalState;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            State state = (State) o;
+            return Objects.equals(label, state.label);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(label);
+        }
+
+        @Override
+        public String toString() {
+            return "State{" +
+                "label=" + label +
+                ", finalState=" + finalState +
+                '}';
+        }
     }
 }

@@ -1,0 +1,5 @@
+package message.messages.mv.order.m.states.l.m;
+message Status {
+    optional string s = 1;
+    
+}

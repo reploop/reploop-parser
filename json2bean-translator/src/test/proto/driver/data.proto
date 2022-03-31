@@ -1,0 +1,13 @@
+package driver;
+import "driver/data/driver_data.proto";
+import "driver/data/car_data.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional string original_name = 1;
+    
+}
+message Data {
+    optional driver.data.CarData car_data = 1 [original_name = "car_data"];
+    optional driver.data.DriverData driver_data = 2 [original_name = "driver_data"];
+    
+}

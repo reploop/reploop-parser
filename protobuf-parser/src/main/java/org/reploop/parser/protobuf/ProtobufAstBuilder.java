@@ -45,9 +45,10 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
     }
 
     @Override
-    public Node visitExtend(Protobuf2Parser.ExtendContext ctx) {
-        // TODO
-        return super.visitExtend(ctx);
+    public Extend visitExtend(Protobuf2Parser.ExtendContext ctx) {
+        String name = ctx.ID().getText();
+        List<Field> fields = visit(ctx.field(), Field.class);
+        return new Extend(QualifiedName.of(name), fields);
     }
 
     private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
@@ -66,19 +67,19 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
 
     private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
         return Optional.ofNullable(context)
-                .map(this::visit)
-                .filter(Objects::nonNull)
-                .map(clazz::cast);
+            .map(this::visit)
+            .filter(Objects::nonNull)
+            .map(clazz::cast);
     }
 
 
     private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
         if (null != contexts) {
             return contexts.stream()
-                    .map(this::visit)
-                    .filter(Objects::nonNull)
-                    .map(clazz::cast)
-                    .collect(Collectors.toList());
+                .map(this::visit)
+                .filter(Objects::nonNull)
+                .map(clazz::cast)
+                .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }
@@ -288,22 +289,22 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
         }
         StringValue name = (StringValue) visit(ctx.fieldName());
         return new Field(modifier,
-                getInt(ctx.INT()),
-                name.getValue(),
-                visitFieldType(ctx.fieldType()),
-                value,
-                comments(ctx.getStart()),
-                obs.build());
+            getInt(ctx.INT()),
+            name.getValue(),
+            visitFieldType(ctx.fieldType()),
+            value,
+            comments(ctx.getStart()),
+            obs.build());
     }
 
     @Override
     public ProtoProgram visitProgram(Protobuf2Parser.ProgramContext ctx) {
         return new ProtoProgram(
-                comments(ctx.getStart()),
-                visit(ctx.option(), Option.class),
-                visit(ctx.header(), Header.class),
-                visit(ctx.message(), Message.class),
-                visit(ctx.enumeration(), Enumeration.class),
-                visit(ctx.service(), Service.class));
+            comments(ctx.getStart()),
+            visit(ctx.option(), Option.class),
+            visit(ctx.header(), Header.class),
+            visit(ctx.message(), Message.class),
+            visit(ctx.enumeration(), Enumeration.class),
+            visit(ctx.service(), Service.class));
     }
 }

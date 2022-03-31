@@ -1,0 +1,5 @@
+package res1.data.list.hotels.additional_info.room;
+message List {
+    optional int32 age = 1;
+    
+}

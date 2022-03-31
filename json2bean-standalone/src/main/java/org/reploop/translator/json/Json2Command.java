@@ -1,11 +1,12 @@
 package org.reploop.translator.json;
 
 import com.github.rvesse.airline.annotations.Option;
-import org.reploop.translator.json.bean.Json2Conf;
-import org.reploop.translator.json.bean.Json2Driver;
+import org.reploop.translator.json.driver.Json2Conf;
+import org.reploop.translator.json.driver.Json2Driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.annotation.Target;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class Json2Command implements Runnable {
     @Option(name = {"--namespace", "-n"}, description = "The top package or namespace of the source. Add package line to the source. Default is empty.")
     String namespace;
 
+    private Target target;
     private volatile Json2Driver driver;
 
     protected Json2Driver getDriver() {
@@ -35,12 +37,12 @@ public class Json2Command implements Runnable {
             synchronized (Json2Command.class) {
                 if (null == driver) {
                     Json2Conf conf = new Json2Conf()
-                            .uris(uris)
-                            .inputDirectories(inputDirectories)
-                            .outputDirectory(outputDirectory)
-                            .namespace(namespace)
-                            .enableRootGuess(enableRootGuess)
-                            .enableFailFast(enableFailFast);
+                        .uris(uris)
+                        .inputDirectories(inputDirectories)
+                        .outputDirectory(outputDirectory)
+                        .namespace(namespace)
+                        .enableRootGuess(enableRootGuess)
+                        .enableFailFast(enableFailFast);
                     driver = new Json2Driver(conf);
                 }
             }

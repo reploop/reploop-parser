@@ -1,5 +1,7 @@
 package org.reploop.parser.protobuf.tree;
 
+import org.reploop.parser.protobuf.AstVisitor;
+
 import java.util.Objects;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Objects;
  * @since 2015-06-07 12
  */
 public class BoolValue extends Value {
-    Boolean value;
+    private final Boolean value;
 
     public BoolValue(Boolean value) {
         this.value = value;
@@ -17,6 +19,11 @@ public class BoolValue extends Value {
 
     public Boolean getValue() {
         return value;
+    }
+
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitBoolValue(this, context);
     }
 
     @Override
@@ -35,7 +42,7 @@ public class BoolValue extends Value {
     @Override
     public String toString() {
         return "BoolValue{" +
-                "value=" + value +
-                '}';
+            "value=" + value +
+            '}';
     }
 }

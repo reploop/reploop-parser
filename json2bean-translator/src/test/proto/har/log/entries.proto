@@ -1,0 +1,23 @@
+package har.log;
+import "har/log/entries/request.proto";
+import "har/log/entries/response.proto";
+import "har/log/entries/timings.proto";
+import "har/log/entries/cache.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional string original_name = 1;
+    
+}
+message Entries {
+    optional har.log.entries.Cache cache = 1;
+    optional string connection = 2;
+    optional string pageref = 3 [original_name = "pageref"];
+    optional har.log.entries.Request request = 4;
+    optional har.log.entries.Response response = 5;
+    optional string _securityState = 6 [original_name = "_securityState"];
+    optional string serverIPAddress = 7 [original_name = "serverIPAddress"];
+    optional string startedDateTime = 8;
+    optional int32 time = 9;
+    optional har.log.entries.Timings timings = 10;
+    
+}

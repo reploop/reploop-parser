@@ -1,0 +1,19 @@
+package jsonObject;
+import "jsonObject/array.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional bool parent = 1;
+    optional string original_name = 2;
+    
+}
+message Data {
+    optional int32 count_history = 1 [original_name = "count_history"];
+    optional int32 count_last_week = 2 [original_name = "count_last_week"];
+    optional int32 count_yesterday = 3 [original_name = "count_yesterday", parent = true];
+    optional string play_url = 4 [original_name = "play_url"];
+    optional int32 rank_trend = 5 [original_name = "rank_trend"];
+    optional int64 tv_id = 6 [original_name = "tv_id", parent = true];
+    optional string tv_name = 7 [original_name = "tv_name", parent = true];
+    optional int32 vv_week = 8 [original_name = "vv_week", parent = true];
+    
+}

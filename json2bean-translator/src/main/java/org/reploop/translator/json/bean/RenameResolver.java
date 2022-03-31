@@ -59,21 +59,18 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
 
     @Override
     public ListType visitListType(ListType listType, MessageContext context) {
-        context.addDependency(IMPORT_LIST);
         FieldType eleType = visitFieldType(listType.getElementType(), context);
         return new ListType(eleType);
     }
 
     @Override
     public SetType visitSetType(SetType setType, MessageContext context) {
-        context.addDependency(IMPORT_SET);
         FieldType eleType = visitFieldType(setType.getElementType(), context);
         return new SetType(eleType);
     }
 
     @Override
     public MapType visitMapType(MapType mapType, MessageContext context) {
-        context.addDependency(IMPORT_MAP);
         FieldType keyType = visitFieldType(mapType.getKeyType(), context);
         FieldType valType = visitFieldType(mapType.getValueType(), context);
         return new MapType(keyType, valType);
@@ -125,7 +122,6 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
                     if (option instanceof CommonPair && DATE_PATTERN.equals(((CommonPair) option).getKey())) {
                         Value val = ((CommonPair) option).getValue();
                         if (val instanceof StringValue && StringUtils.isNotEmpty(((StringValue) val).getValue())) {
-                            context.addDependency(IMPORT_JSON_FORMAT);
                             ft = new StructType(IMPORT_LOCAL_DATETIME);
                         }
                     }
@@ -133,7 +129,6 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
             }
         }
         if (!name.equals(node.getName())) {
-            context.addDependency(IMPORT_JSON_PROPERTY);
             CommonPair pair = new CommonPair(ORIGINAL_NAME, new StringValue(node.getName()));
             obs.add(pair);
         }
@@ -180,10 +175,6 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
     public Message visitMessage(Message node, MessageContext context) {
         QualifiedName name = toUpperCamel(node.getName());
         context.setName(name);
-        // Add default toString and Serializable deps.
-        context.addDependency(IMPORT_JSON_IGNORE);
-        context.addDependency(IMPORT_MORE_OBJECTS);
-        context.addDependency(IMPORT_SERIALIZABLE);
         List<Option> options = visitIfPresent(node.getOptions(), option -> visitOption(option, context), Option.class);
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));

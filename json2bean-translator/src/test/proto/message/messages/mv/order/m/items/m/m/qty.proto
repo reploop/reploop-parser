@@ -1,0 +1,5 @@
+package message.messages.mv.order.m.items.m.m;
+message Qty {
+    optional string n = 1;
+    
+}

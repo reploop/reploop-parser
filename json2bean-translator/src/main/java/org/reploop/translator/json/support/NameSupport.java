@@ -7,6 +7,7 @@ import java.util.Set;
 public class NameSupport {
     public static final QualifiedName JAVA_LANG = QualifiedName.of("java.lang");
     public static final QualifiedName JAVA_OBJECT = QualifiedName.of("Object");
+    public static final QualifiedName JAVA_LANG_OBJECT = QualifiedName.of(JAVA_LANG, JAVA_OBJECT);
     public static final QualifiedName IMPORT_JSON_PROPERTY = QualifiedName.of("com.fasterxml.jackson.annotation.JsonProperty");
     public static final QualifiedName IMPORT_JSON_FORMAT = QualifiedName.of("com.fasterxml.jackson.annotation.JsonFormat");
     public static final QualifiedName IMPORT_JSON_IGNORE = QualifiedName.of("com.fasterxml.jackson.annotation.JsonIgnoreProperties");
@@ -17,10 +18,13 @@ public class NameSupport {
     public static final QualifiedName IMPORT_SET = QualifiedName.of("java.util.Set");
     public static final QualifiedName IMPORT_MAP = QualifiedName.of("java.util.Map");
 
+    public static boolean isObject(QualifiedName qn) {
+        return JAVA_OBJECT.equals(qn) || JAVA_LANG_OBJECT.equals(qn);
+    }
+
     public static boolean autoImported(QualifiedName qn) {
         // java.lang.* are auto imported by default
-        return JAVA_OBJECT.equals(qn)
-            || qn.prefix().filter(name -> name.equals(JAVA_LANG)).isPresent();
+        return isObject(qn) || qn.prefix().filter(name -> name.equals(JAVA_LANG)).isPresent();
     }
 
     /**

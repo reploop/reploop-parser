@@ -22,13 +22,14 @@ import java.util.stream.Stream;
 import static org.reploop.translator.json.support.Constants.*;
 
 public class GoGenerator extends AstVisitor<Node, BeanContext> {
-    private static Logger LOG = LoggerFactory.getLogger(GoGenerator.class);
+    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
+    private static final Logger LOG = LoggerFactory.getLogger(GoGenerator.class);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
-                .map(visit)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+            .map(visit)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -52,7 +53,6 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
     public Option visitOption(Option option, BeanContext context) {
         return (Option) process(option, context);
     }
-
 
     @Override
     public StringValue visitStringValue(StringValue node, BeanContext context) {
@@ -108,8 +108,6 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
             context.whitespace();
         }
     }
-
-    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
     private void accessor(List<Field> fields, BeanContext context) {
         for (Field field : fields) {
@@ -245,11 +243,11 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
         if ((i = parentInfo.indexOf(EXTENDS_ATTR)) >= 0) {
             String qn = parentInfo.substring(i + EXTENDS_ATTR.length()).trim();
             List<String> deps = Stream.ofNullable(node.getComments())
-                    .filter(Objects::nonNull)
-                    .flatMap(Collection::stream)
-                    .map(this::strip)
-                    .filter(dep -> dep.endsWith(qn))
-                    .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream)
+                .map(this::strip)
+                .filter(dep -> dep.endsWith(qn))
+                .collect(Collectors.toList());
             if (deps.size() == 1) {
                 return QualifiedName.of(deps.get(0));
             }

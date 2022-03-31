@@ -7,10 +7,10 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 
 @Mojo(name = "bean",
-        defaultPhase = LifecyclePhase.GENERATE_SOURCES,
-        requiresDependencyResolution = ResolutionScope.COMPILE,
-        requiresProject = true,
-        threadSafe = true)
+    defaultPhase = LifecyclePhase.GENERATE_SOURCES,
+    requiresDependencyResolution = ResolutionScope.COMPILE,
+    requiresProject = true,
+    threadSafe = true)
 public class Json2BeanMojo extends Json2Mojo {
 
     @Override

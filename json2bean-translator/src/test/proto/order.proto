@@ -1,0 +1,7 @@
+import "order/data.proto";
+message Order {
+    optional int32 code = 1;
+    optional order.Data data = 2;
+    optional string msg = 3;
+    
+}

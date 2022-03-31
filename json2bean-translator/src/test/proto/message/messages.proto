@@ -1,0 +1,12 @@
+package message;
+import "message/messages/mv.proto";
+message Messages {
+    optional string id = 1;
+    map<string, string> labels = 2;
+    optional message.messages.Mv mv = 3;
+    optional string roomID = 4;
+    optional string sender = 5;
+    optional int32 sequenceNO = 6;
+    optional string timestamp = 7;
+    
+}

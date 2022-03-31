@@ -1,0 +1,6 @@
+package message.messages.mv.items;
+import "message/messages/mv/items/m/m_m.proto";
+message M {
+    optional message.messages.mv.items.m.MM m = 1;
+    
+}

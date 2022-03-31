@@ -1,0 +1,6 @@
+package har.log.entries;
+message NameValue {
+    optional string name = 1;
+    optional string value = 2;
+    
+}

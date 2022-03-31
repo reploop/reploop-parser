@@ -3,8 +3,8 @@ package org.reploop.plugin.maven;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
-import org.reploop.translator.json.bean.Json2Conf;
-import org.reploop.translator.json.bean.Json2Driver;
+import org.reploop.translator.json.driver.Json2Conf;
+import org.reploop.translator.json.driver.Json2Driver;
 
 import java.util.List;
 
@@ -52,12 +52,12 @@ public abstract class Json2Mojo extends AbstractMojo {
             synchronized (Json2Mojo.class) {
                 if (null == driver) {
                     Json2Conf conf = new Json2Conf()
-                            .uris(uris)
-                            .inputDirectories(inputDirectories)
-                            .outputDirectory(outputDirectory)
-                            .namespace(namespace)
-                            .enableRootGuess(enableRootGuess)
-                            .enableFailFast(enableFailFast);
+                        .uris(uris)
+                        .inputDirectories(inputDirectories)
+                        .outputDirectory(outputDirectory)
+                        .namespace(namespace)
+                        .enableRootGuess(enableRootGuess)
+                        .enableFailFast(enableFailFast);
                     driver = new Json2Driver(conf);
                 }
             }

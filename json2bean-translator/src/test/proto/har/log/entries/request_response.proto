@@ -1,0 +1,10 @@
+package har.log.entries;
+import "har/log/entries/name_value.proto";
+message RequestResponse {
+    optional int32 bodySize = 1;
+    repeated har.log.entries.NameValue cookies = 2;
+    repeated har.log.entries.NameValue headers = 3;
+    optional int32 headersSize = 4;
+    optional string httpVersion = 5;
+    
+}

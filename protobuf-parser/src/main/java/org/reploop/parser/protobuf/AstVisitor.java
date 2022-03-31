@@ -79,6 +79,10 @@ public abstract class AstVisitor<R, C> extends AbstractAstVisitor<R, Node, C> {
         return visitNode(node, context);
     }
 
+    public R visitExtend(Extend node, C context) {
+        return visitNode(node, context);
+    }
+
     public R visitOptions(Options node, C context) {
         return visitNode(node, context);
     }
@@ -92,6 +96,14 @@ public abstract class AstVisitor<R, C> extends AbstractAstVisitor<R, Node, C> {
     }
 
     public R visitService(Service node, C context) {
+        return visitNode(node, context);
+    }
+
+    public R visitDoubleValue(DoubleValue node, C context) {
+        return visitNode(node, context);
+    }
+
+    public R visitFloatValue(FloatValue node, C context) {
         return visitNode(node, context);
     }
 

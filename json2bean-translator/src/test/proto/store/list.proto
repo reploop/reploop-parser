@@ -1,0 +1,22 @@
+package store;
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional string original_name = 1;
+    
+}
+message List {
+    optional string city = 1;
+    optional string company = 2;
+    optional string createTime = 3;
+    optional string descri = 4 [original_name = "descri"];
+    optional int32 id = 5;
+    optional string imgurl = 6 [original_name = "imgurl"];
+    optional string longitude = 7;
+    optional string name = 8;
+    optional string phonenumber = 9 [original_name = "phonenumber"];
+    optional string sheng = 10;
+    optional int32 sort = 11;
+    optional string summary = 12;
+    optional string typeName = 13;
+    
+}

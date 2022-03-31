@@ -23,6 +23,7 @@ import static org.reploop.translator.json.support.Constants.*;
 
 public class AvroGenerator extends AstVisitor<Node, BeanContext> {
     private static final Logger LOG = LoggerFactory.getLogger(AvroGenerator.class);
+    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
@@ -52,7 +53,6 @@ public class AvroGenerator extends AstVisitor<Node, BeanContext> {
     public Option visitOption(Option option, BeanContext context) {
         return (Option) process(option, context);
     }
-
 
     @Override
     public StringValue visitStringValue(StringValue node, BeanContext context) {
@@ -108,8 +108,6 @@ public class AvroGenerator extends AstVisitor<Node, BeanContext> {
             context.whitespace();
         }
     }
-
-    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
     private void accessor(List<Field> fields, BeanContext context) {
         for (Field field : fields) {
@@ -228,7 +226,7 @@ public class AvroGenerator extends AstVisitor<Node, BeanContext> {
         //builder(node, fields, context);
 
         context.dedent().newLine().closeBrace().newLine();
-        return new Message(name, node.getComments(), fields, messages, node.getEnumerations(),null, node.getOptions());
+        return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), null, node.getOptions());
     }
 
     private String strip(String value) {

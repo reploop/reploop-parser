@@ -1,0 +1,6 @@
+package document;
+message BoilingPoint {
+    optional string units = 1;
+    optional double value = 2;
+    
+}

@@ -5,12 +5,10 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.translator.json.support.Constants;
 
 import java.util.List;
 
-import static org.reploop.translator.json.support.Constants.IMPORT;
-import static org.reploop.translator.json.support.Constants.PARENT_TAG;
+import static org.reploop.translator.json.support.Constants.*;
 
 /**
  * Add fields of the super class to the subclass. In order to generate a handy builder.
@@ -29,7 +27,7 @@ public class FieldPushDown extends AstVisitor<Node, BeanContext> {
     @Override
     public CommonPair visitCommonPair(CommonPair node, BeanContext context) {
         String key = node.getKey();
-        if (Constants.EXTENDS_ATTR.equals(key)) {
+        if (EXTENDS_ATTR.equals(key)) {
             Value value = node.getValue();
             if (value instanceof StringValue) {
                 String parent = ((StringValue) value).getValue();

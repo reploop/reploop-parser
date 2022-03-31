@@ -1,0 +1,11 @@
+package marketing;
+message Result {
+    optional string beginTime = 1;
+    optional string createTime = 2;
+    optional string endTime = 3;
+    optional int32 marketingId = 4;
+    optional string marketingName = 5;
+    optional int32 marketingType = 6;
+    optional bool pause = 7;
+    
+}

@@ -20,6 +20,7 @@ import static org.reploop.translator.json.support.Constants.*;
 
 public class BeanGenerator extends AstVisitor<Node, BeanContext> {
     private static final Logger LOG = LoggerFactory.getLogger(BeanGenerator.class);
+    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
@@ -49,7 +50,6 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
     public Option visitOption(Option option, BeanContext context) {
         return (Option) process(option, context);
     }
-
 
     @Override
     public StringValue visitStringValue(StringValue node, BeanContext context) {
@@ -110,8 +110,6 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         }
     }
 
-    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
-
     private void accessor(List<Field> fields, BeanContext context) {
         for (Field field : fields) {
             if (fromParent(field)) {
@@ -166,9 +164,6 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         context.append(".toString()").semicolon().dedent().dedent().dedent().newLine();
         context.closeBrace().newLine();
     }
-
-    static final String ANNOTATION = "@JsonProperty(\"%s\")";
-    static final QualifiedName IMPORT_JSON_PROPERTY = QualifiedName.of("com.fasterxml.jackson.annotation.JsonProperty");
 
     @Override
     public Field visitField(Field node, BeanContext context) {

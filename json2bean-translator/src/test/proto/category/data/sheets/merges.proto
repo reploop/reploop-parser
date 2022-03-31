@@ -1,0 +1,14 @@
+package category.data.sheets;
+import "category/data/sheets/column_count_row_count.proto";
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FieldOptions {
+    optional bool parent = 1;
+    
+}
+message Merges {
+    optional int32 columnCount = 1 [parent = true];
+    optional int32 rowCount = 2 [parent = true];
+    optional int32 startColumnIndex = 3;
+    optional int32 startRowIndex = 4;
+    
+}

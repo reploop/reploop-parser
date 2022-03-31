@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.StringReader;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,6 +28,9 @@ import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.apache.commons.lang3.math.NumberUtils.isParsable;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
+import static org.reploop.translator.json.support.Constants.DATE_PATTERN;
+import static org.reploop.translator.json.support.Constants.DATE_TIMEZONE;
+import static org.reploop.translator.json.support.NameSupport.IMPORT_LOCAL_DATETIME;
 import static org.reploop.translator.json.support.TypeSupport.isLegalIdentifier;
 import static org.reploop.translator.json.support.TypeSupport.typeNumberSpec;
 
@@ -120,10 +122,10 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
 
         // In case of illegal key, use Map instead of object
         boolean anyIllegalIdentifier = pairs.stream()
-                .filter(Objects::nonNull)
-                .map(Pair::getKey)
-                .filter(Objects::nonNull)
-                .anyMatch(key -> !isLegalIdentifier(key));
+            .filter(Objects::nonNull)
+            .map(Pair::getKey)
+            .filter(Objects::nonNull)
+            .anyMatch(key -> !isLegalIdentifier(key));
 
         for (Pair pair : pairs) {
             MessageContext ctx;
@@ -189,14 +191,23 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
         FieldType fieldType = visitValue(pair.getValue(), context);
         var od = context.hasDateFormat();
         var obs = ImmutableList.<Option>builder();
-        od.ifPresent(new Consumer<String>() {
-            @Override
-            public void accept(String format) {
-                obs.add(new CommonPair("dateformat", new StringValue(format)));
-            }
-        });
+        if (od.isPresent() && fieldType instanceof StringType) {
+            String format = od.get();
+            obs.add(new CommonPair(DATE_PATTERN, new StringValue(format)));
+            context.hasTimeZone()
+                .map(StringValue::new)
+                .map(timezone -> new CommonPair(DATE_TIMEZONE, timezone))
+                .ifPresent(obs::add);
+            fieldType = new StructType(IMPORT_LOCAL_DATETIME);
+        }
+        FieldModifier modifier = FieldModifier.optional;
+        if (fieldType instanceof ListType || fieldType instanceof SetType) {
+            modifier = FieldModifier.repeated;
+        } else if (fieldType instanceof MapType) {
+            modifier = null;
+        }
         // Use a default index, in order to compare different fields.
-        return new Field(FieldModifier.optional, DEFAULT_INDEX, pair.getKey(), fieldType, Optional.empty(), Collections.emptyList(), obs.build());
+        return new Field(modifier, DEFAULT_INDEX, pair.getKey(), fieldType, Optional.empty(), Collections.emptyList(), obs.build());
     }
 
     @Override
@@ -225,10 +236,10 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
     @Override
     public ListType visitArray(Array array, MessageContext context) {
         List<FieldType> types = Stream.ofNullable(array.getValues())
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .map(value -> visitValue(value, context))
-                .collect(Collectors.toList());
+            .filter(Objects::nonNull)
+            .flatMap(Collection::stream)
+            .map(value -> visitValue(value, context))
+            .collect(Collectors.toList());
         Optional<FieldType> oft = typeOf(types);
         // Empty array, we cannot infer element type, so Object it is.
         FieldType fieldType = oft.orElse(OBJECT);

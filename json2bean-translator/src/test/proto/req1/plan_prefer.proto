@@ -1,0 +1,8 @@
+package req1;
+import "req1/plan_prefer/price.proto";
+message PlanPrefer {
+    optional req1.plan_prefer.Price price = 1;
+    repeated int32 star = 2;
+    repeated string tags = 3;
+    
+}
