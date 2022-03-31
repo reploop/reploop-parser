@@ -1,0 +1,12 @@
+package message.messages.mv.items.m;
+import "message/messages/mv/items/m/m/name.proto";
+import "message/messages/mv/items/m/m/qty.proto";
+import "message/messages/mv/items/m/m/code.proto";
+import "message/messages/mv/items/m/m/total_price.proto";
+message M {
+    optional message.messages.mv.items.m.m.Code code = 1;
+    optional message.messages.mv.items.m.m.Name name = 2;
+    optional message.messages.mv.items.m.m.Qty qty = 3;
+    optional message.messages.mv.items.m.m.TotalPrice totalPrice = 4;
+    
+}

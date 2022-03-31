@@ -1,0 +1,5 @@
+package department.data;
+message Items {
+    optional string open_department_id = 1;
+    
+}

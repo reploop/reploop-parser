@@ -1,0 +1,6 @@
+package message.messages.mv.order.m.picker.m;
+import "message/messages/mv/order/m/picker/m/identity/m.proto";
+message Identity {
+    optional message.messages.mv.order.m.picker.m.identity.M m = 1;
+    
+}

@@ -1,0 +1,15 @@
+package res1.data.list;
+import "res1/data/list/hotels/additional_info.proto";
+message Hotels {
+    optional res1.data.list.hotels.AdditionalInfo additional_info = 1;
+    optional string coord = 2;
+    optional string checkin = 3;
+    optional string checkout = 4;
+    optional string hotel_id = 5;
+    optional string name = 6;
+    optional string name_en = 7;
+    optional int32 price = 8;
+    optional int32 star = 9;
+    repeated string tags = 10;
+    
+}

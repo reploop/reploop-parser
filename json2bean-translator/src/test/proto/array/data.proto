@@ -1,0 +1,13 @@
+package array;
+message Data {
+    optional int32 comment_rate = 1;
+    optional int32 count_history = 2;
+    optional int32 count_last_week = 3;
+    optional int32 count_yesterday = 4;
+    optional string play_url = 5;
+    optional int32 rank_trend = 6;
+    optional int64 tv_id = 7;
+    optional string tv_name = 8;
+    optional int32 vv_week = 9;
+    
+}

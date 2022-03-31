@@ -1,0 +1,37 @@
+package order.data.records;
+import "order/data/records/records_user_order_additional.proto";
+message UserOrderAdditional {
+    optional string actionSource = 1;
+    optional string adultNum = 2;
+    optional string beginSiteName = 3;
+    optional string createTime = 4;
+    optional string createUser = 5;
+    optional string delFlag = 6;
+    optional string delay = 7;
+    optional string driverId = 8;
+    optional string driverIdNo = 9;
+    optional string driverName = 10;
+    optional string driverOrderId = 11;
+    optional string driverPhone = 12;
+    optional string endSiteName = 13;
+    optional string flightNumber = 14;
+    optional string id = 15;
+    optional string newDriverOrderId = 16;
+    optional bool night = 17;
+    optional string operator = 18;
+    optional string orderId = 19;
+    optional string orderRemark = 20;
+    optional string preDriverId = 21;
+    optional string remarks = 22;
+    optional string scheduleDate = 23;
+    optional string settlementPrice = 24;
+    optional string status = 25;
+    optional string updateTime = 26;
+    optional string updateUser = 27;
+    optional string vehicleBrand = 28;
+    optional string vehicleColour = 29;
+    optional int32 vehicleId = 30;
+    optional string vehiclePlate = 31;
+    optional string vehicleType = 32;
+    
+}

@@ -1,0 +1,5 @@
+package message.messages.mv;
+message LifeCycle {
+    optional string s = 1;
+    
+}

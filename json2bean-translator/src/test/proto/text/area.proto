@@ -1,0 +1,19 @@
+package text;
+message Area {
+    optional string area_currency = 1;
+    optional string area_en = 2;
+    optional string area_fid = 3;
+    optional string area_id = 4;
+    optional string area_image = 5;
+    optional string area_index = 6;
+    optional string area_level = 7;
+    optional string area_name = 8;
+    optional string area_note = 9;
+    optional string area_pin = 10;
+    optional string area_px = 11;
+    optional string area_py = 12;
+    optional string area_show = 13;
+    optional string area_timezone = 14;
+    repeated text.Area child = 15;
+    
+}

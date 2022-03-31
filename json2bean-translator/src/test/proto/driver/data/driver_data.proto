@@ -1,0 +1,22 @@
+package driver.data;
+message DriverData {
+    optional string address = 1;
+    optional int32 agent_id = 2;
+    optional int32 ban_status = 3;
+    optional string channel = 4;
+    optional string city_name = 5;
+    optional string contact_phone = 6;
+    optional int32 id_card_location = 7;
+    optional string id_no = 8;
+    optional string idno_back_url = 9;
+    optional string idno_front_url = 10;
+    optional string licence_back_url = 11;
+    optional string licence_front_url = 12;
+    optional string name = 13;
+    optional string online_gvid = 14;
+    optional string qualification_url = 15;
+    optional string reg_time = 16;
+    optional string sex = 17;
+    optional int32 supplier_id = 18;
+    
+}

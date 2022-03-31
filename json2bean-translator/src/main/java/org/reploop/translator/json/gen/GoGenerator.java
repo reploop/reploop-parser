@@ -2,7 +2,6 @@ package org.reploop.translator.json.gen;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
-import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
@@ -12,12 +11,10 @@ import org.reploop.translator.json.bean.BeanContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.reploop.translator.json.support.Constants.*;
 
@@ -215,52 +212,7 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
         context.append("implements Serializable").whitespace().openBrace().indent().newLine();
         context.append("private static final long serialVersionUID = 1L;").newLine();
 
-        List<Message> messages = visit(node.getMessages(), m -> visitMessage(m, context));
-        List<Field> fields = visit(node.getFields(), n -> visitField(n, context));
-        accessor(fields, context);
-
-        boolean isAbstract = isAbstract(node);
-        QualifiedName pqn = getParentInfo(node);
-
-        toString(fields, context);
-        //builder(node, fields, context);
-
         context.dedent().newLine().closeBrace().newLine();
         return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), null, node.getOptions());
-    }
-
-    private String strip(String value) {
-        String v = StringUtils.stripStart(value, IMPORT);
-        return StringUtils.stripEnd(v.trim(), SEMICOLON);
-    }
-
-    private QualifiedName getParentInfo(Message node) {
-        BeanContext extendContext = new BeanContext(node.getName());
-        extendContext.setExpectedKey(EXTENDS_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, extendContext));
-        String parentInfo = extendContext.toString();
-        int i;
-        if ((i = parentInfo.indexOf(EXTENDS_ATTR)) >= 0) {
-            String qn = parentInfo.substring(i + EXTENDS_ATTR.length()).trim();
-            List<String> deps = Stream.ofNullable(node.getComments())
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream)
-                .map(this::strip)
-                .filter(dep -> dep.endsWith(qn))
-                .collect(Collectors.toList());
-            if (deps.size() == 1) {
-                return QualifiedName.of(deps.get(0));
-            }
-            LOG.warn("Maybe imports conflict: {}", qn);
-            return QualifiedName.of(qn);
-        }
-        return null;
-    }
-
-    private boolean isAbstract(Message node) {
-        BeanContext abstractContext = new BeanContext(node.getName());
-        abstractContext.setExpectedKey(ABSTRACT_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, abstractContext));
-        return ABSTRACT_ATTR.length() <= abstractContext.toString().length();
     }
 }

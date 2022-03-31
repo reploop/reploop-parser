@@ -1,0 +1,6 @@
+package har.log;
+message NameVersion {
+    optional string name = 1;
+    optional string version = 2;
+    
+}

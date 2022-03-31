@@ -1,0 +1,72 @@
+include "records/records_user_order_additional.thrift"
+include "records/user_order_additional.thrift"
+namespace * order.data
+struct Records {
+    1: optional string actionSource;
+    2: optional i32 adultNum;
+    3: optional string beginGpsLat;
+    4: optional string beginGpsLong;
+    5: optional string beginSiteCode;
+    6: optional string beginSiteName;
+    7: optional string boardingTime;
+    8: optional bool bookInAdvance;
+    9: optional string busticketReqList;
+    10: optional string cancelDuration;
+    11: optional string cancelType;
+    12: optional string childNum;
+    13: optional string contactName;
+    14: optional string contactPhone;
+    15: optional string contactSex;
+    16: optional string createTime;
+    17: optional string createUser;
+    18: optional string dname;
+    19: optional string delFlag;
+    20: optional string delay;
+    21: optional string driverArrivedTime;
+    22: optional i64 driverId;
+    23: optional string driverName;
+    24: optional string driverOrderId;
+    25: optional string driverOrderStatus;
+    26: optional string driverOrderUpdateTime;
+    27: optional string driverPhone;
+    28: optional string endGpsLat;
+    29: optional string endGpsLong;
+    30: optional string endSiteCode;
+    31: optional string endSiteName;
+    32: optional string evaluation;
+    33: optional string flightNumber;
+    34: optional i32 id;
+    35: optional string lineType;
+    36: optional string nextOrderNotifyType;
+    37: optional bool night;
+    38: optional string no;
+    39: optional string notifyType;
+    40: optional string offTime;
+    41: optional string openId;
+    42: optional string operator;
+    43: optional string orderId;
+    44: optional bool orderPeriodValid;
+    45: optional string orderRemark;
+    46: optional string orderSource;
+    47: optional string orderTime;
+    48: optional string points;
+    49: optional string preDriverId;
+    50: optional string remarks;
+    51: optional string scheduleDate;
+    52: optional string score;
+    53: optional string settlementPrice;
+    54: optional string status;
+    55: optional string ticketStatus;
+    56: optional string updateTime;
+    57: optional string updateUser;
+    58: optional string useUpType;
+    59: optional string userAct;
+    60: optional string userNotifyType;
+    61: optional list<user_order_additional.UserOrderAdditional> userOrderAdditional;
+    62: optional string vplate;
+    63: optional string vtype;
+    64: optional i32 vvehicleId;
+    65: optional string vehicleBrand;
+    66: optional string vehiclePlate;
+    
+}

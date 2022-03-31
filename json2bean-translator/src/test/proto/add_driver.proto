@@ -1,0 +1,12 @@
+message AddDriver {
+    optional string driverLicenseNo = 1;
+    repeated string files = 2;
+    optional string id = 3;
+    optional string idNo = 4;
+    optional string name = 5;
+    optional string officeId = 6;
+    optional int64 phone = 7;
+    optional string remarks = 8;
+    optional string sex = 9;
+    
+}

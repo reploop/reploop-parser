@@ -1,0 +1,8 @@
+import "driver/data.proto";
+message Driver {
+    optional driver.Data data = 1;
+    optional string errmsg = 2;
+    optional int32 errno = 3;
+    optional string trace_id = 4;
+    
+}

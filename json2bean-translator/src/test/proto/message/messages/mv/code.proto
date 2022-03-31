@@ -1,0 +1,5 @@
+package message.messages.mv;
+message Code {
+    optional string s = 1;
+    
+}

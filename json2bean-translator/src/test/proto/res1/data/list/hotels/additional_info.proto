@@ -1,0 +1,10 @@
+package res1.data.list.hotels;
+import "res1/data/list/hotels/additional_info/room.proto";
+import "res1/data/list/hotels/additional_info/plan_prefer.proto";
+import "res1/data/list/hotels/additional_info/city_list.proto";
+message AdditionalInfo {
+    repeated res1.data.list.hotels.additional_info.CityList city_list = 1;
+    optional res1.data.list.hotels.additional_info.PlanPrefer plan_prefer = 2;
+    repeated res1.data.list.hotels.additional_info.Room room = 3;
+    
+}

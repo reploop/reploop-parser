@@ -1,0 +1,7 @@
+import "message/messages.proto";
+import "message/result.proto";
+message Message {
+    repeated message.Messages messages = 1;
+    optional message.Result result = 2;
+    
+}

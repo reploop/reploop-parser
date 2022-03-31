@@ -11,10 +11,10 @@ import java.util.Optional;
 import java.util.Stack;
 
 public class BeanContext {
-    private Path file;
-    private String filename;
     private final StringBuilder impl;
     private final Stack<QualifiedName> current = new Stack<>();
+    private Path file;
+    private String filename;
     private QualifiedName root;
     private boolean abstractClass;
     private QualifiedName superClass;
@@ -22,6 +22,21 @@ public class BeanContext {
     private Map<QualifiedName, Message> deps;
     private int indent = 0;
     private int spaces = 4;
+
+    public BeanContext(QualifiedName root) {
+        this(root, Collections.emptyMap());
+    }
+
+    public BeanContext(QualifiedName root, Map<QualifiedName, Message> deps) {
+        this(root, new StringBuilder());
+        this.deps = deps;
+    }
+
+    public BeanContext(QualifiedName root, StringBuilder impl) {
+        this.root = root;
+        this.impl = impl;
+        push(root);
+    }
 
     public String getFilename() {
         return filename;
@@ -46,22 +61,6 @@ public class BeanContext {
     public void setSpaces(int spaces) {
         this.spaces = spaces;
     }
-
-    public BeanContext(QualifiedName root) {
-        this(root, Collections.emptyMap());
-    }
-
-    public BeanContext(QualifiedName root, Map<QualifiedName, Message> deps) {
-        this(root, new StringBuilder());
-        this.deps = deps;
-    }
-
-    public BeanContext(QualifiedName root, StringBuilder impl) {
-        this.root = root;
-        this.impl = impl;
-        push(root);
-    }
-
 
     public Map<QualifiedName, Message> getDeps() {
         return deps;

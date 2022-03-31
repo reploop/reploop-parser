@@ -1,0 +1,7 @@
+import "department/data.proto";
+message Department {
+    optional int32 code = 1;
+    optional department.Data data = 2;
+    optional string msg = 3;
+    
+}

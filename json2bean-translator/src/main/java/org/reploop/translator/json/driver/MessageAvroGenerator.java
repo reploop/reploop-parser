@@ -11,11 +11,6 @@ public class MessageAvroGenerator extends AbstractMessageGenerator {
     }
 
     @Override
-    public void generate(Message message, BeanContext context) {
-
-    }
-
-    @Override
     public void execute(Message message, BeanContext context) {
 
     }

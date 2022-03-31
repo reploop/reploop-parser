@@ -1,0 +1,7 @@
+import "category/data.proto";
+message Category {
+    optional int32 code = 1;
+    optional category.Data data = 2;
+    optional string msg = 3;
+    
+}

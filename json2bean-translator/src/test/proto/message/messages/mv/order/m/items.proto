@@ -1,0 +1,6 @@
+package message.messages.mv.order.m;
+import "message/messages/mv/order/m/items/m.proto";
+message Items {
+    map<int32, message.messages.mv.order.m.items.M> m = 1;
+    
+}

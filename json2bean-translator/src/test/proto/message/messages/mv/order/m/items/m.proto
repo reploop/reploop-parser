@@ -1,0 +1,6 @@
+package message.messages.mv.order.m.items;
+import "message/messages/mv/order/m/items/m/m.proto";
+message M {
+    optional message.messages.mv.order.m.items.m.M m = 1;
+    
+}

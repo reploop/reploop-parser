@@ -1,0 +1,5 @@
+package message.messages.mv.items.m.m;
+message TotalPrice {
+    optional string n = 1;
+    
+}

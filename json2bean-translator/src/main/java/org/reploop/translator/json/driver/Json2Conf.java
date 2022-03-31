@@ -14,6 +14,10 @@ public class Json2Conf {
      */
     private final List<String> uris = new ArrayList<>();
     /**
+     * Support targets.
+     */
+    private final EnumSet<Target> targets = EnumSet.noneOf(Target.class);
+    /**
      * Where the source code should go
      */
     private String outputDirectory;
@@ -29,11 +33,6 @@ public class Json2Conf {
      * The top package or namespace of the source. Add package line to the source. Default is empty.
      */
     private String namespace;
-
-    /**
-     * Support targets.
-     */
-    private final EnumSet<Target> targets = EnumSet.noneOf(Target.class);
 
     public String getOutputDirectory() {
         return outputDirectory;

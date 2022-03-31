@@ -77,7 +77,8 @@ public class BeanRenameResolver extends AstVisitor<Node, MessageContext> {
 
     @Override
     public CommonPair visitCommonPair(CommonPair node, MessageContext context) {
-        if (EXTENDS_ATTR.equals(node.getKey())) {
+        String key = node.getKey();
+        if (EXTENDS_ATTR.equals(key)) {
             Value value = node.getValue();
             if (value instanceof StringValue) {
                 QualifiedName fqn = QualifiedName.of(((StringValue) value).getValue());
@@ -85,9 +86,9 @@ public class BeanRenameResolver extends AstVisitor<Node, MessageContext> {
                 context.setSuperClass(qn);
                 return new CommonPair(EXTENDS_ATTR, new StringValue(qn.toString()));
             }
-        } else if (ORIGINAL_NAME.equals(node.getKey())) {
+        } else if (ORIGINAL_NAME.equals(key)) {
             context.addDependency(IMPORT_JSON_PROPERTY);
-        } else if (DATE_PATTERN.equals(node.getKey())) {
+        } else if (DATE_PATTERN.equals(key)) {
             context.addDependency(IMPORT_JSON_FORMAT);
         }
         return node;

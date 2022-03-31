@@ -1,0 +1,5 @@
+package message;
+message Result {
+    optional bool success = 1;
+    
+}
