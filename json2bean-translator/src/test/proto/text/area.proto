@@ -1,25 +1,19 @@
 package text;
-import "text/area.proto";
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message Area {
-    optional string area_currency = 1 [original_name = "area_currency"];
-    optional string area_en = 2 [original_name = "area_en"];
-    optional string area_fid = 3 [original_name = "area_fid"];
-    optional string area_id = 4 [original_name = "area_id"];
-    optional string area_image = 5 [original_name = "area_image"];
-    optional string area_index = 6 [original_name = "area_index"];
-    optional string area_level = 7 [original_name = "area_level"];
-    optional string area_name = 8 [original_name = "area_name"];
-    optional string area_note = 9 [original_name = "area_note"];
-    optional string area_pin = 10 [original_name = "area_pin"];
-    optional string area_px = 11 [original_name = "area_px"];
-    optional string area_py = 12 [original_name = "area_py"];
-    optional string area_show = 13 [original_name = "area_show"];
-    optional string area_timezone = 14 [original_name = "area_timezone"];
+    optional string area_currency = 1;
+    optional string area_en = 2;
+    optional string area_fid = 3;
+    optional string area_id = 4;
+    optional string area_image = 5;
+    optional string area_index = 6;
+    optional string area_level = 7;
+    optional string area_name = 8;
+    optional string area_note = 9;
+    optional string area_pin = 10;
+    optional string area_px = 11;
+    optional string area_py = 12;
+    optional string area_show = 13;
+    optional string area_timezone = 14;
     repeated text.Area child = 15;
-    
+
 }

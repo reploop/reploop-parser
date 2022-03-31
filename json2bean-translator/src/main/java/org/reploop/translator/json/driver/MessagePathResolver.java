@@ -31,6 +31,11 @@ public class MessagePathResolver extends AstVisitor<Node, MessageContext> {
         if (IMPORT.equals(key)) {
             Value value = node.getValue();
             QualifiedName fqn = QualifiedName.of(((StringValue) value).getValue());
+            QualifiedName name = context.getName();
+            if (fqn.equals(name)) {
+                // Try to import the current file here, just ignore.
+                return null;
+            }
             fqn = QualifiedName.of(fqn.prefix(), format(fqn.suffix(), context));
             return new CommonPair(IMPORT, new StringValue(fqn.toString()));
         }
@@ -39,6 +44,7 @@ public class MessagePathResolver extends AstVisitor<Node, MessageContext> {
 
     @Override
     public Message visitMessage(Message node, MessageContext context) {
+        context.setName(node.getName());
         var options = visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         var messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         return new Message(node.getName(), node.getComments(), node.getFields(), messages, node.getEnumerations(), node.getServices(), options);

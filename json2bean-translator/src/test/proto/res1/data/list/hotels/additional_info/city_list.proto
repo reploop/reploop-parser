@@ -1,11 +1,6 @@
 package res1.data.list.hotels.additional_info;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message CityList {
-    optional string checkin = 1 [original_name = "checkin"];
+    optional string checkin = 1;
     optional string checkout = 2;
     optional string id = 3;
     

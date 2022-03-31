@@ -1,25 +1,20 @@
 package driver.data;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message CarData {
-    optional string annual_check_date = 1 [original_name = "annual_check_date"];
-    optional string brand_desc = 2 [original_name = "brand_desc"];
-    optional string car_licence_front_url = 3 [original_name = "car_licence_front_url"];
+    optional string annual_check_date = 1;
+    optional string brand_desc = 2;
+    optional string car_licence_front_url = 3;
     optional string color = 4;
-    optional string fuel_id = 5 [original_name = "fuel_id"];
+    optional string fuel_id = 5;
     optional int32 height = 6;
-    optional int32 init_style_price = 7 [original_name = "init_style_price"];
-    optional string ins_valid_date = 8 [original_name = "ins_valid_date"];
+    optional int32 init_style_price = 7;
+    optional string ins_valid_date = 8;
     optional int32 length = 9;
     optional string model = 10;
     optional string owner = 11;
-    optional string owner_address = 12 [original_name = "owner_address"];
-    optional string plate_no = 13 [original_name = "plate_no"];
-    optional string reg_date = 14 [original_name = "reg_date"];
-    optional int32 seat_num = 15 [original_name = "seat_num"];
+    optional string owner_address = 12;
+    optional string plate_no = 13;
+    optional string reg_date = 14;
+    optional int32 seat_num = 15;
     optional int32 wheelbases = 16;
     optional int32 width = 17;
     

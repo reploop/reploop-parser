@@ -1,10 +1,5 @@
 package department.data;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message Items {
-    optional string open_department_id = 1 [original_name = "open_department_id"];
+    optional string open_department_id = 1;
     
 }

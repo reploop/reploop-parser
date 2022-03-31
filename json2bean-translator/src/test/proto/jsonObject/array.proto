@@ -1,13 +1,8 @@
 package jsonObject;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message Array {
-    optional int32 count_yesterday = 1 [original_name = "count_yesterday"];
-    optional int64 tv_id = 2 [original_name = "tv_id"];
-    optional string tv_name = 3 [original_name = "tv_name"];
-    optional int32 vv_week = 4 [original_name = "vv_week"];
+    optional int32 count_yesterday = 1;
+    optional int64 tv_id = 2;
+    optional string tv_name = 3;
+    optional int32 vv_week = 4;
     
 }

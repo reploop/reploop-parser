@@ -1,27 +1,22 @@
 package driver.data;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message DriverData {
     optional string address = 1;
-    optional int32 agent_id = 2 [original_name = "agent_id"];
-    optional int32 ban_status = 3 [original_name = "ban_status"];
+    optional int32 agent_id = 2;
+    optional int32 ban_status = 3;
     optional string channel = 4;
-    optional string city_name = 5 [original_name = "city_name"];
-    optional string contact_phone = 6 [original_name = "contact_phone"];
-    optional int32 id_card_location = 7 [original_name = "id_card_location"];
-    optional string id_no = 8 [original_name = "id_no"];
-    optional string idno_back_url = 9 [original_name = "idno_back_url"];
-    optional string idno_front_url = 10 [original_name = "idno_front_url"];
-    optional string licence_back_url = 11 [original_name = "licence_back_url"];
-    optional string licence_front_url = 12 [original_name = "licence_front_url"];
+    optional string city_name = 5;
+    optional string contact_phone = 6;
+    optional int32 id_card_location = 7;
+    optional string id_no = 8;
+    optional string idno_back_url = 9;
+    optional string idno_front_url = 10;
+    optional string licence_back_url = 11;
+    optional string licence_front_url = 12;
     optional string name = 13;
-    optional string online_gvid = 14 [original_name = "online_gvid"];
-    optional string qualification_url = 15 [original_name = "qualification_url"];
-    optional string reg_time = 16 [original_name = "reg_time"];
+    optional string online_gvid = 14;
+    optional string qualification_url = 15;
+    optional string reg_time = 16;
     optional string sex = 17;
-    optional int32 supplier_id = 18 [original_name = "supplier_id"];
+    optional int32 supplier_id = 18;
     
 }

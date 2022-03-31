@@ -2,20 +2,14 @@ package har.log.entries;
 import "har/log/entries/request_response.proto";
 import "har/log/entries/response/content.proto";
 import "har/log/entries/name_value.proto";
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional bool parent = 1;
-    optional string original_name = 2;
-    
-}
 message Response {
-    optional int32 bodySize = 1 [parent = true];
+    optional int32 bodySize = 1;
     optional har.log.entries.response.Content content = 2;
-    repeated har.log.entries.NameValue cookies = 3 [parent = true];
-    repeated har.log.entries.NameValue headers = 4 [parent = true];
-    optional int32 headersSize = 5 [parent = true];
-    optional string httpVersion = 6 [parent = true];
-    optional string redirectURL = 7 [original_name = "redirectURL"];
+    repeated har.log.entries.NameValue cookies = 3;
+    repeated har.log.entries.NameValue headers = 4;
+    optional int32 headersSize = 5;
+    optional string httpVersion = 6;
+    optional string redirectURL = 7;
     optional int32 status = 8;
     optional string statusText = 9;
     

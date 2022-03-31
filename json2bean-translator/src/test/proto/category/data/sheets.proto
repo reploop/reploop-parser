@@ -1,18 +1,13 @@
 package category.data;
 import "category/data/sheets/column_count_row_count.proto";
 import "category/data/sheets/merges.proto";
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional bool parent = 1;
-    
-}
 message Sheets {
-    optional int32 columnCount = 1 [parent = true];
+    optional int32 columnCount = 1;
     optional int32 frozenColCount = 2;
     optional int32 frozenRowCount = 3;
     optional int32 index = 4;
     repeated category.data.sheets.Merges merges = 5;
-    optional int32 rowCount = 6 [parent = true];
+    optional int32 rowCount = 6;
     optional string sheetId = 7;
     optional string title = 8;
     

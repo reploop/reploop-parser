@@ -1,18 +1,13 @@
 package res1.data.list;
 import "res1/data/list/hotels/additional_info.proto";
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message Hotels {
-    optional res1.data.list.hotels.AdditionalInfo additional_info = 1 [original_name = "additional_info"];
-    optional string coord = 2 [original_name = "coord"];
-    optional string checkin = 3 [original_name = "checkin"];
+    optional res1.data.list.hotels.AdditionalInfo additional_info = 1;
+    optional string coord = 2;
+    optional string checkin = 3;
     optional string checkout = 4;
-    optional string hotel_id = 5 [original_name = "hotel_id"];
+    optional string hotel_id = 5;
     optional string name = 6;
-    optional string name_en = 7 [original_name = "name_en"];
+    optional string name_en = 7;
     optional int32 price = 8;
     optional int32 star = 9;
     repeated string tags = 10;

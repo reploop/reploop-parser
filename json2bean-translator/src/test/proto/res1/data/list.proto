@@ -1,14 +1,9 @@
 package res1.data;
 import "res1/data/list/hotels.proto";
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message List {
-    optional string city_id = 1 [original_name = "city_id"];
+    optional string city_id = 1;
     repeated res1.data.list.Hotels hotels = 2;
-    optional int32 max_price = 3 [original_name = "max_price"];
-    optional int32 min_price = 4 [original_name = "min_price"];
+    optional int32 max_price = 3;
+    optional int32 min_price = 4;
     
 }

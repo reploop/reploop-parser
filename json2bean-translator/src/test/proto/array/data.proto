@@ -1,18 +1,13 @@
 package array;
-import "google/protobuf/descriptor.proto";
-extend google.protobuf.FieldOptions {
-    optional string original_name = 1;
-    
-}
 message Data {
-    optional int32 comment_rate = 1 [original_name = "comment_rate"];
-    optional int32 count_history = 2 [original_name = "count_history"];
-    optional int32 count_last_week = 3 [original_name = "count_last_week"];
-    optional int32 count_yesterday = 4 [original_name = "count_yesterday"];
-    optional string play_url = 5 [original_name = "play_url"];
-    optional int32 rank_trend = 6 [original_name = "rank_trend"];
-    optional int64 tv_id = 7 [original_name = "tv_id"];
-    optional string tv_name = 8 [original_name = "tv_name"];
-    optional int32 vv_week = 9 [original_name = "vv_week"];
+    optional int32 comment_rate = 1;
+    optional int32 count_history = 2;
+    optional int32 count_last_week = 3;
+    optional int32 count_yesterday = 4;
+    optional string play_url = 5;
+    optional int32 rank_trend = 6;
+    optional int64 tv_id = 7;
+    optional string tv_name = 8;
+    optional int32 vv_week = 9;
     
 }

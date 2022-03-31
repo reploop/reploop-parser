@@ -4,11 +4,9 @@ import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
-import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.Enumeration;
 import org.reploop.parser.protobuf.tree.*;
 import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.bean.BeanContext;
@@ -16,8 +14,10 @@ import org.reploop.translator.json.support.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -217,28 +217,6 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
             }
         }
         context.whitespace().append(name).whitespace().append(Constants.EQ).whitespace().append(String.valueOf(node.getIndex()));
-
-        // Merge Options
-        List<Option> options = new ArrayList<>();
-        var ops = node.getOptions();
-        if (null != ops) {
-            options.addAll(ops);
-        }
-        var defVal = node.getValue();
-        defVal.ifPresent(value -> options.add(new DefaultPair(value)));
-        if (options.size() > 0) {
-            context.whitespace().openSquare();
-            AtomicBoolean head = new AtomicBoolean(true);
-            visitIfPresent(node.getOptions(), option -> {
-                if (head.get()) {
-                    head.set(false);
-                } else {
-                    context.comma().whitespace();
-                }
-                return visitOption(option, context);
-            });
-            context.closeSquare();
-        }
         context.semicolon().newLine();
         return node;
     }
@@ -341,21 +319,11 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         context.clearExpectedKey();
 
-        visitExtend(node, context);
-
         context.append("message").whitespace().append(name.suffix()).whitespace().openBrace().indent().newLine();
         List<Field> fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         context.dedent().newLine().closeBrace();
         List<Message> messages = visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         List<Enumeration> enumerations = visitIfPresent(node.getEnumerations(), enumeration -> visitEnumeration(enumeration, context));
         return new Message(name, node.getComments(), fields, messages, enumerations, node.getServices(), node.getOptions());
-    }
-
-    private void visitOptions(List<Option> options, BeanContext context) {
-    }
-
-    private String strip(String value) {
-        String v = StringUtils.stripStart(value, IMPORT);
-        return StringUtils.stripEnd(v.trim(), SEMICOLON);
     }
 }
