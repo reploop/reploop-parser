@@ -22,6 +22,7 @@ public class BeanContext {
     private Map<QualifiedName, Message> deps;
     private int indent = 0;
     private int spaces = 4;
+    private boolean head = false;
 
     public BeanContext(QualifiedName root) {
         this(root, Collections.emptyMap());
@@ -68,6 +69,14 @@ public class BeanContext {
 
     public void setDeps(Map<QualifiedName, Message> deps) {
         this.deps = deps;
+    }
+
+    public boolean isHead() {
+        return head;
+    }
+
+    public void setHead(boolean head) {
+        this.head = head;
     }
 
     public Optional<Message> dep(QualifiedName name) {

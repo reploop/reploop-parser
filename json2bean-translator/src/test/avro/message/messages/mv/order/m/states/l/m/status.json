@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Status",
+  "namespace": "message.messages.mv.order.m.states.l.m",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

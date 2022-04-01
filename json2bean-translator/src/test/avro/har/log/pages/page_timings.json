@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "PageTimings",
+  "namespace": "har.log.pages",
+  "fields": [
+    {
+      "name": "onContentLoad",
+      "type": "int"
+    },
+    {
+      "name": "onLoad",
+      "type": "int"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "M",
+  "namespace": "message.messages.mv.items",
+  "fields": [
+    {
+      "name": "m",
+      "type": "message.messages.mv.items.m.M"
+    }
+  ]
+}

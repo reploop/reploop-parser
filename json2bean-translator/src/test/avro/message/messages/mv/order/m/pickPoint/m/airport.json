@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Airport",
+  "namespace": "message.messages.mv.order.m.pickPoint.m",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

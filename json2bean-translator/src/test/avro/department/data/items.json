@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Items",
+  "namespace": "department.data",
+  "fields": [
+    {
+      "name": "open_department_id",
+      "type": "string"
+    }
+  ]
+}

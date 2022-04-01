@@ -1,0 +1,63 @@
+{
+  "type": "record",
+  "name": "Data",
+  "namespace": "order",
+  "fields": [
+    {
+      "name": "countId",
+      "type": "Object"
+    },
+    {
+      "name": "current",
+      "type": "int"
+    },
+    {
+      "name": "entity",
+      "type": "Object"
+    },
+    {
+      "name": "hitCount",
+      "type": "boolean"
+    },
+    {
+      "name": "maxLimit",
+      "type": "Object"
+    },
+    {
+      "name": "optimizeCountSql",
+      "type": "boolean"
+    },
+    {
+      "name": "orders",
+      "type": {
+        "type": "array",
+        "items": "Object",
+        "default": []
+      }
+    },
+    {
+      "name": "pages",
+      "type": "int"
+    },
+    {
+      "name": "records",
+      "type": {
+        "type": "array",
+        "items": "order.data.Records",
+        "default": []
+      }
+    },
+    {
+      "name": "searchCount",
+      "type": "boolean"
+    },
+    {
+      "name": "size",
+      "type": "int"
+    },
+    {
+      "name": "total",
+      "type": "int"
+    }
+  ]
+}

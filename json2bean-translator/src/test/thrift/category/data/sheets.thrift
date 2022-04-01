@@ -1,4 +1,3 @@
-include "sheets/column_count_row_count.thrift"
 include "sheets/merges.thrift"
 namespace * category.data
 struct Sheets {

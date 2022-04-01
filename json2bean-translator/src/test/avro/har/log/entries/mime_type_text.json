@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "MimeTypeText",
+  "namespace": "har.log.entries",
+  "fields": [
+    {
+      "name": "mimeType",
+      "type": "string"
+    },
+    {
+      "name": "text",
+      "type": "string"
+    }
+  ]
+}

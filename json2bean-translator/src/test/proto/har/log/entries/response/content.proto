@@ -1,5 +1,4 @@
 package har.log.entries.response;
-import "har/log/entries/mime_type_text.proto";
 message Content {
     optional string mimeType = 1;
     optional int32 size = 2;

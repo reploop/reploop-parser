@@ -1,5 +1,4 @@
 package order.data.records;
-import "order/data/records/records_user_order_additional.proto";
 message UserOrderAdditional {
     optional string actionSource = 1;
     optional string adultNum = 2;

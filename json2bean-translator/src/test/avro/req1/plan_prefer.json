@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "PlanPrefer",
+  "namespace": "req1",
+  "fields": [
+    {
+      "name": "price",
+      "type": "req1.plan_prefer.Price"
+    },
+    {
+      "name": "star",
+      "type": {
+        "type": "array",
+        "items": "int",
+        "default": []
+      }
+    },
+    {
+      "name": "tags",
+      "type": {
+        "type": "array",
+        "items": "string",
+        "default": []
+      }
+    }
+  ]
+}

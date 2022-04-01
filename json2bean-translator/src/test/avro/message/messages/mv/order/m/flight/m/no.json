@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "No",
+  "namespace": "message.messages.mv.order.m.flight.m",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

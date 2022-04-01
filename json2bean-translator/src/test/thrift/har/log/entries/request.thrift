@@ -1,4 +1,3 @@
-include "request_response.thrift"
 include "request/post_data.thrift"
 include "name_value.thrift"
 include "name_value.thrift"

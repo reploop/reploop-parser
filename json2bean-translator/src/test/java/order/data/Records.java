@@ -569,17 +569,17 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
                 .add("vPlate", getVPlate())
                 .add("vType", getVType())
                 .add("vVehicleId", getVVehicleId())
-                .add("orderId", getOrderId())
-                .add("settlementPrice", getSettlementPrice())
-                .add("createTime", getCreateTime())
-                .add("driverPhone", getDriverPhone())
-                .add("actionSource", getActionSource())
-                .add("night", getNight())
-                .add("preDriverId", getPreDriverId())
-                .add("driverOrderId", getDriverOrderId())
                 .add("operator", getOperator())
                 .add("vehicleBrand", getVehicleBrand())
+                .add("actionSource", getActionSource())
+                .add("orderId", getOrderId())
+                .add("preDriverId", getPreDriverId())
+                .add("settlementPrice", getSettlementPrice())
                 .add("delay", getDelay())
+                .add("night", getNight())
+                .add("driverOrderId", getDriverOrderId())
+                .add("driverPhone", getDriverPhone())
+                .add("createTime", getCreateTime())
                 .toString();
     }
     
@@ -865,46 +865,6 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder orderId(Object orderId) {
-            data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder settlementPrice(Object settlementPrice) {
-            data.setSettlementPrice(settlementPrice);
-            return this;
-        }
-        
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
-            return this;
-        }
-        
-        public Builder driverPhone(Object driverPhone) {
-            data.setDriverPhone(driverPhone);
-            return this;
-        }
-        
-        public Builder actionSource(Object actionSource) {
-            data.setActionSource(actionSource);
-            return this;
-        }
-        
-        public Builder night(Boolean night) {
-            data.setNight(night);
-            return this;
-        }
-        
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
-            return this;
-        }
-        
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
-            return this;
-        }
-        
         public Builder operator(Object operator) {
             data.setOperator(operator);
             return this;
@@ -915,8 +875,48 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
         public Builder delay(Object delay) {
             data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
             return this;
         }
         

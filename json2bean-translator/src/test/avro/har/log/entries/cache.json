@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "Cache",
+  "namespace": "har.log.entries",
+  "fields": [
+    
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "PostData",
+  "namespace": "har.log.entries.request",
+  "fields": [
+    {
+      "name": "params",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    },
+    {
+      "name": "mimeType",
+      "type": "string"
+    },
+    {
+      "name": "text",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "type": "record",
+  "name": "AddDriver",
+  "fields": [
+    {
+      "name": "driverLicenseNo",
+      "type": "string"
+    },
+    {
+      "name": "files",
+      "type": {
+        "type": "array",
+        "items": "Object",
+        "default": []
+      }
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "idNo",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "officeId",
+      "type": "string"
+    },
+    {
+      "name": "phone",
+      "type": "long"
+    },
+    {
+      "name": "remarks",
+      "type": "string"
+    },
+    {
+      "name": "sex",
+      "type": "string"
+    }
+  ]
+}

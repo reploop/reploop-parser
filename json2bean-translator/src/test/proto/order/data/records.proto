@@ -1,5 +1,4 @@
 package order.data;
-import "order/data/records/records_user_order_additional.proto";
 import "order/data/records/user_order_additional.proto";
 message Records {
     optional string actionSource = 1;

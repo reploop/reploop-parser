@@ -1,4 +1,3 @@
-include "../mime_type_text.thrift"
 include "../name_value.thrift"
 namespace * har.log.entries.request
 struct PostData {

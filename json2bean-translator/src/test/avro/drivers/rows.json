@@ -1,0 +1,107 @@
+{
+  "type": "record",
+  "name": "Rows",
+  "namespace": "drivers",
+  "fields": [
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "createUser",
+      "type": "Object"
+    },
+    {
+      "name": "delFlag",
+      "type": "string"
+    },
+    {
+      "name": "driverLicenseExpiredTime",
+      "type": "Object"
+    },
+    {
+      "name": "driverLicenseNo",
+      "type": "string"
+    },
+    {
+      "name": "driverLicenseType",
+      "type": "Object"
+    },
+    {
+      "name": "endTime",
+      "type": "Object"
+    },
+    {
+      "name": "files",
+      "type": "Object"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "idNo",
+      "type": "string"
+    },
+    {
+      "name": "inServiceStatus",
+      "type": "string"
+    },
+    {
+      "name": "jobNo",
+      "type": "Object"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "numOrders",
+      "type": "int"
+    },
+    {
+      "name": "officeId",
+      "type": "string"
+    },
+    {
+      "name": "passWord",
+      "type": "string"
+    },
+    {
+      "name": "phone",
+      "type": "string"
+    },
+    {
+      "name": "remarks",
+      "type": "Object"
+    },
+    {
+      "name": "sex",
+      "type": "string"
+    },
+    {
+      "name": "startTime",
+      "type": "Object"
+    },
+    {
+      "name": "totalAmount",
+      "type": "int"
+    },
+    {
+      "name": "updateTime",
+      "type": "string"
+    },
+    {
+      "name": "updateUser",
+      "type": "Object"
+    },
+    {
+      "name": "userId",
+      "type": "Object"
+    },
+    {
+      "name": "workStatus",
+      "type": "string"
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-include "records_user_order_additional.thrift"
 namespace * order.data.records
 struct UserOrderAdditional {
     1: optional string actionSource;

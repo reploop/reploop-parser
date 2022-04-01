@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "M",
+  "namespace": "message.messages.mv.states.l",
+  "fields": [
+    {
+      "name": "status",
+      "type": "message.messages.mv.states.l.m.Status"
+    },
+    {
+      "name": "time",
+      "type": "message.messages.mv.states.l.m.Time"
+    }
+  ]
+}

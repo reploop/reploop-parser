@@ -1,4 +1,3 @@
-include "request_response.thrift"
 include "response/content.thrift"
 include "name_value.thrift"
 namespace * har.log.entries

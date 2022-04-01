@@ -1,0 +1,135 @@
+{
+  "type": "record",
+  "name": "UserOrderAdditional",
+  "namespace": "order.data.records",
+  "fields": [
+    {
+      "name": "adultNum",
+      "type": "Object"
+    },
+    {
+      "name": "beginSiteName",
+      "type": "Object"
+    },
+    {
+      "name": "createUser",
+      "type": "Object"
+    },
+    {
+      "name": "delFlag",
+      "type": "Object"
+    },
+    {
+      "name": "driverId",
+      "type": "Object"
+    },
+    {
+      "name": "driverIdNo",
+      "type": "Object"
+    },
+    {
+      "name": "driverName",
+      "type": "string"
+    },
+    {
+      "name": "endSiteName",
+      "type": "Object"
+    },
+    {
+      "name": "flightNumber",
+      "type": "Object"
+    },
+    {
+      "name": "id",
+      "type": "Object"
+    },
+    {
+      "name": "newDriverOrderId",
+      "type": "Object"
+    },
+    {
+      "name": "orderRemark",
+      "type": "Object"
+    },
+    {
+      "name": "remarks",
+      "type": "Object"
+    },
+    {
+      "name": "scheduleDate",
+      "type": "Object"
+    },
+    {
+      "name": "status",
+      "type": "Object"
+    },
+    {
+      "name": "updateTime",
+      "type": "Object"
+    },
+    {
+      "name": "updateUser",
+      "type": "Object"
+    },
+    {
+      "name": "vehicleColour",
+      "type": "Object"
+    },
+    {
+      "name": "vehicleId",
+      "type": "int"
+    },
+    {
+      "name": "vehiclePlate",
+      "type": "string"
+    },
+    {
+      "name": "vehicleType",
+      "type": "string"
+    },
+    {
+      "name": "driverOrderId",
+      "type": "Object"
+    },
+    {
+      "name": "preDriverId",
+      "type": "Object"
+    },
+    {
+      "name": "settlementPrice",
+      "type": "Object"
+    },
+    {
+      "name": "delay",
+      "type": "Object"
+    },
+    {
+      "name": "driverPhone",
+      "type": "Object"
+    },
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
+      "type": "Object"
+    },
+    {
+      "name": "vehicleBrand",
+      "type": "Object"
+    },
+    {
+      "name": "operator",
+      "type": "Object"
+    },
+    {
+      "name": "actionSource",
+      "type": "Object"
+    },
+    {
+      "name": "night",
+      "type": "boolean"
+    }
+  ]
+}

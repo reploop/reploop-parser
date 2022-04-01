@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "M",
+  "namespace": "message.messages.mv.order.m.picker",
+  "fields": [
+    {
+      "name": "identity",
+      "type": "message.messages.mv.order.m.picker.m.Identity"
+    },
+    {
+      "name": "phone",
+      "type": "message.messages.mv.order.m.picker.m.Phone"
+    },
+    {
+      "name": "realName",
+      "type": "message.messages.mv.order.m.picker.m.RealName"
+    }
+  ]
+}

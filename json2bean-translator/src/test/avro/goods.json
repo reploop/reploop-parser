@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Goods",
+  "fields": [
+    {
+      "name": "reason",
+      "type": "Object"
+    },
+    {
+      "name": "result",
+      "type": {
+        "type": "array",
+        "items": "goods.Result",
+        "default": []
+      }
+    },
+    {
+      "name": "resultCode",
+      "type": "string"
+    },
+    {
+      "name": "success",
+      "type": "boolean"
+    }
+  ]
+}

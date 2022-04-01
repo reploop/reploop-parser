@@ -1,0 +1,47 @@
+{
+  "type": "record",
+  "name": "Entries",
+  "namespace": "har.log",
+  "fields": [
+    {
+      "name": "_securityState",
+      "type": "string"
+    },
+    {
+      "name": "cache",
+      "type": "har.log.entries.Cache"
+    },
+    {
+      "name": "connection",
+      "type": "string"
+    },
+    {
+      "name": "pageref",
+      "type": "string"
+    },
+    {
+      "name": "request",
+      "type": "har.log.entries.Request"
+    },
+    {
+      "name": "response",
+      "type": "har.log.entries.Response"
+    },
+    {
+      "name": "serverIPAddress",
+      "type": "string"
+    },
+    {
+      "name": "startedDateTime",
+      "type": "string"
+    },
+    {
+      "name": "time",
+      "type": "int"
+    },
+    {
+      "name": "timings",
+      "type": "har.log.entries.Timings"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "NameValue",
+  "namespace": "har.log.entries",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "string"
+    }
+  ]
+}

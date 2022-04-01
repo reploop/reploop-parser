@@ -1,4 +1,3 @@
-include "records/records_user_order_additional.thrift"
 include "records/user_order_additional.thrift"
 namespace * order.data
 struct Records {

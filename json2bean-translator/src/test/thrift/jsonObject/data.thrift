@@ -1,4 +1,3 @@
-include "array.thrift"
 namespace * jsonObject
 struct Data {
     1: optional i32 count_history;

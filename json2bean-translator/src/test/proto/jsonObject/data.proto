@@ -1,5 +1,4 @@
 package jsonObject;
-import "jsonObject/array.proto";
 message Data {
     optional int32 count_history = 1;
     optional int32 count_last_week = 2;

@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "name": "Sheets",
+  "namespace": "category.data",
+  "fields": [
+    {
+      "name": "frozenColCount",
+      "type": "int"
+    },
+    {
+      "name": "frozenRowCount",
+      "type": "int"
+    },
+    {
+      "name": "index",
+      "type": "int"
+    },
+    {
+      "name": "merges",
+      "type": {
+        "type": "array",
+        "items": "category.data.sheets.Merges",
+        "default": []
+      }
+    },
+    {
+      "name": "sheetId",
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "columnCount",
+      "type": "int"
+    },
+    {
+      "name": "rowCount",
+      "type": "int"
+    }
+  ]
+}

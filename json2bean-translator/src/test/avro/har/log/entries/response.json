@@ -1,0 +1,51 @@
+{
+  "type": "record",
+  "name": "Response",
+  "namespace": "har.log.entries",
+  "fields": [
+    {
+      "name": "content",
+      "type": "har.log.entries.response.Content"
+    },
+    {
+      "name": "redirectURL",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "int"
+    },
+    {
+      "name": "statusText",
+      "type": "string"
+    },
+    {
+      "name": "cookies",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    },
+    {
+      "name": "bodySize",
+      "type": "int"
+    },
+    {
+      "name": "httpVersion",
+      "type": "string"
+    },
+    {
+      "name": "headersSize",
+      "type": "int"
+    },
+    {
+      "name": "headers",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    }
+  ]
+}

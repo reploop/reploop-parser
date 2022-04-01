@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "Messages",
+  "namespace": "message",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "type": "map",
+        "values": "string",
+        "default": {}
+      }
+    },
+    {
+      "name": "mv",
+      "type": "message.messages.Mv"
+    },
+    {
+      "name": "roomID",
+      "type": "string"
+    },
+    {
+      "name": "sender",
+      "type": "string"
+    },
+    {
+      "name": "sequenceNO",
+      "type": "int"
+    },
+    {
+      "name": "timestamp",
+      "type": "string"
+    }
+  ]
+}

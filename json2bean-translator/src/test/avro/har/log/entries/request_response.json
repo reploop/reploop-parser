@@ -1,0 +1,35 @@
+{
+  "type": "record",
+  "name": "RequestResponse",
+  "namespace": "har.log.entries",
+  "fields": [
+    {
+      "name": "cookies",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    },
+    {
+      "name": "bodySize",
+      "type": "int"
+    },
+    {
+      "name": "httpVersion",
+      "type": "string"
+    },
+    {
+      "name": "headersSize",
+      "type": "int"
+    },
+    {
+      "name": "headers",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    }
+  ]
+}

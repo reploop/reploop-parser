@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "HeadingCode",
+  "namespace": "message.messages.mv",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

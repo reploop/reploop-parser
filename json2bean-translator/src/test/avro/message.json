@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "Message",
+  "fields": [
+    {
+      "name": "messages",
+      "type": {
+        "type": "array",
+        "items": "message.Messages",
+        "default": []
+      }
+    },
+    {
+      "name": "result",
+      "type": "message.Result"
+    }
+  ]
+}

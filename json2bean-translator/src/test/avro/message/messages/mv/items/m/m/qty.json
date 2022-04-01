@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Qty",
+  "namespace": "message.messages.mv.items.m.m",
+  "fields": [
+    {
+      "name": "n",
+      "type": "string"
+    }
+  ]
+}

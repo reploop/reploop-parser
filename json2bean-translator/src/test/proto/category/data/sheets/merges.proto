@@ -1,5 +1,4 @@
 package category.data.sheets;
-import "category/data/sheets/column_count_row_count.proto";
 message Merges {
     optional int32 columnCount = 1;
     optional int32 rowCount = 2;

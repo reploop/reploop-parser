@@ -1,5 +1,4 @@
 package har.log.entries;
-import "har/log/entries/request_response.proto";
 import "har/log/entries/request/post_data.proto";
 import "har/log/entries/name_value.proto";
 import "har/log/entries/name_value.proto";

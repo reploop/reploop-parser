@@ -54,11 +54,11 @@ public class Response extends RequestResponse implements Serializable {
                 .add("redirectUrL", getRedirectUrL())
                 .add("status", getStatus())
                 .add("statusText", getStatusText())
+                .add("headersSize", getHeadersSize())
+                .add("cookies", getCookies())
+                .add("bodySize", getBodySize())
                 .add("httpVersion", getHttpVersion())
                 .add("headers", getHeaders())
-                .add("cookies", getCookies())
-                .add("headersSize", getHeadersSize())
-                .add("bodySize", getBodySize())
                 .toString();
     }
     
@@ -89,13 +89,8 @@ public class Response extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder httpVersion(String httpVersion) {
-            data.setHttpVersion(httpVersion);
-            return this;
-        }
-        
-        public Builder headers(List<NameValue> headers) {
-            data.setHeaders(headers);
+        public Builder headersSize(Integer headersSize) {
+            data.setHeadersSize(headersSize);
             return this;
         }
         
@@ -104,13 +99,18 @@ public class Response extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder headersSize(Integer headersSize) {
-            data.setHeadersSize(headersSize);
+        public Builder bodySize(Integer bodySize) {
+            data.setBodySize(bodySize);
             return this;
         }
         
-        public Builder bodySize(Integer bodySize) {
-            data.setBodySize(bodySize);
+        public Builder httpVersion(String httpVersion) {
+            data.setHttpVersion(httpVersion);
+            return this;
+        }
+        
+        public Builder headers(List<NameValue> headers) {
+            data.setHeaders(headers);
             return this;
         }
         

@@ -1,0 +1,275 @@
+{
+  "type": "record",
+  "name": "Records",
+  "namespace": "order.data",
+  "fields": [
+    {
+      "name": "adultNum",
+      "type": "int"
+    },
+    {
+      "name": "beginGpsLat",
+      "type": "string"
+    },
+    {
+      "name": "beginGpsLong",
+      "type": "string"
+    },
+    {
+      "name": "beginSiteCode",
+      "type": "string"
+    },
+    {
+      "name": "beginSiteName",
+      "type": "string"
+    },
+    {
+      "name": "boardingTime",
+      "type": "Object"
+    },
+    {
+      "name": "bookInAdvance",
+      "type": "boolean"
+    },
+    {
+      "name": "busticketReqList",
+      "type": "Object"
+    },
+    {
+      "name": "cancelDuration",
+      "type": "Object"
+    },
+    {
+      "name": "cancelType",
+      "type": "Object"
+    },
+    {
+      "name": "childNum",
+      "type": "Object"
+    },
+    {
+      "name": "contactName",
+      "type": "string"
+    },
+    {
+      "name": "contactPhone",
+      "type": "string"
+    },
+    {
+      "name": "contactSex",
+      "type": "string"
+    },
+    {
+      "name": "createUser",
+      "type": "string"
+    },
+    {
+      "name": "delFlag",
+      "type": "string"
+    },
+    {
+      "name": "dname",
+      "type": "string"
+    },
+    {
+      "name": "driverArrivedTime",
+      "type": "string"
+    },
+    {
+      "name": "driverId",
+      "type": "long"
+    },
+    {
+      "name": "driverName",
+      "type": "Object"
+    },
+    {
+      "name": "driverOrderStatus",
+      "type": "string"
+    },
+    {
+      "name": "driverOrderUpdateTime",
+      "type": "Object"
+    },
+    {
+      "name": "endGpsLat",
+      "type": "string"
+    },
+    {
+      "name": "endGpsLong",
+      "type": "string"
+    },
+    {
+      "name": "endSiteCode",
+      "type": "string"
+    },
+    {
+      "name": "endSiteName",
+      "type": "string"
+    },
+    {
+      "name": "evaluation",
+      "type": "Object"
+    },
+    {
+      "name": "flightNumber",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "lineType",
+      "type": "string"
+    },
+    {
+      "name": "nextOrderNotifyType",
+      "type": "Object"
+    },
+    {
+      "name": "no",
+      "type": "string"
+    },
+    {
+      "name": "notifyType",
+      "type": "Object"
+    },
+    {
+      "name": "offTime",
+      "type": "Object"
+    },
+    {
+      "name": "openId",
+      "type": "Object"
+    },
+    {
+      "name": "orderPeriodValid",
+      "type": "boolean"
+    },
+    {
+      "name": "orderRemark",
+      "type": "string"
+    },
+    {
+      "name": "orderSource",
+      "type": "string"
+    },
+    {
+      "name": "orderTime",
+      "type": "string"
+    },
+    {
+      "name": "points",
+      "type": "Object"
+    },
+    {
+      "name": "remarks",
+      "type": "string"
+    },
+    {
+      "name": "scheduleDate",
+      "type": "string"
+    },
+    {
+      "name": "score",
+      "type": "Object"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "ticketStatus",
+      "type": "Object"
+    },
+    {
+      "name": "updateTime",
+      "type": "string"
+    },
+    {
+      "name": "updateUser",
+      "type": "string"
+    },
+    {
+      "name": "useUpType",
+      "type": "string"
+    },
+    {
+      "name": "userAct",
+      "type": "Object"
+    },
+    {
+      "name": "userNotifyType",
+      "type": "Object"
+    },
+    {
+      "name": "userOrderAdditional",
+      "type": {
+        "type": "array",
+        "items": "order.data.records.UserOrderAdditional",
+        "default": []
+      }
+    },
+    {
+      "name": "vehiclePlate",
+      "type": "Object"
+    },
+    {
+      "name": "vplate",
+      "type": "string"
+    },
+    {
+      "name": "vtype",
+      "type": "string"
+    },
+    {
+      "name": "vvehicleId",
+      "type": "int"
+    },
+    {
+      "name": "driverOrderId",
+      "type": "Object"
+    },
+    {
+      "name": "preDriverId",
+      "type": "Object"
+    },
+    {
+      "name": "settlementPrice",
+      "type": "Object"
+    },
+    {
+      "name": "delay",
+      "type": "Object"
+    },
+    {
+      "name": "driverPhone",
+      "type": "Object"
+    },
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
+      "type": "Object"
+    },
+    {
+      "name": "vehicleBrand",
+      "type": "Object"
+    },
+    {
+      "name": "operator",
+      "type": "Object"
+    },
+    {
+      "name": "actionSource",
+      "type": "Object"
+    },
+    {
+      "name": "night",
+      "type": "boolean"
+    }
+  ]
+}

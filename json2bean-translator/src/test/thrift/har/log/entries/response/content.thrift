@@ -1,4 +1,3 @@
-include "../mime_type_text.thrift"
 namespace * har.log.entries.response
 struct Content {
     1: optional string mimeType;

@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "CityList",
+  "namespace": "res1.data.list.hotels.additional_info",
+  "fields": [
+    {
+      "name": "checkin",
+      "type": "string"
+    },
+    {
+      "name": "checkout",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    }
+  ]
+}

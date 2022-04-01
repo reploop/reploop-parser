@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Created",
+  "namespace": "message.messages.mv.order.m",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

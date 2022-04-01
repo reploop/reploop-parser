@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "ColumnCountRowCount",
+  "namespace": "category.data.sheets",
+  "fields": [
+    {
+      "name": "columnCount",
+      "type": "int"
+    },
+    {
+      "name": "rowCount",
+      "type": "int"
+    }
+  ]
+}
