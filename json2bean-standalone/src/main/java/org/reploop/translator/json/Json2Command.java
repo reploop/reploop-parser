@@ -3,10 +3,11 @@ package org.reploop.translator.json;
 import com.github.rvesse.airline.annotations.Option;
 import org.reploop.translator.json.driver.Json2Conf;
 import org.reploop.translator.json.driver.Json2Driver;
+import org.reploop.translator.json.support.Target;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.annotation.Target;
+import java.util.EnumSet;
 import java.util.List;
 
 /**
@@ -28,9 +29,19 @@ public class Json2Command implements Runnable {
     Boolean enableFailFast = true;
     @Option(name = {"--namespace", "-n"}, description = "The top package or namespace of the source. Add package line to the source. Default is empty.")
     String namespace;
-
-    private Target target;
+    /**
+     * The schema of which supported targets to generate.
+     */
+    EnumSet<Target> targets;
     private volatile Json2Driver driver;
+
+    public EnumSet<Target> getTargets() {
+        return targets;
+    }
+
+    public void setTargets(EnumSet<Target> targets) {
+        this.targets = targets;
+    }
 
     protected Json2Driver getDriver() {
         if (null == driver) {
@@ -42,6 +53,7 @@ public class Json2Command implements Runnable {
                         .outputDirectory(outputDirectory)
                         .namespace(namespace)
                         .enableRootGuess(enableRootGuess)
+                        .targets(targets)
                         .enableFailFast(enableFailFast);
                     driver = new Json2Driver(conf);
                 }
