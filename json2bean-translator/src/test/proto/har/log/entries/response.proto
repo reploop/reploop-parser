@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "har.log.entries";
 package har.log.entries;
 import "har/log/entries/response/content.proto";
 import "har/log/entries/name_value.proto";

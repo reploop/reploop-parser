@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "res1.data.list";
 package res1.data.list;
 import "res1/data/list/hotels/additional_info.proto";
 message Hotels {

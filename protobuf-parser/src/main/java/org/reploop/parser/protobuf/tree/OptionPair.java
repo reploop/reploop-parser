@@ -1,8 +1,8 @@
 package org.reploop.parser.protobuf.tree;
 
-import org.reploop.parser.protobuf.AstVisitor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.reploop.parser.protobuf.AstVisitor;
 
 /**
  * What's this about?
@@ -43,9 +43,9 @@ public class OptionPair extends Pair {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("attr", attr)
-                .append("name", name)
-                .append("value", value)
-                .toString();
+            .append("attr", attr)
+            .append("name", name)
+            .append("value", value)
+            .toString();
     }
 }

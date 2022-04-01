@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "driver.data";
 package driver.data;
 message CarData {
     optional string annual_check_date = 1;

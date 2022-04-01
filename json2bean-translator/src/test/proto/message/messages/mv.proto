@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages";
 package message.messages;
 import "message/messages/mv/items.proto";
 import "message/messages/mv/code.proto";

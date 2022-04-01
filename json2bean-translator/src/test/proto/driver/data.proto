@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "driver";
 package driver;
 import "driver/data/driver_data.proto";
 import "driver/data/car_data.proto";

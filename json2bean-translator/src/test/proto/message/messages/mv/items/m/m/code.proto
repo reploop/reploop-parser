@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.items.m.m";
 package message.messages.mv.items.m.m;
 message Code {
     optional string s = 1;

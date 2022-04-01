@@ -3,7 +3,7 @@ package org.reploop.translator.json.support;
 public enum Target {
     JAVA("java"),
     GO("go"),
-    AVRO("json"),
+    AVRO("avsc"),
     PROTO("proto"),
     THRIFT("thrift");
 

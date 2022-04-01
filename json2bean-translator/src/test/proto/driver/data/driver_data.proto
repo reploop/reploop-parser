@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "driver.data";
 package driver.data;
 message DriverData {
     optional string address = 1;

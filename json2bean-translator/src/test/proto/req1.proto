@@ -1,3 +1,5 @@
+syntax = "proto3";
+option java_multiple_files = true;
 import "req1/city_list.proto";
 import "req1/room.proto";
 import "req1/plan_prefer.proto";

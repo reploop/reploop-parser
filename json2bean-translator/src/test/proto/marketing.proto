@@ -1,3 +1,5 @@
+syntax = "proto3";
+option java_multiple_files = true;
 import "marketing/result.proto";
 message Marketing {
     optional string reason = 1;

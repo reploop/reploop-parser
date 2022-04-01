@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.flight";
 package message.messages.mv.order.m.flight;
 import "message/messages/mv/order/m/flight/m/departure_time.proto";
 import "message/messages/mv/order/m/flight/m/no.proto";

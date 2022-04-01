@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "category.data";
 package category.data;
 message Properties {
     optional int64 ownerUser = 1;

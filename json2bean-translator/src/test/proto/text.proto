@@ -1,3 +1,5 @@
+syntax = "proto3";
+option java_multiple_files = true;
 import "text/area.proto";
 message Text {
     map<string, text.Area> area = 1;

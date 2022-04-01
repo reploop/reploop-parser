@@ -1,3 +1,6 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "user";
 package user;
 message Result {
     optional string area_id = 1;

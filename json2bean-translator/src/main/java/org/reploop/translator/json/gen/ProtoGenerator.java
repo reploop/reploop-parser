@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -69,6 +68,7 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
         }
         return structType;
     }
+
 
     @Override
     public Option visitOption(Option option, BeanContext context) {
@@ -239,9 +239,17 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
 
     @Override
     public SyntaxPair visitSyntaxPair(SyntaxPair node, BeanContext context) {
-        context.append(node.getKey()).append(EQ).quote();
+        context.append(node.getKey()).whitespace().append(EQ).whitespace();
         visitValue(node.getValue(), context);
-        context.quote().semicolon().newLine();
+        context.semicolon().newLine();
+        return node;
+    }
+
+    @Override
+    public OptionPair visitOptionPair(OptionPair node, BeanContext context) {
+        context.append("option").whitespace().append(node.getName()).whitespace().append(EQ).whitespace();
+        visitValue(node.getValue(), context);
+        context.semicolon().newLine();
         return node;
     }
 
@@ -301,20 +309,27 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
     }
 
     @Override
+    public Namespace visitNamespace(Namespace node, BeanContext context) {
+        context.append("package").whitespace().append(node.getName()).semicolon().newLine();
+        return node;
+    }
+
+    @Override
+    public Header visitHeader(Header node, BeanContext context) {
+        return (Header) process(node, context);
+    }
+
+    @Override
     public ProtoProgram visitProtobufProgram(ProtoProgram node, BeanContext context) {
+        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+        visitIfPresent(node.getHeaders(), header -> visitHeader(header, context));
+        visitIfPresent(node.getMessages(), message -> visitMessage(message, context));
         return node;
     }
 
     @Override
     public Message visitMessage(Message node, BeanContext context) {
         QualifiedName name = node.getName();
-        var op = name.prefix();
-        op.ifPresent(new Consumer<QualifiedName>() {
-            @Override
-            public void accept(QualifiedName pkg) {
-                context.append("package").whitespace().append(pkg).semicolon().newLine();
-            }
-        });
         context.setExpectedKey(IMPORT);
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
         context.clearExpectedKey();

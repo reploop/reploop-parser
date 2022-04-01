@@ -1,3 +1,5 @@
+syntax = "proto3";
+option java_multiple_files = true;
 import "carResponse/rows.proto";
 message CarResponse {
     optional int32 code = 1;

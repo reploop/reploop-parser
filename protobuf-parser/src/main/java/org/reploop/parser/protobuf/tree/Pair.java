@@ -31,7 +31,7 @@ public abstract class Pair extends Option {
         if (o == null || getClass() != o.getClass()) return false;
         Pair pair = (Pair) o;
         return Objects.equals(key, pair.key) &&
-                Objects.equals(value, pair.value);
+            Objects.equals(value, pair.value);
     }
 
     @Override
@@ -42,8 +42,8 @@ public abstract class Pair extends Option {
     @Override
     public String toString() {
         return "Pair{" +
-                "key='" + key + '\'' +
-                ", value=" + value +
-                '}';
+            "key='" + key + '\'' +
+            ", value=" + value +
+            '}';
     }
 }

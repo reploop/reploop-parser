@@ -1,3 +1,5 @@
+syntax = "proto3";
+option java_multiple_files = true;
 import "user/result.proto";
 message User {
     optional int32 code = 1;
