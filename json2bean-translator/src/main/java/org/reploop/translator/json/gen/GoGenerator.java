@@ -6,7 +6,7 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.*;
 import org.reploop.translator.json.bean.BeanContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.reploop.translator.json.support.Constants.*;
+import static org.reploop.translator.json.support.NameSupport.isObject;
 
 public class GoGenerator extends AstVisitor<Node, BeanContext> {
     private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
@@ -36,8 +37,7 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
 
     @Override
     public FieldType visitFieldType(FieldType fieldType, BeanContext context) {
-        context.append(fieldType.toString());
-        return fieldType;
+        return (FieldType) process(fieldType, context);
     }
 
     private void comments(List<String> comments, BeanContext context) {
@@ -63,6 +63,94 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
     }
 
     @Override
+    public BoolType visitBoolType(BoolType boolType, BeanContext context) {
+        context.append("bool");
+        return boolType;
+    }
+
+    @Override
+    public Node visitByteStringType(ByteStringType byteStringType, BeanContext context) {
+        return super.visitByteStringType(byteStringType, context);
+    }
+
+    @Override
+    public ByteType visitByteType(ByteType byteType, BeanContext context) {
+        context.append("byte");
+        return byteType;
+    }
+
+    @Override
+    public DoubleType visitDoubleType(DoubleType doubleType, BeanContext context) {
+        context.append("float64");
+        return doubleType;
+    }
+
+    @Override
+    public FloatType visitFloatType(FloatType floatType, BeanContext context) {
+        context.append("float32");
+        return floatType;
+    }
+
+    @Override
+    public IntType visitIntType(IntType intType, BeanContext context) {
+        context.append("int32");
+        return intType;
+    }
+
+    @Override
+    public StructType visitStructType(StructType structType, BeanContext context) {
+        QualifiedName name = structType.getName();
+        if (isObject(name)) {
+            context.append("string");
+        } else {
+            context.append(name);
+        }
+        return structType;
+    }
+
+    @Override
+    public ListType visitListType(ListType listType, BeanContext context) {
+        context.openSquare().closeSquare();
+        visitFieldType(listType.getElementType(), context);
+        return listType;
+    }
+
+    @Override
+    public LongType visitLongType(LongType longType, BeanContext context) {
+        context.append("int64");
+        return longType;
+    }
+
+    @Override
+    public MapType visitMapType(MapType mapType, BeanContext context) {
+        context.append("map");
+        context.openSquare();
+        visitFieldType(mapType.getKeyType(), context);
+        context.closeSquare();
+        visitFieldType(mapType.getValueType(), context);
+        return mapType;
+    }
+
+    @Override
+    public SetType visitSetType(SetType setType, BeanContext context) {
+        context.openSquare().closeSquare();
+        visitFieldType(setType.getElementType(), context);
+        return setType;
+    }
+
+    @Override
+    public ShortType visitShortType(ShortType shortType, BeanContext context) {
+        context.append("int16");
+        return shortType;
+    }
+
+    @Override
+    public StringType visitStringType(StringType stringType, BeanContext context) {
+        context.append("string");
+        return stringType;
+    }
+
+    @Override
     public CommonPair visitCommonPair(CommonPair node, BeanContext context) {
         String key = node.getKey();
         Value value = node.getValue();
@@ -84,10 +172,11 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
     }
 
     private void visitImport(BeanContext context, String key, Value value) {
-        context.append(key).whitespace();
-        visitValue(value, context);
-        context.semicolon().newLine();
+        QualifiedName name = QualifiedName.of(((StringValue) value).getValue());
+        context.append(key).whitespace().quote();
+        context.append(name.join(SEP)).quote().newLine();
     }
+
 
     private void visitAbstractAttr(BeanContext context, Value value) {
         if (value instanceof BoolValue) {
@@ -106,113 +195,38 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
         }
     }
 
-    private void accessor(List<Field> fields, BeanContext context) {
-        for (Field field : fields) {
-            getter(field, context);
-            setter(field, context);
-        }
-    }
-
-    private void getter(Field node, BeanContext context) {
-        context.newLine().append("public").whitespace();
-        visitFieldType(node.getType(), context);
-        context.whitespace().append("get").append(LC_UC.convert(node.getName())).openParen().closeParen().whitespace().openBrace().indent().newLine();
-        context.append("return").whitespace().append(node.getName()).semicolon().dedent().newLine();
-        context.closeBrace().newLine();
-    }
-
-    private void setter(Field node, BeanContext context) {
-        context.newLine().append("public").whitespace().append("void").whitespace().append("set").append(LC_UC.convert(node.getName())).openParen();
-        visitFieldType(node.getType(), context);
-        context.whitespace().append(node.getName()).closeParen().whitespace().openBrace().indent().newLine();
-        context.append("this.").append(node.getName()).append(" = ").append(node.getName()).semicolon().dedent().newLine();
-        context.closeBrace().newLine();
-    }
-
-    private void toString(List<Field> fields, BeanContext context) {
-        context.newLine().append("@Override").newLine();
-        context.append("public").whitespace().append("String").whitespace().append("toString").openParen().closeParen().whitespace().openBrace().indent().newLine();
-        context.append("return").whitespace().append("MoreObjects.toStringHelper(this)").indent().indent().newLine();
-        for (Field field : fields) {
-            context.append(".add").openParen().quote().append(field.getName()).quote().append(",").whitespace().append(field.getName()).closeParen().newLine();
-        }
-        context.append(".toString()").semicolon().dedent().dedent().dedent().newLine();
-        context.closeBrace().newLine();
-    }
-
     @Override
     public Field visitField(Field node, BeanContext context) {
+        String name = node.getName();
         comments(node.getComments(), context);
-        context.append("private").whitespace();
+        context.append(LC_UC.convert(name)).whitespace();
         visitFieldType(node.getType(), context);
-        context.whitespace().append(node.getName()).semicolon().newLine();
-        return node;
-    }
-
-    public void builder(Message message, List<Field> fields, BeanContext context) {
-        // static builder method
-        context.newLine();
-        context.append("public static Builder newBuilder()").whitespace().openBrace();
-        context.indent().newLine();
-        context.append("return new Builder();");
-        context.dedent().newLine().closeBrace().newLine();
-
-        // Start define builder class
-        String name = message.getName().suffix();
-        context.newLine();
-        context.append("public static class Builder").whitespace().openBrace();
-        // start class body
-        context.indent().newLine();
-        String attr = "data";
-        context.append("private final").whitespace().append(name).whitespace().append(attr).append(" = new ").append(name).append("();").newLine();
-
-        // build method for each field.
-        for (Field field : fields) {
-            context.newLine();
-            context.append("public Builder ").append(field.getName()).openParen();
-            visitFieldType(field.getType(), context);
-            context.whitespace().append(field.getName()).closeParen().whitespace().openBrace();
-            context.indent().newLine();
-            String fieldName = field.getName();
-            if (attr.equals(fieldName)) {
-                context.append("this.");
+        context.whitespace().backtick().append("json").colon().quote();
+        List<Option> options = node.getOptions();
+        for (Option option : options) {
+            if (option instanceof CommonPair && ORIGINAL_NAME.equals(((CommonPair) option).getKey())) {
+                Value value = ((CommonPair) option).getValue();
+                if (value instanceof StringValue) {
+                    name = ((StringValue) value).getValue();
+                }
             }
-            context.append("data.").append("set").append(LC_UC.convert(fieldName)).openParen().append(fieldName).closeParen().semicolon().newLine();
-            context.append("return this;");
-            context.dedent().newLine().closeBrace().newLine();
         }
-
-        // the build method.
-        context.newLine();
-        context.append("public").whitespace().append(message.getName().suffix()).whitespace().append("build()").whitespace().openBrace();
-        context.indent().newLine();
-        context.append("return data;");
-        context.dedent().newLine().closeBrace().newLine();
-        // end class body
-        context.dedent().newLine().closeBrace().newLine();
+        context.append(name).quote().backtick().newLine();
+        return node;
     }
 
     @Override
     public Message visitMessage(Message node, BeanContext context) {
         QualifiedName name = node.getName();
-        name.prefix().ifPresent(ns -> context.append("package").whitespace().append(ns).semicolon().newLine().newLine());
+        String ns = name.prefix().map(QualifiedName::suffix).orElse("main");
+        context.append("package").whitespace().append(ns).newLine().newLine();
         // Options
         context.setExpectedKey(IMPORT);
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
-        context.append("import com.fasterxml.jackson.annotation.JsonIgnoreProperties;").newLine();
-        context.append("import java.io.Serializable;").newLine();
-        context.append("import com.google.common.base.MoreObjects;").newLine().newLine();
-        comments(node.getComments(), context);
-        context.append("public").whitespace();
-        context.setExpectedKey(ABSTRACT_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
-        context.append("class").whitespace().append(name.suffix()).whitespace();
-        context.setExpectedKey(EXTENDS_ATTR);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
-        context.append("implements Serializable").whitespace().openBrace().indent().newLine();
-        context.append("private static final long serialVersionUID = 1L;").newLine();
-
+        context.clearExpectedKey();
+        context.append("type").whitespace().append(name.suffix()).whitespace().append("struct").whitespace().openBrace().indent().newLine();
+        var fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
         context.dedent().newLine().closeBrace().newLine();
-        return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), null, node.getOptions());
+        return new Message(name, node.getComments(), fields, node.getMessages(), node.getEnumerations(), null, node.getOptions());
     }
 }

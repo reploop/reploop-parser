@@ -31,7 +31,8 @@ public class RenameResolver extends AstVisitor<Node, MessageContext> {
             if (value instanceof StringValue) {
                 String fqn = ((StringValue) value).getValue();
                 QualifiedName qualified = QualifiedName.of(fqn);
-                QualifiedName qn = rewriteQualifiedName(qualified, context);
+                // Not add extends entity to the dependencies right now.
+                QualifiedName qn = toUpperCamel(qualified);
                 context.setSuperClass(qn);
                 return new CommonPair(key, new StringValue(qn.toString()));
             }

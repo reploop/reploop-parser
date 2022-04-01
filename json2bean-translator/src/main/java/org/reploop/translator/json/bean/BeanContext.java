@@ -117,6 +117,11 @@ public class BeanContext {
         return this;
     }
 
+    public BeanContext backtick() {
+        impl.append("`");
+        return this;
+    }
+
     public BeanContext quote() {
         impl.append("\"");
         return this;

@@ -44,7 +44,7 @@ public class TypeSimplifier extends AstVisitor<Node, MessageContext> {
     public StructType visitStructType(StructType node, MessageContext context) {
         QualifiedName fqn = node.getName();
         if (shouldExplicitImport(fqn, context.getName())) {
-            context.addDependency(fqn);
+            addDependency(fqn, context);
         }
         return new StructType(fqn.suffix());
     }
@@ -60,23 +60,33 @@ public class TypeSimplifier extends AstVisitor<Node, MessageContext> {
         return new Field(node.getModifier(), node.getIndex(), node.getName(), ft, node.getValue(), node.getComments(), node.getOptions());
     }
 
+    protected void addDependency(QualifiedName fqn, MessageContext context) {
+        context.addDependency(fqn);
+    }
+
+    protected boolean supportExtends() {
+        return true;
+    }
+
     @Override
     public CommonPair visitCommonPair(CommonPair node, MessageContext context) {
         String key = node.getKey();
         Value value = node.getValue();
         if (EXTENDS_ATTR.equals(key)) {
             if (value instanceof StringValue) {
-                QualifiedName fqn = QualifiedName.of(((StringValue) value).getValue());
-                if (shouldExplicitImport(fqn, context.getName())) {
-                    context.addDependency(fqn);
+                if (supportExtends()) {
+                    QualifiedName fqn = QualifiedName.of(((StringValue) value).getValue());
+                    if (shouldExplicitImport(fqn, context.getName())) {
+                        addDependency(fqn, context);
+                    }
+                    return new CommonPair(EXTENDS_ATTR, new StringValue(fqn.suffix()));
                 }
-                return new CommonPair(EXTENDS_ATTR, new StringValue(fqn.suffix()));
             }
         } else if (IMPORT.equals(key)) {
             if (value instanceof StringValue) {
                 QualifiedName fqn = QualifiedName.of(((StringValue) value).getValue());
                 if (shouldExplicitImport(fqn, context.getName())) {
-                    context.addDependency(fqn);
+                    addDependency(fqn, context);
                 }
                 // We add all imports to deps, so ignore this option temperately.
                 return null;

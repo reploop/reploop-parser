@@ -72,7 +72,11 @@ public abstract class AbstractMessageGenerator implements MessageGenerator {
             .flatMap(Collection::stream)
             .filter(s -> !Strings.isNullOrEmpty(s))
             .toArray(String[]::new);
-        return Paths.get(target.name().toLowerCase(), array);
+        return Paths.get(srcDir(), array);
+    }
+
+    protected String srcDir() {
+        return target.name().toLowerCase();
     }
 
     @Override

@@ -11,7 +11,7 @@ import org.reploop.translator.json.support.Target;
 public class MessageProtoGenerator extends AbstractMessageGenerator {
     private final ProtoGenerator protoGenerator = new ProtoGenerator();
     private final MessageIndexSorter messageIndexSorter = new MessageIndexSorter();
-    private final MessagePathResolver pathResolver = new MessagePathResolver();
+    private final ProtoPathResolver pathResolver = new ProtoPathResolver();
 
     public MessageProtoGenerator() {
         super(Target.PROTO, CaseFormat.LOWER_UNDERSCORE);

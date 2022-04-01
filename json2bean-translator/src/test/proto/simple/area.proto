@@ -14,6 +14,6 @@ message Area {
     optional string area_py = 12;
     optional string area_show = 13;
     optional string area_timezone = 14;
-    repeated simple.Area child = 15;
-    
+    repeated Area child = 15;
+
 }

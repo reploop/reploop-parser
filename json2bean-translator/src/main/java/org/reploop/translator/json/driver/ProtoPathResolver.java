@@ -5,11 +5,13 @@ import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.StructType;
 import org.reploop.translator.json.bean.MessageContext;
 
 import static org.reploop.translator.json.support.Constants.IMPORT;
 
-public class MessagePathResolver extends AstVisitor<Node, MessageContext> {
+public class ProtoPathResolver extends AstVisitor<Node, MessageContext> {
 
     @Override
     public Node visitNode(Node node, MessageContext context) {
@@ -23,6 +25,16 @@ public class MessagePathResolver extends AstVisitor<Node, MessageContext> {
 
     private String format(String name, MessageContext context) {
         return CaseFormat.UPPER_CAMEL.to(context.getFormat(), name);
+    }
+
+    @Override
+    public StructType visitStructType(StructType structType, MessageContext context) {
+        return structType;
+    }
+
+    @Override
+    public FieldType visitFieldType(FieldType fieldType, MessageContext context) {
+        return (FieldType) process(fieldType, context);
     }
 
     @Override
