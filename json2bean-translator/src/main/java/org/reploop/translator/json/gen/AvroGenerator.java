@@ -17,6 +17,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.reploop.translator.json.support.Constants.*;
+import static org.reploop.translator.json.support.NameSupport.isObject;
 
 public class AvroGenerator extends AstVisitor<Node, BeanContext> {
     private static final Logger LOG = LoggerFactory.getLogger(AvroGenerator.class);
@@ -192,7 +193,12 @@ public class AvroGenerator extends AstVisitor<Node, BeanContext> {
 
     @Override
     public StructType visitStructType(StructType structType, BeanContext context) {
-        quoteString(structType.getName().toString(), context);
+        QualifiedName fqn = structType.getName();
+        if (isObject(fqn)) {
+            quoteString("string", context);
+        } else {
+            quoteString(structType.getName().toString(), context);
+        }
         return structType;
     }
 

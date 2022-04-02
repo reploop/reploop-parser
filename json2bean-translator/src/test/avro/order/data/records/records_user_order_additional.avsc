@@ -5,23 +5,23 @@
   "fields": [
     {
       "name": "driverOrderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "preDriverId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "settlementPrice",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "delay",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverPhone",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "createTime",
@@ -29,19 +29,19 @@
     },
     {
       "name": "orderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vehicleBrand",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "operator",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "actionSource",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "night",

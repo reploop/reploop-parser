@@ -5,27 +5,27 @@
   "fields": [
     {
       "name": "adultNum",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "beginSiteName",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "createUser",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "delFlag",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverIdNo",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverName",
@@ -33,47 +33,47 @@
     },
     {
       "name": "endSiteName",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "flightNumber",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "id",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "newDriverOrderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "orderRemark",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "remarks",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "scheduleDate",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "status",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "updateTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "updateUser",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vehicleColour",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vehicleId",
@@ -89,23 +89,23 @@
     },
     {
       "name": "driverOrderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "preDriverId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "settlementPrice",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "delay",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverPhone",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "createTime",
@@ -113,19 +113,19 @@
     },
     {
       "name": "orderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vehicleBrand",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "operator",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "actionSource",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "night",

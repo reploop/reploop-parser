@@ -10,7 +10,7 @@
       "name": "files",
       "type": {
         "type": "array",
-        "items": "Object",
+        "items": "string",
         "default": []
       }
     },

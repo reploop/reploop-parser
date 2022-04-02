@@ -1,16 +1,16 @@
 {
   "type": "record",
-  "name": "Detail",
+  "name": "Spu",
   "fields": [
     {
       "name": "reason",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "result",
       "type": {
         "type": "array",
-        "items": "detail.Result",
+        "items": "spu.Result",
         "default": []
       }
     },

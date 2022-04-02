@@ -25,7 +25,7 @@
     },
     {
       "name": "boardingTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "bookInAdvance",
@@ -33,19 +33,19 @@
     },
     {
       "name": "busticketReqList",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "cancelDuration",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "cancelType",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "childNum",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "contactName",
@@ -81,7 +81,7 @@
     },
     {
       "name": "driverName",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverOrderStatus",
@@ -89,7 +89,7 @@
     },
     {
       "name": "driverOrderUpdateTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "endGpsLat",
@@ -109,7 +109,7 @@
     },
     {
       "name": "evaluation",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "flightNumber",
@@ -125,7 +125,7 @@
     },
     {
       "name": "nextOrderNotifyType",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "no",
@@ -133,15 +133,15 @@
     },
     {
       "name": "notifyType",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "offTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "openId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "orderPeriodValid",
@@ -161,7 +161,7 @@
     },
     {
       "name": "points",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "remarks",
@@ -173,7 +173,7 @@
     },
     {
       "name": "score",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "status",
@@ -181,7 +181,7 @@
     },
     {
       "name": "ticketStatus",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "updateTime",
@@ -197,11 +197,11 @@
     },
     {
       "name": "userAct",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "userNotifyType",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "userOrderAdditional",
@@ -213,7 +213,7 @@
     },
     {
       "name": "vehiclePlate",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vplate",
@@ -229,23 +229,23 @@
     },
     {
       "name": "driverOrderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "preDriverId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "settlementPrice",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "delay",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverPhone",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "createTime",
@@ -253,19 +253,19 @@
     },
     {
       "name": "orderId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "vehicleBrand",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "operator",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "actionSource",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "night",

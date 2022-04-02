@@ -1,16 +1,16 @@
 {
   "type": "record",
-  "name": "Sku",
+  "name": "Marketing",
   "fields": [
     {
       "name": "reason",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "result",
       "type": {
         "type": "array",
-        "items": "sku.Result",
+        "items": "marketing.Result",
         "default": []
       }
     },

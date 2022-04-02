@@ -9,7 +9,7 @@
     },
     {
       "name": "createUser",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "delFlag",
@@ -17,7 +17,7 @@
     },
     {
       "name": "driverLicenseExpiredTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "driverLicenseNo",
@@ -25,15 +25,15 @@
     },
     {
       "name": "driverLicenseType",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "endTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "files",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "id",
@@ -49,7 +49,7 @@
     },
     {
       "name": "jobNo",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "name",
@@ -73,7 +73,7 @@
     },
     {
       "name": "remarks",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "sex",
@@ -81,7 +81,7 @@
     },
     {
       "name": "startTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "totalAmount",
@@ -93,11 +93,11 @@
     },
     {
       "name": "updateUser",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "userId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "workStatus",

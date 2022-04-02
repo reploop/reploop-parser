@@ -1,16 +1,16 @@
 {
   "type": "record",
-  "name": "Marketing",
+  "name": "Goods",
   "fields": [
     {
       "name": "reason",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "result",
       "type": {
         "type": "array",
-        "items": "marketing.Result",
+        "items": "goods.Result",
         "default": []
       }
     },

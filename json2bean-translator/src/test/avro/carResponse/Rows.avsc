@@ -45,7 +45,7 @@
     },
     {
       "name": "endTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "engineNo",
@@ -53,11 +53,11 @@
     },
     {
       "name": "files",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "fuelConsumption",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "id",
@@ -65,7 +65,7 @@
     },
     {
       "name": "kilometre",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "kilometreStr",
@@ -105,7 +105,7 @@
     },
     {
       "name": "startTime",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "trafficCarType",

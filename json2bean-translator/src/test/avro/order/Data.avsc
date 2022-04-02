@@ -5,7 +5,7 @@
   "fields": [
     {
       "name": "countId",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "current",
@@ -13,7 +13,7 @@
     },
     {
       "name": "entity",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "hitCount",
@@ -21,7 +21,7 @@
     },
     {
       "name": "maxLimit",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "optimizeCountSql",
@@ -31,7 +31,7 @@
       "name": "orders",
       "type": {
         "type": "array",
-        "items": "Object",
+        "items": "string",
         "default": []
       }
     },

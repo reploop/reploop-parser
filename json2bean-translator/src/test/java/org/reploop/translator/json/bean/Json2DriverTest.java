@@ -35,7 +35,7 @@ public class Json2DriverTest {
             .forEach(path -> {
                 try {
                     Json2Conf conf = new Json2Conf().enableRootGuess(true)
-                        .target(Target.PROTO)
+                        .target(Target.AVRO)
                         .outputDirectory(directory.toString());
                     Json2Driver app = new Json2Driver(conf);
                     if (!path.toString().contains("00.json")) {

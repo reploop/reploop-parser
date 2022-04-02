@@ -29,7 +29,7 @@
     },
     {
       "name": "longitude",
-      "type": "Object"
+      "type": "string"
     },
     {
       "name": "name",
