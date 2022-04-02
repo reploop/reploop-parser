@@ -4,7 +4,6 @@ import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.translator.json.bean.BeanContext;
 import org.reploop.translator.json.bean.MessageContext;
 import org.reploop.translator.json.gen.GoGenerator;
-import org.reploop.translator.json.support.Constants;
 import org.reploop.translator.json.support.Target;
 
 public class MessageGoGenerator extends AbstractMessageGenerator {
@@ -14,11 +13,6 @@ public class MessageGoGenerator extends AbstractMessageGenerator {
 
     public MessageGoGenerator() {
         super(Target.GO);
-    }
-
-    @Override
-    protected String srcDir() {
-        return super.srcDir() + Constants.SEP + "src";
     }
 
     @Override

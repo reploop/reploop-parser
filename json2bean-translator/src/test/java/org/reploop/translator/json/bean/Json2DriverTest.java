@@ -10,6 +10,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.EnumSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,7 +36,7 @@ public class Json2DriverTest {
             .forEach(path -> {
                 try {
                     Json2Conf conf = new Json2Conf().enableRootGuess(true)
-                        .target(Target.AVRO)
+                        .targets(EnumSet.allOf(Target.class))
                         .outputDirectory(directory.toString());
                     Json2Driver app = new Json2Driver(conf);
                     if (!path.toString().contains("00.json")) {

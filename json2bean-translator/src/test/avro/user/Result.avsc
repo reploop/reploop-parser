@@ -86,9 +86,9 @@
     {
       "name": "tag",
       "type": {
-        "type": "array",
-        "items": "string",
-        "default": []
+        "type": "map",
+        "values": "string",
+        "default": {}
       }
     },
     {

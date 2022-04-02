@@ -19,30 +19,6 @@
                 </includes>
             </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-maven-plugin</artifactId>
-                <version>1.11.0</version>
-                <executions>
-                    <execution>
-                        <id>schemas</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>schema</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirectory>${project.basedir}/src/test/avro</sourceDirectory>
-                            <outputDirectory>${project.basedir}/src/test/gen-java</outputDirectory>
-                            <imports>
-                                <import>${project.basedir}/src/test/avro/order/data/records/UserOrderAdditional.avsc
-                                </import>
-                            </imports>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
     </build>
     <dependencies>
         <dependency>

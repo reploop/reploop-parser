@@ -7,9 +7,9 @@ type Request struct {
     QueryString []NameValue `json:"queryString"`
     Url string `json:"url"`
     HeadersSize int32 `json:"headersSize"`
-    Cookies []NameValue `json:"cookies"`
-    BodySize int32 `json:"bodySize"`
-    HttpVersion string `json:"httpVersion"`
     Headers []NameValue `json:"headers"`
+    Cookies []NameValue `json:"cookies"`
+    HttpVersion string `json:"httpVersion"`
+    BodySize int32 `json:"bodySize"`
     
 }

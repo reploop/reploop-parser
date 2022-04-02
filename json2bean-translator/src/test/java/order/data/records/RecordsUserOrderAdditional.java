@@ -6,17 +6,49 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
+    private Object actionSource;
+    private String createTime;
+    private Object orderId;
+    private Object driverPhone;
     private Object operator;
     private Object vehicleBrand;
-    private Object actionSource;
-    private Object orderId;
     private Object preDriverId;
-    private Object settlementPrice;
     private Object delay;
     private Boolean night;
     private Object driverOrderId;
-    private Object driverPhone;
-    private String createTime;
+    private Object settlementPrice;
+    
+    public Object getActionSource() {
+        return actionSource;
+    }
+    
+    public void setActionSource(Object actionSource) {
+        this.actionSource = actionSource;
+    }
+    
+    public String getCreateTime() {
+        return createTime;
+    }
+    
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+    
+    public Object getOrderId() {
+        return orderId;
+    }
+    
+    public void setOrderId(Object orderId) {
+        this.orderId = orderId;
+    }
+    
+    public Object getDriverPhone() {
+        return driverPhone;
+    }
+    
+    public void setDriverPhone(Object driverPhone) {
+        this.driverPhone = driverPhone;
+    }
     
     public Object getOperator() {
         return operator;
@@ -34,36 +66,12 @@ public abstract class RecordsUserOrderAdditional implements Serializable {
         this.vehicleBrand = vehicleBrand;
     }
     
-    public Object getActionSource() {
-        return actionSource;
-    }
-    
-    public void setActionSource(Object actionSource) {
-        this.actionSource = actionSource;
-    }
-    
-    public Object getOrderId() {
-        return orderId;
-    }
-    
-    public void setOrderId(Object orderId) {
-        this.orderId = orderId;
-    }
-    
     public Object getPreDriverId() {
         return preDriverId;
     }
     
     public void setPreDriverId(Object preDriverId) {
         this.preDriverId = preDriverId;
-    }
-    
-    public Object getSettlementPrice() {
-        return settlementPrice;
-    }
-    
-    public void setSettlementPrice(Object settlementPrice) {
-        this.settlementPrice = settlementPrice;
     }
     
     public Object getDelay() {
@@ -90,36 +98,28 @@ public abstract class RecordsUserOrderAdditional implements Serializable {
         this.driverOrderId = driverOrderId;
     }
     
-    public Object getDriverPhone() {
-        return driverPhone;
+    public Object getSettlementPrice() {
+        return settlementPrice;
     }
     
-    public void setDriverPhone(Object driverPhone) {
-        this.driverPhone = driverPhone;
-    }
-    
-    public String getCreateTime() {
-        return createTime;
-    }
-    
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setSettlementPrice(Object settlementPrice) {
+        this.settlementPrice = settlementPrice;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+                .add("actionSource", getActionSource())
+                .add("createTime", getCreateTime())
+                .add("orderId", getOrderId())
+                .add("driverPhone", getDriverPhone())
                 .add("operator", getOperator())
                 .add("vehicleBrand", getVehicleBrand())
-                .add("actionSource", getActionSource())
-                .add("orderId", getOrderId())
                 .add("preDriverId", getPreDriverId())
-                .add("settlementPrice", getSettlementPrice())
                 .add("delay", getDelay())
                 .add("night", getNight())
                 .add("driverOrderId", getDriverOrderId())
-                .add("driverPhone", getDriverPhone())
-                .add("createTime", getCreateTime())
+                .add("settlementPrice", getSettlementPrice())
                 .toString();
     }
     

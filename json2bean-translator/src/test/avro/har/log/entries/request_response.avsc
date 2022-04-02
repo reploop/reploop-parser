@@ -4,22 +4,6 @@
   "namespace": "har.log.entries",
   "fields": [
     {
-      "name": "cookies",
-      "type": {
-        "type": "array",
-        "items": "har.log.entries.NameValue",
-        "default": []
-      }
-    },
-    {
-      "name": "bodySize",
-      "type": "int"
-    },
-    {
-      "name": "httpVersion",
-      "type": "string"
-    },
-    {
       "name": "headersSize",
       "type": "int"
     },
@@ -30,6 +14,22 @@
         "items": "har.log.entries.NameValue",
         "default": []
       }
+    },
+    {
+      "name": "cookies",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
+    },
+    {
+      "name": "httpVersion",
+      "type": "string"
+    },
+    {
+      "name": "bodySize",
+      "type": "int"
     }
   ]
 }
