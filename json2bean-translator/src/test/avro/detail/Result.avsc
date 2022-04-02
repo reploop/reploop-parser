@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "Result",
+  "namespace": "detail",
+  "fields": [
+    {
+      "name": "discount",
+      "type": "float"
+    },
+    {
+      "name": "full",
+      "type": "float"
+    },
+    {
+      "name": "marketingDetailId",
+      "type": "string"
+    },
+    {
+      "name": "marketingId",
+      "type": "int"
+    }
+  ]
+}

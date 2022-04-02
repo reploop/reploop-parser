@@ -1,9 +1,8 @@
 package order.data.records;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserOrderAdditional extends RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -200,28 +199,212 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("adultNum", adultNum)
-                .add("beginSiteName", beginSiteName)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("driverId", driverId)
-                .add("driverIdNo", driverIdNo)
-                .add("driverName", driverName)
-                .add("endSiteName", endSiteName)
-                .add("flightNumber", flightNumber)
-                .add("id", id)
-                .add("newDriverOrderId", newDriverOrderId)
-                .add("orderRemark", orderRemark)
-                .add("remarks", remarks)
-                .add("scheduleDate", scheduleDate)
-                .add("status", status)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("vehicleColour", vehicleColour)
-                .add("vehicleId", vehicleId)
-                .add("vehiclePlate", vehiclePlate)
-                .add("vehicleType", vehicleType)
+                .add("adultNum", getAdultNum())
+                .add("beginSiteName", getBeginSiteName())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("driverId", getDriverId())
+                .add("driverIdNo", getDriverIdNo())
+                .add("driverName", getDriverName())
+                .add("endSiteName", getEndSiteName())
+                .add("flightNumber", getFlightNumber())
+                .add("id", getId())
+                .add("newDriverOrderId", getNewDriverOrderId())
+                .add("orderRemark", getOrderRemark())
+                .add("remarks", getRemarks())
+                .add("scheduleDate", getScheduleDate())
+                .add("status", getStatus())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("vehicleColour", getVehicleColour())
+                .add("vehicleId", getVehicleId())
+                .add("vehiclePlate", getVehiclePlate())
+                .add("vehicleType", getVehicleType())
+                .add("actionSource", getActionSource())
+                .add("createTime", getCreateTime())
+                .add("orderId", getOrderId())
+                .add("driverPhone", getDriverPhone())
+                .add("operator", getOperator())
+                .add("vehicleBrand", getVehicleBrand())
+                .add("preDriverId", getPreDriverId())
+                .add("delay", getDelay())
+                .add("night", getNight())
+                .add("driverOrderId", getDriverOrderId())
+                .add("settlementPrice", getSettlementPrice())
                 .toString();
+    }
+    
+    public static Builder newUserOrderAdditionalBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final UserOrderAdditional data = new UserOrderAdditional();
+        
+        public Builder adultNum(Object adultNum) {
+            data.setAdultNum(adultNum);
+            return this;
+        }
+        
+        public Builder beginSiteName(Object beginSiteName) {
+            data.setBeginSiteName(beginSiteName);
+            return this;
+        }
+        
+        public Builder createUser(Object createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(Object delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder driverId(Object driverId) {
+            data.setDriverId(driverId);
+            return this;
+        }
+        
+        public Builder driverIdNo(Object driverIdNo) {
+            data.setDriverIdNo(driverIdNo);
+            return this;
+        }
+        
+        public Builder driverName(String driverName) {
+            data.setDriverName(driverName);
+            return this;
+        }
+        
+        public Builder endSiteName(Object endSiteName) {
+            data.setEndSiteName(endSiteName);
+            return this;
+        }
+        
+        public Builder flightNumber(Object flightNumber) {
+            data.setFlightNumber(flightNumber);
+            return this;
+        }
+        
+        public Builder id(Object id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder newDriverOrderId(Object newDriverOrderId) {
+            data.setNewDriverOrderId(newDriverOrderId);
+            return this;
+        }
+        
+        public Builder orderRemark(Object orderRemark) {
+            data.setOrderRemark(orderRemark);
+            return this;
+        }
+        
+        public Builder remarks(Object remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder scheduleDate(Object scheduleDate) {
+            data.setScheduleDate(scheduleDate);
+            return this;
+        }
+        
+        public Builder status(Object status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder updateTime(Object updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(Object updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder vehicleColour(Object vehicleColour) {
+            data.setVehicleColour(vehicleColour);
+            return this;
+        }
+        
+        public Builder vehicleId(Integer vehicleId) {
+            data.setVehicleId(vehicleId);
+            return this;
+        }
+        
+        public Builder vehiclePlate(String vehiclePlate) {
+            data.setVehiclePlate(vehiclePlate);
+            return this;
+        }
+        
+        public Builder vehicleType(String vehicleType) {
+            data.setVehicleType(vehicleType);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public UserOrderAdditional build() {
+            return data;
+        }
+        
     }
     
 }

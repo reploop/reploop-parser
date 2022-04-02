@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "M",
+  "namespace": "message.messages.mv.order.m.pickPoint",
+  "fields": [
+    {
+      "name": "airport",
+      "type": "message.messages.mv.order.m.pickPoint.m.Airport"
+    },
+    {
+      "name": "name",
+      "type": "message.messages.mv.order.m.pickPoint.m.Name"
+    },
+    {
+      "name": "terminal",
+      "type": "message.messages.mv.order.m.pickPoint.m.Terminal"
+    }
+  ]
+}

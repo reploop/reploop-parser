@@ -1,7 +1,11 @@
 package org.reploop.parser.protobuf.tree;
 
+import org.reploop.parser.protobuf.AstVisitor;
+
+import java.util.Objects;
+
 public class DoubleValue extends Value {
-    double val;
+    private final double val;
 
     public DoubleValue(double val) {
         this.val = val;
@@ -13,17 +17,25 @@ public class DoubleValue extends Value {
     }
 
     @Override
-    public int hashCode() {
-        return 0;
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitDoubleValue(this, context);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DoubleValue)) return false;
+        DoubleValue that = (DoubleValue) o;
+        return Double.compare(that.val, val) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
     }
 
     @Override
     public String toString() {
-        return null;
+        return String.valueOf(val);
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "List",
+  "namespace": "req1.room",
+  "fields": [
+    {
+      "name": "age",
+      "type": "int"
+    }
+  ]
+}

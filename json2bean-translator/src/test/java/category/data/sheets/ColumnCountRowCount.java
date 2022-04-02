@@ -1,9 +1,8 @@
 package category.data.sheets;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ColumnCountRowCount implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,8 +28,8 @@ public abstract class ColumnCountRowCount implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("columnCount", columnCount)
-                .add("rowCount", rowCount)
+                .add("columnCount", getColumnCount())
+                .add("rowCount", getRowCount())
                 .toString();
     }
     

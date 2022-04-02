@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Price",
+  "namespace": "req1.plan_prefer",
+  "fields": [
+    {
+      "name": "lower",
+      "type": "float"
+    },
+    {
+      "name": "upper",
+      "type": "float"
+    }
+  ]
+}

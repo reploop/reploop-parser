@@ -1,11 +1,10 @@
 package message.messages.mv.states.l;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.states.l.m.Time;
+import message.messages.mv.states.l.m.Status;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.states.l.m.Time; 
-import message.messages.mv.states.l.m.Status; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -31,9 +30,32 @@ public class M implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("status", status)
-                .add("time", time)
+                .add("status", getStatus())
+                .add("time", getTime())
                 .toString();
+    }
+    
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder status(Status status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder time(Time time) {
+            data.setTime(time);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
     }
     
 }

@@ -1,5 +1,7 @@
 package org.reploop.parser.protobuf.tree;
 
+import org.reploop.parser.protobuf.AstVisitor;
+
 import java.util.Objects;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Objects;
  * @since 2016-10-14 00
  */
 public class FloatValue extends Value {
-    float value;
+    private final float value;
 
     public FloatValue(float value) {
         this.value = value;
@@ -17,6 +19,11 @@ public class FloatValue extends Value {
 
     public float getValue() {
         return value;
+    }
+
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitFloatValue(this, context);
     }
 
     @Override

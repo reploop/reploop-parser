@@ -1,11 +1,11 @@
 package har.log.entries;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import har.log.entries.response.Content;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import har.log.entries.response.Content; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Response extends RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,11 +50,74 @@ public class Response extends RequestResponse implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("content", content)
-                .add("redirectUrL", redirectUrL)
-                .add("status", status)
-                .add("statusText", statusText)
+                .add("content", getContent())
+                .add("redirectUrL", getRedirectUrL())
+                .add("status", getStatus())
+                .add("statusText", getStatusText())
+                .add("headersSize", getHeadersSize())
+                .add("headers", getHeaders())
+                .add("cookies", getCookies())
+                .add("httpVersion", getHttpVersion())
+                .add("bodySize", getBodySize())
                 .toString();
+    }
+    
+    public static Builder newResponseBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Response data = new Response();
+        
+        public Builder content(Content content) {
+            data.setContent(content);
+            return this;
+        }
+        
+        public Builder redirectUrL(String redirectUrL) {
+            data.setRedirectUrL(redirectUrL);
+            return this;
+        }
+        
+        public Builder status(Integer status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder statusText(String statusText) {
+            data.setStatusText(statusText);
+            return this;
+        }
+        
+        public Builder headersSize(Integer headersSize) {
+            data.setHeadersSize(headersSize);
+            return this;
+        }
+        
+        public Builder headers(List<NameValue> headers) {
+            data.setHeaders(headers);
+            return this;
+        }
+        
+        public Builder cookies(List<NameValue> cookies) {
+            data.setCookies(cookies);
+            return this;
+        }
+        
+        public Builder httpVersion(String httpVersion) {
+            data.setHttpVersion(httpVersion);
+            return this;
+        }
+        
+        public Builder bodySize(Integer bodySize) {
+            data.setBodySize(bodySize);
+            return this;
+        }
+        
+        public Response build() {
+            return data;
+        }
+        
     }
     
 }

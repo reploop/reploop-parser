@@ -1,12 +1,11 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import req1.CityList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import req1.Room;
 import java.io.Serializable;
+import req1.PlanPrefer;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import req1.CityList; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import req1.Room; 
-import java.util.List; 
-import req1.PlanPrefer; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Req1 implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -43,10 +42,38 @@ public class Req1 implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cityList", cityList)
-                .add("planPrefer", planPrefer)
-                .add("room", room)
+                .add("cityList", getCityList())
+                .add("planPrefer", getPlanPrefer())
+                .add("room", getRoom())
                 .toString();
+    }
+    
+    public static Builder newReq1Builder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Req1 data = new Req1();
+        
+        public Builder cityList(List<CityList> cityList) {
+            data.setCityList(cityList);
+            return this;
+        }
+        
+        public Builder planPrefer(PlanPrefer planPrefer) {
+            data.setPlanPrefer(planPrefer);
+            return this;
+        }
+        
+        public Builder room(List<Room> room) {
+            data.setRoom(room);
+            return this;
+        }
+        
+        public Req1 build() {
+            return data;
+        }
+        
     }
     
 }

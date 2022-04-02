@@ -1,9 +1,8 @@
 package body;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CanShippedOrderParcelList implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,9 +28,32 @@ public class CanShippedOrderParcelList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("parcelId", parcelId)
-                .add("parcelName", parcelName)
+                .add("parcelId", getParcelId())
+                .add("parcelName", getParcelName())
                 .toString();
+    }
+    
+    public static Builder newCanShippedOrderParcelListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CanShippedOrderParcelList data = new CanShippedOrderParcelList();
+        
+        public Builder parcelId(String parcelId) {
+            data.setParcelId(parcelId);
+            return this;
+        }
+        
+        public Builder parcelName(String parcelName) {
+            data.setParcelName(parcelName);
+            return this;
+        }
+        
+        public CanShippedOrderParcelList build() {
+            return data;
+        }
+        
     }
     
 }

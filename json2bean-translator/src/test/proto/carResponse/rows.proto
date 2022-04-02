@@ -1,0 +1,42 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "carResponse";
+package carResponse;
+message Rows {
+    optional string brand = 1;
+    optional string businessNature = 2;
+    optional string carType = 3;
+    optional string colour = 4;
+    optional string createTime = 5;
+    optional string createUser = 6;
+    optional string delFlag = 7;
+    optional int64 driverUberId = 8;
+    optional string driverUberName = 9;
+    optional string driverUberPhone = 10;
+    optional string endTime = 11;
+    optional string engineNo = 12;
+    optional string files = 13;
+    optional string fuelConsumption = 14;
+    optional int32 id = 15;
+    optional string kilometre = 16;
+    optional string kilometreStr = 17;
+    optional string obdStatus = 18;
+    optional string officeId = 19;
+    optional string plate = 20;
+    optional string plateColour = 21;
+    optional string remarks = 22;
+    optional int32 seating = 23;
+    optional float settlementPrice = 24;
+    optional string settlementPriceStr = 25;
+    optional string startTime = 26;
+    optional string trafficCarType = 27;
+    optional string type = 28;
+    optional string updateTime = 29;
+    optional string updateUser = 30;
+    optional string vehicleDesc = 31;
+    optional string vehicleNature = 32;
+    optional string vehicleNo = 33;
+    optional string vehicleStatus = 34;
+    optional string vin = 35;
+    
+}

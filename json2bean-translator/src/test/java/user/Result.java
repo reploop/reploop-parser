@@ -1,12 +1,11 @@
 package user;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -241,30 +240,158 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("areaId", areaId)
-                .add("areaName", areaName)
-                .add("gdEdu", gdEdu)
-                .add("gdJob", gdJob)
-                .add("gdMajor", gdMajor)
-                .add("gdSchool", gdSchool)
-                .add("guidePrice", guidePrice)
-                .add("price", price)
-                .add("remark", remark)
-                .add("serFace", serFace)
-                .add("serHot", serHot)
-                .add("serRmkc", serRmkc)
-                .add("serSort", serSort)
-                .add("serStarC", serStarC)
-                .add("serStatus", serStatus)
-                .add("serTitle", serTitle)
-                .add("serUTime", serUTime)
-                .add("serviceFace", serviceFace)
-                .add("tag", tag)
-                .add("userAvatar", userAvatar)
-                .add("userGender", userGender)
-                .add("userId", userId)
-                .add("userName", userName)
+                .add("areaId", getAreaId())
+                .add("areaName", getAreaName())
+                .add("gdEdu", getGdEdu())
+                .add("gdJob", getGdJob())
+                .add("gdMajor", getGdMajor())
+                .add("gdSchool", getGdSchool())
+                .add("guidePrice", getGuidePrice())
+                .add("price", getPrice())
+                .add("remark", getRemark())
+                .add("serFace", getSerFace())
+                .add("serHot", getSerHot())
+                .add("serRmkc", getSerRmkc())
+                .add("serSort", getSerSort())
+                .add("serStarC", getSerStarC())
+                .add("serStatus", getSerStatus())
+                .add("serTitle", getSerTitle())
+                .add("serUTime", getSerUTime())
+                .add("serviceFace", getServiceFace())
+                .add("tag", getTag())
+                .add("userAvatar", getUserAvatar())
+                .add("userGender", getUserGender())
+                .add("userId", getUserId())
+                .add("userName", getUserName())
                 .toString();
+    }
+    
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder areaId(String areaId) {
+            data.setAreaId(areaId);
+            return this;
+        }
+        
+        public Builder areaName(String areaName) {
+            data.setAreaName(areaName);
+            return this;
+        }
+        
+        public Builder gdEdu(String gdEdu) {
+            data.setGdEdu(gdEdu);
+            return this;
+        }
+        
+        public Builder gdJob(String gdJob) {
+            data.setGdJob(gdJob);
+            return this;
+        }
+        
+        public Builder gdMajor(String gdMajor) {
+            data.setGdMajor(gdMajor);
+            return this;
+        }
+        
+        public Builder gdSchool(String gdSchool) {
+            data.setGdSchool(gdSchool);
+            return this;
+        }
+        
+        public Builder guidePrice(Map<Integer, Integer> guidePrice) {
+            data.setGuidePrice(guidePrice);
+            return this;
+        }
+        
+        public Builder price(Integer price) {
+            data.setPrice(price);
+            return this;
+        }
+        
+        public Builder remark(List<String> remark) {
+            data.setRemark(remark);
+            return this;
+        }
+        
+        public Builder serFace(String serFace) {
+            data.setSerFace(serFace);
+            return this;
+        }
+        
+        public Builder serHot(String serHot) {
+            data.setSerHot(serHot);
+            return this;
+        }
+        
+        public Builder serRmkc(String serRmkc) {
+            data.setSerRmkc(serRmkc);
+            return this;
+        }
+        
+        public Builder serSort(String serSort) {
+            data.setSerSort(serSort);
+            return this;
+        }
+        
+        public Builder serStarC(String serStarC) {
+            data.setSerStarC(serStarC);
+            return this;
+        }
+        
+        public Builder serStatus(String serStatus) {
+            data.setSerStatus(serStatus);
+            return this;
+        }
+        
+        public Builder serTitle(String serTitle) {
+            data.setSerTitle(serTitle);
+            return this;
+        }
+        
+        public Builder serUTime(String serUTime) {
+            data.setSerUTime(serUTime);
+            return this;
+        }
+        
+        public Builder serviceFace(String serviceFace) {
+            data.setServiceFace(serviceFace);
+            return this;
+        }
+        
+        public Builder tag(Map<Integer, String> tag) {
+            data.setTag(tag);
+            return this;
+        }
+        
+        public Builder userAvatar(String userAvatar) {
+            data.setUserAvatar(userAvatar);
+            return this;
+        }
+        
+        public Builder userGender(String userGender) {
+            data.setUserGender(userGender);
+            return this;
+        }
+        
+        public Builder userId(String userId) {
+            data.setUserId(userId);
+            return this;
+        }
+        
+        public Builder userName(String userName) {
+            data.setUserName(userName);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
     }
     
 }

@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+message AddCar {
+    optional string brand = 1;
+    optional string colour = 2;
+    optional int64 driverUberId = 3;
+    repeated string files = 4;
+    optional string id = 5;
+    optional string officeId = 6;
+    optional string plate = 7;
+    optional string plateColour = 8;
+    optional string remarks = 9;
+    optional int32 seating = 10;
+    optional int32 settlementPrice = 11;
+    optional string trafficCarType = 12;
+    optional string type = 13;
+    optional string vehicleDesc = 14;
+    optional string vehicleNature = 15;
+    
+}

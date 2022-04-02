@@ -49,18 +49,18 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
 
     private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
         return Optional.ofNullable(context)
-            .map(this::visit)
-            .map(clazz::cast);
+                .map(this::visit)
+                .map(clazz::cast);
     }
 
 
     private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
         if (null != contexts) {
             return contexts.stream()
-                .map(this::visit)
-                .filter(Objects::nonNull)
-                .map(clazz::cast)
-                .collect(Collectors.toList());
+                    .map(this::visit)
+                    .filter(Objects::nonNull)
+                    .map(clazz::cast)
+                    .collect(Collectors.toList());
         }
         return Collections.emptyList();
     }
@@ -162,12 +162,12 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
     @Override
     public Field visitMapField(Protobuf3Parser.MapFieldContext ctx) {
         FieldType keyType = visit(ctx.keyType(), FieldType.class);
-        FieldType valueType = visit(ctx.type_(), FieldType.class);
+        FieldType valueType = visit(ctx.fieldType(), FieldType.class);
         MapType type = new MapType(keyType, valueType);
         IntValue iv = visitFieldNumber(ctx.fieldNumber());
         StringValue sv = visitMapName(ctx.mapName());
 
-        return new Field(FieldModifier.optional, iv.getValue(), sv.getValue(), type, Optional.empty(), null);
+        return new Field(FieldModifier.optional, iv.getValue(), sv.getValue(), type, null, null);
     }
 
     @Override
@@ -200,7 +200,7 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
             // empty statement
             x.emptyStatement();
         }
-        return new Message(qn, comments, fields, messages, enumerations, options);
+        return new Message(qn, comments, fields, messages, enumerations, services, options);
     }
 
     @Override
@@ -245,19 +245,59 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
     }
 
     @Override
-    public Service visitServiceDef(Protobuf3Parser.ServiceDefContext ctx) {
-        return null;
+    public Node visitFullIdent(Protobuf3Parser.FullIdentContext ctx) {
+        return super.visitFullIdent(ctx);
     }
 
     @Override
+    public Node visitOptionName(Protobuf3Parser.OptionNameContext ctx) {
+        return super.visitOptionName(ctx);
+    }
+
+    @Override
+    public StringValue visitServiceName(Protobuf3Parser.ServiceNameContext ctx) {
+        return visitIdent(ctx.ident());
+    }
+
+    @Override
+    public Service visitServiceDef(Protobuf3Parser.ServiceDefContext ctx) {
+        ctx.SERVICE().getText();
+        StringValue serviceName = visitServiceName(ctx.serviceName());
+        ctx.serviceElement();
+        return null;
+    }
+
+
+    @Override
     public ProtoProgram visitProto(Protobuf3Parser.ProtoContext ctx) {
-        comments(ctx.getStart());
+        List<String> comments = comments(ctx.getStart());
         visit(ctx.syntax(), SyntaxPair.class);
         visit(ctx.importStatement(), Option.class);
-        visit(ctx.packageStatement(), Header.class);
-        visit(ctx.optionStatement(), Option.class);
-        visit(ctx.topLevelDef(), Message.class);
-        visit(ctx.emptyStatement(), Enumeration.class);
-        return null;
+        List<Header> headers = visit(ctx.packageStatement(), Header.class);
+        List<Option> options = visit(ctx.optionStatement(), Option.class);
+        List<Enumeration> enumerations = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
+        List<Service> services = new ArrayList<>();
+        var definitions = ctx.topLevelDef();
+        for (var definition : definitions) {
+            Protobuf3Parser.EnumDefContext edc;
+            if (null != (edc = definition.enumDef())) {
+                enumerations.add(visit(edc, Enumeration.class));
+            }
+            Protobuf3Parser.MessageDefContext mdc;
+            if (null != (mdc = definition.messageDef())) {
+                messages.add(visit(mdc, Message.class));
+            }
+            Protobuf3Parser.ServiceDefContext sdc;
+            if (null != (sdc = definition.serviceDef())) {
+                services.add(visit(sdc, Service.class));
+            }
+        }
+        // Empty statements, just ignore read and ignore them.
+        var statements = ctx.emptyStatement();
+        for (var statement : statements) {
+            visitEmptyStatement(statement);
+        }
+        return new ProtoProgram(comments, options, headers, messages, enumerations, services);
     }
 }

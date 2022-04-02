@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m";
+package message.messages.mv.order.m;
+import "message/messages/mv/order/m/states/l.proto";
+message States {
+    repeated message.messages.mv.order.m.states.L l = 1;
+    
+}

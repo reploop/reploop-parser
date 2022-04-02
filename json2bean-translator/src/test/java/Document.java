@@ -1,10 +1,9 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import document.BoilingPoint; 
-import document.Density; 
+import document.BoilingPoint;
+import document.Density;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Document implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -58,12 +57,50 @@ public class Document implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("boilingPoint", boilingPoint)
-                .add("dangerous", dangerous)
-                .add("density", density)
-                .add("name", name)
-                .add("type", type)
+                .add("boilingPoint", getBoilingPoint())
+                .add("dangerous", getDangerous())
+                .add("density", getDensity())
+                .add("name", getName())
+                .add("type", getType())
                 .toString();
+    }
+    
+    public static Builder newDocumentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Document data = new Document();
+        
+        public Builder boilingPoint(BoilingPoint boilingPoint) {
+            data.setBoilingPoint(boilingPoint);
+            return this;
+        }
+        
+        public Builder dangerous(Boolean dangerous) {
+            data.setDangerous(dangerous);
+            return this;
+        }
+        
+        public Builder density(Density density) {
+            data.setDensity(density);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder type(String type) {
+            data.setType(type);
+            return this;
+        }
+        
+        public Document build() {
+            return data;
+        }
+        
     }
     
 }

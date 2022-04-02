@@ -1,5 +1,6 @@
 package org.reploop.parser.protobuf;
 
+import com.google.common.collect.ImmutableList;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
@@ -44,9 +45,10 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
     }
 
     @Override
-    public Node visitExtend(Protobuf2Parser.ExtendContext ctx) {
-        // TODO
-        return super.visitExtend(ctx);
+    public Extend visitExtend(Protobuf2Parser.ExtendContext ctx) {
+        String name = ctx.ID().getText();
+        List<Field> fields = visit(ctx.field(), Field.class);
+        return new Extend(QualifiedName.of(name), fields);
     }
 
     private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
@@ -273,14 +275,15 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
     public Field visitField(Protobuf2Parser.FieldContext ctx) {
         TerminalNode node = ctx.FieldModifier();
         FieldModifier modifier = FieldModifier.valueOf(node.getText());
-        Optional<Options> options = visitIfPresent(ctx.multiOptions(), Options.class);
+        Optional<Options> oop = visitIfPresent(ctx.multiOptions(), Options.class);
+        var obs = ImmutableList.<Option>builder();
         Optional<Value> value = Optional.empty();
-        if (options.isPresent()) {
-            List<Pair> pairs = options.get().getPairs();
+        if (oop.isPresent()) {
+            List<Pair> pairs = oop.get().getPairs();
             for (Pair pair : pairs) {
+                obs.add(pair);
                 if (pair instanceof DefaultPair) {
                     value = Optional.ofNullable(pair.getValue());
-                    break;
                 }
             }
         }
@@ -290,7 +293,8 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
             name.getValue(),
             visitFieldType(ctx.fieldType()),
             value,
-            comments(ctx.getStart()));
+            comments(ctx.getStart()),
+            obs.build());
     }
 
     @Override

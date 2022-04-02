@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "Data",
+  "namespace": "department",
+  "fields": [
+    {
+      "name": "has_more",
+      "type": "boolean"
+    },
+    {
+      "name": "items",
+      "type": {
+        "type": "array",
+        "items": "department.data.Items",
+        "default": []
+      }
+    }
+  ]
+}

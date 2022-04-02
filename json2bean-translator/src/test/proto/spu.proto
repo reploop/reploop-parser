@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "spu/result.proto";
+message Spu {
+    optional string reason = 1;
+    repeated spu.Result result = 2;
+    optional string resultCode = 3;
+    optional bool success = 4;
+    
+}

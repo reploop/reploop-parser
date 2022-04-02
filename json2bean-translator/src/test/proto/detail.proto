@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "detail/result.proto";
+message Detail {
+    optional string reason = 1;
+    repeated detail.Result result = 2;
+    optional string resultCode = 3;
+    optional bool success = 4;
+    
+}

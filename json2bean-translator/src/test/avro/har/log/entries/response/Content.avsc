@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "Content",
+  "namespace": "har.log.entries.response",
+  "fields": [
+    {
+      "name": "size",
+      "type": "int"
+    },
+    {
+      "name": "text",
+      "type": "string"
+    },
+    {
+      "name": "mimeType",
+      "type": "string"
+    }
+  ]
+}

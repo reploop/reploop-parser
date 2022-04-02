@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.pickPoint.m";
+package message.messages.mv.order.m.pickPoint.m;
+message Terminal {
+    optional string s = 1;
+    
+}

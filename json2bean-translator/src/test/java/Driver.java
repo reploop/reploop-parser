@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import driver.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import driver.Data; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Driver implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,11 +49,44 @@ public class Driver implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("data", data)
-                .add("errMsg", errMsg)
-                .add("errNo", errNo)
-                .add("traceId", traceId)
+                .add("data", getData())
+                .add("errMsg", getErrMsg())
+                .add("errNo", getErrNo())
+                .add("traceId", getTraceId())
                 .toString();
+    }
+    
+    public static Builder newDriverBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Driver data = new Driver();
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder errMsg(String errMsg) {
+            data.setErrMsg(errMsg);
+            return this;
+        }
+        
+        public Builder errNo(Integer errNo) {
+            data.setErrNo(errNo);
+            return this;
+        }
+        
+        public Builder traceId(String traceId) {
+            data.setTraceId(traceId);
+            return this;
+        }
+        
+        public Driver build() {
+            return data;
+        }
+        
     }
     
 }

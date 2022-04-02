@@ -1,12 +1,11 @@
 package message.messages.mv.order.m.picker;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.picker.m.Phone;
+import message.messages.mv.order.m.picker.m.Identity;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.picker.m.Phone; 
-import message.messages.mv.order.m.picker.m.Identity; 
-import message.messages.mv.order.m.picker.m.RealName; 
+import message.messages.mv.order.m.picker.m.RealName;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,10 +40,38 @@ public class M implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("identity", identity)
-                .add("phone", phone)
-                .add("realName", realName)
+                .add("identity", getIdentity())
+                .add("phone", getPhone())
+                .add("realName", getRealName())
                 .toString();
+    }
+    
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder identity(Identity identity) {
+            data.setIdentity(identity);
+            return this;
+        }
+        
+        public Builder phone(Phone phone) {
+            data.setPhone(phone);
+            return this;
+        }
+        
+        public Builder realName(RealName realName) {
+            data.setRealName(realName);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
     }
     
 }

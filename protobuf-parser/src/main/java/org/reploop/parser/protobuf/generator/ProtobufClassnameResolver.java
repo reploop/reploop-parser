@@ -2,15 +2,14 @@ package org.reploop.parser.protobuf.generator;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
-
-
 import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.parser.protobuf.type.*;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.StructType;
 
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
@@ -41,8 +40,8 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
     private Optional<QualifiedName> search(Set<QualifiedName> dependencies, QualifiedName qn) {
         if (null != dependencies) {
             return dependencies.stream()
-                .filter(d -> d.endsWith(qn))
-                .findFirst();
+                    .filter(d -> d.endsWith(qn))
+                    .findFirst();
         }
         return Optional.empty();
     }
@@ -55,9 +54,9 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
         ProtoProgram program = context.entity(file);
         List<Header> headers = program.getHeaders();
         Optional<QualifiedName> oqn = headers.stream()
-            .filter(header -> header instanceof Namespace)
-            .map(header -> QualifiedName.of(((Namespace) header).getName()))
-            .findFirst();
+                .filter(header -> header instanceof Namespace)
+                .map(header -> QualifiedName.of(((Namespace) header).getName()))
+                .findFirst();
         if (oqn.isPresent()) {
             QualifiedName n = oqn.get();
             String classname = outerClassName(file, context);
@@ -149,7 +148,8 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
         if (null != fields) {
             fields.forEach(field -> fb.add(visitField(field, context)));
         }
-        return new Message(node.getName(), node.getComments(), fb.build(), mb.build(), node.getEnumerations(), node.getOptions());
+        List<Service> services = visitIfPresent(node.getServices(), service -> visitService(service, context));
+        return new Message(node.getName(), node.getComments(), fb.build(), mb.build(), node.getEnumerations(), services, node.getOptions());
     }
 
     @Override
@@ -167,7 +167,8 @@ public class ProtobufClassnameResolver extends AstVisitor<Node, Classpath<ProtoP
         if (null != enumerations) {
             enumerations.forEach(enumeration -> eb.add(visitEnumeration(enumeration, context)));
         }
-        return new Message(name, node.getComments(), node.getFields(), mb.build(), eb.build(), node.getOptions());
+        List<Service> services = visitIfPresent(node.getServices(), service -> visitService(service, context));
+        return new Message(name, node.getComments(), node.getFields(), mb.build(), eb.build(), services, node.getOptions());
     }
 
     @Override

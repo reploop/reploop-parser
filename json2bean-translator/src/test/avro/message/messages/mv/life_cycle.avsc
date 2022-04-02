@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "LifeCycle",
+  "namespace": "message.messages.mv",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Data",
+  "namespace": "res1",
+  "fields": [
+    {
+      "name": "list",
+      "type": {
+        "type": "array",
+        "items": "res1.data.List",
+        "default": []
+      }
+    }
+  ]
+}

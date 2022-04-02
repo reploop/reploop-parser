@@ -1,10 +1,10 @@
 package org.reploop.parser.protobuf.generator;
 
 
+import org.junit.Before;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.protobuf.ProtobufParser;
 import org.reploop.parser.protobuf.tree.ProtoProgram;
-import org.testng.annotations.BeforeMethod;
 
 import java.net.URL;
 import java.nio.file.Path;
@@ -21,7 +21,7 @@ public class ProtobufClasspathResolverTest {
     private ProtobufParser parser;
     private ProtobufClasspathResolver resolver;
 
-    @BeforeMethod
+    @Before
     public void setUp() throws Exception {
         parser = new ProtobufParser();
         resolver = new ProtobufClasspathResolver(parser);

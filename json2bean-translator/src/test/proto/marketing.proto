@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "marketing/result.proto";
+message Marketing {
+    optional string reason = 1;
+    repeated marketing.Result result = 2;
+    optional string resultCode = 3;
+    optional bool success = 4;
+    
+}

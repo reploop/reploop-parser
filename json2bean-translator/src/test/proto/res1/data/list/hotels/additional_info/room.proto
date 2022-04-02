@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "res1.data.list.hotels.additional_info";
+package res1.data.list.hotels.additional_info;
+import "res1/data/list/hotels/additional_info/room/list.proto";
+message Room {
+    repeated res1.data.list.hotels.additional_info.room.List list = 1;
+    
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.items.m.m";
+package message.messages.mv.order.m.items.m.m;
+message Name {
+    optional string s = 1;
+    
+}

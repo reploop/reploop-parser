@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "category.data";
+package category.data;
+import "category/data/sheets/merges.proto";
+message Sheets {
+    optional int32 columnCount = 1;
+    optional int32 frozenColCount = 2;
+    optional int32 frozenRowCount = 3;
+    optional int32 index = 4;
+    repeated category.data.sheets.Merges merges = 5;
+    optional int32 rowCount = 6;
+    optional string sheetId = 7;
+    optional string title = 8;
+    
+}

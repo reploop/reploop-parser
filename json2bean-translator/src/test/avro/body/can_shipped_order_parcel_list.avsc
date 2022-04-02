@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "CanShippedOrderParcelList",
+  "namespace": "body",
+  "fields": [
+    {
+      "name": "parcelId",
+      "type": "string"
+    },
+    {
+      "name": "parcelName",
+      "type": "string"
+    }
+  ]
+}

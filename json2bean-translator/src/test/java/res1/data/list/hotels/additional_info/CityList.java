@@ -1,10 +1,9 @@
 package res1.data.list.hotels.additional_info;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CityList implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -40,10 +39,38 @@ public class CityList implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("checkIn", checkIn)
-                .add("checkout", checkout)
-                .add("id", id)
+                .add("checkIn", getCheckIn())
+                .add("checkout", getCheckout())
+                .add("id", getId())
                 .toString();
+    }
+    
+    public static Builder newCityListBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CityList data = new CityList();
+        
+        public Builder checkIn(String checkIn) {
+            data.setCheckIn(checkIn);
+            return this;
+        }
+        
+        public Builder checkout(String checkout) {
+            data.setCheckout(checkout);
+            return this;
+        }
+        
+        public Builder id(String id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public CityList build() {
+            return data;
+        }
+        
     }
     
 }

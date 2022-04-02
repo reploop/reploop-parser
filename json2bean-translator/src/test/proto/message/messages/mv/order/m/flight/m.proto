@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.flight";
+package message.messages.mv.order.m.flight;
+import "message/messages/mv/order/m/flight/m/departure_time.proto";
+import "message/messages/mv/order/m/flight/m/no.proto";
+import "message/messages/mv/order/m/flight/m/terminal.proto";
+import "message/messages/mv/order/m/flight/m/airport.proto";
+message M {
+    optional message.messages.mv.order.m.flight.m.Airport airport = 1;
+    optional message.messages.mv.order.m.flight.m.DepartureTime departureTime = 2;
+    optional message.messages.mv.order.m.flight.m.No no = 3;
+    optional message.messages.mv.order.m.flight.m.Terminal terminal = 4;
+    
+}

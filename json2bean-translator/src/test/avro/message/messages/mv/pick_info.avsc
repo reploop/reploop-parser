@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "PickInfo",
+  "namespace": "message.messages.mv",
+  "fields": [
+    
+  ]
+}

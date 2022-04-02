@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import text.Area;
+import java.util.Map;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import text.Area; 
-import java.util.Map; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Text implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -65,13 +64,56 @@ public class Text implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("area", area)
-                .add("city", city)
-                .add("code", code)
-                .add("date", date)
-                .add("error", error)
-                .add("result", result)
+                .add("area", getArea())
+                .add("city", getCity())
+                .add("code", getCode())
+                .add("date", getDate())
+                .add("error", getError())
+                .add("result", getResult())
                 .toString();
+    }
+    
+    public static Builder newTextBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Text data = new Text();
+        
+        public Builder area(Map<String, Area> area) {
+            data.setArea(area);
+            return this;
+        }
+        
+        public Builder city(Map<String, String> city) {
+            data.setCity(city);
+            return this;
+        }
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder date(String date) {
+            data.setDate(date);
+            return this;
+        }
+        
+        public Builder error(String error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Builder result(String result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Text build() {
+            return data;
+        }
+        
     }
     
 }

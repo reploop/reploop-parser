@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "RealName",
+  "namespace": "message.messages.mv.order.m.picker.m",
+  "fields": [
+    {
+      "name": "s",
+      "type": "string"
+    }
+  ]
+}

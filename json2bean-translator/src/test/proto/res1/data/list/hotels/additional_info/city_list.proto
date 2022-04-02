@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "res1.data.list.hotels.additional_info";
+package res1.data.list.hotels.additional_info;
+message CityList {
+    optional string checkin = 1;
+    optional string checkout = 2;
+    optional string id = 3;
+    
+}

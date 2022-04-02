@@ -57,7 +57,7 @@ optionName
 // Normal Field
 
 field
-  : ( REPEATED )? type_ fieldName EQ fieldNumber ( LB fieldOptions RB )? SEMI
+  : ( REPEATED )? fieldType fieldName EQ fieldNumber ( LB fieldOptions RB )? SEMI
   ;
 
 fieldOptions
@@ -79,13 +79,13 @@ oneof
   ;
 
 oneofField
-  : type_ fieldName EQ fieldNumber ( LB fieldOptions RB )? SEMI
+  : fieldType fieldName EQ fieldNumber ( LB fieldOptions RB )? SEMI
   ;
 
 // Map field
 
 mapField
-  : MAP LT keyType COMMA type_ GT mapName
+  : MAP LT keyType COMMA fieldType GT mapName
         EQ fieldNumber ( LB fieldOptions RB )? SEMI
   ;
 keyType
@@ -105,7 +105,7 @@ keyType
 
 // field types
 
-type_
+fieldType
   : DOUBLE
   | FLOAT
   | INT32
@@ -144,7 +144,6 @@ reservedFieldNames
   ;
 
 // Top Level definitions
-
 topLevelDef
   : messageDef
   | enumDef
@@ -152,7 +151,6 @@ topLevelDef
   ;
 
 // enum
-
 enumDef
   : ENUM enumName enumBody
   ;
@@ -180,7 +178,6 @@ enumValueOption
   ;
 
 // message
-
 messageDef
   : MESSAGE messageName messageBody
   ;
@@ -201,7 +198,6 @@ messageElement
   ;
 
 // service
-
 serviceDef
   : SERVICE serviceName LC serviceElement* RC
   ;
@@ -219,7 +215,6 @@ rpc
   ;
 
 // lexical
-
 constant
   : fullIdent
   | (MINUS | PLUS )? intLit
@@ -237,7 +232,6 @@ blockLit
 emptyStatement: SEMI;
 
 // Lexical elements
-
 ident: IDENTIFIER | keywords;
 fullIdent: ident ( DOT ident )*;
 messageName: ident;

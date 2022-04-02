@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import array.Data;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import array.Data; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Array implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,10 +37,38 @@ public class Array implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("data", data)
-                .add("empty", empty)
+                .add("code", getCode())
+                .add("data", getData())
+                .add("empty", getEmpty())
                 .toString();
+    }
+    
+    public static Builder newArrayBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Array data = new Array();
+        
+        public Builder code(String code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(List<Data> data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder empty(List<Object> empty) {
+            data.setEmpty(empty);
+            return this;
+        }
+        
+        public Array build() {
+            return data;
+        }
+        
     }
     
 }

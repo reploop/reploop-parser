@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "BoilingPoint",
+  "namespace": "document",
+  "fields": [
+    {
+      "name": "units",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "double"
+    }
+  ]
+}

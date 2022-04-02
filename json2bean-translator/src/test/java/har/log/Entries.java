@@ -1,14 +1,13 @@
 package har.log;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import har.log.entries.Request;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import har.log.entries.Request; 
-import har.log.entries.Response; 
-import har.log.entries.Timings; 
-import har.log.entries.Cache; 
+import har.log.entries.Response;
+import har.log.entries.Timings;
+import har.log.entries.Cache;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Entries implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -109,17 +108,80 @@ public class Entries implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("securityState", securityState)
-                .add("cache", cache)
-                .add("connection", connection)
-                .add("pageRef", pageRef)
-                .add("request", request)
-                .add("response", response)
-                .add("serverIpAddress", serverIpAddress)
-                .add("startedDateTime", startedDateTime)
-                .add("time", time)
-                .add("timings", timings)
+                .add("securityState", getSecurityState())
+                .add("cache", getCache())
+                .add("connection", getConnection())
+                .add("pageRef", getPageRef())
+                .add("request", getRequest())
+                .add("response", getResponse())
+                .add("serverIpAddress", getServerIpAddress())
+                .add("startedDateTime", getStartedDateTime())
+                .add("time", getTime())
+                .add("timings", getTimings())
                 .toString();
+    }
+    
+    public static Builder newEntriesBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Entries data = new Entries();
+        
+        public Builder securityState(String securityState) {
+            data.setSecurityState(securityState);
+            return this;
+        }
+        
+        public Builder cache(Cache cache) {
+            data.setCache(cache);
+            return this;
+        }
+        
+        public Builder connection(String connection) {
+            data.setConnection(connection);
+            return this;
+        }
+        
+        public Builder pageRef(String pageRef) {
+            data.setPageRef(pageRef);
+            return this;
+        }
+        
+        public Builder request(Request request) {
+            data.setRequest(request);
+            return this;
+        }
+        
+        public Builder response(Response response) {
+            data.setResponse(response);
+            return this;
+        }
+        
+        public Builder serverIpAddress(String serverIpAddress) {
+            data.setServerIpAddress(serverIpAddress);
+            return this;
+        }
+        
+        public Builder startedDateTime(String startedDateTime) {
+            data.setStartedDateTime(startedDateTime);
+            return this;
+        }
+        
+        public Builder time(Integer time) {
+            data.setTime(time);
+            return this;
+        }
+        
+        public Builder timings(Timings timings) {
+            data.setTimings(timings);
+            return this;
+        }
+        
+        public Entries build() {
+            return data;
+        }
+        
     }
     
 }

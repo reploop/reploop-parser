@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "user";
+package user;
+message Result {
+    optional string area_id = 1;
+    optional string area_name = 2;
+    optional string gd_edu = 3;
+    optional string gd_job = 4;
+    optional string gd_major = 5;
+    optional string gd_school = 6;
+    map<int32, int32> guide_price = 7;
+    optional int32 price = 8;
+    repeated string remark = 9;
+    optional string ser_face = 10;
+    optional string ser_hot = 11;
+    optional string ser_rmkc = 12;
+    optional string ser_sort = 13;
+    optional string ser_starc = 14;
+    optional string ser_status = 15;
+    optional string ser_title = 16;
+    optional string ser_utime = 17;
+    optional string service_face = 18;
+    map<int32, string> tag = 19;
+    optional string user_avatar = 20;
+    optional string user_gender = 21;
+    optional string user_id = 22;
+    optional string user_name = 23;
+    
+}

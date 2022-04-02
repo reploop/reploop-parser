@@ -24,6 +24,14 @@ public class WordTree implements WordSplit {
     private static final String WORD_FILE = "/words.txt";
     private TreeNode tree;
 
+    public WordTree() {
+        this(WORD_FILE);
+    }
+
+    public WordTree(String resource) {
+        load(resource);
+    }
+
     private void load(String resource) {
         TreeNode root;
         try {
@@ -39,15 +47,6 @@ public class WordTree implements WordSplit {
         }
         tree = root;
     }
-
-    public WordTree() {
-        this(WORD_FILE);
-    }
-
-    public WordTree(String resource) {
-        load(resource);
-    }
-
 
     private List<String> parseWords(TreeNode root, String org) {
         TreeNode parent = root;

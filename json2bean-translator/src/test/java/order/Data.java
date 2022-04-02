@@ -1,11 +1,10 @@
 package order;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import order.data.Records;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import order.data.Records; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -121,19 +120,92 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("countId", countId)
-                .add("current", current)
-                .add("entity", entity)
-                .add("hitCount", hitCount)
-                .add("maxLimit", maxLimit)
-                .add("optimizeCountSql", optimizeCountSql)
-                .add("orders", orders)
-                .add("pages", pages)
-                .add("records", records)
-                .add("searchCount", searchCount)
-                .add("size", size)
-                .add("total", total)
+                .add("countId", getCountId())
+                .add("current", getCurrent())
+                .add("entity", getEntity())
+                .add("hitCount", getHitCount())
+                .add("maxLimit", getMaxLimit())
+                .add("optimizeCountSql", getOptimizeCountSql())
+                .add("orders", getOrders())
+                .add("pages", getPages())
+                .add("records", getRecords())
+                .add("searchCount", getSearchCount())
+                .add("size", getSize())
+                .add("total", getTotal())
                 .toString();
+    }
+    
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder countId(Object countId) {
+            data.setCountId(countId);
+            return this;
+        }
+        
+        public Builder current(Integer current) {
+            data.setCurrent(current);
+            return this;
+        }
+        
+        public Builder entity(Object entity) {
+            data.setEntity(entity);
+            return this;
+        }
+        
+        public Builder hitCount(Boolean hitCount) {
+            data.setHitCount(hitCount);
+            return this;
+        }
+        
+        public Builder maxLimit(Object maxLimit) {
+            data.setMaxLimit(maxLimit);
+            return this;
+        }
+        
+        public Builder optimizeCountSql(Boolean optimizeCountSql) {
+            data.setOptimizeCountSql(optimizeCountSql);
+            return this;
+        }
+        
+        public Builder orders(List<Object> orders) {
+            data.setOrders(orders);
+            return this;
+        }
+        
+        public Builder pages(Integer pages) {
+            data.setPages(pages);
+            return this;
+        }
+        
+        public Builder records(List<Records> records) {
+            data.setRecords(records);
+            return this;
+        }
+        
+        public Builder searchCount(Boolean searchCount) {
+            data.setSearchCount(searchCount);
+            return this;
+        }
+        
+        public Builder size(Integer size) {
+            data.setSize(size);
+            return this;
+        }
+        
+        public Builder total(Integer total) {
+            data.setTotal(total);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
     }
     
 }

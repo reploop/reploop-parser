@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Density",
+  "namespace": "document",
+  "fields": [
+    {
+      "name": "units",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "type": "float"
+    }
+  ]
+}

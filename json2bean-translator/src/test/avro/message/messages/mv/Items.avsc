@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Items",
+  "namespace": "message.messages.mv",
+  "fields": [
+    {
+      "name": "m",
+      "type": {
+        "type": "map",
+        "values": "message.messages.mv.items.M",
+        "default": {}
+      }
+    }
+  ]
+}

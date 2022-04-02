@@ -1,10 +1,9 @@
 package driver.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CarData implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -175,24 +174,122 @@ public class CarData implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("annualCheckDate", annualCheckDate)
-                .add("brandDesc", brandDesc)
-                .add("carLicenceFrontUrl", carLicenceFrontUrl)
-                .add("color", color)
-                .add("fuelId", fuelId)
-                .add("height", height)
-                .add("initStylePrice", initStylePrice)
-                .add("insValidDate", insValidDate)
-                .add("length", length)
-                .add("model", model)
-                .add("owner", owner)
-                .add("ownerAddress", ownerAddress)
-                .add("plateNo", plateNo)
-                .add("regDate", regDate)
-                .add("seatNum", seatNum)
-                .add("wheelbases", wheelbases)
-                .add("width", width)
+                .add("annualCheckDate", getAnnualCheckDate())
+                .add("brandDesc", getBrandDesc())
+                .add("carLicenceFrontUrl", getCarLicenceFrontUrl())
+                .add("color", getColor())
+                .add("fuelId", getFuelId())
+                .add("height", getHeight())
+                .add("initStylePrice", getInitStylePrice())
+                .add("insValidDate", getInsValidDate())
+                .add("length", getLength())
+                .add("model", getModel())
+                .add("owner", getOwner())
+                .add("ownerAddress", getOwnerAddress())
+                .add("plateNo", getPlateNo())
+                .add("regDate", getRegDate())
+                .add("seatNum", getSeatNum())
+                .add("wheelbases", getWheelbases())
+                .add("width", getWidth())
                 .toString();
+    }
+    
+    public static Builder newCarDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CarData data = new CarData();
+        
+        public Builder annualCheckDate(String annualCheckDate) {
+            data.setAnnualCheckDate(annualCheckDate);
+            return this;
+        }
+        
+        public Builder brandDesc(String brandDesc) {
+            data.setBrandDesc(brandDesc);
+            return this;
+        }
+        
+        public Builder carLicenceFrontUrl(String carLicenceFrontUrl) {
+            data.setCarLicenceFrontUrl(carLicenceFrontUrl);
+            return this;
+        }
+        
+        public Builder color(String color) {
+            data.setColor(color);
+            return this;
+        }
+        
+        public Builder fuelId(String fuelId) {
+            data.setFuelId(fuelId);
+            return this;
+        }
+        
+        public Builder height(Integer height) {
+            data.setHeight(height);
+            return this;
+        }
+        
+        public Builder initStylePrice(Integer initStylePrice) {
+            data.setInitStylePrice(initStylePrice);
+            return this;
+        }
+        
+        public Builder insValidDate(String insValidDate) {
+            data.setInsValidDate(insValidDate);
+            return this;
+        }
+        
+        public Builder length(Integer length) {
+            data.setLength(length);
+            return this;
+        }
+        
+        public Builder model(String model) {
+            data.setModel(model);
+            return this;
+        }
+        
+        public Builder owner(String owner) {
+            data.setOwner(owner);
+            return this;
+        }
+        
+        public Builder ownerAddress(String ownerAddress) {
+            data.setOwnerAddress(ownerAddress);
+            return this;
+        }
+        
+        public Builder plateNo(String plateNo) {
+            data.setPlateNo(plateNo);
+            return this;
+        }
+        
+        public Builder regDate(String regDate) {
+            data.setRegDate(regDate);
+            return this;
+        }
+        
+        public Builder seatNum(Integer seatNum) {
+            data.setSeatNum(seatNum);
+            return this;
+        }
+        
+        public Builder wheelbases(Integer wheelbases) {
+            data.setWheelbases(wheelbases);
+            return this;
+        }
+        
+        public Builder width(Integer width) {
+            data.setWidth(width);
+            return this;
+        }
+        
+        public CarData build() {
+            return data;
+        }
+        
     }
     
 }

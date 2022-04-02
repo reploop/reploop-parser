@@ -1,13 +1,12 @@
 package order.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import order.data.records.RecordsUserOrderAdditional;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import order.data.records.RecordsUserOrderAdditional; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
-import order.data.records.UserOrderAdditional; 
+import order.data.records.UserOrderAdditional;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Records extends RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -515,62 +514,416 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("adultNum", adultNum)
-                .add("beginGpsLat", beginGpsLat)
-                .add("beginGpsLong", beginGpsLong)
-                .add("beginSiteCode", beginSiteCode)
-                .add("beginSiteName", beginSiteName)
-                .add("boardingTime", boardingTime)
-                .add("bookInAdvance", bookInAdvance)
-                .add("busTicketReqList", busTicketReqList)
-                .add("cancelDuration", cancelDuration)
-                .add("cancelType", cancelType)
-                .add("childNum", childNum)
-                .add("contactName", contactName)
-                .add("contactPhone", contactPhone)
-                .add("contactSex", contactSex)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("dName", dName)
-                .add("driverArrivedTime", driverArrivedTime)
-                .add("driverId", driverId)
-                .add("driverName", driverName)
-                .add("driverOrderStatus", driverOrderStatus)
-                .add("driverOrderUpdateTime", driverOrderUpdateTime)
-                .add("endGpsLat", endGpsLat)
-                .add("endGpsLong", endGpsLong)
-                .add("endSiteCode", endSiteCode)
-                .add("endSiteName", endSiteName)
-                .add("evaluation", evaluation)
-                .add("flightNumber", flightNumber)
-                .add("id", id)
-                .add("lineType", lineType)
-                .add("nextOrderNotifyType", nextOrderNotifyType)
-                .add("no", no)
-                .add("notifyType", notifyType)
-                .add("offTime", offTime)
-                .add("openId", openId)
-                .add("orderPeriodValid", orderPeriodValid)
-                .add("orderRemark", orderRemark)
-                .add("orderSource", orderSource)
-                .add("orderTime", orderTime)
-                .add("points", points)
-                .add("remarks", remarks)
-                .add("scheduleDate", scheduleDate)
-                .add("score", score)
-                .add("status", status)
-                .add("ticketStatus", ticketStatus)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("useUpType", useUpType)
-                .add("userAct", userAct)
-                .add("userNotifyType", userNotifyType)
-                .add("userOrderAdditional", userOrderAdditional)
-                .add("vehiclePlate", vehiclePlate)
-                .add("vPlate", vPlate)
-                .add("vType", vType)
-                .add("vVehicleId", vVehicleId)
+                .add("adultNum", getAdultNum())
+                .add("beginGpsLat", getBeginGpsLat())
+                .add("beginGpsLong", getBeginGpsLong())
+                .add("beginSiteCode", getBeginSiteCode())
+                .add("beginSiteName", getBeginSiteName())
+                .add("boardingTime", getBoardingTime())
+                .add("bookInAdvance", getBookInAdvance())
+                .add("busTicketReqList", getBusTicketReqList())
+                .add("cancelDuration", getCancelDuration())
+                .add("cancelType", getCancelType())
+                .add("childNum", getChildNum())
+                .add("contactName", getContactName())
+                .add("contactPhone", getContactPhone())
+                .add("contactSex", getContactSex())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("dName", getDName())
+                .add("driverArrivedTime", getDriverArrivedTime())
+                .add("driverId", getDriverId())
+                .add("driverName", getDriverName())
+                .add("driverOrderStatus", getDriverOrderStatus())
+                .add("driverOrderUpdateTime", getDriverOrderUpdateTime())
+                .add("endGpsLat", getEndGpsLat())
+                .add("endGpsLong", getEndGpsLong())
+                .add("endSiteCode", getEndSiteCode())
+                .add("endSiteName", getEndSiteName())
+                .add("evaluation", getEvaluation())
+                .add("flightNumber", getFlightNumber())
+                .add("id", getId())
+                .add("lineType", getLineType())
+                .add("nextOrderNotifyType", getNextOrderNotifyType())
+                .add("no", getNo())
+                .add("notifyType", getNotifyType())
+                .add("offTime", getOffTime())
+                .add("openId", getOpenId())
+                .add("orderPeriodValid", getOrderPeriodValid())
+                .add("orderRemark", getOrderRemark())
+                .add("orderSource", getOrderSource())
+                .add("orderTime", getOrderTime())
+                .add("points", getPoints())
+                .add("remarks", getRemarks())
+                .add("scheduleDate", getScheduleDate())
+                .add("score", getScore())
+                .add("status", getStatus())
+                .add("ticketStatus", getTicketStatus())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("useUpType", getUseUpType())
+                .add("userAct", getUserAct())
+                .add("userNotifyType", getUserNotifyType())
+                .add("userOrderAdditional", getUserOrderAdditional())
+                .add("vehiclePlate", getVehiclePlate())
+                .add("vPlate", getVPlate())
+                .add("vType", getVType())
+                .add("vVehicleId", getVVehicleId())
+                .add("actionSource", getActionSource())
+                .add("createTime", getCreateTime())
+                .add("orderId", getOrderId())
+                .add("driverPhone", getDriverPhone())
+                .add("operator", getOperator())
+                .add("vehicleBrand", getVehicleBrand())
+                .add("preDriverId", getPreDriverId())
+                .add("delay", getDelay())
+                .add("night", getNight())
+                .add("driverOrderId", getDriverOrderId())
+                .add("settlementPrice", getSettlementPrice())
                 .toString();
+    }
+    
+    public static Builder newRecordsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Records data = new Records();
+        
+        public Builder adultNum(Integer adultNum) {
+            data.setAdultNum(adultNum);
+            return this;
+        }
+        
+        public Builder beginGpsLat(String beginGpsLat) {
+            data.setBeginGpsLat(beginGpsLat);
+            return this;
+        }
+        
+        public Builder beginGpsLong(String beginGpsLong) {
+            data.setBeginGpsLong(beginGpsLong);
+            return this;
+        }
+        
+        public Builder beginSiteCode(String beginSiteCode) {
+            data.setBeginSiteCode(beginSiteCode);
+            return this;
+        }
+        
+        public Builder beginSiteName(String beginSiteName) {
+            data.setBeginSiteName(beginSiteName);
+            return this;
+        }
+        
+        public Builder boardingTime(Object boardingTime) {
+            data.setBoardingTime(boardingTime);
+            return this;
+        }
+        
+        public Builder bookInAdvance(Boolean bookInAdvance) {
+            data.setBookInAdvance(bookInAdvance);
+            return this;
+        }
+        
+        public Builder busTicketReqList(Object busTicketReqList) {
+            data.setBusTicketReqList(busTicketReqList);
+            return this;
+        }
+        
+        public Builder cancelDuration(Object cancelDuration) {
+            data.setCancelDuration(cancelDuration);
+            return this;
+        }
+        
+        public Builder cancelType(Object cancelType) {
+            data.setCancelType(cancelType);
+            return this;
+        }
+        
+        public Builder childNum(Object childNum) {
+            data.setChildNum(childNum);
+            return this;
+        }
+        
+        public Builder contactName(String contactName) {
+            data.setContactName(contactName);
+            return this;
+        }
+        
+        public Builder contactPhone(String contactPhone) {
+            data.setContactPhone(contactPhone);
+            return this;
+        }
+        
+        public Builder contactSex(String contactSex) {
+            data.setContactSex(contactSex);
+            return this;
+        }
+        
+        public Builder createUser(String createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(String delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder dName(String dName) {
+            data.setDName(dName);
+            return this;
+        }
+        
+        public Builder driverArrivedTime(String driverArrivedTime) {
+            data.setDriverArrivedTime(driverArrivedTime);
+            return this;
+        }
+        
+        public Builder driverId(Long driverId) {
+            data.setDriverId(driverId);
+            return this;
+        }
+        
+        public Builder driverName(Object driverName) {
+            data.setDriverName(driverName);
+            return this;
+        }
+        
+        public Builder driverOrderStatus(String driverOrderStatus) {
+            data.setDriverOrderStatus(driverOrderStatus);
+            return this;
+        }
+        
+        public Builder driverOrderUpdateTime(Object driverOrderUpdateTime) {
+            data.setDriverOrderUpdateTime(driverOrderUpdateTime);
+            return this;
+        }
+        
+        public Builder endGpsLat(String endGpsLat) {
+            data.setEndGpsLat(endGpsLat);
+            return this;
+        }
+        
+        public Builder endGpsLong(String endGpsLong) {
+            data.setEndGpsLong(endGpsLong);
+            return this;
+        }
+        
+        public Builder endSiteCode(String endSiteCode) {
+            data.setEndSiteCode(endSiteCode);
+            return this;
+        }
+        
+        public Builder endSiteName(String endSiteName) {
+            data.setEndSiteName(endSiteName);
+            return this;
+        }
+        
+        public Builder evaluation(Object evaluation) {
+            data.setEvaluation(evaluation);
+            return this;
+        }
+        
+        public Builder flightNumber(String flightNumber) {
+            data.setFlightNumber(flightNumber);
+            return this;
+        }
+        
+        public Builder id(Integer id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder lineType(String lineType) {
+            data.setLineType(lineType);
+            return this;
+        }
+        
+        public Builder nextOrderNotifyType(Object nextOrderNotifyType) {
+            data.setNextOrderNotifyType(nextOrderNotifyType);
+            return this;
+        }
+        
+        public Builder no(String no) {
+            data.setNo(no);
+            return this;
+        }
+        
+        public Builder notifyType(Object notifyType) {
+            data.setNotifyType(notifyType);
+            return this;
+        }
+        
+        public Builder offTime(Object offTime) {
+            data.setOffTime(offTime);
+            return this;
+        }
+        
+        public Builder openId(Object openId) {
+            data.setOpenId(openId);
+            return this;
+        }
+        
+        public Builder orderPeriodValid(Boolean orderPeriodValid) {
+            data.setOrderPeriodValid(orderPeriodValid);
+            return this;
+        }
+        
+        public Builder orderRemark(String orderRemark) {
+            data.setOrderRemark(orderRemark);
+            return this;
+        }
+        
+        public Builder orderSource(String orderSource) {
+            data.setOrderSource(orderSource);
+            return this;
+        }
+        
+        public Builder orderTime(String orderTime) {
+            data.setOrderTime(orderTime);
+            return this;
+        }
+        
+        public Builder points(Object points) {
+            data.setPoints(points);
+            return this;
+        }
+        
+        public Builder remarks(String remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder scheduleDate(String scheduleDate) {
+            data.setScheduleDate(scheduleDate);
+            return this;
+        }
+        
+        public Builder score(Object score) {
+            data.setScore(score);
+            return this;
+        }
+        
+        public Builder status(String status) {
+            data.setStatus(status);
+            return this;
+        }
+        
+        public Builder ticketStatus(Object ticketStatus) {
+            data.setTicketStatus(ticketStatus);
+            return this;
+        }
+        
+        public Builder updateTime(String updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(String updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder useUpType(String useUpType) {
+            data.setUseUpType(useUpType);
+            return this;
+        }
+        
+        public Builder userAct(Object userAct) {
+            data.setUserAct(userAct);
+            return this;
+        }
+        
+        public Builder userNotifyType(Object userNotifyType) {
+            data.setUserNotifyType(userNotifyType);
+            return this;
+        }
+        
+        public Builder userOrderAdditional(List<UserOrderAdditional> userOrderAdditional) {
+            data.setUserOrderAdditional(userOrderAdditional);
+            return this;
+        }
+        
+        public Builder vehiclePlate(Object vehiclePlate) {
+            data.setVehiclePlate(vehiclePlate);
+            return this;
+        }
+        
+        public Builder vPlate(String vPlate) {
+            data.setVPlate(vPlate);
+            return this;
+        }
+        
+        public Builder vType(String vType) {
+            data.setVType(vType);
+            return this;
+        }
+        
+        public Builder vVehicleId(Integer vVehicleId) {
+            data.setVVehicleId(vVehicleId);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Records build() {
+            return data;
+        }
+        
     }
     
 }

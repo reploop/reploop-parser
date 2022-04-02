@@ -1,12 +1,11 @@
 package res1.data.list;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
-import res1.data.list.hotels.AdditionalInfo; 
+import res1.data.list.hotels.AdditionalInfo;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hotels implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -109,17 +108,80 @@ public class Hotels implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("additionalInfo", additionalInfo)
-                .add("checkIn", checkIn)
-                .add("checkout", checkout)
-                .add("cOord", cOord)
-                .add("hotelId", hotelId)
-                .add("name", name)
-                .add("nameEn", nameEn)
-                .add("price", price)
-                .add("star", star)
-                .add("tags", tags)
+                .add("additionalInfo", getAdditionalInfo())
+                .add("checkIn", getCheckIn())
+                .add("checkout", getCheckout())
+                .add("cOord", getCOord())
+                .add("hotelId", getHotelId())
+                .add("name", getName())
+                .add("nameEn", getNameEn())
+                .add("price", getPrice())
+                .add("star", getStar())
+                .add("tags", getTags())
                 .toString();
+    }
+    
+    public static Builder newHotelsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Hotels data = new Hotels();
+        
+        public Builder additionalInfo(AdditionalInfo additionalInfo) {
+            data.setAdditionalInfo(additionalInfo);
+            return this;
+        }
+        
+        public Builder checkIn(String checkIn) {
+            data.setCheckIn(checkIn);
+            return this;
+        }
+        
+        public Builder checkout(String checkout) {
+            data.setCheckout(checkout);
+            return this;
+        }
+        
+        public Builder cOord(String cOord) {
+            data.setCOord(cOord);
+            return this;
+        }
+        
+        public Builder hotelId(String hotelId) {
+            data.setHotelId(hotelId);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder nameEn(String nameEn) {
+            data.setNameEn(nameEn);
+            return this;
+        }
+        
+        public Builder price(Integer price) {
+            data.setPrice(price);
+            return this;
+        }
+        
+        public Builder star(Integer star) {
+            data.setStar(star);
+            return this;
+        }
+        
+        public Builder tags(List<String> tags) {
+            data.setTags(tags);
+            return this;
+        }
+        
+        public Hotels build() {
+            return data;
+        }
+        
     }
     
 }

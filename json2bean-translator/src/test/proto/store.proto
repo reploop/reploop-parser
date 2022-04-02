@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "store/list.proto";
+message Store {
+    repeated store.List list = 1;
+    optional string msg = 2;
+    optional bool success = 3;
+    
+}

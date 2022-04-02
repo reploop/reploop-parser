@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "List",
+  "namespace": "res1.data",
+  "fields": [
+    {
+      "name": "city_id",
+      "type": "string"
+    },
+    {
+      "name": "hotels",
+      "type": {
+        "type": "array",
+        "items": "res1.data.list.Hotels",
+        "default": []
+      }
+    },
+    {
+      "name": "max_price",
+      "type": "int"
+    },
+    {
+      "name": "min_price",
+      "type": "int"
+    }
+  ]
+}

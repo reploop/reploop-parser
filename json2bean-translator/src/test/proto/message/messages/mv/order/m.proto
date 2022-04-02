@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order";
+package message.messages.mv.order;
+import "message/messages/mv/order/m/code.proto";
+import "message/messages/mv/order/m/states.proto";
+import "message/messages/mv/order/m/created.proto";
+import "message/messages/mv/order/m/pick_point.proto";
+import "message/messages/mv/order/m/items.proto";
+import "message/messages/mv/order/m/flight.proto";
+import "message/messages/mv/order/m/picker.proto";
+message M {
+    optional message.messages.mv.order.m.Code code = 1;
+    optional message.messages.mv.order.m.Created created = 2;
+    optional message.messages.mv.order.m.Flight flight = 3;
+    optional message.messages.mv.order.m.Items items = 4;
+    optional message.messages.mv.order.m.PickPoint pickPoint = 5;
+    optional message.messages.mv.order.m.Picker picker = 6;
+    optional message.messages.mv.order.m.States states = 7;
+    
+}

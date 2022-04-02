@@ -2,16 +2,15 @@ package org.reploop.parser.protobuf.generator;
 
 import com.google.common.base.CaseFormat;
 import com.google.common.collect.ImmutableList;
-
+import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
-
-import org.apache.commons.lang3.StringUtils;
 import org.reploop.parser.protobuf.Node;
 import org.reploop.parser.protobuf.ProtobufParser;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.parser.protobuf.type.*;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.StructType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,7 +139,8 @@ public class ProtobufClasspathResolver extends AstVisitor<Node, Classpath<ProtoP
                 fb.add(f);
             }
         }
-        return new Message(fullName, node.getComments(), fb.build(), ml, el, node.getOptions());
+        List<Service> services = visitIfPresent(node.getServices(), service -> visitService(service, context));
+        return new Message(fullName, node.getComments(), fb.build(), ml, el, services, node.getOptions());
     }
 
     private QualifiedName getQualifiedFullName(Enumeration node, Classpath<ProtoProgram> context) {
@@ -220,16 +220,16 @@ public class ProtobufClasspathResolver extends AstVisitor<Node, Classpath<ProtoP
             String outerClassname = program.getOuterClassName();
             String val;
             if (!isNullOrEmpty(outerClassname) &&
-                value instanceof StringValue
-                && isNotEmpty(val = ((StringValue) value).getValue())) {
+                    value instanceof StringValue
+                    && isNotEmpty(val = ((StringValue) value).getValue())) {
                 outerClassname = StringUtils.strip(val, "\"");
                 program.setOuterClassName(outerClassname);
             }
         } else if (JAVA_MULTIPLE_FILES.equals(key)) {
             Boolean val;
             if (value instanceof BoolValue
-                && null != (val = ((BoolValue) value).getValue())
-                && val) {
+                    && null != (val = ((BoolValue) value).getValue())
+                    && val) {
                 // Just one class per file, like common Java.
                 ProtoProgram program = context.entity(context.current());
                 program.setOuterClassName(StringUtils.EMPTY);
@@ -237,7 +237,7 @@ public class ProtobufClasspathResolver extends AstVisitor<Node, Classpath<ProtoP
         } else if (JAVA_PACKAGE.equals(key)) {
             String val;
             if (value instanceof StringValue
-                && isNotEmpty(val = ((StringValue) value).getValue())) {
+                    && isNotEmpty(val = ((StringValue) value).getValue())) {
                 context.namespace(QualifiedName.of(val));
             }
         }

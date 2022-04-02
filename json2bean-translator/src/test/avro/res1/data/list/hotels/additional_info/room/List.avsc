@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "List",
+  "namespace": "res1.data.list.hotels.additional_info.room",
+  "fields": [
+    {
+      "name": "age",
+      "type": "int"
+    }
+  ]
+}

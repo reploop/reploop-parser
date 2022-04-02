@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "har.log";
+package har.log;
+import "har/log/pages/page_timings.proto";
+message Pages {
+    optional string id = 1;
+    optional har.log.pages.PageTimings pageTimings = 2;
+    optional string startedDateTime = 3;
+    
+}

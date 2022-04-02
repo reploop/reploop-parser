@@ -65,7 +65,7 @@ public class MessageInfer {
                 Field field = indexFieldMap.get(f);
                 fields.add(field);
             }
-            // Messages may be have common parent class
+            // Messages may have common parent class
             List<Message> messages = new ArrayList<>();
             for (int m = rect.lt.y; m <= rect.rb.y; m++) {
                 QualifiedName qn = indexNameMap.get(m);

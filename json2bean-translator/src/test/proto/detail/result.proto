@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "detail";
+package detail;
+message Result {
+    optional float discount = 1;
+    optional float full = 2;
+    optional string marketingDetailId = 3;
+    optional int32 marketingId = 4;
+    
+}

@@ -1,12 +1,11 @@
 package category;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import category.data.Properties;
+import category.data.Sheets;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import category.data.Properties; 
-import category.data.Sheets; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,10 +40,38 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("properties", properties)
-                .add("sheets", sheets)
-                .add("spreadsheetToken", spreadsheetToken)
+                .add("properties", getProperties())
+                .add("sheets", getSheets())
+                .add("spreadsheetToken", getSpreadsheetToken())
                 .toString();
+    }
+    
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder properties(Properties properties) {
+            data.setProperties(properties);
+            return this;
+        }
+        
+        public Builder sheets(List<Sheets> sheets) {
+            data.setSheets(sheets);
+            return this;
+        }
+        
+        public Builder spreadsheetToken(String spreadsheetToken) {
+            data.setSpreadsheetToken(spreadsheetToken);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
     }
     
 }

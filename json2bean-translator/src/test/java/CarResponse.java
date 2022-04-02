@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import carResponse.Rows;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import carResponse.Rows; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CarResponse implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,11 +46,44 @@ public class CarResponse implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("msg", msg)
-                .add("rows", rows)
-                .add("total", total)
+                .add("code", getCode())
+                .add("msg", getMsg())
+                .add("rows", getRows())
+                .add("total", getTotal())
                 .toString();
+    }
+    
+    public static Builder newCarResponseBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final CarResponse data = new CarResponse();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Builder rows(List<Rows> rows) {
+            data.setRows(rows);
+            return this;
+        }
+        
+        public Builder total(Integer total) {
+            data.setTotal(total);
+            return this;
+        }
+        
+        public CarResponse build() {
+            return data;
+        }
+        
     }
     
 }

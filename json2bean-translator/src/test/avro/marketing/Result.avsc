@@ -1,0 +1,35 @@
+{
+  "type": "record",
+  "name": "Result",
+  "namespace": "marketing",
+  "fields": [
+    {
+      "name": "beginTime",
+      "type": "string"
+    },
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "endTime",
+      "type": "string"
+    },
+    {
+      "name": "marketingId",
+      "type": "int"
+    },
+    {
+      "name": "marketingName",
+      "type": "string"
+    },
+    {
+      "name": "marketingType",
+      "type": "int"
+    },
+    {
+      "name": "pause",
+      "type": "boolean"
+    }
+  ]
+}

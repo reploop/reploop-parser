@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "Array",
+  "namespace": "jsonObject",
+  "fields": [
+    {
+      "name": "count_yesterday",
+      "type": "int"
+    },
+    {
+      "name": "tv_id",
+      "type": "long"
+    },
+    {
+      "name": "tv_name",
+      "type": "string"
+    },
+    {
+      "name": "vv_week",
+      "type": "int"
+    }
+  ]
+}

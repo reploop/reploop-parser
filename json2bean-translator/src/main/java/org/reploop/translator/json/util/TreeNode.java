@@ -15,16 +15,16 @@ public class TreeNode {
         return endOfAWord;
     }
 
+    public void setEndOfAWord(boolean endOfAWord) {
+        this.endOfAWord = endOfAWord;
+    }
+
     public Character getValue() {
         return value;
     }
 
     public void setValue(Character value) {
         this.value = value;
-    }
-
-    public void setEndOfAWord(boolean endOfAWord) {
-        this.endOfAWord = endOfAWord;
     }
 
     public TreeNode addIfChildAbsent(TreeNode c) {

@@ -1,0 +1,51 @@
+{
+  "type": "record",
+  "name": "Hotels",
+  "namespace": "res1.data.list",
+  "fields": [
+    {
+      "name": "additional_info",
+      "type": "res1.data.list.hotels.AdditionalInfo"
+    },
+    {
+      "name": "checkin",
+      "type": "string"
+    },
+    {
+      "name": "checkout",
+      "type": "string"
+    },
+    {
+      "name": "coord",
+      "type": "string"
+    },
+    {
+      "name": "hotel_id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "name_en",
+      "type": "string"
+    },
+    {
+      "name": "price",
+      "type": "int"
+    },
+    {
+      "name": "star",
+      "type": "int"
+    },
+    {
+      "name": "tags",
+      "type": {
+        "type": "array",
+        "items": "string",
+        "default": []
+      }
+    }
+  ]
+}

@@ -135,7 +135,7 @@ oneof
 oneofField
 mapField
 keyType
-type_
+fieldType
 reserved
 ranges
 range_

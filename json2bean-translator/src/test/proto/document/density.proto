@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "document";
+package document;
+message Density {
+    optional string units = 1;
+    optional float value = 2;
+    
+}

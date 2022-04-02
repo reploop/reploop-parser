@@ -1,21 +1,20 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import store.ListStore;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import store.StoreList; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Store implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<StoreList> list;
+    private List<ListStore> list;
     private String msg;
     private Boolean success;
     
-    public List<StoreList> getList() {
+    public List<ListStore> getList() {
         return list;
     }
     
-    public void setList(List<StoreList> list) {
+    public void setList(List<ListStore> list) {
         this.list = list;
     }
     
@@ -38,10 +37,38 @@ public class Store implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("list", list)
-                .add("msg", msg)
-                .add("success", success)
+                .add("list", getList())
+                .add("msg", getMsg())
+                .add("success", getSuccess())
                 .toString();
+    }
+    
+    public static Builder newStoreBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Store data = new Store();
+        
+        public Builder list(List<ListStore> list) {
+            data.setList(list);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Builder success(Boolean success) {
+            data.setSuccess(success);
+            return this;
+        }
+        
+        public Store build() {
+            return data;
+        }
+        
     }
     
 }

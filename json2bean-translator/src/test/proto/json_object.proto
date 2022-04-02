@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "jsonObject/array.proto";
+import "jsonObject/data.proto";
+message JsonObject {
+    repeated jsonObject.Array array = 1;
+    optional jsonObject.Data data = 2;
+    
+}

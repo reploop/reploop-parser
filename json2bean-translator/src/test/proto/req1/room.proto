@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "req1";
+package req1;
+import "req1/room/list.proto";
+message Room {
+    repeated req1.room.List list = 1;
+    
+}

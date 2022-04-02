@@ -1,9 +1,8 @@
 package message.messages.mv.order.m.flight.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Airport implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -20,8 +19,26 @@ public class Airport implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("s", s)
+                .add("s", getS())
                 .toString();
+    }
+    
+    public static Builder newAirportBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Airport data = new Airport();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Airport build() {
+            return data;
+        }
+        
     }
     
 }

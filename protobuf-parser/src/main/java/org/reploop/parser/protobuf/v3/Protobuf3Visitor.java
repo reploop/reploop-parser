@@ -95,11 +95,11 @@ public interface Protobuf3Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitKeyType(Protobuf3Parser.KeyTypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link Protobuf3Parser#type_}.
+	 * Visit a parse tree produced by {@link Protobuf3Parser#fieldType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitType_(Protobuf3Parser.Type_Context ctx);
+	T visitFieldType(Protobuf3Parser.FieldTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link Protobuf3Parser#reserved}.
 	 * @param ctx the parse tree

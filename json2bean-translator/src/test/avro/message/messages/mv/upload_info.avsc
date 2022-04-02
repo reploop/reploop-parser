@@ -1,0 +1,8 @@
+{
+  "type": "record",
+  "name": "UploadInfo",
+  "namespace": "message.messages.mv",
+  "fields": [
+    
+  ]
+}

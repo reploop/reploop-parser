@@ -1,10 +1,8 @@
 package carResponse;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Rows implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -15,12 +13,9 @@ public class Rows implements Serializable {
     private String createTime;
     private String createUser;
     private String delFlag;
-    @JsonProperty("driverUberId")
-    private Long driverUbeRId;
-    @JsonProperty("driverUberName")
-    private String driverUbeRName;
-    @JsonProperty("driverUberPhone")
-    private String driverUbeRPhone;
+    private Long driverUberId;
+    private String driverUberName;
+    private String driverUberPhone;
     private Object endTime;
     private String engineNo;
     private Object files;
@@ -103,28 +98,28 @@ public class Rows implements Serializable {
         this.delFlag = delFlag;
     }
     
-    public Long getDriverUbeRId() {
-        return driverUbeRId;
+    public Long getDriverUberId() {
+        return driverUberId;
     }
     
-    public void setDriverUbeRId(Long driverUbeRId) {
-        this.driverUbeRId = driverUbeRId;
+    public void setDriverUberId(Long driverUberId) {
+        this.driverUberId = driverUberId;
     }
     
-    public String getDriverUbeRName() {
-        return driverUbeRName;
+    public String getDriverUberName() {
+        return driverUberName;
     }
     
-    public void setDriverUbeRName(String driverUbeRName) {
-        this.driverUbeRName = driverUbeRName;
+    public void setDriverUberName(String driverUberName) {
+        this.driverUberName = driverUberName;
     }
     
-    public String getDriverUbeRPhone() {
-        return driverUbeRPhone;
+    public String getDriverUberPhone() {
+        return driverUberPhone;
     }
     
-    public void setDriverUbeRPhone(String driverUbeRPhone) {
-        this.driverUbeRPhone = driverUbeRPhone;
+    public void setDriverUberPhone(String driverUberPhone) {
+        this.driverUberPhone = driverUberPhone;
     }
     
     public Object getEndTime() {
@@ -330,42 +325,230 @@ public class Rows implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("brand", brand)
-                .add("businessNature", businessNature)
-                .add("carType", carType)
-                .add("colour", colour)
-                .add("createTime", createTime)
-                .add("createUser", createUser)
-                .add("delFlag", delFlag)
-                .add("driverUbeRId", driverUbeRId)
-                .add("driverUbeRName", driverUbeRName)
-                .add("driverUbeRPhone", driverUbeRPhone)
-                .add("endTime", endTime)
-                .add("engineNo", engineNo)
-                .add("files", files)
-                .add("fuelConsumption", fuelConsumption)
-                .add("id", id)
-                .add("kilometre", kilometre)
-                .add("kilometreStr", kilometreStr)
-                .add("obdStatus", obdStatus)
-                .add("officeId", officeId)
-                .add("plate", plate)
-                .add("plateColour", plateColour)
-                .add("remarks", remarks)
-                .add("seating", seating)
-                .add("settlementPrice", settlementPrice)
-                .add("settlementPriceStr", settlementPriceStr)
-                .add("startTime", startTime)
-                .add("trafficCarType", trafficCarType)
-                .add("type", type)
-                .add("updateTime", updateTime)
-                .add("updateUser", updateUser)
-                .add("vehicleDesc", vehicleDesc)
-                .add("vehicleNature", vehicleNature)
-                .add("vehicleNo", vehicleNo)
-                .add("vehicleStatus", vehicleStatus)
-                .add("vin", vin)
+                .add("brand", getBrand())
+                .add("businessNature", getBusinessNature())
+                .add("carType", getCarType())
+                .add("colour", getColour())
+                .add("createTime", getCreateTime())
+                .add("createUser", getCreateUser())
+                .add("delFlag", getDelFlag())
+                .add("driverUberId", getDriverUberId())
+                .add("driverUberName", getDriverUberName())
+                .add("driverUberPhone", getDriverUberPhone())
+                .add("endTime", getEndTime())
+                .add("engineNo", getEngineNo())
+                .add("files", getFiles())
+                .add("fuelConsumption", getFuelConsumption())
+                .add("id", getId())
+                .add("kilometre", getKilometre())
+                .add("kilometreStr", getKilometreStr())
+                .add("obdStatus", getObdStatus())
+                .add("officeId", getOfficeId())
+                .add("plate", getPlate())
+                .add("plateColour", getPlateColour())
+                .add("remarks", getRemarks())
+                .add("seating", getSeating())
+                .add("settlementPrice", getSettlementPrice())
+                .add("settlementPriceStr", getSettlementPriceStr())
+                .add("startTime", getStartTime())
+                .add("trafficCarType", getTrafficCarType())
+                .add("type", getType())
+                .add("updateTime", getUpdateTime())
+                .add("updateUser", getUpdateUser())
+                .add("vehicleDesc", getVehicleDesc())
+                .add("vehicleNature", getVehicleNature())
+                .add("vehicleNo", getVehicleNo())
+                .add("vehicleStatus", getVehicleStatus())
+                .add("vin", getVin())
                 .toString();
+    }
+    
+    public static Builder newRowsBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Rows data = new Rows();
+        
+        public Builder brand(String brand) {
+            data.setBrand(brand);
+            return this;
+        }
+        
+        public Builder businessNature(String businessNature) {
+            data.setBusinessNature(businessNature);
+            return this;
+        }
+        
+        public Builder carType(String carType) {
+            data.setCarType(carType);
+            return this;
+        }
+        
+        public Builder colour(String colour) {
+            data.setColour(colour);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder createUser(String createUser) {
+            data.setCreateUser(createUser);
+            return this;
+        }
+        
+        public Builder delFlag(String delFlag) {
+            data.setDelFlag(delFlag);
+            return this;
+        }
+        
+        public Builder driverUberId(Long driverUberId) {
+            data.setDriverUberId(driverUberId);
+            return this;
+        }
+        
+        public Builder driverUberName(String driverUberName) {
+            data.setDriverUberName(driverUberName);
+            return this;
+        }
+        
+        public Builder driverUberPhone(String driverUberPhone) {
+            data.setDriverUberPhone(driverUberPhone);
+            return this;
+        }
+        
+        public Builder endTime(Object endTime) {
+            data.setEndTime(endTime);
+            return this;
+        }
+        
+        public Builder engineNo(String engineNo) {
+            data.setEngineNo(engineNo);
+            return this;
+        }
+        
+        public Builder files(Object files) {
+            data.setFiles(files);
+            return this;
+        }
+        
+        public Builder fuelConsumption(Object fuelConsumption) {
+            data.setFuelConsumption(fuelConsumption);
+            return this;
+        }
+        
+        public Builder id(Integer id) {
+            data.setId(id);
+            return this;
+        }
+        
+        public Builder kilometre(Object kilometre) {
+            data.setKilometre(kilometre);
+            return this;
+        }
+        
+        public Builder kilometreStr(String kilometreStr) {
+            data.setKilometreStr(kilometreStr);
+            return this;
+        }
+        
+        public Builder obdStatus(String obdStatus) {
+            data.setObdStatus(obdStatus);
+            return this;
+        }
+        
+        public Builder officeId(String officeId) {
+            data.setOfficeId(officeId);
+            return this;
+        }
+        
+        public Builder plate(String plate) {
+            data.setPlate(plate);
+            return this;
+        }
+        
+        public Builder plateColour(String plateColour) {
+            data.setPlateColour(plateColour);
+            return this;
+        }
+        
+        public Builder remarks(String remarks) {
+            data.setRemarks(remarks);
+            return this;
+        }
+        
+        public Builder seating(Integer seating) {
+            data.setSeating(seating);
+            return this;
+        }
+        
+        public Builder settlementPrice(Float settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder settlementPriceStr(String settlementPriceStr) {
+            data.setSettlementPriceStr(settlementPriceStr);
+            return this;
+        }
+        
+        public Builder startTime(Object startTime) {
+            data.setStartTime(startTime);
+            return this;
+        }
+        
+        public Builder trafficCarType(String trafficCarType) {
+            data.setTrafficCarType(trafficCarType);
+            return this;
+        }
+        
+        public Builder type(String type) {
+            data.setType(type);
+            return this;
+        }
+        
+        public Builder updateTime(String updateTime) {
+            data.setUpdateTime(updateTime);
+            return this;
+        }
+        
+        public Builder updateUser(String updateUser) {
+            data.setUpdateUser(updateUser);
+            return this;
+        }
+        
+        public Builder vehicleDesc(String vehicleDesc) {
+            data.setVehicleDesc(vehicleDesc);
+            return this;
+        }
+        
+        public Builder vehicleNature(String vehicleNature) {
+            data.setVehicleNature(vehicleNature);
+            return this;
+        }
+        
+        public Builder vehicleNo(String vehicleNo) {
+            data.setVehicleNo(vehicleNo);
+            return this;
+        }
+        
+        public Builder vehicleStatus(String vehicleStatus) {
+            data.setVehicleStatus(vehicleStatus);
+            return this;
+        }
+        
+        public Builder vin(String vin) {
+            data.setVin(vin);
+            return this;
+        }
+        
+        public Rows build() {
+            return data;
+        }
+        
     }
     
 }

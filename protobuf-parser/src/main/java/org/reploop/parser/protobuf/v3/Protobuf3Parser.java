@@ -29,7 +29,7 @@ public class Protobuf3Parser extends Parser {
 		RULE_proto = 0, RULE_syntax = 1, RULE_importStatement = 2, RULE_packageStatement = 3, 
 		RULE_optionStatement = 4, RULE_optionName = 5, RULE_field = 6, RULE_fieldOptions = 7, 
 		RULE_fieldOption = 8, RULE_fieldNumber = 9, RULE_oneof = 10, RULE_oneofField = 11, 
-		RULE_mapField = 12, RULE_keyType = 13, RULE_type_ = 14, RULE_reserved = 15, 
+		RULE_mapField = 12, RULE_keyType = 13, RULE_fieldType = 14, RULE_reserved = 15, 
 		RULE_ranges = 16, RULE_range_ = 17, RULE_reservedFieldNames = 18, RULE_topLevelDef = 19, 
 		RULE_enumDef = 20, RULE_enumBody = 21, RULE_enumElement = 22, RULE_enumField = 23, 
 		RULE_enumValueOptions = 24, RULE_enumValueOption = 25, RULE_messageDef = 26, 
@@ -44,8 +44,8 @@ public class Protobuf3Parser extends Parser {
 		return new String[] {
 			"proto", "syntax", "importStatement", "packageStatement", "optionStatement", 
 			"optionName", "field", "fieldOptions", "fieldOption", "fieldNumber", 
-			"oneof", "oneofField", "mapField", "keyType", "type_", "reserved", "ranges", 
-			"range_", "reservedFieldNames", "topLevelDef", "enumDef", "enumBody", 
+			"oneof", "oneofField", "mapField", "keyType", "fieldType", "reserved", 
+			"ranges", "range_", "reservedFieldNames", "topLevelDef", "enumDef", "enumBody", 
 			"enumElement", "enumField", "enumValueOptions", "enumValueOption", "messageDef", 
 			"messageBody", "messageElement", "serviceDef", "serviceElement", "rpc", 
 			"constant", "blockLit", "emptyStatement", "ident", "fullIdent", "messageName", 
@@ -612,8 +612,8 @@ public class Protobuf3Parser extends Parser {
 	}
 
 	public static class FieldContext extends ParserRuleContext {
-		public Type_Context type_() {
-			return getRuleContext(Type_Context.class,0);
+		public FieldTypeContext fieldType() {
+			return getRuleContext(FieldTypeContext.class,0);
 		}
 		public FieldNameContext fieldName() {
 			return getRuleContext(FieldNameContext.class,0);
@@ -666,7 +666,7 @@ public class Protobuf3Parser extends Parser {
 				break;
 			}
 			setState(148);
-			type_();
+			fieldType();
 			setState(149);
 			fieldName();
 			setState(150);
@@ -971,8 +971,8 @@ public class Protobuf3Parser extends Parser {
 	}
 
 	public static class OneofFieldContext extends ParserRuleContext {
-		public Type_Context type_() {
-			return getRuleContext(Type_Context.class,0);
+		public FieldTypeContext fieldType() {
+			return getRuleContext(FieldTypeContext.class,0);
 		}
 		public FieldNameContext fieldName() {
 			return getRuleContext(FieldNameContext.class,0);
@@ -1014,7 +1014,7 @@ public class Protobuf3Parser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(187);
-			type_();
+			fieldType();
 			setState(188);
 			fieldName();
 			setState(189);
@@ -1057,8 +1057,8 @@ public class Protobuf3Parser extends Parser {
 			return getRuleContext(KeyTypeContext.class,0);
 		}
 		public TerminalNode COMMA() { return getToken(Protobuf3Parser.COMMA, 0); }
-		public Type_Context type_() {
-			return getRuleContext(Type_Context.class,0);
+		public FieldTypeContext fieldType() {
+			return getRuleContext(FieldTypeContext.class,0);
 		}
 		public TerminalNode GT() { return getToken(Protobuf3Parser.GT, 0); }
 		public MapNameContext mapName() {
@@ -1109,7 +1109,7 @@ public class Protobuf3Parser extends Parser {
 			setState(202);
 			match(COMMA);
 			setState(203);
-			type_();
+			fieldType();
 			setState(204);
 			match(GT);
 			setState(205);
@@ -1209,7 +1209,7 @@ public class Protobuf3Parser extends Parser {
 		return _localctx;
 	}
 
-	public static class Type_Context extends ParserRuleContext {
+	public static class FieldTypeContext extends ParserRuleContext {
 		public TerminalNode DOUBLE() { return getToken(Protobuf3Parser.DOUBLE, 0); }
 		public TerminalNode FLOAT() { return getToken(Protobuf3Parser.FLOAT, 0); }
 		public TerminalNode INT32() { return getToken(Protobuf3Parser.INT32, 0); }
@@ -1231,28 +1231,28 @@ public class Protobuf3Parser extends Parser {
 		public EnumTypeContext enumType() {
 			return getRuleContext(EnumTypeContext.class,0);
 		}
-		public Type_Context(ParserRuleContext parent, int invokingState) {
+		public FieldTypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_type_; }
+		@Override public int getRuleIndex() { return RULE_fieldType; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Protobuf3Listener ) ((Protobuf3Listener)listener).enterType_(this);
+			if ( listener instanceof Protobuf3Listener ) ((Protobuf3Listener)listener).enterFieldType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Protobuf3Listener ) ((Protobuf3Listener)listener).exitType_(this);
+			if ( listener instanceof Protobuf3Listener ) ((Protobuf3Listener)listener).exitFieldType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof Protobuf3Visitor ) return ((Protobuf3Visitor<? extends T>)visitor).visitType_(this);
+			if ( visitor instanceof Protobuf3Visitor ) return ((Protobuf3Visitor<? extends T>)visitor).visitFieldType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Type_Context type_() throws RecognitionException {
-		Type_Context _localctx = new Type_Context(_ctx, getState());
-		enterRule(_localctx, 28, RULE_type_);
+	public final FieldTypeContext fieldType() throws RecognitionException {
+		FieldTypeContext _localctx = new FieldTypeContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_fieldType);
 		try {
 			setState(235);
 			_errHandler.sync(this);

@@ -1,0 +1,13 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.picker";
+package message.messages.mv.order.m.picker;
+import "message/messages/mv/order/m/picker/m/phone.proto";
+import "message/messages/mv/order/m/picker/m/identity.proto";
+import "message/messages/mv/order/m/picker/m/real_name.proto";
+message M {
+    optional message.messages.mv.order.m.picker.m.Identity identity = 1;
+    optional message.messages.mv.order.m.picker.m.Phone phone = 2;
+    optional message.messages.mv.order.m.picker.m.RealName realName = 3;
+    
+}

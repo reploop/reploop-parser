@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import body.CanShippedOrderParcelList;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import body.CanShippedOrderParcelList; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Body implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,11 +46,44 @@ public class Body implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("canShippedOrderParcelList", canShippedOrderParcelList)
-                .add("canShippedParcelNum", canShippedParcelNum)
-                .add("expiredParcelNum", expiredParcelNum)
-                .add("notExpiredParcelNum", notExpiredParcelNum)
+                .add("canShippedOrderParcelList", getCanShippedOrderParcelList())
+                .add("canShippedParcelNum", getCanShippedParcelNum())
+                .add("expiredParcelNum", getExpiredParcelNum())
+                .add("notExpiredParcelNum", getNotExpiredParcelNum())
                 .toString();
+    }
+    
+    public static Builder newBodyBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Body data = new Body();
+        
+        public Builder canShippedOrderParcelList(List<CanShippedOrderParcelList> canShippedOrderParcelList) {
+            data.setCanShippedOrderParcelList(canShippedOrderParcelList);
+            return this;
+        }
+        
+        public Builder canShippedParcelNum(Integer canShippedParcelNum) {
+            data.setCanShippedParcelNum(canShippedParcelNum);
+            return this;
+        }
+        
+        public Builder expiredParcelNum(Integer expiredParcelNum) {
+            data.setExpiredParcelNum(expiredParcelNum);
+            return this;
+        }
+        
+        public Builder notExpiredParcelNum(Integer notExpiredParcelNum) {
+            data.setNotExpiredParcelNum(notExpiredParcelNum);
+            return this;
+        }
+        
+        public Body build() {
+            return data;
+        }
+        
     }
     
 }

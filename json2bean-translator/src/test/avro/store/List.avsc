@@ -1,0 +1,59 @@
+{
+  "type": "record",
+  "name": "List",
+  "namespace": "store",
+  "fields": [
+    {
+      "name": "city",
+      "type": "string"
+    },
+    {
+      "name": "company",
+      "type": "string"
+    },
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "imgurl",
+      "type": "string"
+    },
+    {
+      "name": "longitude",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "phonenumber",
+      "type": "string"
+    },
+    {
+      "name": "sheng",
+      "type": "string"
+    },
+    {
+      "name": "sort",
+      "type": "int"
+    },
+    {
+      "name": "summary",
+      "type": "string"
+    },
+    {
+      "name": "typeName",
+      "type": "string"
+    }
+  ]
+}

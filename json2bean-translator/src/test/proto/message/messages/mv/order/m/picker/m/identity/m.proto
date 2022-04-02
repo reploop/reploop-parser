@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "message.messages.mv.order.m.picker.m.identity";
+package message.messages.mv.order.m.picker.m.identity;
+import "message/messages/mv/order/m/picker/m/identity/m/no.proto";
+import "message/messages/mv/order/m/picker/m/identity/m/type.proto";
+message M {
+    optional message.messages.mv.order.m.picker.m.identity.m.No no = 1;
+    optional message.messages.mv.order.m.picker.m.identity.m.Type type = 2;
+    
+}

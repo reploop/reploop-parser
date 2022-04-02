@@ -219,6 +219,10 @@ public class QualifiedName implements Comparable<QualifiedName> {
         return JOINER.join(parts);
     }
 
+    public String join(String seq) {
+        return String.join(seq, parts);
+    }
+
     @Override
     public int compareTo(QualifiedName o) {
         int c = Integer.compare(size(), o.size());

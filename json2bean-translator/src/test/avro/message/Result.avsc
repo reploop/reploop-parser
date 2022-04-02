@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Result",
+  "namespace": "message",
+  "fields": [
+    {
+      "name": "success",
+      "type": "boolean"
+    }
+  ]
+}

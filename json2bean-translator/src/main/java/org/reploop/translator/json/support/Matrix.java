@@ -1,11 +1,15 @@
 package org.reploop.translator.json.support;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Optional;
 
 /**
  * A matrix mapping field and message relations.
  */
 public class Matrix {
+    private static final Logger LOG = LoggerFactory.getLogger(Matrix.class);
     private final int rows;
     private final int columns;
     private final int[][] matrix;
@@ -255,7 +259,7 @@ public class Matrix {
                 }
             }
         }
-        System.out.printf("(%d,%d)-(%d,%d)=%d%n", lt.x, lt.y, rb.x, rb.y, maxArea);
+        LOG.info("({},{})-({},{})={}", lt.x, lt.y, rb.x, rb.y, maxArea);
         if (maxArea > 0) {
             return Optional.of(new Rect(lt, rb));
         }
@@ -298,6 +302,9 @@ public class Matrix {
         }
     }
 
+    /**
+     * Print matrix for debug
+     */
     public void print() {
         System.out.println("-------------------");
         System.out.printf("%3d", 0);

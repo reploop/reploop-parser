@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import sku.Result;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.List; 
-import sku.Result; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sku implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -47,11 +46,44 @@ public class Sku implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("reason", reason)
-                .add("result", result)
-                .add("resultCode", resultCode)
-                .add("success", success)
+                .add("reason", getReason())
+                .add("result", getResult())
+                .add("resultCode", getResultCode())
+                .add("success", getSuccess())
                 .toString();
+    }
+    
+    public static Builder newSkuBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Sku data = new Sku();
+        
+        public Builder reason(Object reason) {
+            data.setReason(reason);
+            return this;
+        }
+        
+        public Builder result(List<Result> result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Builder resultCode(String resultCode) {
+            data.setResultCode(resultCode);
+            return this;
+        }
+        
+        public Builder success(Boolean success) {
+            data.setSuccess(success);
+            return this;
+        }
+        
+        public Sku build() {
+            return data;
+        }
+        
     }
     
 }

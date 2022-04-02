@@ -1,12 +1,11 @@
 package har.log.entries.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import har.log.entries.MimeTypeText;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import har.log.entries.TextMimeType; 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Content extends TextMimeType implements Serializable {
+public class Content extends MimeTypeText implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer size;
     
@@ -21,8 +20,38 @@ public class Content extends TextMimeType implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("size", size)
+                .add("size", getSize())
+                .add("text", getText())
+                .add("mimeType", getMimeType())
                 .toString();
+    }
+    
+    public static Builder newContentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Content data = new Content();
+        
+        public Builder size(Integer size) {
+            data.setSize(size);
+            return this;
+        }
+        
+        public Builder text(String text) {
+            data.setText(text);
+            return this;
+        }
+        
+        public Builder mimeType(String mimeType) {
+            data.setMimeType(mimeType);
+            return this;
+        }
+        
+        public Content build() {
+            return data;
+        }
+        
     }
     
 }

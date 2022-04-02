@@ -1,0 +1,51 @@
+{
+  "type": "record",
+  "name": "RecordsUserOrderAdditional",
+  "namespace": "order.data.records",
+  "fields": [
+    {
+      "name": "actionSource",
+      "type": "string"
+    },
+    {
+      "name": "createTime",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+      "name": "driverPhone",
+      "type": "string"
+    },
+    {
+      "name": "operator",
+      "type": "string"
+    },
+    {
+      "name": "vehicleBrand",
+      "type": "string"
+    },
+    {
+      "name": "preDriverId",
+      "type": "string"
+    },
+    {
+      "name": "delay",
+      "type": "string"
+    },
+    {
+      "name": "night",
+      "type": "boolean"
+    },
+    {
+      "name": "driverOrderId",
+      "type": "string"
+    },
+    {
+      "name": "settlementPrice",
+      "type": "string"
+    }
+  ]
+}

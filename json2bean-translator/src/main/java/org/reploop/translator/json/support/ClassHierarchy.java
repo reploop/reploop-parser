@@ -3,8 +3,8 @@ package org.reploop.translator.json.support;
 import com.google.common.collect.ImmutableList;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.*;
-import org.reploop.translator.json.bean.JsonMessageContext;
-import org.reploop.translator.json.bean.JsonTypeResolver;
+import org.reploop.translator.json.bean.DupTypeResolver;
+import org.reploop.translator.json.bean.MessageContext;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,20 +19,19 @@ import static org.reploop.translator.json.support.TypeSupport.customTypeName;
  */
 public class ClassHierarchy {
 
-    private final JsonTypeResolver fieldTypeResolver;
-
-    public ClassHierarchy() {
-        this(new JsonTypeResolver());
-    }
-
-    public ClassHierarchy(JsonTypeResolver fieldTypeResolver) {
-        this.fieldTypeResolver = fieldTypeResolver;
-    }
-
+    private final DupTypeResolver dupTypeResolver;
     /**
      * From bottom up
      */
     private final Comparator<Message> messageComparator = (o1, o2) -> o2.getName().compareTo(o1.getName());
+
+    public ClassHierarchy() {
+        this(new DupTypeResolver());
+    }
+
+    public ClassHierarchy(DupTypeResolver fieldTypeResolver) {
+        this.dupTypeResolver = fieldTypeResolver;
+    }
 
     public void infer(Map<QualifiedName, Message> messageMap) {
         // All names
@@ -84,7 +83,7 @@ public class ClassHierarchy {
                         same.put(qn, parent.getName());
                     }
                 } else {
-                    Message child = new Message(qn, message.getComments(), sub, message.getMessages(), message.getEnumerations(), message.getOptions());
+                    Message child = new Message(qn, message.getComments(), sub, message.getMessages(), message.getEnumerations(), message.getServices(), message.getOptions());
                     subClasses.add(child);
                     // Update the message
                     messageMap.put(qn, child);
@@ -100,7 +99,7 @@ public class ClassHierarchy {
                 // Only 2 Fields
                 if (subClasses.isEmpty() && fields.size() < 3) {
                     QualifiedName parentName = parentName(p);
-                    parent = new Message(parentName, parent.getComments(), parent.getFields(), parent.getMessages(), parent.getEnumerations(), parent.getOptions());
+                    parent = new Message(parentName, parent.getComments(), parent.getFields(), parent.getMessages(), parent.getEnumerations(), parent.getServices(), parent.getOptions());
                     same.put(name, parentName);
                     messageMap.put(parentName, parent);
                 }
@@ -114,7 +113,7 @@ public class ClassHierarchy {
                     if (null != options) {
                         lb.addAll(options);
                     }
-                    Message m = new Message(sub.getName(), sub.getComments(), sub.getFields(), sub.getMessages(), sub.getEnumerations(), lb.build());
+                    Message m = new Message(sub.getName(), sub.getComments(), sub.getFields(), sub.getMessages(), sub.getEnumerations(), sub.getServices(), lb.build());
                     messageMap.put(m.getName(), m);
                 }
 
@@ -178,6 +177,7 @@ public class ClassHierarchy {
             String name0 = Stream.of(fields)
                 .flatMap(Collection::stream)
                 .map(Field::getName)
+                .sorted()
                 .collect(Collectors.joining(UNDERSCORE));
             return QualifiedName.of(qn, name0);
         }
@@ -186,17 +186,17 @@ public class ClassHierarchy {
             .flatMap(Collection::stream)
             .map(Entity::getName)
             .map(QualifiedName::suffix)
-            .limit(2)
             .sorted()
+            .limit(2)
             .collect(Collectors.joining(UNDERSCORE));
         return QualifiedName.of(qn, name);
     }
 
     private void rewrite(Map<QualifiedName, Message> messageMap, Map<QualifiedName, QualifiedName> identityNames) {
-        JsonMessageContext context = new JsonMessageContext();
+        MessageContext context = new MessageContext();
         context.addIdentityNames(identityNames);
         messageMap.forEach((name, message) -> {
-            Message msg = fieldTypeResolver.visitMessage(message, context);
+            Message msg = dupTypeResolver.visitMessage(message, context);
             messageMap.put(msg.getName(), msg);
         });
     }
@@ -217,10 +217,10 @@ public class ClassHierarchy {
         List<Message> messages = subClasses.stream()
             .sorted(messageComparator)
             .collect(toList());
-        JsonMessageContext ctx = new JsonMessageContext();
+        MessageContext ctx = new MessageContext();
         ctx.addIdentityNames(sameMap);
         for (Message message : messages) {
-            Message msg = fieldTypeResolver.visitMessage(message, ctx);
+            Message msg = dupTypeResolver.visitMessage(message, ctx);
             Optional<Message> om = reduce(parent, msg, messageMap);
             if (om.isPresent()) {
                 parent = om.get();
@@ -240,7 +240,7 @@ public class ClassHierarchy {
         // A class has only one field and the field's type is same as it's parent, then we consider this class can be parent.
         boolean same = oq.filter(qn -> qn.equals(parent.getName())).isPresent();
         if (same) {
-            JsonMessageContext ctx = new JsonMessageContext(sub.getName());
+            MessageContext ctx = new MessageContext(sub.getName());
             // Parent is same as this message after fields merging.
             ctx.addIdentityName(parent.getName(), sub.getName());
             List<Field> merge = ImmutableList.<Field>builder()
@@ -248,10 +248,10 @@ public class ClassHierarchy {
                 .addAll(parent.getFields())
                 .build();
             List<Field> list = merge.stream()
-                .map(f -> fieldTypeResolver.visitField(f, ctx))
+                .map(f -> dupTypeResolver.visitField(f, ctx))
                 .distinct()
                 .collect(toList());
-            Message msg = new Message(sub.getName(), sub.getComments(), list, sub.getMessages(), sub.getEnumerations(), sub.getOptions());
+            Message msg = new Message(sub.getName(), sub.getComments(), list, sub.getMessages(), sub.getEnumerations(), sub.getServices(), sub.getOptions());
             messageMap.put(msg.getName(), msg);
             return Optional.of(msg);
         }

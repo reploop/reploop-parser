@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "category.data.sheets";
+package category.data.sheets;
+message Merges {
+    optional int32 columnCount = 1;
+    optional int32 rowCount = 2;
+    optional int32 startColumnIndex = 3;
+    optional int32 startRowIndex = 4;
+    
+}

@@ -1,9 +1,8 @@
 package document;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BoilingPoint implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,9 +28,32 @@ public class BoilingPoint implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("units", units)
-                .add("value", value)
+                .add("units", getUnits())
+                .add("value", getValue())
                 .toString();
+    }
+    
+    public static Builder newBoilingPointBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final BoilingPoint data = new BoilingPoint();
+        
+        public Builder units(String units) {
+            data.setUnits(units);
+            return this;
+        }
+        
+        public Builder value(Double value) {
+            data.setValue(value);
+            return this;
+        }
+        
+        public BoilingPoint build() {
+            return data;
+        }
+        
     }
     
 }

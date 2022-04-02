@@ -1,9 +1,8 @@
 package message.messages.mv.order.m.picker.m.identity.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Type implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -20,8 +19,26 @@ public class Type implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("s", s)
+                .add("s", getS())
                 .toString();
+    }
+    
+    public static Builder newTypeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Type data = new Type();
+        
+        public Builder s(String s) {
+            data.setS(s);
+            return this;
+        }
+        
+        public Type build() {
+            return data;
+        }
+        
     }
     
 }

@@ -1,16 +1,15 @@
 package message.messages.mv.order;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.Code;
+import message.messages.mv.order.m.States;
 import java.io.Serializable;
+import message.messages.mv.order.m.Created;
+import message.messages.mv.order.m.PickPoint;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.Code; 
-import message.messages.mv.order.m.States; 
-import message.messages.mv.order.m.Created; 
-import message.messages.mv.order.m.PickPoint; 
-import message.messages.mv.order.m.Items; 
-import message.messages.mv.order.m.Flight; 
-import message.messages.mv.order.m.Picker; 
+import message.messages.mv.order.m.Items;
+import message.messages.mv.order.m.Flight;
+import message.messages.mv.order.m.Picker;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -81,14 +80,62 @@ public class M implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("created", created)
-                .add("flight", flight)
-                .add("items", items)
-                .add("pickPoint", pickPoint)
-                .add("picker", picker)
-                .add("states", states)
+                .add("code", getCode())
+                .add("created", getCreated())
+                .add("flight", getFlight())
+                .add("items", getItems())
+                .add("pickPoint", getPickPoint())
+                .add("picker", getPicker())
+                .add("states", getStates())
                 .toString();
+    }
+    
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder code(Code code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder created(Created created) {
+            data.setCreated(created);
+            return this;
+        }
+        
+        public Builder flight(Flight flight) {
+            data.setFlight(flight);
+            return this;
+        }
+        
+        public Builder items(Items items) {
+            data.setItems(items);
+            return this;
+        }
+        
+        public Builder pickPoint(PickPoint pickPoint) {
+            data.setPickPoint(pickPoint);
+            return this;
+        }
+        
+        public Builder picker(Picker picker) {
+            data.setPicker(picker);
+            return this;
+        }
+        
+        public Builder states(States states) {
+            data.setStates(states);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
     }
     
 }

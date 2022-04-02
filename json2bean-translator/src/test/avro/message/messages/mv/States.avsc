@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "States",
+  "namespace": "message.messages.mv",
+  "fields": [
+    {
+      "name": "l",
+      "type": {
+        "type": "array",
+        "items": "message.messages.mv.states.L",
+        "default": []
+      }
+    }
+  ]
+}

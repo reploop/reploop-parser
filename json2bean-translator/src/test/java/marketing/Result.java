@@ -1,9 +1,8 @@
 package marketing;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -74,14 +73,62 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("beginTime", beginTime)
-                .add("createTime", createTime)
-                .add("endTime", endTime)
-                .add("marketingId", marketingId)
-                .add("marketingName", marketingName)
-                .add("marketingType", marketingType)
-                .add("pause", pause)
+                .add("beginTime", getBeginTime())
+                .add("createTime", getCreateTime())
+                .add("endTime", getEndTime())
+                .add("marketingId", getMarketingId())
+                .add("marketingName", getMarketingName())
+                .add("marketingType", getMarketingType())
+                .add("pause", getPause())
                 .toString();
+    }
+    
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder beginTime(String beginTime) {
+            data.setBeginTime(beginTime);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder endTime(String endTime) {
+            data.setEndTime(endTime);
+            return this;
+        }
+        
+        public Builder marketingId(Integer marketingId) {
+            data.setMarketingId(marketingId);
+            return this;
+        }
+        
+        public Builder marketingName(String marketingName) {
+            data.setMarketingName(marketingName);
+            return this;
+        }
+        
+        public Builder marketingType(Integer marketingType) {
+            data.setMarketingType(marketingType);
+            return this;
+        }
+        
+        public Builder pause(Boolean pause) {
+            data.setPause(pause);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
     }
     
 }

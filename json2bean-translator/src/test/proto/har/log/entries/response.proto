@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "har.log.entries";
+package har.log.entries;
+import "har/log/entries/response/content.proto";
+import "har/log/entries/name_value.proto";
+message Response {
+    optional int32 bodySize = 1;
+    optional har.log.entries.response.Content content = 2;
+    repeated har.log.entries.NameValue cookies = 3;
+    repeated har.log.entries.NameValue headers = 4;
+    optional int32 headersSize = 5;
+    optional string httpVersion = 6;
+    optional string redirectURL = 7;
+    optional int32 status = 8;
+    optional string statusText = 9;
+    
+}

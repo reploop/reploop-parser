@@ -1,8 +1,7 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import department.Data;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import department.Data; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Department implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -37,10 +36,38 @@ public class Department implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("data", data)
-                .add("msg", msg)
+                .add("code", getCode())
+                .add("data", getData())
+                .add("msg", getMsg())
                 .toString();
+    }
+    
+    public static Builder newDepartmentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Department data = new Department();
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder data(Data data) {
+            this.data.setData(data);
+            return this;
+        }
+        
+        public Builder msg(String msg) {
+            data.setMsg(msg);
+            return this;
+        }
+        
+        public Department build() {
+            return data;
+        }
+        
     }
     
 }

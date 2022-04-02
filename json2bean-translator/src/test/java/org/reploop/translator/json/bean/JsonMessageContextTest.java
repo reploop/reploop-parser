@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonMessageContextTest {
 
-    private JsonMessageContext context;
+    private MessageContext context;
 
     @Before
     public void setUp() throws Exception {
-        context = new JsonMessageContext();
+        context = new MessageContext();
         String expected = "$.log.entries.response.content.text";
         context.configureJsonRawValue(expected);
 

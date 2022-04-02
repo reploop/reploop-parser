@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Identity",
+  "namespace": "message.messages.mv.order.m.picker.m",
+  "fields": [
+    {
+      "name": "m",
+      "type": "message.messages.mv.order.m.picker.m.identity.M"
+    }
+  ]
+}

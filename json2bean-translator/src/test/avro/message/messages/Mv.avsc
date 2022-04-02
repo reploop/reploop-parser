@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "Mv",
+  "namespace": "message.messages",
+  "fields": [
+    {
+      "name": "code",
+      "type": "message.messages.mv.Code"
+    },
+    {
+      "name": "headingCode",
+      "type": "message.messages.mv.HeadingCode"
+    },
+    {
+      "name": "items",
+      "type": "message.messages.mv.Items"
+    },
+    {
+      "name": "lifeCycle",
+      "type": "message.messages.mv.LifeCycle"
+    },
+    {
+      "name": "order",
+      "type": "message.messages.mv.Order"
+    },
+    {
+      "name": "pickInfo",
+      "type": "message.messages.mv.PickInfo"
+    },
+    {
+      "name": "states",
+      "type": "message.messages.mv.States"
+    },
+    {
+      "name": "uploadInfo",
+      "type": "message.messages.mv.UploadInfo"
+    }
+  ]
+}

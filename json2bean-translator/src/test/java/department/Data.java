@@ -1,12 +1,11 @@
 package department;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import department.data.Items;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import department.data.Items; 
-import com.fasterxml.jackson.annotation.JsonProperty; 
-import java.util.List; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Data implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -33,9 +32,32 @@ public class Data implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("hasMore", hasMore)
-                .add("items", items)
+                .add("hasMore", getHasMore())
+                .add("items", getItems())
                 .toString();
+    }
+    
+    public static Builder newDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Data data = new Data();
+        
+        public Builder hasMore(Boolean hasMore) {
+            data.setHasMore(hasMore);
+            return this;
+        }
+        
+        public Builder items(List<Items> items) {
+            data.setItems(items);
+            return this;
+        }
+        
+        public Data build() {
+            return data;
+        }
+        
     }
     
 }

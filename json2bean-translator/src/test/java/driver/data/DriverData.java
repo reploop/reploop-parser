@@ -1,10 +1,9 @@
 package driver.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import com.fasterxml.jackson.annotation.JsonProperty; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DriverData implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -188,25 +187,128 @@ public class DriverData implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("address", address)
-                .add("agentId", agentId)
-                .add("banStatus", banStatus)
-                .add("channel", channel)
-                .add("cityName", cityName)
-                .add("contactPhone", contactPhone)
-                .add("idCardLocation", idCardLocation)
-                .add("idNo", idNo)
-                .add("idnOBackUrl", idnOBackUrl)
-                .add("idnOFrontUrl", idnOFrontUrl)
-                .add("licenceBackUrl", licenceBackUrl)
-                .add("licenceFrontUrl", licenceFrontUrl)
-                .add("name", name)
-                .add("onlineGvid", onlineGvid)
-                .add("qualificationUrl", qualificationUrl)
-                .add("regTime", regTime)
-                .add("sex", sex)
-                .add("supplierId", supplierId)
+                .add("address", getAddress())
+                .add("agentId", getAgentId())
+                .add("banStatus", getBanStatus())
+                .add("channel", getChannel())
+                .add("cityName", getCityName())
+                .add("contactPhone", getContactPhone())
+                .add("idCardLocation", getIdCardLocation())
+                .add("idNo", getIdNo())
+                .add("idnOBackUrl", getIdnOBackUrl())
+                .add("idnOFrontUrl", getIdnOFrontUrl())
+                .add("licenceBackUrl", getLicenceBackUrl())
+                .add("licenceFrontUrl", getLicenceFrontUrl())
+                .add("name", getName())
+                .add("onlineGvid", getOnlineGvid())
+                .add("qualificationUrl", getQualificationUrl())
+                .add("regTime", getRegTime())
+                .add("sex", getSex())
+                .add("supplierId", getSupplierId())
                 .toString();
+    }
+    
+    public static Builder newDriverDataBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final DriverData data = new DriverData();
+        
+        public Builder address(String address) {
+            data.setAddress(address);
+            return this;
+        }
+        
+        public Builder agentId(Integer agentId) {
+            data.setAgentId(agentId);
+            return this;
+        }
+        
+        public Builder banStatus(Integer banStatus) {
+            data.setBanStatus(banStatus);
+            return this;
+        }
+        
+        public Builder channel(String channel) {
+            data.setChannel(channel);
+            return this;
+        }
+        
+        public Builder cityName(String cityName) {
+            data.setCityName(cityName);
+            return this;
+        }
+        
+        public Builder contactPhone(String contactPhone) {
+            data.setContactPhone(contactPhone);
+            return this;
+        }
+        
+        public Builder idCardLocation(Integer idCardLocation) {
+            data.setIdCardLocation(idCardLocation);
+            return this;
+        }
+        
+        public Builder idNo(String idNo) {
+            data.setIdNo(idNo);
+            return this;
+        }
+        
+        public Builder idnOBackUrl(String idnOBackUrl) {
+            data.setIdnOBackUrl(idnOBackUrl);
+            return this;
+        }
+        
+        public Builder idnOFrontUrl(String idnOFrontUrl) {
+            data.setIdnOFrontUrl(idnOFrontUrl);
+            return this;
+        }
+        
+        public Builder licenceBackUrl(String licenceBackUrl) {
+            data.setLicenceBackUrl(licenceBackUrl);
+            return this;
+        }
+        
+        public Builder licenceFrontUrl(String licenceFrontUrl) {
+            data.setLicenceFrontUrl(licenceFrontUrl);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
+            return this;
+        }
+        
+        public Builder onlineGvid(String onlineGvid) {
+            data.setOnlineGvid(onlineGvid);
+            return this;
+        }
+        
+        public Builder qualificationUrl(String qualificationUrl) {
+            data.setQualificationUrl(qualificationUrl);
+            return this;
+        }
+        
+        public Builder regTime(String regTime) {
+            data.setRegTime(regTime);
+            return this;
+        }
+        
+        public Builder sex(String sex) {
+            data.setSex(sex);
+            return this;
+        }
+        
+        public Builder supplierId(Integer supplierId) {
+            data.setSupplierId(supplierId);
+            return this;
+        }
+        
+        public DriverData build() {
+            return data;
+        }
+        
     }
     
 }

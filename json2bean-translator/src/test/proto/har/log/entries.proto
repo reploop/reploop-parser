@@ -1,0 +1,21 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "har.log";
+package har.log;
+import "har/log/entries/request.proto";
+import "har/log/entries/response.proto";
+import "har/log/entries/timings.proto";
+import "har/log/entries/cache.proto";
+message Entries {
+    optional har.log.entries.Cache cache = 1;
+    optional string connection = 2;
+    optional string pageref = 3;
+    optional har.log.entries.Request request = 4;
+    optional har.log.entries.Response response = 5;
+    optional string _securityState = 6;
+    optional string serverIPAddress = 7;
+    optional string startedDateTime = 8;
+    optional int32 time = 9;
+    optional har.log.entries.Timings timings = 10;
+    
+}

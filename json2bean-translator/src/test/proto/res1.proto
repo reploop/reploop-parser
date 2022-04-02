@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "res1/error.proto";
+import "res1/data.proto";
+message Res1 {
+    optional res1.Data data = 1;
+    optional res1.Error error = 2;
+    
+}

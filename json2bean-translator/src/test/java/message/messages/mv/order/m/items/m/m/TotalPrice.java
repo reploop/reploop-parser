@@ -1,9 +1,8 @@
 package message.messages.mv.order.m.items.m.m;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TotalPrice implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -20,8 +19,26 @@ public class TotalPrice implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("n", n)
+                .add("n", getN())
                 .toString();
+    }
+    
+    public static Builder newTotalPriceBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final TotalPrice data = new TotalPrice();
+        
+        public Builder n(String n) {
+            data.setN(n);
+            return this;
+        }
+        
+        public TotalPrice build() {
+            return data;
+        }
+        
     }
     
 }

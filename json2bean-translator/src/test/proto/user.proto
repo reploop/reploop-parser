@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "user/result.proto";
+message User {
+    optional int32 code = 1;
+    optional int32 count = 2;
+    optional string date = 3;
+    optional string error = 4;
+    repeated user.Result result = 5;
+    
+}

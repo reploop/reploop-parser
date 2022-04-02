@@ -1,9 +1,8 @@
 package req1.plan_prefer;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Price implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,9 +28,32 @@ public class Price implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("lower", lower)
-                .add("upper", upper)
+                .add("lower", getLower())
+                .add("upper", getUpper())
                 .toString();
+    }
+    
+    public static Builder newPriceBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Price data = new Price();
+        
+        public Builder lower(Float lower) {
+            data.setLower(lower);
+            return this;
+        }
+        
+        public Builder upper(Float upper) {
+            data.setUpper(upper);
+            return this;
+        }
+        
+        public Price build() {
+            return data;
+        }
+        
     }
     
 }

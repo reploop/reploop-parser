@@ -1,0 +1,10 @@
+syntax = "proto3";
+option java_multiple_files = true;
+message MapType {
+    optional string a = 1;
+    optional int32 b = 2;
+    optional string c = 3;
+    optional int32 d = 4;
+    optional string e = 5;
+    
+}

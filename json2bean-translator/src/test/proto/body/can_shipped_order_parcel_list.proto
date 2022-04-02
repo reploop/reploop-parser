@@ -1,0 +1,9 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "body";
+package body;
+message CanShippedOrderParcelList {
+    optional string parcelId = 1;
+    optional string parcelName = 2;
+    
+}

@@ -1,9 +1,8 @@
 package goods;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -101,17 +100,80 @@ public class Result implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("addedFlag", addedFlag)
-                .add("brandId", brandId)
-                .add("cateId", cateId)
-                .add("createTime", createTime)
-                .add("goodsDetail", goodsDetail)
-                .add("goodsImage", goodsImage)
-                .add("goodsName", goodsName)
-                .add("goodsUnit", goodsUnit)
-                .add("linePrice", linePrice)
-                .add("sku", sku)
+                .add("addedFlag", getAddedFlag())
+                .add("brandId", getBrandId())
+                .add("cateId", getCateId())
+                .add("createTime", getCreateTime())
+                .add("goodsDetail", getGoodsDetail())
+                .add("goodsImage", getGoodsImage())
+                .add("goodsName", getGoodsName())
+                .add("goodsUnit", getGoodsUnit())
+                .add("linePrice", getLinePrice())
+                .add("sku", getSku())
                 .toString();
+    }
+    
+    public static Builder newResultBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Result data = new Result();
+        
+        public Builder addedFlag(Boolean addedFlag) {
+            data.setAddedFlag(addedFlag);
+            return this;
+        }
+        
+        public Builder brandId(Integer brandId) {
+            data.setBrandId(brandId);
+            return this;
+        }
+        
+        public Builder cateId(Integer cateId) {
+            data.setCateId(cateId);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder goodsDetail(String goodsDetail) {
+            data.setGoodsDetail(goodsDetail);
+            return this;
+        }
+        
+        public Builder goodsImage(String goodsImage) {
+            data.setGoodsImage(goodsImage);
+            return this;
+        }
+        
+        public Builder goodsName(String goodsName) {
+            data.setGoodsName(goodsName);
+            return this;
+        }
+        
+        public Builder goodsUnit(String goodsUnit) {
+            data.setGoodsUnit(goodsUnit);
+            return this;
+        }
+        
+        public Builder linePrice(Double linePrice) {
+            data.setLinePrice(linePrice);
+            return this;
+        }
+        
+        public Builder sku(String sku) {
+            data.setSku(sku);
+            return this;
+        }
+        
+        public Result build() {
+            return data;
+        }
+        
     }
     
 }

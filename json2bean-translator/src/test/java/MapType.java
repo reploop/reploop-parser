@@ -1,7 +1,6 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MapType implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,12 +53,50 @@ public class MapType implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("a", a)
-                .add("b", b)
-                .add("c", c)
-                .add("d", d)
-                .add("e", e)
+                .add("a", getA())
+                .add("b", getB())
+                .add("c", getC())
+                .add("d", getD())
+                .add("e", getE())
                 .toString();
+    }
+    
+    public static Builder newMapTypeBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final MapType data = new MapType();
+        
+        public Builder a(String a) {
+            data.setA(a);
+            return this;
+        }
+        
+        public Builder b(Integer b) {
+            data.setB(b);
+            return this;
+        }
+        
+        public Builder c(String c) {
+            data.setC(c);
+            return this;
+        }
+        
+        public Builder d(Integer d) {
+            data.setD(d);
+            return this;
+        }
+        
+        public Builder e(String e) {
+            data.setE(e);
+            return this;
+        }
+        
+        public MapType build() {
+            return data;
+        }
+        
     }
     
 }

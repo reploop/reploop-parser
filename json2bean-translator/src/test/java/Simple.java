@@ -1,9 +1,8 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import simple.Area;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import java.util.Map; 
-import simple.Area; 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Simple implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -65,13 +64,56 @@ public class Simple implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("area", area)
-                .add("city", city)
-                .add("code", code)
-                .add("date", date)
-                .add("error", error)
-                .add("result", result)
+                .add("area", getArea())
+                .add("city", getCity())
+                .add("code", getCode())
+                .add("date", getDate())
+                .add("error", getError())
+                .add("result", getResult())
                 .toString();
+    }
+    
+    public static Builder newSimpleBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Simple data = new Simple();
+        
+        public Builder area(Map<Integer, Area> area) {
+            data.setArea(area);
+            return this;
+        }
+        
+        public Builder city(Map<String, String> city) {
+            data.setCity(city);
+            return this;
+        }
+        
+        public Builder code(Integer code) {
+            data.setCode(code);
+            return this;
+        }
+        
+        public Builder date(String date) {
+            data.setDate(date);
+            return this;
+        }
+        
+        public Builder error(String error) {
+            data.setError(error);
+            return this;
+        }
+        
+        public Builder result(String result) {
+            data.setResult(result);
+            return this;
+        }
+        
+        public Simple build() {
+            return data;
+        }
+        
     }
     
 }

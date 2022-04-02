@@ -1,13 +1,12 @@
 package message.messages.mv.order.m.flight;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import message.messages.mv.order.m.flight.m.DepartureTime;
+import message.messages.mv.order.m.flight.m.No;
 import java.io.Serializable;
+import message.messages.mv.order.m.flight.m.Terminal;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
-import message.messages.mv.order.m.flight.m.DepartureTime; 
-import message.messages.mv.order.m.flight.m.No; 
-import message.messages.mv.order.m.flight.m.Terminal; 
-import message.messages.mv.order.m.flight.m.Airport; 
+import message.messages.mv.order.m.flight.m.Airport;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class M implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -51,11 +50,44 @@ public class M implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("airport", airport)
-                .add("departureTime", departureTime)
-                .add("no", no)
-                .add("terminal", terminal)
+                .add("airport", getAirport())
+                .add("departureTime", getDepartureTime())
+                .add("no", getNo())
+                .add("terminal", getTerminal())
                 .toString();
+    }
+    
+    public static Builder newMBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final M data = new M();
+        
+        public Builder airport(Airport airport) {
+            data.setAirport(airport);
+            return this;
+        }
+        
+        public Builder departureTime(DepartureTime departureTime) {
+            data.setDepartureTime(departureTime);
+            return this;
+        }
+        
+        public Builder no(No no) {
+            data.setNo(no);
+            return this;
+        }
+        
+        public Builder terminal(Terminal terminal) {
+            data.setTerminal(terminal);
+            return this;
+        }
+        
+        public M build() {
+            return data;
+        }
+        
     }
     
 }

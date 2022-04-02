@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "category";
+package category;
+import "category/data/properties.proto";
+import "category/data/sheets.proto";
+message Data {
+    optional category.data.Properties properties = 1;
+    repeated category.data.Sheets sheets = 2;
+    optional string spreadsheetToken = 3;
+    
+}
