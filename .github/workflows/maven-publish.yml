@@ -19,7 +19,8 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 11
-      - uses: s4u/maven-settings-action@v2.5.0
+      - name: Generate settings.xml for Maven Builds
+        uses: whelk-io/maven-settings-xml-action@v20
         with:
           servers: |
             [{
@@ -27,7 +28,30 @@ jobs:
               "username": "${{ secrets.OSSRH_USERNAME }}",
               "password": "${{ secrets.OSSRH_PASSWORD }}"
             }]
-          sonatypeSnapshots: true
+          repositories: |
+            [{
+                "id": "ossrh",
+                "name": "OSSRH",
+                "url": "https://s01.oss.sonatype.org/content/repositories/snapshots",
+                "releases": {
+                  "enabled": "false"
+                },
+                "snapshots": {
+                  "enabled": "true"
+                }
+            }]
+          plugin_repositories: |
+            [{
+                "id": "ossrh",
+                "name": "OSSRH",
+                "url": "https://s01.oss.sonatype.org/content/repositories/snapshots",
+                "releases": {
+                  "enabled": "false"
+                },
+                "snapshots": {
+                  "enabled": "true"
+                }
+            }]
       - name: Publish to OSSRH
         run: mvn -U clean deploy
         env:
