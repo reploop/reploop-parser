@@ -56,8 +56,7 @@ jobs:
             }]
       - name: Build with Maven
         run: |
-          cat ~/.m2/settings.xml
-          mvn -B package --file pom.xml
+          mvn -B package
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
