@@ -9,7 +9,7 @@ import java.io.IOException;
  * https://rvesse.github.io/airline/
  */
 @Cli(name = "json2",
-    description = "Translate JSON to POJO",
+    description = "Translate JSON to supported targets",
     defaultCommand = Help.class,
     commands = {
         Json2AllCommand.class,

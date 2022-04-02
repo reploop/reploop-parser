@@ -10,7 +10,7 @@ import java.util.EnumSet;
 /**
  * All targets
  */
-@Command(name = "all", description = "Convert JSON to all supported target in one run.")
+@Command(name = "all", description = "Convert JSON to all supported targets in one run.")
 public class Json2AllCommand extends Json2Command {
     private static final Logger LOG = LoggerFactory.getLogger(Json2AllCommand.class);
 

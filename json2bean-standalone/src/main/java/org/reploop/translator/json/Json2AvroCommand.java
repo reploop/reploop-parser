@@ -10,7 +10,7 @@ import java.util.EnumSet;
 /**
  * The Avro target.
  */
-@Command(name = "avro", description = "Translate JSON to Protobuf Schema.")
+@Command(name = "avro", description = "Translate JSON to Apache Avro schema.")
 public class Json2AvroCommand extends Json2Command {
     private static final Logger LOG = LoggerFactory.getLogger(Json2AvroCommand.class);
 

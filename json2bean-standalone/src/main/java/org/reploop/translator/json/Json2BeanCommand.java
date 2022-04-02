@@ -10,7 +10,7 @@ import java.util.EnumSet;
 /**
  * Java Bean target.
  */
-@Command(name = "bean", description = "Convert JSON to POJO.")
+@Command(name = "bean", description = "Convert JSON to Java POJO.")
 public class Json2BeanCommand extends Json2Command {
     private static final Logger LOG = LoggerFactory.getLogger(Json2BeanCommand.class);
 

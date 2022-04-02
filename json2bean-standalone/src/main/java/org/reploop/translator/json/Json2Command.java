@@ -11,9 +11,11 @@ import java.util.EnumSet;
 import java.util.List;
 
 /**
+ * Collect JSON from the following locations:
  * #1 URL resource
  * #2 file resource
- * #2 file resource in directory
+ * #3 file resource in directory
+ * then generate schemas
  */
 public class Json2Command implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Json2Command.class);
