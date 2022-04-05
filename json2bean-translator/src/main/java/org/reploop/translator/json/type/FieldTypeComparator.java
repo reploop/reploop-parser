@@ -5,7 +5,7 @@ import org.reploop.parser.protobuf.type.*;
 import java.util.Comparator;
 
 /**
- * String > number > Object
+ * String, number then Object
  */
 public class FieldTypeComparator implements Comparator<FieldType> {
     @Override

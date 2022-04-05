@@ -89,6 +89,9 @@ public class Matrix {
 
     /**
      * Bubble sort, order desc
+     *
+     * @param rowSwapListener    swap two rows
+     * @param columnSwapListener swap two columns
      */
     public void sort(SwapListener rowSwapListener, SwapListener columnSwapListener) {
         int scoreRowIndex = rows - 1;
