@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>reploop-parser</artifactId>
-    <version>0.17-SNAPSHOT</version>
+    <version>0.19</version>
     <packaging>pom</packaging>
 
     <properties>
