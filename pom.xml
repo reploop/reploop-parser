@@ -18,16 +18,16 @@
     </properties>
 
     <modules>
-        <module>json2bean-standalone</module>
+        <module>json2-standalone</module>
         <module>thrift-parser</module>
         <module>protobuf-parser</module>
         <module>parser-commons</module>
         <module>json-parser</module>
         <module>java-parser</module>
         <module>mysql-parser</module>
-        <module>json2bean-translator</module>
+        <module>json2-translator</module>
         <module>go-parser</module>
-        <module>json2bean-maven-plugin</module>
+        <module>json2-maven-plugin</module>
     </modules>
 
     <profiles>
