@@ -1,13 +1,13 @@
-= json2bean-standalone
+= json2-standalone
 :icons: font
 
 This is the standalone project for an dependent executable jar to run from command line to translate JSON data to schema or idl of the specific target supported.
 
 == Build
 
-You need Java and Maven setup properly first, then run maven command to build the executable jar ``mvn -U clean package -am -pl json2bean-standalone``.
+You need Java and Maven setup properly first, then run maven command to build the executable jar ``mvn -U clean package -am -pl json2-standalone``.
 
-And the jar will be in the target directory of the project json2bean-standalone.
+And the jar will be in the target directory of the project json2-standalone.
 
 == Download
 
@@ -17,19 +17,19 @@ The jar is also built and published to Maven Central.
 ----
 <dependency>
     <groupId>org.reploop</groupId>
-    <artifactId>json2bean-standalone</artifactId>
-    <version>${json2bean.version}</version> //<1>
+    <artifactId>json2-standalone</artifactId>
+    <version>${json2.version}</version> //<1>
 </dependency>
 ----
 
 <1> current version is 0.19
 
 Just search and download there.
-Or you can click and download the release version https://repo1.maven.org/maven2/org/reploop/json2bean-standalone/0.19/json2bean-standalone-0.19.jar[0.19] directly.
+Or you can click and download the release version https://repo1.maven.org/maven2/org/reploop/json2-standalone/0.19/json2-standalone-0.19.jar[0.19] directly.
 
 == Run
 
-Run `java -jar json2bean-standalone-0.19.jar` or set an alias for that as ``alias json2="java -jar json2bean-standalone-0.19.jar"`` for convenience.
+Run `java -jar json2-standalone-0.19.jar` or set an alias for that as ``alias json2="java -jar json2-standalone-0.19.jar"`` for convenience.
 
 Run ``json2`` from command line, will get the following help info
 
@@ -53,7 +53,7 @@ For a single command, We can check help info too by execute ``json2 help bean`` 
 
 [source,bash]
 ----
-java -jar json2bean-standalone-0.19.jar help bean
+java -jar json2-standalone-0.19.jar help bean
 NAME
         json2 bean - Convert JSON to Java POJO.
 

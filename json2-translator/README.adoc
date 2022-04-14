@@ -173,13 +173,13 @@ API返回的JSON基本上都是API开发者定义好的，给啥就是啥。 所
 
 === 命令行
 
-参见项目``json2bean-standalone``，用Maven打包生成一个可执行的jar包，然后通过命令行传输参数执行。
+参见项目``json2-standalone``，用Maven打包生成一个可执行的jar包，然后通过命令行传输参数执行。
 
 直接运行：
 
 [source,bash]
 ----
-java -jar json2bean-standalone-0.17-SNAPSHOT.jar
+java -jar json2-standalone-0.17-SNAPSHOT.jar
 ----
 
 输出帮助信息：
@@ -200,7 +200,7 @@ Commands are:
 See 'json2 help <command>' for more information on a specific command.
 ----
 
-<1> json2 可以在命令行设置一个``alias json2="java -jar json2bean-standalone-0.17-SNAPSHOT.jar"``。 这里面的Java环境和Jar包的路径需要根据自身情况修改一下。
+<1> json2 可以在命令行设置一个``alias json2="java -jar json2-standalone-0.17-SNAPSHOT.jar"``。 这里面的Java环境和Jar包的路径需要根据自身情况修改一下。
 <2> all命令，一次性生成所有支持的格式，效果相当于分别执行不同的命令。
 <3> avro命令，生成Apache Avro Schema。
 <4> bean命令，生成POJO。
