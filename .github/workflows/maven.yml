@@ -60,7 +60,6 @@ jobs:
             }]
       - name: Build with Maven
         run: |
-          cat ~/.m2/settings.xml
           mvn -B package
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
