@@ -1,0 +1,3 @@
+= json2-web
+
+A web interface for translating JSON to schemas or IDL of supported targets.

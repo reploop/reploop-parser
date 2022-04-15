@@ -217,6 +217,10 @@ See 'json2 help <command>' for more information on a specific command.
 
 筹划中。。。
 
+=== 网页版
+
+筹划中...，``json2-web`` project.
+
 == 参考
 
 * https://github.com/m-zajac/json2go.git

@@ -1,0 +1,17 @@
+= json2-maven-plugin
+
+A maven plugin to translate JSON data to target schemas.
+
+== pom.xml
+
+Add the plugin into the pom.xml
+
+[source,xml]
+----
+----
+
+== Goals
+
+mvn json2:help
+
+mvn json2:bean
