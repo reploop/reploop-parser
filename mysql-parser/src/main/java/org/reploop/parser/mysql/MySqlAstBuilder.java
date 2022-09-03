@@ -26,6 +26,13 @@ public class MySqlAstBuilder extends MySqlParserBaseVisitor<Node> {
     }
 
     @Override
+    public Node visitSimpleSelect(MySqlParser.SimpleSelectContext ctx) {
+        Node node = visitQuerySpecification(ctx.querySpecification());
+        Node n1 = visitLockClause(ctx.lockClause());
+        return super.visitSimpleSelect(ctx);
+    }
+
+    @Override
     public Node visitQueryCreateTable(MySqlParser.QueryCreateTableContext ctx) {
         return super.visitQueryCreateTable(ctx);
     }
