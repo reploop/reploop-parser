@@ -3,53 +3,66 @@ package org.reploop.json2.web.controller;
 import org.reploop.translator.json.driver.Json2Conf;
 import org.reploop.translator.json.driver.Json2Driver;
 import org.reploop.translator.json.support.Target;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.FileUrlResource;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 public class ApiController {
     @PostMapping(value = "/json2/{target:\\s+}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String json2(@RequestBody String body, @PathVariable("target") Target target) throws IOException {
-        var dir = Files.createTempDirectory(target.ext());
-        var file = dir.resolve("body.json");
-        var out = dir.resolve("generated-sources");
+    public String json2(@RequestBody String body, @PathVariable Target target) throws IOException {
+        Json2Conf conf = conf().target(target);
+        Path file = conf.getInputDirectories().stream()
+            .map(Paths::get)
+            .map(p -> p.resolve("body.json"))
+            .findFirst()
+            .orElseThrow();
         Files.writeString(file, body);
-        Json2Conf conf = new Json2Conf()
-            .inputDirectory(dir.toString())
-            .outputDirectory(out.toString())
-            .target(target)
-            .enableFailFast(true);
         Json2Driver driver = new Json2Driver(conf);
         driver.run();
+        return cleanup(conf);
+    }
 
-        List<String> merge = new ArrayList<>();
-        try (Stream<Path> stream = Files.walk(out, FileVisitOption.FOLLOW_LINKS)) {
-            stream.forEach(path -> {
-                int fc = path.getNameCount();
-                int oc = out.getNameCount();
-                merge.add(path.subpath(oc, fc).toString());
-                try {
-                    merge.addAll(Files.readAllLines(path));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+    private Json2Conf conf() throws IOException {
+        var inDir = Files.createTempDirectory("/json2/sources");
+        var outDir = Files.createTempDirectory("/json2/generated");
+        Json2Conf conf = new Json2Conf()
+            .inputDirectory(inDir.toString())
+            .outputDirectory(outDir.toString());
+        return conf;
+    }
+
+    private String cleanup(Json2Conf conf) throws IOException {
+        StringBuilder response = new StringBuilder();
+        Path outDir = Path.of(conf.getOutputDirectory());
+        List<Path> files = Files.list(outDir).collect(Collectors.toList());
+        for (Path path : files) {
+            response.append(Files.readString(path));
+            response.append(System.lineSeparator());
         }
-        return String.join(System.lineSeparator(), merge);
+        List<String> inDir = conf.getInputDirectories();
+        for (String dir : inDir) {
+            FileSystemUtils.deleteRecursively(Path.of(dir));
+        }
+        FileSystemUtils.deleteRecursively(outDir);
+        return response.toString();
+    }
+
+    @PostMapping(value = "url/json2/{target:\\s+}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String url2json2(@RequestBody String url, @PathVariable Target target) throws IOException {
+        Json2Conf conf = conf().uri(url).target(target);
+        Json2Driver driver = new Json2Driver(conf);
+        driver.run();
+        return cleanup(conf);
     }
 }
