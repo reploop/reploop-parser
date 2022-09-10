@@ -12,6 +12,11 @@
     <packaging>war</packaging>
     <dependencies>
         <dependency>
+            <groupId>org.reploop</groupId>
+            <artifactId>json2-translator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
