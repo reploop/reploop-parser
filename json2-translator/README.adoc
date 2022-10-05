@@ -211,7 +211,16 @@ See 'json2 help <command>' for more information on a specific command.
 
 === Maven插件
 
-筹划中。。。
+Json2-maven-plugin
+
+[source,xml]
+----
+<plugin>
+    <groupId>org.reploop</groupId>
+    <artifactId>json2-maven-plugin</artifactId>
+    <version>0.19</version>
+</plugin>
+----
 
 === Intellij IDEA插件
 

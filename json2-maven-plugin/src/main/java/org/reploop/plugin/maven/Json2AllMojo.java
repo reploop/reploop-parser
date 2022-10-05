@@ -1,13 +1,10 @@
 package org.reploop.plugin.maven;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
+import java.util.EnumSet;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.reploop.translator.json.support.Target;
-
-import java.util.EnumSet;
 
 /**
  * All in one.
@@ -15,15 +12,10 @@ import java.util.EnumSet;
 @Mojo(name = "all",
     defaultPhase = LifecyclePhase.GENERATE_SOURCES,
     requiresDependencyResolution = ResolutionScope.COMPILE,
-    requiresProject = true,
     threadSafe = true)
 public class Json2AllMojo extends Json2Mojo {
+
     public Json2AllMojo() {
         super(EnumSet.allOf(Target.class));
-    }
-
-    @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        getDriver().run();
     }
 }

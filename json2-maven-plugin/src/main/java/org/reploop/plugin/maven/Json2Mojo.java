@@ -1,16 +1,18 @@
 package org.reploop.plugin.maven;
 
+import java.util.EnumSet;
+import java.util.List;
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.reploop.translator.json.driver.Json2Conf;
 import org.reploop.translator.json.driver.Json2Driver;
 import org.reploop.translator.json.support.Target;
 
-import java.util.EnumSet;
-import java.util.List;
-
 public abstract class Json2Mojo extends AbstractMojo {
+
     private final EnumSet<Target> targets;
     /**
      * Maven Project that runs this plugin.
@@ -28,12 +30,14 @@ public abstract class Json2Mojo extends AbstractMojo {
     @Parameter
     protected List<String> inputDirectories;
     /**
-     * An uri to specify where the JSON is. It's schema should be file, http or https, we can handle each of them differently.
+     * An uri to specify where the JSON is. It's schema should be file, http or https, we can handle
+     * each of them differently.
      */
     @Parameter
     protected List<String> uris;
     /**
-     * Try to guess a reasonable root name from the filename or the API uri given, otherwise $ is used by default.
+     * Try to guess a reasonable root name from the filename or the API uri given, otherwise $ is
+     * used by default.
      */
     @Parameter(defaultValue = "true")
     protected Boolean enableRootGuess = true;
@@ -43,7 +47,8 @@ public abstract class Json2Mojo extends AbstractMojo {
     @Parameter(defaultValue = "true")
     protected Boolean enableFailFast = true;
     /**
-     * The top package or namespace of the source. Add package line to the source. Default is empty.
+     * The top package or namespace of the source. Add package line to the source. Default is
+     * empty.
      */
     @Parameter
     protected String namespace;
@@ -70,5 +75,10 @@ public abstract class Json2Mojo extends AbstractMojo {
             }
         }
         return driver;
+    }
+
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        getDriver().run();
     }
 }

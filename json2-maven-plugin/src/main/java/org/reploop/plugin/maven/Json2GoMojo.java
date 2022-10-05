@@ -6,13 +6,14 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.reploop.translator.json.support.Target;
 
-@Mojo(name = "thrift",
+@Mojo(name = "go",
     defaultPhase = LifecyclePhase.GENERATE_SOURCES,
     requiresDependencyResolution = ResolutionScope.COMPILE,
     threadSafe = true)
-public class Json2ThriftMojo extends Json2Mojo {
+public class Json2GoMojo extends Json2Mojo {
 
-    public Json2ThriftMojo() {
-        super(EnumSet.of(Target.THRIFT));
+    public Json2GoMojo() {
+        super(EnumSet.of(Target.GO));
     }
+
 }
