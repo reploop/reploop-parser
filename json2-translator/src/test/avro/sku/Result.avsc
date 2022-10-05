@@ -9,7 +9,7 @@
     },
     {
       "name": "createTime",
-      "type": "string"
+      "type": "java.time.LocalDateTime"
     },
     {
       "name": "goodsInfoId",

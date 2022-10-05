@@ -1,12 +1,11 @@
 package org.reploop.translator.json.bean;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 import org.reploop.parser.QualifiedName;
-
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonMessageContextTest {
 
@@ -38,7 +37,7 @@ public class JsonMessageContextTest {
     }
 
     @Test
-    public void isJsonRawValue() throws Exception {
+    public void isJsonRawValue() {
         assertThat(context.isJsonRawValue()).isFalse();
         String expected = "$.log.entries.response.content.text";
         assertThat(context.isJsonRawValue(QualifiedName.of(expected))).isTrue();

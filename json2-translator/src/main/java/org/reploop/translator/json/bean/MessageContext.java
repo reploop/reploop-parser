@@ -1,16 +1,25 @@
 package org.reploop.translator.json.bean;
 
 import com.google.common.base.CaseFormat;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.parser.protobuf.type.FieldType;
 
-import java.nio.file.Path;
-import java.util.*;
-
 public class MessageContext {
+
     private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
     private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
+    private static final Map<QualifiedName, String> DATE_TIMEZONE = new HashMap<>();
     private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
     private final Set<QualifiedName> dependencies = new HashSet<>();
     /**
@@ -170,7 +179,7 @@ public class MessageContext {
     }
 
     public Optional<String> hasTimeZone() {
-        return hasDateFormat(name);
+        return hasDateTimezone(name);
     }
 
     public Optional<String> hasDateFormat() {
@@ -181,12 +190,24 @@ public class MessageContext {
         return fqn.tail().map(DATE_FORMAT::get);
     }
 
+    public Optional<String> hasDateTimezone(QualifiedName fqn) {
+        return fqn.tail().map(DATE_TIMEZONE::get);
+    }
+
     public void configureDateFormat(String fqn, String pattern) {
         configureDateFormat(QualifiedName.of(fqn), pattern);
     }
 
+    public void configureDateTimezone(String fqn, String timezone) {
+        configureDateTimezone(QualifiedName.of(fqn), timezone);
+    }
+
     public void configureDateFormat(QualifiedName fqn, String pattern) {
         fqn.tail().ifPresent(name -> DATE_FORMAT.put(name, pattern));
+    }
+
+    public void configureDateTimezone(QualifiedName fqn, String timezone) {
+        fqn.tail().ifPresent(name -> DATE_TIMEZONE.put(name, timezone));
     }
 
     public void configureJsonRawValue(String xpath) {

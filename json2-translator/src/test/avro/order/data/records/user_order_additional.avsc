@@ -88,7 +88,11 @@
       "type": "string"
     },
     {
-      "name": "actionSource",
+      "name": "delay",
+      "type": "string"
+    },
+    {
+      "name": "driverOrderId",
       "type": "string"
     },
     {
@@ -96,19 +100,7 @@
       "type": "string"
     },
     {
-      "name": "orderId",
-      "type": "string"
-    },
-    {
       "name": "driverPhone",
-      "type": "string"
-    },
-    {
-      "name": "operator",
-      "type": "string"
-    },
-    {
-      "name": "vehicleBrand",
       "type": "string"
     },
     {
@@ -116,7 +108,7 @@
       "type": "string"
     },
     {
-      "name": "delay",
+      "name": "actionSource",
       "type": "string"
     },
     {
@@ -124,11 +116,19 @@
       "type": "boolean"
     },
     {
-      "name": "driverOrderId",
+      "name": "operator",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
       "type": "string"
     },
     {
       "name": "settlementPrice",
+      "type": "string"
+    },
+    {
+      "name": "vehicleBrand",
       "type": "string"
     }
   ]

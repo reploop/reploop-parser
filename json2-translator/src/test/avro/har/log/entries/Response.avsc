@@ -20,19 +20,7 @@
       "type": "string"
     },
     {
-      "name": "headersSize",
-      "type": "int"
-    },
-    {
       "name": "headers",
-      "type": {
-        "type": "array",
-        "items": "har.log.entries.NameValue",
-        "default": []
-      }
-    },
-    {
-      "name": "cookies",
       "type": {
         "type": "array",
         "items": "har.log.entries.NameValue",
@@ -46,6 +34,18 @@
     {
       "name": "bodySize",
       "type": "int"
+    },
+    {
+      "name": "headersSize",
+      "type": "int"
+    },
+    {
+      "name": "cookies",
+      "type": {
+        "type": "array",
+        "items": "har.log.entries.NameValue",
+        "default": []
+      }
     }
   ]
 }

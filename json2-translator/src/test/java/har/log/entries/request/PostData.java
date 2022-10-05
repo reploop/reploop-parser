@@ -23,8 +23,8 @@ public class PostData extends MimeTypeText implements Serializable {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("params", getParams())
-                .add("text", getText())
                 .add("mimeType", getMimeType())
+                .add("text", getText())
                 .toString();
     }
     
@@ -40,13 +40,13 @@ public class PostData extends MimeTypeText implements Serializable {
             return this;
         }
         
-        public Builder text(String text) {
-            data.setText(text);
+        public Builder mimeType(String mimeType) {
+            data.setMimeType(mimeType);
             return this;
         }
         
-        public Builder mimeType(String mimeType) {
-            data.setMimeType(mimeType);
+        public Builder text(String text) {
+            data.setText(text);
             return this;
         }
         

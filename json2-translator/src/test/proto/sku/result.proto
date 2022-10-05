@@ -2,9 +2,10 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "sku";
 package sku;
+import "java/time/local_date_time.proto";
 message Result {
     optional bool addedFlag = 1;
-    optional string createTime = 2;
+    optional java.time.LocalDateTime createTime = 2;
     optional string goodsInfoId = 3;
     optional bool inStock = 4;
     optional float marketPrice = 5;

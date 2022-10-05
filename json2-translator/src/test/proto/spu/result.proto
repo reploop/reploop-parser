@@ -2,11 +2,12 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "spu";
 package spu;
+import "java/time/local_date_time.proto";
 message Result {
     optional bool addedFlag = 1;
     optional int32 brandId = 2;
     optional int32 cateId = 3;
-    optional string createTime = 4;
+    optional java.time.LocalDateTime createTime = 4;
     optional string goodsDetail = 5;
     optional string goodsImage = 6;
     optional string goodsName = 7;

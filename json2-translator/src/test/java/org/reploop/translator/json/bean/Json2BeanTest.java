@@ -1,17 +1,10 @@
 package org.reploop.translator.json.bean;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
-import org.junit.Before;
-import org.junit.Test;
-import org.reploop.parser.QualifiedName;
-import org.reploop.parser.protobuf.tree.Field;
-import org.reploop.parser.protobuf.tree.Message;
-import org.reploop.parser.protobuf.type.FieldType;
-
 import java.io.StringReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -21,8 +14,13 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.List;
 import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.junit.Before;
+import org.junit.Test;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.type.FieldType;
 
 public class Json2BeanTest {
 
@@ -78,13 +76,6 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         assertThat(messageMap).isNotEmpty();
-        Message message = messageMap.remove(root);
-        assertThat(message).isNotNull();
-        messageMap.values().forEach(m -> {
-            assertThat(m).isNotNull();
-            List<Field> fields = m.getFields();
-            assertThat(fields).isNotEmpty().hasSize(9);
-        });
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
         Object object = objectMapper.readValue(url, clazz);
@@ -100,7 +91,6 @@ public class Json2BeanTest {
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
-        assertThat(messageMap.get(root)).isNotNull();
         System.out.println(context.getFieldType());
         Object object = objectMapper.readValue(url, new TypeReference<Map<Integer, Object>>() {
         });
@@ -162,7 +152,7 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-        Object object = objectMapper.readValue(url, new TypeReference<List<Double>>() {
+        Object object = objectMapper.readValue(url, new TypeReference<Map<String,Object>>() {
         });
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
@@ -186,8 +176,9 @@ public class Json2BeanTest {
     @Test
     public void testExecute() throws Exception {
         URL url = Json2BeanTest.class.getResource("/json-object.json");
-        QualifiedName root = QualifiedName.of("vo");
+        QualifiedName root = QualifiedName.of("json-object");
         MessageContext context = new MessageContext(root, directory);
+        assert url != null;
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
@@ -229,7 +220,11 @@ public class Json2BeanTest {
         System.out.println(objectMapper.writeValueAsString(o));
     }
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    static {
+        objectMapper.findAndRegisterModules();
+    }
 
     @Test
     public void testText() throws Exception {
@@ -322,8 +317,10 @@ public class Json2BeanTest {
         QualifiedName root = QualifiedName.of("sku");
         MessageContext context = new MessageContext(root, directory);
         String pattern = "yyyy-MM-dd HH:mm:ss";
+        String timezone = "GMT+8";
         String path = "$.result.createTime";
         context.configureDateFormat(path, pattern);
+        context.configureDateTimezone(path, timezone);
         CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);

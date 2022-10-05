@@ -220,17 +220,17 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
                 .add("vehicleId", getVehicleId())
                 .add("vehiclePlate", getVehiclePlate())
                 .add("vehicleType", getVehicleType())
-                .add("actionSource", getActionSource())
-                .add("createTime", getCreateTime())
-                .add("orderId", getOrderId())
-                .add("driverPhone", getDriverPhone())
-                .add("operator", getOperator())
-                .add("vehicleBrand", getVehicleBrand())
-                .add("preDriverId", getPreDriverId())
                 .add("delay", getDelay())
-                .add("night", getNight())
                 .add("driverOrderId", getDriverOrderId())
+                .add("createTime", getCreateTime())
+                .add("driverPhone", getDriverPhone())
+                .add("preDriverId", getPreDriverId())
+                .add("actionSource", getActionSource())
+                .add("night", getNight())
+                .add("operator", getOperator())
+                .add("orderId", getOrderId())
                 .add("settlementPrice", getSettlementPrice())
+                .add("vehicleBrand", getVehicleBrand())
                 .toString();
     }
     
@@ -346,48 +346,8 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
-        public Builder actionSource(Object actionSource) {
-            data.setActionSource(actionSource);
-            return this;
-        }
-        
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
-            return this;
-        }
-        
-        public Builder orderId(Object orderId) {
-            data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder driverPhone(Object driverPhone) {
-            data.setDriverPhone(driverPhone);
-            return this;
-        }
-        
-        public Builder operator(Object operator) {
-            data.setOperator(operator);
-            return this;
-        }
-        
-        public Builder vehicleBrand(Object vehicleBrand) {
-            data.setVehicleBrand(vehicleBrand);
-            return this;
-        }
-        
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
-            return this;
-        }
-        
         public Builder delay(Object delay) {
             data.setDelay(delay);
-            return this;
-        }
-        
-        public Builder night(Boolean night) {
-            data.setNight(night);
             return this;
         }
         
@@ -396,8 +356,48 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
+            return this;
+        }
+        
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
         public Builder settlementPrice(Object settlementPrice) {
             data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
             return this;
         }
         

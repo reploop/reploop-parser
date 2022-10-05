@@ -1,8 +1,9 @@
 package marketing
 
+import "java/time"
 type Result struct {
     BeginTime string `json:"beginTime"`
-    CreateTime string `json:"createTime"`
+    CreateTime time.LocalDateTime `json:"createTime"`
     EndTime string `json:"endTime"`
     MarketingId int32 `json:"marketingId"`
     MarketingName string `json:"marketingName"`

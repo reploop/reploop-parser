@@ -1,28 +1,5 @@
 package org.reploop.translator.json.bean;
 
-import com.google.common.collect.ImmutableList;
-import org.reploop.parser.QualifiedName;
-import org.reploop.parser.json.AstVisitor;
-import org.reploop.parser.json.JsonParser;
-import org.reploop.parser.json.base.JsonBaseParser;
-import org.reploop.parser.json.tree.Entity;
-import org.reploop.parser.json.tree.Number;
-import org.reploop.parser.json.tree.Pair;
-import org.reploop.parser.json.tree.Value;
-import org.reploop.parser.json.tree.*;
-import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.*;
-import org.reploop.parser.protobuf.type.*;
-import org.reploop.translator.json.type.FieldTypeComparator;
-import org.reploop.translator.json.type.NumberSpec;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.StringReader;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
@@ -34,10 +11,68 @@ import static org.reploop.translator.json.support.NameSupport.IMPORT_LOCAL_DATET
 import static org.reploop.translator.json.support.TypeSupport.isLegalIdentifier;
 import static org.reploop.translator.json.support.TypeSupport.typeNumberSpec;
 
+import com.google.common.collect.ImmutableList;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.reploop.parser.QualifiedName;
+import org.reploop.parser.json.AstVisitor;
+import org.reploop.parser.json.JsonParser;
+import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.tree.Array;
+import org.reploop.parser.json.tree.Bool;
+import org.reploop.parser.json.tree.ByteVal;
+import org.reploop.parser.json.tree.DoubleVal;
+import org.reploop.parser.json.tree.Entity;
+import org.reploop.parser.json.tree.FloatVal;
+import org.reploop.parser.json.tree.IntVal;
+import org.reploop.parser.json.tree.Json;
+import org.reploop.parser.json.tree.LongVal;
+import org.reploop.parser.json.tree.Null;
+import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.ShortVal;
+import org.reploop.parser.json.tree.Text;
+import org.reploop.parser.json.tree.Value;
+import org.reploop.parser.protobuf.Node;
+import org.reploop.parser.protobuf.tree.CommonPair;
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.FieldModifier;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.Option;
+import org.reploop.parser.protobuf.tree.StringValue;
+import org.reploop.parser.protobuf.type.BoolType;
+import org.reploop.parser.protobuf.type.ByteType;
+import org.reploop.parser.protobuf.type.DoubleType;
+import org.reploop.parser.protobuf.type.FieldType;
+import org.reploop.parser.protobuf.type.FloatType;
+import org.reploop.parser.protobuf.type.IntType;
+import org.reploop.parser.protobuf.type.ListType;
+import org.reploop.parser.protobuf.type.LongType;
+import org.reploop.parser.protobuf.type.MapType;
+import org.reploop.parser.protobuf.type.NumberType;
+import org.reploop.parser.protobuf.type.SetType;
+import org.reploop.parser.protobuf.type.ShortType;
+import org.reploop.parser.protobuf.type.StringType;
+import org.reploop.parser.protobuf.type.StructType;
+import org.reploop.translator.json.type.FieldTypeComparator;
+import org.reploop.translator.json.type.NumberSpec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Translate JSON AST to protobuf message, and it's type.
  */
 public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonMessageTranslator.class);
     private static final String OS = "Object";
     private static final StructType OBJECT = new StructType(OS);
@@ -51,8 +86,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
     }
 
     public JsonMessageTranslator(NumberTypeAdaptor jsonNumberTypeAdaptor,
-                                 FieldTypeComparator fieldTypeComparator,
-                                 JsonParser jsonParser) {
+        FieldTypeComparator fieldTypeComparator,
+        JsonParser jsonParser) {
         this.jsonNumberTypeAdaptor = jsonNumberTypeAdaptor;
         this.fieldTypeComparator = fieldTypeComparator;
         this.jsonParser = jsonParser;
@@ -207,7 +242,8 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
             modifier = null;
         }
         // Use a default index, in order to compare different fields.
-        return new Field(modifier, DEFAULT_INDEX, pair.getKey(), fieldType, Optional.empty(), Collections.emptyList(), obs.build());
+        return new Field(modifier, DEFAULT_INDEX, pair.getKey(), fieldType, Optional.empty(),
+            Collections.emptyList(), obs.build());
     }
 
     @Override

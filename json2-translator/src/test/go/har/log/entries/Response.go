@@ -6,10 +6,10 @@ type Response struct {
     RedirectUrL string `json:"redirectURL"`
     Status int32 `json:"status"`
     StatusText string `json:"statusText"`
-    HeadersSize int32 `json:"headersSize"`
     Headers []NameValue `json:"headers"`
-    Cookies []NameValue `json:"cookies"`
     HttpVersion string `json:"httpVersion"`
     BodySize int32 `json:"bodySize"`
+    HeadersSize int32 `json:"headersSize"`
+    Cookies []NameValue `json:"cookies"`
     
 }

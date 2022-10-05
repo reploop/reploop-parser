@@ -7,19 +7,11 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer headersSize;
     private List<NameValue> headers;
-    private List<NameValue> cookies;
     private String httpVersion;
     private Integer bodySize;
-    
-    public Integer getHeadersSize() {
-        return headersSize;
-    }
-    
-    public void setHeadersSize(Integer headersSize) {
-        this.headersSize = headersSize;
-    }
+    private Integer headersSize;
+    private List<NameValue> cookies;
     
     public List<NameValue> getHeaders() {
         return headers;
@@ -27,14 +19,6 @@ public abstract class RequestResponse implements Serializable {
     
     public void setHeaders(List<NameValue> headers) {
         this.headers = headers;
-    }
-    
-    public List<NameValue> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
     }
     
     public String getHttpVersion() {
@@ -53,14 +37,30 @@ public abstract class RequestResponse implements Serializable {
         this.bodySize = bodySize;
     }
     
+    public Integer getHeadersSize() {
+        return headersSize;
+    }
+    
+    public void setHeadersSize(Integer headersSize) {
+        this.headersSize = headersSize;
+    }
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("headersSize", getHeadersSize())
                 .add("headers", getHeaders())
-                .add("cookies", getCookies())
                 .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
+                .add("headersSize", getHeadersSize())
+                .add("cookies", getCookies())
                 .toString();
     }
     

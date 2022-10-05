@@ -3,11 +3,11 @@ package org.reploop.translator.json.bean;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import org.junit.Test;
 
-import java.util.Map;
-
 public class SelfTest {
+
     ObjectMapper mapper = new ObjectMapper();
 
     {
@@ -20,7 +20,6 @@ public class SelfTest {
         This t = new This(s);
         t.setMap(ImmutableMap.of("k", s));
 
-
         System.out.println(mapper.writeValueAsString(s));
         System.out.println(mapper.writeValueAsString(t));
     }
@@ -28,6 +27,7 @@ public class SelfTest {
 
 
 class This extends Self {
+
     public This(Self self) {
         super(self);
     }
@@ -46,6 +46,7 @@ class This extends Self {
 }
 
 class Self {
+
     private int id;
     private String name;
     private Map<String, Self> map;

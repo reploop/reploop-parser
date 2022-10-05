@@ -1,26 +1,42 @@
 package org.reploop.translator.json.gen;
 
+import static org.reploop.translator.json.support.Constants.ABSTRACT_ATTR;
+import static org.reploop.translator.json.support.Constants.DATE_PATTERN;
+import static org.reploop.translator.json.support.Constants.DATE_TIMEZONE;
+import static org.reploop.translator.json.support.Constants.EXTENDS_ATTR;
+import static org.reploop.translator.json.support.Constants.IMPORT;
+import static org.reploop.translator.json.support.Constants.ORIGINAL_NAME;
+import static org.reploop.translator.json.support.Constants.PARENT_TAG;
+
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.AstVisitor;
 import org.reploop.parser.protobuf.Node;
-import org.reploop.parser.protobuf.tree.*;
+import org.reploop.parser.protobuf.tree.BoolValue;
+import org.reploop.parser.protobuf.tree.CommonPair;
+import org.reploop.parser.protobuf.tree.Field;
+import org.reploop.parser.protobuf.tree.Message;
+import org.reploop.parser.protobuf.tree.Option;
+import org.reploop.parser.protobuf.tree.StringValue;
+import org.reploop.parser.protobuf.tree.Value;
 import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.bean.BeanContext;
-import org.reploop.translator.json.bean.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import static org.reploop.translator.json.support.Constants.*;
-
 public class BeanGenerator extends AstVisitor<Node, BeanContext> {
+
     private static final Logger LOG = LoggerFactory.getLogger(BeanGenerator.class);
-    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
+    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(
+        CaseFormat.UPPER_CAMEL);
 
     private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
         return nodes.stream()
@@ -113,7 +129,8 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
     private void accessor(List<Field> fields, BeanContext context) {
         for (Field field : fields) {
             if (fromParent(field)) {
-                LOG.info("Do NOT generate getter and setter for a field from it's parent class {}.", context.getName());
+                LOG.info("Do NOT generate getter and setter for a field from it's parent class {}.",
+                    context.getName());
                 continue;
             }
             getter(field, context);
@@ -141,25 +158,33 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
     private void getter(Field node, BeanContext context) {
         context.newLine().append("public").whitespace();
         visitFieldType(node.getType(), context);
-        context.whitespace().append("get").append(LC_UC.convert(node.getName())).openParen().closeParen().whitespace().openBrace().indent().newLine();
+        context.whitespace().append("get").append(LC_UC.convert(node.getName())).openParen()
+            .closeParen().whitespace().openBrace().indent().newLine();
         context.append("return").whitespace().append(node.getName()).semicolon().dedent().newLine();
         context.closeBrace().newLine();
     }
 
     private void setter(Field node, BeanContext context) {
-        context.newLine().append("public").whitespace().append("void").whitespace().append("set").append(LC_UC.convert(node.getName())).openParen();
+        context.newLine().append("public").whitespace().append("void").whitespace().append("set")
+            .append(LC_UC.convert(node.getName())).openParen();
         visitFieldType(node.getType(), context);
-        context.whitespace().append(node.getName()).closeParen().whitespace().openBrace().indent().newLine();
-        context.append("this.").append(node.getName()).append(" = ").append(node.getName()).semicolon().dedent().newLine();
+        context.whitespace().append(node.getName()).closeParen().whitespace().openBrace().indent()
+            .newLine();
+        context.append("this.").append(node.getName()).append(" = ").append(node.getName())
+            .semicolon().dedent().newLine();
         context.closeBrace().newLine();
     }
 
     private void toString(List<Field> fields, BeanContext context) {
         context.newLine().append("@Override").newLine();
-        context.append("public").whitespace().append("String").whitespace().append("toString").openParen().closeParen().whitespace().openBrace().indent().newLine();
-        context.append("return").whitespace().append("MoreObjects.toStringHelper(this)").indent().indent().newLine();
+        context.append("public").whitespace().append("String").whitespace().append("toString")
+            .openParen().closeParen().whitespace().openBrace().indent().newLine();
+        context.append("return").whitespace().append("MoreObjects.toStringHelper(this)").indent()
+            .indent().newLine();
         for (Field field : fields) {
-            context.append(".add").openParen().quote().append(field.getName()).quote().append(",").whitespace().append("get").append(LC_UC.convert(field.getName())).openParen().closeParen().closeParen().newLine();
+            context.append(".add").openParen().quote().append(field.getName()).quote().append(",")
+                .whitespace().append("get").append(LC_UC.convert(field.getName())).openParen()
+                .closeParen().closeParen().newLine();
         }
         context.append(".toString()").semicolon().dedent().dedent().dedent().newLine();
         context.closeBrace().newLine();
@@ -203,9 +228,10 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
                 if (null != value) {
                     if (first) {
                         first = false;
+                    } else {
                         context.comma().whitespace();
                     }
-                    context.append(key).append("=\"");
+                    context.append(name).whitespace().append("=").whitespace().append("\"");
                     visitValue(value, context);
                     context.append("\"");
                 }
@@ -225,7 +251,8 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         // We allow a class inherits  from the other class which is either concrete or abstract class.
         // So we just generate a different build method name in case of method signature conflicts.
         context.newLine();
-        context.append("public static Builder new").append(builderName).append("()").whitespace().openBrace();
+        context.append("public static Builder new").append(builderName).append("()").whitespace()
+            .openBrace();
         context.indent().newLine();
         context.append("return new Builder();");
         context.dedent().newLine().closeBrace().newLine();
@@ -236,7 +263,8 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
         // start class body
         context.indent().newLine();
         String attr = "data";
-        context.append("private final").whitespace().append(name).whitespace().append(attr).append(" = new ").append(name).append("();").newLine();
+        context.append("private final").whitespace().append(name).whitespace().append(attr)
+            .append(" = new ").append(name).append("();").newLine();
 
         // build method for each field.
         // Include parent class's fields by default.
@@ -250,14 +278,16 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
             if (attr.equals(fieldName)) {
                 context.append("this.");
             }
-            context.append("data.").append("set").append(LC_UC.convert(fieldName)).openParen().append(fieldName).closeParen().semicolon().newLine();
+            context.append("data.").append("set").append(LC_UC.convert(fieldName)).openParen()
+                .append(fieldName).closeParen().semicolon().newLine();
             context.append("return this;");
             context.dedent().newLine().closeBrace().newLine();
         }
 
         // the build method.
         context.newLine();
-        context.append("public").whitespace().append(message.getName().suffix()).whitespace().append("build()").whitespace().openBrace();
+        context.append("public").whitespace().append(message.getName().suffix()).whitespace()
+            .append("build()").whitespace().openBrace();
         context.indent().newLine();
         context.append("return data;");
         context.dedent().newLine().closeBrace().newLine();
@@ -267,9 +297,10 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
 
     @Override
     public Message visitMessage(Message node, BeanContext context) {
-        MessageContext ctx = new MessageContext();
         QualifiedName name = node.getName();
-        name.prefix().ifPresent(ns -> context.append("package").whitespace().append(ns).semicolon().newLine().newLine());
+        name.prefix().ifPresent(
+            ns -> context.append("package").whitespace().append(ns).semicolon().newLine()
+                .newLine());
         // Options
         context.setExpectedKey(IMPORT);
         visitIfPresent(node.getOptions(), option -> visitOption(option, context));
@@ -302,6 +333,7 @@ public class BeanGenerator extends AstVisitor<Node, BeanContext> {
             builder(node, fields, context);
         }
         context.dedent().newLine().closeBrace().newLine();
-        return new Message(name, node.getComments(), fields, messages, node.getEnumerations(), null, node.getOptions());
+        return new Message(name, node.getComments(), fields, messages, node.getEnumerations(),
+            node.getServices(), node.getOptions());
     }
 }

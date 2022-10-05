@@ -12,11 +12,11 @@
       }
     },
     {
-      "name": "text",
+      "name": "mimeType",
       "type": "string"
     },
     {
-      "name": "mimeType",
+      "name": "text",
       "type": "string"
     }
   ]
