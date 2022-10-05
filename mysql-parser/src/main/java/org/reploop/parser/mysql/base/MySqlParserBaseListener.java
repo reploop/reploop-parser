@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.9.3
+// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.10.1
 package org.reploop.parser.mysql.base;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -52,13 +52,13 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEmptyStatement(MySqlParser.EmptyStatementContext ctx) { }
+	@Override public void enterEmptyStatement_(MySqlParser.EmptyStatement_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEmptyStatement(MySqlParser.EmptyStatementContext ctx) { }
+	@Override public void exitEmptyStatement_(MySqlParser.EmptyStatement_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -316,6 +316,54 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWithClause(MySqlParser.WithClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWithClause(MySqlParser.WithClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCommonTableExpressions(MySqlParser.CommonTableExpressionsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCommonTableExpressions(MySqlParser.CommonTableExpressionsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCteName(MySqlParser.CteNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCteName(MySqlParser.CteNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCteColumnName(MySqlParser.CteColumnNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCteColumnName(MySqlParser.CteColumnNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCreateView(MySqlParser.CreateViewContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -335,6 +383,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCreateDatabaseOption(MySqlParser.CreateDatabaseOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCharSet(MySqlParser.CharSetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCharSet(MySqlParser.CharSetContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -628,6 +688,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVisibilityColumnConstraint(MySqlParser.VisibilityColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVisibilityColumnConstraint(MySqlParser.VisibilityColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAutoIncrementColumnConstraint(MySqlParser.AutoIncrementColumnConstraintContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -707,6 +779,54 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitReferenceColumnConstraint(MySqlParser.ReferenceColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCollateColumnConstraint(MySqlParser.CollateColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCollateColumnConstraint(MySqlParser.CollateColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterGeneratedColumnConstraint(MySqlParser.GeneratedColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGeneratedColumnConstraint(MySqlParser.GeneratedColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSerialDefaultColumnConstraint(MySqlParser.SerialDefaultColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSerialDefaultColumnConstraint(MySqlParser.SerialDefaultColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCheckColumnConstraint(MySqlParser.CheckColumnConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCheckColumnConstraint(MySqlParser.CheckColumnConstraintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1108,6 +1228,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTableOptionTableType(MySqlParser.TableOptionTableTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableOptionTableType(MySqlParser.TableOptionTableTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTableOptionUnion(MySqlParser.TableOptionUnionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1115,6 +1247,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTableOptionUnion(MySqlParser.TableOptionUnionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTableType(MySqlParser.TableTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTableType(MySqlParser.TableTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1216,13 +1360,13 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPartitionComparision(MySqlParser.PartitionComparisionContext ctx) { }
+	@Override public void enterPartitionComparison(MySqlParser.PartitionComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPartitionComparision(MySqlParser.PartitionComparisionContext ctx) { }
+	@Override public void exitPartitionComparison(MySqlParser.PartitionComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1624,6 +1768,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAlterByAddCheckTableConstraint(MySqlParser.AlterByAddCheckTableConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlterByAddCheckTableConstraint(MySqlParser.AlterByAddCheckTableConstraintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAlterBySetAlgorithm(MySqlParser.AlterBySetAlgorithmContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1655,6 +1811,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAlterByChangeColumn(MySqlParser.AlterByChangeColumnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlterByRenameColumn(MySqlParser.AlterByRenameColumnContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlterByRenameColumn(MySqlParser.AlterByRenameColumnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1696,6 +1864,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAlterByDropConstraintCheck(MySqlParser.AlterByDropConstraintCheckContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlterByDropConstraintCheck(MySqlParser.AlterByDropConstraintCheckContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAlterByDropPrimaryKey(MySqlParser.AlterByDropPrimaryKeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1703,6 +1883,30 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAlterByDropPrimaryKey(MySqlParser.AlterByDropPrimaryKeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlterByRenameIndex(MySqlParser.AlterByRenameIndexContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlterByRenameIndex(MySqlParser.AlterByRenameIndexContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAlterByAlterIndexVisibility(MySqlParser.AlterByAlterIndexVisibilityContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAlterByAlterIndexVisibility(MySqlParser.AlterByAlterIndexVisibilityContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1948,13 +2152,13 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAlterByAnalyzePartitiion(MySqlParser.AlterByAnalyzePartitiionContext ctx) { }
+	@Override public void enterAlterByAnalyzePartition(MySqlParser.AlterByAnalyzePartitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAlterByAnalyzePartitiion(MySqlParser.AlterByAnalyzePartitiionContext ctx) { }
+	@Override public void exitAlterByAnalyzePartition(MySqlParser.AlterByAnalyzePartitionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -2884,6 +3088,42 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterGroupByClause(MySqlParser.GroupByClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGroupByClause(MySqlParser.GroupByClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHavingClause(MySqlParser.HavingClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHavingClause(MySqlParser.HavingClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWindowClause(MySqlParser.WindowClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWindowClause(MySqlParser.WindowClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterGroupByItem(MySqlParser.GroupByItemContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -2903,6 +3143,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLimitClause(MySqlParser.LimitClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLimitClauseAtom(MySqlParser.LimitClauseAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLimitClauseAtom(MySqlParser.LimitClauseAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -4024,6 +4276,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterRoleOption(MySqlParser.RoleOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRoleOption(MySqlParser.RoleOptionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterGrantProxy(MySqlParser.GrantProxyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -4067,6 +4331,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitShortRevoke(MySqlParser.ShortRevokeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRoleRevoke(MySqlParser.RoleRevokeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRoleRevoke(MySqlParser.RoleRevokeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -4276,6 +4552,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDefiniteFullTablePrivLevel2(MySqlParser.DefiniteFullTablePrivLevel2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDefiniteFullTablePrivLevel2(MySqlParser.DefiniteFullTablePrivLevel2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDefiniteTablePrivLevel(MySqlParser.DefiniteTablePrivLevelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -4475,6 +4763,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSetAutocommit(MySqlParser.SetAutocommitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSetNewValueInsideTrigger(MySqlParser.SetNewValueInsideTriggerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSetNewValueInsideTrigger(MySqlParser.SetNewValueInsideTriggerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -4972,6 +5272,66 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSignalStatement(MySqlParser.SignalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSignalStatement(MySqlParser.SignalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterResignalStatement(MySqlParser.ResignalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitResignalStatement(MySqlParser.ResignalStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSignalConditionInformation(MySqlParser.SignalConditionInformationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSignalConditionInformation(MySqlParser.SignalConditionInformationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDiagnosticsStatement(MySqlParser.DiagnosticsStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDiagnosticsStatement(MySqlParser.DiagnosticsStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDiagnosticsConditionInformationName(MySqlParser.DiagnosticsConditionInformationNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDiagnosticsConditionInformationName(MySqlParser.DiagnosticsConditionInformationNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDescribeStatements(MySqlParser.DescribeStatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5284,6 +5644,30 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNationalStringDataType(MySqlParser.NationalStringDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNationalStringDataType(MySqlParser.NationalStringDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNationalVaryingStringDataType(MySqlParser.NationalVaryingStringDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNationalVaryingStringDataType(MySqlParser.NationalVaryingStringDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDimensionDataType(MySqlParser.DimensionDataTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5327,6 +5711,42 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSpatialDataType(MySqlParser.SpatialDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLongVarcharDataType(MySqlParser.LongVarcharDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLongVarcharDataType(MySqlParser.LongVarcharDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLongVarbinaryDataType(MySqlParser.LongVarbinaryDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLongVarbinaryDataType(MySqlParser.LongVarbinaryDataTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCollectionOptions(MySqlParser.CollectionOptionsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCollectionOptions(MySqlParser.CollectionOptionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -5560,6 +5980,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNonAggregateFunctionCall(MySqlParser.NonAggregateFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNonAggregateFunctionCall(MySqlParser.NonAggregateFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterScalarFunctionCall(MySqlParser.ScalarFunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5627,6 +6059,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValuesFunctionCall(MySqlParser.ValuesFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCaseExpressionFunctionCall(MySqlParser.CaseExpressionFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCaseExpressionFunctionCall(MySqlParser.CaseExpressionFunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -5728,6 +6172,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterJsonValueFunctionCall(MySqlParser.JsonValueFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsonValueFunctionCall(MySqlParser.JsonValueFunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCaseFuncAlternative(MySqlParser.CaseFuncAlternativeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5783,6 +6239,126 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAggregateWindowedFunction(MySqlParser.AggregateWindowedFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNonAggregateWindowedFunction(MySqlParser.NonAggregateWindowedFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNonAggregateWindowedFunction(MySqlParser.NonAggregateWindowedFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOverClause(MySqlParser.OverClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOverClause(MySqlParser.OverClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWindowSpec(MySqlParser.WindowSpecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWindowSpec(MySqlParser.WindowSpecContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWindowName(MySqlParser.WindowNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWindowName(MySqlParser.WindowNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrameClause(MySqlParser.FrameClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrameClause(MySqlParser.FrameClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrameUnits(MySqlParser.FrameUnitsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrameUnits(MySqlParser.FrameUnitsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrameExtent(MySqlParser.FrameExtentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrameExtent(MySqlParser.FrameExtentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrameBetween(MySqlParser.FrameBetweenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrameBetween(MySqlParser.FrameBetweenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFrameRange(MySqlParser.FrameRangeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFrameRange(MySqlParser.FrameRangeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPartitionClause(MySqlParser.PartitionClauseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPartitionClause(MySqlParser.PartitionClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -5908,6 +6484,42 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSubqueryComparisonPredicate(MySqlParser.SubqueryComparisonPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSubqueryComparisonPredicate(MySqlParser.SubqueryComparisonPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsonMemberOfPredicate(MySqlParser.JsonMemberOfPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsonMemberOfPredicate(MySqlParser.JsonMemberOfPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBinaryComparisonPredicate(MySqlParser.BinaryComparisonPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBinaryComparisonPredicate(MySqlParser.BinaryComparisonPredicateContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInPredicate(MySqlParser.InPredicateContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5920,18 +6532,6 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubqueryComparasionPredicate(MySqlParser.SubqueryComparasionPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSubqueryComparasionPredicate(MySqlParser.SubqueryComparasionPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterBetweenPredicate(MySqlParser.BetweenPredicateContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -5939,18 +6539,6 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBetweenPredicate(MySqlParser.BetweenPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBinaryComparasionPredicate(MySqlParser.BinaryComparasionPredicateContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBinaryComparasionPredicate(MySqlParser.BinaryComparasionPredicateContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -6016,18 +6604,6 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubqueryExpessionAtom(MySqlParser.SubqueryExpessionAtomContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSubqueryExpessionAtom(MySqlParser.SubqueryExpessionAtomContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterMysqlVariableExpressionAtom(MySqlParser.MysqlVariableExpressionAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -6076,6 +6652,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExistsExpressionAtom(MySqlParser.ExistsExpressionAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExistsExpressionAtom(MySqlParser.ExistsExpressionAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterIntervalExpressionAtom(MySqlParser.IntervalExpressionAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -6088,13 +6676,25 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExistsExpessionAtom(MySqlParser.ExistsExpessionAtomContext ctx) { }
+	@Override public void enterJsonExpressionAtom(MySqlParser.JsonExpressionAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExistsExpessionAtom(MySqlParser.ExistsExpessionAtomContext ctx) { }
+	@Override public void exitJsonExpressionAtom(MySqlParser.JsonExpressionAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSubqueryExpressionAtom(MySqlParser.SubqueryExpressionAtomContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSubqueryExpressionAtom(MySqlParser.SubqueryExpressionAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -6215,6 +6815,18 @@ public class MySqlParserBaseListener implements MySqlParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMathOperator(MySqlParser.MathOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsonOperator(MySqlParser.JsonOperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsonOperator(MySqlParser.JsonOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

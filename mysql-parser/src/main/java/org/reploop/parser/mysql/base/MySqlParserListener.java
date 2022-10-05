@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.9.3
+// Generated from org/reploop/parser/mysql/base/MySqlParser.g4 by ANTLR 4.10.1
 package org.reploop.parser.mysql.base;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -38,15 +38,15 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitSqlStatement(MySqlParser.SqlStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MySqlParser#emptyStatement}.
+	 * Enter a parse tree produced by {@link MySqlParser#emptyStatement_}.
 	 * @param ctx the parse tree
 	 */
-	void enterEmptyStatement(MySqlParser.EmptyStatementContext ctx);
+	void enterEmptyStatement_(MySqlParser.EmptyStatement_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link MySqlParser#emptyStatement}.
+	 * Exit a parse tree produced by {@link MySqlParser#emptyStatement_}.
 	 * @param ctx the parse tree
 	 */
-	void exitEmptyStatement(MySqlParser.EmptyStatementContext ctx);
+	void exitEmptyStatement_(MySqlParser.EmptyStatement_Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#ddlStatement}.
 	 * @param ctx the parse tree
@@ -264,6 +264,46 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitCreateTrigger(MySqlParser.CreateTriggerContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MySqlParser#withClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterWithClause(MySqlParser.WithClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#withClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitWithClause(MySqlParser.WithClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#commonTableExpressions}.
+	 * @param ctx the parse tree
+	 */
+	void enterCommonTableExpressions(MySqlParser.CommonTableExpressionsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#commonTableExpressions}.
+	 * @param ctx the parse tree
+	 */
+	void exitCommonTableExpressions(MySqlParser.CommonTableExpressionsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#cteName}.
+	 * @param ctx the parse tree
+	 */
+	void enterCteName(MySqlParser.CteNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#cteName}.
+	 * @param ctx the parse tree
+	 */
+	void exitCteName(MySqlParser.CteNameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#cteColumnName}.
+	 * @param ctx the parse tree
+	 */
+	void enterCteColumnName(MySqlParser.CteColumnNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#cteColumnName}.
+	 * @param ctx the parse tree
+	 */
+	void exitCteColumnName(MySqlParser.CteColumnNameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MySqlParser#createView}.
 	 * @param ctx the parse tree
 	 */
@@ -283,6 +323,16 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCreateDatabaseOption(MySqlParser.CreateDatabaseOptionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#charSet}.
+	 * @param ctx the parse tree
+	 */
+	void enterCharSet(MySqlParser.CharSetContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#charSet}.
+	 * @param ctx the parse tree
+	 */
+	void exitCharSet(MySqlParser.CharSetContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#ownerStatement}.
 	 * @param ctx the parse tree
@@ -548,6 +598,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitDefaultColumnConstraint(MySqlParser.DefaultColumnConstraintContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code visibilityColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void enterVisibilityColumnConstraint(MySqlParser.VisibilityColumnConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code visibilityColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void exitVisibilityColumnConstraint(MySqlParser.VisibilityColumnConstraintContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code autoIncrementColumnConstraint}
 	 * labeled alternative in {@link MySqlParser#columnConstraint}.
 	 * @param ctx the parse tree
@@ -631,6 +693,54 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitReferenceColumnConstraint(MySqlParser.ReferenceColumnConstraintContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code collateColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void enterCollateColumnConstraint(MySqlParser.CollateColumnConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code collateColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void exitCollateColumnConstraint(MySqlParser.CollateColumnConstraintContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code generatedColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void enterGeneratedColumnConstraint(MySqlParser.GeneratedColumnConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code generatedColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void exitGeneratedColumnConstraint(MySqlParser.GeneratedColumnConstraintContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code serialDefaultColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void enterSerialDefaultColumnConstraint(MySqlParser.SerialDefaultColumnConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code serialDefaultColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void exitSerialDefaultColumnConstraint(MySqlParser.SerialDefaultColumnConstraintContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code checkColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void enterCheckColumnConstraint(MySqlParser.CheckColumnConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code checkColumnConstraint}
+	 * labeled alternative in {@link MySqlParser#columnConstraint}.
+	 * @param ctx the parse tree
+	 */
+	void exitCheckColumnConstraint(MySqlParser.CheckColumnConstraintContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code primaryKeyTableConstraint}
 	 * labeled alternative in {@link MySqlParser#tableConstraint}.
@@ -1022,6 +1132,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitTableOptionTablespace(MySqlParser.TableOptionTablespaceContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code tableOptionTableType}
+	 * labeled alternative in {@link MySqlParser#tableOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterTableOptionTableType(MySqlParser.TableOptionTableTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code tableOptionTableType}
+	 * labeled alternative in {@link MySqlParser#tableOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitTableOptionTableType(MySqlParser.TableOptionTableTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code tableOptionUnion}
 	 * labeled alternative in {@link MySqlParser#tableOption}.
 	 * @param ctx the parse tree
@@ -1033,6 +1155,16 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTableOptionUnion(MySqlParser.TableOptionUnionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#tableType}.
+	 * @param ctx the parse tree
+	 */
+	void enterTableType(MySqlParser.TableTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#tableType}.
+	 * @param ctx the parse tree
+	 */
+	void exitTableType(MySqlParser.TableTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#tablespaceStorage}.
 	 * @param ctx the parse tree
@@ -1126,17 +1258,17 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitSubPartitionFunctionKey(MySqlParser.SubPartitionFunctionKeyContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code partitionComparision}
+	 * Enter a parse tree produced by the {@code partitionComparison}
 	 * labeled alternative in {@link MySqlParser#partitionDefinition}.
 	 * @param ctx the parse tree
 	 */
-	void enterPartitionComparision(MySqlParser.PartitionComparisionContext ctx);
+	void enterPartitionComparison(MySqlParser.PartitionComparisonContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code partitionComparision}
+	 * Exit a parse tree produced by the {@code partitionComparison}
 	 * labeled alternative in {@link MySqlParser#partitionDefinition}.
 	 * @param ctx the parse tree
 	 */
-	void exitPartitionComparision(MySqlParser.PartitionComparisionContext ctx);
+	void exitPartitionComparison(MySqlParser.PartitionComparisonContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code partitionListAtom}
 	 * labeled alternative in {@link MySqlParser#partitionDefinition}.
@@ -1510,6 +1642,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitAlterByAddForeignKey(MySqlParser.AlterByAddForeignKeyContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code alterByAddCheckTableConstraint}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlterByAddCheckTableConstraint(MySqlParser.AlterByAddCheckTableConstraintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code alterByAddCheckTableConstraint}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlterByAddCheckTableConstraint(MySqlParser.AlterByAddCheckTableConstraintContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code alterBySetAlgorithm}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
 	 * @param ctx the parse tree
@@ -1545,6 +1689,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAlterByChangeColumn(MySqlParser.AlterByChangeColumnContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code alterByRenameColumn}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlterByRenameColumn(MySqlParser.AlterByRenameColumnContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code alterByRenameColumn}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlterByRenameColumn(MySqlParser.AlterByRenameColumnContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code alterByLock}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
@@ -1582,6 +1738,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitAlterByDropColumn(MySqlParser.AlterByDropColumnContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code alterByDropConstraintCheck}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlterByDropConstraintCheck(MySqlParser.AlterByDropConstraintCheckContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code alterByDropConstraintCheck}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlterByDropConstraintCheck(MySqlParser.AlterByDropConstraintCheckContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code alterByDropPrimaryKey}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
 	 * @param ctx the parse tree
@@ -1593,6 +1761,30 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAlterByDropPrimaryKey(MySqlParser.AlterByDropPrimaryKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code alterByRenameIndex}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlterByRenameIndex(MySqlParser.AlterByRenameIndexContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code alterByRenameIndex}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlterByRenameIndex(MySqlParser.AlterByRenameIndexContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code alterByAlterIndexVisibility}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlterByAlterIndexVisibility(MySqlParser.AlterByAlterIndexVisibilityContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code alterByAlterIndexVisibility}
+	 * labeled alternative in {@link MySqlParser#alterSpecification}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlterByAlterIndexVisibility(MySqlParser.AlterByAlterIndexVisibilityContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code alterByDropIndex}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
@@ -1834,17 +2026,17 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitAlterByExchangePartition(MySqlParser.AlterByExchangePartitionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code alterByAnalyzePartitiion}
+	 * Enter a parse tree produced by the {@code alterByAnalyzePartition}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
 	 * @param ctx the parse tree
 	 */
-	void enterAlterByAnalyzePartitiion(MySqlParser.AlterByAnalyzePartitiionContext ctx);
+	void enterAlterByAnalyzePartition(MySqlParser.AlterByAnalyzePartitionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code alterByAnalyzePartitiion}
+	 * Exit a parse tree produced by the {@code alterByAnalyzePartition}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
 	 * @param ctx the parse tree
 	 */
-	void exitAlterByAnalyzePartitiion(MySqlParser.AlterByAnalyzePartitiionContext ctx);
+	void exitAlterByAnalyzePartition(MySqlParser.AlterByAnalyzePartitionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code alterByCheckPartition}
 	 * labeled alternative in {@link MySqlParser#alterSpecification}.
@@ -2668,6 +2860,36 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitFromClause(MySqlParser.FromClauseContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MySqlParser#groupByClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterGroupByClause(MySqlParser.GroupByClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#groupByClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitGroupByClause(MySqlParser.GroupByClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#havingClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterHavingClause(MySqlParser.HavingClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#havingClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitHavingClause(MySqlParser.HavingClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#windowClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterWindowClause(MySqlParser.WindowClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#windowClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitWindowClause(MySqlParser.WindowClauseContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MySqlParser#groupByItem}.
 	 * @param ctx the parse tree
 	 */
@@ -2687,6 +2909,16 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLimitClause(MySqlParser.LimitClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#limitClauseAtom}.
+	 * @param ctx the parse tree
+	 */
+	void enterLimitClauseAtom(MySqlParser.LimitClauseAtomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#limitClauseAtom}.
+	 * @param ctx the parse tree
+	 */
+	void exitLimitClauseAtom(MySqlParser.LimitClauseAtomContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#startTransaction}.
 	 * @param ctx the parse tree
@@ -3684,6 +3916,16 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitGrantStatement(MySqlParser.GrantStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MySqlParser#roleOption}.
+	 * @param ctx the parse tree
+	 */
+	void enterRoleOption(MySqlParser.RoleOptionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#roleOption}.
+	 * @param ctx the parse tree
+	 */
+	void exitRoleOption(MySqlParser.RoleOptionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MySqlParser#grantProxy}.
 	 * @param ctx the parse tree
 	 */
@@ -3727,6 +3969,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitShortRevoke(MySqlParser.ShortRevokeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code roleRevoke}
+	 * labeled alternative in {@link MySqlParser#revokeStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterRoleRevoke(MySqlParser.RoleRevokeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code roleRevoke}
+	 * labeled alternative in {@link MySqlParser#revokeStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitRoleRevoke(MySqlParser.RoleRevokeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#revokeProxy}.
 	 * @param ctx the parse tree
@@ -3914,6 +4168,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitDefiniteFullTablePrivLevel(MySqlParser.DefiniteFullTablePrivLevelContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code definiteFullTablePrivLevel2}
+	 * labeled alternative in {@link MySqlParser#privilegeLevel}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefiniteFullTablePrivLevel2(MySqlParser.DefiniteFullTablePrivLevel2Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code definiteFullTablePrivLevel2}
+	 * labeled alternative in {@link MySqlParser#privilegeLevel}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefiniteFullTablePrivLevel2(MySqlParser.DefiniteFullTablePrivLevel2Context ctx);
+	/**
 	 * Enter a parse tree produced by the {@code definiteTablePrivLevel}
 	 * labeled alternative in {@link MySqlParser#privilegeLevel}.
 	 * @param ctx the parse tree
@@ -4097,6 +4363,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSetAutocommit(MySqlParser.SetAutocommitContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code setNewValueInsideTrigger}
+	 * labeled alternative in {@link MySqlParser#setStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterSetNewValueInsideTrigger(MySqlParser.SetNewValueInsideTriggerContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code setNewValueInsideTrigger}
+	 * labeled alternative in {@link MySqlParser#setStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitSetNewValueInsideTrigger(MySqlParser.SetNewValueInsideTriggerContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code showMasterLogs}
 	 * labeled alternative in {@link MySqlParser#showStatement}.
@@ -4550,6 +4828,56 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitUseStatement(MySqlParser.UseStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MySqlParser#signalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterSignalStatement(MySqlParser.SignalStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#signalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitSignalStatement(MySqlParser.SignalStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#resignalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterResignalStatement(MySqlParser.ResignalStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#resignalStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitResignalStatement(MySqlParser.ResignalStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#signalConditionInformation}.
+	 * @param ctx the parse tree
+	 */
+	void enterSignalConditionInformation(MySqlParser.SignalConditionInformationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#signalConditionInformation}.
+	 * @param ctx the parse tree
+	 */
+	void exitSignalConditionInformation(MySqlParser.SignalConditionInformationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#diagnosticsStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterDiagnosticsStatement(MySqlParser.DiagnosticsStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#diagnosticsStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitDiagnosticsStatement(MySqlParser.DiagnosticsStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#diagnosticsConditionInformationName}.
+	 * @param ctx the parse tree
+	 */
+	void enterDiagnosticsConditionInformationName(MySqlParser.DiagnosticsConditionInformationNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#diagnosticsConditionInformationName}.
+	 * @param ctx the parse tree
+	 */
+	void exitDiagnosticsConditionInformationName(MySqlParser.DiagnosticsConditionInformationNameContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code describeStatements}
 	 * labeled alternative in {@link MySqlParser#describeObjectClause}.
 	 * @param ctx the parse tree
@@ -4816,6 +5144,30 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitStringDataType(MySqlParser.StringDataTypeContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code nationalStringDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void enterNationalStringDataType(MySqlParser.NationalStringDataTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code nationalStringDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void exitNationalStringDataType(MySqlParser.NationalStringDataTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code nationalVaryingStringDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void enterNationalVaryingStringDataType(MySqlParser.NationalVaryingStringDataTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code nationalVaryingStringDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void exitNationalVaryingStringDataType(MySqlParser.NationalVaryingStringDataTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code dimensionDataType}
 	 * labeled alternative in {@link MySqlParser#dataType}.
 	 * @param ctx the parse tree
@@ -4863,6 +5215,40 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSpatialDataType(MySqlParser.SpatialDataTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code longVarcharDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void enterLongVarcharDataType(MySqlParser.LongVarcharDataTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code longVarcharDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void exitLongVarcharDataType(MySqlParser.LongVarcharDataTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code longVarbinaryDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void enterLongVarbinaryDataType(MySqlParser.LongVarbinaryDataTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code longVarbinaryDataType}
+	 * labeled alternative in {@link MySqlParser#dataType}.
+	 * @param ctx the parse tree
+	 */
+	void exitLongVarbinaryDataType(MySqlParser.LongVarbinaryDataTypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#collectionOptions}.
+	 * @param ctx the parse tree
+	 */
+	void enterCollectionOptions(MySqlParser.CollectionOptionsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#collectionOptions}.
+	 * @param ctx the parse tree
+	 */
+	void exitCollectionOptions(MySqlParser.CollectionOptionsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#convertedDataType}.
 	 * @param ctx the parse tree
@@ -5058,6 +5444,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitAggregateFunctionCall(MySqlParser.AggregateFunctionCallContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code nonAggregateFunctionCall}
+	 * labeled alternative in {@link MySqlParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterNonAggregateFunctionCall(MySqlParser.NonAggregateFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code nonAggregateFunctionCall}
+	 * labeled alternative in {@link MySqlParser#functionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitNonAggregateFunctionCall(MySqlParser.NonAggregateFunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code scalarFunctionCall}
 	 * labeled alternative in {@link MySqlParser#functionCall}.
 	 * @param ctx the parse tree
@@ -5129,6 +5527,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValuesFunctionCall(MySqlParser.ValuesFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code caseExpressionFunctionCall}
+	 * labeled alternative in {@link MySqlParser#specificFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterCaseExpressionFunctionCall(MySqlParser.CaseExpressionFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code caseExpressionFunctionCall}
+	 * labeled alternative in {@link MySqlParser#specificFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitCaseExpressionFunctionCall(MySqlParser.CaseExpressionFunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code caseFunctionCall}
 	 * labeled alternative in {@link MySqlParser#specificFunction}.
@@ -5226,6 +5636,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitGetFormatFunctionCall(MySqlParser.GetFormatFunctionCallContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code jsonValueFunctionCall}
+	 * labeled alternative in {@link MySqlParser#specificFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsonValueFunctionCall(MySqlParser.JsonValueFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsonValueFunctionCall}
+	 * labeled alternative in {@link MySqlParser#specificFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsonValueFunctionCall(MySqlParser.JsonValueFunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MySqlParser#caseFuncAlternative}.
 	 * @param ctx the parse tree
 	 */
@@ -5279,6 +5701,106 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAggregateWindowedFunction(MySqlParser.AggregateWindowedFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#nonAggregateWindowedFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterNonAggregateWindowedFunction(MySqlParser.NonAggregateWindowedFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#nonAggregateWindowedFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitNonAggregateWindowedFunction(MySqlParser.NonAggregateWindowedFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#overClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterOverClause(MySqlParser.OverClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#overClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitOverClause(MySqlParser.OverClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#windowSpec}.
+	 * @param ctx the parse tree
+	 */
+	void enterWindowSpec(MySqlParser.WindowSpecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#windowSpec}.
+	 * @param ctx the parse tree
+	 */
+	void exitWindowSpec(MySqlParser.WindowSpecContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#windowName}.
+	 * @param ctx the parse tree
+	 */
+	void enterWindowName(MySqlParser.WindowNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#windowName}.
+	 * @param ctx the parse tree
+	 */
+	void exitWindowName(MySqlParser.WindowNameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#frameClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrameClause(MySqlParser.FrameClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#frameClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrameClause(MySqlParser.FrameClauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#frameUnits}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrameUnits(MySqlParser.FrameUnitsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#frameUnits}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrameUnits(MySqlParser.FrameUnitsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#frameExtent}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrameExtent(MySqlParser.FrameExtentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#frameExtent}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrameExtent(MySqlParser.FrameExtentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#frameBetween}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrameBetween(MySqlParser.FrameBetweenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#frameBetween}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrameBetween(MySqlParser.FrameBetweenContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#frameRange}.
+	 * @param ctx the parse tree
+	 */
+	void enterFrameRange(MySqlParser.FrameRangeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#frameRange}.
+	 * @param ctx the parse tree
+	 */
+	void exitFrameRange(MySqlParser.FrameRangeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#partitionClause}.
+	 * @param ctx the parse tree
+	 */
+	void enterPartitionClause(MySqlParser.PartitionClauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#partitionClause}.
+	 * @param ctx the parse tree
+	 */
+	void exitPartitionClause(MySqlParser.PartitionClauseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#scalarFunctionName}.
 	 * @param ctx the parse tree
@@ -5392,6 +5914,42 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitExpressionAtomPredicate(MySqlParser.ExpressionAtomPredicateContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code subqueryComparisonPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubqueryComparisonPredicate(MySqlParser.SubqueryComparisonPredicateContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code subqueryComparisonPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubqueryComparisonPredicate(MySqlParser.SubqueryComparisonPredicateContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jsonMemberOfPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsonMemberOfPredicate(MySqlParser.JsonMemberOfPredicateContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsonMemberOfPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsonMemberOfPredicate(MySqlParser.JsonMemberOfPredicateContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code binaryComparisonPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void enterBinaryComparisonPredicate(MySqlParser.BinaryComparisonPredicateContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code binaryComparisonPredicate}
+	 * labeled alternative in {@link MySqlParser#predicate}.
+	 * @param ctx the parse tree
+	 */
+	void exitBinaryComparisonPredicate(MySqlParser.BinaryComparisonPredicateContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code inPredicate}
 	 * labeled alternative in {@link MySqlParser#predicate}.
 	 * @param ctx the parse tree
@@ -5404,18 +5962,6 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitInPredicate(MySqlParser.InPredicateContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code subqueryComparasionPredicate}
-	 * labeled alternative in {@link MySqlParser#predicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubqueryComparasionPredicate(MySqlParser.SubqueryComparasionPredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code subqueryComparasionPredicate}
-	 * labeled alternative in {@link MySqlParser#predicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubqueryComparasionPredicate(MySqlParser.SubqueryComparasionPredicateContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code betweenPredicate}
 	 * labeled alternative in {@link MySqlParser#predicate}.
 	 * @param ctx the parse tree
@@ -5427,18 +5973,6 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBetweenPredicate(MySqlParser.BetweenPredicateContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code binaryComparasionPredicate}
-	 * labeled alternative in {@link MySqlParser#predicate}.
-	 * @param ctx the parse tree
-	 */
-	void enterBinaryComparasionPredicate(MySqlParser.BinaryComparasionPredicateContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code binaryComparasionPredicate}
-	 * labeled alternative in {@link MySqlParser#predicate}.
-	 * @param ctx the parse tree
-	 */
-	void exitBinaryComparasionPredicate(MySqlParser.BinaryComparasionPredicateContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code isNullPredicate}
 	 * labeled alternative in {@link MySqlParser#predicate}.
@@ -5500,18 +6034,6 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitCollateExpressionAtom(MySqlParser.CollateExpressionAtomContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code subqueryExpessionAtom}
-	 * labeled alternative in {@link MySqlParser#expressionAtom}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubqueryExpessionAtom(MySqlParser.SubqueryExpessionAtomContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code subqueryExpessionAtom}
-	 * labeled alternative in {@link MySqlParser#expressionAtom}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubqueryExpessionAtom(MySqlParser.SubqueryExpessionAtomContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code mysqlVariableExpressionAtom}
 	 * labeled alternative in {@link MySqlParser#expressionAtom}.
 	 * @param ctx the parse tree
@@ -5560,6 +6082,18 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitMathExpressionAtom(MySqlParser.MathExpressionAtomContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code existsExpressionAtom}
+	 * labeled alternative in {@link MySqlParser#expressionAtom}.
+	 * @param ctx the parse tree
+	 */
+	void enterExistsExpressionAtom(MySqlParser.ExistsExpressionAtomContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code existsExpressionAtom}
+	 * labeled alternative in {@link MySqlParser#expressionAtom}.
+	 * @param ctx the parse tree
+	 */
+	void exitExistsExpressionAtom(MySqlParser.ExistsExpressionAtomContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code intervalExpressionAtom}
 	 * labeled alternative in {@link MySqlParser#expressionAtom}.
 	 * @param ctx the parse tree
@@ -5572,17 +6106,29 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 */
 	void exitIntervalExpressionAtom(MySqlParser.IntervalExpressionAtomContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code existsExpessionAtom}
+	 * Enter a parse tree produced by the {@code jsonExpressionAtom}
 	 * labeled alternative in {@link MySqlParser#expressionAtom}.
 	 * @param ctx the parse tree
 	 */
-	void enterExistsExpessionAtom(MySqlParser.ExistsExpessionAtomContext ctx);
+	void enterJsonExpressionAtom(MySqlParser.JsonExpressionAtomContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code existsExpessionAtom}
+	 * Exit a parse tree produced by the {@code jsonExpressionAtom}
 	 * labeled alternative in {@link MySqlParser#expressionAtom}.
 	 * @param ctx the parse tree
 	 */
-	void exitExistsExpessionAtom(MySqlParser.ExistsExpessionAtomContext ctx);
+	void exitJsonExpressionAtom(MySqlParser.JsonExpressionAtomContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code subqueryExpressionAtom}
+	 * labeled alternative in {@link MySqlParser#expressionAtom}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubqueryExpressionAtom(MySqlParser.SubqueryExpressionAtomContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code subqueryExpressionAtom}
+	 * labeled alternative in {@link MySqlParser#expressionAtom}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubqueryExpressionAtom(MySqlParser.SubqueryExpressionAtomContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code constantExpressionAtom}
 	 * labeled alternative in {@link MySqlParser#expressionAtom}.
@@ -5693,6 +6239,16 @@ public interface MySqlParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMathOperator(MySqlParser.MathOperatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MySqlParser#jsonOperator}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsonOperator(MySqlParser.JsonOperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MySqlParser#jsonOperator}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsonOperator(MySqlParser.JsonOperatorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MySqlParser#charsetNameBase}.
 	 * @param ctx the parse tree
