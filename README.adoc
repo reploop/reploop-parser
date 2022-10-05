@@ -1,5 +1,7 @@
 = A thrift and protobuf parser.
 
+image:https://github.com/reploop/reploop-parser/actions/workflows/maven.yml/badge.svg[badges]
+
 == JSON
 
 JSON本身表达的就是一个树形结构，和Java的对象层次结构一样的。
