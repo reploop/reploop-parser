@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>reploop-parser</artifactId>
-  <version>0.20</version>
+  <version>0.21-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
