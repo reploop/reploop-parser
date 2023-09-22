@@ -5,15 +5,15 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import org.reploop.parser.ParserDriver;
+import org.reploop.parser.mysql.base.MySQLLexer;
 import org.reploop.parser.mysql.base.MySQLParser;
-import org.reploop.parser.mysql.base.MySqlLexer;
 import org.reploop.parser.mysql.tree.Node;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.function.Function;
 
-public class MySqlDriver extends ParserDriver<Node, MySqlLexer, MySQLParser> {
+public class MySqlDriver extends ParserDriver<Node, MySQLLexer, MySQLParser> {
 
   public Node parse(String sql, Function<MySQLParser, ParserRuleContext> func) throws IOException, StackOverflowError {
     return parse(new StringReader(sql), func);
@@ -25,8 +25,8 @@ public class MySqlDriver extends ParserDriver<Node, MySqlLexer, MySQLParser> {
   }
 
   @Override
-  protected MySqlLexer lexer(CharStream charStream) {
-    return new MySqlLexer(charStream);
+  protected MySQLLexer lexer(CharStream charStream) {
+    return new MySQLLexer(charStream);
   }
 
   @Override
