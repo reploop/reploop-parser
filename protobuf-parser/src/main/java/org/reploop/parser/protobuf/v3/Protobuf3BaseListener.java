@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/protobuf/v3/Protobuf3.g4 by ANTLR 4.9.3
+// Generated from java-escape by ANTLR 4.11.1
 package org.reploop.parser.protobuf.v3;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
+@SuppressWarnings("CheckReturnValue")
 public class Protobuf3BaseListener implements Protobuf3Listener {
 	/**
 	 * {@inheritDoc}

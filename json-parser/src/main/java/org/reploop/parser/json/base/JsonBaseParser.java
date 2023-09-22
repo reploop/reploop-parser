@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/json/base/JsonBase.g4 by ANTLR 4.9.3
+// Generated from java-escape by ANTLR 4.11.1
 package org.reploop.parser.json.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class JsonBaseParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.9.3", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -76,7 +76,7 @@ public class JsonBaseParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "JsonBase.g4"; }
+	public String getGrammarFileName() { return "java-escape"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -92,6 +92,7 @@ public class JsonBaseParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class JsonContext extends ParserRuleContext {
 		public ValueContext value() {
 			return getRuleContext(ValueContext.class,0);
@@ -136,6 +137,7 @@ public class JsonBaseParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ObjContext extends ParserRuleContext {
 		public List<PairContext> pair() {
 			return getRuleContexts(PairContext.class);
@@ -219,6 +221,7 @@ public class JsonBaseParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class PairContext extends ParserRuleContext {
 		public TerminalNode STRING() { return getToken(JsonBaseParser.STRING, 0); }
 		public ValueContext value() {
@@ -268,6 +271,7 @@ public class JsonBaseParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ArrContext extends ParserRuleContext {
 		public List<ValueContext> value() {
 			return getRuleContexts(ValueContext.class);
@@ -351,6 +355,7 @@ public class JsonBaseParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ValueContext extends ParserRuleContext {
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -362,6 +367,7 @@ public class JsonBaseParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class FalseValueContext extends ValueContext {
 		public FalseValueContext(ValueContext ctx) { copyFrom(ctx); }
 		@Override
@@ -378,6 +384,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class StringValueContext extends ValueContext {
 		public TerminalNode STRING() { return getToken(JsonBaseParser.STRING, 0); }
 		public StringValueContext(ValueContext ctx) { copyFrom(ctx); }
@@ -395,6 +402,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class TrueValueContext extends ValueContext {
 		public TrueValueContext(ValueContext ctx) { copyFrom(ctx); }
 		@Override
@@ -411,6 +419,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class ObjValueContext extends ValueContext {
 		public ObjContext obj() {
 			return getRuleContext(ObjContext.class,0);
@@ -430,6 +439,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class ArrValueContext extends ValueContext {
 		public ArrContext arr() {
 			return getRuleContext(ArrContext.class,0);
@@ -449,6 +459,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class NumberValueContext extends ValueContext {
 		public TerminalNode NUMBER() { return getToken(JsonBaseParser.NUMBER, 0); }
 		public NumberValueContext(ValueContext ctx) { copyFrom(ctx); }
@@ -466,6 +477,7 @@ public class JsonBaseParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class NullValueContext extends ValueContext {
 		public NullValueContext(ValueContext ctx) { copyFrom(ctx); }
 		@Override
@@ -562,22 +574,42 @@ public class JsonBaseParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16:\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\3\2\3\3\3\3\3\3\3\3\7\3\23\n\3\f\3\16\3"+
-		"\26\13\3\3\3\3\3\3\3\3\3\5\3\34\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\7"+
-		"\5&\n\5\f\5\16\5)\13\5\3\5\3\5\3\5\3\5\5\5/\n\5\3\6\3\6\3\6\3\6\3\6\3"+
-		"\6\3\6\5\68\n\6\3\6\2\2\7\2\4\6\b\n\2\2\2>\2\f\3\2\2\2\4\33\3\2\2\2\6"+
-		"\35\3\2\2\2\b.\3\2\2\2\n\67\3\2\2\2\f\r\5\n\6\2\r\3\3\2\2\2\16\17\7\3"+
-		"\2\2\17\24\5\6\4\2\20\21\7\4\2\2\21\23\5\6\4\2\22\20\3\2\2\2\23\26\3\2"+
-		"\2\2\24\22\3\2\2\2\24\25\3\2\2\2\25\27\3\2\2\2\26\24\3\2\2\2\27\30\7\5"+
-		"\2\2\30\34\3\2\2\2\31\32\7\3\2\2\32\34\7\5\2\2\33\16\3\2\2\2\33\31\3\2"+
-		"\2\2\34\5\3\2\2\2\35\36\7\f\2\2\36\37\7\6\2\2\37 \5\n\6\2 \7\3\2\2\2!"+
-		"\"\7\7\2\2\"\'\5\n\6\2#$\7\4\2\2$&\5\n\6\2%#\3\2\2\2&)\3\2\2\2\'%\3\2"+
-		"\2\2\'(\3\2\2\2(*\3\2\2\2)\'\3\2\2\2*+\7\b\2\2+/\3\2\2\2,-\7\7\2\2-/\7"+
-		"\b\2\2.!\3\2\2\2.,\3\2\2\2/\t\3\2\2\2\608\7\f\2\2\618\7\r\2\2\628\5\4"+
-		"\3\2\638\5\b\5\2\648\7\t\2\2\658\7\n\2\2\668\7\13\2\2\67\60\3\2\2\2\67"+
-		"\61\3\2\2\2\67\62\3\2\2\2\67\63\3\2\2\2\67\64\3\2\2\2\67\65\3\2\2\2\67"+
-		"\66\3\2\2\28\13\3\2\2\2\7\24\33\'.\67";
+		"\u0004\u0001\f8\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0001"+
+		"\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0005"+
+		"\u0001\u0011\b\u0001\n\u0001\f\u0001\u0014\t\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0003\u0001\u001a\b\u0001\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003"+
+		"\u0005\u0003$\b\u0003\n\u0003\f\u0003\'\t\u0003\u0001\u0003\u0001\u0003"+
+		"\u0001\u0003\u0001\u0003\u0003\u0003-\b\u0003\u0001\u0004\u0001\u0004"+
+		"\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0003\u0004"+
+		"6\b\u0004\u0001\u0004\u0000\u0000\u0005\u0000\u0002\u0004\u0006\b\u0000"+
+		"\u0000<\u0000\n\u0001\u0000\u0000\u0000\u0002\u0019\u0001\u0000\u0000"+
+		"\u0000\u0004\u001b\u0001\u0000\u0000\u0000\u0006,\u0001\u0000\u0000\u0000"+
+		"\b5\u0001\u0000\u0000\u0000\n\u000b\u0003\b\u0004\u0000\u000b\u0001\u0001"+
+		"\u0000\u0000\u0000\f\r\u0005\u0001\u0000\u0000\r\u0012\u0003\u0004\u0002"+
+		"\u0000\u000e\u000f\u0005\u0002\u0000\u0000\u000f\u0011\u0003\u0004\u0002"+
+		"\u0000\u0010\u000e\u0001\u0000\u0000\u0000\u0011\u0014\u0001\u0000\u0000"+
+		"\u0000\u0012\u0010\u0001\u0000\u0000\u0000\u0012\u0013\u0001\u0000\u0000"+
+		"\u0000\u0013\u0015\u0001\u0000\u0000\u0000\u0014\u0012\u0001\u0000\u0000"+
+		"\u0000\u0015\u0016\u0005\u0003\u0000\u0000\u0016\u001a\u0001\u0000\u0000"+
+		"\u0000\u0017\u0018\u0005\u0001\u0000\u0000\u0018\u001a\u0005\u0003\u0000"+
+		"\u0000\u0019\f\u0001\u0000\u0000\u0000\u0019\u0017\u0001\u0000\u0000\u0000"+
+		"\u001a\u0003\u0001\u0000\u0000\u0000\u001b\u001c\u0005\n\u0000\u0000\u001c"+
+		"\u001d\u0005\u0004\u0000\u0000\u001d\u001e\u0003\b\u0004\u0000\u001e\u0005"+
+		"\u0001\u0000\u0000\u0000\u001f \u0005\u0005\u0000\u0000 %\u0003\b\u0004"+
+		"\u0000!\"\u0005\u0002\u0000\u0000\"$\u0003\b\u0004\u0000#!\u0001\u0000"+
+		"\u0000\u0000$\'\u0001\u0000\u0000\u0000%#\u0001\u0000\u0000\u0000%&\u0001"+
+		"\u0000\u0000\u0000&(\u0001\u0000\u0000\u0000\'%\u0001\u0000\u0000\u0000"+
+		"()\u0005\u0006\u0000\u0000)-\u0001\u0000\u0000\u0000*+\u0005\u0005\u0000"+
+		"\u0000+-\u0005\u0006\u0000\u0000,\u001f\u0001\u0000\u0000\u0000,*\u0001"+
+		"\u0000\u0000\u0000-\u0007\u0001\u0000\u0000\u0000.6\u0005\n\u0000\u0000"+
+		"/6\u0005\u000b\u0000\u000006\u0003\u0002\u0001\u000016\u0003\u0006\u0003"+
+		"\u000026\u0005\u0007\u0000\u000036\u0005\b\u0000\u000046\u0005\t\u0000"+
+		"\u00005.\u0001\u0000\u0000\u00005/\u0001\u0000\u0000\u000050\u0001\u0000"+
+		"\u0000\u000051\u0001\u0000\u0000\u000052\u0001\u0000\u0000\u000053\u0001"+
+		"\u0000\u0000\u000054\u0001\u0000\u0000\u00006\t\u0001\u0000\u0000\u0000"+
+		"\u0005\u0012\u0019%,5";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
