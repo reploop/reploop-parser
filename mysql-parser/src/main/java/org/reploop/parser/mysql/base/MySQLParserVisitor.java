@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/mysql/base/MySQLParser.g4 by ANTLR 4.13.1
 package org.reploop.parser.mysql.base;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
