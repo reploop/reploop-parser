@@ -53,7 +53,7 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
     }
 
     private void comments(List<String> comments, BeanContext context) {
-        if (null != comments && comments.size() > 0) {
+        if (null != comments && !comments.isEmpty()) {
             comments.forEach(c -> context.append(c).newLine());
         }
     }
@@ -277,7 +277,7 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
                     return pair2;
                 }
             })));
-        if (pairs.size() > 0) {
+        if (!pairs.isEmpty()) {
             QualifiedName eqn = QualifiedName.of("google.protobuf.FieldOptions");
             var fb = ImmutableList.<Field>builder();
             int index = 1;
