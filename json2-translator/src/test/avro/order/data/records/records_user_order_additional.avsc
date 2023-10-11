@@ -4,23 +4,35 @@
   "namespace": "order.data.records",
   "fields": [
     {
-      "name": "delay",
-      "type": "string"
-    },
-    {
-      "name": "driverOrderId",
-      "type": "string"
-    },
-    {
       "name": "createTime",
       "type": "string"
     },
     {
-      "name": "driverPhone",
+      "name": "delay",
+      "type": "string"
+    },
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+      "name": "vehicleBrand",
+      "type": "string"
+    },
+    {
+      "name": "operator",
+      "type": "string"
+    },
+    {
+      "name": "settlementPrice",
       "type": "string"
     },
     {
       "name": "preDriverId",
+      "type": "string"
+    },
+    {
+      "name": "driverOrderId",
       "type": "string"
     },
     {
@@ -32,19 +44,7 @@
       "type": "boolean"
     },
     {
-      "name": "operator",
-      "type": "string"
-    },
-    {
-      "name": "orderId",
-      "type": "string"
-    },
-    {
-      "name": "settlementPrice",
-      "type": "string"
-    },
-    {
-      "name": "vehicleBrand",
+      "name": "driverPhone",
       "type": "string"
     }
   ]

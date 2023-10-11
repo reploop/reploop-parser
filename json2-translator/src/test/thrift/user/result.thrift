@@ -18,7 +18,7 @@ struct Result {
     16: optional string ser_title;
     17: optional string ser_utime;
     18: optional string service_face;
-    19: optional map<i32, string> tag;
+    19: optional list<string> tag;
     20: optional string user_avatar;
     21: optional string user_gender;
     22: optional string user_id;

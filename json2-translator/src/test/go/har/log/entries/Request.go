@@ -6,10 +6,10 @@ type Request struct {
     PostData request.PostData `json:"postData"`
     QueryString []NameValue `json:"queryString"`
     Url string `json:"url"`
-    Headers []NameValue `json:"headers"`
-    HttpVersion string `json:"httpVersion"`
     BodySize int32 `json:"bodySize"`
-    HeadersSize int32 `json:"headersSize"`
+    HttpVersion string `json:"httpVersion"`
     Cookies []NameValue `json:"cookies"`
+    HeadersSize int32 `json:"headersSize"`
+    Headers []NameValue `json:"headers"`
     
 }

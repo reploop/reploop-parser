@@ -4,7 +4,15 @@
   "namespace": "har.log.entries",
   "fields": [
     {
-      "name": "headers",
+      "name": "bodySize",
+      "type": "int"
+    },
+    {
+      "name": "httpVersion",
+      "type": "string"
+    },
+    {
+      "name": "cookies",
       "type": {
         "type": "array",
         "items": "har.log.entries.NameValue",
@@ -12,19 +20,11 @@
       }
     },
     {
-      "name": "httpVersion",
-      "type": "string"
-    },
-    {
-      "name": "bodySize",
-      "type": "int"
-    },
-    {
       "name": "headersSize",
       "type": "int"
     },
     {
-      "name": "cookies",
+      "name": "headers",
       "type": {
         "type": "array",
         "items": "har.log.entries.NameValue",

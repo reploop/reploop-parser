@@ -4,11 +4,11 @@
   "namespace": "har.log.entries",
   "fields": [
     {
-      "name": "mimeType",
+      "name": "text",
       "type": "string"
     },
     {
-      "name": "text",
+      "name": "mimeType",
       "type": "string"
     }
   ]

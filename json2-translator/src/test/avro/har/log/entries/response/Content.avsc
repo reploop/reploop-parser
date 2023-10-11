@@ -8,11 +8,11 @@
       "type": "int"
     },
     {
-      "name": "mimeType",
+      "name": "text",
       "type": "string"
     },
     {
-      "name": "text",
+      "name": "mimeType",
       "type": "string"
     }
   ]

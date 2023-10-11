@@ -7,18 +7,18 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> headers;
-    private String httpVersion;
     private Integer bodySize;
-    private Integer headersSize;
+    private String httpVersion;
     private List<NameValue> cookies;
+    private Integer headersSize;
+    private List<NameValue> headers;
     
-    public List<NameValue> getHeaders() {
-        return headers;
+    public Integer getBodySize() {
+        return bodySize;
     }
     
-    public void setHeaders(List<NameValue> headers) {
-        this.headers = headers;
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
     }
     
     public String getHttpVersion() {
@@ -29,12 +29,12 @@ public abstract class RequestResponse implements Serializable {
         this.httpVersion = httpVersion;
     }
     
-    public Integer getBodySize() {
-        return bodySize;
+    public List<NameValue> getCookies() {
+        return cookies;
     }
     
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
     }
     
     public Integer getHeadersSize() {
@@ -45,22 +45,22 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
-    public List<NameValue> getCookies() {
-        return cookies;
+    public List<NameValue> getHeaders() {
+        return headers;
     }
     
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("headers", getHeaders())
-                .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
-                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
                 .add("cookies", getCookies())
+                .add("headersSize", getHeadersSize())
+                .add("headers", getHeaders())
                 .toString();
     }
     

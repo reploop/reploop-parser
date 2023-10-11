@@ -2,10 +2,9 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "marketing";
 package marketing;
-import "java/time/local_date_time.proto";
 message Result {
     optional string beginTime = 1;
-    optional java.time.LocalDateTime createTime = 2;
+    optional string createTime = 2;
     optional string endTime = 3;
     optional int32 marketingId = 4;
     optional string marketingName = 5;

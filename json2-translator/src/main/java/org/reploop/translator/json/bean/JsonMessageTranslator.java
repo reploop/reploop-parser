@@ -235,7 +235,6 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
         .map(StringValue::new)
         .map(timezone -> new CommonPair(DATE_TIMEZONE, timezone))
         .ifPresent(obs::add);
-      fieldType = new StructType(IMPORT_LOCAL_DATETIME);
     }
     FieldModifier modifier = FieldModifier.optional;
     if (fieldType instanceof ListType || fieldType instanceof SetType) {

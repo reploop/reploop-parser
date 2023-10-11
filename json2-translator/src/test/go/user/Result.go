@@ -19,7 +19,7 @@ type Result struct {
     SerTitle string `json:"ser_title"`
     SerUTime string `json:"ser_utime"`
     ServiceFace string `json:"service_face"`
-    Tag map[int32]string `json:"tag"`
+    Tag []string `json:"tag"`
     UserAvatar string `json:"user_avatar"`
     UserGender string `json:"user_gender"`
     UserId string `json:"user_id"`

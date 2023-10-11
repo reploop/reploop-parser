@@ -54,11 +54,11 @@ public class Response extends RequestResponse implements Serializable {
                 .add("redirectUrL", getRedirectUrL())
                 .add("status", getStatus())
                 .add("statusText", getStatusText())
-                .add("headers", getHeaders())
-                .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
-                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
                 .add("cookies", getCookies())
+                .add("headersSize", getHeadersSize())
+                .add("headers", getHeaders())
                 .toString();
     }
     
@@ -89,8 +89,8 @@ public class Response extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder headers(List<NameValue> headers) {
-            data.setHeaders(headers);
+        public Builder bodySize(Integer bodySize) {
+            data.setBodySize(bodySize);
             return this;
         }
         
@@ -99,8 +99,8 @@ public class Response extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder bodySize(Integer bodySize) {
-            data.setBodySize(bodySize);
+        public Builder cookies(List<NameValue> cookies) {
+            data.setCookies(cookies);
             return this;
         }
         
@@ -109,8 +109,8 @@ public class Response extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder cookies(List<NameValue> cookies) {
-            data.setCookies(cookies);
+        public Builder headers(List<NameValue> headers) {
+            data.setHeaders(headers);
             return this;
         }
         

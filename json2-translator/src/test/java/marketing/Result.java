@@ -1,7 +1,5 @@
 package marketing;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import java.time.LocalDateTime;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
@@ -9,8 +7,7 @@ import com.google.common.base.MoreObjects;
 public class Result implements Serializable {
     private static final long serialVersionUID = 1L;
     private String beginTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime createTime;
+    private String createTime;
     private String endTime;
     private Integer marketingId;
     private String marketingName;
@@ -25,11 +22,11 @@ public class Result implements Serializable {
         this.beginTime = beginTime;
     }
     
-    public LocalDateTime getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
     
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
     
@@ -98,7 +95,7 @@ public class Result implements Serializable {
             return this;
         }
         
-        public Builder createTime(LocalDateTime createTime) {
+        public Builder createTime(String createTime) {
             data.setCreateTime(createTime);
             return this;
         }
