@@ -43,7 +43,7 @@ public class Result implements Serializable {
     private String serUTime;
     @JsonProperty("service_face")
     private String serviceFace;
-    private List<String> tag;
+    private Map<Integer, String> tag;
     @JsonProperty("user_avatar")
     private String userAvatar;
     @JsonProperty("user_gender")
@@ -197,11 +197,11 @@ public class Result implements Serializable {
         this.serviceFace = serviceFace;
     }
     
-    public List<String> getTag() {
+    public Map<Integer, String> getTag() {
         return tag;
     }
     
-    public void setTag(List<String> tag) {
+    public void setTag(Map<Integer, String> tag) {
         this.tag = tag;
     }
     
@@ -363,7 +363,7 @@ public class Result implements Serializable {
             return this;
         }
         
-        public Builder tag(List<String> tag) {
+        public Builder tag(Map<Integer, String> tag) {
             data.setTag(tag);
             return this;
         }

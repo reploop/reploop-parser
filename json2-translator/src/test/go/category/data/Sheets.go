@@ -8,7 +8,7 @@ type Sheets struct {
     Merges []sheets.Merges `json:"merges"`
     SheetId string `json:"sheetId"`
     Title string `json:"title"`
-    RowCount int32 `json:"rowCount"`
     ColumnCount int32 `json:"columnCount"`
+    RowCount int32 `json:"rowCount"`
     
 }

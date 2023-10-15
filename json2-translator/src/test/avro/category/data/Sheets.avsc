@@ -32,11 +32,11 @@
       "type": "string"
     },
     {
-      "name": "rowCount",
+      "name": "columnCount",
       "type": "int"
     },
     {
-      "name": "columnCount",
+      "name": "rowCount",
       "type": "int"
     }
   ]

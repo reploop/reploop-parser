@@ -1,7 +1,10 @@
 package org.reploop.json2.web;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class ApplicationTest extends TestCase {
+public class ApplicationTest {
 
+  @Test
+  public void app() {
+  }
 }
