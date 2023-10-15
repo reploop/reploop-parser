@@ -31,6 +31,13 @@ public class MySqlDriverTest {
 
 
   @Test
+  public void func() throws Exception {
+    String sql = "select sum(count) from tb_agg";
+    Node node = driver.parse(sql, MySQLParser::selectStatement);
+    System.out.println(node);
+  }
+
+  @Test
   public void sql() throws Exception {
     String sql = "SELECT b.mt4Account, b.server, SUM(t.pip_commission_currency) as pipCommissionCurrency, SUM( CASE WHEN b.commission_flag = 0 THEN b.pip_commission ELSE 0 END ) AS 'innerCommission', SUM( CASE WHEN b.commission_flag = 1 THEN b.pip_commission ELSE 0 END ) AS 'outerCommission', DATABASE() as db FROM tb_commission_ib b, tb_account_mt4 u, tb_commission_ib_transaction t, tb_commission_ib_volume a WHERE b.mt4Account=u.mt4_account AND b.id = t.commission_ib_id AND b.ticket = a.ticket AND b.`server` = a.dataSourceId AND b.close_time >= ? AND b.close_time <= ? AND b.tradeOnCredit != 1 AND LOWER(a.mt4AccountGroup) not like '%test%' GROUP BY b.mt4Account ORDER BY b.mt4Account";
     Node node = driver.parse(sql, MySQLParser::selectStatement);

@@ -4,11 +4,11 @@
   "namespace": "category.data.sheets",
   "fields": [
     {
-      "name": "columnCount",
+      "name": "rowCount",
       "type": "int"
     },
     {
-      "name": "rowCount",
+      "name": "columnCount",
       "type": "int"
     }
   ]
