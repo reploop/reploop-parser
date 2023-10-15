@@ -23,15 +23,15 @@ type UserOrderAdditional struct {
     VehiclePlate string `json:"vehiclePlate"`
     VehicleType string `json:"vehicleType"`
     CreateTime string `json:"createTime"`
-    Delay string `json:"delay"`
     OrderId string `json:"orderId"`
-    VehicleBrand string `json:"vehicleBrand"`
-    Operator string `json:"operator"`
-    SettlementPrice string `json:"settlementPrice"`
-    PreDriverId string `json:"preDriverId"`
-    DriverOrderId string `json:"driverOrderId"`
-    ActionSource string `json:"actionSource"`
-    Night bool `json:"night"`
+    Delay string `json:"delay"`
     DriverPhone string `json:"driverPhone"`
+    ActionSource string `json:"actionSource"`
+    SettlementPrice string `json:"settlementPrice"`
+    Operator string `json:"operator"`
+    VehicleBrand string `json:"vehicleBrand"`
+    PreDriverId string `json:"preDriverId"`
+    Night bool `json:"night"`
+    DriverOrderId string `json:"driverOrderId"`
     
 }

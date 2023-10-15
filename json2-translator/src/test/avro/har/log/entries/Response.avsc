@@ -20,14 +20,6 @@
       "type": "string"
     },
     {
-      "name": "bodySize",
-      "type": "int"
-    },
-    {
-      "name": "httpVersion",
-      "type": "string"
-    },
-    {
       "name": "cookies",
       "type": {
         "type": "array",
@@ -40,12 +32,20 @@
       "type": "int"
     },
     {
+      "name": "httpVersion",
+      "type": "string"
+    },
+    {
       "name": "headers",
       "type": {
         "type": "array",
         "items": "har.log.entries.NameValue",
         "default": []
       }
+    },
+    {
+      "name": "bodySize",
+      "type": "int"
     }
   ]
 }

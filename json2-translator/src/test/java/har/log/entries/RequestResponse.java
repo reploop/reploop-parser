@@ -7,27 +7,11 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer bodySize;
-    private String httpVersion;
     private List<NameValue> cookies;
     private Integer headersSize;
+    private String httpVersion;
     private List<NameValue> headers;
-    
-    public Integer getBodySize() {
-        return bodySize;
-    }
-    
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-    }
-    
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-    
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
+    private Integer bodySize;
     
     public List<NameValue> getCookies() {
         return cookies;
@@ -45,6 +29,14 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
+    public String getHttpVersion() {
+        return httpVersion;
+    }
+    
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
+    }
+    
     public List<NameValue> getHeaders() {
         return headers;
     }
@@ -53,14 +45,22 @@ public abstract class RequestResponse implements Serializable {
         this.headers = headers;
     }
     
+    public Integer getBodySize() {
+        return bodySize;
+    }
+    
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("bodySize", getBodySize())
-                .add("httpVersion", getHttpVersion())
                 .add("cookies", getCookies())
                 .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
                 .add("headers", getHeaders())
+                .add("bodySize", getBodySize())
                 .toString();
     }
     
