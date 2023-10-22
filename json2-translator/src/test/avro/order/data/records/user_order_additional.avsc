@@ -88,23 +88,7 @@
       "type": "string"
     },
     {
-      "name": "createTime",
-      "type": "string"
-    },
-    {
-      "name": "delay",
-      "type": "string"
-    },
-    {
       "name": "orderId",
-      "type": "string"
-    },
-    {
-      "name": "vehicleBrand",
-      "type": "string"
-    },
-    {
-      "name": "operator",
       "type": "string"
     },
     {
@@ -112,11 +96,11 @@
       "type": "string"
     },
     {
-      "name": "preDriverId",
+      "name": "createTime",
       "type": "string"
     },
     {
-      "name": "driverOrderId",
+      "name": "driverPhone",
       "type": "string"
     },
     {
@@ -128,7 +112,23 @@
       "type": "boolean"
     },
     {
-      "name": "driverPhone",
+      "name": "preDriverId",
+      "type": "string"
+    },
+    {
+      "name": "driverOrderId",
+      "type": "string"
+    },
+    {
+      "name": "operator",
+      "type": "string"
+    },
+    {
+      "name": "vehicleBrand",
+      "type": "string"
+    },
+    {
+      "name": "delay",
       "type": "string"
     }
   ]

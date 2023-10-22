@@ -57,16 +57,16 @@ type Records struct {
     VPlate string `json:"vplate"`
     VType string `json:"vtype"`
     VVehicleId int32 `json:"vvehicleId"`
-    CreateTime string `json:"createTime"`
-    Delay string `json:"delay"`
     OrderId string `json:"orderId"`
-    VehicleBrand string `json:"vehicleBrand"`
-    Operator string `json:"operator"`
     SettlementPrice string `json:"settlementPrice"`
-    PreDriverId string `json:"preDriverId"`
-    DriverOrderId string `json:"driverOrderId"`
+    CreateTime string `json:"createTime"`
+    DriverPhone string `json:"driverPhone"`
     ActionSource string `json:"actionSource"`
     Night bool `json:"night"`
-    DriverPhone string `json:"driverPhone"`
+    PreDriverId string `json:"preDriverId"`
+    DriverOrderId string `json:"driverOrderId"`
+    Operator string `json:"operator"`
+    VehicleBrand string `json:"vehicleBrand"`
+    Delay string `json:"delay"`
     
 }

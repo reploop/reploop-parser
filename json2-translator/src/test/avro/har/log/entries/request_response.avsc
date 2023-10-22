@@ -4,10 +4,6 @@
   "namespace": "har.log.entries",
   "fields": [
     {
-      "name": "bodySize",
-      "type": "int"
-    },
-    {
       "name": "httpVersion",
       "type": "string"
     },
@@ -20,16 +16,20 @@
       }
     },
     {
-      "name": "headersSize",
-      "type": "int"
-    },
-    {
       "name": "headers",
       "type": {
         "type": "array",
         "items": "har.log.entries.NameValue",
         "default": []
       }
+    },
+    {
+      "name": "headersSize",
+      "type": "int"
+    },
+    {
+      "name": "bodySize",
+      "type": "int"
     }
   ]
 }

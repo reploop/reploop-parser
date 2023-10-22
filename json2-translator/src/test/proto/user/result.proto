@@ -21,7 +21,7 @@ message Result {
     optional string ser_title = 16;
     optional string ser_utime = 17;
     optional string service_face = 18;
-    repeated string tag = 19;
+    map<int32, string> tag = 19;
     optional string user_avatar = 20;
     optional string user_gender = 21;
     optional string user_id = 22;
