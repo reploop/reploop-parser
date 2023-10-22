@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
+
 public class MySqlAstBuilder extends MySQLParserBaseVisitor<Node> {
   TokenStream tokenStream;
 
@@ -41,7 +43,7 @@ public class MySqlAstBuilder extends MySQLParserBaseVisitor<Node> {
   @Override
   public Node visitSimpleSelect(MySQLParser.SimpleSelectContext ctx) {
     Node node = visitQuerySpecification(ctx.querySpecification());
-    Node n1 = visitLockClause(ctx.lockClause());
+    var ln = visitIfPresent(ctx.lockClause(), Node.class);
     return super.visitSimpleSelect(ctx);
   }
 
@@ -74,6 +76,14 @@ public class MySqlAstBuilder extends MySQLParserBaseVisitor<Node> {
 
   private <T, C extends ParseTree> T visit(C context, Class<T> type) {
     return type.cast(visit(context));
+  }
+
+  private <T, C extends ParseTree> Optional<T> visitIfPresent(C context, Class<T> type) {
+    T val = null;
+    if (nonNull(context)) {
+      val = type.cast(visit(context));
+    }
+    return Optional.ofNullable(val);
   }
 
   private <T, C extends ParseTree> List<T> visit(List<C> contexts, Class<T> type) {
@@ -118,7 +128,7 @@ public class MySqlAstBuilder extends MySQLParserBaseVisitor<Node> {
 
   @Override
   public SimpleId visitSimpleId(MySQLParser.SimpleIdContext ctx) {
-    String id = text(ctx.ID()).get();
+    String id = text(ctx.ID()).orElse(ctx.getText());
     return new SimpleId(id);
   }
 
