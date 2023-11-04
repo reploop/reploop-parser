@@ -1,13 +1,29 @@
-package org.reploop.parser.json;
+package org.reploop.parser.json5;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.reploop.parser.json.base.JSON5BaseVisitor;
-import org.reploop.parser.json.base.JSON5Parser;
-import org.reploop.parser.json.base.JsonBaseParser;
+import org.reploop.parser.json.Node;
+import org.reploop.parser.json.tree.Array;
+import org.reploop.parser.json.tree.Bool;
+import org.reploop.parser.json.tree.ByteVal;
+import org.reploop.parser.json.tree.DoubleVal;
+import org.reploop.parser.json.tree.Entity;
+import org.reploop.parser.json.tree.FloatVal;
+import org.reploop.parser.json.tree.IdentifierKey;
+import org.reploop.parser.json.tree.IntVal;
+import org.reploop.parser.json.tree.Json;
+import org.reploop.parser.json.tree.Key;
+import org.reploop.parser.json.tree.LongVal;
+import org.reploop.parser.json.tree.Null;
 import org.reploop.parser.json.tree.Number;
-import org.reploop.parser.json.tree.*;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.ShortVal;
+import org.reploop.parser.json.tree.StringKey;
+import org.reploop.parser.json.tree.Text;
+import org.reploop.parser.json.tree.Value;
+import org.reploop.parser.json5.base.JSON5BaseVisitor;
+import org.reploop.parser.json5.base.JSON5Parser;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,6 +32,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.strip;
 
 /**
@@ -43,26 +60,38 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 
     @Override
     public Pair visitPair(JSON5Parser.PairContext ctx) {
+        visitKey()
         return super.visitPair(ctx);
     }
 
     @Override
     public Key visitKey(JSON5Parser.KeyContext ctx) {
-        ctx.STRING();
-        Optional<String> os = terminalNode(ctx.STRING(), this::stripQuotationMark);
-        text = ctx.STRING().getText();
-        text = ctx.IDENTIFIER().getText();
-        text = ctx.NUMERIC_LITERAL().getText();
-        text = ctx.LITERAL().getSymbol().getText();
+        var sop = terminalNode(ctx.STRING(), this::stripQuotationMark).map(StringKey::new);
+        if (sop.isPresent()) {
+            return sop.get();
+        }
+        var iop = terminalNode(ctx.IDENTIFIER(), this::stripQuotationMark).map(IdentifierKey::new);
+        if (iop.isPresent()) {
+            return iop.get();
+        }
+        return null;
     }
 
     private Optional<String> terminalNode(TerminalNode node, Function<String, String> handler) {
-        if (null != node) {
-            String value = node.getText();
-            if (null != handler) {
-                value = handler.apply(value);
+        return terminalNode(handler, node);
+    }
+
+    private Optional<String> terminalNode(Function<String, String> handler, TerminalNode... nodes) {
+        for (var node : nodes) {
+            if (nonNull(node)) {
+                String value = node.getText();
+                if (nonNull(handler)) {
+                    value = handler.apply(value);
+                }
+                if (nonNull(value)) {
+                    return Optional.of(value);
+                }
             }
-            return Optional.of(value);
         }
         return Optional.empty();
     }
@@ -73,12 +102,12 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
     }
 
     @Override
-    public Array visitArr(JSON5Parser.ArrContext ctx) {
+    public Node visitArr(JSON5Parser.ArrContext ctx) {
         return super.visitArr(ctx);
     }
 
     @Override
-    public Number visitNumber(JSON5Parser.NumberContext ctx) {
+    public Node visitNumber(JSON5Parser.NumberContext ctx) {
         return super.visitNumber(ctx);
     }
 

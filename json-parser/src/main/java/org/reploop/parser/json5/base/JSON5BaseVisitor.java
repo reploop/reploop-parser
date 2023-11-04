@@ -1,5 +1,5 @@
-// Generated from org/reploop/parser/json/base/JSON5.g4 by ANTLR 4.9.3
-package org.reploop.parser.json.base;
+// Generated from org/reploop/parser/json5/base/JSON5.g4 by ANTLR 4.9.3
+package org.reploop.parser.json5.base;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
