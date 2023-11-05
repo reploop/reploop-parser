@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "name": "Driver",
+  "fields": [
+    {
+      "name": "data",
+      "type": "driver.Data"
+    },
+    {
+      "name": "errmsg",
+      "type": "string"
+    },
+    {
+      "name": "errno",
+      "type": "int"
+    },
+    {
+      "name": "trace_id",
+      "type": "string"
+    }
+  ]
+}

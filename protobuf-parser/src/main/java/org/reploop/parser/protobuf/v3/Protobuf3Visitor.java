@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/protobuf/v3/Protobuf3.g4 by ANTLR 4.13.1
 package org.reploop.parser.protobuf.v3;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

@@ -1,0 +1,70 @@
+{
+  "type": "record",
+  "name": "AddCar",
+  "fields": [
+    {
+      "name": "brand",
+      "type": "string"
+    },
+    {
+      "name": "colour",
+      "type": "string"
+    },
+    {
+      "name": "driverUberId",
+      "type": "long"
+    },
+    {
+      "name": "files",
+      "type": {
+        "type": "array",
+        "items": "string",
+        "default": []
+      }
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "officeId",
+      "type": "string"
+    },
+    {
+      "name": "plate",
+      "type": "string"
+    },
+    {
+      "name": "plateColour",
+      "type": "string"
+    },
+    {
+      "name": "remarks",
+      "type": "string"
+    },
+    {
+      "name": "seating",
+      "type": "int"
+    },
+    {
+      "name": "settlementPrice",
+      "type": "int"
+    },
+    {
+      "name": "trafficCarType",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "vehicleDesc",
+      "type": "string"
+    },
+    {
+      "name": "vehicleNature",
+      "type": "string"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/json/base/JSON5.g4 by ANTLR 4.9.3
+// Generated from org/reploop/parser/json/base/JSON5.g4 by ANTLR 4.13.1
 package org.reploop.parser.json.base;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -10,6 +10,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
+@SuppressWarnings("CheckReturnValue")
 public class JSON5BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements JSON5Visitor<T> {
 	/**
 	 * {@inheritDoc}
