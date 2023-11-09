@@ -28,6 +28,7 @@
     <module>mysql-parser</module>
     <module>json2-translator</module>
     <module>go-parser</module>
+    <module>cpp-parser</module>
     <module>json2-maven-plugin</module>
     <module>json2-web</module>
   </modules>
