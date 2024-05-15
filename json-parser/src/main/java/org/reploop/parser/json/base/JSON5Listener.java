@@ -1,4 +1,4 @@
-// Generated from org/reploop/parser/json/base/JSON5.g4 by ANTLR 4.9.3
+// Generated from org/reploop/parser/json/base/JSON5.g4 by ANTLR 4.13.1
 package org.reploop.parser.json.base;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
