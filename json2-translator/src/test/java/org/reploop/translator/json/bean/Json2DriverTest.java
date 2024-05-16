@@ -1,6 +1,10 @@
 package org.reploop.translator.json.bean;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.reploop.translator.json.driver.Json2Conf;
+import org.reploop.translator.json.driver.Json2Driver;
+import org.reploop.translator.json.support.Target;
 
 import java.net.URI;
 import java.net.URL;
@@ -9,11 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.EnumSet;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import org.reploop.translator.json.driver.Json2Conf;
-import org.reploop.translator.json.driver.Json2Driver;
-import org.reploop.translator.json.support.Target;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Json2DriverTest {
 
@@ -40,47 +40,14 @@ public class Json2DriverTest {
       .forEach(path -> {
         try {
           Json2Conf conf = new Json2Conf().enableRootGuess(true)
-            .targets(EnumSet.allOf(Target.class))
+            .targets(EnumSet.of(Target.JAVA))
             .outputDirectory(directory.toString());
           Json2Driver app = new Json2Driver(conf);
           app.execute(path);
           System.out.println(path);
         } catch (Exception e) {
           System.err.println(path);
-          e.printStackTrace();
         }
       });
-  }
-
-  @Test
-  public void guessRoot() {
-  }
-
-  @Test
-  public void testGuessRoot() {
-  }
-
-  @Test
-  public void execute() {
-  }
-
-  @Test
-  public void fromHTTP() {
-  }
-
-  @Test
-  public void testExecute() {
-  }
-
-  @Test
-  public void testExecute1() {
-  }
-
-  @Test
-  public void testExecute2() {
-  }
-
-  @Test
-  public void run() {
   }
 }

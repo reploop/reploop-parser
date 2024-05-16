@@ -1,0 +1,35 @@
+{
+  "reference": "1234567",
+  "callback_url": "http://www.example.com/",
+  "email": "johndoe@example.com",
+  "country": "GB",
+  "language": "EN",
+  "redirect_url": "http://www.example.com",
+  "ttl": 60,
+  "verification_mode": "any",
+
+  "document": {
+    "proof": "",
+    "additional_proof": "",
+    "supported_types": ["id_card", "driving_license", "passport"],
+    "name": "",
+    "dob": "",
+    "age": "",
+    "issue_date": "",
+    "expiry_date": "",
+    "document_number": "",
+    "allow_offline": "1",
+    "allow_online": "1",
+    "gender": ""
+  },
+
+  "address": {
+    "proof": "",
+    "supported_types": ["id_card", "bank_statement"],
+    "name": "",
+    "issue_date": "",
+    "full_address": "",
+    "address_fuzzy_match": "1",
+    "document_number": ""
+  }
+}

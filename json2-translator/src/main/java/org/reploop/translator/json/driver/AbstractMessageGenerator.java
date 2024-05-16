@@ -1,18 +1,8 @@
 package org.reploop.translator.json.driver;
 
-import static java.nio.file.StandardOpenOption.CREATE;
-import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
-import static java.nio.file.StandardOpenOption.WRITE;
-
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Converter;
 import com.google.common.base.Strings;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.Map;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 import org.reploop.translator.json.bean.BeanContext;
@@ -21,6 +11,17 @@ import org.reploop.translator.json.support.Constants;
 import org.reploop.translator.json.support.Target;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Map;
+
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
+import static java.nio.file.StandardOpenOption.WRITE;
 
 public abstract class AbstractMessageGenerator implements MessageGenerator {
 
@@ -93,6 +94,7 @@ public abstract class AbstractMessageGenerator implements MessageGenerator {
             Path root = Paths.get(outputDirectory);
             Path path = root.resolve(beanContext.getFile()).normalize();
             try {
+                Files.createDirectories(path.getParent());
                 Files.writeString(path, beanContext.toString(), TRUNCATE_EXISTING, CREATE, WRITE);
             } catch (IOException e) {
                 LOG.error("Cannot write source code to file {}", path, e);

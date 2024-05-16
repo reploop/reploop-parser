@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_multiple_files = true;
+import "shuFtipro/address.proto";
+import "shuFtipro/document.proto";
+message ShuFTipRo {
+    optional shuFtipro.Address address = 1;
+    optional string callback_url = 2;
+    optional string country = 3;
+    optional shuFtipro.Document document = 4;
+    optional string email = 5;
+    optional string language = 6;
+    optional string redirect_url = 7;
+    optional string reference = 8;
+    optional int32 ttl = 9;
+    optional string verification_mode = 10;
+    
+}
