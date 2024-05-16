@@ -220,17 +220,17 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
                 .add("vehicleId", getVehicleId())
                 .add("vehiclePlate", getVehiclePlate())
                 .add("vehicleType", getVehicleType())
-                .add("preDriverId", getPreDriverId())
-                .add("operator", getOperator())
-                .add("vehicleBrand", getVehicleBrand())
+                .add("settlementPrice", getSettlementPrice())
+                .add("orderId", getOrderId())
                 .add("actionSource", getActionSource())
                 .add("night", getNight())
-                .add("createTime", getCreateTime())
-                .add("orderId", getOrderId())
-                .add("settlementPrice", getSettlementPrice())
+                .add("vehicleBrand", getVehicleBrand())
                 .add("driverPhone", getDriverPhone())
-                .add("driverOrderId", getDriverOrderId())
+                .add("operator", getOperator())
                 .add("delay", getDelay())
+                .add("preDriverId", getPreDriverId())
+                .add("createTime", getCreateTime())
+                .add("driverOrderId", getDriverOrderId())
                 .toString();
     }
     
@@ -346,18 +346,13 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
             return this;
         }
         
-        public Builder operator(Object operator) {
-            data.setOperator(operator);
-            return this;
-        }
-        
-        public Builder vehicleBrand(Object vehicleBrand) {
-            data.setVehicleBrand(vehicleBrand);
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
             return this;
         }
         
@@ -371,18 +366,8 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
-            return this;
-        }
-        
-        public Builder orderId(Object orderId) {
-            data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder settlementPrice(Object settlementPrice) {
-            data.setSettlementPrice(settlementPrice);
+        public Builder vehicleBrand(Object vehicleBrand) {
+            data.setVehicleBrand(vehicleBrand);
             return this;
         }
         
@@ -391,13 +376,28 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
+        public Builder operator(Object operator) {
+            data.setOperator(operator);
             return this;
         }
         
         public Builder delay(Object delay) {
             data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
+            return this;
+        }
+        
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
             return this;
         }
         

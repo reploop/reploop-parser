@@ -30,8 +30,8 @@ public class Merges extends ColumnCountRowCount implements Serializable {
         return MoreObjects.toStringHelper(this)
                 .add("startColumnIndex", getStartColumnIndex())
                 .add("startRowIndex", getStartRowIndex())
-                .add("columnCount", getColumnCount())
                 .add("rowCount", getRowCount())
+                .add("columnCount", getColumnCount())
                 .toString();
     }
     
@@ -52,13 +52,13 @@ public class Merges extends ColumnCountRowCount implements Serializable {
             return this;
         }
         
-        public Builder columnCount(Integer columnCount) {
-            data.setColumnCount(columnCount);
+        public Builder rowCount(Integer rowCount) {
+            data.setRowCount(rowCount);
             return this;
         }
         
-        public Builder rowCount(Integer rowCount) {
-            data.setRowCount(rowCount);
+        public Builder columnCount(Integer columnCount) {
+            data.setColumnCount(columnCount);
             return this;
         }
         

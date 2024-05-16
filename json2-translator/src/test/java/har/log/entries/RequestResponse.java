@@ -7,27 +7,11 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> cookies;
-    private String httpVersion;
     private List<NameValue> headers;
     private Integer headersSize;
+    private List<NameValue> cookies;
+    private String httpVersion;
     private Integer bodySize;
-    
-    public List<NameValue> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
-    }
-    
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-    
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
     
     public List<NameValue> getHeaders() {
         return headers;
@@ -45,6 +29,22 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
+    
+    public String getHttpVersion() {
+        return httpVersion;
+    }
+    
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
+    }
+    
     public Integer getBodySize() {
         return bodySize;
     }
@@ -56,10 +56,10 @@ public abstract class RequestResponse implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cookies", getCookies())
-                .add("httpVersion", getHttpVersion())
                 .add("headers", getHeaders())
                 .add("headersSize", getHeadersSize())
+                .add("cookies", getCookies())
+                .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
                 .toString();
     }
