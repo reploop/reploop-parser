@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "JsonObject",
+  "fields": [
+    {
+      "name": "array",
+      "type": {
+        "type": "array",
+        "items": "jsonObject.Array",
+        "default": []
+      }
+    },
+    {
+      "name": "data",
+      "type": "jsonObject.Data"
+    }
+  ]
+}

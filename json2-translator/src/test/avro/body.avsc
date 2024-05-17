@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Body",
+  "fields": [
+    {
+      "name": "canShippedOrderParcelList",
+      "type": {
+        "type": "array",
+        "items": "body.CanShippedOrderParcelList",
+        "default": []
+      }
+    },
+    {
+      "name": "canShippedParcelNum",
+      "type": "int"
+    },
+    {
+      "name": "expiredParcelNum",
+      "type": "int"
+    },
+    {
+      "name": "notExpiredParcelNum",
+      "type": "int"
+    }
+  ]
+}

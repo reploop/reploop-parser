@@ -6,6 +6,7 @@ import org.reploop.translator.json.driver.Json2Conf;
 import org.reploop.translator.json.driver.Json2Driver;
 import org.reploop.translator.json.support.Target;
 
+import javax.swing.text.EditorKit;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
@@ -34,7 +35,8 @@ public class Json2DriverTest {
     URL url = Json2DriverTest.class.getResource("/");
     assertThat(url).isNotNull();
     Path dir = Paths.get(url.toURI());
-    Path directory = dir.getParent().getParent().resolve("src/test/");
+    Path directory = dir.getParent().getParent().resolve("target/generated-sources/");
+    System.out.println(directory);
     Files.list(dir)
       .filter(path -> path.toString().toLowerCase().endsWith(".json"))
       .forEach(path -> {
