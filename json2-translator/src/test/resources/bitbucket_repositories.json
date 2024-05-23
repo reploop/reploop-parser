@@ -1,0 +1,1268 @@
+{
+    "values": [
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/disconf-comparator",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/disconf-comparator"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7Bac29e05a-72f6-4c43-b036-e3c4ba04df77%7D?ts=python"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/disconf-comparator.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/disconf-comparator.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/disconf-comparator/hooks"
+                }
+            },
+            "name": "disconf-comparator",
+            "slug": "disconf-comparator",
+            "description": "Disconf Comparator",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "UTILS",
+                "uuid": "{636c01f4-2b57-4c85-abf2-78bb984fb733}",
+                "name": "Utils",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/UTILS"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/UTILS"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/UTILS/avatar/32?ts=1627479317"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2020-09-13T21:08:59.413148+00:00",
+            "updated_on": "2021-07-28T13:35:52.007437+00:00",
+            "size": 211944,
+            "language": "python",
+            "uuid": "{ac29e05a-72f6-4c43-b036-e3c4ba04df77}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/cc-data-cleansing",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/cc-data-cleansing"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B2cfd857b-57f1-4c76-9979-ec30bfd7d86f%7D?ts=python"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/cc-data-cleansing.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/cc-data-cleansing.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/cc-data-cleansing/hooks"
+                }
+            },
+            "name": "cc-data-cleansing",
+            "slug": "cc-data-cleansing",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "UTILS",
+                "uuid": "{636c01f4-2b57-4c85-abf2-78bb984fb733}",
+                "name": "Utils",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/UTILS"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/UTILS"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/UTILS/avatar/32?ts=1627479317"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-01-22T04:00:25.647271+00:00",
+            "updated_on": "2021-07-28T13:36:38.220448+00:00",
+            "size": 170470,
+            "language": "python",
+            "uuid": "{2cfd857b-57f1-4c76-9979-ec30bfd7d86f}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/sendcloud-util",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/sendcloud-util"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B887815b5-c69a-4dc8-9a21-f6a9e6a894fa%7D?ts=default"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/sendcloud-util.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/sendcloud-util.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/sendcloud-util/hooks"
+                }
+            },
+            "name": "sendcloud-util",
+            "slug": "sendcloud-util",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "UTILS",
+                "uuid": "{636c01f4-2b57-4c85-abf2-78bb984fb733}",
+                "name": "Utils",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/UTILS"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/UTILS"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/UTILS/avatar/32?ts=1627479317"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-07-28T13:41:06.855793+00:00",
+            "updated_on": "2022-02-17T00:05:53.328693+00:00",
+            "size": 475047,
+            "language": "",
+            "uuid": "{887815b5-c69a-4dc8-9a21-f6a9e6a894fa}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/telegram-scheduler-bot",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/telegram-scheduler-bot"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7Bee7bc3ec-8ed6-4b3e-a926-2400e66e6999%7D?ts=default"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/telegram-scheduler-bot.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/telegram-scheduler-bot.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/telegram-scheduler-bot/hooks"
+                }
+            },
+            "name": "telegram-scheduler-bot",
+            "slug": "telegram-scheduler-bot",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "YAN",
+                "uuid": "{6670a9cd-e0dd-47cb-be53-3abce75c1803}",
+                "name": "Yannibot",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/YAN"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/YAN"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/YAN/avatar/32?ts=1627479249"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-07-28T13:44:22.010078+00:00",
+            "updated_on": "2024-05-16T09:35:03.942147+00:00",
+            "size": 1123380,
+            "language": "",
+            "uuid": "{ee7bc3ec-8ed6-4b3e-a926-2400e66e6999}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/davinci-fe",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/davinci-fe"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B39da6705-8a2f-4193-85e9-9b061913fa53%7D?ts=js"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/davinci-fe.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/davinci-fe.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-fe/hooks"
+                }
+            },
+            "name": "daVinci-fe",
+            "slug": "davinci-fe",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "DAV",
+                "uuid": "{76841f67-d8e3-497c-ada4-51c7ed473b8c}",
+                "name": "Davinci",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/DAV"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/DAV"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/DAV/avatar/32?ts=1627479159"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-08-02T00:45:28.881709+00:00",
+            "updated_on": "2024-05-20T04:00:58.229027+00:00",
+            "size": 3952110,
+            "language": "javascript",
+            "uuid": "{39da6705-8a2f-4193-85e9-9b061913fa53}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/davinci-be",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/davinci-be"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B855b9690-9a34-4bd2-bdf5-29cbc5ee4bcc%7D?ts=python"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/davinci-be.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/davinci-be.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/davinci-be/hooks"
+                }
+            },
+            "name": "daVinci-be",
+            "slug": "davinci-be",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "DAV",
+                "uuid": "{76841f67-d8e3-497c-ada4-51c7ed473b8c}",
+                "name": "Davinci",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/DAV"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/DAV"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/DAV/avatar/32?ts=1627479159"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-08-02T00:48:19.561598+00:00",
+            "updated_on": "2024-05-22T00:26:31.570331+00:00",
+            "size": 63555330,
+            "language": "python",
+            "uuid": "{855b9690-9a34-4bd2-bdf5-29cbc5ee4bcc}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/mtmanagewebapi",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/mtmanagewebapi"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B394409c1-db55-475b-860a-c51a96d62e14%7D?ts=c_sharp"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/mtmanagewebapi.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/mtmanagewebapi.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtmanagewebapi/hooks"
+                }
+            },
+            "name": "MTManageWebAPI",
+            "slug": "mtmanagewebapi",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "META",
+                "uuid": "{2f682a5a-0618-4161-8ba5-ccfb47fab0fa}",
+                "name": "metaquotes",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/META"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/META"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/META/avatar/32?ts=1634018484"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-10-08T02:30:23.825491+00:00",
+            "updated_on": "2024-05-21T06:03:20.894454+00:00",
+            "size": 34409736,
+            "language": "c#",
+            "uuid": "{394409c1-db55-475b-860a-c51a96d62e14}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/mtdatafeed",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/mtdatafeed"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7Bbb5cead5-84e0-4b96-802f-0729c9ed63f1%7D?ts=c_sharp"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/mtdatafeed.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/mtdatafeed.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/mtdatafeed/hooks"
+                }
+            },
+            "name": "MTDataFeed",
+            "slug": "mtdatafeed",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "META",
+                "uuid": "{2f682a5a-0618-4161-8ba5-ccfb47fab0fa}",
+                "name": "metaquotes",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/META"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/META"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/META/avatar/32?ts=1634018484"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-10-08T02:36:52.773752+00:00",
+            "updated_on": "2024-05-20T06:28:15.909758+00:00",
+            "size": 9513804,
+            "language": "c#",
+            "uuid": "{bb5cead5-84e0-4b96-802f-0729c9ed63f1}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/swapsrecorder",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/swapsrecorder"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7B47531b2d-0acb-4bc1-b415-f56e2c8a4dae%7D?ts=python"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/swapsrecorder.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/swapsrecorder.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsrecorder/hooks"
+                }
+            },
+            "name": "SwapsRecorder",
+            "slug": "swapsrecorder",
+            "description": "Daily MT4 SWAP recorder",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "META",
+                "uuid": "{2f682a5a-0618-4161-8ba5-ccfb47fab0fa}",
+                "name": "metaquotes",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/META"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/META"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/META/avatar/32?ts=1634018484"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-10-12T05:56:20.123046+00:00",
+            "updated_on": "2023-04-25T23:41:38.117553+00:00",
+            "size": 207590,
+            "language": "python",
+            "uuid": "{47531b2d-0acb-4bc1-b415-f56e2c8a4dae}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        },
+        {
+            "type": "repository",
+            "full_name": "vantagefxcrm/swapsdiscountupdater",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater"
+                },
+                "html": {
+                    "href": "https://bitbucket.org/vantagefxcrm/swapsdiscountupdater"
+                },
+                "avatar": {
+                    "href": "https://bytebucket.org/ravatar/%7Be600954d-4278-4d07-a0b9-998271ef1edc%7D?ts=c_sharp"
+                },
+                "pullrequests": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/pullrequests"
+                },
+                "commits": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/commits"
+                },
+                "forks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/forks"
+                },
+                "watchers": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/watchers"
+                },
+                "branches": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/refs/branches"
+                },
+                "tags": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/refs/tags"
+                },
+                "downloads": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/downloads"
+                },
+                "source": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/src"
+                },
+                "clone": [
+                    {
+                        "name": "https",
+                        "href": "https://caogeorge@bitbucket.org/vantagefxcrm/swapsdiscountupdater.git"
+                    },
+                    {
+                        "name": "ssh",
+                        "href": "git@bitbucket.org:vantagefxcrm/swapsdiscountupdater.git"
+                    }
+                ],
+                "hooks": {
+                    "href": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm/swapsdiscountupdater/hooks"
+                }
+            },
+            "name": "SwapsDiscountUpdater",
+            "slug": "swapsdiscountupdater",
+            "description": "",
+            "scm": "git",
+            "website": null,
+            "owner": {
+                "display_name": "HytechCRM",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/vantagefxcrm/avatar/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/%7B1abe76b1-6cac-43ba-b2d1-7f58bdf80417%7D/"
+                    }
+                },
+                "type": "team",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "username": "vantagefxcrm"
+            },
+            "workspace": {
+                "type": "workspace",
+                "uuid": "{1abe76b1-6cac-43ba-b2d1-7f58bdf80417}",
+                "name": "HytechCRM",
+                "slug": "vantagefxcrm",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/workspaces/vantagefxcrm/avatar/?ts=1698064526"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm"
+                    }
+                }
+            },
+            "is_private": true,
+            "project": {
+                "type": "project",
+                "key": "META",
+                "uuid": "{2f682a5a-0618-4161-8ba5-ccfb47fab0fa}",
+                "name": "metaquotes",
+                "links": {
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/workspaces/vantagefxcrm/projects/META"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/vantagefxcrm/workspace/projects/META"
+                    },
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/user/vantagefxcrm/projects/META/avatar/32?ts=1634018484"
+                    }
+                }
+            },
+            "fork_policy": "no_public_forks",
+            "created_on": "2021-10-12T06:05:07.626797+00:00",
+            "updated_on": "2023-10-20T03:31:08.646408+00:00",
+            "size": 2221918,
+            "language": "c#",
+            "uuid": "{e600954d-4278-4d07-a0b9-998271ef1edc}",
+            "mainbranch": {
+                "name": "master",
+                "type": "branch"
+            },
+            "override_settings": {
+                "default_merge_strategy": false,
+                "branching_model": false
+            },
+            "parent": null,
+            "has_issues": false,
+            "has_wiki": false
+        }
+    ],
+    "pagelen": 10,
+    "size": 147,
+    "page": 1,
+    "next": "https://api.bitbucket.org/2.0/repositories/vantagefxcrm?page=2"
+}

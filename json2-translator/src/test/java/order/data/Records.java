@@ -569,17 +569,17 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
                 .add("vPlate", getVPlate())
                 .add("vType", getVType())
                 .add("vVehicleId", getVVehicleId())
-                .add("settlementPrice", getSettlementPrice())
-                .add("orderId", getOrderId())
-                .add("actionSource", getActionSource())
                 .add("night", getNight())
+                .add("settlementPrice", getSettlementPrice())
+                .add("driverOrderId", getDriverOrderId())
                 .add("vehicleBrand", getVehicleBrand())
+                .add("actionSource", getActionSource())
                 .add("driverPhone", getDriverPhone())
                 .add("operator", getOperator())
+                .add("createTime", getCreateTime())
+                .add("orderId", getOrderId())
                 .add("delay", getDelay())
                 .add("preDriverId", getPreDriverId())
-                .add("createTime", getCreateTime())
-                .add("driverOrderId", getDriverOrderId())
                 .toString();
     }
     
@@ -865,28 +865,28 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder settlementPrice(Object settlementPrice) {
-            data.setSettlementPrice(settlementPrice);
-            return this;
-        }
-        
-        public Builder orderId(Object orderId) {
-            data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder actionSource(Object actionSource) {
-            data.setActionSource(actionSource);
-            return this;
-        }
-        
         public Builder night(Boolean night) {
             data.setNight(night);
             return this;
         }
         
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
         public Builder vehicleBrand(Object vehicleBrand) {
             data.setVehicleBrand(vehicleBrand);
+            return this;
+        }
+        
+        public Builder actionSource(Object actionSource) {
+            data.setActionSource(actionSource);
             return this;
         }
         
@@ -900,6 +900,16 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
         public Builder delay(Object delay) {
             data.setDelay(delay);
             return this;
@@ -907,16 +917,6 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
         
         public Builder preDriverId(Object preDriverId) {
             data.setPreDriverId(preDriverId);
-            return this;
-        }
-        
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
-            return this;
-        }
-        
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
             return this;
         }
         

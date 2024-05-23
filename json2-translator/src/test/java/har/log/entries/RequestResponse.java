@@ -7,11 +7,19 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
+    private List<NameValue> cookies;
     private List<NameValue> headers;
     private Integer headersSize;
-    private List<NameValue> cookies;
     private String httpVersion;
     private Integer bodySize;
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
+    }
     
     public List<NameValue> getHeaders() {
         return headers;
@@ -27,14 +35,6 @@ public abstract class RequestResponse implements Serializable {
     
     public void setHeadersSize(Integer headersSize) {
         this.headersSize = headersSize;
-    }
-    
-    public List<NameValue> getCookies() {
-        return cookies;
-    }
-    
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
     }
     
     public String getHttpVersion() {
@@ -56,9 +56,9 @@ public abstract class RequestResponse implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+                .add("cookies", getCookies())
                 .add("headers", getHeaders())
                 .add("headersSize", getHeadersSize())
-                .add("cookies", getCookies())
                 .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
                 .toString();
