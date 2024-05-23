@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/protobuf/v3/Protobuf3.g4 by ANTLR 4.13.1
 package org.reploop.parser.protobuf.v3;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class Protobuf3Parser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -116,7 +116,7 @@ public class Protobuf3Parser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "Protobuf3.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -198,7 +198,7 @@ public class Protobuf3Parser extends Parser {
 			setState(110);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 70598525028L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 70598525028L) != 0)) {
 				{
 				setState(108);
 				_errHandler.sync(this);
@@ -937,7 +937,7 @@ public class Protobuf3Parser extends Parser {
 			setState(182);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 40602851289858046L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 40602851289858046L) != 0)) {
 				{
 				setState(180);
 				_errHandler.sync(this);
@@ -1202,7 +1202,7 @@ public class Protobuf3Parser extends Parser {
 			{
 			setState(216);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 4193280L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 4193280L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1860,7 +1860,7 @@ public class Protobuf3Parser extends Parser {
 			setState(281);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 40532482545680382L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 40532482545680382L) != 0)) {
 				{
 				{
 				setState(278);
@@ -2260,7 +2260,7 @@ public class Protobuf3Parser extends Parser {
 			setState(325);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 40602851289858046L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 40602851289858046L) != 0)) {
 				{
 				{
 				setState(322);
@@ -2456,7 +2456,7 @@ public class Protobuf3Parser extends Parser {
 			setState(346);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 70866960448L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 70866960448L) != 0)) {
 				{
 				{
 				setState(343);
@@ -2911,7 +2911,7 @@ public class Protobuf3Parser extends Parser {
 			setState(404);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 40532413826203646L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 40532413826203646L) != 0)) {
 				{
 				{
 				setState(398);
@@ -3708,7 +3708,7 @@ public class Protobuf3Parser extends Parser {
 			{
 			setState(465);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 2251851353292800L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2251851353292800L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -3879,7 +3879,7 @@ public class Protobuf3Parser extends Parser {
 			{
 			setState(471);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 4503616807239678L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 4503616807239678L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {

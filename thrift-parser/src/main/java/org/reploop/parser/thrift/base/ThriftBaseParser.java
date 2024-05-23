@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/thrift/base/ThriftBase.g4 by ANTLR 4.13.1
 package org.reploop.parser.thrift.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class ThriftBaseParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -108,7 +108,7 @@ public class ThriftBaseParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "ThriftBase.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -167,7 +167,7 @@ public class ThriftBaseParser extends Parser {
 			setState(63);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 254L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 254L) != 0)) {
 				{
 				{
 				setState(60);
@@ -181,7 +181,7 @@ public class ThriftBaseParser extends Parser {
 			setState(69);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 1818427392L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1818427392L) != 0)) {
 				{
 				{
 				setState(66);
@@ -544,7 +544,7 @@ public class ThriftBaseParser extends Parser {
 			{
 			setState(97);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 65280L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 65280L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1321,7 +1321,7 @@ public class ThriftBaseParser extends Parser {
 				setState(168);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8358680908408291328L) != 0) {
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8358680908408291328L) != 0)) {
 					{
 					{
 					setState(162);
@@ -1354,7 +1354,7 @@ public class ThriftBaseParser extends Parser {
 				setState(181);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 8358680908408291328L) != 0) {
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8358680908408291328L) != 0)) {
 					{
 					{
 					setState(173);
@@ -1757,7 +1757,7 @@ public class ThriftBaseParser extends Parser {
 			setState(238);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 434104748472270848L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 434104748472270848L) != 0)) {
 				{
 				{
 				setState(235);
@@ -2308,7 +2308,7 @@ public class ThriftBaseParser extends Parser {
 			{
 			setState(302);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 35115652612096L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 35115652612096L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
