@@ -15,60 +15,64 @@ import java.util.Objects;
  * @since 2016-09-28 19
  */
 public class Function extends Node {
-    private QualifiedName name;
-    private FieldType requestType;
-    private FieldType responseType;
-    private List<Option> options;
 
-    public Function(QualifiedName name, FieldType requestType, FieldType responseType, List<Option> options) {
-        this.name = name;
-        this.requestType = requestType;
-        this.responseType = responseType;
-        this.options = options;
-    }
+	private QualifiedName name;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitFunction(this, context);
-    }
+	private FieldType requestType;
 
-    public List<Option> getOptions() {
-        return options;
-    }
+	private FieldType responseType;
 
-    public QualifiedName getName() {
-        return name;
-    }
+	private List<Option> options;
 
-    public FieldType getRequestType() {
-        return requestType;
-    }
+	public Function(QualifiedName name, FieldType requestType, FieldType responseType, List<Option> options) {
+		this.name = name;
+		this.requestType = requestType;
+		this.responseType = responseType;
+		this.options = options;
+	}
 
-    public FieldType getResponseType() {
-        return responseType;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitFunction(this, context);
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Function function = (Function) o;
-        return Objects.equals(name, function.name) &&
-            Objects.equals(requestType, function.requestType) &&
-            Objects.equals(responseType, function.responseType);
-    }
+	public List<Option> getOptions() {
+		return options;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, requestType, responseType);
-    }
+	public QualifiedName getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        String sb = "Function{" + "name=" + name +
-            ", requestType=" + requestType +
-            ", responseType=" + responseType +
-            '}';
-        return sb;
-    }
+	public FieldType getRequestType() {
+		return requestType;
+	}
+
+	public FieldType getResponseType() {
+		return responseType;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Function function = (Function) o;
+		return Objects.equals(name, function.name) && Objects.equals(requestType, function.requestType)
+				&& Objects.equals(responseType, function.responseType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, requestType, responseType);
+	}
+
+	@Override
+	public String toString() {
+		String sb = "Function{" + "name=" + name + ", requestType=" + requestType + ", responseType=" + responseType
+				+ '}';
+		return sb;
+	}
+
 }

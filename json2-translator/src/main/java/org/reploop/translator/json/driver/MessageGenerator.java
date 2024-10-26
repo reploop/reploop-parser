@@ -7,7 +7,9 @@ import org.reploop.translator.json.bean.BeanContext;
 import java.util.Map;
 
 public interface MessageGenerator {
-    void generate(Map<QualifiedName, Message> messages, String outputDirectory);
 
-    void generate(Message message, BeanContext context);
+	void generate(Map<QualifiedName, Message> messages, String outputDirectory);
+
+	void generate(Message message, BeanContext context);
+
 }

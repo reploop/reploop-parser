@@ -12,48 +12,52 @@ import java.util.Objects;
  * @since 2016-10-14 20
  */
 public class Pair extends Node implements Comparable<Pair> {
-    private final String key;
-    private final Value value;
 
-    public Pair(String key, Value value) {
-        this.key = key;
-        this.value = value;
-    }
+	private final String key;
 
-    public String getKey() {
-        return key;
-    }
+	private final Value value;
 
-    public Value getValue() {
-        return value;
-    }
+	public Pair(String key, Value value) {
+		this.key = key;
+		this.value = value;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitPair(this, context);
-    }
+	public String getKey() {
+		return key;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pair pair = (Pair) o;
-        return Objects.equals(key, pair.key) &&
-            Objects.equals(value, pair.value);
-    }
+	public Value getValue() {
+		return value;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(key, value);
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitPair(this, context);
+	}
 
-    @Override
-    public String toString() {
-        return key + ": " + value;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Pair pair = (Pair) o;
+		return Objects.equals(key, pair.key) && Objects.equals(value, pair.value);
+	}
 
-    @Override
-    public int compareTo(Pair o) {
-        return key.compareTo(o.getKey());
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(key, value);
+	}
+
+	@Override
+	public String toString() {
+		return key + ": " + value;
+	}
+
+	@Override
+	public int compareTo(Pair o) {
+		return key.compareTo(o.getKey());
+	}
+
 }

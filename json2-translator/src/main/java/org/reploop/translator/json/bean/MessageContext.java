@@ -17,226 +17,239 @@ import org.reploop.parser.protobuf.type.FieldType;
 
 public class MessageContext {
 
-    private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
-    private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
-    private static final Map<QualifiedName, String> DATE_TIMEZONE = new HashMap<>();
-    private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
-    private final Set<QualifiedName> dependencies = new HashSet<>();
-    /**
-     * Current message's full qualified name
-     */
-    private QualifiedName name;
-    private boolean abstractClass;
-    private QualifiedName superClass;
-    private TreeMap<QualifiedName, List<Message>> namedMessages;
-    private FieldType fieldType;
-    /**
-     * Filename format
-     */
-    private CaseFormat format;
-    /**
-     * Root directory path of the output source files
-     */
-    private Path directory;
+	private static final Set<QualifiedName> JSON_RAW_VALUE_PATH = new HashSet<>();
 
-    public MessageContext(QualifiedName name, Path directory) {
-        this.name = name;
-        this.directory = directory;
-    }
+	private static final Map<QualifiedName, String> DATE_FORMAT = new HashMap<>();
 
-    public MessageContext(QualifiedName name) {
-        this.name = name;
-    }
+	private static final Map<QualifiedName, String> DATE_TIMEZONE = new HashMap<>();
 
-    public MessageContext(String name, Path directory) {
-        this(QualifiedName.of(name), directory);
-    }
+	private final Map<QualifiedName, QualifiedName> identityNames = new HashMap<>();
 
-    public MessageContext(String name) {
-        this(QualifiedName.of(name));
-    }
+	private final Set<QualifiedName> dependencies = new HashSet<>();
 
-    public MessageContext() {
-    }
+	/**
+	 * Current message's full qualified name
+	 */
+	private QualifiedName name;
 
-    public CaseFormat getFormat() {
-        return format;
-    }
+	private boolean abstractClass;
 
-    public void setFormat(CaseFormat format) {
-        this.format = format;
-    }
+	private QualifiedName superClass;
 
-    public Path getDirectory() {
-        return directory;
-    }
+	private TreeMap<QualifiedName, List<Message>> namedMessages;
 
-    public void setDirectory(Path directory) {
-        this.directory = directory;
-    }
+	private FieldType fieldType;
 
-    public QualifiedName getSuperClass() {
-        return superClass;
-    }
+	/**
+	 * Filename format
+	 */
+	private CaseFormat format;
 
-    public void setSuperClass(QualifiedName superClass) {
-        this.superClass = superClass;
-    }
+	/**
+	 * Root directory path of the output source files
+	 */
+	private Path directory;
 
-    public boolean isAbstractClass() {
-        return abstractClass;
-    }
+	public MessageContext(QualifiedName name, Path directory) {
+		this.name = name;
+		this.directory = directory;
+	}
 
-    public void setAbstractClass(boolean abstractClass) {
-        this.abstractClass = abstractClass;
-    }
+	public MessageContext(QualifiedName name) {
+		this.name = name;
+	}
 
-    public FieldType getFieldType() {
-        return fieldType;
-    }
+	public MessageContext(String name, Path directory) {
+		this(QualifiedName.of(name), directory);
+	}
 
-    public void setFieldType(FieldType fieldType) {
-        this.fieldType = fieldType;
-    }
+	public MessageContext(String name) {
+		this(QualifiedName.of(name));
+	}
 
-    public QualifiedName getName() {
-        return name;
-    }
+	public MessageContext() {
+	}
 
-    public void setName(String name) {
-        setName(QualifiedName.of(name));
-    }
+	public CaseFormat getFormat() {
+		return format;
+	}
 
-    public void setName(QualifiedName name) {
-        this.name = name;
-    }
+	public void setFormat(CaseFormat format) {
+		this.format = format;
+	}
 
-    public Map<QualifiedName, List<Message>> getNamedMessages() {
-        return namedMessages;
-    }
+	public Path getDirectory() {
+		return directory;
+	}
 
-    public void setNamedMessages(TreeMap<QualifiedName, List<Message>> namedMessages) {
-        this.namedMessages = namedMessages;
-    }
+	public void setDirectory(Path directory) {
+		this.directory = directory;
+	}
 
-    public MessageContext addNamedMessages(Map<QualifiedName, List<Message>> messageMap) {
-        if (null != messageMap) {
-            messageMap.forEach(this::addNamedMessage);
-        }
-        return this;
-    }
+	public QualifiedName getSuperClass() {
+		return superClass;
+	}
 
-    public MessageContext addMessages(List<Message> messages) {
-        return addNamedMessage(name, messages);
-    }
+	public void setSuperClass(QualifiedName superClass) {
+		this.superClass = superClass;
+	}
 
-    public MessageContext addMessage(Message message) {
-        return addMessages(Collections.singletonList(message));
-    }
+	public boolean isAbstractClass() {
+		return abstractClass;
+	}
 
-    public MessageContext addNamedMessage(QualifiedName name, Message message) {
-        return addNamedMessage(name, Collections.singletonList(message));
-    }
+	public void setAbstractClass(boolean abstractClass) {
+		this.abstractClass = abstractClass;
+	}
 
-    public MessageContext addNamedMessage(QualifiedName name, List<Message> messages) {
-        if (namedMessages == null) {
-            namedMessages = new TreeMap<>();
-        }
-        namedMessages.computeIfAbsent(name, key -> new ArrayList<>()).addAll(messages);
-        return this;
-    }
+	public FieldType getFieldType() {
+		return fieldType;
+	}
 
-    public Map<QualifiedName, QualifiedName> getIdentityNames() {
-        return identityNames;
-    }
+	public void setFieldType(FieldType fieldType) {
+		this.fieldType = fieldType;
+	}
 
-    public Optional<QualifiedName> getIdentityName(QualifiedName qn) {
-        return Optional.ofNullable(identityNames.get(qn));
-    }
+	public QualifiedName getName() {
+		return name;
+	}
 
-    public List<Message> getMessages(QualifiedName name) {
-        if (null == namedMessages) {
-            return Collections.emptyList();
-        }
-        return namedMessages.get(name);
-    }
+	public void setName(String name) {
+		setName(QualifiedName.of(name));
+	}
 
-    public void addIdentityName(QualifiedName a, QualifiedName b) {
-        identityNames.put(a, b);
-    }
+	public void setName(QualifiedName name) {
+		this.name = name;
+	}
 
-    public void addIdentityNames(Map<QualifiedName, QualifiedName> identityNames) {
-        if (null != identityNames) {
-            this.identityNames.putAll(identityNames);
-        }
-    }
+	public Map<QualifiedName, List<Message>> getNamedMessages() {
+		return namedMessages;
+	}
 
-    public boolean isJsonRawValue(QualifiedName name) {
-        if (null == name) {
-            return false;
-        }
-        return name.tail().map(JSON_RAW_VALUE_PATH::contains).orElse(false);
-    }
+	public void setNamedMessages(TreeMap<QualifiedName, List<Message>> namedMessages) {
+		this.namedMessages = namedMessages;
+	}
 
-    public Optional<String> hasTimeZone() {
-        return hasDateTimezone(name);
-    }
+	public MessageContext addNamedMessages(Map<QualifiedName, List<Message>> messageMap) {
+		if (null != messageMap) {
+			messageMap.forEach(this::addNamedMessage);
+		}
+		return this;
+	}
 
-    public Optional<String> hasDateFormat() {
-        return hasDateFormat(name);
-    }
+	public MessageContext addMessages(List<Message> messages) {
+		return addNamedMessage(name, messages);
+	}
 
-    public Optional<String> hasDateFormat(QualifiedName fqn) {
-        return fqn.tail().map(DATE_FORMAT::get);
-    }
+	public MessageContext addMessage(Message message) {
+		return addMessages(Collections.singletonList(message));
+	}
 
-    public Optional<String> hasDateTimezone(QualifiedName fqn) {
-        return fqn.tail().map(DATE_TIMEZONE::get);
-    }
+	public MessageContext addNamedMessage(QualifiedName name, Message message) {
+		return addNamedMessage(name, Collections.singletonList(message));
+	}
 
-    public void configureDateFormat(String fqn, String pattern) {
-        configureDateFormat(QualifiedName.of(fqn), pattern);
-    }
+	public MessageContext addNamedMessage(QualifiedName name, List<Message> messages) {
+		if (namedMessages == null) {
+			namedMessages = new TreeMap<>();
+		}
+		namedMessages.computeIfAbsent(name, key -> new ArrayList<>()).addAll(messages);
+		return this;
+	}
 
-    public void configureDateTimezone(String fqn, String timezone) {
-        configureDateTimezone(QualifiedName.of(fqn), timezone);
-    }
+	public Map<QualifiedName, QualifiedName> getIdentityNames() {
+		return identityNames;
+	}
 
-    public void configureDateFormat(QualifiedName fqn, String pattern) {
-        fqn.tail().ifPresent(name -> DATE_FORMAT.put(name, pattern));
-    }
+	public Optional<QualifiedName> getIdentityName(QualifiedName qn) {
+		return Optional.ofNullable(identityNames.get(qn));
+	}
 
-    public void configureDateTimezone(QualifiedName fqn, String timezone) {
-        fqn.tail().ifPresent(name -> DATE_TIMEZONE.put(name, timezone));
-    }
+	public List<Message> getMessages(QualifiedName name) {
+		if (null == namedMessages) {
+			return Collections.emptyList();
+		}
+		return namedMessages.get(name);
+	}
 
-    public void configureJsonRawValue(String xpath) {
-        configureJsonRawValue(QualifiedName.of(xpath));
-    }
+	public void addIdentityName(QualifiedName a, QualifiedName b) {
+		identityNames.put(a, b);
+	}
 
-    public void configureJsonRawValue(QualifiedName fqn) {
-        fqn.tail().ifPresent(JSON_RAW_VALUE_PATH::add);
-    }
+	public void addIdentityNames(Map<QualifiedName, QualifiedName> identityNames) {
+		if (null != identityNames) {
+			this.identityNames.putAll(identityNames);
+		}
+	}
 
-    public MessageContext addDependency(QualifiedName fqn) {
-        dependencies.add(fqn);
-        return this;
-    }
+	public boolean isJsonRawValue(QualifiedName name) {
+		if (null == name) {
+			return false;
+		}
+		return name.tail().map(JSON_RAW_VALUE_PATH::contains).orElse(false);
+	}
 
-    public Set<QualifiedName> getDependencies() {
-        return dependencies;
-    }
+	public Optional<String> hasTimeZone() {
+		return hasDateTimezone(name);
+	}
 
-    public boolean isJsonRawValue() {
-        return isJsonRawValue(name);
-    }
+	public Optional<String> hasDateFormat() {
+		return hasDateFormat(name);
+	}
 
-    public QualifiedName replaceIfPresent(QualifiedName name) {
-        Optional<QualifiedName> oq = getIdentityName(name);
-        if (oq.isEmpty()) {
-            return name;
-        } else {
-            return replaceIfPresent(oq.get());
-        }
-    }
+	public Optional<String> hasDateFormat(QualifiedName fqn) {
+		return fqn.tail().map(DATE_FORMAT::get);
+	}
+
+	public Optional<String> hasDateTimezone(QualifiedName fqn) {
+		return fqn.tail().map(DATE_TIMEZONE::get);
+	}
+
+	public void configureDateFormat(String fqn, String pattern) {
+		configureDateFormat(QualifiedName.of(fqn), pattern);
+	}
+
+	public void configureDateTimezone(String fqn, String timezone) {
+		configureDateTimezone(QualifiedName.of(fqn), timezone);
+	}
+
+	public void configureDateFormat(QualifiedName fqn, String pattern) {
+		fqn.tail().ifPresent(name -> DATE_FORMAT.put(name, pattern));
+	}
+
+	public void configureDateTimezone(QualifiedName fqn, String timezone) {
+		fqn.tail().ifPresent(name -> DATE_TIMEZONE.put(name, timezone));
+	}
+
+	public void configureJsonRawValue(String xpath) {
+		configureJsonRawValue(QualifiedName.of(xpath));
+	}
+
+	public void configureJsonRawValue(QualifiedName fqn) {
+		fqn.tail().ifPresent(JSON_RAW_VALUE_PATH::add);
+	}
+
+	public MessageContext addDependency(QualifiedName fqn) {
+		dependencies.add(fqn);
+		return this;
+	}
+
+	public Set<QualifiedName> getDependencies() {
+		return dependencies;
+	}
+
+	public boolean isJsonRawValue() {
+		return isJsonRawValue(name);
+	}
+
+	public QualifiedName replaceIfPresent(QualifiedName name) {
+		Optional<QualifiedName> oq = getIdentityName(name);
+		if (oq.isEmpty()) {
+			return name;
+		}
+		else {
+			return replaceIfPresent(oq.get());
+		}
+	}
+
 }

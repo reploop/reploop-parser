@@ -11,38 +11,40 @@ import java.util.Objects;
  * @since 2015-06-07 12
  */
 public class BoolValue extends Value {
-    private final Boolean value;
 
-    public BoolValue(Boolean value) {
-        this.value = value;
-    }
+	private final Boolean value;
 
-    public Boolean getValue() {
-        return value;
-    }
+	public BoolValue(Boolean value) {
+		this.value = value;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitBoolValue(this, context);
-    }
+	public Boolean getValue() {
+		return value;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BoolValue boolValue = (BoolValue) o;
-        return Objects.equals(value, boolValue.value);
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitBoolValue(this, context);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		BoolValue boolValue = (BoolValue) o;
+		return Objects.equals(value, boolValue.value);
+	}
 
-    @Override
-    public String toString() {
-        return "BoolValue{" +
-            "value=" + value +
-            '}';
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		return "BoolValue{" + "value=" + value + '}';
+	}
+
 }

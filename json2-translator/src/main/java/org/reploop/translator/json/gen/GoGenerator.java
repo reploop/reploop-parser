@@ -20,213 +20,222 @@ import static org.reploop.translator.json.support.Constants.*;
 import static org.reploop.translator.json.support.NameSupport.isObject;
 
 public class GoGenerator extends AstVisitor<Node, BeanContext> {
-    private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
-    private static final Logger LOG = LoggerFactory.getLogger(GoGenerator.class);
 
-    private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
-        return nodes.stream()
-            .map(visit)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
-    }
+	private static final Converter<String, String> LC_UC = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.UPPER_CAMEL);
 
-    @Override
-    public Node visitNode(Node node, BeanContext context) {
-        return node;
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(GoGenerator.class);
 
-    @Override
-    public FieldType visitFieldType(FieldType fieldType, BeanContext context) {
-        return (FieldType) process(fieldType, context);
-    }
+	private <N extends Node> List<N> visit(List<N> nodes, Function<N, N> visit) {
+		return nodes.stream().map(visit).filter(Objects::nonNull).collect(Collectors.toList());
+	}
 
-    private void comments(List<String> comments, BeanContext context) {
-        if (null != comments && comments.size() > 0) {
-            comments.forEach(c -> context.append(c).newLine());
-        }
-    }
+	@Override
+	public Node visitNode(Node node, BeanContext context) {
+		return node;
+	}
 
-    @Override
-    public Option visitOption(Option option, BeanContext context) {
-        return (Option) process(option, context);
-    }
+	@Override
+	public FieldType visitFieldType(FieldType fieldType, BeanContext context) {
+		return (FieldType) process(fieldType, context);
+	}
 
-    @Override
-    public StringValue visitStringValue(StringValue node, BeanContext context) {
-        context.append(node.getValue());
-        return node;
-    }
+	private void comments(List<String> comments, BeanContext context) {
+		if (null != comments && comments.size() > 0) {
+			comments.forEach(c -> context.append(c).newLine());
+		}
+	}
 
-    @Override
-    public Value visitValue(Value node, BeanContext context) {
-        return (Value) process(node, context);
-    }
+	@Override
+	public Option visitOption(Option option, BeanContext context) {
+		return (Option) process(option, context);
+	}
 
-    @Override
-    public BoolType visitBoolType(BoolType boolType, BeanContext context) {
-        context.append("bool");
-        return boolType;
-    }
+	@Override
+	public StringValue visitStringValue(StringValue node, BeanContext context) {
+		context.append(node.getValue());
+		return node;
+	}
 
-    @Override
-    public Node visitByteStringType(ByteStringType byteStringType, BeanContext context) {
-        return super.visitByteStringType(byteStringType, context);
-    }
+	@Override
+	public Value visitValue(Value node, BeanContext context) {
+		return (Value) process(node, context);
+	}
 
-    @Override
-    public ByteType visitByteType(ByteType byteType, BeanContext context) {
-        context.append("byte");
-        return byteType;
-    }
+	@Override
+	public BoolType visitBoolType(BoolType boolType, BeanContext context) {
+		context.append("bool");
+		return boolType;
+	}
 
-    @Override
-    public DoubleType visitDoubleType(DoubleType doubleType, BeanContext context) {
-        context.append("float64");
-        return doubleType;
-    }
+	@Override
+	public Node visitByteStringType(ByteStringType byteStringType, BeanContext context) {
+		return super.visitByteStringType(byteStringType, context);
+	}
 
-    @Override
-    public FloatType visitFloatType(FloatType floatType, BeanContext context) {
-        context.append("float32");
-        return floatType;
-    }
+	@Override
+	public ByteType visitByteType(ByteType byteType, BeanContext context) {
+		context.append("byte");
+		return byteType;
+	}
 
-    @Override
-    public IntType visitIntType(IntType intType, BeanContext context) {
-        context.append("int32");
-        return intType;
-    }
+	@Override
+	public DoubleType visitDoubleType(DoubleType doubleType, BeanContext context) {
+		context.append("float64");
+		return doubleType;
+	}
 
-    @Override
-    public StructType visitStructType(StructType structType, BeanContext context) {
-        QualifiedName name = structType.getName();
-        if (isObject(name)) {
-            context.append("string");
-        } else {
-            context.append(name);
-        }
-        return structType;
-    }
+	@Override
+	public FloatType visitFloatType(FloatType floatType, BeanContext context) {
+		context.append("float32");
+		return floatType;
+	}
 
-    @Override
-    public ListType visitListType(ListType listType, BeanContext context) {
-        context.openSquare().closeSquare();
-        visitFieldType(listType.getElementType(), context);
-        return listType;
-    }
+	@Override
+	public IntType visitIntType(IntType intType, BeanContext context) {
+		context.append("int32");
+		return intType;
+	}
 
-    @Override
-    public LongType visitLongType(LongType longType, BeanContext context) {
-        context.append("int64");
-        return longType;
-    }
+	@Override
+	public StructType visitStructType(StructType structType, BeanContext context) {
+		QualifiedName name = structType.getName();
+		if (isObject(name)) {
+			context.append("string");
+		}
+		else {
+			context.append(name);
+		}
+		return structType;
+	}
 
-    @Override
-    public MapType visitMapType(MapType mapType, BeanContext context) {
-        context.append("map");
-        context.openSquare();
-        visitFieldType(mapType.getKeyType(), context);
-        context.closeSquare();
-        visitFieldType(mapType.getValueType(), context);
-        return mapType;
-    }
+	@Override
+	public ListType visitListType(ListType listType, BeanContext context) {
+		context.openSquare().closeSquare();
+		visitFieldType(listType.getElementType(), context);
+		return listType;
+	}
 
-    @Override
-    public SetType visitSetType(SetType setType, BeanContext context) {
-        context.openSquare().closeSquare();
-        visitFieldType(setType.getElementType(), context);
-        return setType;
-    }
+	@Override
+	public LongType visitLongType(LongType longType, BeanContext context) {
+		context.append("int64");
+		return longType;
+	}
 
-    @Override
-    public ShortType visitShortType(ShortType shortType, BeanContext context) {
-        context.append("int16");
-        return shortType;
-    }
+	@Override
+	public MapType visitMapType(MapType mapType, BeanContext context) {
+		context.append("map");
+		context.openSquare();
+		visitFieldType(mapType.getKeyType(), context);
+		context.closeSquare();
+		visitFieldType(mapType.getValueType(), context);
+		return mapType;
+	}
 
-    @Override
-    public StringType visitStringType(StringType stringType, BeanContext context) {
-        context.append("string");
-        return stringType;
-    }
+	@Override
+	public SetType visitSetType(SetType setType, BeanContext context) {
+		context.openSquare().closeSquare();
+		visitFieldType(setType.getElementType(), context);
+		return setType;
+	}
 
-    @Override
-    public CommonPair visitCommonPair(CommonPair node, BeanContext context) {
-        String key = node.getKey();
-        Value value = node.getValue();
-        String expected = context.getExpectedKey();
-        if (key.equals(expected)) {
-            switch (key) {
-                case IMPORT:
-                    visitImport(context, key, value);
-                    break;
-                case EXTENDS_ATTR:
-                    visitExtendsAttr(context, value);
-                    break;
-                case ABSTRACT_ATTR:
-                    visitAbstractAttr(context, value);
-                    break;
-            }
-        }
-        return node;
-    }
+	@Override
+	public ShortType visitShortType(ShortType shortType, BeanContext context) {
+		context.append("int16");
+		return shortType;
+	}
 
-    private void visitImport(BeanContext context, String key, Value value) {
-        QualifiedName name = QualifiedName.of(((StringValue) value).getValue());
-        context.append(key).whitespace().quote();
-        context.append(name.join(SEP)).quote().newLine();
-    }
+	@Override
+	public StringType visitStringType(StringType stringType, BeanContext context) {
+		context.append("string");
+		return stringType;
+	}
 
+	@Override
+	public CommonPair visitCommonPair(CommonPair node, BeanContext context) {
+		String key = node.getKey();
+		Value value = node.getValue();
+		String expected = context.getExpectedKey();
+		if (key.equals(expected)) {
+			switch (key) {
+				case IMPORT:
+					visitImport(context, key, value);
+					break;
+				case EXTENDS_ATTR:
+					visitExtendsAttr(context, value);
+					break;
+				case ABSTRACT_ATTR:
+					visitAbstractAttr(context, value);
+					break;
+			}
+		}
+		return node;
+	}
 
-    private void visitAbstractAttr(BeanContext context, Value value) {
-        if (value instanceof BoolValue) {
-            Boolean isAbstract = ((BoolValue) value).getValue();
-            if (isAbstract) {
-                context.append(ABSTRACT_ATTR).whitespace();
-            }
-        }
-    }
+	private void visitImport(BeanContext context, String key, Value value) {
+		QualifiedName name = QualifiedName.of(((StringValue) value).getValue());
+		context.append(key).whitespace().quote();
+		context.append(name.join(SEP)).quote().newLine();
+	}
 
-    private void visitExtendsAttr(BeanContext context, Value value) {
-        if (value instanceof StringValue) {
-            context.append(EXTENDS_ATTR).whitespace();
-            visitValue(value, context);
-            context.whitespace();
-        }
-    }
+	private void visitAbstractAttr(BeanContext context, Value value) {
+		if (value instanceof BoolValue) {
+			Boolean isAbstract = ((BoolValue) value).getValue();
+			if (isAbstract) {
+				context.append(ABSTRACT_ATTR).whitespace();
+			}
+		}
+	}
 
-    @Override
-    public Field visitField(Field node, BeanContext context) {
-        String name = node.getName();
-        comments(node.getComments(), context);
-        context.append(LC_UC.convert(name)).whitespace();
-        visitFieldType(node.getType(), context);
-        context.whitespace().backtick().append("json").colon().quote();
-        List<Option> options = node.getOptions();
-        for (Option option : options) {
-            if (option instanceof CommonPair && ORIGINAL_NAME.equals(((CommonPair) option).getKey())) {
-                Value value = ((CommonPair) option).getValue();
-                if (value instanceof StringValue) {
-                    name = ((StringValue) value).getValue();
-                }
-            }
-        }
-        context.append(name).quote().backtick().newLine();
-        return node;
-    }
+	private void visitExtendsAttr(BeanContext context, Value value) {
+		if (value instanceof StringValue) {
+			context.append(EXTENDS_ATTR).whitespace();
+			visitValue(value, context);
+			context.whitespace();
+		}
+	}
 
-    @Override
-    public Message visitMessage(Message node, BeanContext context) {
-        QualifiedName name = node.getName();
-        String ns = name.prefix().map(QualifiedName::suffix).orElse("main");
-        context.append("package").whitespace().append(ns).newLine().newLine();
-        // Options
-        context.setExpectedKey(IMPORT);
-        visitIfPresent(node.getOptions(), option -> visitOption(option, context));
-        context.clearExpectedKey();
-        context.append("type").whitespace().append(name.suffix()).whitespace().append("struct").whitespace().openBrace().indent().newLine();
-        var fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
-        context.dedent().newLine().closeBrace().newLine();
-        return new Message(name, node.getComments(), fields, node.getMessages(), node.getEnumerations(), null, node.getOptions());
-    }
+	@Override
+	public Field visitField(Field node, BeanContext context) {
+		String name = node.getName();
+		comments(node.getComments(), context);
+		context.append(LC_UC.convert(name)).whitespace();
+		visitFieldType(node.getType(), context);
+		context.whitespace().backtick().append("json").colon().quote();
+		List<Option> options = node.getOptions();
+		for (Option option : options) {
+			if (option instanceof CommonPair && ORIGINAL_NAME.equals(((CommonPair) option).getKey())) {
+				Value value = ((CommonPair) option).getValue();
+				if (value instanceof StringValue) {
+					name = ((StringValue) value).getValue();
+				}
+			}
+		}
+		context.append(name).quote().backtick().newLine();
+		return node;
+	}
+
+	@Override
+	public Message visitMessage(Message node, BeanContext context) {
+		QualifiedName name = node.getName();
+		String ns = name.prefix().map(QualifiedName::suffix).orElse("main");
+		context.append("package").whitespace().append(ns).newLine().newLine();
+		// Options
+		context.setExpectedKey(IMPORT);
+		visitIfPresent(node.getOptions(), option -> visitOption(option, context));
+		context.clearExpectedKey();
+		context.append("type")
+			.whitespace()
+			.append(name.suffix())
+			.whitespace()
+			.append("struct")
+			.whitespace()
+			.openBrace()
+			.indent()
+			.newLine();
+		var fields = visitIfPresent(node.getFields(), field -> visitField(field, context));
+		context.dedent().newLine().closeBrace().newLine();
+		return new Message(name, node.getComments(), fields, node.getMessages(), node.getEnumerations(), null,
+				node.getOptions());
+	}
+
 }

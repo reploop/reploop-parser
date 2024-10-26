@@ -11,10 +11,9 @@ import org.reploop.parser.protobuf.Node;
  */
 public abstract class ProtobufAstVisitor<R, C> extends AstVisitor<R, C> {
 
-    @Override
-    public R visitNode(Node node, C context) {
-        return null;
-    }
-
+	@Override
+	public R visitNode(Node node, C context) {
+		return null;
+	}
 
 }

@@ -12,9 +12,11 @@ import java.util.EnumSet;
  */
 @Command(name = "thrift", description = "Translate JSON to Thrift IDL.")
 public class Json2ThriftCommand extends Json2Command {
-    private static final Logger LOG = LoggerFactory.getLogger(Json2ThriftCommand.class);
 
-    public Json2ThriftCommand() {
-        setTargets(EnumSet.of(Target.THRIFT));
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(Json2ThriftCommand.class);
+
+	public Json2ThriftCommand() {
+		setTargets(EnumSet.of(Target.THRIFT));
+	}
+
 }

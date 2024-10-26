@@ -8,41 +8,43 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Extend extends Entity {
-    private final List<Field> fields;
 
-    public Extend(QualifiedName name, List<Field> fields) {
-        super(name);
-        this.fields = fields;
-    }
+	private final List<Field> fields;
 
-    public List<Field> getFields() {
-        return fields;
-    }
+	public Extend(QualifiedName name, List<Field> fields) {
+		super(name);
+		this.fields = fields;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitExtend(this, context);
-    }
+	public List<Field> getFields() {
+		return fields;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Extend)) return false;
-        Extend extend = (Extend) o;
-        return Objects.equals(name, extend.name)
-            && Objects.equals(fields, extend.fields);
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitExtend(this, context);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, fields);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Extend))
+			return false;
+		Extend extend = (Extend) o;
+		return Objects.equals(name, extend.name) && Objects.equals(fields, extend.fields);
+	}
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", Extend.class.getSimpleName() + "[", "]")
-            .add("name=" + name)
-            .add("fields=" + fields)
-            .toString();
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, fields);
+	}
+
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", Extend.class.getSimpleName() + "[", "]").add("name=" + name)
+			.add("fields=" + fields)
+			.toString();
+	}
+
 }

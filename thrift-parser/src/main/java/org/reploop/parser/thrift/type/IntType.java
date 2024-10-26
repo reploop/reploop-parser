@@ -9,12 +9,14 @@ import org.reploop.parser.thrift.AstVisitor;
  * @since 2015-06-05 18
  */
 public class IntType extends FieldType {
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitIntType(this, context);
-    }
 
-    public IntType() {
-        super("Integer");
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitIntType(this, context);
+	}
+
+	public IntType() {
+		super("Integer");
+	}
+
 }

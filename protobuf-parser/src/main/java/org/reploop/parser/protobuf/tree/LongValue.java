@@ -1,28 +1,30 @@
 package org.reploop.parser.protobuf.tree;
 
 public class LongValue extends Value {
-    long val;
 
-    public LongValue(long val) {
-        this.val = val;
-    }
+	long val;
 
-    public long getVal() {
-        return val;
-    }
+	public LongValue(long val) {
+		this.val = val;
+	}
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
+	public long getVal() {
+		return val;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
+	@Override
+	public int hashCode() {
+		return 0;
+	}
 
-    @Override
-    public String toString() {
-        return null;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return null;
+	}
+
 }

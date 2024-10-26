@@ -9,12 +9,14 @@ import org.reploop.parser.protobuf.AstVisitor;
  * @since 2015-06-08 17
  */
 public class DefaultPair extends Pair {
-    public DefaultPair(Value value) {
-        super("default", value);
-    }
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitDefaultPair(this, context);
-    }
+	public DefaultPair(Value value) {
+		super("default", value);
+	}
+
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitDefaultPair(this, context);
+	}
+
 }

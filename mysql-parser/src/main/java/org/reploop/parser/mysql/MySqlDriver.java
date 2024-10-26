@@ -15,22 +15,24 @@ import java.util.function.Function;
 
 public class MySqlDriver extends ParserDriver<Node, MySQLLexer, MySQLParser> {
 
-  public Node parse(String sql, Function<MySQLParser, ParserRuleContext> func) throws IOException, StackOverflowError {
-    return parse(new StringReader(sql), func);
-  }
+	public Node parse(String sql, Function<MySQLParser, ParserRuleContext> func)
+			throws IOException, StackOverflowError {
+		return parse(new StringReader(sql), func);
+	}
 
-  @Override
-  protected MySQLParser parser(CommonTokenStream tokenStream) {
-    return new MySQLParser(tokenStream);
-  }
+	@Override
+	protected MySQLParser parser(CommonTokenStream tokenStream) {
+		return new MySQLParser(tokenStream);
+	}
 
-  @Override
-  protected MySQLLexer lexer(CharStream charStream) {
-    return new MySQLLexer(charStream);
-  }
+	@Override
+	protected MySQLLexer lexer(CharStream charStream) {
+		return new MySQLLexer(charStream);
+	}
 
-  @Override
-  protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-    return new MySqlAstBuilder(tokenStream);
-  }
+	@Override
+	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+		return new MySqlAstBuilder(tokenStream);
+	}
+
 }

@@ -7,29 +7,32 @@ import java.util.List;
 import java.util.Set;
 
 public class Parent {
-    private final List<Message> messages;
-    private final Set<Field> fields;
 
-    public Parent(List<Message> messages, Set<Field> fields) {
-        this.messages = messages;
-        this.fields = fields;
-    }
+	private final List<Message> messages;
 
-    public Parent addMessage(Message message) {
-        messages.add(message);
-        return this;
-    }
+	private final Set<Field> fields;
 
-    public Parent addField(Field field) {
-        fields.add(field);
-        return this;
-    }
+	public Parent(List<Message> messages, Set<Field> fields) {
+		this.messages = messages;
+		this.fields = fields;
+	}
 
-    public List<Message> getMessages() {
-        return messages;
-    }
+	public Parent addMessage(Message message) {
+		messages.add(message);
+		return this;
+	}
 
-    public Set<Field> getFields() {
-        return fields;
-    }
+	public Parent addField(Field field) {
+		fields.add(field);
+		return this;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public Set<Field> getFields() {
+		return fields;
+	}
+
 }

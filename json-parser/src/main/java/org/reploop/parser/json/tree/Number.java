@@ -7,4 +7,5 @@ package org.reploop.parser.json.tree;
  * @since 2017-01-23 18
  */
 public abstract class Number extends Value {
+
 }

@@ -3,36 +3,35 @@ package org.reploop.parser.mysql.tree;
 import com.google.common.base.MoreObjects;
 
 public class ColumnDeclaration extends CreateDefinition {
-    UID id;
-    ColumnDefinition definition;
 
+	UID id;
 
-    public ColumnDeclaration(UID id, ColumnDefinition definition) {
-        this.id = id;
-        this.definition = definition;
-    }
+	ColumnDefinition definition;
 
-    public UID getId() {
-        return id;
-    }
+	public ColumnDeclaration(UID id, ColumnDefinition definition) {
+		this.id = id;
+		this.definition = definition;
+	}
 
-    public void setId(UID id) {
-        this.id = id;
-    }
+	public UID getId() {
+		return id;
+	}
 
-    public ColumnDefinition getDefinition() {
-        return definition;
-    }
+	public void setId(UID id) {
+		this.id = id;
+	}
 
-    public void setDefinition(ColumnDefinition definition) {
-        this.definition = definition;
-    }
+	public ColumnDefinition getDefinition() {
+		return definition;
+	}
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("definition", definition)
-                .toString();
-    }
+	public void setDefinition(ColumnDefinition definition) {
+		this.definition = definition;
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("id", id).add("definition", definition).toString();
+	}
+
 }

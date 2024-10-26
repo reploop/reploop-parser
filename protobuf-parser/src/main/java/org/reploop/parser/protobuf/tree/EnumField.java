@@ -1,6 +1,5 @@
 package org.reploop.parser.protobuf.tree;
 
-
 import org.reploop.parser.protobuf.Node;
 
 import java.util.List;
@@ -13,47 +12,49 @@ import java.util.Objects;
  * @since 2015-06-07 11
  */
 public class EnumField extends Node {
-    List<String> comments;
-    String name;
-    Integer index;
 
-    public EnumField(List<String> comments, String name, Integer index) {
-        this.comments = comments;
-        this.name = name;
-        this.index = index;
-    }
+	List<String> comments;
 
-    public List<String> getComments() {
-        return comments;
-    }
+	String name;
 
-    public String getName() {
-        return name;
-    }
+	Integer index;
 
-    public Integer getIndex() {
-        return index;
-    }
+	public EnumField(List<String> comments, String name, Integer index) {
+		this.comments = comments;
+		this.name = name;
+		this.index = index;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EnumField enumField = (EnumField) o;
-        return Objects.equals(name, enumField.name) &&
-                Objects.equals(index, enumField.index);
-    }
+	public List<String> getComments() {
+		return comments;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, index);
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        return "EnumField{" +
-                "name='" + name + '\'' +
-                ", index=" + index +
-                '}';
-    }
+	public Integer getIndex() {
+		return index;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		EnumField enumField = (EnumField) o;
+		return Objects.equals(name, enumField.name) && Objects.equals(index, enumField.index);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, index);
+	}
+
+	@Override
+	public String toString() {
+		return "EnumField{" + "name='" + name + '\'' + ", index=" + index + '}';
+	}
+
 }

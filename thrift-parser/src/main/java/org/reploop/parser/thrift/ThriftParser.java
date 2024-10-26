@@ -28,55 +28,59 @@ import java.util.function.Function;
  * @since 2015-07-03 00
  */
 public class ThriftParser extends ParserDriver<Node, ThriftBaseLexer, ThriftBaseParser> {
-    private static final Logger LOG = LoggerFactory.getLogger(ThriftParser.class);
 
-    public ThriftProgram program(Path file) {
-        return (ThriftProgram) parse(file, ThriftBaseParser::program);
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(ThriftParser.class);
 
-    public ThriftProgram program(Reader file) {
-        try {
-            return (ThriftProgram) parse(file, ThriftBaseParser::program);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	public ThriftProgram program(Path file) {
+		return (ThriftProgram) parse(file, ThriftBaseParser::program);
+	}
 
-    public Node parse(Path file, Function<ThriftBaseParser, ParserRuleContext> func) {
-        try (Reader reader
-                     = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
-            return parse(reader, func);
-        } catch (IOException e) {
-            LOG.error("Cannot read thrift file {}", file, e);
-        } catch (StackOverflowError e) {
-            LOG.error("File {} is too large to parse.", file, e);
-        }
-        return null;
-    }
+	public ThriftProgram program(Reader file) {
+		try {
+			return (ThriftProgram) parse(file, ThriftBaseParser::program);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-    @Override
-    protected ThriftBaseParser parser(CommonTokenStream tokenStream) {
-        return new ThriftBaseParser(tokenStream);
-    }
+	public Node parse(Path file, Function<ThriftBaseParser, ParserRuleContext> func) {
+		try (Reader reader = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
+			return parse(reader, func);
+		}
+		catch (IOException e) {
+			LOG.error("Cannot read thrift file {}", file, e);
+		}
+		catch (StackOverflowError e) {
+			LOG.error("File {} is too large to parse.", file, e);
+		}
+		return null;
+	}
 
-    @Override
-    protected ThriftBaseLexer lexer(CharStream charStream) {
-        return new ThriftBaseLexer(charStream);
-    }
+	@Override
+	protected ThriftBaseParser parser(CommonTokenStream tokenStream) {
+		return new ThriftBaseParser(tokenStream);
+	}
 
-    @Override
-    protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-        return new ThriftAstBuilder(tokenStream);
-    }
+	@Override
+	protected ThriftBaseLexer lexer(CharStream charStream) {
+		return new ThriftBaseLexer(charStream);
+	}
 
-    @Override
-    protected ParseTreeListener parseListener() {
-        return new PostProcessor();
-    }
+	@Override
+	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+		return new ThriftAstBuilder(tokenStream);
+	}
 
-    @Override
-    protected ANTLRErrorListener errorListener() {
-        return new ThriftErrorListener();
-    }
+	@Override
+	protected ParseTreeListener parseListener() {
+		return new PostProcessor();
+	}
+
+	@Override
+	protected ANTLRErrorListener errorListener() {
+		return new ThriftErrorListener();
+	}
+
 }

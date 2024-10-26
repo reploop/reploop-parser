@@ -15,64 +15,66 @@ import java.util.Optional;
  * @since 2015-07-03 00
  */
 public class Service extends Entity {
-    Optional<QualifiedName> parent;
-    List<Function> functions;
 
-    public Service(QualifiedName name, List<String> comments, List<Function> functions) {
-        this(Optional.empty(), name, comments, functions);
-    }
+	Optional<QualifiedName> parent;
 
-    public Service(String name, List<String> comments, List<Function> functions) {
-        this(Optional.empty(), name, comments, functions);
-    }
+	List<Function> functions;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitService(this, context);
-    }
+	public Service(QualifiedName name, List<String> comments, List<Function> functions) {
+		this(Optional.empty(), name, comments, functions);
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Service service = (Service) o;
-        return Objects.equals(getName(), service.getName());
-    }
+	public Service(String name, List<String> comments, List<Function> functions) {
+		this(Optional.empty(), name, comments, functions);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName());
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitService(this, context);
+	}
 
-    public Service(Optional<QualifiedName> parent, String name, List<Function> functions) {
-        this(parent, QualifiedName.of(name), Collections.emptyList(), functions);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Service service = (Service) o;
+		return Objects.equals(getName(), service.getName());
+	}
 
-    public Service(Optional<QualifiedName> parent, String name, List<String> comments, List<Function> functions) {
-        this(parent, QualifiedName.of(name), comments, functions);
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(getName());
+	}
 
-    public Service(Optional<QualifiedName> parent, QualifiedName name, List<String> comments, List<Function> functions) {
-        super(name, comments);
-        this.parent = parent;
-        this.functions = functions;
-    }
+	public Service(Optional<QualifiedName> parent, String name, List<Function> functions) {
+		this(parent, QualifiedName.of(name), Collections.emptyList(), functions);
+	}
 
-    public Optional<QualifiedName> getParent() {
-        return parent;
-    }
+	public Service(Optional<QualifiedName> parent, String name, List<String> comments, List<Function> functions) {
+		this(parent, QualifiedName.of(name), comments, functions);
+	}
 
-    public List<Function> getFunctions() {
-        return functions;
-    }
+	public Service(Optional<QualifiedName> parent, QualifiedName name, List<String> comments,
+			List<Function> functions) {
+		super(name, comments);
+		this.parent = parent;
+		this.functions = functions;
+	}
 
+	public Optional<QualifiedName> getParent() {
+		return parent;
+	}
 
-    @Override
-    public String toString() {
-        String sb = "Service{" + super.toString() +
-            "parent=" + parent +
-            ", functions=" + functions +
-            '}';
-        return sb;
-    }
+	public List<Function> getFunctions() {
+		return functions;
+	}
+
+	@Override
+	public String toString() {
+		String sb = "Service{" + super.toString() + "parent=" + parent + ", functions=" + functions + '}';
+		return sb;
+	}
+
 }

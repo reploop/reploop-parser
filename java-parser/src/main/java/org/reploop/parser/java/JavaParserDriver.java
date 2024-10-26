@@ -19,32 +19,35 @@ import java.nio.file.Path;
 import java.util.function.Function;
 
 public class JavaParserDriver extends ParserDriver<Node, JavaLexer, JavaParser> {
-    private static final Logger LOG = LoggerFactory.getLogger(JavaParserDriver.class);
 
-    @Override
-    protected JavaParser parser(CommonTokenStream tokenStream) {
-        return new JavaParser(tokenStream);
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(JavaParserDriver.class);
 
-    @Override
-    protected JavaLexer lexer(CharStream charStream) {
-        return new JavaLexer(charStream);
-    }
+	@Override
+	protected JavaParser parser(CommonTokenStream tokenStream) {
+		return new JavaParser(tokenStream);
+	}
 
-    public Node parse(Path file, Function<JavaParser, ParserRuleContext> func) {
-        try (Reader reader
-                 = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
-            return parse(reader, func);
-        } catch (IOException e) {
-            LOG.error("Cannot read thrift file {}", file, e);
-        } catch (StackOverflowError e) {
-            LOG.error("File {} is too large to parse.", file, e);
-        }
-        return null;
-    }
+	@Override
+	protected JavaLexer lexer(CharStream charStream) {
+		return new JavaLexer(charStream);
+	}
 
-    @Override
-    protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-        return new JavaAstBuilder(tokenStream);
-    }
+	public Node parse(Path file, Function<JavaParser, ParserRuleContext> func) {
+		try (Reader reader = new InputStreamReader(new FileInputStream(file.toFile()), StandardCharsets.UTF_8)) {
+			return parse(reader, func);
+		}
+		catch (IOException e) {
+			LOG.error("Cannot read thrift file {}", file, e);
+		}
+		catch (StackOverflowError e) {
+			LOG.error("File {} is too large to parse.", file, e);
+		}
+		return null;
+	}
+
+	@Override
+	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+		return new JavaAstBuilder(tokenStream);
+	}
+
 }

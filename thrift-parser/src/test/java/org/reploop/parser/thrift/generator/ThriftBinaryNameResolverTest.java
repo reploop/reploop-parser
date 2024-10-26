@@ -9,9 +9,10 @@ import org.junit.Test;
  * @since 2016-09-22 14
  */
 public class ThriftBinaryNameResolverTest {
-    @Test
-    public void visitProgram() throws Exception {
 
-    }
+	@Test
+	public void visitProgram() throws Exception {
+
+	}
 
 }

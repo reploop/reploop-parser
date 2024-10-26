@@ -3,24 +3,24 @@ package org.reploop.parser.mysql.tree;
 import com.google.common.base.MoreObjects;
 
 public abstract class TableName extends Node {
-    String name;
 
-    public TableName(String name) {
-        this.name = name;
-    }
+	String name;
 
-    public String getName() {
-        return name;
-    }
+	public TableName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("name", name)
-                .toString();
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("name", name).toString();
+	}
+
 }

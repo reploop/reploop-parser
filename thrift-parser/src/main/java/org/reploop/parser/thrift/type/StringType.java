@@ -9,13 +9,14 @@ import org.reploop.parser.thrift.AstVisitor;
  * @since 5/9/13 4:19 PM
  */
 public class StringType extends FieldType {
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitStringType(this, context);
-    }
 
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitStringType(this, context);
+	}
 
-    public StringType() {
-        super("String");
-    }
+	public StringType() {
+		super("String");
+	}
+
 }

@@ -16,57 +16,62 @@ import java.util.Optional;
  * @since 2015-07-03 10
  */
 public class EnumField extends Node {
-    private String name;
-    private Optional<Integer> index;
-    private List<String> comments;
 
-    public EnumField(String name, Optional<Integer> index) {
-        this(name, index, Collections.emptyList());
-    }
+	private String name;
 
-    public EnumField(String name, Optional<Integer> index, List<String> comments) {
-        this.name = name;
-        this.index = index;
-        this.comments = comments;
-    }
+	private Optional<Integer> index;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitEnumField(this, context);
-    }
+	private List<String> comments;
 
-    public List<String> getComments() {
-        return comments;
-    }
+	public EnumField(String name, Optional<Integer> index) {
+		this(name, index, Collections.emptyList());
+	}
 
-    public String getName() {
-        return name;
-    }
+	public EnumField(String name, Optional<Integer> index, List<String> comments) {
+		this.name = name;
+		this.index = index;
+		this.comments = comments;
+	}
 
-    public Optional<Integer> getIndex() {
-        return index;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitEnumField(this, context);
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EnumField enumField = (EnumField) o;
-        return Objects.equals(name, enumField.name) &&
-            Objects.equals(index, enumField.index);
-    }
+	public List<String> getComments() {
+		return comments;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, index);
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("name", name)
-            .add("index", index)
-            .add("comments", comments)
-            .toString();
-    }
+	public Optional<Integer> getIndex() {
+		return index;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		EnumField enumField = (EnumField) o;
+		return Objects.equals(name, enumField.name) && Objects.equals(index, enumField.index);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, index);
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this)
+			.add("name", name)
+			.add("index", index)
+			.add("comments", comments)
+			.toString();
+	}
+
 }

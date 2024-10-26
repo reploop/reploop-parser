@@ -7,5 +7,7 @@ package org.reploop.parser.thrift.tree;
  * @since 2015-07-03 10
  */
 public enum Requiredness {
-    REQUIRED, OPTIONAL
+
+	REQUIRED, OPTIONAL
+
 }

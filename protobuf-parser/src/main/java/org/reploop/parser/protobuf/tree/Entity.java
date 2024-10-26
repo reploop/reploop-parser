@@ -1,6 +1,5 @@
 package org.reploop.parser.protobuf.tree;
 
-
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.Node;
 
@@ -11,13 +10,15 @@ import org.reploop.parser.protobuf.Node;
  * @since 2016-09-30 15
  */
 public abstract class Entity extends Node {
-    protected QualifiedName name;
 
-    public Entity(QualifiedName name) {
-        this.name = name;
-    }
+	protected QualifiedName name;
 
-    public QualifiedName getName() {
-        return name;
-    }
+	public Entity(QualifiedName name) {
+		this.name = name;
+	}
+
+	public QualifiedName getName() {
+		return name;
+	}
+
 }

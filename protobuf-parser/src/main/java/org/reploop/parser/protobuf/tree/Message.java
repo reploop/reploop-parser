@@ -15,106 +15,96 @@ import java.util.Objects;
  * @since 2015-06-07 10
  */
 public class Message extends Entity {
-    List<String> comments;
-    List<Field> fields;
-    List<Message> messages;
-    List<Enumeration> enumerations;
-    List<Service> services;
-    List<Option> options;
 
-    public Message(QualifiedName name, List<Field> fields) {
-        this(name, fields, Collections.emptyList());
-    }
+	List<String> comments;
 
-    public Message(QualifiedName name, List<Field> fields, List<Message> messages) {
-        this(name, fields, messages, Collections.emptyList(), new ArrayList<>());
-    }
+	List<Field> fields;
 
-    public Message(QualifiedName name,
-                   List<Field> fields,
-                   List<Message> messages,
-                   List<Enumeration> enumerations,
-                   List<Option> options) {
-        this(name, Collections.emptyList(), fields, messages, enumerations, Collections.emptyList(), options);
-    }
+	List<Message> messages;
 
-    public Message(QualifiedName name,
-                   List<Field> fields,
-                   List<Message> messages,
-                   List<Enumeration> enumerations,
-                   List<Service> services,
-                   List<Option> options) {
-        this(name, Collections.emptyList(), fields, messages, enumerations, services, options);
-    }
+	List<Enumeration> enumerations;
 
-    public Message(QualifiedName name,
-                   List<String> comments,
-                   List<Field> fields,
-                   List<Message> messages,
-                   List<Enumeration> enumerations,
-                   List<Service> services,
-                   List<Option> options) {
-        super(name);
-        this.comments = comments;
-        this.fields = fields;
-        this.messages = messages;
-        this.enumerations = enumerations;
-        this.services = services;
-        this.options = options;
-    }
+	List<Service> services;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitMessage(this, context);
-    }
+	List<Option> options;
 
-    public List<Service> getServices() {
-        return services;
-    }
+	public Message(QualifiedName name, List<Field> fields) {
+		this(name, fields, Collections.emptyList());
+	}
 
-    public List<Option> getOptions() {
-        return options;
-    }
+	public Message(QualifiedName name, List<Field> fields, List<Message> messages) {
+		this(name, fields, messages, Collections.emptyList(), new ArrayList<>());
+	}
 
-    public List<String> getComments() {
-        return comments;
-    }
+	public Message(QualifiedName name, List<Field> fields, List<Message> messages, List<Enumeration> enumerations,
+			List<Option> options) {
+		this(name, Collections.emptyList(), fields, messages, enumerations, Collections.emptyList(), options);
+	}
 
+	public Message(QualifiedName name, List<Field> fields, List<Message> messages, List<Enumeration> enumerations,
+			List<Service> services, List<Option> options) {
+		this(name, Collections.emptyList(), fields, messages, enumerations, services, options);
+	}
 
-    public List<Field> getFields() {
-        return fields;
-    }
+	public Message(QualifiedName name, List<String> comments, List<Field> fields, List<Message> messages,
+			List<Enumeration> enumerations, List<Service> services, List<Option> options) {
+		super(name);
+		this.comments = comments;
+		this.fields = fields;
+		this.messages = messages;
+		this.enumerations = enumerations;
+		this.services = services;
+		this.options = options;
+	}
 
-    public List<Message> getMessages() {
-        return messages;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitMessage(this, context);
+	}
 
-    public List<Enumeration> getEnumerations() {
-        return enumerations;
-    }
+	public List<Service> getServices() {
+		return services;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Message message = (Message) o;
-        return Objects.equals(name, message.name) &&
-                Objects.equals(fields, message.fields);
-    }
+	public List<Option> getOptions() {
+		return options;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, fields);
-    }
+	public List<String> getComments() {
+		return comments;
+	}
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "name=" + name +
-                ", comments=" + comments +
-                ", fields=" + fields +
-                ", messages=" + messages +
-                ", enumerations=" + enumerations +
-                '}';
-    }
+	public List<Field> getFields() {
+		return fields;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public List<Enumeration> getEnumerations() {
+		return enumerations;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Message message = (Message) o;
+		return Objects.equals(name, message.name) && Objects.equals(fields, message.fields);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, fields);
+	}
+
+	@Override
+	public String toString() {
+		return "Message{" + "name=" + name + ", comments=" + comments + ", fields=" + fields + ", messages=" + messages
+				+ ", enumerations=" + enumerations + '}';
+	}
+
 }

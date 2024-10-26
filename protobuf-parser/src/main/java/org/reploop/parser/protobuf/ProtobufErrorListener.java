@@ -16,23 +16,29 @@ import java.util.BitSet;
  * @since 2015-06-05 14
  */
 public class ProtobufErrorListener implements ANTLRErrorListener {
-    @Override
-    public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
 
-    }
+	@Override
+	public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine,
+			String msg, RecognitionException e) {
 
-    @Override
-    public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
+	}
 
-    }
+	@Override
+	public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, boolean exact,
+			BitSet ambigAlts, ATNConfigSet configs) {
 
-    @Override
-    public void reportAttemptingFullContext(Parser recognizer, DFA dfa, int startIndex, int stopIndex, BitSet conflictingAlts, ATNConfigSet configs) {
+	}
 
-    }
+	@Override
+	public void reportAttemptingFullContext(Parser recognizer, DFA dfa, int startIndex, int stopIndex,
+			BitSet conflictingAlts, ATNConfigSet configs) {
 
-    @Override
-    public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
+	}
 
-    }
+	@Override
+	public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction,
+			ATNConfigSet configs) {
+
+	}
+
 }

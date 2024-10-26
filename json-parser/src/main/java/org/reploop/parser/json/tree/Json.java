@@ -13,39 +13,40 @@ import java.util.Objects;
  * @since 2016-10-14 20
  */
 public class Json extends Node {
-    private final Value value;
 
-    public Json(Value value) {
-        this.value = value;
-    }
+	private final Value value;
 
-    public Value getValue() {
-        return value;
-    }
+	public Json(Value value) {
+		this.value = value;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitJson(this, context);
-    }
+	public Value getValue() {
+		return value;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Json json = (Json) o;
-        return Objects.equals(value, json.value);
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitJson(this, context);
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Json json = (Json) o;
+		return Objects.equals(value, json.value);
+	}
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("value", value)
-            .toString();
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("value", value).toString();
+	}
+
 }
-

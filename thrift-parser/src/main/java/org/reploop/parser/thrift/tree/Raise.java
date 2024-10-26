@@ -12,34 +12,35 @@ import java.util.List;
  * @since 2015-06-05 17
  */
 public class Raise extends Node {
-    List<Field> fields;
 
-    public Raise(List<Field> fields) {
-        this.fields = fields;
-    }
+	List<Field> fields;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitRaise(this, context);
-    }
+	public Raise(List<Field> fields) {
+		this.fields = fields;
+	}
 
-    public List<Field> getFields() {
-        return fields;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitRaise(this, context);
+	}
 
-    @Override
-    public String toString() {
-        return "Raise{" + "fields=" + fields + '}';
-    }
+	public List<Field> getFields() {
+		return fields;
+	}
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
+	@Override
+	public String toString() {
+		return "Raise{" + "fields=" + fields + '}';
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
+	@Override
+	public int hashCode() {
+		return 0;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return false;
+	}
 
 }

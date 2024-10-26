@@ -22,81 +22,89 @@ import java.util.stream.Stream;
  * @since 2015-06-07 21
  */
 public class JarIdlTest {
-    FileExtensionFilter filter;
-    FileExtensionFilter jar;
-    JarFinder finder;
-    ThriftParser thriftParser;
 
-    @Before
-    public void setUp() throws Exception {
-        thriftParser = new ThriftParser();
-        finder = new JarFinder();
-        filter = new FileExtensionFilter("proto", "thrift");
-        jar = new FileExtensionFilter("jar");
-    }
+	FileExtensionFilter filter;
 
-    private Stream<Path> files(Path path) throws IOException {
-        return Files.find(path, 2, (p, attributes) -> !attributes.isDirectory());
-    }
+	FileExtensionFilter jar;
 
-    Map<Path, Reader> find(Path path) throws IOException {
-        final Map<Path, Reader> idlMap = new HashMap<>();
-        if (Files.isDirectory(path)) {
-            Files.list(path).forEach(sp -> {
-                if (!Files.isDirectory(sp)) {
-                    try {
-                        idlMap.putAll(find(sp));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        } else {
-            File file = path.toFile();
-            String name = file.getName();
-            if (filter.accept(name)) {
-                idlMap.put(path, new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
-            } else if (jar.accept(name)) {
-                JarFile jarFile = new JarFile(file);
-                Map<Path, Reader> map = finder.list(jarFile, filter);
-                if (null != map) {
-                    idlMap.putAll(map);
-                }
-            }
-        }
-        return idlMap;
-    }
+	JarFinder finder;
 
-    @Test
-    public void testAll() throws Exception {
-        String classpath = System.getProperty("java.class.path");
-        String[] paths = classpath.split(File.pathSeparator);
-        Map<Path, Reader> idlMap = new HashMap<>();
-        for (String path : paths) {
-            Path p = Paths.get(path);
-            idlMap.putAll(find(p));
-        }
-        idlMap.forEach((path, inputStream) -> {
-            String name = path.toFile().getName();
-            System.out.print(name);
-            System.out.print("->");
-            try {
-                if (name.endsWith(".proto") && !name.endsWith("descriptor.proto")) {
-                    ThriftProgram ThriftProgram = thriftParser.program(inputStream);
-                    System.out.println(ThriftProgram);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+	ThriftParser thriftParser;
 
-        });
-        System.out.println(idlMap);
-        System.out.println(classpath);
-    }
+	@Before
+	public void setUp() throws Exception {
+		thriftParser = new ThriftParser();
+		finder = new JarFinder();
+		filter = new FileExtensionFilter("proto", "thrift");
+		jar = new FileExtensionFilter("jar");
+	}
 
-    @Test
-    public void testIDL() throws Exception {
+	private Stream<Path> files(Path path) throws IOException {
+		return Files.find(path, 2, (p, attributes) -> !attributes.isDirectory());
+	}
 
+	Map<Path, Reader> find(Path path) throws IOException {
+		final Map<Path, Reader> idlMap = new HashMap<>();
+		if (Files.isDirectory(path)) {
+			Files.list(path).forEach(sp -> {
+				if (!Files.isDirectory(sp)) {
+					try {
+						idlMap.putAll(find(sp));
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		else {
+			File file = path.toFile();
+			String name = file.getName();
+			if (filter.accept(name)) {
+				idlMap.put(path, new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
+			}
+			else if (jar.accept(name)) {
+				JarFile jarFile = new JarFile(file);
+				Map<Path, Reader> map = finder.list(jarFile, filter);
+				if (null != map) {
+					idlMap.putAll(map);
+				}
+			}
+		}
+		return idlMap;
+	}
 
-    }
+	@Test
+	public void testAll() throws Exception {
+		String classpath = System.getProperty("java.class.path");
+		String[] paths = classpath.split(File.pathSeparator);
+		Map<Path, Reader> idlMap = new HashMap<>();
+		for (String path : paths) {
+			Path p = Paths.get(path);
+			idlMap.putAll(find(p));
+		}
+		idlMap.forEach((path, inputStream) -> {
+			String name = path.toFile().getName();
+			System.out.print(name);
+			System.out.print("->");
+			try {
+				if (name.endsWith(".proto") && !name.endsWith("descriptor.proto")) {
+					ThriftProgram ThriftProgram = thriftParser.program(inputStream);
+					System.out.println(ThriftProgram);
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		});
+		System.out.println(idlMap);
+		System.out.println(classpath);
+	}
+
+	@Test
+	public void testIDL() throws Exception {
+
+	}
+
 }

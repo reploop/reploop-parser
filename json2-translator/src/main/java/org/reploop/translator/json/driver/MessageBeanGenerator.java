@@ -14,42 +14,47 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MessageBeanGenerator extends AbstractMessageGenerator {
-    // Simplifier
-    private static final TypeSimplifier typeSimplifier = new TypeSimplifier();
-    private final BeanGenerator beanGenerator = new BeanGenerator();
-    private final BeanRenameResolver beanRenameResolver = new BeanRenameResolver();
-    private final DupTypeResolver dupTypeResolver = new DupTypeResolver();
 
-    public MessageBeanGenerator() {
-        super(Target.JAVA, CaseFormat.UPPER_CAMEL);
-    }
+	// Simplifier
+	private static final TypeSimplifier typeSimplifier = new TypeSimplifier();
 
-    @Override
-    protected String filename(QualifiedName fqn) {
-        return fqn.suffix();
-    }
+	private final BeanGenerator beanGenerator = new BeanGenerator();
 
-    @Override
-    public void execute(Message merged, BeanContext context) {
-        Message simplified = typeSimplifier.visitMessage(merged, new MessageContext());
-        beanGenerator.visitMessage(simplified, context);
-    }
+	private final BeanRenameResolver beanRenameResolver = new BeanRenameResolver();
 
-    @Override
-    public void generate(Map<QualifiedName, Message> fixed, String outputDirectory) {
-        Map<QualifiedName, Message> renamed = new HashMap<>();
-        MessageContext ctx = new MessageContext();
-        fixed.forEach((name, message) -> {
-            MessageContext context = new MessageContext();
-            Message msg = beanRenameResolver.visitMessage(message, context);
-            renamed.put(msg.getName(), msg);
-            ctx.addIdentityNames(context.getIdentityNames());
-        });
-        Map<QualifiedName, Message> dup = new HashMap<>();
-        renamed.forEach((name, message) -> {
-            Message msg = dupTypeResolver.visitMessage(message, ctx);
-            dup.put(msg.getName(), msg);
-        });
-        super.generate(dup, outputDirectory);
-    }
+	private final DupTypeResolver dupTypeResolver = new DupTypeResolver();
+
+	public MessageBeanGenerator() {
+		super(Target.JAVA, CaseFormat.UPPER_CAMEL);
+	}
+
+	@Override
+	protected String filename(QualifiedName fqn) {
+		return fqn.suffix();
+	}
+
+	@Override
+	public void execute(Message merged, BeanContext context) {
+		Message simplified = typeSimplifier.visitMessage(merged, new MessageContext());
+		beanGenerator.visitMessage(simplified, context);
+	}
+
+	@Override
+	public void generate(Map<QualifiedName, Message> fixed, String outputDirectory) {
+		Map<QualifiedName, Message> renamed = new HashMap<>();
+		MessageContext ctx = new MessageContext();
+		fixed.forEach((name, message) -> {
+			MessageContext context = new MessageContext();
+			Message msg = beanRenameResolver.visitMessage(message, context);
+			renamed.put(msg.getName(), msg);
+			ctx.addIdentityNames(context.getIdentityNames());
+		});
+		Map<QualifiedName, Message> dup = new HashMap<>();
+		renamed.forEach((name, message) -> {
+			Message msg = dupTypeResolver.visitMessage(message, ctx);
+			dup.put(msg.getName(), msg);
+		});
+		super.generate(dup, outputDirectory);
+	}
+
 }

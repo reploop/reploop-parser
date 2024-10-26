@@ -1,37 +1,41 @@
 package org.reploop.parser.mysql.tree;
 
 public abstract class CreateTable extends DdlStatement {
-    String tableName;
-    boolean temporary;
-    boolean ifNotExists;
 
-    public CreateTable(String tableName, boolean temporary, boolean ifNotExists) {
-        this.tableName = tableName;
-        this.temporary = temporary;
-        this.ifNotExists = ifNotExists;
-    }
+	String tableName;
 
-    public String getTableName() {
-        return tableName;
-    }
+	boolean temporary;
 
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
+	boolean ifNotExists;
 
-    public boolean isTemporary() {
-        return temporary;
-    }
+	public CreateTable(String tableName, boolean temporary, boolean ifNotExists) {
+		this.tableName = tableName;
+		this.temporary = temporary;
+		this.ifNotExists = ifNotExists;
+	}
 
-    public void setTemporary(boolean temporary) {
-        this.temporary = temporary;
-    }
+	public String getTableName() {
+		return tableName;
+	}
 
-    public boolean isIfNotExists() {
-        return ifNotExists;
-    }
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
 
-    public void setIfNotExists(boolean ifNotExists) {
-        this.ifNotExists = ifNotExists;
-    }
+	public boolean isTemporary() {
+		return temporary;
+	}
+
+	public void setTemporary(boolean temporary) {
+		this.temporary = temporary;
+	}
+
+	public boolean isIfNotExists() {
+		return ifNotExists;
+	}
+
+	public void setIfNotExists(boolean ifNotExists) {
+		this.ifNotExists = ifNotExists;
+	}
+
 }
