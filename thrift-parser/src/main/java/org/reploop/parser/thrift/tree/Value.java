@@ -1,6 +1,5 @@
 package org.reploop.parser.thrift.tree;
 
-
 import org.reploop.parser.thrift.Node;
 
 /**
@@ -10,4 +9,5 @@ import org.reploop.parser.thrift.Node;
  * @since 2016-10-11 10
  */
 public abstract class Value extends Node {
+
 }

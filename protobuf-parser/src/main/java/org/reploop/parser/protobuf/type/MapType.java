@@ -9,30 +9,33 @@ import org.reploop.parser.protobuf.AstVisitor;
  * @since 2015-06-05 18
  */
 public class MapType extends FieldType {
-    private final FieldType keyType;
-    private final FieldType valueType;
 
-    public MapType(FieldType keyType, FieldType valueType) {
-        super("Map");
-        this.keyType = keyType;
-        this.valueType = valueType;
-    }
+	private final FieldType keyType;
 
-    public FieldType getKeyType() {
-        return keyType;
-    }
+	private final FieldType valueType;
 
-    public FieldType getValueType() {
-        return valueType;
-    }
+	public MapType(FieldType keyType, FieldType valueType) {
+		super("Map");
+		this.keyType = keyType;
+		this.valueType = valueType;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitMapType(this, context);
-    }
+	public FieldType getKeyType() {
+		return keyType;
+	}
 
-    @Override
-    public String toString() {
-        return name + "<" + keyType + ", " + valueType + ">";
-    }
+	public FieldType getValueType() {
+		return valueType;
+	}
+
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitMapType(this, context);
+	}
+
+	@Override
+	public String toString() {
+		return name + "<" + keyType + ", " + valueType + ">";
+	}
+
 }

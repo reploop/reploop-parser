@@ -16,125 +16,128 @@ import static java.lang.Math.max;
  */
 public class NumberTypeAdaptor extends AstVisitor<FieldType, NumberSpec> {
 
-    private static final Map<Integer, FieldType> integerTypeMap;
-    private static final Map<Integer, FieldType> floatingTypeMap;
-    /**
-     * 32 bits integer or floating-point number
-     */
-    private final static int MIN_BITS = 32;
+	private static final Map<Integer, FieldType> integerTypeMap;
 
-    static {
-        Map<Integer, FieldType> map = new HashMap<>();
-        ByteType byteType = new ByteType();
-        map.put(byteType.bits(), byteType);
-        ShortType shortType = new ShortType();
-        map.put(shortType.bits(), shortType);
-        IntType intType = new IntType();
-        map.put(intType.bits(), intType);
-        LongType longType = new LongType();
-        map.put(longType.bits(), longType);
-        integerTypeMap = Collections.unmodifiableMap(map);
+	private static final Map<Integer, FieldType> floatingTypeMap;
 
-        Map<Integer, FieldType> mf = new HashMap<>();
-        FloatType floatType = new FloatType();
-        mf.put(floatType.bits(), floatType);
-        DoubleType doubleType = new DoubleType();
-        mf.put(doubleType.bits(), doubleType);
-        floatingTypeMap = Collections.unmodifiableMap(mf);
-    }
+	/**
+	 * 32 bits integer or floating-point number
+	 */
+	private final static int MIN_BITS = 32;
 
-    private final int minBits;
+	static {
+		Map<Integer, FieldType> map = new HashMap<>();
+		ByteType byteType = new ByteType();
+		map.put(byteType.bits(), byteType);
+		ShortType shortType = new ShortType();
+		map.put(shortType.bits(), shortType);
+		IntType intType = new IntType();
+		map.put(intType.bits(), intType);
+		LongType longType = new LongType();
+		map.put(longType.bits(), longType);
+		integerTypeMap = Collections.unmodifiableMap(map);
 
-    public NumberTypeAdaptor(int minBits) {
-        this.minBits = minBits;
-    }
+		Map<Integer, FieldType> mf = new HashMap<>();
+		FloatType floatType = new FloatType();
+		mf.put(floatType.bits(), floatType);
+		DoubleType doubleType = new DoubleType();
+		mf.put(doubleType.bits(), doubleType);
+		floatingTypeMap = Collections.unmodifiableMap(mf);
+	}
 
-    /**
-     * We use Integer or Float as a start.
-     */
-    public NumberTypeAdaptor() {
-        this(MIN_BITS);
-    }
+	private final int minBits;
 
-    @Override
-    public FieldType visitNode(Node node, NumberSpec context) {
-        return process(node, context);
-    }
+	public NumberTypeAdaptor(int minBits) {
+		this.minBits = minBits;
+	}
 
-    @Override
-    public ListType visitListType(ListType listType, NumberSpec context) {
-        FieldType elementType = visitFieldType(listType.getElementType(), context);
-        return new ListType(elementType);
-    }
+	/**
+	 * We use Integer or Float as a start.
+	 */
+	public NumberTypeAdaptor() {
+		this(MIN_BITS);
+	}
 
-    @Override
-    public SetType visitSetType(SetType setType, NumberSpec context) {
-        FieldType elementType = visitFieldType(setType.getElementType(), context);
-        return new SetType(elementType);
-    }
+	@Override
+	public FieldType visitNode(Node node, NumberSpec context) {
+		return process(node, context);
+	}
 
-    @Override
-    public MapType visitMapType(MapType mapType, NumberSpec context) {
-        FieldType valueType = visitFieldType(mapType.getValueType(), context);
-        return new MapType(mapType.getKeyType(), valueType);
-    }
+	@Override
+	public ListType visitListType(ListType listType, NumberSpec context) {
+		FieldType elementType = visitFieldType(listType.getElementType(), context);
+		return new ListType(elementType);
+	}
 
-    @Override
-    public FieldType visitIntType(IntType intType, NumberSpec context) {
-        if (context.isFloating()) {
-            return visitFloatType(new FloatType(), context);
-        }
-        return integerType(context);
-    }
+	@Override
+	public SetType visitSetType(SetType setType, NumberSpec context) {
+		FieldType elementType = visitFieldType(setType.getElementType(), context);
+		return new SetType(elementType);
+	}
 
-    private FieldType integerType(NumberSpec context) {
-        return type(integerTypeMap, context);
-    }
+	@Override
+	public MapType visitMapType(MapType mapType, NumberSpec context) {
+		FieldType valueType = visitFieldType(mapType.getValueType(), context);
+		return new MapType(mapType.getKeyType(), valueType);
+	}
 
-    private FieldType floatingType(NumberSpec context) {
-        return type(floatingTypeMap, context);
-    }
+	@Override
+	public FieldType visitIntType(IntType intType, NumberSpec context) {
+		if (context.isFloating()) {
+			return visitFloatType(new FloatType(), context);
+		}
+		return integerType(context);
+	}
 
-    private FieldType type(Map<Integer, FieldType> bitsTypeMap, NumberSpec context) {
-        int bits = max(minBits, context.getBits());
-        FieldType type = bitsTypeMap.get(bits);
-        if (null == type) {
-            throw new IllegalStateException("Type with bits " + bits + " does not exists. Current spec is " + context);
-        }
-        return type;
-    }
+	private FieldType integerType(NumberSpec context) {
+		return type(integerTypeMap, context);
+	}
 
-    @Override
-    public FieldType visitByteType(ByteType byteType, NumberSpec context) {
-        if (context.isFloating()) {
-            return visitFloatType(new FloatType(), context);
-        }
-        return integerType(context);
-    }
+	private FieldType floatingType(NumberSpec context) {
+		return type(floatingTypeMap, context);
+	}
 
-    @Override
-    public FieldType visitShortType(ShortType shortType, NumberSpec context) {
-        if (context.isFloating()) {
-            return visitFloatType(new FloatType(), context);
-        }
-        return integerType(context);
-    }
+	private FieldType type(Map<Integer, FieldType> bitsTypeMap, NumberSpec context) {
+		int bits = max(minBits, context.getBits());
+		FieldType type = bitsTypeMap.get(bits);
+		if (null == type) {
+			throw new IllegalStateException("Type with bits " + bits + " does not exists. Current spec is " + context);
+		}
+		return type;
+	}
 
-    @Override
-    public FieldType visitLongType(LongType longType, NumberSpec context) {
-        if (context.isFloating()) {
-            return visitDoubleType(new DoubleType(), context);
-        }
-        return integerType(context);
-    }
+	@Override
+	public FieldType visitByteType(ByteType byteType, NumberSpec context) {
+		if (context.isFloating()) {
+			return visitFloatType(new FloatType(), context);
+		}
+		return integerType(context);
+	}
 
-    @Override
-    public FieldType visitFloatType(FloatType floatType, NumberSpec context) {
-        return floatingType(context);
-    }
+	@Override
+	public FieldType visitShortType(ShortType shortType, NumberSpec context) {
+		if (context.isFloating()) {
+			return visitFloatType(new FloatType(), context);
+		}
+		return integerType(context);
+	}
 
-    @Override
-    public FieldType visitDoubleType(DoubleType doubleType, NumberSpec context) {
-        return floatingType(context);
-    }
+	@Override
+	public FieldType visitLongType(LongType longType, NumberSpec context) {
+		if (context.isFloating()) {
+			return visitDoubleType(new DoubleType(), context);
+		}
+		return integerType(context);
+	}
+
+	@Override
+	public FieldType visitFloatType(FloatType floatType, NumberSpec context) {
+		return floatingType(context);
+	}
+
+	@Override
+	public FieldType visitDoubleType(DoubleType doubleType, NumberSpec context) {
+		return floatingType(context);
+	}
+
 }

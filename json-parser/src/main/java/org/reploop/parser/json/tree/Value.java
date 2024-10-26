@@ -1,6 +1,5 @@
 package org.reploop.parser.json.tree;
 
-
 import org.reploop.parser.json.Node;
 
 /**
@@ -10,4 +9,5 @@ import org.reploop.parser.json.Node;
  * @since 2016-10-14 20
  */
 public abstract class Value extends Node {
+
 }

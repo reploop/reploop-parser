@@ -1,6 +1,5 @@
 package org.reploop.translator.json.bean;
 
-
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
 
@@ -11,228 +10,239 @@ import java.util.Optional;
 import java.util.Stack;
 
 public class BeanContext {
-    private final StringBuilder impl;
-    private final Stack<QualifiedName> current = new Stack<>();
-    private Path file;
-    private String filename;
-    private QualifiedName root;
-    private boolean abstractClass;
-    private QualifiedName superClass;
-    private String expectedKey;
-    private Map<QualifiedName, Message> deps;
-    private int indent = 0;
-    private int spaces = 4;
-    private boolean head = false;
 
-    public BeanContext(QualifiedName root) {
-        this(root, Collections.emptyMap());
-    }
+	private final StringBuilder impl;
 
-    public BeanContext(QualifiedName root, Map<QualifiedName, Message> deps) {
-        this(root, new StringBuilder());
-        this.deps = deps;
-    }
+	private final Stack<QualifiedName> current = new Stack<>();
 
-    public BeanContext(QualifiedName root, StringBuilder impl) {
-        this.root = root;
-        this.impl = impl;
-        push(root);
-    }
+	private Path file;
 
-    public String getFilename() {
-        return filename;
-    }
+	private String filename;
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
+	private QualifiedName root;
 
-    public Path getFile() {
-        return file;
-    }
+	private boolean abstractClass;
 
-    public void setFile(Path file) {
-        this.file = file;
-    }
+	private QualifiedName superClass;
 
-    public int getSpaces() {
-        return spaces;
-    }
+	private String expectedKey;
 
-    public void setSpaces(int spaces) {
-        this.spaces = spaces;
-    }
+	private Map<QualifiedName, Message> deps;
 
-    public Map<QualifiedName, Message> getDeps() {
-        return deps;
-    }
+	private int indent = 0;
 
-    public void setDeps(Map<QualifiedName, Message> deps) {
-        this.deps = deps;
-    }
+	private int spaces = 4;
 
-    public boolean isHead() {
-        return head;
-    }
+	private boolean head = false;
 
-    public void setHead(boolean head) {
-        this.head = head;
-    }
+	public BeanContext(QualifiedName root) {
+		this(root, Collections.emptyMap());
+	}
 
-    public Optional<Message> dep(QualifiedName name) {
-        if (null != name) {
-            return Optional.ofNullable(deps.get(name));
-        }
-        return Optional.empty();
-    }
+	public BeanContext(QualifiedName root, Map<QualifiedName, Message> deps) {
+		this(root, new StringBuilder());
+		this.deps = deps;
+	}
 
-    public BeanContext push(QualifiedName name) {
-        current.push(name);
-        return this;
-    }
+	public BeanContext(QualifiedName root, StringBuilder impl) {
+		this.root = root;
+		this.impl = impl;
+		push(root);
+	}
 
-    public QualifiedName pop() {
-        return current.pop();
-    }
+	public String getFilename() {
+		return filename;
+	}
 
-    public BeanContext newLine() {
-        impl.append(System.lineSeparator());
-        for (int i = 0; i < indent; i++) {
-            whitespace();
-        }
-        return this;
-    }
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 
-    public BeanContext indent() {
-        indent += spaces;
-        return this;
-    }
+	public Path getFile() {
+		return file;
+	}
 
-    public BeanContext dedent() {
-        indent -= spaces;
-        return this;
-    }
+	public void setFile(Path file) {
+		this.file = file;
+	}
 
-    public QualifiedName getName() {
-        return root;
-    }
+	public int getSpaces() {
+		return spaces;
+	}
 
-    public void setName(QualifiedName name) {
-        this.root = name;
-    }
+	public void setSpaces(int spaces) {
+		this.spaces = spaces;
+	}
 
-    public BeanContext whitespace() {
-        impl.append(" ");
-        return this;
-    }
+	public Map<QualifiedName, Message> getDeps() {
+		return deps;
+	}
 
-    public BeanContext backtick() {
-        impl.append("`");
-        return this;
-    }
+	public void setDeps(Map<QualifiedName, Message> deps) {
+		this.deps = deps;
+	}
 
-    public BeanContext quote() {
-        impl.append("\"");
-        return this;
-    }
+	public boolean isHead() {
+		return head;
+	}
 
-    public BeanContext semicolon() {
-        impl.append(";");
-        return this;
-    }
+	public void setHead(boolean head) {
+		this.head = head;
+	}
 
-    public BeanContext colon() {
-        impl.append(":");
-        return this;
-    }
+	public Optional<Message> dep(QualifiedName name) {
+		if (null != name) {
+			return Optional.ofNullable(deps.get(name));
+		}
+		return Optional.empty();
+	}
 
-    public BeanContext comma() {
-        impl.append(",");
-        return this;
-    }
+	public BeanContext push(QualifiedName name) {
+		current.push(name);
+		return this;
+	}
 
-    public BeanContext append(QualifiedName val) {
-        impl.append(val.toString());
-        return this;
-    }
+	public QualifiedName pop() {
+		return current.pop();
+	}
 
-    public BeanContext append(String val) {
-        impl.append(val);
-        return this;
-    }
+	public BeanContext newLine() {
+		impl.append(System.lineSeparator());
+		for (int i = 0; i < indent; i++) {
+			whitespace();
+		}
+		return this;
+	}
 
-    public BeanContext openParen() {
-        impl.append("(");
-        return this;
-    }
+	public BeanContext indent() {
+		indent += spaces;
+		return this;
+	}
 
-    public BeanContext closeParen() {
-        impl.append(")");
-        return this;
-    }
+	public BeanContext dedent() {
+		indent -= spaces;
+		return this;
+	}
 
-    public BeanContext openBrace() {
-        impl.append("{");
-        return this;
-    }
+	public QualifiedName getName() {
+		return root;
+	}
 
-    public BeanContext closeBrace() {
-        impl.append("}");
-        return this;
-    }
+	public void setName(QualifiedName name) {
+		this.root = name;
+	}
 
+	public BeanContext whitespace() {
+		impl.append(" ");
+		return this;
+	}
 
-    public BeanContext openAngle() {
-        impl.append("<");
-        return this;
-    }
+	public BeanContext backtick() {
+		impl.append("`");
+		return this;
+	}
 
-    public BeanContext closeAngle() {
-        impl.append(">");
-        return this;
-    }
+	public BeanContext quote() {
+		impl.append("\"");
+		return this;
+	}
 
-    public BeanContext openSquare() {
-        impl.append("[");
-        return this;
-    }
+	public BeanContext semicolon() {
+		impl.append(";");
+		return this;
+	}
 
-    public BeanContext closeSquare() {
-        impl.append("]");
-        return this;
-    }
+	public BeanContext colon() {
+		impl.append(":");
+		return this;
+	}
 
-    public boolean isAbstractClass() {
-        return abstractClass;
-    }
+	public BeanContext comma() {
+		impl.append(",");
+		return this;
+	}
 
-    public void setAbstractClass(boolean abstractClass) {
-        this.abstractClass = abstractClass;
-    }
+	public BeanContext append(QualifiedName val) {
+		impl.append(val.toString());
+		return this;
+	}
 
-    public QualifiedName getSuperClass() {
-        return superClass;
-    }
+	public BeanContext append(String val) {
+		impl.append(val);
+		return this;
+	}
 
-    public void setSuperClass(QualifiedName superClass) {
-        this.superClass = superClass;
-    }
+	public BeanContext openParen() {
+		impl.append("(");
+		return this;
+	}
 
-    public String getExpectedKey() {
-        return expectedKey;
-    }
+	public BeanContext closeParen() {
+		impl.append(")");
+		return this;
+	}
 
-    public void setExpectedKey(String expectedKey) {
-        this.expectedKey = expectedKey;
-    }
+	public BeanContext openBrace() {
+		impl.append("{");
+		return this;
+	}
 
-    public void clearExpectedKey() {
-        this.expectedKey = null;
-    }
+	public BeanContext closeBrace() {
+		impl.append("}");
+		return this;
+	}
 
-    @Override
-    public String toString() {
-        return impl.toString();
-    }
+	public BeanContext openAngle() {
+		impl.append("<");
+		return this;
+	}
+
+	public BeanContext closeAngle() {
+		impl.append(">");
+		return this;
+	}
+
+	public BeanContext openSquare() {
+		impl.append("[");
+		return this;
+	}
+
+	public BeanContext closeSquare() {
+		impl.append("]");
+		return this;
+	}
+
+	public boolean isAbstractClass() {
+		return abstractClass;
+	}
+
+	public void setAbstractClass(boolean abstractClass) {
+		this.abstractClass = abstractClass;
+	}
+
+	public QualifiedName getSuperClass() {
+		return superClass;
+	}
+
+	public void setSuperClass(QualifiedName superClass) {
+		this.superClass = superClass;
+	}
+
+	public String getExpectedKey() {
+		return expectedKey;
+	}
+
+	public void setExpectedKey(String expectedKey) {
+		this.expectedKey = expectedKey;
+	}
+
+	public void clearExpectedKey() {
+		this.expectedKey = null;
+	}
+
+	@Override
+	public String toString() {
+		return impl.toString();
+	}
 
 }

@@ -11,41 +11,39 @@ import org.reploop.parser.protobuf.AstVisitor;
  * @since 2015-06-08 17
  */
 public class OptionPair extends Pair {
-    String name;
-    String attr;
 
+	final String name;
 
-    public OptionPair(String name, Value value) {
-        super(name, value);
-        this.name = name;
-        this.attr = StringUtils.EMPTY;
-    }
+	final String attr;
 
-    public OptionPair(String name, String attr, Value value) {
-        super(name + "." + attr, value);
-        this.name = name;
-        this.attr = attr;
-    }
+	public OptionPair(String name, Value value) {
+		super(name, value);
+		this.name = name;
+		this.attr = StringUtils.EMPTY;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public OptionPair(String name, String attr, Value value) {
+		super(name + "." + attr, value);
+		this.name = name;
+		this.attr = attr;
+	}
 
-    public String getAttr() {
-        return attr;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitOptionPair(this, context);
-    }
+	public String getAttr() {
+		return attr;
+	}
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-            .append("attr", attr)
-            .append("name", name)
-            .append("value", value)
-            .toString();
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitOptionPair(this, context);
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("attr", attr).append("name", name).append("value", value).toString();
+	}
+
 }

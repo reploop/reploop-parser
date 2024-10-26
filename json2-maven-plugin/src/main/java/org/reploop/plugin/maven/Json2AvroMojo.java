@@ -9,13 +9,12 @@ import org.reploop.translator.json.support.Target;
 /**
  * https://avro.apache.org
  */
-@Mojo(name = "avro",
-    defaultPhase = LifecyclePhase.GENERATE_SOURCES,
-    requiresDependencyResolution = ResolutionScope.COMPILE,
-    threadSafe = true)
+@Mojo(name = "avro", defaultPhase = LifecyclePhase.GENERATE_SOURCES,
+		requiresDependencyResolution = ResolutionScope.COMPILE, threadSafe = true)
 public class Json2AvroMojo extends Json2Mojo {
 
-    public Json2AvroMojo() {
-        super(EnumSet.of(Target.AVRO));
-    }
+	public Json2AvroMojo() {
+		super(EnumSet.of(Target.AVRO));
+	}
+
 }

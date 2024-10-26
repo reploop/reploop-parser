@@ -9,17 +9,19 @@ import org.reploop.parser.protobuf.AstVisitor;
  * @since 2015-06-05 18
  */
 public class ByteType extends FieldType implements IntegerType {
-    public ByteType() {
-        super("Byte");
-    }
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitByteType(this, context);
-    }
+	public ByteType() {
+		super("Byte");
+	}
 
-    @Override
-    public int bits() {
-        return 8;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitByteType(this, context);
+	}
+
+	@Override
+	public int bits() {
+		return 8;
+	}
+
 }

@@ -8,15 +8,16 @@ import org.reploop.translator.json.support.Target;
 
 public class MessageAvroGenerator extends AbstractMessageGenerator {
 
-    private final AvroGenerator avroGenerator = new AvroGenerator();
+	private final AvroGenerator avroGenerator = new AvroGenerator();
 
-    public MessageAvroGenerator() {
-        super(Target.AVRO, CaseFormat.LOWER_UNDERSCORE);
-    }
+	public MessageAvroGenerator() {
+		super(Target.AVRO, CaseFormat.LOWER_UNDERSCORE);
+	}
 
-    @Override
-    public void execute(Message message, BeanContext context) {
-        context.setSpaces(2);
-        avroGenerator.visitMessage(message, context);
-    }
+	@Override
+	public void execute(Message message, BeanContext context) {
+		context.setSpaces(2);
+		avroGenerator.visitMessage(message, context);
+	}
+
 }

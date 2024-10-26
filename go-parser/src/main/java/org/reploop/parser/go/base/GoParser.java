@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/go/base/GoParser.g4 by ANTLR 4.13.2
 package org.reploop.parser.go.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class GoParser extends GoParserBase {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -145,7 +145,7 @@ public class GoParser extends GoParserBase {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "GoParser.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -245,7 +245,7 @@ public class GoParser extends GoParserBase {
 			setState(217);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 34668552L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 34668552L) != 0)) {
 				{
 				{
 				setState(211);
@@ -401,7 +401,7 @@ public class GoParser extends GoParserBase {
 				setState(231);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while ((((_la - 27)) & ~0x3f) == 0 && ((1L << (_la - 27)) & 26388279068673L) != 0) {
+				while (((((_la - 27)) & ~0x3f) == 0 && ((1L << (_la - 27)) & 26388279068673L) != 0)) {
 					{
 					{
 					setState(226);
@@ -760,7 +760,7 @@ public class GoParser extends GoParserBase {
 				setState(265);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & -6917529022943457768L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6917529022943457768L) != 0)) {
 					{
 					setState(264);
 					type_();
@@ -1488,7 +1488,7 @@ public class GoParser extends GoParserBase {
 			setState(348);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(347);
 				statementList();
@@ -1565,7 +1565,7 @@ public class GoParser extends GoParserBase {
 				setState(357); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0 );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -2125,11 +2125,11 @@ public class GoParser extends GoParserBase {
 			setState(398);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 9077005048965234688L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 9077005048965234688L) != 0)) {
 				{
 				setState(397);
 				_la = _input.LA(1);
-				if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 9077005048965234688L) != 0) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 9077005048965234688L) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -2829,7 +2829,7 @@ public class GoParser extends GoParserBase {
 			setState(458);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(457);
 				expression(0);
@@ -2909,7 +2909,7 @@ public class GoParser extends GoParserBase {
 			setState(472);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(471);
 				statementList();
@@ -3197,7 +3197,7 @@ public class GoParser extends GoParserBase {
 			setState(508);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(507);
 				statementList();
@@ -3516,7 +3516,7 @@ public class GoParser extends GoParserBase {
 			setState(542);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115113459732550L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(541);
 				statementList();
@@ -3825,7 +3825,7 @@ public class GoParser extends GoParserBase {
 			setState(575);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(574);
 				expression(0);
@@ -3837,7 +3837,7 @@ public class GoParser extends GoParserBase {
 			setState(579);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115114591646184L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115114591646184L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(578);
 				simpleStmt();
@@ -5004,7 +5004,7 @@ public class GoParser extends GoParserBase {
 			setState(696);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -6917524624896946664L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -6917524624896946664L) != 0)) {
 				{
 				setState(685);
 				parameterDecl();
@@ -5228,7 +5228,7 @@ public class GoParser extends GoParserBase {
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
 						setState(714);
 						_la = _input.LA(1);
-						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 7057140616089567232L) != 0) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7057140616089567232L) != 0)) ) {
 						_errHandler.recoverInline(this);
 						}
 						else {
@@ -5248,7 +5248,7 @@ public class GoParser extends GoParserBase {
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(717);
 						_la = _input.LA(1);
-						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 2019864432875667456L) != 0) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2019864432875667456L) != 0)) ) {
 						_errHandler.recoverInline(this);
 						}
 						else {
@@ -5268,7 +5268,7 @@ public class GoParser extends GoParserBase {
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(720);
 						_la = _input.LA(1);
-						if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 2216615441596416L) != 0) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2216615441596416L) != 0)) ) {
 						_errHandler.recoverInline(this);
 						}
 						else {
@@ -5523,7 +5523,7 @@ public class GoParser extends GoParserBase {
 				{
 				setState(753);
 				_la = _input.LA(1);
-				if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & -144115188075855872L) != 0) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115188075855872L) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -5915,7 +5915,7 @@ public class GoParser extends GoParserBase {
 			{
 			setState(787);
 			_la = _input.LA(1);
-			if ( !((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 55L) != 0) ) {
+			if ( !(((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 55L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -6245,7 +6245,7 @@ public class GoParser extends GoParserBase {
 			setState(816);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115182237381096L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115182237381096L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(812);
 				elementList();
@@ -6990,7 +6990,7 @@ public class GoParser extends GoParserBase {
 				setState(883);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 					{
 					setState(882);
 					expression(0);
@@ -7002,7 +7002,7 @@ public class GoParser extends GoParserBase {
 				setState(887);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 					{
 					setState(886);
 					expression(0);
@@ -7016,7 +7016,7 @@ public class GoParser extends GoParserBase {
 				setState(890);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 					{
 					setState(889);
 					expression(0);
@@ -7149,7 +7149,7 @@ public class GoParser extends GoParserBase {
 			setState(921);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0 || (((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -144115183311122920L) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & 255L) != 0)) {
 				{
 				setState(913);
 				_errHandler.sync(this);

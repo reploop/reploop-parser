@@ -8,16 +8,18 @@ import org.reploop.translator.json.support.Target;
 
 public class MessageGoGenerator extends AbstractMessageGenerator {
 
-    private final GoTypeSimplifier typeSimplifier = new GoTypeSimplifier();
-    private final GoGenerator goGenerator = new GoGenerator();
+	private final GoTypeSimplifier typeSimplifier = new GoTypeSimplifier();
 
-    public MessageGoGenerator() {
-        super(Target.GO);
-    }
+	private final GoGenerator goGenerator = new GoGenerator();
 
-    @Override
-    public void execute(Message message, BeanContext context) {
-        Message simplified = typeSimplifier.visitMessage(message, new MessageContext());
-        goGenerator.visitMessage(simplified, context);
-    }
+	public MessageGoGenerator() {
+		super(Target.GO);
+	}
+
+	@Override
+	public void execute(Message message, BeanContext context) {
+		Message simplified = typeSimplifier.visitMessage(message, new MessageContext());
+		goGenerator.visitMessage(simplified, context);
+	}
+
 }

@@ -9,31 +9,35 @@ import java.util.Objects;
  * @since 2016-10-11 10
  */
 public class BooleanValue extends Value {
-    Boolean value;
 
-    public BooleanValue(Boolean value) {
-        this.value = value;
-    }
+	final Boolean value;
 
-    public Boolean getValue() {
-        return value;
-    }
+	public BooleanValue(Boolean value) {
+		this.value = value;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BooleanValue that = (BooleanValue) o;
-        return Objects.equals(value, that.value);
-    }
+	public Boolean getValue() {
+		return value;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		BooleanValue that = (BooleanValue) o;
+		return Objects.equals(value, that.value);
+	}
 
-    @Override
-    public String toString() {
-        return value.toString();
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(value);
+	}
+
+	@Override
+	public String toString() {
+		return value.toString();
+	}
+
 }

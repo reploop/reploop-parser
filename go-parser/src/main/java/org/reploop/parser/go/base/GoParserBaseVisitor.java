@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/go/base/GoParser.g4 by ANTLR 4.13.2
 package org.reploop.parser.go.base;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 

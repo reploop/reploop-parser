@@ -23,43 +23,46 @@ import java.nio.file.Path;
  * @since 2020-10-04 09
  */
 public class ProtobufV3Parser extends ParserDriver<Node, Protobuf3Lexer, Protobuf3Parser> {
-    private static final Logger LOG = LoggerFactory.getLogger(ProtobufV3Parser.class);
 
-    public ProtoProgram program(Path file) {
-        return (ProtoProgram) parse(file, Protobuf3Parser::proto);
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(ProtobufV3Parser.class);
 
-    public ProtoProgram program(Reader file) {
-        try {
-            return (ProtoProgram) parse(file, Protobuf3Parser::proto);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	public ProtoProgram program(Path file) {
+		return (ProtoProgram) parse(file, Protobuf3Parser::proto);
+	}
 
-    @Override
-    protected Protobuf3Parser parser(CommonTokenStream tokenStream) {
-        return new Protobuf3Parser(tokenStream);
-    }
+	public ProtoProgram program(Reader file) {
+		try {
+			return (ProtoProgram) parse(file, Protobuf3Parser::proto);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-    @Override
-    protected Protobuf3Lexer lexer(CharStream charStream) {
-        return new Protobuf3Lexer(charStream);
-    }
+	@Override
+	protected Protobuf3Parser parser(CommonTokenStream tokenStream) {
+		return new Protobuf3Parser(tokenStream);
+	}
 
-    @Override
-    protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-        return new ProtobufV3AstBuilder(tokenStream);
-    }
+	@Override
+	protected Protobuf3Lexer lexer(CharStream charStream) {
+		return new Protobuf3Lexer(charStream);
+	}
 
-    @Override
-    protected ParseTreeListener parseListener() {
-        return new PostProcessor();
-    }
+	@Override
+	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+		return new ProtobufV3AstBuilder(tokenStream);
+	}
 
-    @Override
-    protected ANTLRErrorListener errorListener() {
-        return new ProtobufErrorListener();
-    }
+	@Override
+	protected ParseTreeListener parseListener() {
+		return new PostProcessor();
+	}
+
+	@Override
+	protected ANTLRErrorListener errorListener() {
+		return new ProtobufErrorListener();
+	}
+
 }

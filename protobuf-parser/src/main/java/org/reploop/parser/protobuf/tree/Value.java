@@ -1,6 +1,5 @@
 package org.reploop.parser.protobuf.tree;
 
-
 import org.reploop.parser.protobuf.Node;
 
 /**

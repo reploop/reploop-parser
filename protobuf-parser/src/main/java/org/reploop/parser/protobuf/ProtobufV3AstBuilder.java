@@ -23,281 +23,277 @@ import java.util.stream.Collectors;
  */
 public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
 
-    CommonTokenStream tokens;
+	final CommonTokenStream tokens;
 
-    public ProtobufV3AstBuilder(CommonTokenStream tokens) {
-        this.tokens = tokens;
-    }
+	public ProtobufV3AstBuilder(CommonTokenStream tokens) {
+		this.tokens = tokens;
+	}
 
-    private List<String> comments(Token token) {
-        return CommentHelper.comments(token, Protobuf3Lexer.HIDDEN, leftComment);
-    }
+	private List<String> comments(Token token) {
+		return CommentHelper.comments(token, Protobuf3Lexer.HIDDEN, leftComment);
+	}
 
-    private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
-        @Override
-        public List<Token> apply(Token token, Integer channel) {
-            if (null != tokens) {
-                return tokens.getHiddenTokensToLeft(token.getTokenIndex(), channel);
-            }
-            return Collections.emptyList();
-        }
-    };
+	private final BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
+		@Override
+		public List<Token> apply(Token token, Integer channel) {
+			if (null != tokens) {
+				return tokens.getHiddenTokensToLeft(token.getTokenIndex(), channel);
+			}
+			return Collections.emptyList();
+		}
+	};
 
-    private <R> R visit(ParserRuleContext context, Class<R> clazz) {
-        return clazz.cast(visit(context));
-    }
+	private <R> R visit(ParserRuleContext context, Class<R> clazz) {
+		return clazz.cast(visit(context));
+	}
 
-    private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
-        return Optional.ofNullable(context)
-                .map(this::visit)
-                .map(clazz::cast);
-    }
+	private <R> Optional<R> visitIfPresent(ParserRuleContext context, Class<R> clazz) {
+		return Optional.ofNullable(context).map(this::visit).map(clazz::cast);
+	}
 
+	private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
+		if (null != contexts) {
+			return contexts.stream()
+				.map(this::visit)
+				.filter(Objects::nonNull)
+				.map(clazz::cast)
+				.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
 
-    private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
-        if (null != contexts) {
-            return contexts.stream()
-                    .map(this::visit)
-                    .filter(Objects::nonNull)
-                    .map(clazz::cast)
-                    .collect(Collectors.toList());
-        }
-        return Collections.emptyList();
-    }
+	private Float getFloat(TerminalNode node) {
+		return Float.valueOf(node.getText());
+	}
 
+	private Integer getInt(TerminalNode node) {
+		return Integer.valueOf(node.getText());
+	}
 
-    private Float getFloat(TerminalNode node) {
-        return Float.valueOf(node.getText());
-    }
+	private FieldType scalarType(TerminalNode node) {
+		String text = node.getText();
+		ScalarType type = ScalarType.valueOf(text.toUpperCase());
+		switch (type) {
+			case BOOL:
+				return new BoolType();
+			case INT32:
+			case FIXED32:
+			case SFIXED32:
+			case SINT32:
+			case UINT32:
+				return new IntType();
+			case INT64:
+			case FIXED64:
+			case SFIXED64:
+			case SINT64:
+			case UINT64:
+				return new LongType();
+			case FLOAT:
+				return new FloatType();
+			case DOUBLE:
+				return new DoubleType();
+			case STRING:
+				return new StringType();
+			case BYTES:
+				return new ByteStringType();
+			default:
+				throw new IllegalArgumentException("");
+		}
+	}
 
-    private Integer getInt(TerminalNode node) {
-        return Integer.valueOf(node.getText());
-    }
+	@Override
+	public StringValue visitMessageName(Protobuf3Parser.MessageNameContext ctx) {
+		visit(ctx.ident());
+		return new StringValue(ctx.getText());
+	}
 
-    private FieldType scalarType(TerminalNode node) {
-        String text = node.getText();
-        ScalarType type = ScalarType.valueOf(text.toUpperCase());
-        switch (type) {
-            case BOOL:
-                return new BoolType();
-            case INT32:
-            case FIXED32:
-            case SFIXED32:
-            case SINT32:
-            case UINT32:
-                return new IntType();
-            case INT64:
-            case FIXED64:
-            case SFIXED64:
-            case SINT64:
-            case UINT64:
-                return new LongType();
-            case FLOAT:
-                return new FloatType();
-            case DOUBLE:
-                return new DoubleType();
-            case STRING:
-                return new StringType();
-            case BYTES:
-                return new ByteStringType();
-            default:
-                throw new IllegalArgumentException("");
-        }
-    }
+	private static final String[] QUOTES = { "\"", "'" };
 
+	private String stripQuote(String val) {
+		for (String quote : QUOTES) {
+			String v = StringUtils.strip(val, quote);
+			if (v.length() != val.length()) {
+				return v;
+			}
+		}
+		return val;
+	}
 
-    @Override
-    public StringValue visitMessageName(Protobuf3Parser.MessageNameContext ctx) {
-        visit(ctx.ident());
-        return new StringValue(ctx.getText());
-    }
+	@Override
+	public SyntaxPair visitSyntax(Protobuf3Parser.SyntaxContext ctx) {
+		TerminalNode tn = Optional.ofNullable(ctx.PROTO3_LIT_DOBULE()).orElse(ctx.PROTO3_LIT_SINGLE());
+		return new SyntaxPair(stripQuote(tn.getText()));
+	}
 
-    private static final String[] QUOTES = {"\"", "'"};
+	@Override
+	public Node visitPackageStatement(Protobuf3Parser.PackageStatementContext ctx) {
+		return visit(ctx.fullIdent());
+	}
 
-    private String stripQuote(String val) {
-        for (String quote : QUOTES) {
-            String v = StringUtils.strip(val, quote);
-            if (v.length() != val.length()) {
-                return v;
-            }
-        }
-        return val;
-    }
+	@Override
+	public Node visitImportStatement(Protobuf3Parser.ImportStatementContext ctx) {
+		TerminalNode o = Optional.ofNullable(ctx.PUBLIC()).orElse(ctx.WEAK());
+		Protobuf3Parser.StrLitContext n = ctx.strLit();
+		visit(ctx.strLit());
+		return super.visitImportStatement(ctx);
+	}
 
-    @Override
-    public SyntaxPair visitSyntax(Protobuf3Parser.SyntaxContext ctx) {
-        TerminalNode tn = Optional.ofNullable(ctx.PROTO3_LIT_DOBULE()).orElse(ctx.PROTO3_LIT_SINGLE());
-        return new SyntaxPair(stripQuote(tn.getText()));
-    }
+	@Override
+	public IntValue visitIntLit(Protobuf3Parser.IntLitContext ctx) {
+		Integer val = Integer.valueOf(ctx.INT_LIT().getText());
+		return new IntValue(val);
+	}
 
-    @Override
-    public Node visitPackageStatement(Protobuf3Parser.PackageStatementContext ctx) {
-        return visit(ctx.fullIdent());
-    }
+	@Override
+	public IntValue visitFieldNumber(Protobuf3Parser.FieldNumberContext ctx) {
+		return visitIntLit(ctx.intLit());
+	}
 
-    @Override
-    public Node visitImportStatement(Protobuf3Parser.ImportStatementContext ctx) {
-        TerminalNode o = Optional.ofNullable(ctx.PUBLIC()).orElse(ctx.WEAK());
-        Protobuf3Parser.StrLitContext n = ctx.strLit();
-        visit(ctx.strLit());
-        return super.visitImportStatement(ctx);
-    }
+	@Override
+	public StringValue visitMapName(Protobuf3Parser.MapNameContext ctx) {
+		return visitIdent(ctx.ident());
+	}
 
-    @Override
-    public IntValue visitIntLit(Protobuf3Parser.IntLitContext ctx) {
-        Integer val = Integer.valueOf(ctx.INT_LIT().getText());
-        return new IntValue(val);
-    }
+	@Override
+	public Field visitMapField(Protobuf3Parser.MapFieldContext ctx) {
+		FieldType keyType = visit(ctx.keyType(), FieldType.class);
+		FieldType valueType = visit(ctx.fieldType(), FieldType.class);
+		MapType type = new MapType(keyType, valueType);
+		IntValue iv = visitFieldNumber(ctx.fieldNumber());
+		StringValue sv = visitMapName(ctx.mapName());
 
-    @Override
-    public IntValue visitFieldNumber(Protobuf3Parser.FieldNumberContext ctx) {
-        return visitIntLit(ctx.intLit());
-    }
+		return new Field(FieldModifier.optional, iv.getValue(), sv.getValue(), type, null, null);
+	}
 
-    @Override
-    public StringValue visitMapName(Protobuf3Parser.MapNameContext ctx) {
-        return visitIdent(ctx.ident());
-    }
+	@Override
+	public Message visitMessageDef(Protobuf3Parser.MessageDefContext ctx) {
+		StringValue sv = visitMessageName(ctx.messageName());
+		QualifiedName qn = QualifiedName.of(sv.getValue());
+		var bodyContext = ctx.messageBody();
+		List<Protobuf3Parser.MessageElementContext> children = bodyContext.messageElement();
+		List<Message> messages = new ArrayList<>();
+		List<Enumeration> enumerations = new ArrayList<>();
+		List<Service> services = new ArrayList<>();
+		List<Field> fields = new ArrayList<>();
+		List<String> comments = new ArrayList<>();
+		List<Option> options = new ArrayList<>();
+		for (var x : children) {
+			// message
+			visitIfPresent(x.messageDef(), Message.class).ifPresent(messages::add);
+			// enum
+			visitIfPresent(x.enumDef(), Enumeration.class).ifPresent(enumerations::add);
+			// option
+			visitOptionStatement(x.optionStatement());
+			// one-of
+			// Message oneOf = visitOneof(x.oneof());
+			// field
+			visitIfPresent(x.field(), Field.class).ifPresent(fields::add);
+			// map field
+			visitIfPresent(x.mapField(), Field.class).ifPresent(fields::add);
+			// reserved
+			x.reserved();
+			// empty statement
+			x.emptyStatement();
+		}
+		return new Message(qn, comments, fields, messages, enumerations, services, options);
+	}
 
-    @Override
-    public Field visitMapField(Protobuf3Parser.MapFieldContext ctx) {
-        FieldType keyType = visit(ctx.keyType(), FieldType.class);
-        FieldType valueType = visit(ctx.fieldType(), FieldType.class);
-        MapType type = new MapType(keyType, valueType);
-        IntValue iv = visitFieldNumber(ctx.fieldNumber());
-        StringValue sv = visitMapName(ctx.mapName());
+	@Override
+	public Option visitOptionStatement(Protobuf3Parser.OptionStatementContext ctx) {
+		return null;
+	}
 
-        return new Field(FieldModifier.optional, iv.getValue(), sv.getValue(), type, null, null);
-    }
+	@Override
+	public StringValue visitKeywords(Protobuf3Parser.KeywordsContext ctx) {
+		return new StringValue(ctx.getText());
+	}
 
-    @Override
-    public Message visitMessageDef(Protobuf3Parser.MessageDefContext ctx) {
-        StringValue sv = visitMessageName(ctx.messageName());
-        QualifiedName qn = QualifiedName.of(sv.getValue());
-        var bodyContext = ctx.messageBody();
-        List<Protobuf3Parser.MessageElementContext> children = bodyContext.messageElement();
-        List<Message> messages = new ArrayList<>();
-        List<Enumeration> enumerations = new ArrayList<>();
-        List<Service> services = new ArrayList<>();
-        List<Field> fields = new ArrayList<>();
-        List<String> comments = new ArrayList<>();
-        List<Option> options = new ArrayList<>();
-        for (var x : children) {
-            // message
-            visitIfPresent(x.messageDef(), Message.class).ifPresent(messages::add);
-            // enum
-            visitIfPresent(x.enumDef(), Enumeration.class).ifPresent(enumerations::add);
-            // option
-            visitOptionStatement(x.optionStatement());
-            // one-of
-            // Message oneOf = visitOneof(x.oneof());
-            // field
-            visitIfPresent(x.field(), Field.class).ifPresent(fields::add);
-            // map field
-            visitIfPresent(x.mapField(), Field.class).ifPresent(fields::add);
-            // reserved
-            x.reserved();
-            // empty statement
-            x.emptyStatement();
-        }
-        return new Message(qn, comments, fields, messages, enumerations, services, options);
-    }
+	@Override
+	public StringValue visitIdent(Protobuf3Parser.IdentContext ctx) {
+		TerminalNode tn = ctx.IDENTIFIER();
+		if (null != tn) {
+			String val = tn.getText();
+			return new StringValue(val);
+		}
+		else {
+			return visitKeywords(ctx.keywords());
+		}
+	}
 
-    @Override
-    public Option visitOptionStatement(Protobuf3Parser.OptionStatementContext ctx) {
-        return null;
-    }
+	@Override
+	public StringValue visitEnumName(Protobuf3Parser.EnumNameContext ctx) {
+		return visitIdent(ctx.ident());
+	}
 
-    @Override
-    public StringValue visitKeywords(Protobuf3Parser.KeywordsContext ctx) {
-        return new StringValue(ctx.getText());
-    }
+	@Override
+	public Enumeration visitEnumDef(Protobuf3Parser.EnumDefContext ctx) {
+		List<String> comments = new ArrayList<>();
+		StringValue sv = visitEnumName(ctx.enumName());
+		QualifiedName qn = QualifiedName.of(sv.getValue());
+		List<EnumField> fields = new ArrayList<>();
+		List<Option> options = new ArrayList<>();
+		var elements = ctx.enumBody().enumElement();
+		for (var element : elements) {
+			visitIfPresent(element.enumField(), EnumField.class).ifPresent(fields::add);
+			visitIfPresent(element.optionStatement(), Option.class).ifPresent(options::add);
+		}
+		return new Enumeration(qn, comments, fields);
+	}
 
-    @Override
-    public StringValue visitIdent(Protobuf3Parser.IdentContext ctx) {
-        TerminalNode tn = ctx.IDENTIFIER();
-        if (null != tn) {
-            String val = tn.getText();
-            return new StringValue(val);
-        } else {
-            return visitKeywords(ctx.keywords());
-        }
-    }
+	@Override
+	public Node visitFullIdent(Protobuf3Parser.FullIdentContext ctx) {
+		return super.visitFullIdent(ctx);
+	}
 
-    @Override
-    public StringValue visitEnumName(Protobuf3Parser.EnumNameContext ctx) {
-        return visitIdent(ctx.ident());
-    }
+	@Override
+	public Node visitOptionName(Protobuf3Parser.OptionNameContext ctx) {
+		return super.visitOptionName(ctx);
+	}
 
-    @Override
-    public Enumeration visitEnumDef(Protobuf3Parser.EnumDefContext ctx) {
-        List<String> comments = new ArrayList<>();
-        StringValue sv = visitEnumName(ctx.enumName());
-        QualifiedName qn = QualifiedName.of(sv.getValue());
-        List<EnumField> fields = new ArrayList<>();
-        List<Option> options = new ArrayList<>();
-        var elements = ctx.enumBody().enumElement();
-        for (var element : elements) {
-            visitIfPresent(element.enumField(), EnumField.class).ifPresent(fields::add);
-            visitIfPresent(element.optionStatement(), Option.class).ifPresent(options::add);
-        }
-        return new Enumeration(qn, comments, fields);
-    }
+	@Override
+	public StringValue visitServiceName(Protobuf3Parser.ServiceNameContext ctx) {
+		return visitIdent(ctx.ident());
+	}
 
-    @Override
-    public Node visitFullIdent(Protobuf3Parser.FullIdentContext ctx) {
-        return super.visitFullIdent(ctx);
-    }
+	@Override
+	public Service visitServiceDef(Protobuf3Parser.ServiceDefContext ctx) {
+		ctx.SERVICE().getText();
+		StringValue serviceName = visitServiceName(ctx.serviceName());
+		ctx.serviceElement();
+		return null;
+	}
 
-    @Override
-    public Node visitOptionName(Protobuf3Parser.OptionNameContext ctx) {
-        return super.visitOptionName(ctx);
-    }
+	@Override
+	public ProtoProgram visitProto(Protobuf3Parser.ProtoContext ctx) {
+		List<String> comments = comments(ctx.getStart());
+		visit(ctx.syntax(), SyntaxPair.class);
+		visit(ctx.importStatement(), Option.class);
+		List<Header> headers = visit(ctx.packageStatement(), Header.class);
+		List<Option> options = visit(ctx.optionStatement(), Option.class);
+		List<Enumeration> enumerations = new ArrayList<>();
+		List<Message> messages = new ArrayList<>();
+		List<Service> services = new ArrayList<>();
+		var definitions = ctx.topLevelDef();
+		for (var definition : definitions) {
+			Protobuf3Parser.EnumDefContext edc;
+			if (null != (edc = definition.enumDef())) {
+				enumerations.add(visit(edc, Enumeration.class));
+			}
+			Protobuf3Parser.MessageDefContext mdc;
+			if (null != (mdc = definition.messageDef())) {
+				messages.add(visit(mdc, Message.class));
+			}
+			Protobuf3Parser.ServiceDefContext sdc;
+			if (null != (sdc = definition.serviceDef())) {
+				services.add(visit(sdc, Service.class));
+			}
+		}
+		// Empty statements, just ignore read and ignore them.
+		var statements = ctx.emptyStatement();
+		for (var statement : statements) {
+			visitEmptyStatement(statement);
+		}
+		return new ProtoProgram(comments, options, headers, messages, enumerations, services);
+	}
 
-    @Override
-    public StringValue visitServiceName(Protobuf3Parser.ServiceNameContext ctx) {
-        return visitIdent(ctx.ident());
-    }
-
-    @Override
-    public Service visitServiceDef(Protobuf3Parser.ServiceDefContext ctx) {
-        ctx.SERVICE().getText();
-        StringValue serviceName = visitServiceName(ctx.serviceName());
-        ctx.serviceElement();
-        return null;
-    }
-
-
-    @Override
-    public ProtoProgram visitProto(Protobuf3Parser.ProtoContext ctx) {
-        List<String> comments = comments(ctx.getStart());
-        visit(ctx.syntax(), SyntaxPair.class);
-        visit(ctx.importStatement(), Option.class);
-        List<Header> headers = visit(ctx.packageStatement(), Header.class);
-        List<Option> options = visit(ctx.optionStatement(), Option.class);
-        List<Enumeration> enumerations = new ArrayList<>();
-        List<Message> messages = new ArrayList<>();
-        List<Service> services = new ArrayList<>();
-        var definitions = ctx.topLevelDef();
-        for (var definition : definitions) {
-            Protobuf3Parser.EnumDefContext edc;
-            if (null != (edc = definition.enumDef())) {
-                enumerations.add(visit(edc, Enumeration.class));
-            }
-            Protobuf3Parser.MessageDefContext mdc;
-            if (null != (mdc = definition.messageDef())) {
-                messages.add(visit(mdc, Message.class));
-            }
-            Protobuf3Parser.ServiceDefContext sdc;
-            if (null != (sdc = definition.serviceDef())) {
-                services.add(visit(sdc, Service.class));
-            }
-        }
-        // Empty statements, just ignore read and ignore them.
-        var statements = ctx.emptyStatement();
-        for (var statement : statements) {
-            visitEmptyStatement(statement);
-        }
-        return new ProtoProgram(comments, options, headers, messages, enumerations, services);
-    }
 }

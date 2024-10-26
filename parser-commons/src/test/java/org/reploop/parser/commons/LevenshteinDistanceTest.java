@@ -12,21 +12,22 @@ import static org.junit.Assert.assertEquals;
  */
 public class LevenshteinDistanceTest {
 
-    @Test
-    public void testDistance() throws Exception {
-        int d = LevenshteinDistance.compute("2", "2");
-        assertEquals(0, d);
-    }
+	@Test
+	public void testDistance() {
+		int d = LevenshteinDistance.compute("2", "2");
+		assertEquals(0, d);
+	}
 
-    @Test
-    public void testDistance1() throws Exception {
-        int d = LevenshteinDistance.compute("If", "if");
-        assertEquals(1, d);
+	@Test
+	public void testDistance1() {
+		int d = LevenshteinDistance.compute("If", "if");
+		assertEquals(1, d);
 
-        d = LevenshteinDistance.compute("fi", "config");
-        System.out.println(d);
+		d = LevenshteinDistance.compute("fi", "config");
+		System.out.println(d);
 
-        d = LevenshteinDistance.compute("distance", "ce");
-        System.out.println(d);
-    }
+		d = LevenshteinDistance.compute("distance", "ce");
+		System.out.println(d);
+	}
+
 }

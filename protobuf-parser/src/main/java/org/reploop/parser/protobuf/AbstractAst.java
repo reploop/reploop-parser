@@ -7,4 +7,5 @@ package org.reploop.parser.protobuf;
  * @since 2015-06-07 10
  */
 public abstract class AbstractAst {
+
 }

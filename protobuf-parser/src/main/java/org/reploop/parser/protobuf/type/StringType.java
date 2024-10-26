@@ -10,13 +10,13 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class StringType extends FieldType {
 
-    public StringType() {
-        super("String");
-    }
+	public StringType() {
+		super("String");
+	}
 
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitStringType(this, context);
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitStringType(this, context);
-    }
 }

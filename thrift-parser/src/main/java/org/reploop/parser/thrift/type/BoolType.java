@@ -1,6 +1,5 @@
 package org.reploop.parser.thrift.type;
 
-
 import org.reploop.parser.thrift.AstVisitor;
 
 /**
@@ -10,12 +9,14 @@ import org.reploop.parser.thrift.AstVisitor;
  * @since 2015-06-05 18
  */
 public class BoolType extends FieldType {
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitBoolType(this, context);
-    }
 
-    public BoolType() {
-        super("boolean");
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitBoolType(this, context);
+	}
+
+	public BoolType() {
+		super("boolean");
+	}
+
 }

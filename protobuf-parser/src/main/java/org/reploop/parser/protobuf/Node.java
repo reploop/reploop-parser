@@ -7,17 +7,19 @@ package org.reploop.parser.protobuf;
  * @since 2015-07-03 00
  */
 public abstract class Node {
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitNode(this, context);
-    }
 
-    // Force subclasses to have a proper equals and hashcode implementation
-    @Override
-    public abstract int hashCode();
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitNode(this, context);
+	}
 
-    @Override
-    public abstract boolean equals(Object obj);
+	// Force subclasses to have a proper equals and hashcode implementation
+	@Override
+	public abstract int hashCode();
 
-    @Override
-    public abstract String toString();
+	@Override
+	public abstract boolean equals(Object obj);
+
+	@Override
+	public abstract String toString();
+
 }

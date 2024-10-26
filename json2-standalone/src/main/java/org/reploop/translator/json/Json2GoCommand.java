@@ -12,9 +12,11 @@ import java.util.EnumSet;
  */
 @Command(name = "go", description = "Translate JSON to golang struct.")
 public class Json2GoCommand extends Json2Command {
-    private static final Logger LOG = LoggerFactory.getLogger(Json2GoCommand.class);
 
-    public Json2GoCommand() {
-        setTargets(EnumSet.of(Target.GO));
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(Json2GoCommand.class);
+
+	public Json2GoCommand() {
+		setTargets(EnumSet.of(Target.GO));
+	}
+
 }

@@ -1,6 +1,5 @@
 package org.reploop.parser.protobuf.tree;
 
-
 import org.reploop.parser.protobuf.Node;
 
 /**
@@ -10,4 +9,5 @@ import org.reploop.parser.protobuf.Node;
  * @since 2015-06-07 11
  */
 public abstract class Header extends Node {
+
 }

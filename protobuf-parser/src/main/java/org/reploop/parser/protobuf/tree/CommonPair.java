@@ -10,12 +10,13 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class CommonPair extends Pair {
 
-    public CommonPair(String key, Value value) {
-        super(key, value);
-    }
+	public CommonPair(String key, Value value) {
+		super(key, value);
+	}
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitCommonPair(this, context);
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitCommonPair(this, context);
+	}
+
 }

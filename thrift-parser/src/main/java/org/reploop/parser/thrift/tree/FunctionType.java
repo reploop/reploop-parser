@@ -1,6 +1,5 @@
 package org.reploop.parser.thrift.tree;
 
-
 import org.reploop.parser.thrift.Node;
 
 /**

@@ -12,9 +12,11 @@ import java.util.EnumSet;
  */
 @Command(name = "all", description = "Convert JSON to all supported targets in one run.")
 public class Json2AllCommand extends Json2Command {
-    private static final Logger LOG = LoggerFactory.getLogger(Json2AllCommand.class);
 
-    public Json2AllCommand() {
-        setTargets(EnumSet.allOf(Target.class));
-    }
+	private static final Logger LOG = LoggerFactory.getLogger(Json2AllCommand.class);
+
+	public Json2AllCommand() {
+		setTargets(EnumSet.allOf(Target.class));
+	}
+
 }

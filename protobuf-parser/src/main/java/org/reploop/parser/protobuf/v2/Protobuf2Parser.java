@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/protobuf/v2/Protobuf2.g4 by ANTLR 4.13.2
 package org.reploop.parser.protobuf.v2;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class Protobuf2Parser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -89,7 +89,7 @@ public class Protobuf2Parser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "Protobuf2.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -172,7 +172,7 @@ public class Protobuf2Parser extends Parser {
 			setState(42);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 2242L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2242L) != 0)) {
 				{
 				setState(40);
 				_errHandler.sync(this);
@@ -238,7 +238,7 @@ public class Protobuf2Parser extends Parser {
 				setState(51); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & 12648704L) != 0 );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 12648704L) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -596,7 +596,7 @@ public class Protobuf2Parser extends Parser {
 			setState(82);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 1280395520L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 1280395520L) != 0)) {
 				{
 				setState(80);
 				_errHandler.sync(this);
@@ -1660,7 +1660,7 @@ public class Protobuf2Parser extends Parser {
 				setState(181); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & 1275084800L) != 0 );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 1275084800L) != 0) );
 			setState(183);
 			match(T__9);
 			}

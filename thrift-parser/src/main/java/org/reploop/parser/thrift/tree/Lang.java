@@ -7,5 +7,7 @@ package org.reploop.parser.thrift.tree;
  * @since 2015-06-05 16
  */
 public enum Lang {
-    JAVA, CPP, PY, PERL, RB, COCOA, CSHARP
+
+	JAVA, CPP, PY, PERL, RB, COCOA, CSHARP
+
 }

@@ -16,23 +16,24 @@ import org.reploop.parser.json.base.JsonBaseParser;
  */
 public class JsonParser extends ParserDriver<Node, JsonBaseLexer, JsonBaseParser> {
 
-    @Override
-    protected JsonBaseParser parser(CommonTokenStream tokenStream) {
-        return new JsonBaseParser(tokenStream);
-    }
+	@Override
+	protected JsonBaseParser parser(CommonTokenStream tokenStream) {
+		return new JsonBaseParser(tokenStream);
+	}
 
-    @Override
-    protected JsonBaseLexer lexer(CharStream charStream) {
-        return new JsonBaseLexer(charStream);
-    }
+	@Override
+	protected JsonBaseLexer lexer(CharStream charStream) {
+		return new JsonBaseLexer(charStream);
+	}
 
-    @Override
-    protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-        return new JsonAstBuilder(tokenStream);
-    }
+	@Override
+	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+		return new JsonAstBuilder(tokenStream);
+	}
 
-    @Override
-    protected ANTLRErrorListener errorListener() {
-        return new JsonErrorListener();
-    }
+	@Override
+	protected ANTLRErrorListener errorListener() {
+		return new JsonErrorListener();
+	}
+
 }

@@ -1,7 +1,9 @@
 package org.reploop.parser.mysql.tree;
 
 public abstract class QueryCreateTable extends CreateTable {
-    public QueryCreateTable(String tableName, boolean temporary, boolean ifNotExists) {
-        super(tableName, temporary, ifNotExists);
-    }
+
+	public QueryCreateTable(String tableName, boolean temporary, boolean ifNotExists) {
+		super(tableName, temporary, ifNotExists);
+	}
+
 }

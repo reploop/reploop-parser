@@ -16,103 +16,103 @@ import java.util.Optional;
  */
 public class Function extends Node implements Comparable<Function> {
 
-    boolean oneWay = false;
-    QualifiedName name;
-    FunctionType returnType;
-    List<Field> parameters;
-    Optional<List<Field>> exceptions;
-    List<String> comments;
-    String body;
+	boolean oneWay = false;
 
+	final QualifiedName name;
 
-    public Function(QualifiedName name, FunctionType returnType, List<Field> parameters,
-                    Optional<List<Field>> exceptions) {
-        this(Collections.emptyList(), false, name, returnType, parameters, exceptions);
-    }
+	final FunctionType returnType;
 
-    public Function(boolean oneWay,
-                    QualifiedName name, FunctionType returnType, List<Field> parameters,
-                    Optional<List<Field>> exceptions) {
-        this(Collections.emptyList(), oneWay, name, returnType, parameters, exceptions);
-    }
+	final List<Field> parameters;
 
-    public Function(List<String> comments, boolean oneWay,
-                    QualifiedName name, FunctionType returnType, List<Field> parameters,
-                    Optional<List<Field>> exceptions) {
-        this.oneWay = oneWay;
-        this.name = name;
-        this.returnType = returnType;
-        this.parameters = parameters;
-        this.exceptions = exceptions;
-        this.comments = comments;
-    }
+	final Optional<List<Field>> exceptions;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitFunction(this, context);
-    }
+	final List<String> comments;
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
+	String body;
 
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
+	public Function(QualifiedName name, FunctionType returnType, List<Field> parameters,
+			Optional<List<Field>> exceptions) {
+		this(Collections.emptyList(), false, name, returnType, parameters, exceptions);
+	}
 
-    public boolean isOneWay() {
-        return oneWay;
-    }
+	public Function(boolean oneWay, QualifiedName name, FunctionType returnType, List<Field> parameters,
+			Optional<List<Field>> exceptions) {
+		this(Collections.emptyList(), oneWay, name, returnType, parameters, exceptions);
+	}
 
-    public QualifiedName getName() {
-        return name;
-    }
+	public Function(List<String> comments, boolean oneWay, QualifiedName name, FunctionType returnType,
+			List<Field> parameters, Optional<List<Field>> exceptions) {
+		this.oneWay = oneWay;
+		this.name = name;
+		this.returnType = returnType;
+		this.parameters = parameters;
+		this.exceptions = exceptions;
+		this.comments = comments;
+	}
 
-    public String getBody() {
-        return body;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitFunction(this, context);
+	}
 
-    public void setBody(String body) {
-        this.body = body;
-    }
+	@Override
+	public int hashCode() {
+		return 0;
+	}
 
-    public FunctionType getReturnType() {
-        return returnType;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		return false;
+	}
 
-    public List<Field> getParameters() {
-        return parameters;
-    }
+	public boolean isOneWay() {
+		return oneWay;
+	}
 
-    public Optional<List<Field>> getExceptions() {
-        return exceptions;
-    }
+	public QualifiedName getName() {
+		return name;
+	}
 
-    public List<String> getComments() {
-        return comments;
-    }
+	public String getBody() {
+		return body;
+	}
 
-    @Override
-    public String toString() {
-        String sb = "Function{" + "oneWay=" + oneWay +
-            ", name='" + name + '\'' +
-            ", returnType=" + returnType +
-            ", parameters=" + parameters +
-            ", exceptions=" + exceptions +
-            '}';
-        return sb;
-    }
+	public void setBody(String body) {
+		this.body = body;
+	}
 
-    @Override
-    public int compareTo(Function o) {
-        int result = this.getName().compareTo(o.getName());
-        if (0 == result) {
-            List<Field> f1 = getParameters();
-            List<Field> f2 = o.getParameters();
-            result = f1.size() - f2.size();
-        }
-        return result;
-    }
+	public FunctionType getReturnType() {
+		return returnType;
+	}
+
+	public List<Field> getParameters() {
+		return parameters;
+	}
+
+	public Optional<List<Field>> getExceptions() {
+		return exceptions;
+	}
+
+	public List<String> getComments() {
+		return comments;
+	}
+
+	@Override
+	public String toString() {
+		String sb = "Function{" + "oneWay=" + oneWay + ", name='" + name + '\'' + ", returnType=" + returnType
+				+ ", parameters=" + parameters + ", exceptions=" + exceptions + '}';
+		return sb;
+	}
+
+	@Override
+	public int compareTo(Function o) {
+		int result = this.getName().compareTo(o.getName());
+		if (0 == result) {
+			List<Field> f1 = getParameters();
+			List<Field> f2 = o.getParameters();
+			result = f1.size() - f2.size();
+		}
+		return result;
+	}
+
 }

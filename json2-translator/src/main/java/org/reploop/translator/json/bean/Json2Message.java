@@ -12,170 +12,172 @@ import org.reploop.parser.protobuf.type.FieldType;
 import org.reploop.translator.json.support.ClassHierarchy;
 import org.reploop.translator.json.type.FieldTypeComparator;
 import org.reploop.translator.json.type.NumberSpec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.reploop.translator.json.support.TypeSupport.fieldNumberSpec;
 
 /**
- * #1 we parse JSON and generate an AST.
- * #2 Try to analyze the root type of the JSON, along this, translate all Object into Protobuf Message for later user.
- * #3 Because JSON really is a tree structure and at each level, every node is same as each other. So we merge them to
- * get a whole pairs.
- * #4 Now we analyze these messages, try to find same ones. and if they are like each other, we generate abstract class. The reason doing this is to avoid duplicated classes.
- * #5 Resolve message and type names. e.g. camel style names.
- * #6 Now we can generate Java Class source code.
+ * #1 we parse JSON and generate a AST. #2 Try to analyze the root type of the JSON, along
+ * this, translate all Object into Protobuf Message for later user. #3 Because JSON really
+ * is a tree structure and at each level, every node is same as each other. So we merge
+ * them to get a whole pairs. #4 Now we analyze these messages, try to find same ones. and
+ * if they are like each other, we generate abstract class. The reason doing this is to
+ * avoid duplicated classes. #5 Resolve message and type names. e.g. camel style names. #6
+ * Now we can generate Java Class source code.
  */
 public class Json2Message {
-  private final NumberTypeAdaptor numberTypeAdaptor;
-  private final JsonParser parser;
-  private final JsonMessageTranslator translator;
-  private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
-  private final ClassHierarchy classHierarchy = new ClassHierarchy();
-  private final RenameResolver renameResolver = new RenameResolver();
-  private final DupTypeResolver dupTypeResolver = new DupTypeResolver();
-  private final DependencyResolver dependencyResolver = new DependencyResolver();
 
-  public Json2Message() {
-    this(new NumberTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
-  }
+	private static final Logger LOG = LoggerFactory.getLogger(Json2Message.class);
 
-  public Json2Message(NumberTypeAdaptor numberTypeAdaptor, JsonParser parser, JsonMessageTranslator translator) {
-    this.numberTypeAdaptor = numberTypeAdaptor;
-    this.parser = parser;
-    this.translator = translator;
-  }
+	private final NumberTypeAdaptor numberTypeAdaptor;
 
-  public Field merge(Set<Field> fields) {
-    int size = fields.size();
-    if (0 == size) {
-      return null;
-    } else {
-      Field field = fields.stream().max((f0, f1) -> typeComparator.compare(f0.getType(), f1.getType())).get();
-      Optional<NumberSpec> spec = fieldNumberSpec(fields);
-      if (spec.isPresent()) {
-        FieldType ft = numberTypeAdaptor.visitFieldType(field.getType(), spec.get());
-        return new Field(field.getModifier(), field.getIndex(), field.getName(), ft, field.getValue(), field.getComments());
-      }
-      return field;
-    }
-  }
+	private final JsonParser parser;
 
-  public Map<QualifiedName, Message> merge(MessageContext context) {
-    Map<QualifiedName, List<Message>> namedMessages = context.getNamedMessages();
-    Map<QualifiedName, Message> messageMap = new TreeMap<>();
-    if (null != namedMessages) {
-      for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
-        // Grouped by field name
-        Map<String, Set<Field>> groups = entry.getValue().stream()
-          .map(Message::getFields)
-          .filter(Objects::nonNull)
-          .flatMap(Collection::stream)
-          .collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
+	private final JsonMessageTranslator translator;
 
-        // Merge fields with same name and analyze its type
-        List<Field> uniqueFields = groups.values().stream()
-          .map(this::merge)
-          .filter(Objects::nonNull)
-          .sorted(Comparator.comparing(Field::getName))
-          .collect(Collectors.toList());
-        Message message = new Message(entry.getKey(), uniqueFields);
-        messageMap.put(entry.getKey(), message);
-      }
-    }
-    return messageMap;
-  }
+	private final Comparator<FieldType> typeComparator = new FieldTypeComparator();
 
-  public Map<QualifiedName, Message> execute(String json, MessageContext context) throws IOException {
-    return execute(new StringReader(json), context);
-  }
+	private final ClassHierarchy classHierarchy = new ClassHierarchy();
 
-  public Map<QualifiedName, Message> execute(StringReader reader, MessageContext context) throws IOException {
-    return execute(CharStreams.fromReader(reader), context);
-  }
+	private final RenameResolver renameResolver = new RenameResolver();
 
-  /**
-   * Collect all messages that reachable from parent message.
-   *
-   * @param nameMessageMap all messages
-   * @param all            used message set
-   * @param dependencies   current message's dependencies
-   */
-  private void resolveMessageIfUsed(Map<QualifiedName, Message> nameMessageMap,
-                                    Set<QualifiedName> all,
-                                    Set<QualifiedName> dependencies) {
-    if (null != dependencies && !dependencies.isEmpty()) {
-      for (QualifiedName dep : dependencies) {
-        // Message exists and did not process
-        // One class can have itself as property types.
-        if (nameMessageMap.containsKey(dep) && !all.contains(dep)) {
-          all.add(dep);
-          MessageContext ctx = new MessageContext();
-          Message message = nameMessageMap.get(dep);
-          dependencyResolver.visitMessage(message, ctx);
-          // Process dependencies of this message
-          resolveMessageIfUsed(nameMessageMap, all, ctx.getDependencies());
-        }
-      }
-    }
-  }
+	private final DupTypeResolver dupTypeResolver = new DupTypeResolver();
 
-  public Map<QualifiedName, Message> execute(CharStream stream, MessageContext context) {
-    // #1 Parse JSON to JSON AST, then to protobuf message
-    Json json = (Json) parser.parse(stream, JsonBaseParser::json);
-    return execute(json, context);
-  }
+	private final DependencyResolver dependencyResolver = new DependencyResolver();
 
-  protected Map<QualifiedName, Message> execute(Json json, MessageContext context) {
-    FieldType fieldType = translator.visitJson(json, context);
+	public Json2Message() {
+		this(new NumberTypeAdaptor(), new JsonParser(), new JsonMessageTranslator());
+	}
 
-    Map<QualifiedName, Message> nameMessageMap = merge(context);
+	public Json2Message(NumberTypeAdaptor numberTypeAdaptor, JsonParser parser, JsonMessageTranslator translator) {
+		this.numberTypeAdaptor = numberTypeAdaptor;
+		this.parser = parser;
+		this.translator = translator;
+	}
 
-    // #2 Try to aggregate class hierarchy, less duplicate code.
-    classHierarchy.infer(nameMessageMap);
+	public Field merge(Set<Field> fields) {
+		int size = fields.size();
+		if (0 == size) {
+			return null;
+		}
+		else {
+			Field field = fields.stream().max((f0, f1) -> typeComparator.compare(f0.getType(), f1.getType())).get();
+			Optional<NumberSpec> spec = fieldNumberSpec(fields);
+			if (spec.isPresent()) {
+				FieldType ft = numberTypeAdaptor.visitFieldType(field.getType(), spec.get());
+				return new Field(field.getModifier(), field.getIndex(), field.getName(), ft, field.getValue(),
+						field.getComments());
+			}
+			return field;
+		}
+	}
 
-    // After aggregating, some messages may be useless, find used ones here.
-    Set<QualifiedName> used = new HashSet<>();
-    // The first message is the root and definitely will be needed somewhere.
-    Set<QualifiedName> dependencies = new HashSet<>();
-    nameMessageMap.keySet().stream().findFirst().ifPresent(dependencies::add);
-    resolveMessageIfUsed(nameMessageMap, used, dependencies);
+	public Map<QualifiedName, Message> merge(MessageContext context) {
+		Map<QualifiedName, List<Message>> namedMessages = context.getNamedMessages();
+		Map<QualifiedName, Message> messageMap = new TreeMap<>();
+		if (null != namedMessages) {
+			for (Map.Entry<QualifiedName, List<Message>> entry : namedMessages.entrySet()) {
+				// Grouped by field name
+				Map<String, Set<Field>> groups = entry.getValue()
+					.stream()
+					.map(Message::getFields)
+					.filter(Objects::nonNull)
+					.flatMap(Collection::stream)
+					.collect(Collectors.groupingBy(Field::getName, Collectors.toSet()));
 
-    // Collect messages
-    Map<QualifiedName, Message> renamed = new HashMap<>();
-    // For collecting identity names
-    MessageContext ctx = new MessageContext();
-    for (QualifiedName name : used) {
-      Message message = nameMessageMap.get(name);
-      MessageContext messageContext = new MessageContext();
-      Message msg = renameResolver.visitMessage(message, messageContext);
-      ctx.addIdentityNames(messageContext.getIdentityNames());
-      renamed.put(msg.getName(), msg);
-    }
+				// Merge fields with same name and analyze its type
+				List<Field> uniqueFields = groups.values()
+					.stream()
+					.map(this::merge)
+					.filter(Objects::nonNull)
+					.sorted(Comparator.comparing(Field::getName))
+					.collect(Collectors.toList());
+				Message message = new Message(entry.getKey(), uniqueFields);
+				messageMap.put(entry.getKey(), message);
+			}
+		}
+		return messageMap;
+	}
 
-    // Final messages
-    Map<QualifiedName, Message> fixed = new HashMap<>();
-    renamed.forEach((name, message) -> {
-      Message msg = dupTypeResolver.visitMessage(message, ctx);
-      fixed.put(msg.getName(), msg);
-    });
+	public Map<QualifiedName, Message> execute(String json, MessageContext context) throws IOException {
+		return execute(new StringReader(json), context);
+	}
 
-    // The outer field type. Useful for code gen.
-    fieldType = renameResolver.visitFieldType(fieldType, ctx);
-    fieldType = dupTypeResolver.visitFieldType(fieldType, ctx);
-    context.setFieldType(fieldType);
-    return fixed;
-  }
+	public Map<QualifiedName, Message> execute(StringReader reader, MessageContext context) throws IOException {
+		return execute(CharStreams.fromReader(reader), context);
+	}
+
+	/**
+	 * Collect all messages that reachable from parent message.
+	 * @param nameMessageMap all messages
+	 * @param all used message set
+	 * @param deps current message's dependencies
+	 */
+	private void resolveMessageIfUsed(Map<QualifiedName, Message> nameMessageMap, Set<QualifiedName> all,
+			Set<QualifiedName> deps) {
+		if (null != deps && !deps.isEmpty()) {
+			for (QualifiedName dep : deps) {
+				// Message exists and did not process
+				// One class can have itself as property types.
+				if (nameMessageMap.containsKey(dep) && !all.contains(dep)) {
+					all.add(dep);
+					MessageContext ctx = new MessageContext();
+					Message message = nameMessageMap.get(dep);
+					dependencyResolver.visitMessage(message, ctx);
+					// Process deps of this message
+					resolveMessageIfUsed(nameMessageMap, all, ctx.getDependencies());
+				}
+			}
+		}
+	}
+
+	public Map<QualifiedName, Message> execute(CharStream stream, MessageContext context) {
+		// #1 Parse JSON to JSON AST, then to protobuf message
+		Json json = (Json) parser.parse(stream, JsonBaseParser::json);
+		FieldType fieldType = translator.visitJson(json, context);
+
+		Map<QualifiedName, Message> nameMessageMap = merge(context);
+
+		// #2 Try to aggregate class hierarchy, less duplicate code.
+		classHierarchy.infer(nameMessageMap);
+
+		// After aggregating, some messages may be useless, find used ones here.
+		Set<QualifiedName> used = new HashSet<>();
+		// The first message is the root and definitely will be needed somewhere.
+		Set<QualifiedName> deps = new HashSet<>();
+		nameMessageMap.keySet().stream().findFirst().ifPresent(deps::add);
+		resolveMessageIfUsed(nameMessageMap, used, deps);
+
+		// Collect messages
+		Map<QualifiedName, Message> renamed = new HashMap<>();
+		// For collecting identity names
+		MessageContext ctx = new MessageContext();
+		for (QualifiedName name : used) {
+			Message message = nameMessageMap.get(name);
+			MessageContext messageContext = new MessageContext();
+			Message msg = renameResolver.visitMessage(message, messageContext);
+			ctx.addIdentityNames(messageContext.getIdentityNames());
+			renamed.put(msg.getName(), msg);
+		}
+
+		// Final messages
+		Map<QualifiedName, Message> fixed = new HashMap<>();
+		renamed.forEach((name, message) -> {
+			Message msg = dupTypeResolver.visitMessage(message, ctx);
+			fixed.put(msg.getName(), msg);
+		});
+
+		// The outer field type. Useful for code gen.
+		fieldType = renameResolver.visitFieldType(fieldType, ctx);
+		fieldType = dupTypeResolver.visitFieldType(fieldType, ctx);
+		context.setFieldType(fieldType);
+		return fixed;
+	}
+
 }

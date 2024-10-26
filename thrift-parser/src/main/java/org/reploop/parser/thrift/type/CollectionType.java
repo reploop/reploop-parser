@@ -8,19 +8,19 @@ package org.reploop.parser.thrift.type;
  */
 public abstract class CollectionType extends FieldType {
 
-    FieldType elementType;
+	final FieldType elementType;
 
-    public CollectionType(FieldType elementType) {
-        this("Collection", elementType);
-    }
+	public CollectionType(FieldType elementType) {
+		this("Collection", elementType);
+	}
 
+	public CollectionType(String name, FieldType elementType) {
+		super(name);
+		this.elementType = elementType;
+	}
 
-    public CollectionType(String name, FieldType elementType) {
-        super(name);
-        this.elementType = elementType;
-    }
+	public FieldType getElementType() {
+		return elementType;
+	}
 
-    public FieldType getElementType() {
-        return elementType;
-    }
 }

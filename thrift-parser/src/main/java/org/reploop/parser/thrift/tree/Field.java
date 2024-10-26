@@ -15,81 +15,86 @@ import java.util.Optional;
  * @since 2015-07-03 00
  */
 public class Field extends Node {
-    Integer filedId;
-    boolean required;
-    List<String> comments;
-    QualifiedName name;
-    FieldType fieldType;
-    Optional<Value> value;
 
-    public Field(List<String> comments, FieldType fieldType, Integer filedId, String name, boolean required) {
-        this(comments, fieldType, filedId, QualifiedName.of(name), required);
-    }
+	final Integer filedId;
 
-    public Field(List<String> comments, FieldType fieldType, Integer filedId, String name, boolean required, Optional<Value> value) {
-        this(comments, fieldType, filedId, QualifiedName.of(name), required, value);
-    }
+	final boolean required;
 
-    public Field(List<String> comments, FieldType fieldType, Integer filedId, QualifiedName name, boolean required) {
-        this(comments, fieldType, filedId, name, required, Optional.empty());
-    }
+	final List<String> comments;
 
-    public Field(List<String> comments, FieldType fieldType, Integer filedId, QualifiedName name, boolean required, Optional<Value> value) {
-        this.comments = comments;
-        this.fieldType = fieldType;
-        this.filedId = filedId;
-        this.name = name;
-        this.required = required;
-        this.value = value;
-    }
+	final QualifiedName name;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitField(this, context);
-    }
+	final FieldType fieldType;
 
-    public List<String> getComments() {
-        return comments;
-    }
+	final Optional<Value> value;
 
-    public FieldType getFieldType() {
-        return fieldType;
-    }
+	public Field(List<String> comments, FieldType fieldType, Integer filedId, String name, boolean required) {
+		this(comments, fieldType, filedId, QualifiedName.of(name), required);
+	}
 
-    public Integer getFiledId() {
-        return filedId;
-    }
+	public Field(List<String> comments, FieldType fieldType, Integer filedId, String name, boolean required,
+			Optional<Value> value) {
+		this(comments, fieldType, filedId, QualifiedName.of(name), required, value);
+	}
 
-    public QualifiedName getName() {
-        return name;
-    }
+	public Field(List<String> comments, FieldType fieldType, Integer filedId, QualifiedName name, boolean required) {
+		this(comments, fieldType, filedId, name, required, Optional.empty());
+	}
 
-    public boolean isRequired() {
-        return required;
-    }
+	public Field(List<String> comments, FieldType fieldType, Integer filedId, QualifiedName name, boolean required,
+			Optional<Value> value) {
+		this.comments = comments;
+		this.fieldType = fieldType;
+		this.filedId = filedId;
+		this.name = name;
+		this.required = required;
+		this.value = value;
+	}
 
-    public Optional<Value> getValue() {
-        return value;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitField(this, context);
+	}
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
+	public List<String> getComments() {
+		return comments;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
+	public FieldType getFieldType() {
+		return fieldType;
+	}
 
-    @Override
-    public String toString() {
-        String sb = "Field{" + "filedId=" + filedId +
-            ", required=" + required +
-            ", comments=" + comments +
-            ", name='" + name + '\'' +
-            ", fieldType=" + fieldType +
-            '}';
-        return sb;
-    }
+	public Integer getFiledId() {
+		return filedId;
+	}
+
+	public QualifiedName getName() {
+		return name;
+	}
+
+	public boolean isRequired() {
+		return required;
+	}
+
+	public Optional<Value> getValue() {
+		return value;
+	}
+
+	@Override
+	public int hashCode() {
+		return 0;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		String sb = "Field{" + "filedId=" + filedId + ", required=" + required + ", comments=" + comments + ", name='"
+				+ name + '\'' + ", fieldType=" + fieldType + '}';
+		return sb;
+	}
+
 }

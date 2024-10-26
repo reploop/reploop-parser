@@ -9,25 +9,28 @@ import org.reploop.parser.thrift.AstVisitor;
  * @since 2015-06-05 18
  */
 public class MapType extends FieldType {
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitMapType(this, context);
-    }
 
-    FieldType keyType;
-    FieldType valueType;
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitMapType(this, context);
+	}
 
-    public MapType(FieldType keyType, FieldType valueType) {
-        super("Map");
-        this.keyType = keyType;
-        this.valueType = valueType;
-    }
+	final FieldType keyType;
 
-    public FieldType getKeyType() {
-        return keyType;
-    }
+	final FieldType valueType;
 
-    public FieldType getValueType() {
-        return valueType;
-    }
+	public MapType(FieldType keyType, FieldType valueType) {
+		super("Map");
+		this.keyType = keyType;
+		this.valueType = valueType;
+	}
+
+	public FieldType getKeyType() {
+		return keyType;
+	}
+
+	public FieldType getValueType() {
+		return valueType;
+	}
+
 }

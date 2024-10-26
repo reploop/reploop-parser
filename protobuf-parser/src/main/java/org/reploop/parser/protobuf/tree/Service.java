@@ -14,52 +14,55 @@ import java.util.Objects;
  * @since 2015-06-07 10
  */
 public class Service extends Node {
-    private QualifiedName name;
-    private List<Option> options;
-    private List<Function> functions;
 
-    public Service(QualifiedName name, List<Option> options, List<Function> functions) {
-        this.name = name;
-        this.options = options;
-        this.functions = functions;
-    }
+	private final QualifiedName name;
 
-    @Override
-    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-        return visitor.visitService(this, context);
-    }
+	private final List<Option> options;
 
-    public QualifiedName getName() {
-        return name;
-    }
+	private final List<Function> functions;
 
-    public List<Option> getOptions() {
-        return options;
-    }
+	public Service(QualifiedName name, List<Option> options, List<Function> functions) {
+		this.name = name;
+		this.options = options;
+		this.functions = functions;
+	}
 
-    public List<Function> getFunctions() {
-        return functions;
-    }
+	@Override
+	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+		return visitor.visitService(this, context);
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Service service = (Service) o;
-        return Objects.equals(name, service.name);
-    }
+	public QualifiedName getName() {
+		return name;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
+	public List<Option> getOptions() {
+		return options;
+	}
 
-    @Override
-    public String toString() {
-        String sb = "Service{" + "name=" + name +
-            ", options=" + options +
-            ", functions=" + functions +
-            '}';
-        return sb;
-    }
+	public List<Function> getFunctions() {
+		return functions;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Service service = (Service) o;
+		return Objects.equals(name, service.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+
+	@Override
+	public String toString() {
+		String sb = "Service{" + "name=" + name + ", options=" + options + ", functions=" + functions + '}';
+		return sb;
+	}
+
 }

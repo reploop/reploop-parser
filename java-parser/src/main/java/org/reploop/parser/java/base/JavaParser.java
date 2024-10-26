@@ -1,4 +1,4 @@
-// Generated from java-escape by ANTLR 4.11.1
+// Generated from org/reploop/parser/java/base/JavaParser.g4 by ANTLR 4.13.2
 package org.reploop.parser.java.base;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
 public class JavaParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.11.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -177,7 +177,7 @@ public class JavaParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "java-escape"; }
+	public String getGrammarFileName() { return "JavaParser.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -264,7 +264,7 @@ public class JavaParser extends Parser {
 			setState(218);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 885032026626L) != 0 || _la==SEMI || _la==AT) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 885032026626L) != 0) || _la==SEMI || _la==AT) {
 				{
 				{
 				setState(215);
@@ -1460,7 +1460,7 @@ public class JavaParser extends Parser {
 			setState(368);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & -9222451820917079254L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9222451820917079254L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0)) {
 				{
 				{
 				setState(365);
@@ -1606,7 +1606,7 @@ public class JavaParser extends Parser {
 			setState(386);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & -9222451820917079254L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -9222451820917079254L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0)) {
 				{
 				{
 				setState(383);
@@ -1673,7 +1673,7 @@ public class JavaParser extends Parser {
 			setState(395);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 920215937700650L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 920215937700650L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858337L) != 0)) {
 				{
 				{
 				setState(392);
@@ -3419,7 +3419,7 @@ public class JavaParser extends Parser {
 			setState(589);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -4613646307401121496L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -4613646307401121496L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 				{
 				setState(578);
 				variableInitializer();
@@ -3764,7 +3764,7 @@ public class JavaParser extends Parser {
 			setState(625);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 138111369512L) != 0 || _la==AT || _la==IDENTIFIER) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 138111369512L) != 0) || _la==AT || _la==IDENTIFIER) {
 				{
 				setState(624);
 				formalParameterList();
@@ -4237,7 +4237,7 @@ public class JavaParser extends Parser {
 			{
 			setState(679);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 33776997205278720L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 33776997205278720L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -4633,7 +4633,7 @@ public class JavaParser extends Parser {
 			setState(719);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & -4613646307401121496L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & -4613646307401121496L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 				{
 				setState(711);
 				elementValue();
@@ -4778,7 +4778,7 @@ public class JavaParser extends Parser {
 			setState(735);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 638740960985898L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858305L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 638740960985898L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141941858305L) != 0)) {
 				{
 				{
 				setState(732);
@@ -5308,7 +5308,7 @@ public class JavaParser extends Parser {
 			setState(791);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & -4612354526992372930L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141942841569L) != 0) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & -4612354526992372930L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141942841569L) != 0)) {
 				{
 				{
 				setState(788);
@@ -5538,7 +5538,7 @@ public class JavaParser extends Parser {
 				setState(815);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (((_la) & ~0x3f) == 0 && ((1L << _la) & 884763525122L) != 0 || _la==AT) {
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 884763525122L) != 0) || _la==AT) {
 					{
 					{
 					setState(812);
@@ -5929,7 +5929,7 @@ public class JavaParser extends Parser {
 				setState(905);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 					{
 					setState(904);
 					expression(0);
@@ -6509,7 +6509,7 @@ public class JavaParser extends Parser {
 				setState(989); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( ((_la) & ~0x3f) == 0 && ((1L << _la) & -4612354526992372930L) != 0 || (((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141942841569L) != 0 );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & -4612354526992372930L) != 0) || ((((_la - 67)) & ~0x3f) == 0 && ((1L << (_la - 67)) & 18141942841569L) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -6668,7 +6668,7 @@ public class JavaParser extends Parser {
 				setState(1003);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453916456L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453916456L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 					{
 					setState(1002);
 					forInit();
@@ -6680,7 +6680,7 @@ public class JavaParser extends Parser {
 				setState(1007);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 					{
 					setState(1006);
 					expression(0);
@@ -6692,7 +6692,7 @@ public class JavaParser extends Parser {
 				setState(1011);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 					{
 					setState(1010);
 					((ForControlContext)_localctx).forUpdate = expressionList();
@@ -7140,7 +7140,7 @@ public class JavaParser extends Parser {
 				setState(1051);
 				((ExpressionContext)_localctx).prefix = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !((((_la - 83)) & ~0x3f) == 0 && ((1L << (_la - 83)) & 15L) != 0) ) {
+				if ( !(((((_la - 83)) & ~0x3f) == 0 && ((1L << (_la - 83)) & 15L) != 0)) ) {
 					((ExpressionContext)_localctx).prefix = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -7254,7 +7254,7 @@ public class JavaParser extends Parser {
 						setState(1075);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & 35L) != 0) ) {
+						if ( !(((((_la - 87)) & ~0x3f) == 0 && ((1L << (_la - 87)) & 35L) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -7336,7 +7336,7 @@ public class JavaParser extends Parser {
 						setState(1092);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la - 71)) & ~0x3f) == 0 && ((1L << (_la - 71)) & 387L) != 0) ) {
+						if ( !(((((_la - 71)) & ~0x3f) == 0 && ((1L << (_la - 71)) & 387L) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -7454,7 +7454,7 @@ public class JavaParser extends Parser {
 						setState(1119);
 						((ExpressionContext)_localctx).bop = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la - 70)) & ~0x3f) == 0 && ((1L << (_la - 70)) & 17171480577L) != 0) ) {
+						if ( !(((((_la - 70)) & ~0x3f) == 0 && ((1L << (_la - 70)) & 17171480577L) != 0)) ) {
 							((ExpressionContext)_localctx).bop = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -7551,7 +7551,7 @@ public class JavaParser extends Parser {
 						setState(1143);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
-						if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 							{
 							setState(1142);
 							expressionList();
@@ -7745,7 +7745,7 @@ public class JavaParser extends Parser {
 				setState(1169);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if (((_la) & ~0x3f) == 0 && ((1L << _la) & 138111369512L) != 0 || _la==AT || _la==IDENTIFIER) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 138111369512L) != 0) || _la==AT || _la==IDENTIFIER) {
 					{
 					setState(1168);
 					formalParameterList();
@@ -9076,7 +9076,7 @@ public class JavaParser extends Parser {
 			{
 			setState(1330);
 			_la = _input.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 138111107368L) != 0) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 138111107368L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -9353,7 +9353,7 @@ public class JavaParser extends Parser {
 			setState(1359);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0 || (((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4609725729453654312L) != 0) || ((((_la - 72)) & ~0x3f) == 0 && ((1L << (_la - 72)) & 566935713799L) != 0)) {
 				{
 				setState(1358);
 				expressionList();

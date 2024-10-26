@@ -20,75 +20,77 @@ import java.util.stream.Collectors;
 import static java.util.Objects.nonNull;
 
 public class CppAstBuilder extends CPP14ParserBaseVisitor<Node> {
-  private final CommonTokenStream tokenStream;
 
-  public CppAstBuilder(CommonTokenStream tokenStream) {
-    this.tokenStream = tokenStream;
-  }
+	private final CommonTokenStream tokenStream;
 
-  @Override
-  public Node visitSimpleDeclaration(CPP14Parser.SimpleDeclarationContext ctx) {
-    ctx.declSpecifierSeq();
-    ctx.initDeclaratorList();
-    ctx.attributeSpecifierSeq();
-    return super.visitSimpleDeclaration(ctx);
-  }
+	public CppAstBuilder(CommonTokenStream tokenStream) {
+		this.tokenStream = tokenStream;
+	}
 
-  @Override
-  public AttributeSpecifiers visitAttributeSpecifierSeq(CPP14Parser.AttributeSpecifierSeqContext ctx) {
-    var specifiers = visit(ctx.attributeSpecifier(), AttributeSpecifier.class);
-    return new AttributeSpecifiers(specifiers);
-  }
+	@Override
+	public Node visitSimpleDeclaration(CPP14Parser.SimpleDeclarationContext ctx) {
+		ctx.declSpecifierSeq();
+		ctx.initDeclaratorList();
+		ctx.attributeSpecifierSeq();
+		return super.visitSimpleDeclaration(ctx);
+	}
 
-  @Override
-  public DeclSpecifiers visitDeclSpecifierSeq(CPP14Parser.DeclSpecifierSeqContext ctx) {
-    var specifiers = visit(ctx.declSpecifier(), DeclSpecifier.class);
-    return new DeclSpecifiers(specifiers);
-  }
+	@Override
+	public AttributeSpecifiers visitAttributeSpecifierSeq(CPP14Parser.AttributeSpecifierSeqContext ctx) {
+		var specifiers = visit(ctx.attributeSpecifier(), AttributeSpecifier.class);
+		return new AttributeSpecifiers(specifiers);
+	}
 
-  @Override
-  public Node visitDeclSpecifier(CPP14Parser.DeclSpecifierContext ctx) {
-    ctx.functionSpecifier();
-    return super.visitDeclSpecifier(ctx);
-  }
+	@Override
+	public DeclSpecifiers visitDeclSpecifierSeq(CPP14Parser.DeclSpecifierSeqContext ctx) {
+		var specifiers = visit(ctx.declSpecifier(), DeclSpecifier.class);
+		return new DeclSpecifiers(specifiers);
+	}
 
-  @Override
-  public Node visitBlockDeclaration(CPP14Parser.BlockDeclarationContext ctx) {
-    ctx.simpleDeclaration();
-    return super.visitBlockDeclaration(ctx);
-  }
+	@Override
+	public Node visitDeclSpecifier(CPP14Parser.DeclSpecifierContext ctx) {
+		ctx.functionSpecifier();
+		return super.visitDeclSpecifier(ctx);
+	}
 
-  @Override
-  public Declarations visitDeclarationseq(CPP14Parser.DeclarationseqContext ctx) {
-    var ds = visit(ctx.declaration(), Declaration.class);
-    return new Declarations(ds);
-  }
+	@Override
+	public Node visitBlockDeclaration(CPP14Parser.BlockDeclarationContext ctx) {
+		ctx.simpleDeclaration();
+		return super.visitBlockDeclaration(ctx);
+	}
 
-  @Override
-  public Program visitTranslationUnit(CPP14Parser.TranslationUnitContext ctx) {
-    var seq = visitIfPresent(ctx.declarationseq(), Declarations.class);
-    return new Program(seq);
-  }
+	@Override
+	public Declarations visitDeclarationseq(CPP14Parser.DeclarationseqContext ctx) {
+		var ds = visit(ctx.declaration(), Declaration.class);
+		return new Declarations(ds);
+	}
 
-  private <R> R visitIfPresent(ParserRuleContext context, Class<R> clazz) {
-    if (nonNull(context)) {
-      return visit(context, clazz);
-    }
-    return null;
-  }
+	@Override
+	public Program visitTranslationUnit(CPP14Parser.TranslationUnitContext ctx) {
+		var seq = visitIfPresent(ctx.declarationseq(), Declarations.class);
+		return new Program(seq);
+	}
 
-  private <R> R visit(ParserRuleContext context, Class<R> clazz) {
-    return clazz.cast(visit(context));
-  }
+	private <R> R visitIfPresent(ParserRuleContext context, Class<R> clazz) {
+		if (nonNull(context)) {
+			return visit(context, clazz);
+		}
+		return null;
+	}
 
-  private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
-    if (null != contexts) {
-      return contexts.stream()
-        .map(this::visit)
-        .filter(Objects::nonNull)
-        .map(clazz::cast)
-        .collect(Collectors.toList());
-    }
-    return Collections.emptyList();
-  }
+	private <R> R visit(ParserRuleContext context, Class<R> clazz) {
+		return clazz.cast(visit(context));
+	}
+
+	private <C extends ParserRuleContext, R extends Node> List<R> visit(List<C> contexts, Class<R> clazz) {
+		if (null != contexts) {
+			return contexts.stream()
+				.map(this::visit)
+				.filter(Objects::nonNull)
+				.map(clazz::cast)
+				.collect(Collectors.toList());
+		}
+		return Collections.emptyList();
+	}
+
 }

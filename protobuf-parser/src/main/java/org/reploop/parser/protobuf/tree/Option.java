@@ -11,5 +11,7 @@ import org.slf4j.LoggerFactory;
  * @since 2015-10-24 22
  */
 public abstract class Option extends Node {
-    private static final Logger LOG = LoggerFactory.getLogger(Option.class);
+
+	private static final Logger LOG = LoggerFactory.getLogger(Option.class);
+
 }

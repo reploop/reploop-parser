@@ -7,33 +7,35 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListValue extends Value {
-    List<Node> values;
 
-    public ListValue(List<Node> values) {
-        this.values = values;
-    }
+	final List<Node> values;
 
-    public List<Node> getValues() {
-        return values;
-    }
+	public ListValue(List<Node> values) {
+		this.values = values;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ListValue listValue = (ListValue) o;
-        return Objects.equals(values, listValue.values);
-    }
+	public List<Node> getValues() {
+		return values;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(values);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		ListValue listValue = (ListValue) o;
+		return Objects.equals(values, listValue.values);
+	}
 
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("values", values)
-            .toString();
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(values);
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("values", values).toString();
+	}
+
 }
