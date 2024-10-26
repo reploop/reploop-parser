@@ -133,7 +133,7 @@ public class ClassHierarchy {
 			}
 
 			// Rewrite same entities
-			if (same.size() > 0) {
+			if (!same.isEmpty()) {
 				rewrite(messageMap, same);
 			}
 			messageMap.put(name, parent);
@@ -148,7 +148,7 @@ public class ClassHierarchy {
 			.collect(Collectors.toList());
 
 		List<String> parts = new ArrayList<>();
-		for (int i = 0; names.size() > 0; i++) {
+		for (int i = 0; !names.isEmpty(); i++) {
 			String part = null;
 			boolean samePrefix = true;
 			for (QualifiedName qn : names) {

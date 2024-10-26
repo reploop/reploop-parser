@@ -28,7 +28,7 @@ import java.util.Set;
  */
 public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoProgram>> {
 
-	private Set<Service> services = new HashSet<>();
+	private final Set<Service> services = new HashSet<>();
 
 	@Override
 	public Node visitNode(Node node, Classpath<ProtoProgram> context) {
@@ -37,12 +37,12 @@ public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoPro
 
 	private static final Splitter COMMA_SPLITTER = Splitter.on(",").omitEmptyStrings().trimResults();
 
-	private Map<QualifiedName, Function> functions = new HashMap<>();
+	private final Map<QualifiedName, Function> functions = new HashMap<>();
 
 	@Override
 	public Message visitMessage(Message node, Classpath<ProtoProgram> context) {
 		List<Option> options = node.getOptions();
-		if (null != options && options.size() > 0) {
+		if (null != options && !options.isEmpty()) {
 			List<String> methods = new ArrayList<>();
 			FieldType requestType = null, responseType = null;
 			for (Option option : options) {
@@ -106,7 +106,7 @@ public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoPro
 		if (null != messages) {
 			// Visit all messages
 			messages.forEach(message -> visitMessage(message, context));
-			if (functions.size() > 0) {
+			if (!functions.isEmpty()) {
 				ProtoProgram program = context.entity(context.current());
 				QualifiedName name = QualifiedName.of(program.getOuterClassName());
 				Service service = null;
@@ -124,7 +124,7 @@ public class ProtobufServiceResolver extends AstVisitor<Node, Classpath<ProtoPro
 				}
 			}
 			// If we find any service definitions
-			if (services.size() > 0) {
+			if (!services.isEmpty()) {
 				ImmutableList.Builder<Service> sb = new ImmutableList.Builder<>();
 				List<Service> list = node.getServices();
 				if (null != list) {

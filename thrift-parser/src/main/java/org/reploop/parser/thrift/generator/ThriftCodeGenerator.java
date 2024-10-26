@@ -50,9 +50,9 @@ public class ThriftCodeGenerator extends AstVisitor<StringBuilder, GeneratorCont
 		return content;
 	}
 
-	private StringBuilder append(char value) {
-		return content.append(value);
-	}
+	private void append(char value) {
+        content.append(value);
+    }
 
 	private StringBuilder append(String value) {
 		return content.append(value);
@@ -106,7 +106,7 @@ public class ThriftCodeGenerator extends AstVisitor<StringBuilder, GeneratorCont
 		content.append(")");
 		Optional<List<Field>> exceptions = node.getExceptions();
 		exceptions.ifPresent(exceptionTable -> {
-			if (exceptionTable.size() > 0) {
+			if (!exceptionTable.isEmpty()) {
 				for (int i = 0; i < exceptionTable.size(); i++) {
 					if (i == 0) {
 						indent(ONE_INDENT_CONTEXT).append("throws");
@@ -159,14 +159,13 @@ public class ThriftCodeGenerator extends AstVisitor<StringBuilder, GeneratorCont
 		return content;
 	}
 
-	private StringBuilder comments(List<String> comments, GeneratorContext context) {
-		if (null != comments && comments.size() > 0) {
+	private void comments(List<String> comments, GeneratorContext context) {
+		if (null != comments && !comments.isEmpty()) {
 			for (String comment : comments) {
 				indent(context).append(comment).append(NEW_LINE);
 			}
 		}
-		return content;
-	}
+    }
 
 	private String name(Service node) {
 		return node.getName().suffix() + "Adapter";

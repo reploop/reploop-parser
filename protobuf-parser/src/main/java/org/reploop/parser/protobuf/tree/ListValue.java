@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class ListValue extends Value {
 
-	List<Node> values;
+	final List<Node> values;
 
 	public ListValue(List<Node> values) {
 		this.values = values;

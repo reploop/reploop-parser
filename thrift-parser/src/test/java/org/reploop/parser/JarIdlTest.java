@@ -32,7 +32,7 @@ public class JarIdlTest {
 	ThriftParser thriftParser;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		thriftParser = new ThriftParser();
 		finder = new JarFinder();
 		filter = new FileExtensionFilter("proto", "thrift");
@@ -103,7 +103,7 @@ public class JarIdlTest {
 	}
 
 	@Test
-	public void testIDL() throws Exception {
+	public void testIDL() {
 
 	}
 

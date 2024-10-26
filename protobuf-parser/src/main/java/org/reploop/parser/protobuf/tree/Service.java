@@ -15,11 +15,11 @@ import java.util.Objects;
  */
 public class Service extends Node {
 
-	private QualifiedName name;
+	private final QualifiedName name;
 
-	private List<Option> options;
+	private final List<Option> options;
 
-	private List<Function> functions;
+	private final List<Function> functions;
 
 	public Service(QualifiedName name, List<Option> options, List<Function> functions) {
 		this.name = name;

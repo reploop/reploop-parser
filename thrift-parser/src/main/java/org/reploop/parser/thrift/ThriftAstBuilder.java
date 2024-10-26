@@ -28,7 +28,7 @@ import static org.reploop.parser.thrift.base.ThriftBaseParser.*;
  */
 public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
 
-	private CommonTokenStream tokens;
+	private final CommonTokenStream tokens;
 
 	public ThriftAstBuilder(CommonTokenStream tokens) {
 		this.tokens = tokens;
@@ -38,7 +38,7 @@ public class ThriftAstBuilder extends ThriftBaseBaseVisitor<Node> {
 		return CommentHelper.comments(token, ThriftBaseLexer.HIDDEN, leftComment);
 	}
 
-	private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
+	private final BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
 		@Override
 		public List<Token> apply(Token token, Integer channel) {
 			if (null != tokens) {

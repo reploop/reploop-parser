@@ -16,9 +16,9 @@ public class Enumeration extends Entity {
 
 	QualifiedName name;
 
-	List<EnumField> fields;
+	final List<EnumField> fields;
 
-	List<String> comments;
+	final List<String> comments;
 
 	public Enumeration(QualifiedName name, List<String> comments, List<EnumField> fields) {
 		super(name);

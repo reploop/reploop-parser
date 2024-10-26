@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Struct extends Entity {
 
-	private List<Field> fields;
+	private final List<Field> fields;
 
 	public Struct(List<String> comments, QualifiedName name, List<Field> fields) {
 		super(name, comments);

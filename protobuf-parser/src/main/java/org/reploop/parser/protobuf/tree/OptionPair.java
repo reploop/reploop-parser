@@ -12,9 +12,9 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class OptionPair extends Pair {
 
-	String name;
+	final String name;
 
-	String attr;
+	final String attr;
 
 	public OptionPair(String name, Value value) {
 		super(name, value);

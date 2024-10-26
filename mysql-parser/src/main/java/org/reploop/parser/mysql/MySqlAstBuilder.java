@@ -29,7 +29,7 @@ import static java.util.Objects.nonNull;
 
 public class MySqlAstBuilder extends MySQLParserBaseVisitor<Node> {
 
-	TokenStream tokenStream;
+	final TokenStream tokenStream;
 
 	public MySqlAstBuilder(TokenStream tokenStream) {
 		this.tokenStream = tokenStream;

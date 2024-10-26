@@ -12,7 +12,7 @@ public class JsonMessageContextTest {
 	private MessageContext context;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		context = new MessageContext();
 		String expected = "$.log.entries.response.content.text";
 		context.configureJsonRawValue(expected);

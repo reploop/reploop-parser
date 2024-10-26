@@ -12,7 +12,7 @@ public class NameFormatTest {
 	NameFormat format;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		format = new NameFormat();
 	}
 

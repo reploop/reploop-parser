@@ -2,9 +2,9 @@ package org.reploop.translator.json.support;
 
 public class Rect {
 
-	Point lt;
+	final Point lt;
 
-	Point rb;
+	final Point rb;
 
 	public Rect(Point lt, Point rb) {
 		this.lt = lt;

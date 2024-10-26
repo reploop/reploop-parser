@@ -11,7 +11,7 @@ import org.reploop.parser.protobuf.Node;
  */
 public abstract class Entity extends Node {
 
-	protected QualifiedName name;
+	protected final QualifiedName name;
 
 	public Entity(QualifiedName name) {
 		this.name = name;

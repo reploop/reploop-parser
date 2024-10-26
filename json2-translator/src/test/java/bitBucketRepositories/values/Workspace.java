@@ -1,6 +1,5 @@
 package bitBucketRepositories.values;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;

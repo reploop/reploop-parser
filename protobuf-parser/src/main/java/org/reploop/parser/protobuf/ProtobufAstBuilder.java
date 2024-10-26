@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  */
 public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
 
-	CommonTokenStream tokens;
+	final CommonTokenStream tokens;
 
 	public ProtobufAstBuilder(CommonTokenStream tokens) {
 		this.tokens = tokens;
@@ -51,7 +51,7 @@ public class ProtobufAstBuilder extends Protobuf2BaseVisitor<Node> {
 		return new Extend(QualifiedName.of(name), fields);
 	}
 
-	private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
+	private final BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
 		@Override
 		public List<Token> apply(Token token, Integer channel) {
 			if (null != tokens) {

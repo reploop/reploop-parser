@@ -40,7 +40,7 @@ public class GoGenerator extends AstVisitor<Node, BeanContext> {
 	}
 
 	private void comments(List<String> comments, BeanContext context) {
-		if (null != comments && comments.size() > 0) {
+		if (null != comments && !comments.isEmpty()) {
 			comments.forEach(c -> context.append(c).newLine());
 		}
 	}

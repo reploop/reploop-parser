@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MessageInfer {
 
-	Map<QualifiedName, Integer> nameIndexMap = new HashMap<>();
+	final Map<QualifiedName, Integer> nameIndexMap = new HashMap<>();
 
-	Map<Integer, QualifiedName> indexNameMap = new HashMap<>();
+	final Map<Integer, QualifiedName> indexNameMap = new HashMap<>();
 
-	Map<Field, Integer> fieldIndexMap = new HashMap<>();
+	final Map<Field, Integer> fieldIndexMap = new HashMap<>();
 
-	Map<Integer, Field> indexFieldMap = new HashMap<>();
+	final Map<Integer, Field> indexFieldMap = new HashMap<>();
 
 	public Optional<Rect> maxArea(Map<QualifiedName, Message> messageMap) {
 		// message and field name to index

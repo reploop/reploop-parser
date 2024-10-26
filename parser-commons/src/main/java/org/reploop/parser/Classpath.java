@@ -33,9 +33,9 @@ public class Classpath<E> {
 	private Path current;
 
 	// All entities a file contains.
-	private Map<Path, E> entities = new HashMap<>();
+	private final Map<Path, E> entities = new HashMap<>();
 
-	private Map<Path, Set<QualifiedName>> names = new HashMap<>();
+	private final Map<Path, Set<QualifiedName>> names = new HashMap<>();
 
 	// File and files included by the file.
 	private Map<Path, Set<Path>> files = new HashMap<>();
@@ -56,12 +56,11 @@ public class Classpath<E> {
 		return names;
 	}
 
-	public Map<Path, Set<QualifiedName>> names(Map<Path, Set<QualifiedName>> names) {
+	public void names(Map<Path, Set<QualifiedName>> names) {
 		if (null != names) {
 			this.names.putAll(names);
 		}
-		return this.names;
-	}
+    }
 
 	public void clear() {
 		names.clear();

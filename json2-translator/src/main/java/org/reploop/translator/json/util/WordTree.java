@@ -180,7 +180,7 @@ public class WordTree implements WordSplit {
 				stack.push('_');
 			}
 			List<TreeNode> children = tree.getChildren();
-			if (null != children && children.size() > 0) {
+			if (null != children && !children.isEmpty()) {
 				for (TreeNode node : children) {
 					travel(node, stack, writer);
 					stack.pop();

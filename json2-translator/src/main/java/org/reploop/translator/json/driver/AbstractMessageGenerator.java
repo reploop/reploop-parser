@@ -1,7 +1,6 @@
 package org.reploop.translator.json.driver;
 
 import com.google.common.base.CaseFormat;
-import com.google.common.base.Converter;
 import com.google.common.base.Strings;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
@@ -26,9 +25,6 @@ import static java.nio.file.StandardOpenOption.WRITE;
 public abstract class AbstractMessageGenerator implements MessageGenerator {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AbstractMessageGenerator.class);
-
-	private static final Converter<String, String> UC_LD = CaseFormat.UPPER_CAMEL
-		.converterTo(CaseFormat.LOWER_UNDERSCORE);
 
 	private static final FieldPushDown fieldPushDown = new FieldPushDown();
 

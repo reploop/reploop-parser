@@ -3,8 +3,6 @@ package org.reploop.translator.json;
 import com.github.rvesse.airline.annotations.Cli;
 import com.github.rvesse.airline.help.Help;
 
-import java.io.IOException;
-
 /**
  * https://rvesse.github.io/airline/
  */
@@ -13,7 +11,7 @@ import java.io.IOException;
 				Json2ThriftCommand.class, Json2AvroCommand.class, Help.class })
 public class Json2App {
 
-	public static void main(String... args) throws IOException {
+	public static void main(String... args) {
 		com.github.rvesse.airline.Cli<Runnable> cli = new com.github.rvesse.airline.Cli<>(Json2App.class);
 		Runnable cmd = cli.parse(args);
 		cmd.run();

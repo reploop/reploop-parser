@@ -16,19 +16,19 @@ import java.util.Optional;
  */
 public class Field extends Node {
 
-	FieldModifier modifier;
+	final FieldModifier modifier;
 
-	Integer index;
+	final Integer index;
 
-	String name;
+	final String name;
 
-	FieldType type;
+	final FieldType type;
 
-	Optional<Value> value;
+	final Optional<Value> value;
 
-	List<String> comments;
+	final List<String> comments;
 
-	List<Option> options;
+	final List<Option> options;
 
 	public Field(FieldModifier modifier, Integer index, String name, FieldType type) {
 		this(modifier, index, name, type, Optional.empty(), Collections.emptyList(), Collections.emptyList());

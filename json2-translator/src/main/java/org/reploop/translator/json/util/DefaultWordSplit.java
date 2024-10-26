@@ -5,8 +5,6 @@ import java.net.URISyntaxException;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.function.ToIntFunction;
 
 public class DefaultWordSplit implements WordSplit {
@@ -50,30 +48,15 @@ public class DefaultWordSplit implements WordSplit {
 			.filter(State::isFinalState)
 			.sorted(Comparator.comparingInt(o -> o.label))
 			.distinct()
-			.forEach(new Consumer<State>() {
-				@Override
-				public void accept(State state) {
-					sb.append(name(state)).append(" ").append("[shape = doublecircle];\r\n");
-				}
-			});
+			.forEach(state -> sb.append(name(state)).append(" ").append("[shape = doublecircle];\r\n"));
 		sb.append("\r\n");
-		stateTransit.forEach(new BiConsumer<>() {
-			@Override
-			public void accept(State from, Map<Character, State> next) {
-				next.forEach(new BiConsumer<>() {
-					@Override
-					public void accept(Character c, State to) {
-						sb.append(name(from))
-							.append(" -> ")
-							.append(name(to))
-							.append(" [ label = ")
-							.append(c)
-							.append(" ];")
-							.append("\r\n");
-					}
-				});
-			}
-		});
+		stateTransit.forEach((from, next) -> next.forEach((c, to) -> sb.append(name(from))
+.append(" -> ")
+.append(name(to))
+.append(" [ label = ")
+.append(c)
+.append(" ];")
+.append("\r\n")));
 		sb.append("}");
 		System.out.println(sb);
 	}
@@ -157,7 +140,7 @@ public class DefaultWordSplit implements WordSplit {
 			List<String> prefixes = new ArrayList<>();
 			prefixes.add(prefix);
 			String suffix = org.substring(prefix.length());
-			if (0 != suffix.length()) {
+			if (!suffix.isEmpty()) {
 				List<String> left = split(suffix);
 				prefixes.addAll(left);
 			}

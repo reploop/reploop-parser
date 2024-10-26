@@ -25,7 +25,7 @@ public class ThriftCodeGeneratorTest {
 	ThriftCodeGenerator generator;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		parser = new ThriftParser();
 		generator = new ThriftCodeGenerator();
 	}

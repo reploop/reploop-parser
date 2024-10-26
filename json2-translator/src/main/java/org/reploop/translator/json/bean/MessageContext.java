@@ -145,9 +145,9 @@ public class MessageContext {
 		return addMessages(Collections.singletonList(message));
 	}
 
-	public MessageContext addNamedMessage(QualifiedName name, Message message) {
-		return addNamedMessage(name, Collections.singletonList(message));
-	}
+	public void addNamedMessage(QualifiedName name, Message message) {
+        addNamedMessage(name, Collections.singletonList(message));
+    }
 
 	public MessageContext addNamedMessage(QualifiedName name, List<Message> messages) {
 		if (namedMessages == null) {

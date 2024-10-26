@@ -22,7 +22,7 @@ public class WrapperType extends FieldType {
 		super(name);
 	}
 
-	public WrapperType(Class type) {
+	public WrapperType(Class<?> type) {
 		this(type.getName());
 	}
 

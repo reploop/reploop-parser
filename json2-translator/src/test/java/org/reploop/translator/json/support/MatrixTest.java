@@ -22,17 +22,7 @@ public class MatrixTest {
 			}
 		}
 		matrix.computeScore();
-		matrix.sort(new SwapListener() {
-			@Override
-			public void swap(int i, int j) {
-				System.out.printf("Row: %d<->%d%n", i, j);
-			}
-		}, new SwapListener() {
-			@Override
-			public void swap(int i, int j) {
-				System.out.printf("Column: %d<->%d%n", i, j);
-			}
-		});
+		matrix.sort((i, j) -> System.out.printf("Row: %d<->%d%n", i, j), (i, j) -> System.out.printf("Column: %d<->%d%n", i, j));
 		matrix.print();
 
 		matrix.maxArea();

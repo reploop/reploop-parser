@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Include extends Header {
 
-	String file;
+	final String file;
 
 	public Include(String file) {
 		this.file = file;

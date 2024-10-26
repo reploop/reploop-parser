@@ -6,7 +6,7 @@ import org.reploop.parser.java.base.JavaParserBaseVisitor;
 
 public class JavaAstBuilder extends JavaParserBaseVisitor<Node> {
 
-	TokenStream tokenStream;
+	final TokenStream tokenStream;
 
 	public JavaAstBuilder(TokenStream tokenStream) {
 		this.tokenStream = tokenStream;

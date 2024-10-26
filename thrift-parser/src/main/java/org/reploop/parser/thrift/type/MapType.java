@@ -15,9 +15,9 @@ public class MapType extends FieldType {
 		return visitor.visitMapType(this, context);
 	}
 
-	FieldType keyType;
+	final FieldType keyType;
 
-	FieldType valueType;
+	final FieldType valueType;
 
 	public MapType(FieldType keyType, FieldType valueType) {
 		super("Map");

@@ -13,7 +13,7 @@ import java.util.EnumSet;
  */
 public class NamespaceScope extends Node {
 
-	EnumSet<Lang> scopes;
+	final EnumSet<Lang> scopes;
 
 	public NamespaceScope(EnumSet<Lang> scopes) {
 		this.scopes = scopes;

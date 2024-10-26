@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Raise extends Node {
 
-	List<Field> fields;
+	final List<Field> fields;
 
 	public Raise(List<Field> fields) {
 		this.fields = fields;

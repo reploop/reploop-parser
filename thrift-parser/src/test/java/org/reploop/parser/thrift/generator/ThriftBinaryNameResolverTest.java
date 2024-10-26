@@ -11,7 +11,7 @@ import org.junit.Test;
 public class ThriftBinaryNameResolverTest {
 
 	@Test
-	public void visitProgram() throws Exception {
+	public void visitProgram() {
 
 	}
 

@@ -10,9 +10,9 @@ import java.util.Objects;
  */
 public abstract class Pair extends Option {
 
-	protected String key;
+	protected final String key;
 
-	protected Value value;
+	protected final Value value;
 
 	public Pair(String key, Value value) {
 		this.key = key;

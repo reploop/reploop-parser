@@ -18,7 +18,7 @@ public class FileExtensionFilter implements FilenameFilter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(FileExtensionFilter.class);
 
-	private Set<String> extensions = new HashSet<>();
+	private final Set<String> extensions = new HashSet<>();
 
 	public FileExtensionFilter(String... extensions) {
 		for (String ext : extensions) {

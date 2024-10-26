@@ -18,7 +18,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -279,15 +278,12 @@ public class ProtoGenerator extends AstVisitor<Node, BeanContext> {
 			.filter(o -> o instanceof CommonPair)
 			.map(o -> (CommonPair) o)
 			.collect(Collectors.groupingBy(CommonPair::getKey,
-					Collectors.reducing(null, new BinaryOperator<CommonPair>() {
-						@Override
-						public CommonPair apply(CommonPair pair1, CommonPair pair2) {
-							if (null != pair1) {
-								return pair1;
-							}
-							return pair2;
-						}
-					})));
+					Collectors.reducing(null, (pair1, pair2) -> {
+                        if (null != pair1) {
+                            return pair1;
+                        }
+                        return pair2;
+                    })));
 		if (!pairs.isEmpty()) {
 			QualifiedName eqn = QualifiedName.of("google.protobuf.FieldOptions");
 			var fb = ImmutableList.<Field>builder();

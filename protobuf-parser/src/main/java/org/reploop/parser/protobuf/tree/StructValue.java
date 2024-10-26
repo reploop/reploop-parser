@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class StructValue extends Value {
 
-	QualifiedName name;
+	final QualifiedName name;
 
 	public StructValue(String name) {
 		this(QualifiedName.of(name));

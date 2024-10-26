@@ -23,7 +23,7 @@ public class WordDict {
 			.collect(Collectors.toUnmodifiableSet());
 	}
 
-	public static Set<String> words(String resource) throws URISyntaxException, IOException {
+	public static Set<String> words(String resource) throws IOException {
 		// Read file as stream, so we can read it from any classpath location including
 		// file system, jar etc.
 		InputStream input = NameFormat.class.getResourceAsStream(resource);

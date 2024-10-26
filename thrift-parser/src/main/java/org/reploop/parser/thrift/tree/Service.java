@@ -16,9 +16,9 @@ import java.util.Optional;
  */
 public class Service extends Entity {
 
-	Optional<QualifiedName> parent;
+	final Optional<QualifiedName> parent;
 
-	List<Function> functions;
+	final List<Function> functions;
 
 	public Service(QualifiedName name, List<String> comments, List<Function> functions) {
 		this(Optional.empty(), name, comments, functions);

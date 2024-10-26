@@ -13,11 +13,11 @@ import java.util.Objects;
  */
 public class EnumField extends Node {
 
-	List<String> comments;
+	final List<String> comments;
 
-	String name;
+	final String name;
 
-	Integer index;
+	final Integer index;
 
 	public EnumField(List<String> comments, String name, Integer index) {
 		this.comments = comments;

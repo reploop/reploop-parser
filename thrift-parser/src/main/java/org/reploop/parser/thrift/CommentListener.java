@@ -17,9 +17,9 @@ import java.util.List;
  */
 public class CommentListener extends ThriftBaseBaseListener {
 
-	BufferedTokenStream tokens;
+	final BufferedTokenStream tokens;
 
-	TokenStreamRewriter rewriter;
+	final TokenStreamRewriter rewriter;
 
 	public CommentListener(BufferedTokenStream tokens) {
 		this.tokens = tokens;

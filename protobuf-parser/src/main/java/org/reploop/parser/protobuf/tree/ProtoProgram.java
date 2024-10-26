@@ -19,17 +19,17 @@ public class ProtoProgram extends Node {
 
 	private Path file;
 
-	private List<String> comments;
+	private final List<String> comments;
 
-	private List<Option> options;
+	private final List<Option> options;
 
-	private List<Header> headers;
+	private final List<Header> headers;
 
-	private List<Message> messages;
+	private final List<Message> messages;
 
-	private List<Enumeration> enumerations;
+	private final List<Enumeration> enumerations;
 
-	private List<Service> services;
+	private final List<Service> services;
 
 	public ProtoProgram(List<String> comments, List<Option> options, List<Header> headers, List<Message> messages,
 			List<Enumeration> enumerations, List<Service> services) {

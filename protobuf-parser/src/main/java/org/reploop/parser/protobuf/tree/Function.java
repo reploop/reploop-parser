@@ -16,13 +16,13 @@ import java.util.Objects;
  */
 public class Function extends Node {
 
-	private QualifiedName name;
+	private final QualifiedName name;
 
-	private FieldType requestType;
+	private final FieldType requestType;
 
-	private FieldType responseType;
+	private final FieldType responseType;
 
-	private List<Option> options;
+	private final List<Option> options;
 
 	public Function(QualifiedName name, FieldType requestType, FieldType responseType, List<Option> options) {
 		this.name = name;

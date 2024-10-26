@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class IntValue extends Value {
 
-	Integer value;
+	final Integer value;
 
 	public IntValue(Integer value) {
 		this.value = value;

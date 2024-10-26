@@ -13,7 +13,7 @@ public class WordTreeTest {
 	WordTree wt;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		wt = new WordTree("/ws.txt");
 	}
 

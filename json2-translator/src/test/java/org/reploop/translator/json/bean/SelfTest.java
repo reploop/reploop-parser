@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class SelfTest {
 
-	ObjectMapper mapper = new ObjectMapper();
+	final ObjectMapper mapper = new ObjectMapper();
 
 	{
 		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

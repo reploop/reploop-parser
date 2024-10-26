@@ -28,7 +28,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
  */
 public class ThriftClasspathResolver extends AstVisitor<Node, Classpath<ThriftProgram>> {
 
-	private ThriftParser parser;
+	private final ThriftParser parser;
 
 	public ThriftClasspathResolver(ThriftParser parser) {
 		this.parser = parser;

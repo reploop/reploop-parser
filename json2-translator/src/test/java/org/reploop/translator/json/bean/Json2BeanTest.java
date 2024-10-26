@@ -269,7 +269,7 @@ public class Json2BeanTest {
 	}
 
 	@Test
-	public void testRawJsonValue() throws Exception {
+	public void testRawJsonValue() {
 		String val = "\"{\\\"code\\\":200,\\\"result\\\":[{\\\"id\\\":-1,\\\"emojiPackageName\\\":\\\"系统默认\\\",\\\"emojiPackagePicContLen\\\":0,\\\"emojiPackagePicUrl\\\":\\\"\\\",\\\"corpId\\\":0,\\\"emojiPackagePicName\\\":\\\"\\\",\\\"location\\\":null,\\\"dbCreateTime\\\":1548247994000,\\\"dbUpdateTime\\\":1548247994000,\\\"emojiType\\\":2,\\\"status\\\":1,\\\"emojiList\\\":null}],\\\"message\\\":\\\"\\\",\\\"total\\\":1}\"\n";
 		// String val =
 		// "{\"code\":1000,\"result\":[{\"user_id\":\"5566343c63afe\",\"area_id\":\"52c669dae5308\",\"user_gender\":\"2\",\"ser_face\":\"59ba2201a3750.jpg\",\"ser_utime\":\"1566455463\",\"ser_starc\":\"5.0\",\"ser_rmkc\":\"54\",\"user_name\":\"\\u5361\\u5fb7\\u5c14\\u897f\\u65e5\\u90a3\\u4f9d\",\"ser_sort\":\"500\",\"gd_job\":\"\\u6cd5\\u5b66\\u7855\\u58eb\\u5728\\u8bfb\",\"ser_hot\":\"0\",\"area_name\":\"\\u571f\\u8033\\u5176

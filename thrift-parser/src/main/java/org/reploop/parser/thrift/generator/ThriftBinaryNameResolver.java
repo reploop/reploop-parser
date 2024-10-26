@@ -267,7 +267,7 @@ public class ThriftBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftP
 				Optional.of(fb.build()));
 	}
 
-	private Map<QualifiedName, TreeMap<Integer, List<QualifiedName>>> distanceMap = new HashMap<>();
+	private final Map<QualifiedName, TreeMap<Integer, List<QualifiedName>>> distanceMap = new HashMap<>();
 
 	public void set(QualifiedName name, QualifiedName qn, int distance) {
 		distanceMap.computeIfAbsent(name, n -> new TreeMap<>())
@@ -314,12 +314,7 @@ public class ThriftBinaryNameResolver extends AstVisitor<Node, Classpath<ThriftP
 	private Optional<QualifiedName> resolve(QualifiedName name, Classpath<ThriftProgram> context) {
 		distanceMap.clear();
 		Optional<QualifiedName> qn = resolve(name, context, context.current(), new HashSet<>());
-		if (qn.isPresent()) {
-			return qn;
-		}
-		else {
-			return Optional.empty();
-		}
+        return qn;
 	}
 
 	private Optional<QualifiedName> resolve(QualifiedName name, Classpath<ThriftProgram> context, Path file,

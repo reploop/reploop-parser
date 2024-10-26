@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class MySqlDriverTest {
 
-	MySqlDriver driver = new MySqlDriver();
+	final MySqlDriver driver = new MySqlDriver();
 
 	@Test
 	@Ignore

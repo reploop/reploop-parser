@@ -19,9 +19,9 @@ public class Definition extends Node {
 		return visitor.visitDefinition(this, context);
 	}
 
-	Optional<Service> service;
+	final Optional<Service> service;
 
-	Optional<Entity> entity;
+	final Optional<Entity> entity;
 
 	public Definition(Optional<Service> service, Optional<Entity> entity) {
 		this.service = service;

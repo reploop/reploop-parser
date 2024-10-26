@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
 
-	CommonTokenStream tokens;
+	final CommonTokenStream tokens;
 
 	public ProtobufV3AstBuilder(CommonTokenStream tokens) {
 		this.tokens = tokens;
@@ -33,7 +33,7 @@ public class ProtobufV3AstBuilder extends Protobuf3BaseVisitor<Node> {
 		return CommentHelper.comments(token, Protobuf3Lexer.HIDDEN, leftComment);
 	}
 
-	private BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
+	private final BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
 		@Override
 		public List<Token> apply(Token token, Integer channel) {
 			if (null != tokens) {

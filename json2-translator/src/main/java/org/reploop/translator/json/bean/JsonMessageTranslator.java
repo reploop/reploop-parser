@@ -7,7 +7,6 @@ import static org.apache.commons.lang3.math.NumberUtils.isParsable;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJson;
 import static org.reploop.translator.json.support.Constants.DATE_PATTERN;
 import static org.reploop.translator.json.support.Constants.DATE_TIMEZONE;
-import static org.reploop.translator.json.support.NameSupport.IMPORT_LOCAL_DATETIME;
 import static org.reploop.translator.json.support.TypeSupport.isLegalIdentifier;
 import static org.reploop.translator.json.support.TypeSupport.typeNumberSpec;
 

@@ -16,7 +16,7 @@ public class JsonMessageTranslatorTest {
 	private JsonMessageTranslator translator;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		parser = new JsonParser();
 		translator = new JsonMessageTranslator();
 	}

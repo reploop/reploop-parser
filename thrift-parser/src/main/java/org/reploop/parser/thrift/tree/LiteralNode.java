@@ -8,7 +8,7 @@ import org.reploop.parser.thrift.Node;
  */
 public class LiteralNode extends Node {
 
-	String value;
+	final String value;
 
 	public LiteralNode(String value) {
 		this.value = value;

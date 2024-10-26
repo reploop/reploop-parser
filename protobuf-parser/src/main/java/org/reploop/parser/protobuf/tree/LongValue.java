@@ -2,7 +2,7 @@ package org.reploop.parser.protobuf.tree;
 
 public class LongValue extends Value {
 
-	long val;
+	final long val;
 
 	public LongValue(long val) {
 		this.val = val;

@@ -89,7 +89,7 @@ public class ProtobufClasspathResolver extends AstVisitor<Node, Classpath<ProtoP
 	}
 
 	private <E extends Entity> Optional<Field> resolve(List<E> entities, Field field) {
-		if (null != entities && entities.size() > 0) {
+		if (null != entities && !entities.isEmpty()) {
 			FieldType type = field.getType();
 			if (type instanceof StructType) {
 				QualifiedName typeName = type.getName();

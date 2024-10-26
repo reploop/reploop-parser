@@ -12,9 +12,9 @@ import java.util.Objects;
  */
 public class Namespace extends Header {
 
-	NamespaceScope scope;
+	final NamespaceScope scope;
 
-	String namespace;
+	final String namespace;
 
 	public Namespace(NamespaceScope scope, String namespace) {
 		this.scope = scope;

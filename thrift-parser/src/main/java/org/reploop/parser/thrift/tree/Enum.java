@@ -20,7 +20,7 @@ public class Enum extends Entity {
 		return visitor.visitEnum(this, context);
 	}
 
-	private List<EnumField> fields;
+	private final List<EnumField> fields;
 
 	public Enum(String name, List<EnumField> fields) {
 		this(name, Collections.emptyList(), fields);

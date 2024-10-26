@@ -121,7 +121,7 @@ public class Json2Message {
 	 */
 	private void resolveMessageIfUsed(Map<QualifiedName, Message> nameMessageMap, Set<QualifiedName> all,
 			Set<QualifiedName> deps) {
-		if (null != deps && deps.size() > 0) {
+		if (null != deps && !deps.isEmpty()) {
 			for (QualifiedName dep : deps) {
 				// Message exists and did not process
 				// One class can have itself as property types.

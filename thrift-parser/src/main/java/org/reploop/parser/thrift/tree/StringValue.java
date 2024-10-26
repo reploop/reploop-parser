@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class StringValue extends Value {
 
-	String value;
+	final String value;
 
 	public StringValue(String value) {
 		this.value = value;

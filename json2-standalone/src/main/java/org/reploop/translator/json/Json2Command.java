@@ -30,10 +30,12 @@ public class Json2Command implements Runnable {
 
 	@Option(name = { "--enable-root-guess" },
 			description = "Try to guess a reasonable root name from the filename or the API uri given, otherwise $ is used by default.")
-	Boolean enableRootGuess = true;
+    final
+    Boolean enableRootGuess = true;
 
 	@Option(name = { "--enable-fail-fast", "-ff" }, description = "Fail if any error occurred. Default true.")
-	Boolean enableFailFast = true;
+    final
+    Boolean enableFailFast = true;
 
 	@Option(name = { "--namespace", "-n" },
 			description = "The top package or namespace of the source. Add package line to the source. Default is empty.")

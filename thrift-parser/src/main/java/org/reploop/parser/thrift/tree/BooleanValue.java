@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class BooleanValue extends Value {
 
-	Boolean value;
+	final Boolean value;
 
 	public BooleanValue(Boolean value) {
 		this.value = value;

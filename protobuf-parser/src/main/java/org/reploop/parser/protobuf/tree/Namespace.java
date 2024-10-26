@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Namespace extends Header {
 
-	String name;
+	final String name;
 
 	@Override
 	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {

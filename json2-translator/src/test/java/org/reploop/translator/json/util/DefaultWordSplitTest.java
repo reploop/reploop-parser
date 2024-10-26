@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DefaultWordSplitTest {
 
-	DefaultWordSplit dws = new DefaultWordSplit();
+	final DefaultWordSplit dws = new DefaultWordSplit();
 
 	@Before
 	public void setUp() throws Exception {
@@ -15,12 +15,12 @@ public class DefaultWordSplitTest {
 	}
 
 	@Test
-	public void build() throws Exception {
+	public void build() {
 		dws.print();
 	}
 
 	@Test
-	public void parseWord() throws Exception {
+	public void parseWord() {
 		String org = "youref";
 		List<String> words = dws.parseWords(org);
 		System.out.println(words);

@@ -25,9 +25,9 @@ public class GeneratorContext implements Serializable {
 
 	public static final int DEFAULT_INDENT = 4;
 
-	public static GeneratorContext ZERO_INDENT_CONTEXT = new GeneratorContext(0, Collections.emptyMap());
+	public static final GeneratorContext ZERO_INDENT_CONTEXT = new GeneratorContext(0, Collections.emptyMap());
 
-	public static GeneratorContext ONE_INDENT_CONTEXT = new GeneratorContext(1, Collections.emptyMap());
+	public static final GeneratorContext ONE_INDENT_CONTEXT = new GeneratorContext(1, Collections.emptyMap());
 
 	public GeneratorContext(int indent, Map<Service, StringBuilder> services) {
 		this.indent = indent;
@@ -85,9 +85,9 @@ public class GeneratorContext implements Serializable {
 		return this;
 	}
 
-	public GeneratorContext dedent() {
-		return dedent(DEFAULT_INDENT);
-	}
+	public void dedent() {
+        dedent(DEFAULT_INDENT);
+    }
 
 	public GeneratorContext dedent(int dedent) {
 		this.indent -= dedent;

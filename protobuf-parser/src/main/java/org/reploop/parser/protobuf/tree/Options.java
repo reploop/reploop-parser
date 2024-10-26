@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Options extends Node {
 
-	List<Pair> pairs;
+	final List<Pair> pairs;
 
 	public Options(List<Pair> pairs) {
 		this.pairs = pairs;

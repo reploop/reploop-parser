@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 public class Include extends Header {
 
-	String file;
+	final String file;
 
 	@Override
 	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {

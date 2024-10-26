@@ -16,17 +16,17 @@ import java.util.Objects;
  */
 public class Message extends Entity {
 
-	List<String> comments;
+	final List<String> comments;
 
-	List<Field> fields;
+	final List<Field> fields;
 
-	List<Message> messages;
+	final List<Message> messages;
 
-	List<Enumeration> enumerations;
+	final List<Enumeration> enumerations;
 
-	List<Service> services;
+	final List<Service> services;
 
-	List<Option> options;
+	final List<Option> options;
 
 	public Message(QualifiedName name, List<Field> fields) {
 		this(name, fields, Collections.emptyList());

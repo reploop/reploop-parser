@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 public class JavaParserDriverTest {
 
 	@Test
-	public void testParse() throws Exception {
+	public void testParse() {
 		JavaParserDriver jpd = new JavaParserDriver();
 		jpd.parse(Paths.get(""), JavaParser::expression);
 

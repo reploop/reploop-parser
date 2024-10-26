@@ -3,8 +3,6 @@ package org.reploop.plugin.maven;
 import java.util.EnumSet;
 import java.util.List;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.reploop.translator.json.driver.Json2Conf;
@@ -45,13 +43,13 @@ public abstract class Json2Mojo extends AbstractMojo {
 	 * otherwise $ is used by default.
 	 */
 	@Parameter(defaultValue = "true")
-	protected Boolean enableRootGuess = true;
+	protected final Boolean enableRootGuess = true;
 
 	/**
 	 * Fail if any error occurred. Default true.
 	 */
 	@Parameter(defaultValue = "true")
-	protected Boolean enableFailFast = true;
+	protected final Boolean enableFailFast = true;
 
 	/**
 	 * The top package or namespace of the source. Add package line to the source. Default
@@ -85,7 +83,7 @@ public abstract class Json2Mojo extends AbstractMojo {
 	}
 
 	@Override
-	public void execute() throws MojoExecutionException, MojoFailureException {
+	public void execute() {
 		getDriver().run();
 	}
 

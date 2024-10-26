@@ -19,11 +19,11 @@ public class ThriftProgram extends Node {
 
 	Path file;
 
-	List<String> comments;
+	final List<String> comments;
 
-	List<Header> headers;
+	final List<Header> headers;
 
-	List<Entity> entities;
+	final List<Entity> entities;
 
 	@Override
 	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
@@ -43,8 +43,7 @@ public class ThriftProgram extends Node {
 	}
 
 	public ThriftProgram(List<String> comments, List<Header> headers, List<Entity> entities) {
-		this.file = file;
-		this.comments = comments;
+        this.comments = comments;
 		this.headers = headers;
 		this.entities = entities;
 	}

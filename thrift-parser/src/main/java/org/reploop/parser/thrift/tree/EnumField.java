@@ -17,11 +17,11 @@ import java.util.Optional;
  */
 public class EnumField extends Node {
 
-	private String name;
+	private final String name;
 
-	private Optional<Integer> index;
+	private final Optional<Integer> index;
 
-	private List<String> comments;
+	private final List<String> comments;
 
 	public EnumField(String name, Optional<Integer> index) {
 		this(name, index, Collections.emptyList());

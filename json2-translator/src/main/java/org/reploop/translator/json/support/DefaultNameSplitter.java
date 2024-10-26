@@ -25,7 +25,7 @@ public class DefaultNameSplitter implements NameSplitter {
 				continue;
 			}
 			// underscore starts, e.g. _39ele
-			if (isNonNumberAndAlphabetic(prev) && isDigit(curr) && words.size() == 0) {
+			if (isNonNumberAndAlphabetic(prev) && isDigit(curr) && words.isEmpty()) {
 				sb.append(DOLLAR);
 			}
 

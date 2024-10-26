@@ -36,7 +36,7 @@ public class TreeNode {
 	}
 
 	public boolean hasChild() {
-		return children.size() > 0;
+		return !children.isEmpty();
 	}
 
 	public List<TreeNode> getChildren() {

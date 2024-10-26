@@ -18,15 +18,15 @@ public class Function extends Node implements Comparable<Function> {
 
 	boolean oneWay = false;
 
-	QualifiedName name;
+	final QualifiedName name;
 
-	FunctionType returnType;
+	final FunctionType returnType;
 
-	List<Field> parameters;
+	final List<Field> parameters;
 
-	Optional<List<Field>> exceptions;
+	final Optional<List<Field>> exceptions;
 
-	List<String> comments;
+	final List<String> comments;
 
 	String body;
 

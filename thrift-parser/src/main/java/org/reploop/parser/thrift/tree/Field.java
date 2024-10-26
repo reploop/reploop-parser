@@ -16,17 +16,17 @@ import java.util.Optional;
  */
 public class Field extends Node {
 
-	Integer filedId;
+	final Integer filedId;
 
-	boolean required;
+	final boolean required;
 
-	List<String> comments;
+	final List<String> comments;
 
-	QualifiedName name;
+	final QualifiedName name;
 
-	FieldType fieldType;
+	final FieldType fieldType;
 
-	Optional<Value> value;
+	final Optional<Value> value;
 
 	public Field(List<String> comments, FieldType fieldType, Integer filedId, String name, boolean required) {
 		this(comments, fieldType, filedId, QualifiedName.of(name), required);

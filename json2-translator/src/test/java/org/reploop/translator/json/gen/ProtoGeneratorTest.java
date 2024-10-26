@@ -2,8 +2,6 @@ package org.reploop.translator.json.gen;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class ProtoGeneratorTest {
 
 	@Test

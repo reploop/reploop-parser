@@ -21,7 +21,7 @@ public class QipuServiceListener extends ThriftBaseBaseListener {
 
 	private static final Logger LOG = LoggerFactory.getLogger(QipuServiceListener.class);
 
-	Map<String, StringBuilder> serviceImplMap = new HashMap<>();
+	final Map<String, StringBuilder> serviceImplMap = new HashMap<>();
 
 	StringBuilder current = new StringBuilder();
 

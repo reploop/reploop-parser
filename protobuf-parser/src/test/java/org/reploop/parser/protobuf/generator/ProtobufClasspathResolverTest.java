@@ -1,6 +1,7 @@
 package org.reploop.parser.protobuf.generator;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.reploop.parser.Classpath;
 import org.reploop.parser.protobuf.ProtobufParser;
 import org.reploop.parser.protobuf.tree.ProtoProgram;
@@ -22,13 +23,14 @@ public class ProtobufClasspathResolverTest {
 	private ProtobufClasspathResolver resolver;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		parser = new ProtobufParser();
 		resolver = new ProtobufClasspathResolver(parser);
 
 	}
 
-	public void testVisitProtobufProgram1() throws Exception {
+	@Test
+    public void testVisitProtobufProgram1() throws Exception {
 		URL uri = ClassLoader.getSystemClassLoader().getResource("proto/acl.proto");
 		Path path = Paths.get(uri.toURI());
 		ProtoProgram program = parser.program(path);
@@ -43,7 +45,8 @@ public class ProtobufClasspathResolverTest {
 		System.out.println(pp);
 	}
 
-	public void testVisitProtobufProgram() throws Exception {
+	@Test
+    public void testVisitProtobufProgram() throws Exception {
 		URL uri = ClassLoader.getSystemClassLoader().getResource("proto/hdfs.proto");
 		Path path = Paths.get(uri.toURI());
 		ProtoProgram program = parser.program(path);

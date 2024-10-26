@@ -13,13 +13,13 @@ import static org.junit.Assert.assertEquals;
 public class LevenshteinDistanceTest {
 
 	@Test
-	public void testDistance() throws Exception {
+	public void testDistance() {
 		int d = LevenshteinDistance.compute("2", "2");
 		assertEquals(0, d);
 	}
 
 	@Test
-	public void testDistance1() throws Exception {
+	public void testDistance1() {
 		int d = LevenshteinDistance.compute("If", "if");
 		assertEquals(1, d);
 

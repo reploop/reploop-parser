@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Exception extends Entity {
 
-	List<Field> fields;
+	final List<Field> fields;
 
 	public Exception(List<String> comments, QualifiedName name, List<Field> fields) {
 		super(name, comments);
