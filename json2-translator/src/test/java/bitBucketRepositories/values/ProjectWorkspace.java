@@ -7,18 +7,10 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ProjectWorkspace implements Serializable {
     private static final long serialVersionUID = 1L;
-    @JsonProperty("uuid")
-    private String uUid;
     private String type;
     private String name;
-    
-    public String getUUid() {
-        return uUid;
-    }
-    
-    public void setUUid(String uUid) {
-        this.uUid = uUid;
-    }
+    @JsonProperty("uuid")
+    private String uUid;
     
     public String getType() {
         return type;
@@ -36,12 +28,20 @@ public abstract class ProjectWorkspace implements Serializable {
         this.name = name;
     }
     
+    public String getUUid() {
+        return uUid;
+    }
+    
+    public void setUUid(String uUid) {
+        this.uUid = uUid;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("uUid", getUUid())
                 .add("type", getType())
                 .add("name", getName())
+                .add("uUid", getUUid())
                 .toString();
     }
     

@@ -569,17 +569,17 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
                 .add("vPlate", getVPlate())
                 .add("vType", getVType())
                 .add("vVehicleId", getVVehicleId())
-                .add("night", getNight())
-                .add("settlementPrice", getSettlementPrice())
-                .add("driverOrderId", getDriverOrderId())
+                .add("createTime", getCreateTime())
+                .add("delay", getDelay())
                 .add("vehicleBrand", getVehicleBrand())
                 .add("actionSource", getActionSource())
-                .add("driverPhone", getDriverPhone())
+                .add("night", getNight())
                 .add("operator", getOperator())
-                .add("createTime", getCreateTime())
+                .add("settlementPrice", getSettlementPrice())
                 .add("orderId", getOrderId())
-                .add("delay", getDelay())
                 .add("preDriverId", getPreDriverId())
+                .add("driverPhone", getDriverPhone())
+                .add("driverOrderId", getDriverOrderId())
                 .toString();
     }
     
@@ -865,18 +865,13 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder night(Boolean night) {
-            data.setNight(night);
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
             return this;
         }
         
-        public Builder settlementPrice(Object settlementPrice) {
-            data.setSettlementPrice(settlementPrice);
-            return this;
-        }
-        
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
             return this;
         }
         
@@ -890,8 +885,8 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder driverPhone(Object driverPhone) {
-            data.setDriverPhone(driverPhone);
+        public Builder night(Boolean night) {
+            data.setNight(night);
             return this;
         }
         
@@ -900,8 +895,8 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
+        public Builder settlementPrice(Object settlementPrice) {
+            data.setSettlementPrice(settlementPrice);
             return this;
         }
         
@@ -910,13 +905,18 @@ public class Records extends RecordsUserOrderAdditional implements Serializable 
             return this;
         }
         
-        public Builder delay(Object delay) {
-            data.setDelay(delay);
+        public Builder preDriverId(Object preDriverId) {
+            data.setPreDriverId(preDriverId);
             return this;
         }
         
-        public Builder preDriverId(Object preDriverId) {
-            data.setPreDriverId(preDriverId);
+        public Builder driverPhone(Object driverPhone) {
+            data.setDriverPhone(driverPhone);
+            return this;
+        }
+        
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
             return this;
         }
         
