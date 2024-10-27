@@ -38,25 +38,113 @@ public interface JSON5Listener extends ParseTreeListener {
 	 */
 	void exitPair(JSON5Parser.PairContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSON5Parser#key}.
+	 * Enter a parse tree produced by the {@code stringKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 */
-	void enterKey(JSON5Parser.KeyContext ctx);
+	void enterStringKey(JSON5Parser.StringKeyContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSON5Parser#key}.
+	 * Exit a parse tree produced by the {@code stringKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 */
-	void exitKey(JSON5Parser.KeyContext ctx);
+	void exitStringKey(JSON5Parser.StringKeyContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSON5Parser#value}.
+	 * Enter a parse tree produced by the {@code identifierKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 */
-	void enterValue(JSON5Parser.ValueContext ctx);
+	void enterIdentifierKey(JSON5Parser.IdentifierKeyContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSON5Parser#value}.
+	 * Exit a parse tree produced by the {@code identifierKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 */
-	void exitValue(JSON5Parser.ValueContext ctx);
+	void exitIdentifierKey(JSON5Parser.IdentifierKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code literalKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteralKey(JSON5Parser.LiteralKeyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code literalKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteralKey(JSON5Parser.LiteralKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code numberKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberKey(JSON5Parser.NumberKeyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code numberKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberKey(JSON5Parser.NumberKeyContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code stringValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringValue(JSON5Parser.StringValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code stringValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringValue(JSON5Parser.StringValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code numberValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterNumberValue(JSON5Parser.NumberValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code numberValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitNumberValue(JSON5Parser.NumberValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code objValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjValue(JSON5Parser.ObjValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code objValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjValue(JSON5Parser.ObjValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code arrayValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayValue(JSON5Parser.ArrayValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code arrayValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayValue(JSON5Parser.ArrayValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code literalValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteralValue(JSON5Parser.LiteralValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code literalValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteralValue(JSON5Parser.LiteralValueContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JSON5Parser#arr}.
 	 * @param ctx the parse tree

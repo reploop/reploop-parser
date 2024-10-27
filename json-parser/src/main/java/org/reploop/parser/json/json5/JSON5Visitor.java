@@ -29,17 +29,68 @@ public interface JSON5Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPair(JSON5Parser.PairContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JSON5Parser#key}.
+	 * Visit a parse tree produced by the {@code stringKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitKey(JSON5Parser.KeyContext ctx);
+	T visitStringKey(JSON5Parser.StringKeyContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JSON5Parser#value}.
+	 * Visit a parse tree produced by the {@code identifierKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValue(JSON5Parser.ValueContext ctx);
+	T visitIdentifierKey(JSON5Parser.IdentifierKeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code literalKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteralKey(JSON5Parser.LiteralKeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code numberKey}
+	 * labeled alternative in {@link JSON5Parser#key}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumberKey(JSON5Parser.NumberKeyContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code stringValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringValue(JSON5Parser.StringValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code numberValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNumberValue(JSON5Parser.NumberValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code objValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjValue(JSON5Parser.ObjValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code arrayValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayValue(JSON5Parser.ArrayValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code literalValue}
+	 * labeled alternative in {@link JSON5Parser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteralValue(JSON5Parser.LiteralValueContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JSON5Parser#arr}.
 	 * @param ctx the parse tree
