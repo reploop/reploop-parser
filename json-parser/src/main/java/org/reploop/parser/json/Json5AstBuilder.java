@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.reploop.parser.json.json5.JSON5BaseVisitor;
 import org.reploop.parser.json.json5.JSON5Parser;
 import org.reploop.parser.json.tree.*;
@@ -32,8 +33,27 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 	}
 
 	@Override
-	public Number visitNumber(JSON5Parser.NumberContext ctx) {
-		int sign = visitIfPresent(ctx.SYMBOL(), Text.class).map(Text::getVal).map(s -> {
+	public Number visitNumberValue(JSON5Parser.NumberValueContext ctx) {
+		return visitNumber(ctx.number());
+	}
+
+	@Override
+	public Text visitStringValue(JSON5Parser.StringValueContext ctx) {
+		return visitIfPresent(ctx.STRING(), Text.class).orElseThrow();
+	}
+
+	@Override
+	public Entity visitObjValue(JSON5Parser.ObjValueContext ctx) {
+		return visitObj(ctx.obj());
+	}
+
+	@Override
+	public Array visitArrayValue(JSON5Parser.ArrayValueContext ctx) {
+		return visitArr(ctx.arr());
+	}
+
+	private int sign(TerminalNode node) {
+		return visitIfPresent(node, Text.class).map(Text::getVal).map(s -> {
 			switch (s) {
 				case "-":
 					return -1;
@@ -42,10 +62,15 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 					return 1;
 			}
 		}).orElse(1);
+	}
+
+	@Override
+	public Number visitNumber(JSON5Parser.NumberContext ctx) {
+		int sign = sign(ctx.SYMBOL());
 		var ol = visitIfPresent(ctx.NUMERIC_LITERAL(), Text.class).map(Text::getVal).map(s -> {
 			switch (s) {
 				case "Infinity":
-					return new Infinity();
+					return new Infinity(sign);
 				case "NaN":
 					return new NaN();
 			}
@@ -57,12 +82,12 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 		var ot = visitIfPresent(ctx.NUMBER(), Text.class);
 		return ot.map(Text::getVal).map(v -> {
 			if (v.startsWith("0x") || v.startsWith("0X")) {
-				return new IntVal(Integer.parseInt(v.substring(2), 16));
+				return new IntVal(sign * Integer.parseInt(v.substring(2), 16));
 			}
 			else {
-				return new FloatVal(Float.parseFloat(v));
+				return new FloatVal(sign * Float.parseFloat(v));
 			}
-		}).get();
+		}).orElseThrow();
 	}
 
 	@Override

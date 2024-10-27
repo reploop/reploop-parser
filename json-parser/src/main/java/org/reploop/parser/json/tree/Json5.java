@@ -29,6 +29,9 @@ public class Json5 extends Node {
 
 	@Override
 	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
 		if (obj instanceof Json5) {
 			return Objects.equals(this.getValue(), ((Json5) obj).getValue());
 		}
