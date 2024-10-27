@@ -80,14 +80,7 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 			return ol.get();
 		}
 		var ot = visitIfPresent(ctx.NUMBER(), Text.class);
-		return ot.map(Text::getVal).map(v -> {
-			if (v.startsWith("0x") || v.startsWith("0X")) {
-				return new IntVal(sign * Integer.parseInt(v.substring(2), 16));
-			}
-			else {
-				return new FloatVal(sign * Float.parseFloat(v));
-			}
-		}).orElseThrow();
+		return ot.map(Text::getVal).map(v -> new DoubleVal(sign * Double.parseDouble(v))).orElseThrow();
 	}
 
 	@Override
