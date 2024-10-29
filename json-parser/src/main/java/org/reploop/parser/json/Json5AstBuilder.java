@@ -2,30 +2,56 @@ package org.reploop.parser.json;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.antlr.v4.runtime.tree.TerminalNodeImpl;
-import org.checkerframework.checker.units.qual.C;
+import org.reploop.parser.commons.CommentHelper;
 import org.reploop.parser.json.json5.JSON5BaseVisitor;
+import org.reploop.parser.json.json5.JSON5Lexer;
 import org.reploop.parser.json.json5.JSON5Parser;
-import org.reploop.parser.json.tree.*;
+import org.reploop.parser.json.tree.Array;
+import org.reploop.parser.json.tree.Bool;
+import org.reploop.parser.json.tree.DoubleVal;
+import org.reploop.parser.json.tree.Entity;
+import org.reploop.parser.json.tree.Infinity;
+import org.reploop.parser.json.tree.Json5;
+import org.reploop.parser.json.tree.LongVal;
+import org.reploop.parser.json.tree.NaN;
+import org.reploop.parser.json.tree.Null;
 import org.reploop.parser.json.tree.Number;
+import org.reploop.parser.json.tree.Pair;
+import org.reploop.parser.json.tree.Text;
+import org.reploop.parser.json.tree.Value;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.nonNull;
 
 public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 
-	private CommonTokenStream tokenStream;
+	private final CommonTokenStream tokens;
 
 	public Json5AstBuilder(CommonTokenStream tokenStream) {
-		this.tokenStream = tokenStream;
+		this.tokens = tokenStream;
 	}
+
+	private List<String> comments(Token token) {
+		return CommentHelper.comments(token, JSON5Lexer.HIDDEN, leftComment);
+	}
+
+	private final BiFunction<Token, Integer, List<Token>> leftComment = new BiFunction<>() {
+		@Override
+		public List<Token> apply(Token token, Integer channel) {
+			if (null != tokens) {
+				return tokens.getHiddenTokensToLeft(token.getTokenIndex(), channel);
+			}
+			return Collections.emptyList();
+		}
+	};
 
 	@Override
 	public Array visitArr(JSON5Parser.ArrContext ctx) {
@@ -83,7 +109,7 @@ public class Json5AstBuilder extends JSON5BaseVisitor<Node> {
 		var ot = visitIfPresent(ctx.NUMBER(), Text.class);
 		return ot.map(Text::getVal).map(v -> {
 			if (v.startsWith("0x") || v.startsWith("0X")) {
-				return new IntVal(Integer.parseInt(v.substring(2), 16));
+				return new LongVal(sign * Long.parseLong(v.substring(2), 16));
 			}
 			return new DoubleVal(sign * Double.parseDouble(v));
 		}).orElseThrow();
