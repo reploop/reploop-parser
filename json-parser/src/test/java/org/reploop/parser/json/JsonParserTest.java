@@ -1,7 +1,7 @@
 package org.reploop.parser.json;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.reploop.parser.json.base.JsonBaseParser;
 import org.reploop.parser.json.tree.Json;
 
@@ -17,7 +17,7 @@ public class JsonParserTest {
 
 	private JsonParser parser;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		parser = new JsonParser();
 	}

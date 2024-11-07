@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "name": "Har",
+  "fields": [
+    {
+      "name": "log",
+      "type": "har.Log"
+    }
+  ]
+}

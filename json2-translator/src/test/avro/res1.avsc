@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "Res1",
+  "fields": [
+    {
+      "name": "data",
+      "type": "res1.Data"
+    },
+    {
+      "name": "error",
+      "type": "res1.Error"
+    }
+  ]
+}

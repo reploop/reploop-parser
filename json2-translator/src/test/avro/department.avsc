@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "Department",
+  "fields": [
+    {
+      "name": "code",
+      "type": "int"
+    },
+    {
+      "name": "data",
+      "type": "department.Data"
+    },
+    {
+      "name": "msg",
+      "type": "string"
+    }
+  ]
+}

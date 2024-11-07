@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Drivers",
+  "fields": [
+    {
+      "name": "code",
+      "type": "int"
+    },
+    {
+      "name": "msg",
+      "type": "string"
+    },
+    {
+      "name": "rows",
+      "type": {
+        "type": "array",
+        "items": "drivers.Rows",
+        "default": []
+      }
+    },
+    {
+      "name": "total",
+      "type": "int"
+    }
+  ]
+}
