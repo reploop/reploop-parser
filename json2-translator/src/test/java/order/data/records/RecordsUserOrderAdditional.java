@@ -6,32 +6,24 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RecordsUserOrderAdditional implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Boolean night;
-    private Object driverOrderId;
+    private Object actionSource;
     private Object driverPhone;
     private String createTime;
-    private Object actionSource;
-    private Object delay;
-    private Object preDriverId;
-    private Object operator;
-    private Object orderId;
-    private Object settlementPrice;
     private Object vehicleBrand;
+    private Object orderId;
+    private Object delay;
+    private Object operator;
+    private Object settlementPrice;
+    private Object preDriverId;
+    private Boolean night;
+    private Object driverOrderId;
     
-    public Boolean getNight() {
-        return night;
+    public Object getActionSource() {
+        return actionSource;
     }
     
-    public void setNight(Boolean night) {
-        this.night = night;
-    }
-    
-    public Object getDriverOrderId() {
-        return driverOrderId;
-    }
-    
-    public void setDriverOrderId(Object driverOrderId) {
-        this.driverOrderId = driverOrderId;
+    public void setActionSource(Object actionSource) {
+        this.actionSource = actionSource;
     }
     
     public Object getDriverPhone() {
@@ -50,36 +42,12 @@ public abstract class RecordsUserOrderAdditional implements Serializable {
         this.createTime = createTime;
     }
     
-    public Object getActionSource() {
-        return actionSource;
+    public Object getVehicleBrand() {
+        return vehicleBrand;
     }
     
-    public void setActionSource(Object actionSource) {
-        this.actionSource = actionSource;
-    }
-    
-    public Object getDelay() {
-        return delay;
-    }
-    
-    public void setDelay(Object delay) {
-        this.delay = delay;
-    }
-    
-    public Object getPreDriverId() {
-        return preDriverId;
-    }
-    
-    public void setPreDriverId(Object preDriverId) {
-        this.preDriverId = preDriverId;
-    }
-    
-    public Object getOperator() {
-        return operator;
-    }
-    
-    public void setOperator(Object operator) {
-        this.operator = operator;
+    public void setVehicleBrand(Object vehicleBrand) {
+        this.vehicleBrand = vehicleBrand;
     }
     
     public Object getOrderId() {
@@ -90,6 +58,22 @@ public abstract class RecordsUserOrderAdditional implements Serializable {
         this.orderId = orderId;
     }
     
+    public Object getDelay() {
+        return delay;
+    }
+    
+    public void setDelay(Object delay) {
+        this.delay = delay;
+    }
+    
+    public Object getOperator() {
+        return operator;
+    }
+    
+    public void setOperator(Object operator) {
+        this.operator = operator;
+    }
+    
     public Object getSettlementPrice() {
         return settlementPrice;
     }
@@ -98,28 +82,44 @@ public abstract class RecordsUserOrderAdditional implements Serializable {
         this.settlementPrice = settlementPrice;
     }
     
-    public Object getVehicleBrand() {
-        return vehicleBrand;
+    public Object getPreDriverId() {
+        return preDriverId;
     }
     
-    public void setVehicleBrand(Object vehicleBrand) {
-        this.vehicleBrand = vehicleBrand;
+    public void setPreDriverId(Object preDriverId) {
+        this.preDriverId = preDriverId;
+    }
+    
+    public Boolean getNight() {
+        return night;
+    }
+    
+    public void setNight(Boolean night) {
+        this.night = night;
+    }
+    
+    public Object getDriverOrderId() {
+        return driverOrderId;
+    }
+    
+    public void setDriverOrderId(Object driverOrderId) {
+        this.driverOrderId = driverOrderId;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("night", getNight())
-                .add("driverOrderId", getDriverOrderId())
+                .add("actionSource", getActionSource())
                 .add("driverPhone", getDriverPhone())
                 .add("createTime", getCreateTime())
-                .add("actionSource", getActionSource())
-                .add("delay", getDelay())
-                .add("preDriverId", getPreDriverId())
-                .add("operator", getOperator())
-                .add("orderId", getOrderId())
-                .add("settlementPrice", getSettlementPrice())
                 .add("vehicleBrand", getVehicleBrand())
+                .add("orderId", getOrderId())
+                .add("delay", getDelay())
+                .add("operator", getOperator())
+                .add("settlementPrice", getSettlementPrice())
+                .add("preDriverId", getPreDriverId())
+                .add("night", getNight())
+                .add("driverOrderId", getDriverOrderId())
                 .toString();
     }
     

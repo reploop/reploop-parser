@@ -32,9 +32,9 @@ public class Project extends ProjectWorkspace implements Serializable {
         return MoreObjects.toStringHelper(this)
                 .add("key", getKey())
                 .add("links", getLinks())
-                .add("name", getName())
                 .add("uUid", getUUid())
                 .add("type", getType())
+                .add("name", getName())
                 .toString();
     }
     
@@ -55,11 +55,6 @@ public class Project extends ProjectWorkspace implements Serializable {
             return this;
         }
         
-        public Builder name(String name) {
-            data.setName(name);
-            return this;
-        }
-        
         public Builder uUid(String uUid) {
             data.setUUid(uUid);
             return this;
@@ -67,6 +62,11 @@ public class Project extends ProjectWorkspace implements Serializable {
         
         public Builder type(String type) {
             data.setType(type);
+            return this;
+        }
+        
+        public Builder name(String name) {
+            data.setName(name);
             return this;
         }
         

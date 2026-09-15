@@ -1,90 +1,91 @@
 package org.reploop.translator.json.bean;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
-import java.util.Map;
 import org.junit.Test;
+import tools.jackson.databind.ObjectMapper;
+
+import java.util.Map;
 
 public class SelfTest {
 
-	final ObjectMapper mapper = new ObjectMapper();
+    final ObjectMapper mapper = new ObjectMapper();
 
-	{
-		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-	}
+    {
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
 
-	@Test
-	public void testToJson() throws Exception {
-		Self s = new Self(1, "name");
-		This t = new This(s);
-		t.setMap(ImmutableMap.of("k", s));
+    @Test
+    public void testToJson() throws Exception {
+        Self s = new Self(1, "name");
+        This t = new This(s);
+        t.setMap(ImmutableMap.of("k", s));
 
-		System.out.println(mapper.writeValueAsString(s));
-		System.out.println(mapper.writeValueAsString(t));
-	}
+        System.out.println(mapper.writeValueAsString(s));
+        System.out.println(mapper.writeValueAsString(t));
+    }
 
 }
 
 class This extends Self {
 
-	public This(Self self) {
-		super(self);
-	}
+    public This(Self self) {
+        super(self);
+    }
 
-	Map<String, Self> map;
+    Map<String, Self> map;
 
-	@Override
-	public Map<String, Self> getMap() {
-		return map;
-	}
+    @Override
+    public Map<String, Self> getMap() {
+        return map;
+    }
 
-	@Override
-	public void setMap(Map<String, Self> map) {
-		this.map = map;
-	}
+    @Override
+    public void setMap(Map<String, Self> map) {
+        this.map = map;
+    }
 
 }
 
 class Self {
 
-	private int id;
+    private int id;
 
-	private String name;
+    private String name;
 
-	private Map<String, Self> map;
+    private Map<String, Self> map;
 
-	public Self(Self o) {
-		this(o.id, o.name);
-	}
+    public Self(Self o) {
+        this(o.id, o.name);
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Map<String, Self> getMap() {
-		return map;
-	}
+    public Map<String, Self> getMap() {
+        return map;
+    }
 
-	public void setMap(Map<String, Self> map) {
-		this.map = map;
-	}
+    public void setMap(Map<String, Self> map) {
+        this.map = map;
+    }
 
-	public Self(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
+    public Self(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
 }

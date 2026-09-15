@@ -52,11 +52,11 @@ public class Request extends RequestResponse implements Serializable {
                 .add("postData", getPostData())
                 .add("queryString", getQueryString())
                 .add("url", getUrl())
-                .add("cookies", getCookies())
-                .add("bodySize", getBodySize())
-                .add("httpVersion", getHttpVersion())
-                .add("headersSize", getHeadersSize())
                 .add("headers", getHeaders())
+                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
+                .add("bodySize", getBodySize())
+                .add("cookies", getCookies())
                 .toString();
     }
     
@@ -87,18 +87,8 @@ public class Request extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder cookies(List<NameValue> cookies) {
-            data.setCookies(cookies);
-            return this;
-        }
-        
-        public Builder bodySize(Integer bodySize) {
-            data.setBodySize(bodySize);
-            return this;
-        }
-        
-        public Builder httpVersion(String httpVersion) {
-            data.setHttpVersion(httpVersion);
+        public Builder headers(List<NameValue> headers) {
+            data.setHeaders(headers);
             return this;
         }
         
@@ -107,8 +97,18 @@ public class Request extends RequestResponse implements Serializable {
             return this;
         }
         
-        public Builder headers(List<NameValue> headers) {
-            data.setHeaders(headers);
+        public Builder httpVersion(String httpVersion) {
+            data.setHttpVersion(httpVersion);
+            return this;
+        }
+        
+        public Builder bodySize(Integer bodySize) {
+            data.setBodySize(bodySize);
+            return this;
+        }
+        
+        public Builder cookies(List<NameValue> cookies) {
+            data.setCookies(cookies);
             return this;
         }
         

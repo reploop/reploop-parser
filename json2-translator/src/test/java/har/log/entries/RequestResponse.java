@@ -7,34 +7,18 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> cookies;
-    private Integer bodySize;
-    private String httpVersion;
-    private Integer headersSize;
     private List<NameValue> headers;
+    private Integer headersSize;
+    private String httpVersion;
+    private Integer bodySize;
+    private List<NameValue> cookies;
     
-    public List<NameValue> getCookies() {
-        return cookies;
+    public List<NameValue> getHeaders() {
+        return headers;
     }
     
-    public void setCookies(List<NameValue> cookies) {
-        this.cookies = cookies;
-    }
-    
-    public Integer getBodySize() {
-        return bodySize;
-    }
-    
-    public void setBodySize(Integer bodySize) {
-        this.bodySize = bodySize;
-    }
-    
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-    
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
     }
     
     public Integer getHeadersSize() {
@@ -45,22 +29,38 @@ public abstract class RequestResponse implements Serializable {
         this.headersSize = headersSize;
     }
     
-    public List<NameValue> getHeaders() {
-        return headers;
+    public String getHttpVersion() {
+        return httpVersion;
     }
     
-    public void setHeaders(List<NameValue> headers) {
-        this.headers = headers;
+    public void setHttpVersion(String httpVersion) {
+        this.httpVersion = httpVersion;
+    }
+    
+    public Integer getBodySize() {
+        return bodySize;
+    }
+    
+    public void setBodySize(Integer bodySize) {
+        this.bodySize = bodySize;
+    }
+    
+    public List<NameValue> getCookies() {
+        return cookies;
+    }
+    
+    public void setCookies(List<NameValue> cookies) {
+        this.cookies = cookies;
     }
     
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("cookies", getCookies())
-                .add("bodySize", getBodySize())
-                .add("httpVersion", getHttpVersion())
-                .add("headersSize", getHeadersSize())
                 .add("headers", getHeaders())
+                .add("headersSize", getHeadersSize())
+                .add("httpVersion", getHttpVersion())
+                .add("bodySize", getBodySize())
+                .add("cookies", getCookies())
                 .toString();
     }
     

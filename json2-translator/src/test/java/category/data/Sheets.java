@@ -73,8 +73,8 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
                 .add("merges", getMerges())
                 .add("sheetId", getSheetId())
                 .add("title", getTitle())
-                .add("columnCount", getColumnCount())
                 .add("rowCount", getRowCount())
+                .add("columnCount", getColumnCount())
                 .toString();
     }
     
@@ -115,13 +115,13 @@ public class Sheets extends ColumnCountRowCount implements Serializable {
             return this;
         }
         
-        public Builder columnCount(Integer columnCount) {
-            data.setColumnCount(columnCount);
+        public Builder rowCount(Integer rowCount) {
+            data.setRowCount(rowCount);
             return this;
         }
         
-        public Builder rowCount(Integer rowCount) {
-            data.setRowCount(rowCount);
+        public Builder columnCount(Integer columnCount) {
+            data.setColumnCount(columnCount);
             return this;
         }
         
