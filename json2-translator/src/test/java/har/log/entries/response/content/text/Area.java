@@ -1,4 +1,4 @@
-package text;
+package har.log.entries.response.content.text;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
