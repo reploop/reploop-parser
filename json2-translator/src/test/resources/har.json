@@ -93,8 +93,7 @@
           "headersSize": 504,
           "postData": {
             "mimeType": "",
-            "params": [],
-            "text": "6ðD\næ\u0005Æ\bÀ\u0006\u0004\u0014À\u0005`\u0013\u001c\u000b@\u000e\u00018ð\u001d\u0000Y@f\u001c\u00020\fØp\u0018ÌÍê¸uT\t\u0003F\u000030\ti% \u0004Å­\u001cÜàÓ S&\u001c¨ªcÃ1$\b\u000b\u0010Õ0°\u0000\\$°\u0003bÀ5¥«\u0001laÇB@\u001b1®xÉ½ÐD\u0000\u001cÜ<½|\b©¼\b°\bEd$\u0001ÜÒ\u0000èSP\u0000ì\u0000¼\u0001-ÒXY,B$\u0001éEò­Ëe­QòíËóeËÐcØÔÈÈ0àÉ-a@À\u0000,*ªkÊíóD­[Ú°Y¼ãeQÐ¨\u0010ñ,\u0000Ü%\u0000¡å\u0001ëM\u0000ÍÕ\u0001õ\u0000Pu,\u0000<+eò÷Ó³P÷iP\u0000_Þ>qéò7d,\u0005`\u0003Ø¾oO\u001f-Û >¢ZÉâÃ\u0007e\u001apÄ]QäS\u0005Øì¨\u0010²*\u001bõ`\u0012$Ú\u000eÅ\náidKÏc4*¸Ù\u001c23âÃ\u001aâ¼¿'\u00063>\u0000OA@\u0018Q¡,m;´\u001d\u0000\u0005ð\u0002ëj\u0000"
+            "params": []
           }
         },
         "response": {
@@ -147,7 +146,7 @@
           "content": {
             "mimeType": "text/plain; charset=utf-8",
             "size": 0,
-            "text": ""
+            "text": "{}"
           },
           "redirectURL": "",
           "headersSize": 475,
@@ -297,8 +296,7 @@
                 "name": "sp",
                 "value": ""
               }
-            ],
-            "text": "id=52c669dae5308&p=1&limit=9&stime=&etime=&sp="
+            ]
           }
         },
         "response": {
@@ -823,7 +821,7 @@
           "content": {
             "mimeType": "text/plain; charset=utf-8",
             "size": 0,
-            "text": ""
+            "text": "{}"
           },
           "redirectURL": "",
           "headersSize": 475,
@@ -1671,7 +1669,7 @@
           "content": {
             "mimeType": "text/html",
             "size": 0,
-            "text": ""
+            "text": "{}"
           },
           "redirectURL": "",
           "headersSize": 383,
@@ -1822,7 +1820,7 @@
           "content": {
             "mimeType": "text/html",
             "size": 0,
-            "text": ""
+            "text": "{}"
           },
           "redirectURL": "",
           "headersSize": 383,
@@ -1973,7 +1971,7 @@
           "content": {
             "mimeType": "text/html",
             "size": 0,
-            "text": ""
+            "text": "{}"
           },
           "redirectURL": "",
           "headersSize": 383,

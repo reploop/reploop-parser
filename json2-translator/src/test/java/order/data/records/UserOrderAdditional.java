@@ -220,17 +220,17 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
                 .add("vehicleId", getVehicleId())
                 .add("vehiclePlate", getVehiclePlate())
                 .add("vehicleType", getVehicleType())
+                .add("createTime", getCreateTime())
+                .add("delay", getDelay())
+                .add("orderId", getOrderId())
                 .add("actionSource", getActionSource())
                 .add("driverPhone", getDriverPhone())
-                .add("createTime", getCreateTime())
+                .add("driverOrderId", getDriverOrderId())
+                .add("night", getNight())
                 .add("vehicleBrand", getVehicleBrand())
-                .add("orderId", getOrderId())
-                .add("delay", getDelay())
                 .add("operator", getOperator())
                 .add("settlementPrice", getSettlementPrice())
                 .add("preDriverId", getPreDriverId())
-                .add("night", getNight())
-                .add("driverOrderId", getDriverOrderId())
                 .toString();
     }
     
@@ -346,6 +346,21 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
+        public Builder createTime(String createTime) {
+            data.setCreateTime(createTime);
+            return this;
+        }
+        
+        public Builder delay(Object delay) {
+            data.setDelay(delay);
+            return this;
+        }
+        
+        public Builder orderId(Object orderId) {
+            data.setOrderId(orderId);
+            return this;
+        }
+        
         public Builder actionSource(Object actionSource) {
             data.setActionSource(actionSource);
             return this;
@@ -356,23 +371,18 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
             return this;
         }
         
-        public Builder createTime(String createTime) {
-            data.setCreateTime(createTime);
+        public Builder driverOrderId(Object driverOrderId) {
+            data.setDriverOrderId(driverOrderId);
+            return this;
+        }
+        
+        public Builder night(Boolean night) {
+            data.setNight(night);
             return this;
         }
         
         public Builder vehicleBrand(Object vehicleBrand) {
             data.setVehicleBrand(vehicleBrand);
-            return this;
-        }
-        
-        public Builder orderId(Object orderId) {
-            data.setOrderId(orderId);
-            return this;
-        }
-        
-        public Builder delay(Object delay) {
-            data.setDelay(delay);
             return this;
         }
         
@@ -388,16 +398,6 @@ public class UserOrderAdditional extends RecordsUserOrderAdditional implements S
         
         public Builder preDriverId(Object preDriverId) {
             data.setPreDriverId(preDriverId);
-            return this;
-        }
-        
-        public Builder night(Boolean night) {
-            data.setNight(night);
-            return this;
-        }
-        
-        public Builder driverOrderId(Object driverOrderId) {
-            data.setDriverOrderId(driverOrderId);
             return this;
         }
         

@@ -9,8 +9,8 @@ public abstract class ProjectWorkspace implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonProperty("uuid")
     private String uUid;
-    private String type;
     private String name;
+    private String type;
     
     public String getUUid() {
         return uUid;
@@ -18,14 +18,6 @@ public abstract class ProjectWorkspace implements Serializable {
     
     public void setUUid(String uUid) {
         this.uUid = uUid;
-    }
-    
-    public String getType() {
-        return type;
-    }
-    
-    public void setType(String type) {
-        this.type = type;
     }
     
     public String getName() {
@@ -36,12 +28,20 @@ public abstract class ProjectWorkspace implements Serializable {
         this.name = name;
     }
     
+    public String getType() {
+        return type;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("uUid", getUUid())
-                .add("type", getType())
                 .add("name", getName())
+                .add("type", getType())
                 .toString();
     }
     

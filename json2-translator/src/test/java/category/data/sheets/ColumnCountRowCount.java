@@ -6,16 +6,8 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ColumnCountRowCount implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer rowCount;
     private Integer columnCount;
-    
-    public Integer getRowCount() {
-        return rowCount;
-    }
-    
-    public void setRowCount(Integer rowCount) {
-        this.rowCount = rowCount;
-    }
+    private Integer rowCount;
     
     public Integer getColumnCount() {
         return columnCount;
@@ -25,11 +17,19 @@ public abstract class ColumnCountRowCount implements Serializable {
         this.columnCount = columnCount;
     }
     
+    public Integer getRowCount() {
+        return rowCount;
+    }
+    
+    public void setRowCount(Integer rowCount) {
+        this.rowCount = rowCount;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("rowCount", getRowCount())
                 .add("columnCount", getColumnCount())
+                .add("rowCount", getRowCount())
                 .toString();
     }
     

@@ -7,27 +7,11 @@ import com.google.common.base.MoreObjects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class RequestResponse implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List<NameValue> headers;
-    private Integer headersSize;
     private String httpVersion;
     private Integer bodySize;
     private List<NameValue> cookies;
-    
-    public List<NameValue> getHeaders() {
-        return headers;
-    }
-    
-    public void setHeaders(List<NameValue> headers) {
-        this.headers = headers;
-    }
-    
-    public Integer getHeadersSize() {
-        return headersSize;
-    }
-    
-    public void setHeadersSize(Integer headersSize) {
-        this.headersSize = headersSize;
-    }
+    private Integer headersSize;
+    private List<NameValue> headers;
     
     public String getHttpVersion() {
         return httpVersion;
@@ -53,14 +37,30 @@ public abstract class RequestResponse implements Serializable {
         this.cookies = cookies;
     }
     
+    public Integer getHeadersSize() {
+        return headersSize;
+    }
+    
+    public void setHeadersSize(Integer headersSize) {
+        this.headersSize = headersSize;
+    }
+    
+    public List<NameValue> getHeaders() {
+        return headers;
+    }
+    
+    public void setHeaders(List<NameValue> headers) {
+        this.headers = headers;
+    }
+    
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("headers", getHeaders())
-                .add("headersSize", getHeadersSize())
                 .add("httpVersion", getHttpVersion())
                 .add("bodySize", getBodySize())
                 .add("cookies", getCookies())
+                .add("headersSize", getHeadersSize())
+                .add("headers", getHeaders())
                 .toString();
     }
     

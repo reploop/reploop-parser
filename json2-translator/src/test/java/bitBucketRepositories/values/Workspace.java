@@ -33,8 +33,8 @@ public class Workspace extends ProjectWorkspace implements Serializable {
                 .add("links", getLinks())
                 .add("slug", getSlug())
                 .add("uUid", getUUid())
-                .add("type", getType())
                 .add("name", getName())
+                .add("type", getType())
                 .toString();
     }
     
@@ -60,13 +60,13 @@ public class Workspace extends ProjectWorkspace implements Serializable {
             return this;
         }
         
-        public Builder type(String type) {
-            data.setType(type);
+        public Builder name(String name) {
+            data.setName(name);
             return this;
         }
         
-        public Builder name(String name) {
-            data.setName(name);
+        public Builder type(String type) {
+            data.setType(type);
             return this;
         }
         

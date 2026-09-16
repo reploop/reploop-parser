@@ -37,7 +37,6 @@ public class Json2BeanTest {
         URL url = Json2BeanTest.class.getResource("/");
         System.out.println(url);
         directory = Paths.get(url.toURI()).getParent().getParent().resolve("src/test/java");
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
     }
 
     @Test
@@ -91,7 +90,7 @@ public class Json2BeanTest {
         assertThat(messageMap).isNotEmpty();
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -105,7 +104,7 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-        Object object = objectMapper.readValue(url, new TypeReference<Map<Integer, Object>>() {
+        Object object = objectMapper.readValue(url.openStream(), new TypeReference<Map<Integer, Object>>() {
         });
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
@@ -135,7 +134,7 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-        Object object = objectMapper.readValue(url, new TypeReference<List<Double>>() {
+        Object object = objectMapper.readValue(url.openStream(), new TypeReference<List<Double>>() {
         });
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
@@ -150,7 +149,7 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-        Object object = objectMapper.readValue(url, new TypeReference<List<Double>>() {
+        Object object = objectMapper.readValue(url.openStream(), new TypeReference<List<Double>>() {
         });
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
@@ -165,7 +164,7 @@ public class Json2BeanTest {
         Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-        Object object = objectMapper.readValue(url, new TypeReference<Map<String, Object>>() {
+        Object object = objectMapper.readValue(url.openStream(), new TypeReference<Map<String, Object>>() {
         });
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
@@ -181,7 +180,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -197,7 +196,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -228,16 +227,15 @@ public class Json2BeanTest {
         FieldType fieldType = context.getFieldType();
         System.out.println(fieldType.toString());
         Class<?> clazz = Class.forName(fieldType.toString());
-        Object o = objectMapper.readValue(url, clazz);
+        Object o = objectMapper.readValue(url.openStream(), clazz);
         System.out.println(o);
         System.out.println(objectMapper.writeValueAsString(o));
     }
 
-    private static final ObjectMapper objectMapper = JsonMapper.builder().build();
-
-    static {
-        objectMapper.findAndRegisterModules();
-    }
+    private static final ObjectMapper objectMapper = JsonMapper.builder()
+            .findAndAddModules()
+            .configure(SerializationFeature.INDENT_OUTPUT, true)
+            .build();
 
     @Test
     public void testText() throws Exception {
@@ -249,7 +247,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -264,7 +262,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -310,7 +308,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -325,7 +323,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -340,7 +338,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
@@ -360,7 +358,7 @@ public class Json2BeanTest {
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
         Class<?> clazz = Class.forName(context.getFieldType().toString());
-        Object object = objectMapper.readValue(url, clazz);
+        Object object = objectMapper.readValue(url.openStream(), clazz);
         assertThat(object).isNotNull();
         System.out.println(objectMapper.writeValueAsString(object));
     }
