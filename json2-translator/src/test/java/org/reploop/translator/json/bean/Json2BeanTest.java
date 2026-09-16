@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.reploop.parser.QualifiedName;
 import org.reploop.parser.protobuf.tree.Message;
-import org.reploop.parser.protobuf.type.FieldType;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.SerializationFeature;
@@ -218,21 +217,6 @@ public class Json2BeanTest {
         messageMap = json2Bean.execute(new StringReader(json), context);
         System.out.println(messageMap);
         System.out.println(context.getFieldType());
-    }
-
-    @Test
-    public void testHAR() throws Exception {
-        URL url = Json2BeanTest.class.getResource("/har.json");
-        QualifiedName root = QualifiedName.of("har");
-        MessageContext context = new MessageContext(root, directory);
-        CharStream cs = CharStreams.fromPath(Paths.get(url.toURI()), StandardCharsets.UTF_8);
-        Map<QualifiedName, Message> messageMap = json2Bean.execute(cs, context);
-        FieldType fieldType = context.getFieldType();
-        System.out.println(fieldType.toString());
-        Class<?> clazz = Class.forName(fieldType.toString());
-        Object o = objectMapper.readValue(url.openStream(), clazz);
-        System.out.println(o);
-        System.out.println(objectMapper.writeValueAsString(o));
     }
 
     @Test
