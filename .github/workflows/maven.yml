@@ -28,6 +28,8 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase-env-var: GPG_PASSPHRASE
           cache: 'maven'
+          mvn-repositories-include-central: true
+          mvn-repositories-prioritize-central: true
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
         with:
