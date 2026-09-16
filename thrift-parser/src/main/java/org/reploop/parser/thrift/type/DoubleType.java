@@ -10,13 +10,13 @@ import org.reploop.parser.thrift.AstVisitor;
  */
 public class DoubleType extends FieldType {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitDoubleType(this, context);
-	}
+    public DoubleType() {
+        super("double");
+    }
 
-	public DoubleType() {
-		super("double");
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitDoubleType(this, context);
+    }
 
 }

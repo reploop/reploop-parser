@@ -13,10 +13,10 @@ import java.util.EnumSet;
 @Command(name = "proto", description = "Translate JSON to Protobuf Schema.")
 public class Json2ProtoCommand extends Json2Command {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Json2ProtoCommand.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Json2ProtoCommand.class);
 
-	public Json2ProtoCommand() {
-		setTargets(EnumSet.of(Target.PROTO));
-	}
+    public Json2ProtoCommand() {
+        setTargets(EnumSet.of(Target.PROTO));
+    }
 
 }

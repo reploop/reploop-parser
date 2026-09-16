@@ -13,48 +13,48 @@ import java.util.Objects;
  */
 public class EnumField extends Node {
 
-	final List<String> comments;
+    final List<String> comments;
 
-	final String name;
+    final String name;
 
-	final Integer index;
+    final Integer index;
 
-	public EnumField(List<String> comments, String name, Integer index) {
-		this.comments = comments;
-		this.name = name;
-		this.index = index;
-	}
+    public EnumField(List<String> comments, String name, Integer index) {
+        this.comments = comments;
+        this.name = name;
+        this.index = index;
+    }
 
-	public List<String> getComments() {
-		return comments;
-	}
+    public List<String> getComments() {
+        return comments;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Integer getIndex() {
-		return index;
-	}
+    public Integer getIndex() {
+        return index;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		EnumField enumField = (EnumField) o;
-		return Objects.equals(name, enumField.name) && Objects.equals(index, enumField.index);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        EnumField enumField = (EnumField) o;
+        return Objects.equals(name, enumField.name) && Objects.equals(index, enumField.index);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, index);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, index);
+    }
 
-	@Override
-	public String toString() {
-		return "EnumField{" + "name='" + name + '\'' + ", index=" + index + '}';
-	}
+    @Override
+    public String toString() {
+        return "EnumField{" + "name='" + name + '\'' + ", index=" + index + '}';
+    }
 
 }

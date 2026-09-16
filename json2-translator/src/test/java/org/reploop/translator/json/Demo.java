@@ -2,43 +2,43 @@ package org.reploop.translator.json;
 
 public class Demo extends Foo {
 
-	private String mobile;
+    private String mobile;
 
-	public String getMobile() {
-		return mobile;
-	}
+    public static Builder newBuilder() {
+        return new Builder();
+    }
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	@Override
-	public String toString() {
-		return "Demo{" + "mobile='" + mobile + '\'' + '}';
-	}
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
-	public static Builder newBuilder() {
-		return new Builder();
-	}
+    @Override
+    public String toString() {
+        return "Demo{" + "mobile='" + mobile + '\'' + '}';
+    }
 
-	public static class Builder {
+    public static class Builder {
 
-		private final Demo demo = new Demo();
+        private final Demo demo = new Demo();
 
-		public Builder setId(Long id) {
-			demo.setId(id);
-			return this;
-		}
+        public Builder setId(Long id) {
+            demo.setId(id);
+            return this;
+        }
 
-		public Builder setName(String name) {
-			demo.setName(name);
-			return this;
-		}
+        public Builder setName(String name) {
+            demo.setName(name);
+            return this;
+        }
 
-		public Demo build() {
-			return demo;
-		}
+        public Demo build() {
+            return demo;
+        }
 
-	}
+    }
 
 }

@@ -1,12 +1,12 @@
 package org.reploop.parser.thrift;
 
-import org.reploop.parser.thrift.base.ThriftBaseLexer;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
+import org.reploop.parser.thrift.base.ThriftBaseLexer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,36 +20,35 @@ import java.util.function.Function;
  */
 public abstract class AbstractParser {
 
-	protected ParserRuleContext parse(InputStream input, Function<CommonTokenStream, Parser> supplier,
-			Function<Parser, ParserRuleContext> func) throws IOException, StackOverflowError {
-		ThriftBaseLexer lexer = new ThriftBaseLexer(new ANTLRInputStream(input));
-		CommonTokenStream token = new CommonTokenStream(lexer);
-		Parser parser = supplier.apply(token);
+    protected ParserRuleContext parse(InputStream input, Function<CommonTokenStream, Parser> supplier,
+                                      Function<Parser, ParserRuleContext> func) throws IOException, StackOverflowError {
+        ThriftBaseLexer lexer = new ThriftBaseLexer(new ANTLRInputStream(input));
+        CommonTokenStream token = new CommonTokenStream(lexer);
+        Parser parser = supplier.apply(token);
 
-		parser.addParseListener(new PostProcessor());
+        parser.addParseListener(new PostProcessor());
 
-		ThriftErrorListener errorListener = new ThriftErrorListener();
-		lexer.removeErrorListeners();
-		lexer.addErrorListener(errorListener);
+        ThriftErrorListener errorListener = new ThriftErrorListener();
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(errorListener);
 
-		parser.removeErrorListeners();
-		parser.addErrorListener(errorListener);
+        parser.removeErrorListeners();
+        parser.addErrorListener(errorListener);
 
-		ParserRuleContext tree;
-		try {
-			// first, try parsing with potentially faster SLL mode
-			parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
-			tree = func.apply(parser);
-		}
-		catch (ParseCancellationException ex) {
-			// if we fail, parse with LL mode
-			token.reset(); // rewind input stream
-			parser.reset();
+        ParserRuleContext tree;
+        try {
+            // first, try parsing with potentially faster SLL mode
+            parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
+            tree = func.apply(parser);
+        } catch (ParseCancellationException ex) {
+            // if we fail, parse with LL mode
+            token.reset(); // rewind input stream
+            parser.reset();
 
-			parser.getInterpreter().setPredictionMode(PredictionMode.LL);
-			tree = func.apply(parser);
-		}
-		return tree;
-	}
+            parser.getInterpreter().setPredictionMode(PredictionMode.LL);
+            tree = func.apply(parser);
+        }
+        return tree;
+    }
 
 }

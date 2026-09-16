@@ -11,14 +11,14 @@ import org.reploop.parser.protobuf.Node;
  */
 public abstract class Entity extends Node {
 
-	protected final QualifiedName name;
+    protected final QualifiedName name;
 
-	public Entity(QualifiedName name) {
-		this.name = name;
-	}
+    public Entity(QualifiedName name) {
+        this.name = name;
+    }
 
-	public QualifiedName getName() {
-		return name;
-	}
+    public QualifiedName getName() {
+        return name;
+    }
 
 }

@@ -14,38 +14,37 @@ import java.util.Optional;
  */
 public class Definition extends Node {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitDefinition(this, context);
-	}
+    final Optional<Service> service;
+    final Optional<Entity> entity;
 
-	final Optional<Service> service;
+    public Definition(Optional<Service> service, Optional<Entity> entity) {
+        this.service = service;
+        this.entity = entity;
+    }
 
-	final Optional<Entity> entity;
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitDefinition(this, context);
+    }
 
-	public Definition(Optional<Service> service, Optional<Entity> entity) {
-		this.service = service;
-		this.entity = entity;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Definition that = (Definition) o;
+        return Objects.equals(service, that.service) && Objects.equals(entity, that.entity);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Definition that = (Definition) o;
-		return Objects.equals(service, that.service) && Objects.equals(entity, that.entity);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(service, entity);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(service, entity);
-	}
-
-	@Override
-	public String toString() {
-		return "Definition{" + "service=" + service + ", entity=" + entity + '}';
-	}
+    @Override
+    public String toString() {
+        return "Definition{" + "service=" + service + ", entity=" + entity + '}';
+    }
 
 }

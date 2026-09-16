@@ -10,18 +10,18 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class FloatType extends FieldType implements FloatingPointType {
 
-	public FloatType() {
-		super("Float");
-	}
+    public FloatType() {
+        super("Float");
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitFloatType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitFloatType(this, context);
+    }
 
-	@Override
-	public int bits() {
-		return 32;
-	}
+    @Override
+    public int bits() {
+        return 32;
+    }
 
 }

@@ -12,47 +12,47 @@ import java.util.Objects;
  */
 public class Namespace extends Header {
 
-	final NamespaceScope scope;
+    final NamespaceScope scope;
 
-	final String namespace;
+    final String namespace;
 
-	public Namespace(NamespaceScope scope, String namespace) {
-		this.scope = scope;
-		this.namespace = namespace;
-	}
+    public Namespace(NamespaceScope scope, String namespace) {
+        this.scope = scope;
+        this.namespace = namespace;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitNamespace(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitNamespace(this, context);
+    }
 
-	public String getNamespace() {
-		return namespace;
-	}
+    public String getNamespace() {
+        return namespace;
+    }
 
-	public NamespaceScope getScope() {
-		return scope;
-	}
+    public NamespaceScope getScope() {
+        return scope;
+    }
 
-	@Override
-	public String toString() {
-		String sb = "Namespace{" + "scope=" + scope + ", namespace='" + namespace + '\'' + '}';
-		return sb;
-	}
+    @Override
+    public String toString() {
+        String sb = "Namespace{" + "scope=" + scope + ", namespace='" + namespace + '\'' + '}';
+        return sb;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Namespace namespace1 = (Namespace) o;
-		return Objects.equals(scope, namespace1.scope) && Objects.equals(namespace, namespace1.namespace);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Namespace namespace1 = (Namespace) o;
+        return Objects.equals(scope, namespace1.scope) && Objects.equals(namespace, namespace1.namespace);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(scope, namespace);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(scope, namespace);
+    }
 
 }

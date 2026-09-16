@@ -17,73 +17,73 @@ import java.util.List;
  */
 public class CommentListener extends ThriftBaseBaseListener {
 
-	final BufferedTokenStream tokens;
+    final BufferedTokenStream tokens;
 
-	final TokenStreamRewriter rewriter;
+    final TokenStreamRewriter rewriter;
 
-	public CommentListener(BufferedTokenStream tokens) {
-		this.tokens = tokens;
-		this.rewriter = new TokenStreamRewriter(tokens);
-	}
+    public CommentListener(BufferedTokenStream tokens) {
+        this.tokens = tokens;
+        this.rewriter = new TokenStreamRewriter(tokens);
+    }
 
-	@Override
-	public void exitProgram(ThriftBaseParser.ProgramContext ctx) {
-		Token startToken = ctx.getStart();
-		int startIndex = startToken.getTokenIndex();
-		List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
-		if (null != channel) {
-			Token commentToken = channel.get(0);
-			if (null != commentToken) {
-				String comment = commentToken.getText();
-				rewriter.insertBefore(startIndex, comment);
-				rewriter.replace(commentToken, "\n");
-			}
-		}
-	}
+    @Override
+    public void exitProgram(ThriftBaseParser.ProgramContext ctx) {
+        Token startToken = ctx.getStart();
+        int startIndex = startToken.getTokenIndex();
+        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
+        if (null != channel) {
+            Token commentToken = channel.get(0);
+            if (null != commentToken) {
+                String comment = commentToken.getText();
+                rewriter.insertBefore(startIndex, comment);
+                rewriter.replace(commentToken, "\n");
+            }
+        }
+    }
 
-	@Override
-	public void exitService(ThriftBaseParser.ServiceContext ctx) {
-		Token startToken = ctx.getStart();
-		int startIndex = startToken.getTokenIndex();
-		List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
-		if (null != channel) {
-			Token commentToken = channel.get(0);
-			if (null != commentToken) {
-				String comment = commentToken.getText();
-				rewriter.insertBefore(startIndex, comment);
-				rewriter.replace(commentToken, "\n");
-			}
-		}
-	}
+    @Override
+    public void exitService(ThriftBaseParser.ServiceContext ctx) {
+        Token startToken = ctx.getStart();
+        int startIndex = startToken.getTokenIndex();
+        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
+        if (null != channel) {
+            Token commentToken = channel.get(0);
+            if (null != commentToken) {
+                String comment = commentToken.getText();
+                rewriter.insertBefore(startIndex, comment);
+                rewriter.replace(commentToken, "\n");
+            }
+        }
+    }
 
-	@Override
-	public void exitFunction(ThriftBaseParser.FunctionContext ctx) {
-		Token startToken = ctx.getStart();
-		int startIndex = startToken.getTokenIndex();
-		List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
-		if (null != channel) {
-			Token commentToken = channel.get(0);
-			if (null != commentToken) {
-				String comment = commentToken.getText();
-				rewriter.insertBefore(startIndex, comment);
-				rewriter.replace(commentToken, "\n");
-			}
-		}
-	}
+    @Override
+    public void exitFunction(ThriftBaseParser.FunctionContext ctx) {
+        Token startToken = ctx.getStart();
+        int startIndex = startToken.getTokenIndex();
+        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
+        if (null != channel) {
+            Token commentToken = channel.get(0);
+            if (null != commentToken) {
+                String comment = commentToken.getText();
+                rewriter.insertBefore(startIndex, comment);
+                rewriter.replace(commentToken, "\n");
+            }
+        }
+    }
 
-	@Override
-	public void exitField(ThriftBaseParser.FieldContext ctx) {
-		Token startToken = ctx.getStart();
-		int startIndex = startToken.getTokenIndex();
-		List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
-		if (null != channel) {
-			Token commentToken = channel.get(0);
-			if (null != commentToken) {
-				String comment = commentToken.getText();
-				rewriter.insertBefore(startIndex, comment);
-				rewriter.replace(commentToken, "\n");
-			}
-		}
-	}
+    @Override
+    public void exitField(ThriftBaseParser.FieldContext ctx) {
+        Token startToken = ctx.getStart();
+        int startIndex = startToken.getTokenIndex();
+        List<Token> channel = tokens.getHiddenTokensToLeft(startIndex, ThriftBaseLexer.HIDDEN);
+        if (null != channel) {
+            Token commentToken = channel.get(0);
+            if (null != commentToken) {
+                String comment = commentToken.getText();
+                rewriter.insertBefore(startIndex, comment);
+                rewriter.replace(commentToken, "\n");
+            }
+        }
+    }
 
 }

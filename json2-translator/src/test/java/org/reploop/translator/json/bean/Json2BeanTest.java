@@ -26,8 +26,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Json2BeanTest {
 
+    private static final ObjectMapper objectMapper = JsonMapper.builder()
+            .findAndAddModules()
+            .configure(SerializationFeature.INDENT_OUTPUT, true)
+            .build();
     private Json2Message json2Bean;
-
     private Path directory;
 
     @Before
@@ -231,11 +234,6 @@ public class Json2BeanTest {
         System.out.println(o);
         System.out.println(objectMapper.writeValueAsString(o));
     }
-
-    private static final ObjectMapper objectMapper = JsonMapper.builder()
-            .findAndAddModules()
-            .configure(SerializationFeature.INDENT_OUTPUT, true)
-            .build();
 
     @Test
     public void testText() throws Exception {

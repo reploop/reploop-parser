@@ -8,8 +8,8 @@ import java.util.Map;
 
 public interface MessageGenerator {
 
-	void generate(Map<QualifiedName, Message> messages, String outputDirectory);
+    void generate(Map<QualifiedName, Message> messages, String outputDirectory);
 
-	void generate(Message message, BeanContext context);
+    void generate(Message message, BeanContext context);
 
 }

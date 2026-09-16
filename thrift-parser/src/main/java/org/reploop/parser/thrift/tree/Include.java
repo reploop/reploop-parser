@@ -13,39 +13,39 @@ import java.util.Objects;
  */
 public class Include extends Header {
 
-	final String file;
+    final String file;
 
-	public Include(String file) {
-		this.file = file;
-	}
+    public Include(String file) {
+        this.file = file;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitInclude(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitInclude(this, context);
+    }
 
-	public String getFile() {
-		return file;
-	}
+    public String getFile() {
+        return file;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Include include = (Include) o;
-		return Objects.equals(file, include.file);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Include include = (Include) o;
+        return Objects.equals(file, include.file);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(file);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(file);
+    }
 
-	@Override
-	public String toString() {
-		return "Include{" + "file='" + file + '\'' + '}';
-	}
+    @Override
+    public String toString() {
+        return "Include{" + "file='" + file + '\'' + '}';
+    }
 
 }

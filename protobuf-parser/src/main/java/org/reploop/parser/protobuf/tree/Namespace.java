@@ -12,39 +12,39 @@ import java.util.Objects;
  */
 public class Namespace extends Header {
 
-	final String name;
+    final String name;
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitNamespace(this, context);
-	}
+    public Namespace(String name) {
+        this.name = name;
+    }
 
-	public Namespace(String name) {
-		this.name = name;
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitNamespace(this, context);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Namespace namespace = (Namespace) o;
-		return Objects.equals(name, namespace.name);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Namespace namespace = (Namespace) o;
+        return Objects.equals(name, namespace.name);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
-	@Override
-	public String toString() {
-		return "Namespace{" + "name='" + name + '\'' + '}';
-	}
+    @Override
+    public String toString() {
+        return "Namespace{" + "name='" + name + '\'' + '}';
+    }
 
 }

@@ -1,9 +1,39 @@
 package org.reploop.parser.thrift;
 
-import org.reploop.parser.thrift.tree.*;
+import org.reploop.parser.thrift.tree.Definition;
+import org.reploop.parser.thrift.tree.Entity;
 import org.reploop.parser.thrift.tree.Enum;
+import org.reploop.parser.thrift.tree.EnumField;
 import org.reploop.parser.thrift.tree.Exception;
-import org.reploop.parser.thrift.type.*;
+import org.reploop.parser.thrift.tree.Field;
+import org.reploop.parser.thrift.tree.Function;
+import org.reploop.parser.thrift.tree.FunctionType;
+import org.reploop.parser.thrift.tree.Header;
+import org.reploop.parser.thrift.tree.Include;
+import org.reploop.parser.thrift.tree.LiteralNode;
+import org.reploop.parser.thrift.tree.Namespace;
+import org.reploop.parser.thrift.tree.NamespaceScope;
+import org.reploop.parser.thrift.tree.Raise;
+import org.reploop.parser.thrift.tree.ReturnType;
+import org.reploop.parser.thrift.tree.Service;
+import org.reploop.parser.thrift.tree.Struct;
+import org.reploop.parser.thrift.tree.ThriftProgram;
+import org.reploop.parser.thrift.tree.VoidType;
+import org.reploop.parser.thrift.type.BinaryType;
+import org.reploop.parser.thrift.type.BoolType;
+import org.reploop.parser.thrift.type.ByteType;
+import org.reploop.parser.thrift.type.CollectionType;
+import org.reploop.parser.thrift.type.DoubleType;
+import org.reploop.parser.thrift.type.FieldType;
+import org.reploop.parser.thrift.type.FloatType;
+import org.reploop.parser.thrift.type.IntType;
+import org.reploop.parser.thrift.type.ListType;
+import org.reploop.parser.thrift.type.LongType;
+import org.reploop.parser.thrift.type.MapType;
+import org.reploop.parser.thrift.type.SetType;
+import org.reploop.parser.thrift.type.ShortType;
+import org.reploop.parser.thrift.type.StringType;
+import org.reploop.parser.thrift.type.StructType;
 
 /**
  * What's this about?
@@ -13,148 +43,148 @@ import org.reploop.parser.thrift.type.*;
  */
 public abstract class AstVisitor<R, C> {
 
-	public R visitNode(Node node, C context) {
-		return null;
-	}
+    public R visitNode(Node node, C context) {
+        return null;
+    }
 
-	public R process(Node node, C context) {
-		return node.accept(this, context);
-	}
+    public R process(Node node, C context) {
+        return node.accept(this, context);
+    }
 
-	public R visitCollectionType(CollectionType collectionType, C context) {
-		return visitNode(collectionType, context);
-	}
+    public R visitCollectionType(CollectionType collectionType, C context) {
+        return visitNode(collectionType, context);
+    }
 
-	public R visitDefinition(Definition node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitDefinition(Definition node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitEntity(Entity node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitEntity(Entity node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitEnum(Enum node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitEnum(Enum node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitEnumField(EnumField node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitEnumField(EnumField node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitException(Exception node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitException(Exception node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitField(Field node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitField(Field node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitFunction(Function node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitFunction(Function node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitReturnType(ReturnType node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitReturnType(ReturnType node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitFunctionType(FunctionType node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitFunctionType(FunctionType node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitHeader(Header node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitHeader(Header node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitInclude(Include node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitInclude(Include node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitLiteralNode(LiteralNode node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitLiteralNode(LiteralNode node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitNamespace(Namespace node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitNamespace(Namespace node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitNamespaceScope(NamespaceScope node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitNamespaceScope(NamespaceScope node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitRaise(Raise node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitRaise(Raise node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitService(Service node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitService(Service node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitStruct(Struct node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitStruct(Struct node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitProgram(ThriftProgram node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitProgram(ThriftProgram node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitVoidType(VoidType node, C context) {
-		return visitNode(node, context);
-	}
+    public R visitVoidType(VoidType node, C context) {
+        return visitNode(node, context);
+    }
 
-	public R visitBoolType(BoolType boolType, C context) {
-		return visitNode(boolType, context);
-	}
+    public R visitBoolType(BoolType boolType, C context) {
+        return visitNode(boolType, context);
+    }
 
-	public R visitBinaryType(BinaryType binaryType, C context) {
-		return visitNode(binaryType, context);
-	}
+    public R visitBinaryType(BinaryType binaryType, C context) {
+        return visitNode(binaryType, context);
+    }
 
-	public R visitByteType(ByteType byteType, C context) {
-		return visitNode(byteType, context);
-	}
+    public R visitByteType(ByteType byteType, C context) {
+        return visitNode(byteType, context);
+    }
 
-	public R visitDoubleType(DoubleType doubleType, C context) {
-		return visitNode(doubleType, context);
-	}
+    public R visitDoubleType(DoubleType doubleType, C context) {
+        return visitNode(doubleType, context);
+    }
 
-	public R visitFieldType(FieldType fieldType, C context) {
-		return visitNode(fieldType, context);
-	}
+    public R visitFieldType(FieldType fieldType, C context) {
+        return visitNode(fieldType, context);
+    }
 
-	public R visitFloatType(FloatType floatType, C context) {
-		return visitNode(floatType, context);
-	}
+    public R visitFloatType(FloatType floatType, C context) {
+        return visitNode(floatType, context);
+    }
 
-	public R visitIntType(IntType intType, C context) {
-		return visitNode(intType, context);
-	}
+    public R visitIntType(IntType intType, C context) {
+        return visitNode(intType, context);
+    }
 
-	public R visitListType(ListType listType, C context) {
-		return visitNode(listType, context);
-	}
+    public R visitListType(ListType listType, C context) {
+        return visitNode(listType, context);
+    }
 
-	public R visitLongType(LongType longType, C context) {
-		return visitNode(longType, context);
-	}
+    public R visitLongType(LongType longType, C context) {
+        return visitNode(longType, context);
+    }
 
-	public R visitMapType(MapType mapType, C context) {
-		return visitNode(mapType, context);
-	}
+    public R visitMapType(MapType mapType, C context) {
+        return visitNode(mapType, context);
+    }
 
-	public R visitSetType(SetType setType, C context) {
-		return visitNode(setType, context);
-	}
+    public R visitSetType(SetType setType, C context) {
+        return visitNode(setType, context);
+    }
 
-	public R visitShortType(ShortType shortType, C context) {
-		return visitNode(shortType, context);
-	}
+    public R visitShortType(ShortType shortType, C context) {
+        return visitNode(shortType, context);
+    }
 
-	public R visitStringType(StringType stringType, C context) {
-		return visitNode(stringType, context);
-	}
+    public R visitStringType(StringType stringType, C context) {
+        return visitNode(stringType, context);
+    }
 
-	public R visitStructType(StructType structType, C context) {
-		return visitNode(structType, context);
-	}
+    public R visitStructType(StructType structType, C context) {
+        return visitNode(structType, context);
+    }
 
 }

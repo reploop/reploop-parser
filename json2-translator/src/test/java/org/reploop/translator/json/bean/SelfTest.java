@@ -29,11 +29,11 @@ public class SelfTest {
 
 class This extends Self {
 
+    Map<String, Self> map;
+
     public This(Self self) {
         super(self);
     }
-
-    Map<String, Self> map;
 
     @Override
     public Map<String, Self> getMap() {
@@ -59,6 +59,11 @@ class Self {
         this(o.id, o.name);
     }
 
+    public Self(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -81,11 +86,6 @@ class Self {
 
     public void setMap(Map<String, Self> map) {
         this.map = map;
-    }
-
-    public Self(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
 }

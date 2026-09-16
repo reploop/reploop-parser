@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-syntax="proto2";
+syntax = "proto2";
 option java_package = "org.apache.hadoop.hdfs.protocol.proto";
 option java_outer_classname = "ErasureCodingProtos";
 option java_generate_equals_and_hash = true;
@@ -24,96 +24,96 @@ package hadoop.hdfs;
 import "hdfs.proto";
 
 message SetErasureCodingPolicyRequestProto {
-    required string src = 1;
-    optional string ecPolicyName = 2;
+  required string src = 1;
+  optional string ecPolicyName = 2;
 }
 
 message SetErasureCodingPolicyResponseProto {
 }
 
-message GetErasureCodingPoliciesRequestProto { // void request
+message GetErasureCodingPoliciesRequestProto {// void request
 }
 
 message GetErasureCodingPoliciesResponseProto {
-    repeated ErasureCodingPolicyProto ecPolicies = 1;
+  repeated ErasureCodingPolicyProto ecPolicies = 1;
 }
 
-message GetErasureCodingCodecsRequestProto { // void request
+message GetErasureCodingCodecsRequestProto {// void request
 }
 
 message GetErasureCodingCodecsResponseProto {
-    repeated CodecProto codec = 1;
+  repeated CodecProto codec = 1;
 }
 
 message GetErasureCodingPolicyRequestProto {
-    required string src = 1; // path to get the policy info
+  required string src = 1; // path to get the policy info
 }
 
 message GetErasureCodingPolicyResponseProto {
-    optional ErasureCodingPolicyProto ecPolicy = 1;
+  optional ErasureCodingPolicyProto ecPolicy = 1;
 }
 
 message AddErasureCodingPoliciesRequestProto {
-    repeated ErasureCodingPolicyProto ecPolicies = 1;
+  repeated ErasureCodingPolicyProto ecPolicies = 1;
 }
 
 message AddErasureCodingPoliciesResponseProto {
-    repeated AddErasureCodingPolicyResponseProto responses = 1;
+  repeated AddErasureCodingPolicyResponseProto responses = 1;
 }
 
 message RemoveErasureCodingPolicyRequestProto {
-    required string ecPolicyName = 1;
+  required string ecPolicyName = 1;
 }
 
 message RemoveErasureCodingPolicyResponseProto {
 }
 
 message EnableErasureCodingPolicyRequestProto {
-    required string ecPolicyName = 1;
+  required string ecPolicyName = 1;
 }
 
 message EnableErasureCodingPolicyResponseProto {
 }
 
 message DisableErasureCodingPolicyRequestProto {
-    required string ecPolicyName = 1;
+  required string ecPolicyName = 1;
 }
 
 message DisableErasureCodingPolicyResponseProto {
 }
 
 message UnsetErasureCodingPolicyRequestProto {
-    required string src = 1;
+  required string src = 1;
 }
 
 message UnsetErasureCodingPolicyResponseProto {
 }
 
 message GetECTopologyResultForPoliciesRequestProto {
-    repeated string policies = 1;
+  repeated string policies = 1;
 }
 
 message GetECTopologyResultForPoliciesResponseProto {
-    required ECTopologyVerifierResultProto response = 1;
+  required ECTopologyVerifierResultProto response = 1;
 }
 
 /**
  * Block erasure coding reconstruction info
  */
 message BlockECReconstructionInfoProto {
-    required ExtendedBlockProto block = 1;
-    required DatanodeInfosProto sourceDnInfos = 2;
-    required DatanodeInfosProto targetDnInfos = 3;
-    required StorageUuidsProto targetStorageUuids = 4;
-    required StorageTypesProto targetStorageTypes = 5;
-    required bytes liveBlockIndices = 6;
-    required ErasureCodingPolicyProto ecPolicy = 7;
+  required ExtendedBlockProto block = 1;
+  required DatanodeInfosProto sourceDnInfos = 2;
+  required DatanodeInfosProto targetDnInfos = 3;
+  required StorageUuidsProto targetStorageUuids = 4;
+  required StorageTypesProto targetStorageTypes = 5;
+  required bytes liveBlockIndices = 6;
+  required ErasureCodingPolicyProto ecPolicy = 7;
 }
 
 /**
  * Codec and it's corresponding coders
  */
 message CodecProto {
-    required string codec  = 1;
-    required string coders = 2;
+  required string codec = 1;
+  required string coders = 2;
 }

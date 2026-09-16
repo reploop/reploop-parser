@@ -10,13 +10,13 @@ import org.reploop.parser.thrift.AstVisitor;
  */
 public class ListType extends CollectionType {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitListType(this, context);
-	}
+    public ListType(FieldType elementType) {
+        super("List", elementType);
+    }
 
-	public ListType(FieldType elementType) {
-		super("List", elementType);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitListType(this, context);
+    }
 
 }

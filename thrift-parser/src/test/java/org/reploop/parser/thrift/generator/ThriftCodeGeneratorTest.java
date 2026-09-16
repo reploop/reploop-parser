@@ -20,33 +20,33 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThriftCodeGeneratorTest {
 
-	ThriftParser parser;
+    ThriftParser parser;
 
-	ThriftCodeGenerator generator;
+    ThriftCodeGenerator generator;
 
-	@Before
-	public void setUp() {
-		parser = new ThriftParser();
-		generator = new ThriftCodeGenerator();
-	}
+    @Before
+    public void setUp() {
+        parser = new ThriftParser();
+        generator = new ThriftCodeGenerator();
+    }
 
-	@Test
-	public void testService() throws Exception {
-		URL uri = ClassLoader.getSystemClassLoader().getResource("write_rpc_service.thrift");
-		assert uri != null;
-		Path path = Paths.get(uri.toURI());
-		ThriftProgram ThriftProgram = parser.program(path);
-		Classpath<ThriftProgram> classpath = new Classpath<>();
-		classpath.current(path);
-		classpath.file(path);
-		System.out.println(classpath);
-		ThriftBinaryNameResolver resolver = new ThriftBinaryNameResolver(new HashMap<>());
-		// We need rewrite function parameter and return type name.
-		ThriftProgram p = resolver.visitProgram(ThriftProgram, classpath);
-		System.out.println(p);
-		StringBuilder builder = generator.process(p, new GeneratorContext());
-		System.out.println(builder);
-		TimeUnit.SECONDS.sleep(3);
-	}
+    @Test
+    public void testService() throws Exception {
+        URL uri = ClassLoader.getSystemClassLoader().getResource("write_rpc_service.thrift");
+        assert uri != null;
+        Path path = Paths.get(uri.toURI());
+        ThriftProgram ThriftProgram = parser.program(path);
+        Classpath<ThriftProgram> classpath = new Classpath<>();
+        classpath.current(path);
+        classpath.file(path);
+        System.out.println(classpath);
+        ThriftBinaryNameResolver resolver = new ThriftBinaryNameResolver(new HashMap<>());
+        // We need rewrite function parameter and return type name.
+        ThriftProgram p = resolver.visitProgram(ThriftProgram, classpath);
+        System.out.println(p);
+        StringBuilder builder = generator.process(p, new GeneratorContext());
+        System.out.println(builder);
+        TimeUnit.SECONDS.sleep(3);
+    }
 
 }

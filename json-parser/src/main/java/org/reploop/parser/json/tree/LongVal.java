@@ -12,39 +12,39 @@ import java.util.Objects;
  */
 public class LongVal extends Number {
 
-	private final long val;
+    private final long val;
 
-	public LongVal(long val) {
-		this.val = val;
-	}
+    public LongVal(long val) {
+        this.val = val;
+    }
 
-	public long getVal() {
-		return val;
-	}
+    public long getVal() {
+        return val;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitLong(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitLong(this, context);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		LongVal aLongVal = (LongVal) o;
-		return val == aLongVal.val;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        LongVal aLongVal = (LongVal) o;
+        return val == aLongVal.val;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(val);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
+    }
 
-	@Override
-	public String toString() {
-		return String.valueOf(val);
-	}
+    @Override
+    public String toString() {
+        return String.valueOf(val);
+    }
 
 }

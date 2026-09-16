@@ -10,9 +10,9 @@ import org.junit.Test;
  */
 public class ThriftBinaryNameResolverTest {
 
-	@Test
-	public void visitProgram() {
+    @Test
+    public void visitProgram() {
 
-	}
+    }
 
 }

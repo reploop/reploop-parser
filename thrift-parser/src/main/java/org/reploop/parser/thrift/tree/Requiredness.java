@@ -8,6 +8,6 @@ package org.reploop.parser.thrift.tree;
  */
 public enum Requiredness {
 
-	REQUIRED, OPTIONAL
+    REQUIRED, OPTIONAL
 
 }

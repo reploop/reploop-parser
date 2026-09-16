@@ -6,18 +6,18 @@ import java.util.List;
 
 public class DeclSpecifiers extends Node {
 
-	List<DeclSpecifier> specifiers;
+    List<DeclSpecifier> specifiers;
 
-	public DeclSpecifiers(List<DeclSpecifier> specifiers) {
-		this.specifiers = specifiers;
-	}
+    public DeclSpecifiers(List<DeclSpecifier> specifiers) {
+        this.specifiers = specifiers;
+    }
 
-	public List<DeclSpecifier> getSpecifiers() {
-		return specifiers;
-	}
+    public List<DeclSpecifier> getSpecifiers() {
+        return specifiers;
+    }
 
-	public void setSpecifiers(List<DeclSpecifier> specifiers) {
-		this.specifiers = specifiers;
-	}
+    public void setSpecifiers(List<DeclSpecifier> specifiers) {
+        this.specifiers = specifiers;
+    }
 
 }

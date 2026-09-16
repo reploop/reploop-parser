@@ -8,6 +8,6 @@ package org.reploop.parser.protobuf;
  */
 public enum ProtoOption {
 
-	JAVA_OUTER_CLASSNAME
+    JAVA_OUTER_CLASSNAME
 
 }

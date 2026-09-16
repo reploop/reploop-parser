@@ -6,18 +6,18 @@ import java.util.List;
 
 public class AttributeSpecifiers extends Node {
 
-	List<AttributeSpecifier> specifiers;
+    List<AttributeSpecifier> specifiers;
 
-	public AttributeSpecifiers(List<AttributeSpecifier> specifiers) {
-		this.specifiers = specifiers;
-	}
+    public AttributeSpecifiers(List<AttributeSpecifier> specifiers) {
+        this.specifiers = specifiers;
+    }
 
-	public List<AttributeSpecifier> getSpecifiers() {
-		return specifiers;
-	}
+    public List<AttributeSpecifier> getSpecifiers() {
+        return specifiers;
+    }
 
-	public void setSpecifiers(List<AttributeSpecifier> specifiers) {
-		this.specifiers = specifiers;
-	}
+    public void setSpecifiers(List<AttributeSpecifier> specifiers) {
+        this.specifiers = specifiers;
+    }
 
 }

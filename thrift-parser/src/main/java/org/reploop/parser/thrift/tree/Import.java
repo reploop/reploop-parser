@@ -12,34 +12,34 @@ import java.util.Objects;
  */
 public class Import extends Header {
 
-	private final QualifiedName name;
+    private final QualifiedName name;
 
-	public Import(QualifiedName name) {
-		this.name = name;
-	}
+    public Import(QualifiedName name) {
+        this.name = name;
+    }
 
-	public QualifiedName getName() {
-		return name;
-	}
+    public QualifiedName getName() {
+        return name;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Import anImport = (Import) o;
-		return Objects.equals(name, anImport.name);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Import anImport = (Import) o;
+        return Objects.equals(name, anImport.name);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
-	@Override
-	public String toString() {
-		return "Import{" + "name=" + name + '}';
-	}
+    @Override
+    public String toString() {
+        return "Import{" + "name=" + name + '}';
+    }
 
 }

@@ -14,49 +14,47 @@ import java.util.Objects;
  */
 public class Enumeration extends Entity {
 
-	QualifiedName name;
+    final List<EnumField> fields;
+    final List<String> comments;
+    QualifiedName name;
 
-	final List<EnumField> fields;
+    public Enumeration(QualifiedName name, List<String> comments, List<EnumField> fields) {
+        super(name);
+        this.fields = fields;
+        this.comments = comments;
+    }
 
-	final List<String> comments;
+    public List<String> getComments() {
+        return comments;
+    }
 
-	public Enumeration(QualifiedName name, List<String> comments, List<EnumField> fields) {
-		super(name);
-		this.fields = fields;
-		this.comments = comments;
-	}
+    public List<EnumField> getFields() {
+        return fields;
+    }
 
-	public List<String> getComments() {
-		return comments;
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitEnumeration(this, context);
+    }
 
-	public List<EnumField> getFields() {
-		return fields;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Enumeration that = (Enumeration) o;
+        return Objects.equals(name, that.name) && Objects.equals(fields, that.fields);
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitEnumeration(this, context);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, fields);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Enumeration that = (Enumeration) o;
-		return Objects.equals(name, that.name) && Objects.equals(fields, that.fields);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, fields);
-	}
-
-	@Override
-	public String toString() {
-		return "Enumeration{" + "name='" + name + '\'' + ", fields=" + fields + '}';
-	}
+    @Override
+    public String toString() {
+        return "Enumeration{" + "name='" + name + '\'' + ", fields=" + fields + '}';
+    }
 
 }

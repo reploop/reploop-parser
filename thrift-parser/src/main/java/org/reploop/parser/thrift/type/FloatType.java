@@ -10,13 +10,13 @@ import org.reploop.parser.thrift.AstVisitor;
  */
 public class FloatType extends FieldType {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitFloatType(this, context);
-	}
+    public FloatType() {
+        super("float");
+    }
 
-	public FloatType() {
-		super("float");
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitFloatType(this, context);
+    }
 
 }

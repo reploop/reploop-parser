@@ -39,14 +39,14 @@ import "ReconfigurationProtocol.proto";
  * block - block for which visible length is requested
  */
 message GetReplicaVisibleLengthRequestProto {
-    required ExtendedBlockProto block = 1;
+  required ExtendedBlockProto block = 1;
 }
 
 /**
  * length - visible length of the block
  */
 message GetReplicaVisibleLengthResponseProto {
-    required uint64 length = 1;
+  required uint64 length = 1;
 }
 
 /**
@@ -67,8 +67,8 @@ message RefreshNamenodesResponseProto {
  *         if true, delete the block pool even if it has blocks.
  */
 message DeleteBlockPoolRequestProto {
-    required string blockPool = 1;
-    required bool force = 2;
+  required string blockPool = 1;
+  required bool force = 2;
 }
 
 /**
@@ -85,8 +85,8 @@ message DeleteBlockPoolResponseProto {
  * This message is deprecated in favor of file descriptor passing.
  */
 message GetBlockLocalPathInfoRequestProto {
-    required ExtendedBlockProto block = 1;
-    required hadoop.common.TokenProto token = 2;
+  required ExtendedBlockProto block = 1;
+  required hadoop.common.TokenProto token = 2;
 }
 
 /**
@@ -97,9 +97,9 @@ message GetBlockLocalPathInfoRequestProto {
  * This message is deprecated in favor of file descriptor passing.
  */
 message GetBlockLocalPathInfoResponseProto {
-    required ExtendedBlockProto block = 1;
-    required string localPath = 2;
-    required string localMetaPath = 3;
+  required ExtendedBlockProto block = 1;
+  required string localPath = 2;
+  required string localMetaPath = 3;
 }
 
 /**
@@ -108,7 +108,7 @@ message GetBlockLocalPathInfoResponseProto {
  *              the regular shutdown.
  */
 message ShutdownDatanodeRequestProto {
-    required bool forUpgrade = 1;
+  required bool forUpgrade = 1;
 }
 
 message ShutdownDatanodeResponseProto {
@@ -128,19 +128,19 @@ message GetDatanodeInfoRequestProto {
 }
 
 message GetDatanodeInfoResponseProto {
-    required DatanodeLocalInfoProto localInfo = 1;
+  required DatanodeLocalInfoProto localInfo = 1;
 }
 
 message GetVolumeReportRequestProto {
 }
 
 message GetVolumeReportResponseProto {
-    repeated DatanodeVolumeInfoProto volumeInfo = 1;
+  repeated DatanodeVolumeInfoProto volumeInfo = 1;
 }
 
 message TriggerBlockReportRequestProto {
-    required bool incremental = 1;
-    optional string nnAddress = 2;
+  required bool incremental = 1;
+  optional string nnAddress = 2;
 }
 
 message TriggerBlockReportResponseProto {
@@ -153,7 +153,7 @@ message GetBalancerBandwidthRequestProto {
  * bandwidth - balancer bandwidth value of the datanode.
  */
 message GetBalancerBandwidthResponseProto {
-    required uint64 bandwidth = 1;
+  required uint64 bandwidth = 1;
 }
 
 /**
@@ -161,11 +161,11 @@ message GetBalancerBandwidthResponseProto {
  * balancer plan to a data node.
  */
 message SubmitDiskBalancerPlanRequestProto {
-    required string planID = 1;         // A hash of the plan like SHA-1
-    required string plan = 2;           // Plan file data in Json format
-    optional uint64 planVersion = 3;    // Plan version number
-    optional bool ignoreDateCheck = 4;  // Ignore date checks on this plan.
-    required string planFile = 5;       // Plan file path
+  required string planID = 1;         // A hash of the plan like SHA-1
+  required string plan = 2;           // Plan file data in Json format
+  optional uint64 planVersion = 3;    // Plan version number
+  optional bool ignoreDateCheck = 4;  // Ignore date checks on this plan.
+  required string planFile = 5;       // Plan file path
 }
 
 /**
@@ -179,7 +179,7 @@ message SubmitDiskBalancerPlanResponseProto {
  * outstanding disk balancer plan
  */
 message CancelPlanRequestProto {
-    required string planID = 1;
+  required string planID = 1;
 }
 
 /**
@@ -201,10 +201,10 @@ message QueryPlanStatusRequestProto {
  * This message describes a plan if it is in progress
  */
 message QueryPlanStatusResponseProto {
-    optional uint32 result = 1;
-    optional string planID = 2;
-    optional string currentStatus = 3;
-    optional string planFile = 4;
+  optional uint32 result = 1;
+  optional string planID = 2;
+  optional string currentStatus = 3;
+  optional string planFile = 4;
 }
 
 /**
@@ -212,14 +212,14 @@ message QueryPlanStatusResponseProto {
   * that is used by disk balancer.
   */
 message DiskBalancerSettingRequestProto {
-    required string key = 1;
+  required string key = 1;
 }
 
 /**
  * Response that describes the value of requested disk balancer setting.
  */
 message DiskBalancerSettingResponseProto {
-    required string value = 1;
+  required string value = 1;
 }
 
 /**
@@ -227,82 +227,82 @@ message DiskBalancerSettingResponseProto {
  * See the request and response for details of rpc call.
  */
 service ClientDatanodeProtocolService {
-    /**
-     * Returns the visible length of the replica
-     */
-    rpc getReplicaVisibleLength(GetReplicaVisibleLengthRequestProto)
-        returns(GetReplicaVisibleLengthResponseProto);
+  /**
+   * Returns the visible length of the replica
+   */
+  rpc getReplicaVisibleLength(GetReplicaVisibleLengthRequestProto)
+      returns(GetReplicaVisibleLengthResponseProto);
 
-    /**
-     * Refresh the list of federated namenodes from updated configuration.
-     * Adds new namenodes and stops the deleted namenodes.
-     */
-    rpc refreshNamenodes(RefreshNamenodesRequestProto)
-        returns(RefreshNamenodesResponseProto);
+  /**
+   * Refresh the list of federated namenodes from updated configuration.
+   * Adds new namenodes and stops the deleted namenodes.
+   */
+  rpc refreshNamenodes(RefreshNamenodesRequestProto)
+      returns(RefreshNamenodesResponseProto);
 
-    /**
-     * Delete the block pool from the datanode.
-     */
-    rpc deleteBlockPool(DeleteBlockPoolRequestProto)
-        returns(DeleteBlockPoolResponseProto);
+  /**
+   * Delete the block pool from the datanode.
+   */
+  rpc deleteBlockPool(DeleteBlockPoolRequestProto)
+      returns(DeleteBlockPoolResponseProto);
 
-    /**
-     * Retrieves the path names of the block file and metadata file stored on the
-     * local file system.
-     */
-    rpc getBlockLocalPathInfo(GetBlockLocalPathInfoRequestProto)
-        returns(GetBlockLocalPathInfoResponseProto);
+  /**
+   * Retrieves the path names of the block file and metadata file stored on the
+   * local file system.
+   */
+  rpc getBlockLocalPathInfo(GetBlockLocalPathInfoRequestProto)
+      returns(GetBlockLocalPathInfoResponseProto);
 
-    rpc shutdownDatanode(ShutdownDatanodeRequestProto)
-        returns(ShutdownDatanodeResponseProto);
+  rpc shutdownDatanode(ShutdownDatanodeRequestProto)
+      returns(ShutdownDatanodeResponseProto);
 
-    rpc evictWriters(EvictWritersRequestProto)
-        returns(EvictWritersResponseProto);
+  rpc evictWriters(EvictWritersRequestProto)
+      returns(EvictWritersResponseProto);
 
-    rpc getDatanodeInfo(GetDatanodeInfoRequestProto)
-        returns(GetDatanodeInfoResponseProto);
+  rpc getDatanodeInfo(GetDatanodeInfoRequestProto)
+      returns(GetDatanodeInfoResponseProto);
 
-    rpc getVolumeReport(GetVolumeReportRequestProto)
-        returns(GetVolumeReportResponseProto);
+  rpc getVolumeReport(GetVolumeReportRequestProto)
+      returns(GetVolumeReportResponseProto);
 
-    rpc getReconfigurationStatus(GetReconfigurationStatusRequestProto)
-        returns(GetReconfigurationStatusResponseProto);
+  rpc getReconfigurationStatus(GetReconfigurationStatusRequestProto)
+      returns(GetReconfigurationStatusResponseProto);
 
-    rpc startReconfiguration(StartReconfigurationRequestProto)
-        returns(StartReconfigurationResponseProto);
+  rpc startReconfiguration(StartReconfigurationRequestProto)
+      returns(StartReconfigurationResponseProto);
 
-    rpc listReconfigurableProperties(
-        ListReconfigurablePropertiesRequestProto)
-        returns(ListReconfigurablePropertiesResponseProto);
+  rpc listReconfigurableProperties(
+      ListReconfigurablePropertiesRequestProto)
+      returns(ListReconfigurablePropertiesResponseProto);
 
-    rpc triggerBlockReport(TriggerBlockReportRequestProto)
-        returns(TriggerBlockReportResponseProto);
+  rpc triggerBlockReport(TriggerBlockReportRequestProto)
+      returns(TriggerBlockReportResponseProto);
 
-    /**
-     * Returns the balancer bandwidth value of datanode.
-     */
-    rpc getBalancerBandwidth(GetBalancerBandwidthRequestProto)
-        returns(GetBalancerBandwidthResponseProto);
+  /**
+   * Returns the balancer bandwidth value of datanode.
+   */
+  rpc getBalancerBandwidth(GetBalancerBandwidthRequestProto)
+      returns(GetBalancerBandwidthResponseProto);
 
-    /**
-     * Submit a disk balancer plan for execution
-     */
-    rpc submitDiskBalancerPlan(SubmitDiskBalancerPlanRequestProto)
-        returns (SubmitDiskBalancerPlanResponseProto);
-    /**
-     * Cancel an executing plan
-     */
-    rpc cancelDiskBalancerPlan(CancelPlanRequestProto)
-        returns (CancelPlanResponseProto);
+  /**
+   * Submit a disk balancer plan for execution
+   */
+  rpc submitDiskBalancerPlan(SubmitDiskBalancerPlanRequestProto)
+      returns (SubmitDiskBalancerPlanResponseProto);
+  /**
+   * Cancel an executing plan
+   */
+  rpc cancelDiskBalancerPlan(CancelPlanRequestProto)
+      returns (CancelPlanResponseProto);
 
-    /**
-     * Gets the status of an executing Plan
-     */
-    rpc queryDiskBalancerPlan(QueryPlanStatusRequestProto)
-        returns (QueryPlanStatusResponseProto);
-    /**
-     *  Gets run-time settings of Disk Balancer.
-     */
-    rpc getDiskBalancerSetting(DiskBalancerSettingRequestProto)
-        returns(DiskBalancerSettingResponseProto);
+  /**
+   * Gets the status of an executing Plan
+   */
+  rpc queryDiskBalancerPlan(QueryPlanStatusRequestProto)
+      returns (QueryPlanStatusResponseProto);
+  /**
+   *  Gets run-time settings of Disk Balancer.
+   */
+  rpc getDiskBalancerSetting(DiskBalancerSettingRequestProto)
+      returns(DiskBalancerSettingResponseProto);
 }

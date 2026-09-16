@@ -13,39 +13,39 @@ import java.util.EnumSet;
  */
 public class NamespaceScope extends Node {
 
-	final EnumSet<Lang> scopes;
+    final EnumSet<Lang> scopes;
 
-	public NamespaceScope(EnumSet<Lang> scopes) {
-		this.scopes = scopes;
-	}
+    public NamespaceScope(EnumSet<Lang> scopes) {
+        this.scopes = scopes;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitNamespaceScope(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitNamespaceScope(this, context);
+    }
 
-	public EnumSet<Lang> getScopes() {
-		return scopes;
-	}
+    public EnumSet<Lang> getScopes() {
+        return scopes;
+    }
 
-	@Override
-	public int hashCode() {
-		return 0;
-	}
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		return false;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
 
-	public boolean support(Lang lang) {
-		return null != scopes && scopes.contains(lang);
-	}
+    public boolean support(Lang lang) {
+        return null != scopes && scopes.contains(lang);
+    }
 
-	@Override
-	public String toString() {
-		String sb = "NamespaceScope{" + "scopes=" + scopes + '}';
-		return sb;
-	}
+    @Override
+    public String toString() {
+        String sb = "NamespaceScope{" + "scopes=" + scopes + '}';
+        return sb;
+    }
 
 }

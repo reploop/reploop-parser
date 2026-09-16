@@ -8,18 +8,18 @@ package org.reploop.parser.thrift;
  */
 public abstract class Node {
 
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitNode(this, context);
-	}
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitNode(this, context);
+    }
 
-	// Force subclasses to have a proper equals and hashcode implementation
-	@Override
-	public abstract int hashCode();
+    // Force subclasses to have a proper equals and hashcode implementation
+    @Override
+    public abstract int hashCode();
 
-	@Override
-	public abstract boolean equals(Object obj);
+    @Override
+    public abstract boolean equals(Object obj);
 
-	@Override
-	public abstract String toString();
+    @Override
+    public abstract String toString();
 
 }

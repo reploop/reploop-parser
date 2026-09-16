@@ -16,65 +16,65 @@ import java.util.Optional;
  */
 public class Service extends Entity {
 
-	final Optional<QualifiedName> parent;
+    final Optional<QualifiedName> parent;
 
-	final List<Function> functions;
+    final List<Function> functions;
 
-	public Service(QualifiedName name, List<String> comments, List<Function> functions) {
-		this(Optional.empty(), name, comments, functions);
-	}
+    public Service(QualifiedName name, List<String> comments, List<Function> functions) {
+        this(Optional.empty(), name, comments, functions);
+    }
 
-	public Service(String name, List<String> comments, List<Function> functions) {
-		this(Optional.empty(), name, comments, functions);
-	}
+    public Service(String name, List<String> comments, List<Function> functions) {
+        this(Optional.empty(), name, comments, functions);
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitService(this, context);
-	}
+    public Service(Optional<QualifiedName> parent, String name, List<Function> functions) {
+        this(parent, QualifiedName.of(name), Collections.emptyList(), functions);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Service service = (Service) o;
-		return Objects.equals(getName(), service.getName());
-	}
+    public Service(Optional<QualifiedName> parent, String name, List<String> comments, List<Function> functions) {
+        this(parent, QualifiedName.of(name), comments, functions);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(getName());
-	}
+    public Service(Optional<QualifiedName> parent, QualifiedName name, List<String> comments,
+                   List<Function> functions) {
+        super(name, comments);
+        this.parent = parent;
+        this.functions = functions;
+    }
 
-	public Service(Optional<QualifiedName> parent, String name, List<Function> functions) {
-		this(parent, QualifiedName.of(name), Collections.emptyList(), functions);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitService(this, context);
+    }
 
-	public Service(Optional<QualifiedName> parent, String name, List<String> comments, List<Function> functions) {
-		this(parent, QualifiedName.of(name), comments, functions);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Service service = (Service) o;
+        return Objects.equals(getName(), service.getName());
+    }
 
-	public Service(Optional<QualifiedName> parent, QualifiedName name, List<String> comments,
-			List<Function> functions) {
-		super(name, comments);
-		this.parent = parent;
-		this.functions = functions;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
 
-	public Optional<QualifiedName> getParent() {
-		return parent;
-	}
+    public Optional<QualifiedName> getParent() {
+        return parent;
+    }
 
-	public List<Function> getFunctions() {
-		return functions;
-	}
+    public List<Function> getFunctions() {
+        return functions;
+    }
 
-	@Override
-	public String toString() {
-		String sb = "Service{" + super.toString() + "parent=" + parent + ", functions=" + functions + '}';
-		return sb;
-	}
+    @Override
+    public String toString() {
+        String sb = "Service{" + super.toString() + "parent=" + parent + ", functions=" + functions + '}';
+        return sb;
+    }
 
 }
