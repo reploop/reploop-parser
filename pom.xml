@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.reploop</groupId>
         <artifactId>reploop-bom</artifactId>
-        <version>0.0.6</version>
+        <version>0.0.7</version>
         <relativePath/>
     </parent>
 
@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
 
     <properties>
-        <antlr4.version>4.13.2</antlr4.version>
         <skipTests>false</skipTests>
         <spring.javaformat.version>0.0.43</spring.javaformat.version>
     </properties>
@@ -61,17 +60,6 @@
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>tools.jackson</groupId>
-                <artifactId>jackson-bom</artifactId>
-                <version>3.2.2</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
@@ -80,17 +68,8 @@
                 <version>${spring.javaformat.version}</version>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
-                <configuration>
-                    <skipTests>${skipTests}</skipTests>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
-                <version>${antlr4.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -109,28 +88,6 @@
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>${enforcer.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>enforce-versions</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>3.6.3</version>
-                                </requireMavenVersion>
-                                <requireJavaVersion>
-                                    <version>${java.version}</version>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

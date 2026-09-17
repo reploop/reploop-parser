@@ -36,8 +36,7 @@ jobs:
           maven-version: 3.9.16
       - name: Build with Maven
         run: |
-          mvn -v
-          mvn -B -U -X clean package
+          mvn -B -X clean package
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
