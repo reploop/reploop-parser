@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '11','17', '21' ]
+        java: [ '17', '25' ]
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK ${{ matrix.java }}
@@ -36,7 +36,7 @@ jobs:
           maven-version: 3.9.16
       - name: Build with Maven
         run: |
-          mvn -B -X clean package
+          mvn -B clean package
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
