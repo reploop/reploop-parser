@@ -36,6 +36,7 @@ jobs:
           maven-version: 3.9.16
       - name: Build with Maven
         run: |
+          mvn -v
           mvn -B package
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
