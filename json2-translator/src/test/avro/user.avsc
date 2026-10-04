@@ -1,0 +1,30 @@
+{
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {
+      "name": "code",
+      "type": "int"
+    },
+    {
+      "name": "count",
+      "type": "int"
+    },
+    {
+      "name": "date",
+      "type": "string"
+    },
+    {
+      "name": "error",
+      "type": "string"
+    },
+    {
+      "name": "result",
+      "type": {
+        "type": "array",
+        "items": "user.Result",
+        "default": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Marketing",
+  "fields": [
+    {
+      "name": "reason",
+      "type": "string"
+    },
+    {
+      "name": "result",
+      "type": {
+        "type": "array",
+        "items": "marketing.Result",
+        "default": []
+      }
+    },
+    {
+      "name": "resultCode",
+      "type": "string"
+    },
+    {
+      "name": "success",
+      "type": "boolean"
+    }
+  ]
+}

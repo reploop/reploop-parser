@@ -1,7 +1,5 @@
 package goods;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import java.time.LocalDateTime;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
@@ -11,8 +9,7 @@ public class Result implements Serializable {
     private Boolean addedFlag;
     private Integer brandId;
     private Integer cateId;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private LocalDateTime createTime;
+    private String createTime;
     private String goodsDetail;
     private String goodsImage;
     private String goodsName;
@@ -44,11 +41,11 @@ public class Result implements Serializable {
         this.cateId = cateId;
     }
     
-    public LocalDateTime getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
     
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
     
@@ -138,7 +135,7 @@ public class Result implements Serializable {
             return this;
         }
         
-        public Builder createTime(LocalDateTime createTime) {
+        public Builder createTime(String createTime) {
             data.setCreateTime(createTime);
             return this;
         }

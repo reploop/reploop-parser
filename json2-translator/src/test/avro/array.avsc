@@ -1,0 +1,26 @@
+{
+  "type": "record",
+  "name": "Array",
+  "fields": [
+    {
+      "name": "code",
+      "type": "string"
+    },
+    {
+      "name": "data",
+      "type": {
+        "type": "array",
+        "items": "array.Data",
+        "default": []
+      }
+    },
+    {
+      "name": "empty",
+      "type": {
+        "type": "array",
+        "items": "string",
+        "default": []
+      }
+    }
+  ]
+}

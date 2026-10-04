@@ -4,7 +4,7 @@
 grammar JsonBase;
 
 json
-   : value
+   : value EOF
    ;
 
 obj

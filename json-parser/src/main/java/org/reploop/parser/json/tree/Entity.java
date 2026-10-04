@@ -45,8 +45,7 @@ public class Entity extends Value {
 
     @Override
     public String toString() {
-
-        return "{" + "}";
+        return Objects.toString(pairs);
     }
 
 }

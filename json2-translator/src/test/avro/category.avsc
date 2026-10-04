@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "Category",
+  "fields": [
+    {
+      "name": "code",
+      "type": "int"
+    },
+    {
+      "name": "data",
+      "type": "category.Data"
+    },
+    {
+      "name": "msg",
+      "type": "string"
+    }
+  ]
+}
