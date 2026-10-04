@@ -10,13 +10,13 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class SetType extends CollectionType {
 
-	public SetType(FieldType elementType) {
-		super("Set", elementType);
-	}
+    public SetType(FieldType elementType) {
+        super("Set", elementType);
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitSetType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitSetType(this, context);
+    }
 
 }

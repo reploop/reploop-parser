@@ -6,15 +6,15 @@ import org.reploop.parser.java.base.JavaParserBaseVisitor;
 
 public class JavaAstBuilder extends JavaParserBaseVisitor<Node> {
 
-	final TokenStream tokenStream;
+    final TokenStream tokenStream;
 
-	public JavaAstBuilder(TokenStream tokenStream) {
-		this.tokenStream = tokenStream;
-	}
+    public JavaAstBuilder(TokenStream tokenStream) {
+        this.tokenStream = tokenStream;
+    }
 
-	@Override
-	public Node visitExpression(JavaParser.ExpressionContext ctx) {
-		return super.visitExpression(ctx);
-	}
+    @Override
+    public Node visitExpression(JavaParser.ExpressionContext ctx) {
+        return super.visitExpression(ctx);
+    }
 
 }

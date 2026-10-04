@@ -13,39 +13,39 @@ import java.util.Objects;
  */
 public class Array extends Value {
 
-	private final List<Value> values;
+    private final List<Value> values;
 
-	public Array(List<Value> values) {
-		this.values = values;
-	}
+    public Array(List<Value> values) {
+        this.values = values;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitArray(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitArray(this, context);
+    }
 
-	public List<Value> getValues() {
-		return values;
-	}
+    public List<Value> getValues() {
+        return values;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Array array = (Array) o;
-		return Objects.equals(values, array.values);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Array array = (Array) o;
+        return Objects.equals(values, array.values);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(values);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
+    }
 
-	@Override
-	public String toString() {
-		return values.toString();
-	}
+    @Override
+    public String toString() {
+        return values.toString();
+    }
 
 }

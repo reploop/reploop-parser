@@ -10,13 +10,13 @@ import org.reploop.parser.thrift.AstVisitor;
  */
 public class ByteType extends FieldType {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitByteType(this, context);
-	}
+    public ByteType() {
+        super("byte");
+    }
 
-	public ByteType() {
-		super("byte");
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitByteType(this, context);
+    }
 
 }

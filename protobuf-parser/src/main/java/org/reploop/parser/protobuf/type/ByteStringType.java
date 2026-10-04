@@ -11,13 +11,13 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class ByteStringType extends FieldType {
 
-	public ByteStringType() {
-		super(ByteString.class.getName());
-	}
+    public ByteStringType() {
+        super(ByteString.class.getName());
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitByteStringType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitByteStringType(this, context);
+    }
 
 }

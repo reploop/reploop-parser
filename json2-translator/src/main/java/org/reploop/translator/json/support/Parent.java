@@ -8,31 +8,31 @@ import java.util.Set;
 
 public class Parent {
 
-	private final List<Message> messages;
+    private final List<Message> messages;
 
-	private final Set<Field> fields;
+    private final Set<Field> fields;
 
-	public Parent(List<Message> messages, Set<Field> fields) {
-		this.messages = messages;
-		this.fields = fields;
-	}
+    public Parent(List<Message> messages, Set<Field> fields) {
+        this.messages = messages;
+        this.fields = fields;
+    }
 
-	public Parent addMessage(Message message) {
-		messages.add(message);
-		return this;
-	}
+    public Parent addMessage(Message message) {
+        messages.add(message);
+        return this;
+    }
 
-	public Parent addField(Field field) {
-		fields.add(field);
-		return this;
-	}
+    public Parent addField(Field field) {
+        fields.add(field);
+        return this;
+    }
 
-	public List<Message> getMessages() {
-		return messages;
-	}
+    public List<Message> getMessages() {
+        return messages;
+    }
 
-	public Set<Field> getFields() {
-		return fields;
-	}
+    public Set<Field> getFields() {
+        return fields;
+    }
 
 }

@@ -15,54 +15,54 @@ import java.util.Objects;
  */
 public class Service extends Node {
 
-	private final QualifiedName name;
+    private final QualifiedName name;
 
-	private final List<Option> options;
+    private final List<Option> options;
 
-	private final List<Function> functions;
+    private final List<Function> functions;
 
-	public Service(QualifiedName name, List<Option> options, List<Function> functions) {
-		this.name = name;
-		this.options = options;
-		this.functions = functions;
-	}
+    public Service(QualifiedName name, List<Option> options, List<Function> functions) {
+        this.name = name;
+        this.options = options;
+        this.functions = functions;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitService(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitService(this, context);
+    }
 
-	public QualifiedName getName() {
-		return name;
-	}
+    public QualifiedName getName() {
+        return name;
+    }
 
-	public List<Option> getOptions() {
-		return options;
-	}
+    public List<Option> getOptions() {
+        return options;
+    }
 
-	public List<Function> getFunctions() {
-		return functions;
-	}
+    public List<Function> getFunctions() {
+        return functions;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Service service = (Service) o;
-		return Objects.equals(name, service.name);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Service service = (Service) o;
+        return Objects.equals(name, service.name);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
-	@Override
-	public String toString() {
-		String sb = "Service{" + "name=" + name + ", options=" + options + ", functions=" + functions + '}';
-		return sb;
-	}
+    @Override
+    public String toString() {
+        String sb = "Service{" + "name=" + name + ", options=" + options + ", functions=" + functions + '}';
+        return sb;
+    }
 
 }

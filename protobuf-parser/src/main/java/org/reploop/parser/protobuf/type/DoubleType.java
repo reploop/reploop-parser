@@ -10,18 +10,18 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class DoubleType extends FieldType implements FloatingPointType {
 
-	public DoubleType() {
-		super("Double");
-	}
+    public DoubleType() {
+        super("Double");
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitDoubleType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitDoubleType(this, context);
+    }
 
-	@Override
-	public int bits() {
-		return 64;
-	}
+    @Override
+    public int bits() {
+        return 64;
+    }
 
 }

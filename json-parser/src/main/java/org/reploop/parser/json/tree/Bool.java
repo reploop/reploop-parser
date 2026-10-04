@@ -12,39 +12,39 @@ import java.util.Objects;
  */
 public class Bool extends Value {
 
-	private final boolean val;
+    private final boolean val;
 
-	public Bool(boolean val) {
-		this.val = val;
-	}
+    public Bool(boolean val) {
+        this.val = val;
+    }
 
-	public boolean getVal() {
-		return val;
-	}
+    public boolean getVal() {
+        return val;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitBool(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitBool(this, context);
+    }
 
-	@Override
-	public String toString() {
-		return String.valueOf(val);
-	}
+    @Override
+    public String toString() {
+        return String.valueOf(val);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Bool bool = (Bool) o;
-		return val == bool.val;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Bool bool = (Bool) o;
+        return val == bool.val;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(val);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
+    }
 
 }

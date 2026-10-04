@@ -14,38 +14,38 @@ import java.util.List;
  */
 public abstract class Entity extends Node {
 
-	protected final QualifiedName name;
+    protected final QualifiedName name;
 
-	protected final List<String> comments;
+    protected final List<String> comments;
 
-	public Entity(String name, List<String> comments) {
-		this(QualifiedName.of(name), comments);
-	}
+    public Entity(String name, List<String> comments) {
+        this(QualifiedName.of(name), comments);
+    }
 
-	public Entity(QualifiedName name, List<String> comments) {
-		this.name = name;
-		this.comments = comments;
-	}
+    public Entity(QualifiedName name, List<String> comments) {
+        this.name = name;
+        this.comments = comments;
+    }
 
-	public Entity(QualifiedName name) {
-		this(name, Collections.emptyList());
-	}
+    public Entity(QualifiedName name) {
+        this(name, Collections.emptyList());
+    }
 
-	public Entity(String name) {
-		this(QualifiedName.of(name));
-	}
+    public Entity(String name) {
+        this(QualifiedName.of(name));
+    }
 
-	public QualifiedName getName() {
-		return name;
-	}
+    public QualifiedName getName() {
+        return name;
+    }
 
-	public List<String> getComments() {
-		return comments;
-	}
+    public List<String> getComments() {
+        return comments;
+    }
 
-	@Override
-	public String toString() {
-		return "Entity{" + "name=" + name + ", comments=" + comments + "} ";
-	}
+    @Override
+    public String toString() {
+        return "Entity{" + "name=" + name + ", comments=" + comments + "} ";
+    }
 
 }

@@ -13,40 +13,40 @@ import java.util.List;
  */
 public class Exception extends Entity {
 
-	final List<Field> fields;
+    final List<Field> fields;
 
-	public Exception(List<String> comments, QualifiedName name, List<Field> fields) {
-		super(name, comments);
-		this.fields = fields;
-	}
+    public Exception(List<String> comments, QualifiedName name, List<Field> fields) {
+        super(name, comments);
+        this.fields = fields;
+    }
 
-	public Exception(String name, List<Field> fields) {
-		super(name);
-		this.fields = fields;
-	}
+    public Exception(String name, List<Field> fields) {
+        super(name);
+        this.fields = fields;
+    }
 
-	public List<Field> getFields() {
-		return fields;
-	}
+    public List<Field> getFields() {
+        return fields;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitException(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitException(this, context);
+    }
 
-	@Override
-	public int hashCode() {
-		return 0;
-	}
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		return false;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
 
-	@Override
-	public String toString() {
-		return "Exception{" + "fields=" + fields + '}';
-	}
+    @Override
+    public String toString() {
+        return "Exception{" + "fields=" + fields + '}';
+    }
 
 }

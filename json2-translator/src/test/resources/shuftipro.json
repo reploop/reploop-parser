@@ -7,11 +7,14 @@
   "redirect_url": "http://www.example.com",
   "ttl": 60,
   "verification_mode": "any",
-
   "document": {
     "proof": "",
     "additional_proof": "",
-    "supported_types": ["id_card", "driving_license", "passport"],
+    "supported_types": [
+      "id_card",
+      "driving_license",
+      "passport"
+    ],
     "name": "",
     "dob": "",
     "age": "",
@@ -22,10 +25,12 @@
     "allow_online": "1",
     "gender": ""
   },
-
   "address": {
     "proof": "",
-    "supported_types": ["id_card", "bank_statement"],
+    "supported_types": [
+      "id_card",
+      "bank_statement"
+    ],
     "name": "",
     "issue_date": "",
     "full_address": "",

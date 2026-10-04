@@ -12,39 +12,39 @@ import java.util.Objects;
  */
 public class DoubleVal extends Number {
 
-	private final double val;
+    private final double val;
 
-	public DoubleVal(double val) {
-		this.val = val;
-	}
+    public DoubleVal(double val) {
+        this.val = val;
+    }
 
-	public double getVal() {
-		return val;
-	}
+    public double getVal() {
+        return val;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitDouble(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitDouble(this, context);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		DoubleVal d = (DoubleVal) o;
-		return Double.compare(d.val, val) == 0;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        DoubleVal d = (DoubleVal) o;
+        return Double.compare(d.val, val) == 0;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(val);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
+    }
 
-	@Override
-	public String toString() {
-		return String.valueOf(val);
-	}
+    @Override
+    public String toString() {
+        return String.valueOf(val);
+    }
 
 }

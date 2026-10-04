@@ -14,44 +14,44 @@ import java.util.List;
  */
 public class Struct extends Entity {
 
-	private final List<Field> fields;
+    private final List<Field> fields;
 
-	public Struct(List<String> comments, QualifiedName name, List<Field> fields) {
-		super(name, comments);
-		this.fields = fields;
-	}
+    public Struct(List<String> comments, QualifiedName name, List<Field> fields) {
+        super(name, comments);
+        this.fields = fields;
+    }
 
-	public Struct(String name, List<String> comments, List<Field> fields) {
-		super(name, comments);
-		this.fields = fields;
-	}
+    public Struct(String name, List<String> comments, List<Field> fields) {
+        super(name, comments);
+        this.fields = fields;
+    }
 
-	public Struct(String name, List<Field> fields) {
-		this(name, Collections.emptyList(), fields);
-	}
+    public Struct(String name, List<Field> fields) {
+        this(name, Collections.emptyList(), fields);
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitStruct(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitStruct(this, context);
+    }
 
-	public List<Field> getFields() {
-		return fields;
-	}
+    public List<Field> getFields() {
+        return fields;
+    }
 
-	@Override
-	public String toString() {
-		return "Struct{" + "fields=" + fields + "} " + super.toString();
-	}
+    @Override
+    public String toString() {
+        return "Struct{" + "fields=" + fields + "} " + super.toString();
+    }
 
-	@Override
-	public int hashCode() {
-		return 0;
-	}
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		return false;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
 
 }

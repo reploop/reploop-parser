@@ -8,14 +8,14 @@ import java.util.List;
  */
 public interface WordSplit {
 
-	default List<String> parseWords(List<String> words) {
-		List<String> splits = new ArrayList<>();
-		for (String word : words) {
-			splits.addAll(parseWords(word));
-		}
-		return splits;
-	}
+    default List<String> parseWords(List<String> words) {
+        List<String> splits = new ArrayList<>();
+        for (String word : words) {
+            splits.addAll(parseWords(word));
+        }
+        return splits;
+    }
 
-	List<String> parseWords(String org);
+    List<String> parseWords(String org);
 
 }

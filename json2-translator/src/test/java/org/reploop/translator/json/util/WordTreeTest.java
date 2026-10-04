@@ -10,27 +10,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class WordTreeTest {
 
-	WordTree wt;
+    WordTree wt;
 
-	@Before
-	public void setUp() {
-		wt = new WordTree("/ws.txt");
-	}
+    @Before
+    public void setUp() {
+        wt = new WordTree("/ws.txt");
+    }
 
-	@Test
-	public void words() {
-		List<String> words = wt.parseWords("thankyouandyou");
-		assertThat(words).isNotEmpty();
-		System.out.println(words);
-	}
+    @Test
+    public void words() {
+        List<String> words = wt.parseWords("thankyouandyou");
+        assertThat(words).isNotEmpty();
+        System.out.println(words);
+    }
 
-	@Test
-	public void tree() throws IOException {
-		wt.print();
-	}
+    @Test
+    public void tree() throws IOException {
+        wt.print();
+    }
 
-	@Test
-	public void testTree() {
-	}
+    @Test
+    public void testTree() {
+    }
 
 }

@@ -17,19 +17,19 @@ import java.util.function.BiFunction;
  */
 public class CommentHelper {
 
-	private static final Logger LOG = LoggerFactory.getLogger(CommentHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CommentHelper.class);
 
-	public static List<String> comments(Token token, Integer channel,
-			BiFunction<Token, Integer, List<Token>> supplier) {
-		if (null == token || null == channel || null == supplier) {
-			return Collections.emptyList();
-		}
-		List<Token> channels = supplier.apply(token, channel);
-		ImmutableList.Builder<String> sb = ImmutableList.builder();
-		if (null != channels) {
-			channels.forEach(comment -> sb.add(comment.getText()));
-		}
-		return sb.build();
-	}
+    public static List<String> comments(Token token, Integer channel,
+                                        BiFunction<Token, Integer, List<Token>> supplier) {
+        if (null == token || null == channel || null == supplier) {
+            return Collections.emptyList();
+        }
+        List<Token> channels = supplier.apply(token, channel);
+        ImmutableList.Builder<String> sb = ImmutableList.builder();
+        if (null != channels) {
+            channels.forEach(comment -> sb.add(comment.getText()));
+        }
+        return sb.build();
+    }
 
 }

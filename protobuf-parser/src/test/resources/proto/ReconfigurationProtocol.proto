@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-syntax="proto2";
+syntax = "proto2";
 // This file contains protocol buffers that are used to reconfigure NameNode
 // and DataNode by HDFS admin.
 
@@ -37,16 +37,16 @@ message GetReconfigurationStatusRequestProto {
 }
 
 message GetReconfigurationStatusConfigChangeProto {
-    required string name = 1;
-    required string oldValue = 2;
-    optional string newValue = 3;
-    optional string errorMessage = 4;  // It is empty if success.
+  required string name = 1;
+  required string oldValue = 2;
+  optional string newValue = 3;
+  optional string errorMessage = 4;  // It is empty if success.
 }
 
 message GetReconfigurationStatusResponseProto {
-    required int64 startTime = 1;
-    optional int64 endTime = 2;
-    repeated GetReconfigurationStatusConfigChangeProto changes = 3;
+  required int64 startTime = 1;
+  optional int64 endTime = 2;
+  repeated GetReconfigurationStatusConfigChangeProto changes = 3;
 }
 
 /** Query the reconfigurable properties on NN/DN. */
@@ -54,7 +54,7 @@ message ListReconfigurablePropertiesRequestProto {
 }
 
 message ListReconfigurablePropertiesResponseProto {
-    repeated string name = 1;
+  repeated string name = 1;
 }
 
 /**
@@ -62,13 +62,13 @@ message ListReconfigurablePropertiesResponseProto {
  * See the request and response for details of rpc call.
  */
 service ReconfigurationProtocolService {
-    rpc getReconfigurationStatus(GetReconfigurationStatusRequestProto)
-        returns(GetReconfigurationStatusResponseProto);
+  rpc getReconfigurationStatus(GetReconfigurationStatusRequestProto)
+      returns(GetReconfigurationStatusResponseProto);
 
-    rpc startReconfiguration(StartReconfigurationRequestProto)
-        returns(StartReconfigurationResponseProto);
+  rpc startReconfiguration(StartReconfigurationRequestProto)
+      returns(StartReconfigurationResponseProto);
 
-    rpc listReconfigurableProperties(
-        ListReconfigurablePropertiesRequestProto)
-        returns(ListReconfigurablePropertiesResponseProto);
+  rpc listReconfigurableProperties(
+      ListReconfigurablePropertiesRequestProto)
+      returns(ListReconfigurablePropertiesResponseProto);
 }

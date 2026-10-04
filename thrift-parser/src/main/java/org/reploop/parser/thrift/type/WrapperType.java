@@ -12,18 +12,18 @@ import org.slf4j.LoggerFactory;
  */
 public class WrapperType extends FieldType {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WrapperType.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WrapperType.class);
 
-	public WrapperType(String name) {
-		super(name);
-	}
+    public WrapperType(String name) {
+        super(name);
+    }
 
-	public WrapperType(QualifiedName name) {
-		super(name);
-	}
+    public WrapperType(QualifiedName name) {
+        super(name);
+    }
 
-	public WrapperType(Class<?> type) {
-		this(type.getName());
-	}
+    public WrapperType(Class<?> type) {
+        this(type.getName());
+    }
 
 }

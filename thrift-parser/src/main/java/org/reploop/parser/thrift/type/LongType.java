@@ -10,13 +10,13 @@ import org.reploop.parser.thrift.AstVisitor;
  */
 public class LongType extends FieldType {
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitLongType(this, context);
-	}
+    public LongType() {
+        super("Long");
+    }
 
-	public LongType() {
-		super("Long");
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitLongType(this, context);
+    }
 
 }

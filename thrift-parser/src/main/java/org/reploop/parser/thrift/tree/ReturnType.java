@@ -13,39 +13,39 @@ import java.util.Objects;
  */
 public class ReturnType extends FunctionType {
 
-	final FieldType fieldType;
+    final FieldType fieldType;
 
-	public ReturnType(FieldType fieldType) {
-		this.fieldType = fieldType;
-	}
+    public ReturnType(FieldType fieldType) {
+        this.fieldType = fieldType;
+    }
 
-	public FieldType getFieldType() {
-		return fieldType;
-	}
+    public FieldType getFieldType() {
+        return fieldType;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitReturnType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitReturnType(this, context);
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		ReturnType that = (ReturnType) o;
-		return Objects.equals(fieldType, that.fieldType);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ReturnType that = (ReturnType) o;
+        return Objects.equals(fieldType, that.fieldType);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(fieldType);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(fieldType);
+    }
 
-	@Override
-	public String toString() {
-		return "ReturnType{" + "fieldType=" + fieldType + '}';
-	}
+    @Override
+    public String toString() {
+        return "ReturnType{" + "fieldType=" + fieldType + '}';
+    }
 
 }

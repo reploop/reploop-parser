@@ -8,6 +8,6 @@ package org.reploop.parser.thrift.tree;
  */
 public enum Lang {
 
-	JAVA, CPP, PY, PERL, RB, COCOA, CSHARP
+    JAVA, CPP, PY, PERL, RB, COCOA, CSHARP
 
 }

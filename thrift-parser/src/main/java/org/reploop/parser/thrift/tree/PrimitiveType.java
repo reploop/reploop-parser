@@ -8,6 +8,6 @@ package org.reploop.parser.thrift.tree;
  */
 public enum PrimitiveType {
 
-	STRING, BINARY, SLIST, BOOL, BYTE, I16, I32, I64, DOUBLE
+    STRING, BINARY, SLIST, BOOL, BYTE, I16, I32, I64, DOUBLE
 
 }

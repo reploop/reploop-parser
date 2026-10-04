@@ -17,71 +17,68 @@ import java.util.Objects;
  */
 public class ThriftProgram extends Node {
 
-	Path file;
+    final List<String> comments;
+    final List<Header> headers;
+    final List<Entity> entities;
+    Path file;
 
-	final List<String> comments;
+    public ThriftProgram(List<Header> headers, List<Entity> entities) {
+        this(Collections.emptyList(), headers, entities);
+    }
 
-	final List<Header> headers;
-
-	final List<Entity> entities;
-
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitProgram(this, context);
-	}
-
-	public Path getFile() {
-		return file;
-	}
-
-	public void setFile(Path file) {
-		this.file = file;
-	}
-
-	public ThriftProgram(List<Header> headers, List<Entity> entities) {
-		this(Collections.emptyList(), headers, entities);
-	}
-
-	public ThriftProgram(List<String> comments, List<Header> headers, List<Entity> entities) {
+    public ThriftProgram(List<String> comments, List<Header> headers, List<Entity> entities) {
         this.comments = comments;
-		this.headers = headers;
-		this.entities = entities;
-	}
+        this.headers = headers;
+        this.entities = entities;
+    }
 
-	public List<String> getComments() {
-		return comments;
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitProgram(this, context);
+    }
 
-	public List<Header> getHeaders() {
-		return headers;
-	}
+    public Path getFile() {
+        return file;
+    }
 
-	public List<Entity> getEntities() {
-		return entities;
-	}
+    public void setFile(Path file) {
+        this.file = file;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		ThriftProgram that = (ThriftProgram) o;
-		return Objects.equals(file, that.file) && Objects.equals(headers, that.headers)
-				&& Objects.equals(entities, that.entities);
-	}
+    public List<String> getComments() {
+        return comments;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(file, headers, entities);
-	}
+    public List<Header> getHeaders() {
+        return headers;
+    }
 
-	@Override
-	public String toString() {
-		return new ToStringBuilder(this).append("entities", entities)
-			.append("file", file)
-			.append("headers", headers)
-			.toString();
-	}
+    public List<Entity> getEntities() {
+        return entities;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ThriftProgram that = (ThriftProgram) o;
+        return Objects.equals(file, that.file) && Objects.equals(headers, that.headers)
+                && Objects.equals(entities, that.entities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(file, headers, entities);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("entities", entities)
+                .append("file", file)
+                .append("headers", headers)
+                .toString();
+    }
 
 }

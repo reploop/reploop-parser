@@ -34,75 +34,75 @@ package hadoop.hdfs;
 import "hdfs.proto";
 
 message CreateEncryptionZoneRequestProto {
-    required string src = 1;
-    optional string keyName = 2;
+  required string src = 1;
+  optional string keyName = 2;
 }
 
 message CreateEncryptionZoneResponseProto {
 }
 
 message ListEncryptionZonesRequestProto {
-    required int64 id = 1;
+  required int64 id = 1;
 }
 
 message EncryptionZoneProto {
-    required int64 id = 1;
-    required string path = 2;
-    required CipherSuiteProto suite = 3;
-    required CryptoProtocolVersionProto cryptoProtocolVersion = 4;
-    required string keyName = 5;
+  required int64 id = 1;
+  required string path = 2;
+  required CipherSuiteProto suite = 3;
+  required CryptoProtocolVersionProto cryptoProtocolVersion = 4;
+  required string keyName = 5;
 }
 
 message ListEncryptionZonesResponseProto {
-    repeated EncryptionZoneProto zones = 1;
-    required bool hasMore = 2;
+  repeated EncryptionZoneProto zones = 1;
+  required bool hasMore = 2;
 }
 
 enum ReencryptActionProto {
-    CANCEL_REENCRYPT = 1;
-    START_REENCRYPT = 2;
+  CANCEL_REENCRYPT = 1;
+  START_REENCRYPT = 2;
 }
 
 message ReencryptEncryptionZoneRequestProto {
-    required ReencryptActionProto action = 1;
-    required string zone = 2;
+  required ReencryptActionProto action = 1;
+  required string zone = 2;
 }
 
 message ReencryptEncryptionZoneResponseProto {
 }
 
 message ListReencryptionStatusRequestProto {
-    required int64 id = 1;
+  required int64 id = 1;
 }
 
 enum ReencryptionStateProto {
-    SUBMITTED = 1;
-    PROCESSING = 2;
-    COMPLETED = 3;
+  SUBMITTED = 1;
+  PROCESSING = 2;
+  COMPLETED = 3;
 }
 
 message ZoneReencryptionStatusProto {
-    required int64 id = 1;
-    required string path = 2;
-    required ReencryptionStateProto state = 3;
-    required string ezKeyVersionName = 4;
-    required int64 submissionTime = 5;
-    required bool canceled = 6;
-    required int64 numReencrypted = 7;
-    required int64 numFailures = 8;
-    optional int64 completionTime = 9;
-    optional string lastFile = 10;
+  required int64 id = 1;
+  required string path = 2;
+  required ReencryptionStateProto state = 3;
+  required string ezKeyVersionName = 4;
+  required int64 submissionTime = 5;
+  required bool canceled = 6;
+  required int64 numReencrypted = 7;
+  required int64 numFailures = 8;
+  optional int64 completionTime = 9;
+  optional string lastFile = 10;
 }
 
 message ListReencryptionStatusResponseProto {
-    repeated ZoneReencryptionStatusProto statuses = 1;
-    required bool hasMore = 2;
+  repeated ZoneReencryptionStatusProto statuses = 1;
+  required bool hasMore = 2;
 }
 
 message GetEZForPathRequestProto {
-    required string src = 1;
+  required string src = 1;
 }
 
 message GetEZForPathResponseProto {
-    optional EncryptionZoneProto zone = 1;
+  optional EncryptionZoneProto zone = 1;
 }

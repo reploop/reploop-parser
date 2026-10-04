@@ -11,18 +11,18 @@ import java.nio.file.Paths;
 
 public class JavaParserDriverTest {
 
-	@Test
-	public void testParse() {
-		JavaParserDriver jpd = new JavaParserDriver();
-		jpd.parse(Paths.get(""), JavaParser::expression);
+    @Test
+    public void testParse() {
+        JavaParserDriver jpd = new JavaParserDriver();
+        jpd.parse(Paths.get(""), JavaParser::expression);
 
-		String source = "this.value=other.value;";
+        String source = "this.value=other.value;";
 
-		JavaLexer lexer = new JavaLexer(CharStreams.fromString(source));
-		TokenStream stream = new CommonTokenStream(lexer);
-		JavaParser parser = new JavaParser(stream);
-		JavaParser.ExpressionContext context = parser.expression();
-		System.out.println(context);
-	}
+        JavaLexer lexer = new JavaLexer(CharStreams.fromString(source));
+        TokenStream stream = new CommonTokenStream(lexer);
+        JavaParser parser = new JavaParser(stream);
+        JavaParser.ExpressionContext context = parser.expression();
+        System.out.println(context);
+    }
 
 }

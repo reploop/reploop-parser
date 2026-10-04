@@ -13,34 +13,34 @@ import java.util.Objects;
  */
 public class Options extends Node {
 
-	final List<Pair> pairs;
+    final List<Pair> pairs;
 
-	public Options(List<Pair> pairs) {
-		this.pairs = pairs;
-	}
+    public Options(List<Pair> pairs) {
+        this.pairs = pairs;
+    }
 
-	public List<Pair> getPairs() {
-		return pairs;
-	}
+    public List<Pair> getPairs() {
+        return pairs;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Options options = (Options) o;
-		return Objects.equals(pairs, options.pairs);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Options options = (Options) o;
+        return Objects.equals(pairs, options.pairs);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(pairs);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(pairs);
+    }
 
-	@Override
-	public String toString() {
-		return "Options{" + "pairs=" + pairs + '}';
-	}
+    @Override
+    public String toString() {
+        return "Options{" + "pairs=" + pairs + '}';
+    }
 
 }

@@ -1,61 +1,75 @@
 package har.log.entries.response;
 
-import har.log.entries.MimeTypeText;
+import har.log.entries.response.content.Text;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.base.MoreObjects;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Content extends MimeTypeText implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	private Integer size;
-
-	public Integer getSize() {
-		return size;
-	}
-
-	public void setSize(Integer size) {
-		this.size = size;
-	}
-
-	@Override
-	public String toString() {
-		return MoreObjects.toStringHelper(this)
-			.add("size", getSize())
-			.add("text", getText())
-			.add("mimeType", getMimeType())
-			.toString();
-	}
-
-	public static Builder newContentBuilder() {
-		return new Builder();
-	}
-
-	public static class Builder {
-
-		private final Content data = new Content();
-
-		public Builder size(Integer size) {
-			data.setSize(size);
-			return this;
-		}
-
-		public Builder text(String text) {
-			data.setText(text);
-			return this;
-		}
-
-		public Builder mimeType(String mimeType) {
-			data.setMimeType(mimeType);
-			return this;
-		}
-
-		public Content build() {
-			return data;
-		}
-
-	}
-
+public class Content implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String mimeType;
+    private Integer size;
+    private Text text;
+    
+    public String getMimeType() {
+        return mimeType;
+    }
+    
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+    
+    public Integer getSize() {
+        return size;
+    }
+    
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+    
+    public Text getText() {
+        return text;
+    }
+    
+    public void setText(Text text) {
+        this.text = text;
+    }
+    
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("mimeType", getMimeType())
+                .add("size", getSize())
+                .add("text", getText())
+                .toString();
+    }
+    
+    public static Builder newContentBuilder() {
+        return new Builder();
+    }
+    
+    public static class Builder {
+        private final Content data = new Content();
+        
+        public Builder mimeType(String mimeType) {
+            data.setMimeType(mimeType);
+            return this;
+        }
+        
+        public Builder size(Integer size) {
+            data.setSize(size);
+            return this;
+        }
+        
+        public Builder text(Text text) {
+            data.setText(text);
+            return this;
+        }
+        
+        public Content build() {
+            return data;
+        }
+        
+    }
+    
 }

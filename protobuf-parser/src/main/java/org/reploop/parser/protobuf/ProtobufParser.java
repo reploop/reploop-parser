@@ -24,45 +24,44 @@ import java.nio.file.Path;
  */
 public class ProtobufParser extends ParserDriver<Node, Protobuf2Lexer, Protobuf2Parser> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ProtobufParser.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ProtobufParser.class);
 
-	public ProtoProgram program(Path file) {
-		return (ProtoProgram) parse(file, Protobuf2Parser::program);
-	}
+    public ProtoProgram program(Path file) {
+        return (ProtoProgram) parse(file, Protobuf2Parser::program);
+    }
 
-	public ProtoProgram program(Reader file) {
-		try {
-			return (ProtoProgram) parse(file, Protobuf2Parser::program);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    public ProtoProgram program(Reader file) {
+        try {
+            return (ProtoProgram) parse(file, Protobuf2Parser::program);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-	@Override
-	protected Protobuf2Parser parser(CommonTokenStream tokenStream) {
-		return new Protobuf2Parser(tokenStream);
-	}
+    @Override
+    protected Protobuf2Parser parser(CommonTokenStream tokenStream) {
+        return new Protobuf2Parser(tokenStream);
+    }
 
-	@Override
-	protected Protobuf2Lexer lexer(CharStream charStream) {
-		return new Protobuf2Lexer(charStream);
-	}
+    @Override
+    protected Protobuf2Lexer lexer(CharStream charStream) {
+        return new Protobuf2Lexer(charStream);
+    }
 
-	@Override
-	protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
-		return new ProtobufAstBuilder(tokenStream);
-	}
+    @Override
+    protected AbstractParseTreeVisitor<Node> visitor(CommonTokenStream tokenStream) {
+        return new ProtobufAstBuilder(tokenStream);
+    }
 
-	@Override
-	protected ParseTreeListener parseListener() {
-		return new PostProcessor();
-	}
+    @Override
+    protected ParseTreeListener parseListener() {
+        return new PostProcessor();
+    }
 
-	@Override
-	protected ANTLRErrorListener errorListener() {
-		return new ProtobufErrorListener();
-	}
+    @Override
+    protected ANTLRErrorListener errorListener() {
+        return new ProtobufErrorListener();
+    }
 
 }

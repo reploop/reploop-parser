@@ -10,18 +10,18 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class IntType extends FieldType implements IntegerType {
 
-	public IntType() {
-		super("Integer");
-	}
+    public IntType() {
+        super("Integer");
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitIntType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitIntType(this, context);
+    }
 
-	@Override
-	public int bits() {
-		return 32;
-	}
+    @Override
+    public int bits() {
+        return 32;
+    }
 
 }

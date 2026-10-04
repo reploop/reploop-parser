@@ -15,99 +15,92 @@ import java.util.Objects;
  */
 public class ProtoProgram extends Node {
 
-	private String outerClassName;
+    private final List<String> comments;
+    private final List<Option> options;
+    private final List<Header> headers;
+    private final List<Message> messages;
+    private final List<Enumeration> enumerations;
+    private final List<Service> services;
+    private String outerClassName;
+    private Path file;
 
-	private Path file;
+    public ProtoProgram(List<String> comments, List<Option> options, List<Header> headers, List<Message> messages,
+                        List<Enumeration> enumerations, List<Service> services) {
+        this.messages = messages;
+        this.services = services;
+        this.enumerations = enumerations;
+        this.headers = headers;
+        this.options = options;
+        this.comments = comments;
+    }
 
-	private final List<String> comments;
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitProtobufProgram(this, context);
+    }
 
-	private final List<Option> options;
+    public List<Option> getOptions() {
+        return options;
+    }
 
-	private final List<Header> headers;
+    public List<String> getComments() {
+        return comments;
+    }
 
-	private final List<Message> messages;
+    public Path getFile() {
+        return file;
+    }
 
-	private final List<Enumeration> enumerations;
+    public void setFile(Path file) {
+        this.file = file;
+    }
 
-	private final List<Service> services;
+    public List<Header> getHeaders() {
+        return headers;
+    }
 
-	public ProtoProgram(List<String> comments, List<Option> options, List<Header> headers, List<Message> messages,
-			List<Enumeration> enumerations, List<Service> services) {
-		this.messages = messages;
-		this.services = services;
-		this.enumerations = enumerations;
-		this.headers = headers;
-		this.options = options;
-		this.comments = comments;
-	}
+    public List<Message> getMessages() {
+        return messages;
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitProtobufProgram(this, context);
-	}
+    public List<Service> getServices() {
+        return services;
+    }
 
-	public List<Option> getOptions() {
-		return options;
-	}
+    public List<Enumeration> getEnumerations() {
+        return enumerations;
+    }
 
-	public List<String> getComments() {
-		return comments;
-	}
+    public String getOuterClassName() {
+        return outerClassName;
+    }
 
-	public Path getFile() {
-		return file;
-	}
+    public void setOuterClassName(String outerClassName) {
+        this.outerClassName = outerClassName;
+    }
 
-	public List<Header> getHeaders() {
-		return headers;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ProtoProgram protoProgram = (ProtoProgram) o;
+        return Objects.equals(headers, protoProgram.headers) && Objects.equals(messages, protoProgram.messages)
+                && Objects.equals(services, protoProgram.services)
+                && Objects.equals(enumerations, protoProgram.enumerations);
+    }
 
-	public List<Message> getMessages() {
-		return messages;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(headers, messages, services, enumerations);
+    }
 
-	public List<Service> getServices() {
-		return services;
-	}
-
-	public List<Enumeration> getEnumerations() {
-		return enumerations;
-	}
-
-	public void setFile(Path file) {
-		this.file = file;
-	}
-
-	public String getOuterClassName() {
-		return outerClassName;
-	}
-
-	public void setOuterClassName(String outerClassName) {
-		this.outerClassName = outerClassName;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		ProtoProgram protoProgram = (ProtoProgram) o;
-		return Objects.equals(headers, protoProgram.headers) && Objects.equals(messages, protoProgram.messages)
-				&& Objects.equals(services, protoProgram.services)
-				&& Objects.equals(enumerations, protoProgram.enumerations);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(headers, messages, services, enumerations);
-	}
-
-	@Override
-	public String toString() {
-		return "ProtoProgram{" + "file=" + file + ", comments=" + comments + ", options=" + options + ", headers="
-				+ headers + ", messages=" + messages + ", enumerations=" + enumerations + ", services=" + services
-				+ '}';
-	}
+    @Override
+    public String toString() {
+        return "ProtoProgram{" + "file=" + file + ", comments=" + comments + ", options=" + options + ", headers="
+                + headers + ", messages=" + messages + ", enumerations=" + enumerations + ", services=" + services
+                + '}';
+    }
 
 }

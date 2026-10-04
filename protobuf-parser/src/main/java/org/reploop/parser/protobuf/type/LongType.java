@@ -10,18 +10,18 @@ import org.reploop.parser.protobuf.AstVisitor;
  */
 public class LongType extends FieldType implements IntegerType {
 
-	public LongType() {
-		super("Long");
-	}
+    public LongType() {
+        super("Long");
+    }
 
-	@Override
-	public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
-		return visitor.visitLongType(this, context);
-	}
+    @Override
+    public <R, C> R accept(AstVisitor<R, C> visitor, C context) {
+        return visitor.visitLongType(this, context);
+    }
 
-	@Override
-	public int bits() {
-		return 64;
-	}
+    @Override
+    public int bits() {
+        return 64;
+    }
 
 }

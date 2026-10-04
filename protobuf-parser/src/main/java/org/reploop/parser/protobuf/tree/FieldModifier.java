@@ -8,6 +8,6 @@ package org.reploop.parser.protobuf.tree;
  */
 public enum FieldModifier {
 
-	required, optional, repeated
+    required, optional, repeated
 
 }

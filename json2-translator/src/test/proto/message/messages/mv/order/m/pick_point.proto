@@ -4,6 +4,6 @@ option java_package = "message.messages.mv.order.m";
 package message.messages.mv.order.m;
 import "message/messages/mv/order/m/pickPoint/m.proto";
 message PickPoint {
-    optional message.messages.mv.order.m.pickPoint.M m = 1;
-    
+  optional message.messages.mv.order.m.pickPoint.M m = 1;
+
 }

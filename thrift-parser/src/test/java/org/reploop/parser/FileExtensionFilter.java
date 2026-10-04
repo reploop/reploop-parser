@@ -16,31 +16,31 @@ import java.util.Set;
  */
 public class FileExtensionFilter implements FilenameFilter {
 
-	private static final Logger LOG = LoggerFactory.getLogger(FileExtensionFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileExtensionFilter.class);
 
-	private final Set<String> extensions = new HashSet<>();
+    private final Set<String> extensions = new HashSet<>();
 
-	public FileExtensionFilter(String... extensions) {
-		for (String ext : extensions) {
-			this.extensions.add(ext.toLowerCase());
-		}
-	}
+    public FileExtensionFilter(String... extensions) {
+        for (String ext : extensions) {
+            this.extensions.add(ext.toLowerCase());
+        }
+    }
 
-	public boolean accept(String name) {
-		return accept(null, name);
-	}
+    public boolean accept(String name) {
+        return accept(null, name);
+    }
 
-	@Override
-	public boolean accept(File dir, String name) {
-		if (null == name) {
-			return false;
-		}
-		int idx = name.lastIndexOf(".");
-		if (-1 == idx) {
-			return false;
-		}
-		String extension = name.substring(idx + 1).toLowerCase();
-		return extensions.contains(extension);
-	}
+    @Override
+    public boolean accept(File dir, String name) {
+        if (null == name) {
+            return false;
+        }
+        int idx = name.lastIndexOf(".");
+        if (-1 == idx) {
+            return false;
+        }
+        String extension = name.substring(idx + 1).toLowerCase();
+        return extensions.contains(extension);
+    }
 
 }

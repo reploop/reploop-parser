@@ -13,24 +13,24 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  */
 public class PostProcessor implements ParseTreeListener {
 
-	@Override
-	public void visitTerminal(TerminalNode terminalNode) {
+    @Override
+    public void visitTerminal(TerminalNode terminalNode) {
 
-	}
+    }
 
-	@Override
-	public void visitErrorNode(ErrorNode errorNode) {
+    @Override
+    public void visitErrorNode(ErrorNode errorNode) {
 
-	}
+    }
 
-	@Override
-	public void enterEveryRule(ParserRuleContext parserRuleContext) {
+    @Override
+    public void enterEveryRule(ParserRuleContext parserRuleContext) {
 
-	}
+    }
 
-	@Override
-	public void exitEveryRule(ParserRuleContext parserRuleContext) {
+    @Override
+    public void exitEveryRule(ParserRuleContext parserRuleContext) {
 
-	}
+    }
 
 }

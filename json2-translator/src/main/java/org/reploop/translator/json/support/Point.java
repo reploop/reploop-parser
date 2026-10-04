@@ -2,21 +2,21 @@ package org.reploop.translator.json.support;
 
 public class Point {
 
-	int x;
+    int x;
 
-	int y;
+    int y;
 
-	public Point(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-	public Point() {
-	}
+    public Point() {
+    }
 
-	@Override
-	public String toString() {
-		return String.format("(%d,%d)", x, y);
-	}
+    @Override
+    public String toString() {
+        return String.format("(%d,%d)", x, y);
+    }
 
 }

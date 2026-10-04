@@ -4,7 +4,7 @@ option java_package = "department";
 package department;
 import "department/data/items.proto";
 message Data {
-    optional bool has_more = 1;
-    repeated department.data.Items items = 2;
-    
+  optional bool has_more = 1;
+  repeated department.data.Items items = 2;
+
 }

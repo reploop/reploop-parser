@@ -13,38 +13,38 @@ import java.util.Objects;
  */
 public abstract class FieldType extends Node {
 
-	protected final QualifiedName name;
+    protected final QualifiedName name;
 
-	public FieldType(String name) {
-		this(QualifiedName.of(name));
-	}
+    public FieldType(String name) {
+        this(QualifiedName.of(name));
+    }
 
-	public FieldType(QualifiedName name) {
-		this.name = name;
-	}
+    public FieldType(QualifiedName name) {
+        this.name = name;
+    }
 
-	public QualifiedName getName() {
-		return name;
-	}
+    public QualifiedName getName() {
+        return name;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		FieldType fieldType = (FieldType) o;
-		return Objects.equals(name, fieldType.name);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        FieldType fieldType = (FieldType) o;
+        return Objects.equals(name, fieldType.name);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
-	@Override
-	public String toString() {
-		return name.toString();
-	}
+    @Override
+    public String toString() {
+        return name.toString();
+    }
 
 }

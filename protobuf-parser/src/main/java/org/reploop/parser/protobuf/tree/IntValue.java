@@ -10,34 +10,34 @@ import java.util.Objects;
  */
 public class IntValue extends Value {
 
-	final Integer value;
+    final Integer value;
 
-	public IntValue(Integer value) {
-		this.value = value;
-	}
+    public IntValue(Integer value) {
+        this.value = value;
+    }
 
-	public Integer getValue() {
-		return value;
-	}
+    public Integer getValue() {
+        return value;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		IntValue intValue = (IntValue) o;
-		return Objects.equals(value, intValue.value);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        IntValue intValue = (IntValue) o;
+        return Objects.equals(value, intValue.value);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(value);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
 
-	@Override
-	public String toString() {
-		return "IntValue{" + "value=" + value + '}';
-	}
+    @Override
+    public String toString() {
+        return "IntValue{" + "value=" + value + '}';
+    }
 
 }
