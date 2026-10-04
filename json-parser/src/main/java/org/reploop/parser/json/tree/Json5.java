@@ -1,6 +1,5 @@
 package org.reploop.parser.json.tree;
 
-import org.reploop.parser.json.AstVisitor;
 import org.reploop.parser.json.Node;
 
 import java.util.Objects;

@@ -46,6 +46,8 @@ import org.reploop.translator.json.type.NumberSpec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -142,13 +144,17 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
         if (isParsable(l)) {
             try {
                 StringReader reader = new StringReader(l);
-                Value value = (Value) jsonParser.parse(reader, JsonBaseParser::value);
-                return Optional.ofNullable(visitValue(value, context));
+                return Optional.ofNullable(valueLiterals(reader, context));
             } catch (Exception e) {
                 LOGGER.error("Cannot parse {} to value", l, e);
             }
         }
         return empty();
+    }
+
+    protected FieldType valueLiterals(Reader reader, MessageContext context) throws IOException {
+        Value value = (Value) jsonParser.parse(reader, JsonBaseParser::value);
+        return visitValue(value, context);
     }
 
     @Override
@@ -260,13 +266,17 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
             }
             String text = unescapeJson(val);
             try {
-                Json json = (Json) jsonParser.parse(new StringReader(text), JsonBaseParser::json);
-                return visitJson(json, context);
+                return visitRawTextValue(new StringReader(text), context);
             } catch (Exception e) {
                 LOGGER.warn("Cannot process raw json {}", val, e);
             }
         }
         return new StringType();
+    }
+
+    protected FieldType visitRawTextValue(Reader val, MessageContext context) throws IOException {
+        Json json = (Json) jsonParser.parse(val, JsonBaseParser::json);
+        return visitJson(json, context);
     }
 
     @Override
@@ -277,7 +287,6 @@ public class JsonMessageTranslator extends AstVisitor<Node, MessageContext> {
     @Override
     public ListType visitArray(Array array, MessageContext context) {
         List<FieldType> types = Stream.ofNullable(array.getValues())
-                .filter(Objects::nonNull)
                 .flatMap(Collection::stream)
                 .map(value -> visitValue(value, context))
                 .collect(Collectors.toList());
