@@ -13,30 +13,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Json5ParserTest {
 
-	Json5Parser parser;
+    Json5Parser parser;
 
-	@BeforeEach
-	void setUp() {
-		parser = new Json5Parser();
-	}
+    @BeforeEach
+    void setUp() {
+        parser = new Json5Parser();
+    }
 
-	@Test
-	void visitor() throws IOException {
-		// https://raw.githubusercontent.com/chromium/chromium/feb3c9f670515edf9a88f185301cbd7794ee3e52/third_party/blink/renderer/platform/runtime_enabled_features.json5
-		var url = Json5ParserTest.class.getResource("/runtime_enabled_features.json5");
-		assertThat(url).isNotNull();
-		CharStream cs = CharStreams.fromStream(url.openStream());
-		Json5 node = (Json5) parser.parse(cs, JSON5Parser::json5);
-		System.out.println(node);
-	}
+    @Test
+    void visitor() throws IOException {
+        // https://raw.githubusercontent.com/chromium/chromium/feb3c9f670515edf9a88f185301cbd7794ee3e52/third_party/blink/renderer/platform/runtime_enabled_features.json5
+        var url = Json5ParserTest.class.getResource("/runtime_enabled_features.json5");
+        assertThat(url).isNotNull();
+        CharStream cs = CharStreams.fromStream(url.openStream());
+        Json5 node = (Json5) parser.parse(cs, JSON5Parser::json5);
+        System.out.println(node);
+    }
 
-	@Test
-	void visitSample() throws Exception {
-		var url = Json5ParserTest.class.getResource("/sample.json5");
-		assertThat(url).isNotNull();
-		CharStream cs = CharStreams.fromStream(url.openStream());
-		Json5 node = (Json5) parser.parse(cs, JSON5Parser::json5);
-		System.out.println(node);
-	}
+    @Test
+    void visitSample() throws Exception {
+        var url = Json5ParserTest.class.getResource("/sample.json5");
+        assertThat(url).isNotNull();
+        CharStream cs = CharStreams.fromStream(url.openStream());
+        Json5 node = (Json5) parser.parse(cs, JSON5Parser::json5);
+        System.out.println(node);
+    }
 
 }

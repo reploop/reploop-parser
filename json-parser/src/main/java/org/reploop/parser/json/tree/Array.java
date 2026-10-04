@@ -45,7 +45,7 @@ public class Array extends Value {
 
     @Override
     public String toString() {
-        return values.toString();
+        return Objects.toString(values);
     }
 
 }
